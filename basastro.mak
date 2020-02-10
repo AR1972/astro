@@ -1,6 +1,6 @@
 # Non-Upgrade (OEM BASE) Astro top level makefile
 
-ROOT    = \msdos60
+ROOT    = c:\astro
 DOSMAKE = $(ROOT)\tools\bin\nmake
 RESULTS = $(ROOT)\compress
 

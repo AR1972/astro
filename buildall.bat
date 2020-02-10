@@ -6,7 +6,7 @@ REM You must specify a country variable at the command line.
 
 if "%1"=="" goto usage
 
-SET ROOT=\MSDOS60
+SET ROOT=c:\astro
 SET DOSMAKE=%ROOT%\TOOLS\BIN\NMAKE
 SET CPRS=%ROOT%\compress
 SET BIN=%ROOT%\binaries

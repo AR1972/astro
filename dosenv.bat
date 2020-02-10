@@ -19,7 +19,7 @@ prompt [dos 6 $p] $
 if "%1"=="" set oakdrive=C:
 if not "%1"=="" set oakdrive=%1
 
-set oakpath=%oakdrive%\msdos60
+set oakpath=%oakdrive%\astro
 
 
 set PATH=%oakpath%\TOOLS\BIN;%PATH%
