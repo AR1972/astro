@@ -1,0 +1,617 @@
+.comment ******************************************************************
+.comment *  Graphics Family - QBasic                                      *
+.comment ******************************************************************
+.comment *  7/13/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  6/28/90 stevesau                                              *
+.comment *  Incorporated final review comments/edits.                     *
+.comment *  Split up SCREEN function and statement.                       *
+.comment ******************************************************************
+.comment *  6/12/90 stevesau                                              *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/11/90 stevesau                                              *
+.comment *  Replaced Attributes and Colors node with COLOR example        *
+.comment *  showing color codes.                                          *
+.comment *  Combined GET/PUT.                                             *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/10/90 stevesau                                              *
+.comment *  Reinserted X command in DRAW.                                 *
+.comment *  Added Attributes and Colors node.                             *
+.comment ******************************************************************
+.comment *  5/4/90 stevesau                                               *
+.comment *  Combined SCREEN function and statement (from Dev I/O family). *
+.comment *  Created new Screen Modes topic.                               *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                              *
+.comment *  Added action lines.						  *
+.comment *  Made COLOR Attributes link local.                             *
+.comment *  Deleted references to X command in DRAW.                      *
+.comment *  Added DRAW macro language screens, made links local.          *
+.comment *  Added DRAW - Differences from BASICA.                         *
+.comment ******************************************************************
+.context CIRCLE
+.context @CIRCLE
+:nInstruction CIRCLE
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CIRCLE trace un cercle ou une ellipse sur l'‚cran.
+
+\bCIRCLE [STEP] (x!,y!),rayon![,[coul%] [,[dep!] [,[fin!] [,aspect!]]]]\p
+
+    ş \bSTEP\p       Indique que les coordonn‚es sont relatives … la position
+                 courante du curseur graphique.
+    ş \b(x!,y!)\p    Coordonn‚es du centre du cercle ou de l'ellipse.
+    ş \brayon!\p     Rayon du cercle ou de l'ellipse, en unit‚s du systŠme de
+                 coordonn‚es courant, d‚termin‚ par l'ex‚cution des
+                 instructions SCREEN, VIEW et WINDOW.
+    ş \bcoul%\p      Attribut de la couleur du cercle. Les attributs
+                 disponibles d‚pendent de l'adaptateur graphique utilis‚ et
+                 du mode ‚cran s‚lectionn‚ par la plus r‚cente ex‚cution
+                 d'une instruction SCREEN.
+    ş \bdep!\p       Angle de d‚but de l'arc, en radians.
+    ş \bfin!\p       Angle de fin de l'arc, en radians.
+    ş \baspect!\p    Rapport d‚finissant l'aspect, c'est-…-dire le rapport du
+                 rayon y sur le rayon x, utilis‚ pour tracer des ellipses.
+
+    ş Pour convertir de degr‚s en radians, multipliez les degr‚s par (PI/180).
+
+Exemple :
+    'Cet exemple n‚cessite un adaptateur graphique couleur.
+    SCREEN 2
+    CIRCLE (320, 100), 200
+    CIRCLE STEP (0,0), 100
+
+Voir aussi  \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aCouleurs et attributs de couleur\v@color.table\v\i\p         \i\p\aModes d'‚cran\v@screen.modes\v\i\p
+.context COLOR
+.context @COLOR
+:nInstruction COLOR
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+COLOR d‚finit les couleurs de l'‚cran.
+
+\bCOLOR [coulTxt%] [,[coulFond%] [,cadre%]]\p    Mode d'‚cran 0 (texte)
+\bCOLOR [coulFond%] [,palette%]\p                Mode d'‚cran 1
+\bCOLOR [coulTxt%]\p                             Modes d'‚cran 4, 12 et 13
+\bCOLOR [coulTxt%] [,coulFond&]\p                Modes d'‚cran 7-10
+
+    ş \bcoulTxt%\p    Nombre qui d‚finit la couleur du texte. En mode
+      \bcoulTxt&\p    d'‚cran 0, coulTxt% est un attribut de couleur qui
+                  d‚finit la couleur du texte. Dans les autres modes,
+                  coulTxt% est un attribut de couleur ou une couleur
+                  (cod‚e sur 4 bits) qui d‚finit la couleur du texte et
+                  de trac‚ de ligne.
+    ş \bcoulFond%\p   Nombre qui d‚finit la couleur de fond de l'‚cran.
+      \bcoulFond&\p   En mode d'‚cran 0, coulFond% est un attribut de couleur.
+                  En mode 1, coulFond% est une couleur (cod‚e sur 4 bits).
+                  Dans les modes 7-10, coulFond& est une couleur.
+    ş \bcadre%\p      Attribut de couleur qui fixe la couleur du cadre.
+    ş \bpalette%\p    Nombre (0 ou 1) qui pr‚cise quel jeu d'attributs
+                  de couleur est utilis‚ :
+
+                   palette%    Attribut 1     Attribut 2     Attribut 3
+                   ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍ
+                   0           vert           rouge          marron
+                   1           cyan           violet         blanc brillant
+
+    ş Les attributs et les couleurs disponibles d‚pendent de l'adaptateur
+      graphique et du mode d'‚cran d‚fini par l'ex‚cution la plus r‚cente
+      d'une instruction SCREEN.
+    ş Si votre systŠme est ‚quip‚ d'un adaptateur EGA, VGA ou MCGA, utilisez
+      l'instruction PALETTE pour changer l'affectation des couleurs aux
+      attributs de couleurs.
+
+Exemple :
+    'Cet exemple n‚cessite un adaptateur graphique couleur.
+    SCREEN 7
+    FOR i% = 0 TO 15
+        COLOR i%
+        PRINT i%
+    NEXT i%
+
+Voir aussi  \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aPAINT\v@PAINT\v\i\p    \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aModes d'‚cran\v@screen.modes\v\i\p      \i\p\aCouleurs et attributs de couleur\v@color.table\v\i\p
+.context @color.table
+:nCouleurs et attributs de couleur
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+             \b        Ecran couleur                      Ecran monochrome\p
+             ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ    ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\b Attribut      Couleur          Couleur           Couleur     Couleur  \p
+\bde couleur    par d‚faut \p(a)\b    affich‚e         par d‚faut   affich‚e\p
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+\bModes 0, 7, 8, 9\p(b)\b, 12 et 13\p
+   0              0              noir              0(c)        Eteinte
+   1              1              bleu                          Soulign‚(d)
+   2              2              vert              1(c)        Allum‚e(d)
+   3              3              cyan              1(c)        Allum‚e(d)
+   4              4              rouge             1(c)        Allum‚e(d)
+   5              5              violet            1(c)        Allum‚e(d)
+   6              6              marron            1(c)        Allum‚e(d)
+   7              7              blanc             1(c)        Allum‚e(d)
+   8              8              gris              0(c)        Eteinte
+   9              9              bleu clair                    Haute intensit‚
+                                                               Soulign‚
+  10             10              vert clair        2(c)        Haute intensit‚
+  11             11              cyan clair        2(c)        Haute intensit‚
+  12             12              rouge clair       2(c)        Haute intensit‚
+  13             13              violet clair      2(c)        Haute intensit‚
+  14             14              jaune             2(c)        Haute intensit‚
+  15             15              blanc brillant    0(c)        Eteinte
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bModes 1 et 9\p(e)
+
+   0              0              noir              0           Eteinte
+   1             11              cyan clair        2           Haute intensit‚
+   2             13              violet clair      2           Haute intensit‚
+   3             15              blanc brillant    0           Eteinte
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bModes 2 et 11\p
+   0              0              noir              0           Eteinte
+   1             15              blanc brillant    0           Eteinte
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  (a)  Num‚ros de couleur EGA. Les cartes VGA et MCGA utilisent des valeurs
+       qui produisent des couleurs d'apparence ‚quivalente.
+  (b)  Pour cartes VGA ou EGA avec m‚moire vid‚o > 64 Ko.
+  (c)  Mode 0 uniquement.
+  (d)  Eteint si couleur de fond.
+  (e)  Pour cartes EGA avec m‚moire vid‚o <= 64 Ko.
+
+Voir aussi  \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aModes d'‚cran\v@screen.modes\v\i\p
+.context DRAW
+.context @DRAW
+:nInstruction DRAW
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DRAW trace un objet.
+
+\bDRAW cmd$\p
+
+  ş \bcmd$\p    Expression de chaŒne qui contient une ou plusieurs
+            commandes DRAW.
+
+    Trac‚ de ligne ou de mouvement de curseur :
+    D[n%]           D‚place le curseur vers le bas de n% unit‚s.
+    E[n%]           D‚place le curseur vers le haut et la droite de n% unit‚s.
+    F[n%]           D‚place le curseur vers le bas et la droite de n% unit‚s.
+    G[n%]           D‚place le curseur vers le bas et la gauche de n% unit‚s.
+    H[n%]           D‚place le curseur vers le haut et la gauche de n% unit‚s.
+    L[n%]           D‚place le curseur vers la gauche de n% unit‚s.
+    M[{+|-}]x%,y%   Place le curseur sur le point x%,y%. Si x% est pr‚c‚d‚
+                    par + ou -, d‚placement relatif … la position courante.
+    R[n%]           D‚place le curseur vers la droite de n% unit‚s.
+    U[n%]           D‚place le curseur vers le haut de n% unit‚s.
+    [B]             Pr‚fixe facultatif qui d‚place le curseur sans trac‚.
+    [N]             Pr‚fixe facultatif qui trace et retourne le curseur
+                    … sa position initiale.
+
+    D‚finition de couleurs, modification d'‚chelle et rotation :
+    An%             Effectue une rotation de n% * 90 degr‚s (n% peut ˆtre
+                    0, 1, 2, ou 3).
+    Cn%             D‚finit la couleur de trac‚ (n% est un attribut).
+    Pn1%,n2%        D‚finit les couleurs de remplissage et de bordure d'un
+                    objet (n1%=couleur de remplissage, n2%=couleur de
+                    bordure)
+    Sn%             Modifie l'‚chelle en d‚finissant la longueur d'une unit‚
+                    de mouvement de curseur. La valeur par d‚faut de n% est
+                    4, ce qui ‚quivaut … un pixel.
+    TAn%            Rotation de n% degr‚s (de -360 … 360).
+
+  ş Si n% est omis des commandes de trac‚ et de mouvement de curseur, le
+    curseur se d‚place d'une unit‚.
+  ş Pour ex‚cuter une sous-chaŒne de commande DRAW d'une chaŒne de
+    commande, utilisez la commande "X" :
+
+    DRAW "X"+ VARPTR$(cmd$)
+
+Exemple :
+    'Cet exemple n‚cessite une carte graphique.
+    SCREEN 1
+    Triangle$ = "F60 L120 E60"
+    DRAW "C2 X" + VARPTR$(Triangle$)
+    DRAW "BD30 P1,2 C3 M-30,-30"
+
+Voir aussi  \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p
+            \i\p\aCouleurs et attributs de couleur\v@color.table\v\i\p      \i\p\aComparaison avec BASICA\v@basica.diffs\v\i\p
+.context .ggx
+.context @ggx
+.context .pgfx
+.context @pgfx
+:nInstructions GET, PUT  (Graphiques)
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+GET stocke des images graphiques provenant de l'‚cran.
+PUT affiche une image stock‚e par GET.
+
+\bGET [STEP](x1!,y1!)-[STEP](x2!,y2!), tabl[(ind%)]\p
+\bPUT [STEP] (x1!,y1!), tabl[(ind%)] [,action]\p
+
+    ş \bSTEP\p          Indique que les coordonn‚es sont relatives … la position
+                    courante du curseur graphique.
+    ş \b(x1!,y1!)\p     Coordonn‚es du coin sup‚rieur gauche de l'image stock‚e
+                    par GET ou de la position o— PUT affiche l'image.
+    ş \b(x2!,y2!)\p     Coordonn‚es du coin inf‚rieur de l'image stock‚e.
+    ş \btabl\p          Nom du tableau dans lequel l'image est stock‚e.
+                    Voir \i\p\aTableaux image-‚cran et compatibilit‚\v@ggx.arrays\v\i\p
+                    pour d‚terminer ta taille du tableau.
+    ş \bind%\p          Indice … partir duquel l'image est stock‚e.
+    ş \baction\p        Mot-cl‚ indiquant comment l'image doit ˆtre affich‚e :
+
+           Mot-cl‚    Effet
+           ÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+           AND        Fusionne l'image m‚moris‚e avec l'image pr‚sente.
+           OR         Superpose l'image m‚moris‚e … l'image pr‚sente.
+           PSET       Trace l'image m‚moris‚e, effa‡cant l'image pr‚sente.
+           PRESET     Trace l'image m‚moris‚e en couleurs inverses, effa‡ant
+                      l'image pr‚sente.
+           XOR        Trace une image m‚moris‚e ou efface une image trac‚e
+                      pr‚c‚demment tout en conservant le fond de l'image,
+                      ce qui permet de produire des effets de mouvements.
+
+    ş Une instruction PUT doit toujours ˆtre ex‚cut‚e dans un mode d'‚cran
+      identique, ou compatible, avec le mode dans lequel l'instruction GET
+      a ‚t‚ ex‚cut‚e. See \i\p\aTableaux image-‚cran et compatibilit‚\v@ggx.arrays\v\i\p.
+
+Exemple :
+    'Cet exemple n‚cessite un adaptateur
+    SCREEN 1
+    DIM Boite%(1 TO 200)
+    x1% = 0: x2% = 10: y1% = 0: y2% = 10
+    LINE (x1%, y1%)-(x2%, y2%), 2, BF
+    GET (x1%, y1%)-(x2%, y2%), Boite%
+    DO
+        PUT (x1%, y1%), Boite%, XOR
+        x1% = RND * 300
+        y1% = RND * 180
+        PUT (x1%, y1%), Boite%
+    LOOP WHILE INKEY$ = ""
+
+Voir aussi    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aModes d'‚cran\v@screen.modes\v\i\p
+.context @ggx.arrays
+:nTableaux image-‚cran et compatibilit‚
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Les valeurs bitsPixelPlan et plans sont utilis‚es pour d‚terminer
+la taille du tableau n‚cessaire au stockage d'une image. Ces valeurs, avec
+la r‚solution horizontale, d‚terminent aussi les modes d'‚cran compatibles :
+
+                                                                 R‚solution
+                                                                 horizontale
+    Mode d'‚cran                    bitsPixelPlan      Plans     (en pixels)
+    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ
+    1                               2                  1         320
+    2, 4, 11                        1                  1         640
+    3                               1                  1         720
+    7                               1                  4         320
+    8, 9(> 64 Ko de m‚moire), 12    1                  4         640
+    9(64Ko de m‚moire), 10          1                  2         640
+    13                              8                  1         320
+
+La formule ci-dessous fournit, en octets, la dimension du tableau n‚cessaire
+au stockage d'un image :
+
+size% = 4 + INT(((PMAP (x2!, 0) - PMAP (x1!, 0) + 1) *
+        (bitsPixelPlan%) + 7) / 8) * plans% *
+        (PMAP (y2!, 1) - PMAP (y1!, 1) + 1)
+
+Les op‚rations GET et PUT sont compatibles pour des modes d'‚cran de mˆme
+r‚solution horizontale et de mˆmes valeurs bitsPixelPlan et plans.
+Par exemple, les modes 2, 4 et 11 sont compatibles, ainsi que les modes 8
+et 12.
+
+Voir aussi    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aModes d'‚cran\v@screen.modes\v\i\p
+.context LINE
+.context @LINE
+:nInstruction LINE
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LINE trace une ligne ou un rectangle.
+
+\bLINE [[STEP](x1!,y1!)]-[STEP](x2!,y2!) [,[couleur%] [,[B | BF] [,style%]]]\p
+
+    ş \bSTEP\p         Indique que les coordonn‚es sont relatives … la position
+                   courante du curseur graphique.
+    ş \b(x1!,y1!)\p,   Coordonn‚es des extr‚mit‚s de la ligne.
+      \b(x2!,y2!)\p
+    ş \bcouleur%\p     Attribut de couleur qui d‚termine la couleur de la
+                   ligne ou du rectangle. Les attributs disponibles d‚pendent
+                   de l'adaptateur graphique et du mode d'‚cran d‚fini par
+                   l'ex‚cution la plus r‚cente de l'instruction SCREEN.
+    ş \bB\p            Trace un rectangle.
+    ş \bBF\p           Trace un rectangle colori‚.
+    ş \bstyle%\p       Entier de 16 bits indiquant si des pixels sont affich‚s
+                   ou non. Utilis‚ pour tracer diff‚rents styles de lignes.
+
+Exemple :
+    'Cet exemple n‚cessite un adaptateur graphique couleur.
+    SCREEN 1
+    LINE (110, 70)-(190, 120), , B
+    LINE (0, 0)-(320, 200), 3, , &HFF00
+
+Voir aussi  \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p    \i\p\aPRESET, PSET\v@PSET\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aCouleurs et attributs de couleur\v@color.table\v\i\p    \i\p\aModes d'‚cran\v@screen.modes\v\i\p
+.context PAINT
+.context @PAINT
+:nInstruction PAINT
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PAINT remplit une zone avec la couleur ou le motif sp‚cifi‚.
+
+\bPAINT [STEP] (x!,y!)[,[{couleur% | dalle$}] [,[coulBord%] [,coulFond$]]]\p
+
+   ş \bSTEP\p         Indique que les coordonn‚es sont relatives … la position
+                  courante du curseur graphique.
+   ş \b(x!,y!)\p      Coordonn‚es de la zone … remplir.
+   ş \bcouleur%\p     Attribut de couleur, couleur de remplissage.
+   ş \bdalle$\p       Masque de dallage, d'une largeur de 8 bits et d'une
+                  longueur maximale de 64 octets, d‚fini comme suit :
+
+                       dalle$ = CHR$(arg1) + CHR$(arg2) + ... + CHR$(argn%)
+
+                  Les arguments de CHR$ sont des nombres compris entre 0 et
+                  255. Chaque CHR$(argn%) d‚finit une section de 8 pixels
+                  dans le motif, bas‚e sur la repr‚sentation binaire de argn%.
+   ş \bcoulBord%\p    Attribut de couleur qui d‚finit la couleur de la bordure
+                  de la zone remplie. PAINT cesse de remplir une zone lorsque
+                  la couleur sp‚cifi‚e est rencontr‚e.
+   ş \bcoulFond$\p    Valeur cod‚e sur 1 octet, sp‚cifiant la "tranche de dallage
+                  de fond". La sp‚cification d'une tranche de dallage de fond
+                  permet de repeindre par-dessus une surface d‚j… colori‚e.
+
+   ş Les attributs de couleurs disponibles varient selon l'adaptateur
+     graphique et le mode d'‚cran d‚fini par l'ex‚cution la plus
+     r‚cente de l'instruction SCREEN.
+
+Exemple :
+    'Cet exemple n‚cessite un adaptateur graphique couleur.
+    SCREEN 1
+    CIRCLE (106, 100), 75, 1
+    LINE (138, 35)-(288, 165), 1, B
+    PAINT (160, 100), 2, 1
+
+Voir aussi  \i\p\aASC, CHR$\v@CHR$\v\i\p    \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aCouleurs et attributs de couleur\v@color.table\v\i\p    \i\p\aModes d'‚cran\v@screen.modes\v\i\p
+.context PALETTE
+.context @PALETTE
+:nInstructions PALETTE, PALETTE USING
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PALETTE et PALETTE USING changent l'affectation des couleurs aux attributs
+de couleurs dans le mode d'‚cran courant.  Ces instructions fonctionnent
+seulement sur des systŠmes ‚quip‚s d'un adaptateur EGA, VGA ou MCGA.
+
+\bPALETTE [attribut%,couleur&]\p
+\bPALETTE USING tabl#[(ind%)]\p
+
+    ş \battribut%\p    Attribut … modifier.
+    ş \bcouleur&\p     Couleur … assigner … l'attribut.
+    ş \btabl#\p        Tableau de num‚ros des couleurs … affecter … l'ensemble
+                   des attributs du mode d'‚cran courant. Le tableau doit
+                   ˆtre assez grand pour permettre l'afectation de couleurs
+                   … tous les attributs.
+    ş \bind%\p         Indice du premier ‚l‚ment du tableau servant …
+                   initialiser la palette.
+
+    ş Les attributs de couleurs disponibles varient selon l'adaptateur
+      graphique et le mode d'‚cran d‚fini par l'ex‚cution la plus
+      r‚cente de l'instruction SCREEN.
+
+Exemple :
+    'Cet exemple n‚cessite un adaptateur graphique.
+    PALETTE 0, 1
+    SCREEN 1
+    FOR i% = 0 TO 3: a%(i%) = i%: NEXT i%
+    LINE (138, 35)-(288, 165), 3, BF
+    LINE (20, 10)-(160, 100), 2, BF
+    DO
+        FOR i% = 0 TO 3
+            a%(i%) = (a%(i%) + 1) MOD 16
+        NEXT i%
+        PALETTE USING a%(0)
+    LOOP WHILE INKEY$ = ""
+
+Voir aussi  \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aCouleurs et attributs de couleur\v@color.table\v\i\p    \i\p\aModes d'‚cran\v@screen.modes\v\i\p
+.context PCOPY
+.context @PCOPY
+:nInstruction PCOPY
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PCOPY copie une page d'‚cran sur une autre.
+
+\bPCOPY source%,cible%\p
+
+    ş \bsource%\p   Num‚ro de la page d'origine.
+    ş \bcible%\p    Num‚ro de la page destination.
+
+    ş La valeur identifiant la page d'‚cran est d‚termin‚e par la taille
+      de la m‚moire vid‚o et le mode d'‚cran courant.
+
+Exemple :
+    PCOPY 1, 3
+
+Voir aussi    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aModes d'‚cran\v@screen.modes\v\i\p
+.context SCREEN
+.context @SCREEN
+:nInstruction SCREEN
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN fixe les sp‚cifications d'affichage de l'‚cran.
+
+\bSCREEN mode% [,[col%] [,[pageAct%] [,pageAff%]]]\p
+
+    ş \bmode%\p        Mode d'‚cran. Voir \i\p\aModes d'‚cran\v@screen.modes\v\i\p.
+    ş \bcol%\p         Valeur (0 ou 1) qui d‚termine un affichage couleur
+                   ou monochrome (modes 0 et 1 uniquement):
+
+                      Mode    Valeur      Effet
+                      ÍÍÍÍ    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                      0       0           D‚sactive la couleur
+                      0       Non nulle   Active la couleur
+                      1       0           Active la couleur
+                      1       Non nulle   D‚sactive la couleur
+
+    ş \bpageAct%\p     Page d'‚cran sur laquelle les textes et
+                   graphiques sont ‚crits.
+    ş \bpageAff%\p     Page d'‚cran affich‚e.
+
+Exemple :
+    'Cet exemple n‚cessite un adaptateur graphique couleur.
+    SCREEN 1        '320 x 200 graphique
+    LINE (110, 70)-(190, 120), , B
+    LINE (0, 0)-(320, 200), 3, , &HFF00
+
+Voir aussi  \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p      \i\p\aPAINT\v@PAINT\v\i\p
+            \i\p\aFonction SCREEN \v@screenf\v\i\p     \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p    \i\p\aModes d'‚cran\v@screen.modes\v\i\p
+.context @screen.modes
+:nModes d'‚cran.
+  \i\p\aTable des matiŠres\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Le tableau suivant pr‚sente un r‚sum‚ des modes d'‚crans.
+
+ÄÄÄÄÄÄÄ Adaptateurs MDPA, CGA, Hercules, Olivetti, EGA, VGA ou MCGA ÄÄÄÄÄÄÄÄÄ
+SCREEN 0: mode texte uniquement
+  ş format texte 40 x 25, 40 x 43, 40 x 50, 80 x 25, 80 x 43, ou 80 x 50
+    avec une matrice de caractŠre de 8 x 8 (8 x 14, 9 x 14, ou 9 x 16 avec EGA
+    ou VGA)
+  ş 16 couleurs affect‚es … n'importe quels attributs parmi 16 (avec CGA ou
+    EGA)
+  ş 64 couleurs affect‚es … n'importe quels attributs parmi 16 (avec EGA ou
+    VGA)
+  ş Selon la r‚solution et l'adaptateur, 8 pages de m‚moire vid‚o (de 0 … 7),
+    4 pages (de 0 … 3), 2 pages (0-1) ou 1 page (0)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Adaptateurs CGA, EGA, VGA ou MCGA ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 1: mode graphique 320 x 200
+  ş format texte 40 x 25, matrice de caractŠre de 8 x 8;
+  ş 16 couleurs de fond et l'un des deux jeux de 3 couleurs de
+    premier plan affect‚es en utilisant l'instruction COLOR avec CGA
+  ş 16 couleurs affect‚es … 4 attributs avec EGA ou VGA
+  ş 1 page de m‚moire vid‚o (0)
+SCREEN 2: mode graphique 640 x 200
+  ş format texte 80 x 25 avec matrice de caractŠre de 8 x 8
+  ş 16 couleurs affect‚es … 2 attributs avec EGA ou VGA
+  ş 1 page de m‚moire vid‚o (0)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Adaptateurs Hercules, Olivetti ou AT&T ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 3: Adaptateur Hercules requis, ‚cran monochrome uniquement
+  ş mode graphique 720 x 348
+  ş format texte 80 x 25, matrice de caractŠre de 9 x 14
+  ş 2 pages d'‚cran (1 seule si une deuxiŠme carte d'affichage est
+    install‚e)
+  ş instruction PALETTE non g‚r‚e
+  ş utilise le gestionnaire MSHERC.COM avant d'utiliser le mode 3
+SCREEN 4:
+  ş gŠre les PC Olivetti (R) modŠles M24, M240, M28,M280, M380,
+    M380/C, M380/T et les PC AT&T (R) s‚rie 6300
+  ş mode graphique 640 x 400
+  ş format texte 80 x 25, matrice de caractŠre de 8 x 16
+  ş 1 couleur parmi 16 choisie comme couleur de premier plan (s‚lectionn‚e par
+    l'instruction COLOR); couleur de fond fix‚e au noir
+  ş 1 page m‚moire vid‚o (0)
+  ş instruction PALETTE non g‚r‚e
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄAdaptateurs EGA ou VGA ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 7: mode graphique 320 x 200
+  ş format texte 40 x 25, matrice de caractŠre de 8 x 8
+  ş taille de page 32 Ko, pages disponibles: 0-1 (64 Ko), 0-3 (128 Ko), ou
+    0-7 (256 Ko)
+  ş affectation de 16 couleurs … n'importe quels attributs parmi 16
+SCREEN 8: mode graphique 640 x 200
+  ş format texte 80 x 25, matrice de caractŠre de 8 x 8
+  ş affectation de 16 couleurs … n'importe quels attributs parmi 16
+  ş si adaptateur EGA avec 64 Ko, 1 page m‚moire vid‚o (0); sinon,
+    4 pages (0-3)
+SCREEN 9: mode graphique 640 x 350
+  ş format texte 80 x 25 ou 80 x 43, matrice de caractŠre de 8 x 14 ou 8 x 8
+  ş 16 couleurs affect‚es … 4 attributs (64 Ko de m‚moire sur carte), ou
+    64 couleurs affect‚es … 16 attributs (plus de 64 Ko de m‚moire sur carte)
+  ş si adaptateur EGA 64 Ko, 1 page m‚moire vid‚o (0); sinon,
+    2 pages (0-1)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄAdaptateurs VGA ou EGA, ‚cran monochromeÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 10: mode graphique 640 x 350, moniteur monochrome uniquement
+  ş format texte 80 x 25 ou 80 x 43, matrice de caractŠre de 8 x 14 ou 8 x 8
+  ş taille de page 128 Ko, pages disponibles: 0 (128 Ko) ou 0-1 (256 Ko)
+  ş jusqu'… 9 pseudo couleurs affect‚es … 4 attributs
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄAdaptateurs VGA ou MCGA ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Screen 11 (VGA ou MCGA)
+  ş mode graphique 640 x 480
+  ş format texte 80 x 30 ou 80 x 60, matrice de caractŠre de 8 x 16 ou 8 x 8
+  ş jusqu'… 256 K couleurs affect‚es … 2 attributs
+  ş 1 page m‚moire vid‚o (0)
+SCREEN 12 (VGA)
+  ş mode graphique 640 x 480
+  ş format texte 80 x 30 ou 80 x 60, matrice de caractŠre de 8 x 16 ou 8 x 8
+  ş jusqu'… 256 K couleurs affect‚es … 16 attributs
+  ş 1 page m‚moire vid‚o (0)
+SCREEN 13 (VGA ou MCGA)
+  ş mode graphique 320 x 200;
+  ş format texte 40 x 25, matrice de caractŠre de 8 x 8
+  ş jusqu'… 256 K couleurs affect‚es … un maximum de 256 attributs
+  ş 1 page m‚moire vid‚o (0)
+
+Voir aussi    \i\p\aInstruction SCREEN\v@SCREEN\v\i\p
+.context @screenf
+:nFonction SCREEN
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN retourne la valeur ASCII ou la couleur du caractŠre … un emplacement
+sp‚cifi‚ sur l'‚cran.
+
+\bSCREEN (ligne%,colonne% [,indCoul%])\p
+
+    ş \bligne%\p      Num‚ro de ligne de la position … l'‚cran.
+    ş \bcolonne%\p    Num‚ro de colonne de la position … l'‚cran.
+    ş \bindCoul%\p    Indique la valeur retourn‚e.
+
+                    Valeur             Retourne
+                    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                    0 (ou omis)       Code ASCII du caractŠre.
+                    1                 Num‚ro de la couleur.
+
+Exemple :
+    CLS
+    PRINT "Hello"
+    PRINT "Code ASCII du caractŠre en 1,1 : "; SCREEN(1, 1)
+
+Voir aussi  \i\p\aPOINT\v@POINT\v\i\p    \i\p\aInstruction SCREEN\v@SCREEN\v\i\p
+            \i\p\aCodes de caractŠres ASCII\v@ac\v\i\p    \i\p\aCouleurs et attributs de couleur\v@color.table\v\i\p
+.context VIEW
+.context @VIEW
+:nInstruction VIEW
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+D‚finit les limites de l'‚cran pour l'affichage graphique.
+
+\bVIEW [[SCREEN] (x1!,y1!)-(x2!,y2!) [,[couleur%] [,cadre%]]]\p
+
+    ş \bSCREEN\p                 Indique que les coordonn‚es sont relatives …
+                             l'‚cran plut“t qu'… la fenˆtre actuelle.
+    ş \b(x1!,y1!)-(x2!,y2!)\p    Coordonn‚es de deux coins oppos‚s de la fenˆtre.
+    ş \bcouleur%\p               Attribut de couleur qui d‚finit la couleur
+                             de la fenˆtre.
+    ş \bcadre%\p                 Attribut de couleur qui d‚finit la couleur du
+                             cadre de la fenˆtre.
+
+    ş Si tous les arguments sont omis, la fenˆtre ‚quivaut … l'‚cran.
+    ş Les attributs de couleur disponibles d‚pendent de l'adapatateur
+      d'‚cran et du mode d‚fini par l'ex‚cution la plus r‚cente d'une
+      instruction SCREEN.
+
+Exemple :
+    'Cet exemple n‚cessite un adaptateur graphique couleur.
+    SCREEN 1
+    VIEW (10, 10)-(300, 180), , 1
+    LOCATE 1, 11: PRINT "Grande fenˆtre graphique";
+    VIEW SCREEN (80, 80)-(200, 125), , 1
+    LOCATE 11, 11: PRINT "Petite fenˆtre graphique";
+
+Voir aussi  \i\p\aCLS\v@CLS\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aCouleurs et attributs de couleur\v@color.table\v\i\p  \i\p\aModes d'‚cran\v@screen.modes\v\i\p

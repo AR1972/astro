@@ -1,0 +1,620 @@
+.comment ******************************************************************
+.comment *  Graphics Family - QBasic                                      *
+.comment ******************************************************************
+.comment *  7/13/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  6/28/90 stevesau                                              *
+.comment *  Incorporated final review comments/edits.                     *
+.comment *  Split up SCREEN function and statement.                       *
+.comment ******************************************************************
+.comment *  6/12/90 stevesau                                              *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/11/90 stevesau                                              *
+.comment *  Replaced Attributes and Colors node with COLOR example        *
+.comment *  showing color codes.                                          *
+.comment *  Combined GET/PUT.                                             *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/10/90 stevesau                                              *
+.comment *  Reinserted X command in DRAW.                                 *
+.comment *  Added Attributes and Colors node.                             *
+.comment ******************************************************************
+.comment *  5/4/90 stevesau                                               *
+.comment *  Combined SCREEN function and statement (from Dev I/O family). *
+.comment *  Created new Screen Modes topic.                               *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                              *
+.comment *  Added action lines.						  *
+.comment *  Made COLOR Attributes link local.                             *
+.comment *  Deleted references to X command in DRAW.                      *
+.comment *  Added DRAW macro language screens, made links local.          *
+.comment *  Added DRAW - Differences from BASICA.                         *
+.comment ******************************************************************
+.context CIRCLE
+.context @CIRCLE
+:nCIRCLE, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Ritar en cirkel eller ellips p† sk„rmen.
+
+\bCIRCLE [STEP] (x!,y!),radie![,[f„rg%] [,[start!] [,[slut!] [,aspekt!]]]]\p
+
+    ş \bSTEP\p       Anger att koordinaterna „r relativt den nuvarande
+                 grafikmark”rens position.
+    ş \b(x!,y!)\p    Koordinaterna f”r cirkelns eller ellipsens mitt.
+    ş \bradie!\p     Cirkelns eller ellipsens radie i det aktuella
+                 koordinatsystemets enhet, vilken best„ms av den senaste
+                 av satserna SCREEN, VIEW och WINDOW.
+    ş \bf„rg%\p      Ett f„rgattribut som best„mmer cirkelns f„rg. De
+                 f„rgattribut som „r tillg„ngliga beror p† din grafikadapter
+                 och det sk„rml„ge som st„llts in med den senaste
+                 SCREEN-satsen.
+    ş \bstart!\p     B†gens startvinkel, i radianer.
+    ş \bslut!\p      B†gens slutvinkel, i radianer.
+    ş \baspekt!\p    F”rh†llandet mellan l„ngden p† y-axeln och l„ngden p†
+                 x-axeln, vilket anv„nds f”r att rita ellipser.
+
+    ş Om du vill konvertera grader till radianer, multiplicerar du graderna
+      med (PI / 180).
+
+Exempel:
+    'Detta exempel kr„ver en adapter f”r f„rggrafik.
+    SCREEN 2
+    CIRCLE (320, 100), 200
+    CIRCLE STEP (0,0), 100
+
+Se „ven     \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aF„rgattribut och v„rden\v@color.table\v\i\p    \i\p\aSk„rml„gen\v@screen.modes\v\i\p
+.context COLOR
+.context @COLOR
+:nCOLOR, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+St„ller in sk„rmf„rgerna.
+
+\bCOLOR [f”rgrund%] [,[bakgrund%] [,ram%]]\p           Sk„rml„ge 0 (endast text)
+\bCOLOR [bakgrund%] [,palett%]\p                       Sk„rml„ge 1
+\bCOLOR [f”rgrund%]\p                                  Sk„rml„ge 4, 12, 13
+\bCOLOR [f”rgrund%] [,bakgrund&]\p                     Sk„rml„ge 7-10
+
+    ş \bf”rgrund%\p      Ett tal som st„ller in sk„rmens f”rgrundsf„rg.
+      \bf”rgrund&\p      I sk„rml„ge 0 „r f”rgrund% ett f„rgattribut som anger
+                     textens f„rg. I andra sk„rml„gen „r f”rgrund% ett
+                     f„rgattribut eller ett 4-bitars f„rgv„rde (endast
+                     sk„rml„ge 4) som anger text- och linjef„rg.
+    ş \bbakgrund%\p      Ett tal som st„ller in sk„rmens bakgrundsf„rg.
+      \bbakgrund&\p      I sk„rml„ge 0 „r bakgrund% ett f„rgattribut.
+                     I sk„rml„ge 7-10 „r bakgrund& ett f„rgattribut.
+    ş \bram%\p           Ett f„rgattribut som anger sk„rmramens f„rg.
+    ş \bpalett%\p        Ett tal (0 eller 1) som anger vilken av tv† m„ngder
+                     av f„rgattribut som ska anv„ndas:
+
+                     palett%     Attribut 1     Attribut 2     Attribut 3
+                     ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍ
+                     0           Gr”nt          R”tt            Brunt
+                     1           Cyan           Magenta         Ljusvitt
+
+    ş De f„rgattribut som „r tillg„ngliga beror p† din grafikadapter
+      och det sk„rml„ge som st„llts in med den senaste SCREEN-satsen.
+    ş Om ditt system „r utrustat med en EGA, VGA eller MCGA adapter, kan du
+      anv„nda satsen PALETTE f”r att byta aktuell grupp av f„rgattribut.
+
+Exempel:
+    'Detta exempel kr„ver en adapter f”r f„rggrafik
+    SCREEN 7
+    FOR i% = 0 TO 15
+        COLOR i%
+        PRINT i%
+    NEXT i%
+
+Se „ven     \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aPAINT\v@PAINT\v\i\p    \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aF„rgattribut och v„rden\v@color.table\v\i\p    \i\p\aSk„rml„gen\v@screen.modes\v\i\p
+.context @color.table
+:nF„rgattribut och v„rden
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+             \bF„rgsk„rm                          Monokrom sk„rm\p
+             ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ    ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bF„rg-        F„rgv„rde        Visad             F„rgv„rde     Visad\p
+\battribut     Standard\p(a)\b      f„rg              Standard      f„rg\p
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+\bSk„rml„ge 0, 7, 8, 9\p(b)\b, 12 och 13\p
+0            0                Svart             0(c)          Av
+1            1                Bl†                             Understruket(d)
+2            2                Gr”n              1(c)          P†(d)
+3            3                Cyan              1(c)          P†(d)
+4            4                R”d               1(c)          P†(d)
+5            5                Magenta           1(c)          P†(d)
+6            6                Brun              1(c)          P†(d)
+7            7                Vit               1(c)          P†(d)
+8            8                Gr†               0(c)          Av
+9            9                Ljusbl†                         H”g intensitet
+                                                              Understruket
+10           10               Ljusgr”n          2(c)          H”g intensitet
+11           11               Ljus cyan         2(c)          H”g intensitet
+12           12               Ljusr”d           2(c)          H”g intensitet
+13           13               Ljus magenta      2(c)          H”g intensitet
+14           14               Gul               2(c)          H”g intensitet
+15           15               H”g intensitet    0(c)          Av
+                              vit
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bSk„rml„ge 1 och 9\p(e)
+
+0            0                Svart             0             Av
+1            11               Ljus cyan         2             H”g intensitet
+2            13               Ljus magenta      2             H”g intensitet
+3            15               H”g intensitet    0             Gr†vit
+                              vit
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bSk„rml„ge 2 och 11\p
+0            0                Svart             0             Av
+1            15               H”g intensitet    0             Gr†vit
+                              vit
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  (a)  EGA f„rgnummer. VGA och MCGA anv„nder sk„rmf„rgsv„rden som producerar
+       visuellt ekvivalenta f„rger.
+  (b)  F”r VGA eller EGA med videominne > 64K.
+  (c)  Endast f”r l„ge 0.
+  (d)  Av n„r det anv„nds f”r bakgrunder.
+  (e)  EGA med videominne <= 64K.
+
+Se „ven     \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aSk„rml„gen\v@screen.modes\v\i\p
+.context DRAW
+.context @DRAW
+:nDRAW, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Ritar ett objekt.
+
+\bDRAW kommandostr„ng$\p
+
+    ş \bkommandostr„ng$\p   Ett str„nguttryck som inneh†ller ett eller flera av
+                        f”ljande DRAW-kommandon.
+
+      Kommandon f”r linjeritning och mark”rf”rflyttning:
+        D[n%]            Flyttar mark”ren ned†t n% enheter.
+        E[n%]            Flyttar mark”ren upp†t och till h”ger n% enheter.
+        F[n%]            Flyttar mark”ren ned†t och till h”ger n% enheter.
+        G[n%]            Flyttar mark”ren ned†t och till v„nster n% enheter.
+        H[n%]            Flyttar mark”ren upp†t och till v„nster n% enheter.
+        L[n%]            Flyttar mark”ren till v„nster n% enheter.
+        M[{+|-}]x%,y%    Flyttar mark”ren till punkt x%,y%. Flyttar relativt
+                         den nuvarande punkten, om x% f”reg†s av + eller -.
+        R[n%]            Flyttar mark”ren till h”ger n% enheter.
+        U[n%]            Flyttar mark”ren upp†t n% enheter.
+        [B]              Valfritt prefix som flyttar mark”ren utan att rita.
+        [N]              Valfritt prefix som ritar och flyttar tillbaka
+                         mark”ren till dess ursprungliga position.
+
+      Kommandon f”r f„rg, rotation, och skala:
+        An%              Roterar ett objekt n% * 90 grader (n% kan vara 0, 1,
+                         2 eller 3).
+        Cn%              Best„mmer ritf„rgen (n% „r ett f„rgattribut).
+        Pn1%,n2%         Best„mmer ett objekts ifyllnadsf„rger och ramf„rger
+                         (n1% „r f„rgattribut f”r ifyllnadsf„rgen, n2% „r
+                         f„rgattribut f”r ramf„rgen).
+        Sn%              Anger ritskalan genom att best„mma l„ngden p†
+                         en mark”rf”rflyttningsenhet. Standard f”r n% „r 4,
+                         vilket „r lika med 1 pixel.
+        TAn%             Sv„nger i en vinkel p† n% grader (-360 till 360).
+
+    ş Om du inte har med n% i kommandona f”r linjeritning och
+      mark”rf”rflyttning, flyttar mark”ren 1 enhet.
+    ş Om du vill exekvera en substr„ng f”r ett DRAW-kommando fr†n en
+      DRAW-kommandostr„ng, kan du anv„nda "X"-kommandot:
+
+      DRAW "X"+ VARPTR$(kommandostr„ng$)
+
+Exempel:
+    'Detta exempel kr„ver en adapter f”r f„rggrafik
+    SCREEN 1
+    Triangel$ = "F60 L120 E60"
+    DRAW "C2 X" + VARPTR$(Triangel$)
+    DRAW "BD30 P1,2 C3 M-30,-30"
+
+Se „ven     \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p
+            \i\p\aF„rgattribut och v„rden\v@color.table\v\i\p   \i\p\aSkillnader j„mf”rt med BASICA\v@basica.diffs\v\i\p
+.context .ggx
+.context @ggx
+.context .pgfx
+.context @pgfx
+:nGET, sats; PUT, sats (Grafik)
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+GET f†ngar en grafisk sk„rmbild. PUT visar en bild som f†ngats av GET.
+
+\bGET [STEP](x1!,y1!)-[STEP](x2!,y2!), matrisnamn[(index%)]\p
+\bPUT [STEP] (x1!,y1!), matrisnamn[(index%)] [,behandling]\p
+
+    ş \bSTEP\p          Anger att koordinaterna „r relativt den nuvarande
+                    grafikmark”rens position.
+    ş \b(x1!,y1!)\p     Koordinaterna l„ngst upp till v„nster f”r bilden som
+                    f†ngats med GET, eller f”r den plats p† sk„rmen d„r PUT
+                    visar bilden.
+    ş \b(x2!,y2!)\p     Koordinaterna l„ngst ned till h”ger f”r den f†ngade
+                    bilden.
+    ş \bmatrisnamn\p    Namnet p† den matris d„r bilden lagras.
+                    Se \i\p\aSk„rmbildsmatriser och kompatibilitet\v@ggx.arrays\v\i\p f”r att se
+                    vilken storlek p† matrisen som kr„vs.
+    ş \bindex%\p        Det matrisindex d„r lagringen av bilden b”rjar.
+    ş \bbehandling\p    Ett nyckelord som anger hur bilden visas:
+
+                    Nyckelord  Behandling
+                    ÍÍÍÍÍÍÍÍÍ  ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                    AND        Kombinerar den lagrade bilden med en
+                               existerande bild.
+                    OR         L„gger den lagrade bilden ovanp† en
+                               existerande bild.
+                    PSET       Ritar en lagrad bild, och suddar ut en
+                               existerande bild.
+                    PRESET     Ritar en lagrad bild i omv„nda f„rger, och
+                               suddar ut en existerande bild.
+                    XOR        Ritar en lagrad bild eller suddar ut en
+                               tidigare ritad bild medan bakgrunden bevaras.
+                               Detta †stadkommer animeringseffekter.
+
+    ş En PUT-sats b”r alltid exekveras i samma eller i ett kompatibelt
+      sk„rml„ge som den GET-sats som anv„nts f”r att f†nga bilden.
+      Se \i\p\aSk„rmbildsmatriser och kompatibilitet\v@ggx.arrays\v\i\p.
+
+Exempel:
+    'Detta exempel kr„ver en adapter f”r f„rggrafik
+    SCREEN 1
+    DIM Box%(1 TO 200)
+    x1% = 0: x2% = 10: y1% = 0: y2% = 10
+    LINE (x1%, y1%)-(x2%, y2%), 2, BF
+    GET (x1%, y1%)-(x2%, y2%), Box%
+    DO
+        PUT (x1%, y1%), Box%, XOR
+        x1% = RND * 300
+        y1% = RND * 180
+        PUT (x1%, y1%), Box%
+    LOOP WHILE INKEY$ = ""
+
+Se „ven     \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aSk„rml„gen\v@screen.modes\v\i\p
+.context @ggx.arrays
+:nSk„rmbildsmatriser och kompatibilitet
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Anv„nd v„rdena f”r bitar per pixel per sida och sida f”r att best„mma
+vilken storlek som kr„vs f”r matrisen d„r den grafiska sk„rmbilden lagras.
+V„rden f”r bitar per pixel per sida och sida, tillsammans med den
+horisontella uppl”sningen, best„mmer ocks† vilka sk„rml„gen som „r
+kompatibla:
+
+                                                                 Horisontell
+                                    Bitar per pixel-             uppl”sning
+    Sk„rml„ge                       per sida           Sida      (i pixel)
+    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ
+    1                               2                  1         320
+    2, 4, 11                        1                  1         640
+    3                               1                  1         720
+    7                               1                  4         320
+    8, 9(> 64K videominne), 12      1                  4         640
+    9(64K videominne), 10           1                  2         640
+    13                              8                  1         320
+
+F”ljande formel ger den ”nskade storleken i byte f”r en matris som anv„nds
+f”r att lagra en f†ngad bild:
+
+storlek% = 4 + INT(((PMAP (x2!, 0) - PMAP (x1!, 0) + 1) *
+        (bitar per pixel per sida%) + 7) / 8) * plan% *
+        (PMAP (y2!, 1) - PMAP (y1!, 1) + 1)
+
+GET- och PUT-operationer „r kompatibla i sk„rml„gen med samma horisontella
+uppl”sning och bitar per pixel per sida och sidv„rden. T ex s† „r sk„rml„ge
+2, 4, och 11, samt sk„rml„ge 8 och 12 kompatibla.
+
+Se „ven     \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aSk„rml„gen\v@screen.modes\v\i\p
+.context LINE
+.context @LINE
+:nLINE, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Ritar en linje eller rektangel p† sk„rmen.
+
+\bLINE [[STEP](x1!,y1!)]-[STEP](x2!,y2!) [,[f„rg%] [,[B | BF] [,stil%]]]\p
+
+    ş \bSTEP\p          Anger att koordinaterna „r relativt den nuvarande
+                    grafikmark”rens position.
+    ş \b(x1!,y1!)\p,    Sk„rmkoordinaterna f”r b”rjan p† linjen, och f”r
+      \b(x2!,y2!)\p     slutet p† linjen.
+    ş \bf„rg%\p         Ett f„rgattribut som best„mmer f„rgen p† linjen eller
+                    rektangeln. De tillg„ngliga f„rgattributen beror p† din
+                    grafikadapter och det sk„rml„ge som best„mts av den
+                    senaste SCREEN-satsen.
+    ş \bB\p             Ritar en rektangel ist„llet f”r en linje.
+    ş \bBF\p            Ritar en fylld ruta.
+    ş \bstil%\p         Ett 16-bitars v„rde, vars bitar best„mmer om en pixel
+                    ska ritas eller ej. Anv„nd stil% f”r att rita streckade
+                    linjer eller punktlinjer.
+
+Exempel:
+    'Detta exempel kr„ver en adapter f”r f„rggrafik
+    SCREEN 1
+    LINE (110, 70)-(190, 120), , B
+    LINE (0, 0)-(320, 200), 3, , &HFF00
+
+Se „ven     \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p    \i\p\aPRESET, PSET\v@PSET\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aF„rgattribut och v„rden\v@color.table\v\i\p    \i\p\aSk„rml„gen\v@screen.modes\v\i\p
+.context PAINT
+.context @PAINT
+:nPAINT, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Fyller ett grafikomr†de med en f„rg eller ett m”nster.
+
+\bPAINT [STEP] (x!,y!)[,[{f„rg% | ruta$}] [,[ramf„rg%] [,bakgrund$]]]\p
+
+    ş \bSTEP\p            Anger att koordinaterna „r relativt den nuvarande
+                      grafikmark”rens position.
+    ş \b(x!,y!)\p         Sk„rmkoordinaterna d„r m†lningen b”rjar.
+    ş \bf„rg%\p           Ett f„rgattribut som best„mmer ifyllnadsf„rgen.
+    ş \bruta$\p           Ett ifyllnadsm”nster som „r 8 bitar brett och upp till
+                      64 byte l†ngt, och som definieras p† f”ljande s„tt:
+
+                        ruta$ = CHR$(arg1) + CHR$(arg2) + ... + CHR$(argn%)
+
+                      Argumenten till CHR$ „r heltal mellan 0 och 255.
+                      Varje CHR$(argn%) definierar en del av m”nstret som „r
+                      1 byte - 8 pixel - stor, baserat p† bin„rformen av
+                      heltalet.
+    ş \bramf„rg%\p        Ett f„rgattribut som anger f„rgen p† det fyllda
+                      omr†dets ram. PAINT slutar att fylla ett omr†de n„r det
+                      kommer till en ram med den angivna f„rgen.
+    ş \bbakgrund$\p       En bakgrundsdel som „r  1 byte - 8 pixel - stor.
+                      Om du anger en bakgrundsdel kan du m†la ”ver ett omr†de
+                      som redan har m†lats.
+
+    ş De f„rgattribut som „r tillg„ngliga beror p† din grafikadapter
+      och det sk„rml„ge som st„llts in med den senaste SCREEN-satsen.
+
+Exempel:
+    'Detta exempel kr„ver en adapter f”r f„rggrafik
+    SCREEN 1
+    CIRCLE (106, 100), 75, 1
+    LINE (138, 35)-(288, 165), 1, B
+    PAINT (160, 100), 2, 1
+
+Se „ven     \i\p\aASC, CHR$\v@CHR$\v\i\p    \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aF„rgattribut och v„rden\v@color.table\v\i\p    \i\p\aSk„rml„gen\v@screen.modes\v\i\p
+.context PALETTE
+.context @PALETTE
+:nPALETTE, sats; PALETTE USING, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ndrar tilldelningarna f”r f„rgattributen i nuvarande sk„rml„ge. PALETTE och
+PALETTE USING fungerar bara p† system som utrustats med EGA, VGA eller MCGA.
+
+\bPALETTE [attribut%,f„rg&]\p
+\bPALETTE USING matrisnamn#[(index%)]\p
+
+    ş \battribut%\p     F„rgattributet som ska „ndras.
+    ş \bf„rg&\p         Ett f„rgv„rde som ska tilldelas ett attribut.
+    ş \bmatrisnamn#\p   En matris med f„rgv„rden som ska tilldelas det
+                    aktuella sk„rml„gets attributm„ngd. Matrisen m†ste vara
+                    tillr„ckligt stor f”r att tilldela f„rger till alla
+                    attributen.
+    ş \bindex%\p        Index f”r det f”rsta matriselementet som ska
+                    tilldelas ett attribut.
+
+    ş De f„rgattribut som „r tillg„ngliga beror p† din grafikadapter
+      och det sk„rml„ge som st„llts in med den senaste SCREEN-satsen.
+
+Exempel:
+    'Detta exempel kr„ver en adapter f”r f„rggrafik
+    PALETTE 0, 1
+    SCREEN 1
+    FOR i% = 0 TO 3: a%(i%) = i%: NEXT i%
+    LINE (138, 35)-(288, 165), 3, BF
+    LINE (20, 10)-(160, 100), 2, BF
+    DO
+        FOR i% = 0 TO 3
+            a%(i%) = (a%(i%) + 1) MOD 16
+        NEXT i%
+        PALETTE USING a%(0)
+    LOOP WHILE INKEY$ = ""
+
+Se „ven     \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aF„rgattribut och v„rden\v@color.table\v\i\p    \i\p\aSk„rml„gen\v@screen.modes\v\i\p
+.context PCOPY
+.context @PCOPY
+:nPCOPY, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Kopierar en videominnessida till en annan.
+
+\bPCOPY k„llsida%,m†lsida%\p
+
+    ş \bk„llsida%\p         Numret p† en videominnessida som ska kopieras.
+    ş \bm†lsida%\p          Numret p† den videominnessida som man vill kopiera
+                        till.
+
+    ş V„rdet som identifierar videosidan best„ms av storleken p† videominnet
+      och det aktuella sk„rml„get.
+
+Exempel:
+    PCOPY 1, 3
+
+Se „ven     \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aSk„rml„gen\v@screen.modes\v\i\p
+.context SCREEN
+.context @SCREEN
+:nSCREEN, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+St„ller in sk„rml„get och andra sk„rmegenskaper.
+
+\bSCREEN l„ge% [,[f„rgv„xel%] [,[aktivSida%] [,synligSida%]]]\p
+
+    ş \bl„ge%\p           St„ller in sk„rml„get. Se \i\p\aSk„rml„gen\v@screen.modes\v\i\p.
+    ş \bf„rgv„xel%\p      Ett v„rde (0 eller 1) som v„xlar mellan f„rgsk„rm och
+                      monokrom sk„rm (endast l„ge 0 och 1):
+
+                      L„ge    V„rde       Handling
+                      ÍÍÍÍ    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                      0       0           Desaktiverar f„rg
+                      0       Icke-noll   Aktiverar f„rg
+                      1       0           Aktiverar f„rg
+                      1       Icke-noll   Desaktiverar f„rg
+
+    ş \baktivSida%\p      Sk„rmsidan som textudata eller grafikutdata skriver p†.
+    ş \bsynligSida%\p     Sk„rmsidan som f”r n„rvarande visas p† din sk„rm.
+
+Exempel:
+    'Detta exempel kr„ver en adapter f”r f„rggrafik
+    SCREEN 1        '320 x 200-grafik
+    LINE (110, 70)-(190, 120), , B
+    LINE (0, 0)-(320, 200), 3, , &HFF00
+
+Se „ven     \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p      \i\p\aPAINT\v@PAINT\v\i\p
+            \i\p\aSCREEN, funktion\v@screenf\v\i\p     \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p    \i\p\aSk„rml„gen\v@screen.modes\v\i\p
+.context @screen.modes
+:nSk„rml„gen
+  \i\p\aInneh†ll\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+F”ljande tabell beskriver alla sk„rml„gen:
+
+ÄÄÄÄÄÄÄÄÄÄMDPA, CGA, Hercules, Olivetti, EGA, VGA eller MCGAÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SKRM 0: Endast textl„ge
+    ş 40 x 25, 40 x 43, 40 x 50, 80 x 25, 80 x 43 eller 80 x 50 textformat,
+      8 x 8 teckenruta (8 x 14, 9 x 14 eller 9 x 16 med EGA eller VGA)
+    ş 16 f„rger tilldelas ett av 16 attribut (med CGA eller EGA)
+    ş 64 f„rger tilldelas ett av 16 attribut (med EGA eller VGA)
+    ş Beroende p† textuppl”sning och adapter, 8 videominnessidor
+      (0-7), 4 sidor (0-3), 2 sidor (0-1), eller 1 sida (0)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄCGA, EGA, VGA eller MCGA ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SKRM 1: 320 x 200-grafik
+    ş 40 x 25 textformat, 8 x 8 teckenruta
+    ş 16 bakgrundsf„rger, och en av tv† m„ngder av 3 f”rgrundsf„rger,
+      tilldelas med hj„lp av satsen COLOR med CGA
+    ş 16 f„rger tilldelas 4 attribut med EGA eller VGA
+    ş 1 videominnessida (0)
+SKRM 2: 640 x 200-grafik
+    ş 80 x 25 textformat, 8 x 8 teckenruta
+    ş 16 f„rger tilldelas 2 attribut med EGA eller VGA
+    ş 1 videominnessida (0)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄHercules, Olivetti eller AT&T ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SKRM 3: Hercules-adapter kr„vs, endast monokrom sk„rm
+    ş 720 x 348-grafik
+    ş 80 x 25 textformat, 9 x 14 teckenruta
+    ş Vanligen 2 videominnessidor (0-1); 1 sida (0), om en andra
+      f„rgvisningsadapter har installerats
+    ş Satsen PALETTE st”ds inte
+    ş Starta Hercules drivrutin MSHERC.COM innan du anv„nder sk„rml„ge 3
+SKRM 4:
+    ş St”der Olivetti persondatorer modell M24, M240, M28, M280,
+      M380, M380/C och M380/T, samt AT&T persondatorer 6300-serier
+    ş 640 x 400-grafik
+    ş 80 x 25 textformat, 8 x 16 teckenruta
+    ş 1 av 16 f„rger tilldelade som f”rgrundsf„rg (f„rgerna v„ljs med satsen
+      COLOR); bakgrunden „r alltid svart
+    ş 1 videominnessida (0)
+    ş Satsen PALETTE st”ds inte
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄEGA eller VGA ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SKRM 7: 320 x 200-grafik
+    ş 40 x 25 textformat, 8 x 8 teckenruta
+    ş 16 f„rger tilldelas 16 attribut
+    ş Om 64K EGA adapterminne, 2 videominnessidor (0-1); annars
+      8 sidor (0-7)
+SKRM 8: 640 x 200-grafik
+    ş 80 x 25 textformat, 8 x 8 teckenruta
+    ş 16 f„rger tilldelas 16 attribut
+    ş Om 64K EGA adapterminne, 1 videominnessida (0); annars
+      4 sidor (0-3)
+SKRM 9: 640 x 350-grafik
+    ş 80 x 25 eller 80 x 43 textformat, 8 x 14 eller 8 x 8 teckenruta
+    ş 16 f„rger tilldelas 4 attribut (64K adapterminne), eller
+      64 f„rger tilldelas 16 attribut (mer „n 64K adapterminne)
+    ş Om 64K EGA adapterminne, 1 videominnessida (0); annars
+      2 sidor (0-1)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄEGA eller VGA, endast monokrom sk„rmÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SKRM 10: 640 x 350-grafik, endast monokrom sk„rm
+    ş 80 x 25 eller 80 x 43 textformat, 8 x 14 eller 8 x 8 teckenruta
+    ş Upp till 9 pseudof„rger tilldelas 4 attribut
+    ş 2 videominnessidor (0-1), 256K adapterminne kr„vs
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄVGA eller MCGA ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SKRM 11 (VGA eller MCGA)
+    ş 640 x 480-grafik
+    ş 80 x 30 eller 80 x 60 textformat, 8 x 16 eller 8 x 8 teckenruta
+    ş Upp till 256K f„rger tilldelas 2 attribut
+    ş 1 videominnessida (0)
+SKRM 12 (VGA)
+    ş 640 x 480-grafik
+    ş 80 x 30 eller 80 x 60 textformat, 8 x 16 eller 8 x 8 teckenruta
+    ş Upp till 256K f„rger tilldelas 16 attribut
+    ş 1 videominnessida (0)
+SKRM 13 (VGA eller MCGA)
+    ş 320 x 200-grafik
+    ş 40 x 25 textformat, 8 x 8 teckenruta
+    ş Upp till 256K f„rger tilldelas 256 attribut
+    ş 1 videominnessida (0)
+
+Se „ven     \i\p\aSCREEN, sats\v@SCREEN\v\i\p
+.context @screenf
+:nSCREEN, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar ett teckens ASCII-v„rde eller f„rgattribut vid en angiven
+sk„rmposition.
+
+\bSCREEN (rad%,kolumn% [,f„rgflagga%])\p
+
+    ş \brad%\p          Ett teckens radkoordinat.
+    ş \bkolumn%\p       Ett teckens kolumnkoordinat.
+    ş \bf„rgflagga%\p   Ett v„rde (0 eller 1) som anger vad som ska returneras.
+
+                    V„rde             Returerar
+                    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                    0 (eller inget)   Tecknets ASCII-kod.
+                    1                 Tecknets f„rgattribut.
+
+Exempel:
+    CLS
+    PRINT "Hej"
+    PRINT "ASCII-v„rdet f”r tecknet vid 1,1 „r"; SCREEN(1, 1)
+
+Se „ven     \i\p\aPOINT\v@POINT\v\i\p    \i\p\aSCREEN, sats\v@SCREEN\v\i\p
+            \i\p\aASCII-teckenkoder\v@ac\v\i\p    \i\p\aF„rgattribut och v„rden\v@color.table\v\i\p
+.context VIEW
+.context @VIEW
+:nVIEW, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definierar storleken f”r och placeringen av ett arbetsomr†de d„r grafik kan
+visas p† sk„rmen.
+
+\bVIEW [[SCREEN] (x1!,y1!)-(x2!,y2!) [,[f„rg%] [,ram%]]]\p
+
+    ş \bSCREEN\p                 Anger att koordinaterna „r relativt sk„rmen, och
+                             inte arbetsomr†det.
+    ş \b(x1!,y1!)-(x2!,y2!)\p    Koordinaterna f”r diagonallt motsatta h”rn i
+                             arbetsomr†det.
+    ş \bf„rg%\p                  Ett f„rgattribut som best„mmer arbetsomr†dets
+                             ifyllnadsf„rg.
+    ş \bram%\p                   Ett f„rgattribut som best„mmer arbetsomr†dets
+                             ramf„rg.
+
+    ş Om inget av argumenten „r med betraktas hela sk„rmen som ett
+      arbetsomr†de.
+    ş De f„rgattribut som „r tillg„ngliga beror p† din grafikadapter
+      och det sk„rml„ge som st„llts in med den senaste SCREEN-satsen.
+
+Exempel:
+    'Detta exempel kr„ver en adapter f”r f„rggrafik
+    SCREEN 1
+    VIEW (10, 10)-(300, 180), , 1
+    LOCATE 1, 11: PRINT "Ett stort arbetsomr†de med grafik";
+    VIEW SCREEN (80, 80)-(200, 125), , 1
+    LOCATE 11, 11: PRINT "Ett litet arbetsomr†de med grafik";
+
+Se „ven     \i\p\aCLS\v@CLS\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aF„rgattribut och v„rden\v@color.table\v\i\p    \i\p\aSk„rml„gen\v@screen.modes\v\i\p

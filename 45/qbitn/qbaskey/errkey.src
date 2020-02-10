@@ -1,0 +1,115 @@
+.context @ERL
+.context @ERR
+.context ERL
+.context ERR
+:nFunzioni ERR e ERL
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ERR restituisce il codice di errore di run-time relativo all'ultimo errore.
+ERL restituisce il numero della riga dove Š stato rilevato l'errore o il
+    numero della riga pi— prossima.
+
+\bERR\p
+\bERL\p
+
+    ş ERL non restituisce etichette di riga. Se le righe del programma non
+      sono numerate, ERL restituisce 0.
+
+\i\p\aEsempio\v@errhand.ex\v\i\p
+
+Si vedano inoltre  \i\p\aERDEV e ERDEV$\v@ERDEV\v\i\p    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+                   \i\p\aCodici errore di run-time\v@rtect\v\i\p
+.context ERROR
+.context @ERROR
+:nIstruzione ERROR
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Simula il verificarsi di un errore di programmazione Basic o un errore
+definito dall'utente.
+
+\bERROR espressione%\p
+
+    ş \bespressione%\p   Il codice di un errore Basic o di un errore definito
+                     dall'utente. Il valore Š compreso tra 1 e 255.
+                     Per definire un errore, usare un valore tra quelli non
+                     compresi nella tabella \i\p\aCodici errore di run-time\v@rtect\v\i\p.
+
+\i\p\aEsempio\v@errhand.ex\v\i\p
+
+Si vedano inoltre    \i\p\aERDEV e ERDEV$\v@ERDEV\v\i\p    \i\p\aERR e ERL\v@ERR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context .onerr
+.context @onerr
+:nIstruzione ON ERROR
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Attiva la modalit… di gestione degli errori e, se si verifica un errore di
+timeout, avvia l'esecuzione di una routine per la gestione degli errori o
+riprende l'esecuzione.
+
+\bON ERROR {GOTO riga | RESUME NEXT}\p
+
+    ş \bGOTO riga\p      Passa alla prima riga di una routine per la gestione
+                     degli errori identificata da un'etichetta o da un numero
+                     di riga. Per disattivare la modalit… di gestione degli
+                     errori, specificare l'istruzione GOTO 0.
+    ş \bRESUME NEXT\p    Riprende l'esecuzione a partire dall'istruzione succes-
+                     siva all'istruzione nella quale si Š verificato l'errore
+                     di timeout. Per ottenere il codice dell'errore, usare la
+                     funzione ERR.
+
+    ş Se non viene usata l'istruzione ON ERROR, ogni errore di timeout causer…
+      l'interruzione del programma.
+
+\i\p\aEsempio\v@errhand.ex\v\i\p
+
+Si vedano inoltre    \i\p\aERDEV e ERDEV$\v@ERDEV\v\i\p    \i\p\aERR e ERL\v@ERR\v\i\p    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aGOTO\v@GOTO\v\i\p
+                     \i\p\aRESUME\v@RESUME\v\i\p
+.context @RESUME
+.context RESUME
+:nIstruzione RESUME
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Riprende l'esecuzione di un programma dopo avere eseguito una routine di
+gestione degli errori.
+
+\bRESUME [{riga | NEXT}]\p
+
+    ş \briga\p    L'etichetta o il numero della riga dalla quale far riprendere
+              l'esecuzione. Se il numero della riga Š 0 o se viene omesso,
+              l'esecuzione riprender… a partire dall'istruzione che ha causato
+              l'errore.
+    ş \bNEXT\p    Riprende l'esecuzione a partire dall'istruzione successiva a
+              quella che ha causato l'errore.
+
+\i\p\aEsempio\v@errhand.ex\v\i\p
+
+Si vedano inoltre    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p
+.context errhand.ex
+.context @errhand.ex
+:nEsempio di gestione degli errori.
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+'Illustra ERDEV, ERDEV$, ERL, ERR, ERROR, ON ERROR e RESUME.
+   ON ERROR GOTO Identificatore
+10 CHDIR "a:\\"                'Causa ERR 71 "Disco non pronto"
+                              'se non c'‚ un disco nell'unit… A.
+20 y% = 0
+30 x% = 5 / y%                'ERR 11 "Divisione per zero."
+40 PRINT "x% ="; x%
+50 ERROR 57                   'ERR 57 "Errore di I/O su periferica."
+
+Identificatore:
+  PRINT
+  PRINT "Errore "; ERR; " alla riga "; ERL
+  SELECT CASE ERR
+    CASE 71
+      PRINT "Periferica "; ERDEV$; " codice errore di periferica = "; ERDEV
+      RESUME NEXT
+    CASE 11
+      INPUT "Specificare il divisore"; y%
+      RESUME                  'Provare con un altro valore di y%.
+    CASE ELSE
+      PRINT "Errore non previsto, termine del programma."
+      END
+  END SELECT
+

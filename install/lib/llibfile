@@ -1,0 +1,13 @@
+Lcommon.lib
+y
++copy\large\filecopy.lib&
++prompts\large\prompts.lib&
++window\large\window.lib&
++strlib\large\strlib.lib&
++file\large\file_io.lib&
++disk\large\disk_io.lib&
++bios\large\bios_io.lib&
++hdisk\large\hdisk.lib&
++hardware\large\hardware.lib&
++pluscard\pluscard.lib;
+

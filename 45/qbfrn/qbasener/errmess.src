@@ -1,0 +1,1226 @@
+.comment ****************************************************************
+.comment Error Message Help - QBasic
+.comment  This file contains all the error message help. Help on menu   *
+.comment  dialogs and related messages can be found in environ.src.     *
+.comment ****************************************************************
+.comment 8/1/90 bethpr
+.comment Changed references to DOS Editor to MS-DOS Editor
+.comment ****************************************************************
+.comment 7/29/90 bethpr
+.comment Changed text, as appropriate, for BASIC language and products. *
+.comment ****************************************************************
+.comment 6/29/90 stevesau
+.comment Incorporated final review comments
+.comment ****************************************************************
+.comment 6/20/90 stevesau
+.comment Incorporated final review edits.
+.comment ****************************************************************
+.comment 5/4/90 -- Bethpr
+.comment Changed $Metacommand Error context string back to MSG_BadMeta  *
+.comment ****************************************************************
+.comment 4/17/90 QBasic Edits -- Bethpr
+.comment Removed Add watchpoint, Binary file contained an unknown
+.comment statement, Binary file contained an unknown statement or
+.comment data type, Common in Quick library too small, Duplicate
+.comment module base names loaded.  Can't compile., Edit Include file,
+.comment Feature removed, File previously loaded, Include file too large,
+.comment All 8 ISAM error messages, Key already in use, Key file bad or
+.comment missing.  Using default., Make .Lib, Missing menu text or path,
+.comment Modified Include file, Module exists, Module not found.  Unload
+.comment module from program?, Must be between 2 and 10, Procedure
+.comment already defined in Quick library, Program contains unsupported
+.comment statements, Save Include file, Statement cannot occur within
+.comment include file, Symbol help not found, Too many applications,
+.comment Turn off include lines toggle command, Type not valid for ISAM.
+.comment ****************************************************************
+.context -9999
+:nTraduction interrompue
+QBasic a arrˆt‚ une traduction ‚l‚ment par ‚l‚ment de la
+ligne de programme … l'‚l‚ment en surbrillance. L'erreur se
+situe g‚n‚ralement … gauche de l'‚l‚ment. Vous pouvez :
+  þ Substituer un des ‚l‚ments sugg‚r‚s dans la boŒte de
+    dialogue.
+  þ Corriger les mots-cl‚s mal orthographi‚s.
+  þ Placer le curseur sur un mot-cl‚ de l'instruction et
+    appuyer sur F1 pour afficher la syntaxe correcte.
+.context QB_ER_NF
+.context ER_NF
+:nNEXT sans FOR
+Chaque instruction NEXT doit correspondre … une instruction
+FOR.
+
+Code d'erreur : 1
+.context QB_ER_SN
+.context ER_SN
+:nErreur de syntaxe
+Cette erreur est g‚n‚ralement due … une faute d'orthographe
+dans un mot-cl‚ BASIC ou dans un argument. V‚rifiez que la
+ligne de programme est correcte.
+
+Code d'erreur : 2
+.context QB_ER_RG
+.context ER_RG
+:nRETURN sans GOSUB
+Le programme vient d'ex‚cuter une instruction RETURN sans
+avoir pr‚alablement ex‚cut‚ une instruction GOSUB
+correspondante.
+
+Code d'erreur : 3
+.context QB_ER_OD
+.context ER_OD
+:nDonn‚es ‚puis‚es
+Une instruction READ a ‚t‚ ex‚cut‚e, mais le programme ne
+contient plus d'instruction DATA avec des donn‚es non encore
+lues.
+
+Code d'erreur : 4
+.context QB_ER_FC
+.context ER_FC
+:nAppel de fonction non permis
+Vous essayez de donner … une instruction BASIC un argument
+incorrect ou en dehors de l'intervalle autoris‚. Par exemple :
+  þ Un nombre n‚gatif est ‚lev‚ … une puissance non entiŠre.
+  þ Un nombre d'enregistrements n‚gatif est sp‚cifi‚ avec
+    GET ou PUT.
+  þ Une fonction ou une instruction d'E/S (LOC ou LOF, par
+    exemple) est ex‚cut‚e sur un p‚riph‚rique qui ne la
+    reconnaŒt pas.
+  þ Des chaŒnes concat‚nat‚es cr‚ent une chaŒne de plus de
+    32 767 caractŠres de long.
+  þ Une op‚ration BLOAD ou BSAVE est dirig‚e vers un
+    p‚riph‚rique qui n'est pas une unit‚ de disque.
+
+Code d'erreur : 5
+.context QB_ER_OV
+.context ER_OV
+:nD‚passement de capacit‚
+Le r‚sultat d'un calcul ou d'une conversion de type de
+donn‚es est trop grand pour le type sp‚cifi‚.
+
+Code d'erreur : 6
+.context QB_ER_OM
+.context ER_OM
+:nM‚moire insuffisante
+L'op‚ration n‚cessite plus de m‚moire qu'il n'y en a de
+disponible. Pour corriger cette situation :
+  þ Quittez QBasic et r‚duisez le nombre de m‚moires
+    tampon DOS, le nombre de programmes r‚sidents ou le
+    nombre de gestionnaires de p‚riph‚rique charg‚s.
+    Puis r‚amorcez l'ordinateur.
+  þ R‚duisez la taille du programme.
+  þ R‚duisez le nombre ou la taille des tableaux.
+  þ R‚duisez la taille de la pile avec l'instruction CLEAR.
+  þ R‚duisez le nombre de variables.
+
+Code d'erreur : 7
+.context QB_ER_UL
+.context ER_UL
+:nEtiquette non d‚finie
+Une instruction (telle qu'une instruction GOTO) fait
+r‚f‚rence … une ‚tiquette de ligne qui n'existe pas
+dans le programme.
+
+Code d'erreur :  8
+.context QB_ER_SOR
+.context ER_SOR
+:nIndice en dehors des limites
+Soit un indice fait r‚f‚rence … un ‚l‚ment qui se trouve en
+dehors des dimensions du tableau, soit une op‚ration accŠde
+… un ‚l‚ment d'un tableau dynamique non dimensionn‚.
+V‚rifiez que le tableau est dimensionn‚ et v‚rifiez les
+limites du tableau.
+
+Vous pouvez ‚galement obtenir cette erreur si la taille du
+tableau d‚passe 64 Ko.
+R‚duisez la taille du tableau.
+
+Code d'erreur : 9
+.context ER_DD
+:nCette d‚finition existe d‚j…
+Cette erreur se pr‚sente si vous essayez de modifier les
+dimensions d'un tableau statique pendant l'ex‚cution du
+programme. Pour corriger cette situation, d‚clarez le
+tableau comme un tableau dynamique avec l'instruction REDIM.
+
+Cette erreur se pr‚sente ‚galement si vous essayez de
+modifier les dimensions d'un tableau dynamique … l'aide de
+l'instruction DIM sans en annuler l'allocation en m‚moire.
+Pour corriger cette situation, ajoutez une instruction ERASE
+avant le redimensionnement du tableau.
+
+Code d'erreur : 10
+.context QB_ER_DD
+:nCette d‚finition existe d‚j…
+Vous essayez de cr‚er un nouvel ‚l‚ment dans le programme et
+vous lui avez donn‚ un nom qui est d‚j… utilis‚.
+
+Par exemple :
+  þ Une instruction CONST utilise le nom d'une variable
+    existante.
+  þ Une nouvelle variable ou proc‚dure utilise le mˆme nom
+    qu'une proc‚dure existante.
+
+Cette erreur se pr‚sente ‚galement lorsque vous commencez un
+nom de variable avec les lettres "FN", car FN est r‚serv‚
+pour DEF FN.
+.context QB_ER_DV0
+.context ER_DV0
+:nDivision par z‚ro
+Cette erreur peut ˆtre provoqu‚e par une division par z‚ro
+dans une expression.
+
+Code d'erreur : 11
+.context QB_ER_ID
+.context ER_ID
+:nInstruction non permise en mode direct
+L'instruction en surbrillance n'est valide que dans un
+programme et ne peut pas ˆtre utilis‚e dans la fenˆtre
+imm‚diate. Les instructions et directives suivantes ne
+peuvent pas ˆtre utilis‚es dans la fenˆtre imm‚diate :
+  þ COMMON, CONST, DATA, DECLARE, DIM, OPTION, SHARED,
+    STATIC et TYPE
+  þ Directives $DYNAMIC, $STATIC
+  þ DEF FN...END DEF, ELSE IF, END IF, END TYPE
+    FUNCTION...END FUNCTION, REDIM et SUB...END SUB
+
+Code d'erreur : 12
+.context QB_ER_TM
+.context ER_TM
+:nTypes incompatibles
+La variable ne possŠde pas le type n‚cessaire. Vous essayez,
+par exemple, d'utiliser l'instruction SWAP avec une variable
+de chaŒne et une variable num‚rique ou avec deux variables
+num‚riques de types diff‚rents.
+
+Code d'erreur : 13
+.context QB_ER_OS
+.context ER_OS
+:nEspace pour chaŒnes satur‚
+L'espace n‚cessaire pour les variables de chaŒne est
+sup‚rieur … l'espace disponible. Pour obtenir plus d'espace
+pour les variables de chaŒne :
+  þ R‚duisez le nombre de variables.
+  þ R‚duisez le nombre ou la taille des tableaux de chaŒne.
+  þ R‚duisez la taille de la pile. Utilisez l'instruction
+    CLEAR pour redimensionner la pile.
+
+Code d'erreur : 14
+.comment -------------
+.comment   15 unused
+.comment -------------
+.context QB_ER_BS
+.context ER_BS
+:nFormule de chaŒne trop complexe
+Soit une formule de chaŒne est trop longue, soit vous avez
+sp‚cifi‚ plus de 15 variables de chaŒne dans une instruction
+INPUT. D‚coupez la formule ou l'instruction INPUT en
+sections plus petites.
+
+Code d'erreur : 16
+.context QB_ER_CN
+:nImpossible de continuer
+"Impossible de continuer" est un message qui peut se pr‚senter
+pendant les mises au point. Lors d'une interruption du
+programme (… un point d'arrˆt, par exemple), vous avez
+effectu‚ une modification qui a des r‚percutions dans tout
+le programme. Il est possible que vous ayez modifi‚ les
+dimensions d'un tableau, les arguments d'une proc‚dure ou
+une autre instruction de d‚claration. Utilisez la boŒte de
+dialogue et :
+   þ Choisissez <OK> pour conserver la modification et
+     relancer le programme.
+   þ Choisissez <Annuler> pour annuler la modification dans
+     le texte du programme. (Vous pouvez choisir cette
+     option si la relance interfŠre avec la strat‚gie de
+     mise au point.)
+.context ER_UF
+.context ER_CN
+.context ER_US
+.context QB_ER_UE
+.context ER_UE
+.context QB_ER_CaseElse
+.context ER_CaseElse
+:nErreur g‚n‚r‚e par l'utilisateur
+Vous avez utilis‚ une instruction ERROR pour g‚n‚rer cette
+erreur.
+
+Codes d'erreur : 17, 18, 35, 39
+.context QB_ER_UF
+:nFonction non d‚finie
+La fonction d‚finie par DEF FN n'existe pas, ce qui peut
+indiquer l'une des conditions suivantes :
+   þ La fonction DEF FN n'est pas d‚finie.
+   þ La fonction DEF FN essaie de s'appeler de maniŠre
+     r‚cursive.
+.context QB_ER_NR
+.context ER_NR
+:nRESUME absent
+La fin du programme a ‚t‚ rencontr‚e pendant l'ex‚cution
+d'une routine de traitement d'erreur. Ajoutez une
+instruction RESUME dans la routine de traitement d'erreur.
+
+Code d'erreur : 19
+.context QB_ER_RE
+.context ER_RE
+:nRESUME sans erreur
+Un instruction RESUME a ‚t‚ ex‚cut‚e, mais il n'y a pas de
+routine de traitement d'erreur active.
+
+Code d'erreur : 20
+.comment -------------
+.comment  21-23 unused
+.comment -------------
+.context ER_DTO
+:nD‚lai d'attente du p‚riph‚rique ‚coul‚
+Le programme n'a pas re‡u d'informations de la part d'un
+p‚riph‚rique, tel que l'imprimante, dans le d‚lai imparti.
+
+Code d'erreur : 24
+.context QB_ER_DTO
+:nD‚lai d'attente du p‚riph‚rique ‚coul‚
+QBasic n'a pas re‡u d'informations … partir d'un
+p‚riph‚rique, tel que l'imprimante, dans le d‚lai imparti :
+   þ Si vous essayez d'imprimer, v‚rifiez que l'imprimante
+     est connect‚e au port LPT1.
+.context ER_DF
+:nErreur p‚riph‚rique
+Un p‚riph‚rique a retourn‚ une erreur de mat‚riel, qui peut
+indiquer l'une des conditions suivantes :
+   þ Si vous essayez d'imprimer un fichier, l'imprimante
+     n'est pas connect‚e au port LPT1.
+   þ Si vous transmettez des donn‚es … un fichier de
+     communication, les signaux test‚s avec l'instruction
+     OPEN COM n'ont pas ‚t‚ re‡us dans le d‚lai imparti.
+
+Code d'erreur : 25
+.context QB_ER_DF
+:nErreur p‚riph‚rique
+QBasic a d‚tect‚ une erreur pour l'imprimante. V‚rifiez que:
+   þ Le t‚moin en ligne de l'imprimante est allum‚.
+   þ L'imprimante est sous tension.
+   þ Le cƒble de l'imprimante est correctement connect‚ …
+     l'imprimante et … l'ordinateur.
+.context ER_FN
+.context QB_ER_FN
+:nFOR sans NEXT
+Chaque instruction FOR doit ˆtre accompagn‚e d'une
+instruction NEXT.
+
+Code d'erreur : 26
+.context QB_ER_OP
+.context ER_OP
+:nAttente papier
+L'imprimante ne contient pas de papier ou n'est pas sous
+tension.
+
+Code d'erreur : 27
+.comment -------------
+.comment   28 unused
+.comment -------------
+.context QB_ER_WH
+.context ER_WH
+:nWHILE sans WEND
+Chaque instruction WHILE doit ˆtre accompagn‚e d'une
+instruction WEND.
+
+Code d'erreur : 29
+.context QB_ER_WE
+.context ER_WE
+:nWEND sans WHILE
+Chaque instruction WEND doit correspondre … une instruction
+WHILE.
+
+V‚rifiez en outre que les autres structures de contr“le dans
+la structure WHILE...WEND sont correctement construites. Une
+instruction IF sans ENDIF correspondant … l'int‚rieur d'une
+structure WHILE...WEND donne ‚galement cette erreur.
+
+Code d'erreur : 30
+.comment -------------
+.comment  31-32 unused
+.comment -------------
+.context QB_ER_DL
+.context ER_DL
+:nCette ‚tiquette est d‚j… d‚finie
+Deux lignes de programme possŠdent le mˆme num‚ro ou la mˆme
+‚tiquette. Les num‚ros et ‚tiquettes des lignes de programme
+doivent ˆtre uniques.
+
+Modifiez le num‚ro ou l'‚tiquette de la ligne en
+surbrillance, ou utilisez la commande Chercher dans le menu
+Recherche pour trouver l'autre num‚ro ou ‚tiquette, puis
+changez cette r‚f‚rence de maniŠre qu'elle soit unique.
+
+Code d'erreur : 33
+.comment -------------
+.comment   34 unused
+.comment -------------
+.context QB_ER_US
+:nSous-programme non d‚fini
+Vous essayez d'appeler une proc‚dure SUB que QBasic ne
+trouve pas.
+
+Appuyez sur F2 pour afficher les proc‚dures SUB et FUNCTION
+disponibles.
+.context QB_ER_AC
+.context ER_AC
+:nLe nombre d'arguments ne concorde pas
+L'appel de proc‚dure SUB ou FUNCTION utilise un nombre
+incorrect d'arguments.
+
+Comparez l'instruction DECLARE de la proc‚dure SUB ou
+FUNCTION avec l'instruction CALL pour v‚rifier que les
+listes d'arguments contiennent le mˆme nombre d'‚l‚ments.
+
+Code d'erreur : 37
+.context QB_ER_UA
+.context ER_UA
+:nTableau non d‚fini
+Le programme essaie d'utiliser un tableau qui n'est pas
+d‚fini.
+
+V‚rifiez que le nom du tableau est correct et d‚finissez le
+tableau avec une instruction DIM ou REDIM.
+
+Code d'erreur : 38
+.comment ----------
+.comment 39 unused
+.comment ----------
+.context QB_ER_VarReq
+.context ER_VarReq
+:nVariable requise
+QBasic a peut-ˆtre rencontr‚ une instruction INPUT, LET,
+READ ou SHARED sans argument de variable. QBasic peut
+‚galement avoir rencontr‚ une instruction GET ou PUT qui ne
+sp‚cifie pas de variable lorsqu'une op‚ration a ‚t‚
+effectu‚e sur un fichier ouvert en mode binaire.
+
+Code d'erreur : 40
+.comment -------------
+.comment  41-49 unused
+.comment -------------
+.context QB_ER_FOV
+.context ER_FOV
+:nD‚bordement de champ avec FIELD
+Une instruction FIELD a essay‚ d'allouer plus d'octets qu'il
+n'est sp‚cifi‚ pour la longueur d'enregistrement
+d'un fichier … accŠs direct (random access). V‚rifiez
+l'instruction OPEN pour d‚terminer la longueur
+d'enregistrement du fichier.
+
+Code d'erreur : 50
+.context QB_ER_IER
+.context ER_IER
+:nErreur interne
+Une erreur interne s'est pr‚sent‚e dans QBasic. Veuillez
+l'indiquer … Microsoft.
+
+Code d'erreur : 51
+.context QB_ER_BFN
+.context ER_BFN
+:nNom ou num‚ro de fichier incorrect
+Cette erreur peut se pr‚senter lorsqu'une instruction ou une
+commande fait r‚f‚rence … un fichier avec un num‚ro ou nom
+de fichier qui n'est pas sp‚cifi‚ dans l'instruction OPEN ou
+qui n'est pas dans l'intervalle des num‚ros de fichier
+(l'intervalle valide est de 1 … 255) sp‚cifi‚ pr‚alablement
+dans le programme.
+
+Code d'erreur : 52
+.context ER_FNF
+:nFichier non trouv‚
+Une instruction OPEN ou RUN, ou une autre instruction BASIC,
+fait r‚f‚rence … un fichier qui n'existe pas.
+
+Code d'erreur : 53
+.context QB_ER_FNF
+:nFichier non trouv‚
+Dans la boŒte de dialogue de la commande Ouvrir, vous avez
+sp‚cifi‚ un fichier qui n'existe pas. V‚rifiez que vous avez
+correctement sp‚cifi‚ le nom du fichier et que vous avez choisi
+l'unit‚ et le r‚pertoire corrects.
+
+Code d'erreur : 53
+.context QB_ER_BFM
+.context ER_BFM
+:nMode d'accŠs au fichier incorrect
+L'erreur a pu se produire pour l'une des raisons suivantes :
+   þ Une instruction PUT ou GET a sp‚cifi‚ un fichier
+     s‚quentiel.
+   þ Une instruction FIELD a sp‚cifi‚ un fichier qui n'est
+     pas ouvert pour les accŠs directs (random access).
+   þ Une instruction PRINT # a sp‚cifi‚ un fichier
+     s‚quentiel ouvert pour les entr‚es.
+   þ Une instruction INPUT # a sp‚cifi‚ un fichier ouvert
+     pour les sorties ou des ajouts.
+   þ Vous avez essay‚ d'ouvrir un fichier QBasic en
+     format binaire.
+
+Code d'erreur : 54
+.context QB_ER_FAO
+.context ER_FAO
+:nFichier d‚j… ouvert
+Cette erreur peut ˆtre provoqu‚e par l'une des conditions
+suivantes :
+   þ Une instruction OPEN de mode de sortie s‚quentiel
+     a ‚t‚ ex‚cut‚e pour un fichier qui est d‚j… ouvert.
+   þ Une instruction KILL fait r‚f‚rence a un fichier
+     ouvert.
+
+Code d'erreur : 55
+.context QB_ER_FSA
+.context ER_FSA
+:nInstruction FIELD active
+Une instruction GET ou PUT a sp‚cifi‚ une variable
+d'enregistrement dans un fichier pour lequel des
+instructions FIELD ont ‚t‚ ex‚cut‚es
+
+L'instruction GET ou PUT avec un argument de variable
+d'enregistrement ne peut ˆtre utilis‚e sur un fichier que si
+aucune instruction FIELD n'a ‚t‚ ex‚cut‚e pour le fichier.
+
+Code d'erreur : 56
+.context ER_IOE
+:nErreur E/S sur p‚riph‚rique
+Une erreur d'entr‚e ou de sortie s'est produite pendant
+l'utilisation d'un p‚riph‚rique, telle que l'imprimante ou
+une unit‚ de disque, par le programme.
+
+Code d'erreur : 57
+.context QB_ER_IOE
+:nErreur E/S sur p‚riph‚rique
+Vous avez utilis‚ la commande Imprimer du menu Fichier et
+l'imprimante n'a pas fonctionn‚ correctement. V‚rifiez
+l'imprimante.
+.context QB_ER_FAE
+.context ER_FAE
+:nCe fichier existe d‚j…
+Le nom de fichier sp‚cifi‚ dans une instruction NAME est
+identique … celui d'un fichier existant. Sp‚cifiez un autre
+nom de fichier dans l'instruction NAME, changez de
+r‚pertoire, renommez le fichier existant ou supprimez-le.
+
+Code d'erreur : 58
+.context QB_ER_BRL
+.context ER_BRL
+:nLongueur d'enregistrement incorrecte
+La longueur d'une variable d'enregistrement dans une
+instruction GET ou PUT ne correspond pas … la longueur
+d'enregistrement sp‚cifi‚e dans l'instruction OPEN
+correspondante.
+
+Code d'erreur : 59
+.comment -------------
+.comment   60 unused
+.comment -------------
+.context ER_DFL
+:nDisque satur‚
+Il n'y a pas suffisamment de place sur le disque pour
+terminer une op‚ration PRINT #, PRINT USING #, WRITE #,
+CLOSE ou PUT.
+
+Code d'erreur : 61
+.context QB_ER_DFL
+:nDisque satur‚
+Il n'y a pas suffisamment de place sur le disque sp‚cifi‚
+pour enregistrer le fichier. Enregistrez-le sur un autre
+disque.
+
+.context QB_ER_RPE
+.context ER_RPE
+:nLecture hors des limites du fichier
+Une instruction INPUT # essaie de lire des donn‚es dans un
+fichier vide ou dans un fichier dont toutes les donn‚es ont
+d‚j… ‚t‚ lues.
+
+Pour ‚viter d'obtenir cette erreur, utilisez la fonction EOF
+pour d‚tecter la fin du fichier.
+
+Code d'erreur : 62
+.context QB_ER_BRN
+.context ER_BRN
+:nNum‚ro d'enregistrement incorrect
+Le num‚ro d'enregistrement dans une instruction PUT ou GET
+est inf‚rieur ou ‚gal … z‚ro.
+
+Code d'erreur : 63
+.context ER_IFN
+:nNom de fichier incorrect
+Un nom de fichier ne suit pas les conventions de nom
+appropri‚es pour BLOAD, BSAVE, KILL ou OPEN
+(ex. : le nom contient trop de caractŠres).
+
+Code d'erreur : 64
+.context QB_ER_IFN
+:nNom de fichier incorrect
+Le nom de fichier sp‚cifi‚ contient trop de caractŠres ou
+contient des caractŠres qui ne sont pas autoris‚s dans les
+noms de fichier.
+.comment -------------
+.comment  65-66 unused
+.comment -------------
+.context ER_TMF
+:nTrop de fichiers
+Vous avez d‚pass‚ le nombre d'op‚rations de fichier que DOS
+autorise dans le r‚pertoire racine. Si le programme ouvre,
+ferme ou enregistre des fichiers dans le r‚pertoire racine,
+modifiez-le de maniŠre qu'il utilise un sous-r‚pertoire.
+
+Code d'erreur : 67
+.context QB_ER_TMF
+:nTrop de fichiers
+Votre programme a ouvert un nombre de fichiers sur disque
+sup‚rieur … ce que QBasic peut manipuler. Vous devez fermer
+un ou plusieurs fichiers ouverts avant d'utiliser les
+commandes de QBasic.
+
+La m‚thode la plus simple pour cela est d'utiliser
+l'instruction CLOSE de BASIC :
+   1. Placez le curseur dans la fenˆtre imm‚diate.
+   2. Tapez CLOSE sur la premiŠre ligne de texte disponible.
+   3. Appuyez sur ENTREE pour ex‚cuter l'instruction.
+
+Vous pouvez ensuite ex‚cuter les commandes QBasic. Si le
+programme ‚tait en cours d'ex‚cution, vous devrez le
+relancer.
+.context ER_DNA
+:nP‚riph‚rique non disponible
+Le p‚riph‚rique auquel vous essayez d'acc‚der n'est pas en
+ligne ou n'existe pas.
+
+Code d'erreur : 68
+.context QB_ER_DNA
+:nP‚riph‚rique non disponible
+Vous essayez d'ouvrir un fichier sur un p‚riph‚rique qui
+n'existe pas dans votre systŠme. V‚rifiez la liste des noms
+de p‚riph‚rique disponibles dans la zone de liste R‚p/Unit‚s
+dans la boŒte de dialogue Ouvrir et utilisez un de ces noms.
+.context QB_ER_CBO
+.context ER_CBO
+:nD‚passement de capacit‚ du tampon
+Un d‚passement de capacit‚ de la m‚moire tampon de
+communication s'est produit pendant des communications
+avec un p‚riph‚rique … distance.
+
+La taille de la m‚moire tampon de communication est d‚finie par
+l'option RB de l'instruction OPEN COM. Pour ‚viter d'obtenir
+cette erreur, vous pouvez :
+  þ Tester plus fr‚quemment la m‚moire tampon avec la
+    fonction LOC.
+  þ Vider la m‚moire tampon plus souvent avec la fonction
+    INPUT$.
+
+Code d'erreur : 69
+.context ER_PRM
+:nAccŠs refus‚
+Vous avez essay‚ d'‚crire sur un disque prot‚g‚ contre
+l'‚criture ou d'acc‚der … un fichier verrouill‚.
+
+Code d'erreur : 70
+.context QB_ER_PRM
+:nAccŠs refus‚
+Vous avez essay‚ d'‚crire dans un fichier lecture seule ou
+sur une disquette dot‚e d'une languette de protection contre
+l'‚criture.
+
+Pour ‚viter ce conflit, dans le premier cas utilisez un
+autre nom de fichier, dans le second retirez la languette de
+protection ou utilisez une autre disquette.
+.context ER_DNR
+.context QB_ER_DNR
+:nDisque non prˆt
+Soit la porte du lecteur de disquette est ouverte, soit il
+n'y a pas de disquette dans le lecteur sp‚cifi‚. Ins‚rez une
+disquette dans le lecteur, fermez la porte et recommencez.
+
+Code d'erreur : 71
+.context ER_DME
+:nDisque d‚fectueux
+L'unit‚ de disque a d‚tect‚ un d‚faut physique sur le
+disque.
+
+Code d'erreur : 72
+.context QB_ER_DME
+:nDisque d‚fectueux
+QBasic ne reconnaŒt pas le format du disque qu'il essaie
+d'utiliser. Utilisez un autre disque ou quittez QBasic et
+reformatez le disque en cours.
+.context QB_ER_ADF
+.context ER_ADF
+:nCaract‚ristique non disponible
+Il est possible que vous essayiez d'utiliser une
+caract‚ristique d'une autre version de BASIC qui
+n'est pas disponible dans Microsoft QBasic.
+
+Code d'erreur : 73
+.context QB_ER_RAD
+.context ER_RAD
+:nRENAME sur unit‚ diff‚rente
+Vous avez essay‚ de renommer un fichier en sp‚cifiant une
+nouvelle lettre d'unit‚. Vous ne pouvez pas renommer un
+fichier avec une nouvelle lettre d'unit‚ dans QBasic.
+
+Code d'erreur : 74
+.context ER_PAE
+.context QB_ER_PAE
+:nErreur de chemin d'accŠs / d'accŠs au fichier
+Pendant une op‚ration OPEN, MKDIR, CHDIR ou RMDIR, le
+systŠme d'exploitation n'a pas pu ‚tablir la connexion
+correcte entre le chemin et le nom de fichier.
+
+Dans l'environnement QBasic, v‚rifiez que la sp‚cification
+de fichier entr‚e dans la zone de texte est correctement
+format‚e. Tous les noms de fichier peuvent contenir une
+lettre d'unit‚ et un chemin complet ou partiel.
+
+Cette erreur peut ‚galement se pr‚senter si vous essayez
+d'enregistrer un fichier qui remplacerait un fichier lecture
+seule existant.
+
+Code d'erreur : 75
+.context ER_PNF
+:nChemin d'accŠs non trouv‚
+Pendant une op‚ration OPEN, MKDIR, CHDIR ou RMDIR, le
+systŠme d'exploitation n'a pas pu trouver le chemin
+sp‚cifi‚.
+
+Code d'erreur : 76
+.context QB_ER_PNF
+:nChemin d'accŠs non trouv‚
+DOS n'a pas pu trouver le chemin sp‚cifi‚ dans la boŒte de
+dialogue de la commande Ouvrir, Enregistrer ou Enregistrer
+sous. V‚rifiez que vous avez correctement tap‚ le chemin.
+.comment -------------------------------------------
+.comment  Last of runtime errors - found at top of
+.comment  p. 5 in printout of BIGPIC.ERR
+.comment -------------------------------------------
+.context MSG_OutOfStack
+:nEspace pour la pile insuffisant
+Cette erreur peut se produire lorsqu'il y a trop de sous-
+routines, FUNCTION et appels SUB, actifs ou lorsqu'une
+proc‚dure FUNCTION r‚cursive provoque un imbriquement trop
+profond.
+
+Changez la structure du programme ou utilisez l'instruction
+CLEAR pour augmenter l'espace de pile allou‚ au programme.
+.comment -----------------------------------------------
+.comment  User Interface Related Messages that could be
+.comment  described in user's guide error message
+.comment  appendix.
+.comment -----------------------------------------------
+.context MSG_CantCont
+:nImpossible de continuer
+Pendant une interruption lors de la mise au point (… un
+point d'arrˆt par exemple), vous avez effectu‚ des
+modifications qui empˆchent la relance du programme. Il est
+possible que vous ayez redimensionn‚ un tableau, chang‚ les
+arguments d'une proc‚dure ou modifi‚ une autre instruction
+de d‚claration.
+Utilisez la boŒte de dialogue et :
+  þ Choisissez <OK> pour conserver les modifications et
+    relancer le programme.
+  þ Choisissez <Annuler> pour annuler les modifications dans
+    le texte du programme. (Vous pouvez choisir cette option
+    si la relance du programme interfŠre avec la strat‚gie
+    de mise au point.)
+.comment -----------------------------------------------
+.comment  Following are non-runtime errors.
+.comment -----------------------------------------------
+.context MSG_DupPrs
+:nD‚finition de proc‚dure en double
+Le fichier que vous avez essay‚ d'ouvrir contient deux
+proc‚dures SUB ou FUNCTION qui portent le mˆme nom. Utilisez
+un ‚diteur pour en renommer une, puis ouvrez le fichier dans
+QBasic.
+.comment -----------------------------------------------
+.comment  General User Interface messages
+.comment -----------------------------------------------
+.context MSG_Overwrite
+:nLe fichier existe d‚j…. R‚‚crire ?
+Choisissez <Oui> uniquement si vous ˆtes s–r que le
+remplacement du contenu du fichier sur disque par celui du
+fichier en m‚moire ne d‚truira pas d'informations
+importantes.
+Sinon :
+  þ Choisissez <Non> pour afficher … nouveau la boŒte de
+    dialogue et tapez un nouveau nom de fichier unique
+    pour l'enregistrement du fichier en m‚moire.
+  þ Choisissez <Annuler> pour arrˆter l'ex‚cution de la
+    commande et tout laisser dans l'‚tat pr‚c‚dant le choix
+    de la commande.
+.context MSG_DelProc
+:nSupprimer proc‚dure du module ?
+Avant de supprimer une proc‚dure, la commande SUBs vous
+demande de confirmer que vous voulez bien supprimer
+la proc‚dure du module. Vous pouvez :
+  þ Choisir <OK> pour supprimer la proc‚dure.
+  þ Choisir <Annuler> pour arrˆter la suppression et tout
+    laisser dans l'‚tat pr‚c‚dant le choix de la commande.
+.context MSG_MakeRem
+:nLignes vierges non permises
+L'instruction SUB ou FUNCTION qui commence une proc‚dure est
+g‚n‚ralement la premiŠre ligne dans la fenˆtre d'affichage.
+Lorsque vous essayez de placer une ligne vierge au-dessus de
+l'instruction SUB ou FUNCTION, QBasic transforme la ligne
+vierge en une ligne de commentaire.
+.context MSG_NotSaved
+.context MSG_NotSavedAll
+:nFichier non enregistr‚
+Le fichier n'a jamais ‚t‚ enregistr‚ ou n'a pas ‚t‚
+enregistr‚ depuis les derniŠres modifications. Vous pouvez :
+  þ Choisir <Oui> pour enregistrer le fichier et conserver
+    les modifications.
+  þ Choisir <Non> pour supprimer les modifications.
+  þ Choisir <Annuler> pour annuler la commande et tout
+    laisser dans l'‚tant pr‚c‚dant le choix de la commande.
+.context MSG_BadNextStmt
+:nPassage hors de la proc‚dure interdit
+Pendant la mise au point, vous avez utilis‚ la commande
+D‚finir l'instruction suivante pour sp‚cifier une
+instruction situ‚e dans une proc‚dure autre que celle dans
+laquelle l'ex‚cution du programme est interrompue. Dans ce
+cas, QBasic ignore la commande D‚finir l'instruction
+suivante.
+
+Pour continuer la mise au point, placez la proc‚dure
+interrompue dans la fenˆtre d'affichage. Vous pouvez alors
+utiliser la commande D‚finir l'instruction suivante pour
+lancer l'ex‚cution … partir d'une instruction quelconque de
+cette proc‚dure.
+.context MSG_MustSpecifyName
+:nLe nom doit ˆtre sp‚cifi‚
+Vous avez choisi <OK> dans une boŒte de dialogue alors que
+la zone de texte est vide. Tapez un nom de module ou de
+proc‚dure dans la zone de texte et choisissez … nouveau
+<OK>.
+.context MSG_DataMoved
+:nInstructions DATA d‚plac‚es
+QBasic exige que toutes les instructions DATA d'un programme
+se trouve dans l'en-tˆte du module. QBasic d‚place
+automatiquement les instructions DATA dans l'en-tˆte du
+module.
+.context MSG_NoSearchString
+:nPas de chaŒne … rechercher
+La zone de texte Texte … chercher ‚tait vide lorsque vous
+avez ex‚cut‚ une commande Chercher ou Remplacer. Choisissez
+… nouveau la commande et tapez une chaŒne avant de choisir
+<OK>.
+.context MSG_MatchNotFound
+:nConcordance non trouv‚e
+QBasic n'a pas pu trouver la chaŒne sp‚cifi‚e.
+
+Le curseur conserve la position qu'il avait lorsque vous
+avez commenc‚ la recherche.
+.context MSG_ChangeComplete
+:nRemplacement termin‚
+L'op‚ration de recherche et remplacement est termin‚e. Le
+curseur reprend la position qu'il avait lorsque vous avez
+commenc‚ la recherche.
+.context MSG_ReqSub
+:nSUB ou FUNCTION requise
+Vous avez s‚lectionn‚ le nom de module dans la boŒte de
+dialogue de la commande SUBs. S‚lectionnez plut“t une
+proc‚dure SUB ou FUNCTION.
+.context MSG_SwitchDisks
+:nIns‚rez la disquette dans l'unit‚
+Vous avez fait r‚f‚rence au lecteur de disquette avec la
+lettre A: alors qu'il se nomme B: ou inversement.
+
+V‚rifiez que le fichier que vous voulez manipuler avec
+cette commande se trouve sur la disquette pr‚sente dans le
+lecteur, puis choisissez <OK>.
+.context MSG_CantSetTabs
+:nImpossible de changer les tabulations
+Lorsqu'un fichier ouvert contient une tabulation
+pr‚alablement d‚finie, cette derniŠre ne peut pas ˆtre
+modifi‚e avec l'option Tabulations de la commande Afficher.
+Enregistrez le fichier, puis utilisez la commande Nouveau
+document pour effacer la fenˆtre de QBasic. Utilisez la
+commande Afficher pour d‚finir la nouvelle tabulation et
+ouvrez … nouveau le fichier.
+.context MSG_OutNearMem
+:nEspace pour donn‚es satur‚
+QBasic a ‚puis‚ la m‚moire disponible pour les donn‚es, les
+variables et certaines autres informations. Essayez de
+modifier les sp‚cifications de l'espace des donn‚es comme
+suit :
+  þ  Utilisez une m‚moire tampon de fichier plus petite dans
+     la clause LEN de l'instruction OPEN.
+  þ  Utilisez la directive $DYNAMIC pour cr‚er des tableaux
+     dynamiques. Les donn‚es de ces derniers peuvent
+     g‚n‚ralement ˆtre beaucoup plus importantes que celles
+     des tableaux statiques.
+  þ  Utilisez des longueurs fixes au lieu de longueurs
+     variables pour les tableaux de chaŒne.
+  þ  Utilisez le plus petit type de donn‚es n‚cessaire pour
+     accomplir chaque tƒche. Utilisez des entiers le plus
+     souvent possible.
+  þ  Utilisez CLEAR pour modifier la taille de la pile.
+  þ  N'utilisez pas de lignes source de plus de 256
+     caractŠres. Ces lignes n‚cessitent l'allocation
+d'espace
+     suppl‚mentaire dans la m‚moire tampon de texte.
+.context MSG_ModTooLarge
+:nCode trop long au niveau module
+La taille de l'en-tˆte du module d‚passe la limite interne
+de QBasic. Essayez de placer une partie du code dans des
+proc‚dures SUB ou FUNCTION.
+.context MSG_ProcTooLarge
+:nProc‚dure trop longue
+La taille de la proc‚dure en cours d‚passe la limite interne
+de QBasic. Diminuez la taille de la proc‚dure en la
+d‚coupant en plusieurs proc‚dures.
+.comment -----------------------------------------------
+.comment     Section 2: QBI Parser Related Messages
+.comment -----------------------------------------------
+.context MSG_IdTooLong
+:nIdentificateur trop long
+La longueur de l'identificateur indiqu‚ est sup‚rieure … la
+limite autoris‚e par QBasic. Les identificateurs, tels que
+les noms de variable, ne doivent pas comporter plus de 40
+caractŠres.
+.context MSG_BadId
+:nIdentificateur non valide
+Vous avez utilis‚ un caractŠre qui n'est pas valide dans un
+identificateur. V‚rifiez que :
+  þ Les noms de proc‚dure DEF FN contiennent uniquement des
+    lettres et des chiffres.
+  þ Les noms de proc‚dure FUNCTION et SUB commencent par une
+    lettre et ne contiennent pas les caractŠres sp‚ciaux
+    suivants : ., %, &, !, # ou $.
+.context MSG_IdImp
+:nUn ident. ne peut se terminer par %, &, !, #, $
+Les identificateurs ne peuvent pas se terminer par %, &, !,
+# ou $.
+
+Les suffixes ci-dessus ne sont pas autoris‚s dans les noms
+d'identificateurs de type ou les noms de proc‚dure SUB.
+.context MSG_BadElemRef
+:nUn identificateur ne peut comprendre un point
+Vous ne pouvez pas utiliser de point dans :
+  þ Le nom d'un type de donn‚es d‚fini par l'utilisateur.
+  þ Le nom d'un ‚l‚ment dans un type d‚fini par
+    l'utilisateur.
+  þ Le nom d'une variable dimensionn‚e comme un type de
+    donn‚es d‚fini par l'utilisateur.
+
+Bien que les noms de variable puissent contenir des points,
+nous vous recommandons de ne les utiliser que comme
+s‚parateur de variable d'enregistrement. Si vous avez des
+programmes qui utilisent le point dans des noms de variable,
+vous pouvez les modifier en indiquant la s‚paration par un
+changement de casse. Le nom de variable ALPHA.BETA, par
+exemple, peut ˆtre remplac‚ par AlphaBeta.
+.context MSG_ExpTooComplex
+:nExpression trop complexe
+Certaines limites internes … QBasic ont ‚t‚ d‚pass‚es.
+
+Exemple : pendant l'‚valuation d'une expression, des chaŒnes
+qui ne sont pas associ‚es … des variables ont ‚t‚ affect‚es
+… des positions temporaires. Un nombre important de telles
+chaŒnes peut provoquer cette erreur. De mˆme, une expression
+num‚rique compos‚e de nombreuses sous-expressions complexes
+peut provoquer cette erreur.
+
+Essayez de simplifier les expressions ou affectez les
+chaŒnes … des variables.
+.context MSG_IllegalNumber
+:nNombre non permis
+Vous avez utilis‚ un nombre qui est inappropri‚ dans ce
+contexte. Exemple : QBasic ne permet pas de d‚clarer une
+chaŒne de longueur fixe avec une longueur nulle, de ce fait
+DIM X AS STRING * 0 n'est pas autoris‚. Un nombre ill‚gal
+peut ‚galement ˆtre identifi‚ si vous d‚clarez des valeurs
+contradictoires. Exemple : l'utilisation d'un suffixe de
+d‚claration de type de donn‚e entiŠre avec un nombre en
+virgule flottante (tel que 10.20%) donne cette erreur.
+.context MSG_InvConst
+:nConstante non valide
+Une expression non valide a ‚t‚ utilis‚e pour affecter une
+valeur … une constante symbolique.
+
+Les expressions num‚riques affect‚es … des constantes
+symboliques peuvent contenir :
+   þ Des valeurs num‚riques litt‚rales.
+   þ Des constantes symboliques pr‚alablement d‚finies.
+   þ Des op‚rateurs arithm‚tiques et logiques sauf
+     l'‚l‚vation … une puissance.
+
+Les expressions de chaŒne affect‚es … une constante
+symbolique peuvent se composer d'une chaŒne litt‚rale
+unique, plac‚e entre guillemets doubles (" ").
+.comment ------------------------------------------------
+.comment       Section 3: TextMgr/ReParse errors
+.comment ------------------------------------------------
+.context MSG_InvModLev
+:nNon permis hors de SUB, FUNCTION ou DEF FN
+QBasic a rencontr‚ une instruction qui n'est pas autoris‚e
+dans l'en-tˆte du module. Les instructions EXIT SUB, EXIT
+FUNCTION et EXIT DEF, par exemple, ne sont pas autoris‚es
+dans l'en-tˆte du module.
+.context MSG_InvMain
+:nNon permis hors de SUB/FUNCTION
+QBasic a rencontr‚ une instruction qui n'est pas autoris‚e
+dans l'en-tˆte du module ou dans les fonctions DEF FN.
+.context MSG_InvProc
+:nNon permis dans SUB, FUNCTION ou DEF FN
+L'instruction n'est pas autoris‚e dans une proc‚dure SUB ou
+FUNCTION ou dans une fonction DEF FN.
+.context MSG_InvBeforeProcDef
+:nNe peut pr‚c‚der une d‚finition de SUB/FUNCTION
+Seuls des commentaires et des instructions DEFtype peuvent
+ˆtre plac‚s avant une d‚finition de proc‚dure.
+.context MSG_ProcNoEnd
+:nSUB/FUNCTION sans END SUB/FUNCTION
+L'instruction de fin de proc‚dure est absente.
+.context MSG_EndNoDef
+:nEND DEF sans DEF
+Une instruction END DEF ne correspond … aucune
+instruction DEF.
+.context MSG_UndElem
+:nEl‚ment non d‚fini
+Vous avez essay‚ d'utiliser un ‚l‚ment que vous n'avez pas
+pr‚alablement d‚fini dans le cadre d'un type de donn‚es
+d‚fini par l'utilisateur.
+
+Exemple : si vous avez d‚fini MONTYPE avec les ‚l‚ments A, B
+et C, et si vous essayez d'utiliser la variable D comme
+‚l‚ment de MONTYPE, QBasic affiche ce message.
+.context MSG_UndType
+:nType non d‚fini
+Une variable ou un paramŠtre a ‚t‚ d‚clar‚ avec un type de
+donn‚es non d‚fini.
+
+Utilisez l'instruction TYPE pour d‚finir un type de donn‚es.
+.context MSG_1stStmt
+:nDoit ˆtre la premiŠre instruction sur la ligne
+Dans les structures de bloc IF...THEN...ELSE,
+IF, ELSE, ELSEIF et END IF ne peuvent ˆtre
+pr‚c‚d‚s que par un num‚ro de ligne ou une ‚tiquette.
+
+Dans les structures SELECT...END SELECT, CASE et END SELECT
+ne peuvent ˆtre pr‚c‚d‚s que par un num‚ro de ligne ou une
+‚tiquette.
+.context MSG_EndProc
+:nEND SUB ou END FUNCTION doit ˆtre la derniŠre ligne
+Vous essayez d'ajouter des instructions aprŠs la derniŠre
+ligne d'une proc‚dure. Vous devez soit retourner au module
+principal soit ouvrir une autre proc‚dure SUB ou FUNCTION
+pour ajouter les lignes de code.
+.context MSG_NoEndType
+:nTYPE sans END TYPE
+Il n'y a pas d'instruction END TYPE associ‚e … une
+instruction TYPE.
+.context MSG_NoType
+:nEND TYPE sans TYPE
+Il n'y a pas d'instruction TYPE associ‚e … une instruction
+END TYPE.
+.context MSG_InvInTypeBlk
+:nInstruction non permise dans un bloc TYPE
+Seuls les commentaires et les clauses de type de donn‚es AS
+sont autoris‚s entre les instructions TYPE et END TYPE.
+.context MSG_FNstart
+:nNe peut commencer par 'FN'
+Vous avez utilis‚ "FN" comme deux premiŠres lettres d'un nom
+de proc‚dure SUB ou FUNCTION ou d'un nom de variable.
+
+"FN" ne peut ˆtre utilis‚ au d‚but d'un nom que lors d'un
+appel de fonction DEF FN.
+.context MSG_NotBlock
+:nOp‚ration n‚cessitant disque
+Vous essayez d'effectuer un chargement ou un enregistrement
+avec un p‚riph‚rique qui n'est pas un disque (une imprimante
+ou le clavier, par exemple).
+.context MSG_BadMeta
+:nErreur Directive
+La syntaxe d'une directive est incorrecte. Les directives
+doivent ˆtre pr‚c‚d‚es d'un commentaire. Les deux directives
+$DYNAMIC suivantes, par exemple, sont correctes :
+
+REM  $DYNAMIC
+'  $DYNAMIC
+.context MSG_NoBpCase
+:nPoints d'arrˆt non permis dans clause CASE
+L'utilisation des points d'arrˆt pour la mise au point des
+instructions SELECT...END SELECT est soumise … certaines
+restrictions. Vous ne pouvez pas placer un point d'arrˆt sur
+la premiŠre instruction d'un bloc CASE ou aprŠs
+l'instruction END SELECT.
+
+Pour mettre au point une instruction SELECT...END SELECT …
+l'aide d'un point d'arrˆt, placez ce dernier sur la ligne
+SELECT CASE dans le programme, puis ex‚cutez pas … pas le
+reste de la structure de l'instruction.
+.comment -----------------------------------
+.comment    Section 4:  Scan-time errors
+.comment -----------------------------------
+.context MSG_OBA
+:nTableau d‚j… dimensionn‚
+Cette erreur peut ˆtre provoqu‚e par l'une des conditions
+suivantes :
+  þ Il y a plusieurs instructions DIM pour un mˆme tableau
+    statique.
+  þ Vous avez essay‚ de modifier les dimensions d'un
+    tableau dynamique avec une instruction DIM sans
+    utiliser pr‚alablement l'instruction ERASE pour
+    annuler l'allocation m‚moire du tableau.
+  þ Une instruction OPTION BASE est pr‚sente aprŠs le
+    dimensionnement d'un tableau.
+.context MSG_COM
+:nDoit pr‚c‚der les instructions ex‚cutables
+Une instruction COMMON ou DECLARE se trouve aprŠs une
+instruction ex‚cutable. Les instructions COMMON et DECLARE
+doivent toujours se trouver avant toute instruction
+ex‚cutable. Toutes les instructions BASIC sont ex‚cutables
+sauf les suivantes :
+
+    COMMON                     OPTION BASE
+    CONST                      REM
+    DATA                       SHARED
+    DECLARE                    STATIC
+    DEFtype                    TYPE
+    DIM (tableaux statiques)   $STATIC et $DYNAMIC
+.context MSG_EWI
+:nEND IF sans bloc IF
+Le mot-cl‚ IF qui commence un bloc IF...ENDIF est absent.
+
+V‚rifiez ‚galement les autres structures de contr“le …
+l'int‚rieur du bloc IF...ENDIF. Exemple : un bloc IF  sans
+instruction ENDIF correspondante imbriqu‚ dans un autre bloc
+IF...ENDIF provoque cette erreur.
+.context MSG_IWE
+:nBloc IF sans END IF
+Il n'y a pas de END IF correspondant dans une instruction de
+bloc IF...THEN.
+.context MSG_ElseWI
+:nELSE sans IF
+Une clause ELSE ne correspond … aucune instruction IF. Cette
+erreur est parfois provoqu‚e par une imbrication incorrecte
+d'instructions IF.
+
+V‚rifiez ‚galement les autres structures de contr“le …
+l'int‚rieur du bloc IF...ENDIF. Exemple : un bloc IF sans
+instruction ENDIF correspondante imbriqu‚ dans un autre bloc
+IF...ENDIF provoque cette erreur.
+.context MSG_ExitScope
+:nEXIT FOR non compris dans FOR...NEXT
+Une instruction EXIT FOR est utilis‚e en dehors d'une
+instruction FOR...NEXT.
+.context MSG_ExitDo
+:nEXIT DO non compris dans DO...LOOP
+Une instruction EXIT DO est utilis‚e en dehors d'une
+instruction DO...LOOP.
+.context MSG_Do
+:nDO sans LOOP
+Le mot-cl‚ LOOP de fin de boucle manque dans une instruction
+DO...LOOP.
+.context MSG_Loop
+:nLOOP sans DO
+Le mot-cl‚ DO d'une instruction DO...LOOP manque ou est mal
+orthographi‚.
+
+V‚rifiez ‚galement les autres structures de contr“le …
+l'int‚rieur du bloc DO...LOOP. Exemple : un bloc IF sans
+instruction ENDIF correspondante imbriqu‚ dans la structure
+DO...LOOP provoque cette erreur.
+.context MSG_Select
+:nSELECT sans END SELECT
+Les mots-cl‚ END SELECT manquent dans une instruction
+SELECT CASE.
+.context MSG_Case
+:nCASE sans SELECT
+Les mots-cl‚ SELECT CASE manquent dans une instruction
+SELECT CASE ou sont mal orthographi‚s.
+
+V‚rifiez ‚galement les autres structures de contr“le …
+l'int‚rieur de la structure SELECT...END SELECT. Exemple :
+un bloc IF sans instruction ENDIF correspondante imbriqu‚
+dans la structure SELECT...END SELECT provoque cette erreur.
+.context MSG_EndSelect
+:nEND SELECT sans SELECT
+Les mots-cl‚s SELECT CASE manquent dans une instruction
+SELECT CASE ou sont mal orthographi‚s.
+
+V‚rifiez ‚galement les autres structures de contr“le …
+l'int‚rieur de la structure SELECT...END SELECT. Exemple :
+un bloc IF sans instruction ENDIF correspondante imbriqu‚
+dans la structure SELECT...END SELECT provoque cette erreur.
+.context MSG_InvFixStr
+:nChaŒne de longueur fixe non permise
+Vous ne pouvez pas utiliser une chaŒne de longueur fixe
+comme paramŠtre formel dans une proc‚dure SUB ou FUNCTION.
+.context MSG_InvTypedVar
+:nVariable de type d‚fini par l'utilisateur non permise
+Les variables d'un type de donn‚es d‚fini par l'utilisateur
+ne peuvent pas ˆtre pass‚es comme arguments. L'expression
+suivante, par exemple, o— X est un type de donn‚es d‚fini
+par l'utilisateur, n'est pas autoris‚e :
+
+CALL ALPHA(X)
+
+Vous pouvez toutefois passer comme argument des ‚l‚ments
+d'un type de donn‚es d‚fini par l'utilisateur. Exemple :
+
+CALL Alpha(X.FirstEl)
+.context MSG_DefNoEnd
+:nDEF sans END DEF
+Il n'y a pas de END DEF correspondant dans une d‚finition de
+fonction multiligne.
+.context MSG_ParmTM
+:nType de paramŠtre non concordant
+Un type de donn‚e de paramŠtre pour une proc‚dure SUB ou
+FUNCTION ne correspond pas au type de donn‚e de l'argument
+de l'instruction DECLARE ou de l'argument appelant.
+.context MSG_ASRqd1st
+:nClause AS requise dans la premiŠre d‚claration
+Vous faites r‚f‚rence avec une clause AS … une variable qui
+n'a pas ‚t‚ d‚clar‚e avec une clause AS.
+.context MSG_ASRqd
+:nClause AS requise
+Une variable d‚clar‚e avec une clause AS est identifi‚e pour
+r‚f‚rence sans cette clause.
+
+Si la premiŠre d‚claration d'une variable possŠde une clause
+AS, toutes les instructions DIM, REDIM, SHARED ou COMMON
+ult‚rieures qui font r‚f‚rence … cette variable doivent
+poss‚der une clause AS.
+.context MSG_ExpectedCase
+:nInstructions mal plac‚es
+Les instructions et ‚tiquettes de ligne ne sont pas
+autoris‚es entre SELECT CASE et la premiŠre instruction
+CASE.
+
+Les commentaires et le s‚parateur d'instructions (:) sont
+autoris‚s.
+.context MSG_NoNumArr
+:nTableau num‚rique non permis
+Les ‚l‚ments d'un tableau num‚rique ne sont pas autoris‚s
+comme arguments de VARPTR$.
+
+Seuls les variables simples et les ‚l‚ments des tableaux de
+chaŒnes … longueur variable sont autoris‚s.
+.context MSG_InType
+:nClause non permise hors d'un bloc TYPE
+La clause "‚l‚ment AS type" n'est autoris‚e que dans un
+bloc TYPE...END TYPE.
+.context MSG_SubCnt
+:nNombre de dimensions incorrect
+Une r‚f‚rence de tableau contient un nombre de dimensions
+incorrect.
+.context MSG_DefFnCtrl
+:nDEF FN non permis dans instructions de contr“le
+Les d‚finitions de fonction DEF FN ne peuvent pas
+apparaŒtre dans des instructions dee contr“le telles
+que IF...THEN...ELSE ou SELECT CASE.
+.context MSG_ForIndexInUse
+:nVariable compteur FOR d‚j… utilis‚e
+Cette erreur se produit lorsqu'une mˆme variable est
+utilis‚e comme compteur pour une instruction FOR...NEXT et
+pour une autre instruction FOR...NEXT imbriqu‚e dans la
+premiŠre. Les instructions FOR...NEXT imbriqu‚es doivent
+utiliser des variables diff‚rentes comme compteur.
+.context MSG_TypeTooLarge
+.context h.pg$
+:nTaille sup‚rieure … 65 535 octets
+Un type de donn‚es d‚fini par l'utilisateur ne peut pas
+d‚passer 64 Ko.

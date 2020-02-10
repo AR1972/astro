@@ -1,0 +1,72 @@
+SUMMARY forsemi
+
+#include <tools.h>
+
+int forsemi(pstr, pProc, args)
+char *pstr;
+flagType (*pProc)();
+unsigned args;
+
+flagType Proc(pstrSub, pArgs); /* routine called for each enumerated file */
+char *pstrSub;
+unsigned *pArgs;
+
+DESCRIPTION
+
+pstr is a pointer to a string containing zero or more semicolons.  The
+callback routine is called one or more times with a pointer to a substring
+delimited by semicolons.  The substring does NOT contain semicolons.  The
+first time the routine is called, pstrSub is equal to pstr.  If pstr
+contains no semicolons, the routine is called only once.
+
+The callback routine can terminate enumeration by returning non-zero or
+continue the enumeration by returning zero.
+
+RETURN VALUE
+
+forsemi returns TRUE if enumeration is terminated at the request of the
+callback routine otherwise FALSE is returned.
+
+IMPLEMENTATION
+
+char *p1, p;
+p = pstr;
+do {
+    p1 = pointer to next ";" after p
+    save char at p1
+    *p1 = 0, i.e. modify source string
+    f = (*pProc)(p, &args)
+    p = p1
+    *p++ = saved char
+    if (f)
+	return TRUE, callback routine terminated loop
+    } while saved char not equal to '\0'
+return FALSE
+
+SEE ALSO
+
+
+NOTE
+
+WARNING: The source string is modified by forsemi but is restored when
+forsemi returns.
+
+EXAMPLE
+
+#include <tools.h>
+
+flagType DoPrint(pstrSub, pArgs)
+char *pstrSub;
+unsigned *pArgs;
+{
+    printf("Substring \"%s\"\n", pstrSub);
+    return (strcmp(pstrSub, "stop") == 0);
+}
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    forsemi("no semicolons here", DoPrint);    /* no args */
+    forsemi("msc forsemi.c;msc find.c;stop;msc help.c", DoPrint);
+}

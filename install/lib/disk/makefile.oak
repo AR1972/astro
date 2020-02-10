@@ -1,0 +1,218 @@
+MSG_DIR=$(LANG_SRC)\$(COUNTRY)\install\lib\disk
+MSG_INC=$(LANG_SRC)\$(COUNTRY)\install\include
+
+
+!IF	"$(DEBUG)" == "CODEVIEW" || "$(DEBUG)" == "codeview" || \
+	"$(debug)" == "CODEVIEW" || "$(debug)" == "codeview"
+
+cflags  =-Od -Zi -DDEBUG $(cwarn) $(extcsw)
+aflags	=-Mx -t -Zi -DDEBUG $(awarn) $(extasw)
+
+!ENDIF
+
+.asm.obj:
+	$(asm) -DMODEL_LARGE $(ainc) $(aflags) $*.asm,$*.obj;
+
+.c.obj:
+	$(cc) -AL $(cflags) -Fo$*.obj $*.c
+
+include	= ..\..\include
+extasw	= -I.. -I..\.. -I$(MSG_INC)
+extcsw	= -Gs -I. -I$(include) -c
+
+
+disk_io.lib: 	tboot.inc	\
+		abs_rdwr.obj	\
+		biosrset.obj	\
+		disk_io.obj	\
+		dma_chk.obj	\
+		dos_seek.obj	\
+		drv_type.obj	\
+		dsk_rdy.obj	\
+		dsk_rset.obj	\
+		dskread.obj	\
+		dskwrite.obj	\
+		fail24.obj	\
+		fcb_open.obj	\
+		fcb_pars.obj	\
+		fcb_ren.obj	\
+		getnumhd.obj	\
+		get_boot.obj	\
+		get_dir.obj	\
+		int13rtr.obj	\
+		newint13.obj	\
+		numdrvs.obj	\
+		setbpb.obj	\
+		setdskty.obj	\
+		setmedia.obj	\
+		tmpboot.obj	\
+		dsk_bpb.obj	\
+		dsk_dir.obj	\
+		dsk_free.obj	\
+		dsk_head.obj	\
+		dsk_i24.obj 	\
+		dsk_isfm.obj	\
+		dsk_tcnv.obj	\
+		dsk_time.obj	\
+		dsk_trk.obj 	\
+		dsk_type.obj	\
+		dsk_sect.obj	\
+		dsk_root.obj	\
+		dsk_scrb.obj	\
+		dsk_boot.obj	\
+		dsk_fbot.obj	\
+		dsk_flab.obj	\
+		dsk_vald.obj	\
+		dsk_ram.obj	\
+		dsk_ishd.obj	\
+		newfmt.obj	\
+		rw_boot.obj	\
+		rw_fat.obj	\
+		rw_root.obj 	\
+		drv_acc.obj	\
+		v_dir.obj	\
+		dsk_locl.obj	\
+		dsk_ilnk.obj	\
+		dsk_labl.obj	\
+		dsk_setl.obj	\
+		findboot.obj	\
+		maxsec.obj	\
+		sec_size.obj
+	del disk_io.lib
+	lib @libfile
+
+
+# ASM source files
+
+abs_rdwr.obj:	abs_rdwr.asm disk_io.inc
+
+biosrset.obj:	biosrset.asm disk_io.inc
+
+disk_io.obj:	disk_io.asm  disk_io.inc
+
+dma_chk.obj:	dma_chk.asm  disk_io.inc
+
+dos_seek.obj:	dos_seek.asm disk_io.inc
+
+drv_type.obj:	drv_type.asm disk_io.inc
+
+dskread.obj:	dskread.asm disk_io.inc
+
+dskwrite.obj:	dskwrite.asm disk_io.inc
+
+dsk_rdy.obj:	dsk_rdy.asm  disk_io.inc
+
+dsk_rset.obj:	dsk_rset.asm disk_io.inc
+
+dsk_vald.obj:	dsk_vald.asm disk_io.inc
+
+fail24.obj:	fail24.asm   disk_io.inc
+
+fcb_open.obj:	fcb_open.asm disk_io.inc
+
+fcb_pars.obj:	fcb_pars.asm disk_io.inc
+
+fcb_ren.obj:	fcb_ren.asm  disk_io.inc
+
+getnumhd.obj:	getnumhd.asm disk_io.inc
+
+get_boot.obj:	get_boot.asm disk_io.inc
+
+get_dir.obj:	get_dir.asm  disk_io.inc
+
+int13rtr.obj:	int13rtr.asm disk_io.inc
+
+newint13.obj:	newint13.asm disk_io.inc
+
+numdrvs.obj:	numdrvs.asm  disk_io.inc
+
+setbpb.obj:	setbpb.asm   disk_io.inc
+
+setdskty.obj:	setdskty.asm disk_io.inc
+
+setmedia.obj:	setmedia.asm disk_io.inc
+
+tmpboot.obj:	tmpboot.asm  disk_io.inc tboot.inc
+
+drv_acc.obj:	drv_acc.asm
+
+tboot.inc: $(MSG_DIR)\tboot.asm
+        copy  $(MSG_DIR)\tboot.asm
+        masm tboot.asm;
+	link tboot;
+        reloc tboot.exe
+	dbof tboot.bin tboot.inc 0 0e0
+	del tboot.exe
+	del tboot.obj
+
+# c source files
+
+dsk_bpb.obj:	dsk_bpb.c $(include)\disk_io.h
+
+dsk_dir.obj:	dsk_dir.c $(include)\alias.h $(include)\strlib.h \
+		$(include)\disk_io.h
+
+dsk_free.obj:	dsk_free.c $(include)\disk_io.h
+
+dsk_head.obj:	dsk_head.c $(include)\disk_io.h
+
+dsk_isfm.obj:	dsk_isfm.c $(include)\disk_io.h
+
+dsk_tcnv.obj:	dsk_tcnv.c $(include)\disk_io.h
+
+dsk_time.obj:	dsk_time.c $(include)\disk_io.h
+
+dsk_trk.obj:	dsk_trk.c $(include)\disk_io.h
+
+dsk_type.obj:	dsk_type.c
+
+dsk_i24.obj:	dsk_i24.c $(include)\disk_io.h \
+		$(include)\alias.h $(include)\window.h
+
+dsk_sect.obj:	dsk_sect.c $(include)\alias.h $(include)\disk_io.h
+
+dsk_root.obj:	dsk_root.c $(include)\alias.h $(include)\disk_io.h
+
+dsk_scrb.obj:	dsk_scrb.c $(include)\alias.h $(include)\disk_io.h
+
+dsk_boot.obj:	dsk_boot.c $(include)\alias.h $(include)\disk_io.h
+
+dsk_fbot.obj:	dsk_fbot.c $(include)\alias.h $(include)\disk_io.h
+
+dsk_ram.obj:	dsk_ram.c
+
+dsk_ishd.obj:	dsk_ishd.c $(include)\alias.h
+
+newfmt.obj:	newfmt.c $(include)\alias.h $(include)\disk_io.h \
+		$(include)\format.h
+
+rw_boot.obj:	rw_boot.c $(include)\alias.h $(include)\disk_io.h
+
+rw_fat.obj:	rw_fat.c  $(include)\alias.h $(include)\disk_io.h
+
+rw_root.obj:	rw_root.c $(include)\alias.h $(include)\disk_io.h
+
+v_dir.obj:	v_dir.c  $(include)\alias.h $(include)\strlib.h	\
+		$(include)\disk_io.h
+
+dsk_locl.obj:	dsk_locl.asm disk_io.inc
+
+dsk_ilnk.obj:	dsk_ilnk.asm disk_io.inc
+
+dsk_labl.obj:	dsk_labl.c  $(include)\alias.h $(include)\strlib.h \
+		$(include)\disk_io.h
+
+dsk_flab.obj:	dsk_flab.c  $(include)\alias.h $(include)\strlib.h \
+		$(include)\disk_io.h
+
+dsk_setl.obj:	dsk_setl.c  $(include)\alias.h $(include)\strlib.h \
+		$(include)\disk_io.h
+
+findboot.obj:	findboot.asm
+
+maxsec.obj:	maxsec.c $(include)\disk_io.h
+
+sec_size.obj:	sec_size.asm disk_io.inc
+
+
+

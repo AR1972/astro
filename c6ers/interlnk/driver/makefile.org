@@ -1,0 +1,35 @@
+# $Workfile:   makefile  $
+# $Revision:   1.3  $
+#   $Author:   Dave Sewell  $
+#     $Date:   07 Nov 1989 11:28:32  $
+
+### Production
+MASM_FLAGS =
+LINK_FLAGS = /map
+
+### Debugging
+# MASM_FLAGS = /Zi
+# LINK_FLAGS = /map/co
+
+
+.INCLUDE ..\version.def
+
+.asm.obj:
+    *\masm60\bin\ml /c /nologo /W2 /Cp $(MASM_FLAGS) /DMAJOR_VER=$(MAJOR_VER) /DMINOR_VER=$(MINOR_VER) $<
+
+OBJ = core.obj block.obj serial.obj printer.obj init.obj drmain.obj msg.obj parallel.obj
+
+interlnk.exe: interdos.exe vild.obj
+    \vdk\tools\link386 @vild.lnk
+    \vdk\tools\addhdr interlnk.exe
+
+interdos.exe: $(OBJ)
+    *link /nologo $(OBJ),interdos/noi$(LINK_FLAGS);
+
+msg.obj: msg.asm ..\version.def
+    *\masm60\bin\ml /c /nologo /W3 /Cp $(MASM_FLAGS) /DVERSION_NUM=\"$(VERSION_NUM)\" $<
+
+$(OBJ) : ..\version.def makefile
+
+vild.obj: vild.asm \vdk\include\vmm.inc
+        \vdk\tools\masm5 -t -p -w2 -Mx $(LF) $(Debug) -I..\include $*;

@@ -1,0 +1,136 @@
+.comment ******************************************************************
+.comment *  Error Trapping Family - QBasic                                *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for Basic language and products.*
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/22/90 stevesau                                              *
+.comment *  Incorporated final edit/review comments                       *
+.comment ******************************************************************
+.comment *  6/11/90 stevesau                                              *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/9/90 stevesau                                               *
+.comment *  Deleted ERR.                                                  *
+.comment *  Reinserted RESUME NEXT.                                       *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  4/20/90 stevesau                                              *
+.comment *  Added action lines. 					  *
+.comment *  Deleted LOCAL, RESUME NEXT from ON ERROR and RESUME syntax.   *
+.comment ******************************************************************
+.comment *  4/17/90 bethpr                                                *
+.comment *  Deleted Local Keyword node					  *
+.comment ******************************************************************
+.context @ERL
+.context @ERR
+.context ERL
+.context ERR
+:nERR, funktion; ERL, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ERR returnerar felkoden f”r det senaste k”rtidsfelet.
+ERL returnerar radnumret d„r felet f”rekom, eller det n„rmaste radnumret
+f”re den rad d„r felet f”rkom.
+
+\bERR\p
+\bERL\p
+
+    ş ERL returnerar inte radetiketter. Om det inte finns n†gra radnummer i
+      programmmet returnerar ERL 0.
+
+\i\p\aExempel\v@errhand.ex\v\i\p
+
+Se „ven     \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+            \i\p\aFelkoder\v@rtect\v\i\p
+.context ERROR
+.context @ERROR
+:nERROR, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Simulerar ett Basic-fel eller ett anv„ndardefinierat fel.
+
+\bERROR uttryck%\p
+
+    ş \buttryck%\p       Felkoden f”r ett Basic-fel eller ett anv„ndardefinierat
+                     fel; ett v„rde mellan 1 och 255. Om du vill definiera
+                     egna fel m†ste du anv„nda ett v„rde som inte „r med i
+                     Basics \i\p\afelkoder\v@rtect\v\i\p.
+
+\i\p\aExempel\v@errhand.ex\v\i\p
+
+Se „ven     \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERR, ERL\v@ERR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context .onerr
+.context @onerr
+:nON ERROR, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Aktiverar felhantering och instruerar programmet att hoppa till en
+felhanterande rutin n„r ett k”rtidsfel f”rekommer, eller att †terg† till
+programexekveringen.
+
+\bON ERROR {GOTO rad | RESUME NEXT}\p
+
+    ş \bGOTO rad\p       Hoppar till f”rsta raden i den felhanterande rutinen.
+                     Raden anges med en etikett eller ett radnummer. Om du
+                     vill desaktivera felhanteringen skall du ange GOTO 0.
+    ş \bRESUME NEXT\p    terg†r till exekvering av den sats som f”ljer den
+                     sats som orsakade k”rtidsfelet. Anv„nd funktionen ERR
+                     om du vill veta vilken felkod som felet har.
+
+    ş Om ON ERROR inte anv„nds kommer alla k”rtidsfel att orsaka att
+      programmen avslutas.
+
+\i\p\aExempel\v@errhand.ex\v\i\p
+
+Se „ven     \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERR, ERL\v@ERR\v\i\p    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aGOTO\v@GOTO\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context @RESUME
+.context RESUME
+:nRESUME, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+terg†r till exekvering av programmet efter en felhanterande rutin.
+
+\bRESUME [{rad | NEXT}]\p
+
+    ş \brad\p     Etiketten eller numret p† den rad d„r exekveringen ska
+              †tertas. Om rad „r 0 eller inte „r med kommer exekveringen
+              att †tertas fr†n den sats som orsade felet.
+    ş \bNEXT\p    tertar exekveringen vid den sats som f”ljer den sats
+              som orsakade felet.
+
+\i\p\aExempel\v@errhand.ex\v\i\p
+
+Se „ven     \i\p\aERROR\v@ERROR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p
+.context errhand.ex
+.context @errhand.ex
+:nFelhanterande exempel
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+'Illustrerar ERDEV, ERDEV$, ERL, ERR, ERROR, ON ERROR och RESUME.
+   ON ERROR GOTO Handler
+10 CHDIR "a:\\"                'Orsakar ERR 71 "Disken „r inte klar"
+                              'Om det inte finns n†gon diskett i enhet A.
+20 y% = 0
+30 x% = 5 / y%                'ERR 11 "Division med noll."
+40 PRINT "x% ="; x%
+50 ERROR 57                   'ERR 57 "Enhetsfel (I/O)."
+
+Handler:
+  PRINT
+  PRINT "Fel "; ERR; " p† rad "; ERL
+  SELECT CASE ERR
+    CASE 71
+      PRINT "Anv„nder enhet "; ERDEV$; " enhetsfelkod = "; ERDEV
+      RESUME NEXT
+    CASE 11
+      INPUT "Vilket v„rde vill du dela med"; y%
+      RESUME                  'F”rs”k rad 30 igen med nytt v„rde p† y%.
+    CASE ELSE
+      PRINT "Ov„ntat fel. Programmet avslutas."
+      END
+  END SELECT

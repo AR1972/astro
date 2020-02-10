@@ -1,0 +1,640 @@
+.comment ******************************************************************
+.comment *  Graphics Family - QBasic                                      *
+.comment ******************************************************************
+.comment *  7/13/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  6/28/90 stevesau                                              *
+.comment *  Incorporated final review comments/edits.                     *
+.comment *  Split up SCREEN function and statement.                       *
+.comment ******************************************************************
+.comment *  6/12/90 stevesau                                              *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/11/90 stevesau                                              *
+.comment *  Replaced Attributes and Colors node with COLOR example        *
+.comment *  showing color codes.                                          *
+.comment *  Combined GET/PUT.                                             *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/10/90 stevesau                                              *
+.comment *  Reinserted X command in DRAW.                                 *
+.comment *  Added Attributes and Colors node.                             *
+.comment ******************************************************************
+.comment *  5/4/90 stevesau                                               *
+.comment *  Combined SCREEN function and statement (from Dev I/O family). *
+.comment *  Created new Screen Modes topic.                               *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                              *
+.comment *  Added action lines.						  *
+.comment *  Made COLOR Attributes link local.                             *
+.comment *  Deleted references to X command in DRAW.                      *
+.comment *  Added DRAW macro language screens, made links local.          *
+.comment *  Added DRAW - Differences from BASICA.                         *
+.comment ******************************************************************
+.context CIRCLE
+.context @CIRCLE
+:nInstru‡ao CIRCLE
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Desenha um c¡rculo ou elipse na tela.
+
+\bCIRCLE [STEP] (x!,y!),radiano![,[cor%] [,[in¡cio!] [,[fim!] [,aspecto!]]]]\p
+
+    ş \bSTEP\p       Especifica que as coordenadas sao relativas … posi‡ao
+                 atual do cursor no gr fico.
+    ş \b(x!,y!)\p    As coordenadas para o centro do c¡rculo ou elipse.
+    ş \bradianos!\p  O raio do c¡rculo ou elipse em unidades do sistema atual
+                 de coordenadas, determinado pelas instru‡oes SCREEN, VIEW e
+                 WINDOW mais recentes.
+    ş \bcor%\p       Um atributo de cor que define a cor do c¡rculo. Os
+                 atributos de cor dispon¡veis dependem do adaptador gr fico e
+                 o modo de v¡deo definido pela instru‡ao SCREEN mais recente.
+    ş \bin¡cio!\p    O ƒngulo inicial para o arco, em radianos.
+    ş \bfim!\p       O ƒngulo final para o arco, em radianos.
+    ş \baspecto!\p   A razao entre o comprimento do eixo y e o comprimento do
+                 eixo x, utilizado para desenhar elipses.
+
+    ş Para converter graus em radianos, multiplique os graus por (PI / 180).
+
+Exemplo:
+    'Este exemplo requer um adaptador gr fico colorido.
+    SCREEN 2
+    CIRCLE (320, 100), 200
+    CIRCLE STEP (0,0), 100
+
+Consulte tamb‚m  \i\p\aCOLOR\v@COLOR\v\i\p   \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p              \i\p\aModos da Tela\v@screen.modes\v\i\p
+                 \i\p\aSCREEN\v@SCREEN\v\i\p  \i\p\aValores e Atributos de Cor\v@color.table\v\i\p   \i\p\aVIEW\v@VIEW\v\i\p   \i\p\aWINDOW\v@WINDOW\v\i\p
+
+
+.context COLOR
+.context @COLOR
+:nInstru‡ao COLOR
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Define as cores de exibi‡ao da tela.
+
+\bCOLOR [prim-plano%] [,[seg-plano%] [,borda%]]\p  Modo de tela 0
+                                               (somente texto)
+\bCOLOR [seg-plano%] [,paleta%]\p                  Modo de tela 1
+\bCOLOR [prim-plano%]\p                            Modos de tela 4, 12, 13
+\bCOLOR [prim-plano%] [,seg-plano&]\p              Modos de tela 7-10
+
+    ş \bprim-plano%\p  Um n£mero que define a cor de primeiro plano da tela.
+      \bprim-plano&\p  No modo de tela 0, prim-plano% ‚ um atributo de cor
+                   que define a cor do texto. Em outros modos de tela,
+                   prim-plano% ‚ um atributo de cor ou valor de cor de 4
+                   bits (apenas no modo de tela 4) que define a cor do
+                   texto e do desenho de linha.
+    ş \bseg-plano%\p   Um n£mero que define a cor de segundo plano da tela.
+      \bseg-plano&\p   No modo de tela 0, seg-plano% ‚ um atributo de cor.
+                   No modo de tela 1, seg-plano% ‚ um valor de cor de 4
+                   bits. Nos modos de tela 7 a 10, Voltarground& ‚ um
+                   valor de cor.
+    ş \bborda%\p       Um atributo de cor que define a cor da borda da tela.
+    ş \bpaleta%\p      Um n£mero (0 ou 1) que especifica qual dos dois
+                   conjunto de atributos de cores que ser  utilizado:
+
+                     paleta%    Atributo 1    Atributo 2    Atributo 3
+                     ÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍ
+                     0          Verde         Vermelho      Marrom
+                     1          Ciano         Magenta       Branco
+
+    ş Os valores e atributos de cores dispon¡veis dependem de seu adaptador
+      gr fico e o modo de tela definido pela instru‡ao SCREEN mais recente.
+    ş Se o seu sistema estiver equipado com um adaptador EGA, VGA ou MCGA,
+      utilize a instru‡ao PALETTE para modificar as designa‡oes de cor dos
+      atributos de cores.
+
+Exemplo:
+    'Este exemplo requer um adaptador gr fico colorido.
+    SCREEN 7
+    FOR i% = 0 TO 15
+        COLOR i%
+        PRINT i%
+    NEXT i%
+
+Consulte tamb‚m  \i\p\aDRAW\v@DRAW\v\i\p                       \i\p\aModos de Tela\v@screen.modes\v\i\p   \i\p\aPAINT\v@PAINT\v\i\p
+                 \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p     \i\p\aSCREEN\v@SCREEN\v\i\p
+                 \i\p\aValores e Atributos de Cor\v@color.table\v\i\p
+.context @color.table
+:nValores e Atributos de Cor
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+             \bMonitor Colorido                   Monitor Monocrom tico\p
+             ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ    ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bCor          Padrao           Exibi‡ao          Padrao      Exibi‡ao\p
+\batributo     valor cor\p(a)\b     cor               valor cor   cor\p
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+\bModos SCREEN 0, 7, 8, 9\p(b)\b, 12, e 13\p
+0            0                Preto             0(c)        Desativada
+1            1                Azul                          Sublinhado(d)
+2            2                Verde             1(c)        Ativada(d)
+3            3                Ciano             1(c)        Ativada(d)
+4            4                Vermelho          1(c)        Ativada(d)
+5            5                Magenta           1(c)        Ativada(d)
+6            6                Marrom            1(c)        Ativada(d)
+7            7                Branco            1(c)        Ativada(d)
+8            8                Cinza             0(c)        Desativada
+9            9                Azul Claro                    Alta intensidade
+                                                            Sublinhado
+10           10               Verde Claro       2(c)        Alta intensidade
+11           11               Ciano Claro       2(c)        Alta intensidade
+12           12               Vermelho Clara    2(c)        Alta intensidade
+13           13               Magenta Clara     2(c)        Alta intensidade
+14           14               Amarelo           2(c)        Alta intensidade
+15           15               Branco de alta    0(c)        Desativada
+                              intensidade
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bModos SCREEN 1 e 9\p(e)
+
+0            0                Preto             0           Desativada
+1            11               Ciano Claro       2           Alta intensidade
+2            13               Magenta Clara     2           Alta intensidade
+3            15               Branco de alta    0           Branco acinzentado
+                              intensidade
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bModos SCREEN 2 e 11\p
+0            0                Preto             0           Desativada
+1            15               Branco de alta    0           Branco acinzentado
+                              intensidade
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  (a)  n£meros de cores EGA. VGA e MCGA utilizam valores de cor de exibi‡ao
+       que produzem cores visualmente equivalentes.
+  (b)  Para VGA ou EGA com mem¢ria de v¡deo > 64K.
+  (c)  Somente para o modo 0.
+  (d)  Desligado quando utilizado para segundo plano.
+  (e)  EGA com mem¢ria de v¡deo <= 64K.
+
+Consulte tamb‚m  \i\p\aCOLOR\v@COLOR\v\i\p                   \i\p\aModos de Tela\v@screen.modes\v\i\p
+		 \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p  \i\p\aSCREEN\v@SCREEN\v\i\p
+
+.context DRAW
+.context @DRAW
+:nInstru‡ao DRAW
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Desenha um objeto.
+
+\bDRAW texto-instru‡ao$\p
+
+    ş \btexto-instru‡ao$\p   Uma expressao alfab‚tica que cont‚m um ou mais
+			 das seguintes instru‡oes DRAW.
+
+      Instru‡oes de desenho de linha e movimenta‡ao do cursor:
+        D[n%]          Move o cursor para baixo n% unidades.
+        E[n%]          Move o cursor para cima e para a direita n% unidades.
+        F[n%]          Move o cursor para baixo e para a direita n% unidades.
+        G[n%]          Move o cursor para baixo e para a esquerda n% unidades.
+        H[n%]          Move o cursor para cima e para a esquerda n% unidades.
+        L[n%]          Move o cursor para a esquerda n% unidades.
+        M[{+|-}]x%,y%  Move o cursor para o ponto x%,y%. Se x% for precedido
+                       por + ou -, move em rela‡ao ao ponto atual.
+        R[n%]          Move o cursor para a direita n% unidades.
+        U[n%]          Move o cursor para cima n% unidades.
+        [B]            Um prefixo opcional que movimenta o cursor sem
+                       desenhar.
+        [N]            Um prefixo opcional que desenha e retorna o cursor para
+                       a sua posi‡ao original.
+
+      Instru‡oes de cor, rota‡ao e escala:
+        An%            Rotaciona um objeto n% * 90 graus (n% pode ser 0, 1,
+                       2 ou 3).
+        Cn%            Define a cor para o desenho (n% ‚ o atributo da cor).
+        Pn1%,n2%       Define a cor de preenchimento e das bordas de um objeto
+                       (n1% ‚ o atributo da cor de preenchimento, n2% ‚ o
+                       atributo da cor das bordas).
+        Sn%            Determina a escala do desenho definindo o comprimento
+                       de uma unidade de movimenta‡ao do cursor. O n% padrao
+                       ‚ 4, o que ‚ equivalente a 1 pixel.
+        TAn%           Rotaciona um ƒngulo n% graus (-360 a 360).
+
+    ş Se vocˆ omitir n% das instru‡oes de desenho de linha e movimenta‡ao
+      do cursor, o cursor ser  movido 1 unidade.
+    ş Para executar uma sub-seqˆncia da instru‡ao DRAW, de uma seqˆncia
+      da instru‡ao DRAW, utilize a instru‡ao "X":
+
+      DRAW "X"+ VARPTR$(texto-instru‡ao$)
+
+Exemplo:
+    'Este exemplo requer um adaptador gr fico colorido.
+    SCREEN 1
+    Triƒngulo$ = "F60 L120 E60"
+    DRAW "C2 X" + VARPTR$(Triƒngulo$)
+    DRAW "BD30 P1,2 C3 M-30,-30"
+
+Consulte tamb‚m  \i\p\aDiferen‡as do BASICA\v@basica.diffs\v\i\p        \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p
+                 \i\p\aSCREEN\v@SCREEN\v\i\p                      \i\p\aVARPTR$\v@VARPTR$\v\i\p
+		 \i\p\aValores e Atributos de Cor\v@color.table\v\i\p
+.context .ggx
+.context @ggx
+.context .pgfx
+.context @pgfx
+:nInstru‡oes GET, PUT (Gr ficos)
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+GET captura uma imagem gr fica da tela. PUT exibe a imagem capturada por GET.
+
+\bGET [STEP](x1!,y1!)-[STEP](x2!,y2!), matriz[(¡ndice%)]\p
+\bPUT [STEP] (x1!,y1!), matriz[(¡ndice%)] [,a‡ao]\p
+
+    ş \bSTEP\p        Especifica que as coordenadas sao relativas … posi‡ao
+                  atual do cursor no gr fico.
+    ş \b(x1!,y1!)\p   As coordenadas no canto superior esquerdo da imagem
+                  capturada por GET ou no local da tela onde PUT exibe a
+                  imagem.
+    ş \b(x2!,y2!)\p   As coordenadas do canto inferior direito da imagem
+                  capturada.
+    ş \bmatriz\p      O nome da matriz onde a imagem est  armazenada.
+                  Consulte \i\p\aMatriz de Imagem de Tela e Compatibilidade\v@ggx.arrays\v\i\p
+                  para determinar o tamanho necess rio da matriz.
+    ş \b¡ndice%\p     O ¡ndice da matriz na qual inicia o armazenamento da
+                  imagem.
+    ş \ba‡ao\p        Uma palavra chave indicando como a imagem ser  exibida:
+
+     Palavra-Chave    A‡ao
+     ÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+     AND              Mescla a imagem armazenada com uma imagem existente.
+     OR               Sobrepoe a imagem armazenada sobre a imagem existente.
+     PSET             Desenha a imagem armazenada e apaga a imagem existente.
+     PRESET           Desenha a imagem armazenada revertendo as cores, e
+                      apaga a imagem existente.
+     XOR              Desenha uma imagem armazenada ou apaga uma imagem
+                      pr‚-desenhada enquanto preserva o desenho de segundo
+                      plano, produzindo efeitos de anima‡ao.
+
+    ş Uma instru‡ao PUT deve sempre ser executada no mesmo modo de tela que a
+      instru‡ao GET utilizada para capturar a imagem, ou em modo compat¡vel.
+      Consulte \i\p\aMatriz de Imagem de Tela e Compatibilidade\v@ggx.arrays\v\i\p.
+
+Exemplo:
+    'Este exemplo requer um adaptador gr fico colorido.
+    SCREEN 1
+    DIM Caixa%(1 TO 200)
+    x1% = 0: x2% = 10: y1% = 0: y2% = 10
+    LINE (x1%, y1%)-(x2%, y2%), 2, BF
+    GET (x1%, y1%)-(x2%, y2%), Caixa%
+    DO
+        PUT (x1%, y1%), Caixa%, XOR
+        x1% = RND * 300
+        y1% = RND * 180
+        PUT (x1%, y1%), Caixa%
+    LOOP WHILE INKEY$ = ""
+
+Consulte tamb‚m  \i\p\aSCREEN\v@SCREEN\v\i\p	\i\p\aModos de Tela\v@screen.modes\v\i\p
+.context @ggx.arrays
+:nMatriz de Imagem de Tela e Compatibilidade
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Utilize bits-por-ponto-por-plano e valores de plano para determinar o tamanho
+requerido da matriz que armazena uma imagem gr fica da tela.
+Bits-por-ponto-por-plano e valores de plano, juntamente com a resolu‡ao
+horizontal, tamb‚m determinam quais modos de tela sao compat¡veis:
+
+                                                                 Resolu‡ao
+                                    Bits-por-ponto-              horizontal
+    Modo de tela                    por-plano          Planos    (em pontos)
+    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ
+    1                               2                  1         320
+    2, 4, 11                        1                  1         640
+    3                               1                  1         720
+    7                               1                  4         320
+    8, 9(> 64K mem¢ria v¡deo), 12   1                  4         640
+    9(64K mem¢ria v¡deo), 10        1                  2         640
+    13                              8                  1         320
+
+A seguinte f¢rmula fornece o tamanho requerido, em bytes, de uma matriz
+utilizada para armazenar uma imagem capturada:
+
+tamanho% = 4 + INT(((PMAP (x2!, 0) - PMAP (x1!, 0) + 1) *
+           (bits-por-ponto-por-plano%) + 7) / 8) * planos% *
+           (PMAP (y2!, 1) - PMAP (y1!, 1) + 1)
+
+As opera‡oes GET e PUT sao compat¡veis nos modos de tela com a mesma
+resolu‡ao horizontal e bits-por-ponto-por-plano e valores de plano. Por
+exemplo, os modos de tela 2, 4 e 11 sao compat¡veis, e os modos de tela
+8 e 12 sao compat¡veis.
+
+Consulte tamb‚m  \i\p\aSCREEN\v@SCREEN\v\i\p	\i\p\aModos de Tela\v@screen.modes\v\i\p
+.context LINE
+.context @LINE
+:nInstru‡ao LINE
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Desenha uma linha ou retƒngulo na tela.
+
+\bLINE [[STEP](x1!,y1!)]-[STEP](x2!,y2!) [,[cor%] [,[B | BF] [,estilo%]]]\p
+
+    ş \bSTEP\p          Especifica que as coordenadas sao relativas … posi‡ao
+                    atual do cursor no gr fico.
+    ş \b(x1!,y1!)\p,    As coordenadas de tela do in¡cio da linha e do final
+      \b(x2!,y2!)\p     da linha.
+    ş \bcor%\p          Um atributo de cor que define a cor da linha ou
+                    retƒngulo. Os atributos de cores dispon¡veis dependem
+                    de seu adaptador gr fico e o modo de tela definido pela
+                    instru‡ao SCREEN mais recente.
+    ş \bB\p             Desenha um retƒngulo ao inv‚s de uma linha.
+    ş \bBF\p            Desenha uma caixa s¢lida.
+    ş \bestilo%\p       Um valor de 16 bits cujos bits especificam se os pontos
+                    sao desenhados ou nao. Utilize para desenhar linhas
+                    tracejadas ou pontilhadas.
+
+Example:
+    'Este exemplo requer um adaptador gr fico colorido.
+    SCREEN 1
+    LINE (110, 70)-(190, 120), , B
+    LINE (0, 0)-(320, 200), 3, , &HFF00
+
+Consulte tamb‚m  \i\p\aCIRCLE\v@CIRCLE\v\i\p         \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p
+		 \i\p\aModos de Tela\v@screen.modes\v\i\p  \i\p\aPRESET, PSET\v@PSET\v\i\p
+                 \i\p\aSCREEN\v@SCREEN\v\i\p         \i\p\aValores e Atributos de Cor\v@color.table\v\i\p
+.context PAINT
+.context @PAINT
+:nInstru‡ao PAINT
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Preenche uma  rea gr fica com uma determinada cor ou padrao.
+
+\bPAINT [STEP] (x!,y!)[,[{cor% | preenchimento$}]
+      [,[cor-borda%] [,cor-fundo$]]]\p
+
+    ş \bSTEP\p            Especifica que as coordenadas sao relativas … posi‡ao
+                      atual do cursor no gr fico.
+    ş \b(x!,y!)\p         As coordenadas de tela onde a pintura inicia.
+    ş \bcor%\p            Um atributo de cor que define a cor de preenchimento.
+    ş \bpreenchimento$\p  Um padrao de preenchimento com 8 bits de largura e
+                      at‚ 64 bytes de comprimento, definido como:
+
+                       preenchimento$ = CHR$(arg1)+CHR$(arg2)+...+CHR$(argn%)
+
+                      Os argumentos para CHR$ sao n£meros entre 0 e 255.
+                      Cada CHR$(argn%) define uma fatia de 1-byte, 8-pontos
+                      do padrao, baseado no formato bin rio do n£mero.
+    ş \bcor-borda%\p      Um atributo de cor que especifica a cor da borda da
+                       rea preenchida. PAINT encerra o preenchimento da  rea
+                      quando encontrar a borda da cor especificada.
+    ş \bcor-fundo$\p      Uma fatia de 1-byte, 8-pontos do tipo lado-a-lado de
+                      segundo plano. A especifica‡ao de uma fatia lado-a-lado
+                      de segundo plano possibilita pintar sobre uma  rea
+                      j  pintada.
+
+    ş Os atributos de cores dispon¡veis dependem de seu adaptador gr fico e do
+      modo de tela definido pela instru‡ao SCREEN mais recente.
+
+Exemplo:
+    'Este exemplo requer um adaptador gr fico colorido.
+    SCREEN 1
+    CIRCLE (106, 100), 75, 1
+    LINE (138, 35)-(288, 165), 1, B
+    PAINT (160, 100), 2, 1
+
+Consulte tamb‚m  \i\p\aASC, CHR$\v@CHR$\v\i\p    \i\p\aCIRCLE\v@CIRCLE\v\i\p          \i\p\aDRAW\v@DRAW\v\i\p
+                 \i\p\aLINE\v@LINE\v\i\p         \i\p\aModos de Tela\v@screen.modes\v\i\p   \i\p\aSCREEN\v@SCREEN\v\i\p
+		 \i\p\aValores e Atributos de Cor\v@color.table\v\i\p
+.context PALETTE
+.context @PALETTE
+:nInstru‡ao PALETTE, PALETTE USING
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Modifica as designa‡oes de cores dos atributos de cores no modo de tela atual.
+PALETTE e PALETTE USING funcionam somente em sistemas equipados com
+adaptadores EGA, VGA ou MCGA.
+
+\bPALETTE [atributo%,cor&]\p
+\bPALETTE USING matriz#[(¡ndice%)]\p
+
+    ş \batributo%\p  O atributo de cor a ser modificado.
+    ş \bcor&\p       Um valor de cor a ser designado a um atributo.
+    ş \bmatriz#\p    Uma matriz de valores de cores a ser designada ao conjunto
+                 de atributos do modo de tela atual. A matriz deve ser
+                 suficientemente grande para designar cores a todos os
+                 atributos.
+    ş \b¡ndice%\p    O ¡ndice do primeiro elemento da matriz a ser designado a
+                 um atributo.
+
+    ş Os valores e atributos dispon¡veis dependem de seu adaptador gr fico
+      e do modo de tela definido pela instru‡ao SCREEN mais recente.
+
+Exemplo:
+    'Este exemplo requer um adaptador gr fico colorido.
+    PALETTE 0, 1
+    SCREEN 1
+    FOR i% = 0 TO 3: a%(i%) = i%: NEXT i%
+    LINE (138, 35)-(288, 165), 3, BF
+    LINE (20, 10)-(160, 100), 2, BF
+    DO
+        FOR i% = 0 TO 3
+            a%(i%) = (a%(i%) + 1) MOD 16
+        NEXT i%
+        PALETTE USING a%(0)
+    LOOP WHILE INKEY$ = ""
+
+Consulte tamb‚m  \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aModos de Tela\v@screen.modes\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+                 \i\p\aValores e Atributos de Cor\v@color.table\v\i\p
+
+
+.context PCOPY
+.context @PCOPY
+:nInstru‡ao PCOPY
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Copia uma p gina de mem¢ria de v¡deo para outra.
+
+\bPCOPY p gina-origem%,p gina-destino%\p
+
+    ş \bp gina-origem%\p     O n£mero da p gina de mem¢ria de v¡deo a ser
+                         copiada.
+    ş \bp gina-destino%\p    O n£mero da p gina de mem¢ria de v¡deo para onde
+                         copiar.
+
+    ş O valor que indentifica a p gina de v¡deo ‚ determinado pelo tamanho
+      da mem¢ria de v¡deo e o modo de tela atual.
+
+Exemplo:
+    PCOPY 1, 3
+
+Consulte tamb‚m   \i\p\aModos de Tela\v@screen.modes\v\i\p   \i\p\aSCREEN\v@SCREEN\v\i\p
+.context SCREEN
+.context @SCREEN
+:nInstru‡ao SCREEN
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Define o modo de tela e outras caracter¡sticas da tela.
+
+\bSCREEN modo% [,[chave-cor%] [,[[p gina-ativa%] [,p gina-atual%]]]\p
+
+    ş \bmodo%\p 	  Define o modo de tela. Consulte \i\p\aModos de Tela\v@screen.modes\v\i\p.
+    ş \bchave-cor%\p      Um valor (0 ou 1) que alterna entre a exibi‡ao
+                      monocrom tica e colorida (somente os modos 0 e 1):
+
+                      Modo    Valor       A‡ao
+                      ÍÍÍÍ    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                      0       0           Desativa cores
+                      0       Nao zero    Ativa cores
+                      1       0           Ativa cores
+                      1       Nao zero    Desativa cores
+
+    ş \bp gina-ativa%\p   A p gina de tela na qual a sa¡da de gr fico ou
+                      texto ser  gravada.
+    ş \bp gina-atual%\p   A p gina de tela atualmente exibida na tela.
+
+Exemplo:
+    'Este exemplo requer um adaptador gr fico colorido.
+    SCREEN 1        '320 x 200 gr ficos
+    LINE (110, 70)-(190, 120), , B
+    LINE (0, 0)-(320, 200), 3, , &HFF00
+
+Consulte tamb‚m  \i\p\aCIRCLE\v@CIRCLE\v\i\p   \i\p\aCOLOR\v@COLOR\v\i\p           \i\p\aDRAW\v@DRAW\v\i\p     \i\p\aFun‡ao SCREEN\v@screenf\v\i\p
+                 \i\p\aLINE\v@LINE\v\i\p     \i\p\aModos de Tela\v@screen.modes\v\i\p   \i\p\aPAINT\v@PAINT\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p
+		 \i\p\aWINDOW\v@WINDOW\v\i\p
+.context @screen.modes
+:nModos de Tela
+  \i\p\aConte£do\vhelpTableId\v\i\p  \i\p\aIndice\vhelpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+A seguinte tabela apresenta um resumo dos modos de tela:
+
+ÄÄÄÄÄÄÄÄÄAdaptadores MDPA, CGA, Hercules, Olivetti, EGA, VGA ou MCGAÄÄÄÄÄÄÄÄÄÄ
+SCREEN 0: Somente modo texto
+    ş Formato de texto 40 x 25, 40 x 43, 40 x 50, 80 x 25, 80 x 43 ou 80 x 50,
+      caixa de caractere 8 x 8 (8 x 14, 9 x 14 ou 9 x 16 com EGA ou VGA)
+    ş 16 cores designadas a qualquer um dos 16 atributos (com CGA ou EGA)
+    ş 64 cores designadas a qualquer um dos 16 atributos (com EGA ou VGA)
+    ş Dependendo da resolu‡ao do texto e do adaptador, 8 p ginas de mem¢ria de
+      v¡deo (0-7), 4 p ginas (0-3), 2 p ginas (0-1) ou 1 p gina (0)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄAdaptadores CGA, EGA, VGA ou MCGAÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 1: gr ficos de 320 x 200
+    ş Formato de texto 40 x 25, caixa de caractere 8 x 8
+    ş 16 cores de segundo plano e um de dois conjuntos de 3 cores de segundo
+      plano designados com a instru‡ao COLOR com CGA
+    ş 16 cores designadas a 4 atributos com EGA ou VGA
+    ş 1 p gina de mem¢ria de v¡deo (0)
+SCREEN 2: gr ficos de 640 x 200
+    ş Formato de texto 80 x 25, caixa de caractere 8 x 8
+    ş 16 cores designadas a 2 atributos com EGA ou VGA
+    ş 1 p gina de mem¢ria de v¡deo (0)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄAdaptadores Hercules, Olivetti ou AT&TÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 3: Adaptador Hercules requerido, somente monitor monocrom tico
+    ş Gr ficos de 720 x 348
+    ş Formato de texto 80 x 25, caixa de caractere 9 x 14
+    ş Normalmente 2 p ginas de mem¢ria de v¡deo (0-1); 1 p gina (0) se for
+      instalado um adaptador de v¡deo colorido secund rio
+    ş A instru‡ao PALETTE nao ‚ suportada
+    ş Ativa o controlador MSHERC.COM da Hercules antes de utilizar o modo de
+      tela 3
+SCREEN 4:
+    ş Suporta os modelos M24, M240, M28, M280, M380, M380/C e M380/T da
+      Olivetti Personal Computers e AT&T Personal Computers 6300 series
+    ş Gr ficos de 640 x 400
+    ş Formato de texto 80 x 25, caixa de caractere 8 x 16
+    ş 1 de 16 cores designadas como cor de primeiro plano (selecionada pela
+      instru‡ao COLOR); o segundo plano est  fixado na cor preta
+    ş 1 p gina de mem¢ria de v¡deo (0)
+    ş A instru‡ao PALETTE nao ‚ suportada
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄAdaptadores EGA ou VGAÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 7: gr ficos de 320 x 200
+    ş Formato de texto 40 x 25, caixa de caractere 8 x 8
+    ş Designa‡ao de 16 cores a qualquer um de 16 atributos
+    ş Se for um adaptador EGA com 64K de mem¢ria, 2 p ginas de mem¢ria de
+      v¡deo (0-1); caso contr rio, 8 p ginas (0-7)
+SCREEN 8: gr ficos de 640 x 200
+    ş Formato de texto 80 x 25, caixa de caractere 8 x 8
+    ş Designa‡ao de 16 cores a qualquer um de 16 atributos
+    ş Se for um adaptador EGA com 64K de mem¢ria, 1 p gina de mem¢ria de
+      v¡deo (0); caso contr rio, 4 p ginas (0-3)
+SCREEN 9: gr ficos de 640 x 350
+    ş Formato de texto 80 x 25 ou 80 x 43, caixa de caractere 8 x 14 ou 8 x 8
+    ş 16 cores designadas a 4 atributos (adaptador com 64K de mem¢ria), ou
+      64 cores designadas a 16 atributos (adaptador com mais que 64K)
+    ş Se for um adaptador EGA com 64K de mem¢ria, 1 p gina de mem¢ria de
+      v¡deo (0); caso contr rio, 2 p ginas (0-1)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄAdaptadores EGA ou VGA, Somente Monitor Monocrom ticoÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 10: gr ficos de 640 x 350, somente monitor monocrom tico
+    ş Formato de texto 80 x 25 ou 80 x 43, caixa de caractere 8 x 14 ou 8 x 8
+    ş At‚ 9 pseudocores designadas a 4 atributos
+    ş 2 p ginas de mem¢ria de v¡deo (0-1), adaptador com 256K de mem¢ria
+      requerido
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄAdaptadores VGA ou MCGAÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 11 (VGA ou MCGA)
+    ş Gr ficos de 640 x 480
+    ş Formato de texto 80 x 30 ou 80 x 60, caixa de caractere 8 x 16 ou 8 x 8
+    ş Designa‡ao de at‚ 256K cores a 2 atributos
+    ş 1 p gina de mem¢ria de v¡deo (0)
+SCREEN 12 (VGA)
+    ş Gr ficos de 640 x 480
+    ş Formato de texto 80 x 30 ou 80 x 60, caixa de caractere 8 x 16 ou 8 x 8
+    ş Designa‡ao de at‚ 256K cores a 16 atributos
+    ş 1 p gina de mem¢ria de v¡deo (0)
+SCREEN 13 (VGA ou MCGA)
+    ş Gr ficos de 320 x 200
+    ş Formato de texto 40 x 25, caixa de caractere 8 x 8
+    ş Designa‡ao de at‚ 256K cores a 256 atributos
+    ş 1 p gina de mem¢ria de v¡deo (0)
+
+Consulte tamb‚m    \i\p\aInstru‡ao SCREEN\v@SCREEN\v\i\p
+.context @screenf
+:nFun‡ao SCREEN
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Fornece o valor ASCII ou atributo de cor de um caractere em uma posi‡ao
+especificada na tela.
+
+\bSCREEN (linha%,coluna% [,cor%])\p
+
+    ş \blinha%\p     A coordenada de linha de um caractere.
+    ş \bcoluna%\p    A coordenada de coluna de um caractere.
+    ş \bcor%\p       Um valor (0 ou 1) que especifica o que ser  fornecido.
+
+                    Valor             Fornecer 
+                    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                    0 (ou omitido)    O c¢digo ASCII do caractere.
+                    1                 O atributo de cor do caractere.
+
+Exemplo:
+    CLS
+    PRINT "Alo"
+    PRINT "O valor ASCII do caractere em 1,1 ‚"; SCREEN(1, 1)
+
+Consulte tamb‚m  \i\p\aC¢digos de caractere ASCII\v@ac\v\i\p	\i\p\aInstru‡ao SCREEN\v@SCREEN\v\i\p
+                 \i\p\aPOINT\v@POINT\v\i\p                       \i\p\aValores e Atributos de Cor\v@color.table\v\i\p
+
+.context VIEW
+.context @VIEW
+:nInstru‡ao VIEW
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Define o tamanho e o local de uma porta de visualiza‡ao onde os gr ficos podem
+ser exibidos na tela.
+
+\bVIEW [[SCREEN] (x1!,y1!)-(x2!,y2!) [,[cor%] [,borda%]]]\p
+
+    ş \bSCREEN\p                 Especifica que as coordenadas sao relativas …
+                             tela ao inv‚s da porta de visualiza‡ao.
+    ş \b(x1!,y1!)-(x2!,y2!)\p    As coordenadas de cantos diagonais opostos
+                             da porta de visualiza‡ao.
+    ş \bcor%\p                   Um atributo de cor que define a cor de
+                             preenchimento da porta de visualiza‡ao.
+    ş \bborda%\p                 Um atributo de cor que define a cor de borda da
+                             porta de visualiza‡ao.
+
+    ş Se todos os argumentos forem omitidos, a tela inteira ser  a porta de
+      visualiza‡ao.
+    ş Os atributos de cor dispon¡veis dependem de seu adaptador gr fico e do
+      modo de tela definido pela instru‡ao SCREEN mais recente.
+
+Exemplo:
+    'Este exemplo requer um adaptador gr fico colorido.
+    SCREEN 1
+    VIEW (10, 10)-(300, 180), , 1
+    LOCATE 1, 11: PRINT "Uma porta de visualiza‡ao de um gr fico grande";
+    VIEW SCREEN (80, 80)-(200, 125), , 1
+    LOCATE 11, 11: PRINT "Uma porta de visualiza‡ao de um gr fico pequeno";
+
+Consulte tamb‚m  \i\p\aCLS\v@CLS\v\i\p         \i\p\aModos de Tela\v@screen.modes\v\i\p
+		 \i\p\aSCREEN\v@SCREEN\v\i\p	    \i\p\aValores e Atributos de Cor\v@color.table\v\i\p
+                 \i\p\aVIEW PRINT\v@vupri\v\i\p  \i\p\aWINDOW\v@WINDOW\v\i\p

@@ -1,0 +1,107 @@
+SUMMARY upd drive extention filename fileext path
+
+[N.B. the spelling is extenTion not extenSion for hysterical reasons.]
+
+#include <tools.h>
+
+int upd(pstrDef, pstrUpd, pstrDst)
+char *pstrDef;
+char *pstrUpd;
+char *pstrDst;
+
+int drive(pstrSrc, pstrDst)
+char *pstrSrc;
+char *pstrDst;
+
+int extention(pstrSrc, pstrDst)
+char *pstrSrc;
+char *pstrDst;
+
+int filename(pstrSrc, pstrDst)
+char *pstrSrc;
+char *pstrDst;
+
+int fileext(pstrSrc, pstrDst)
+char *pstrSrc;
+char *pstrDst;
+
+int path(pstrSrc, pstrDst)
+char *pstrSrc;
+char *pstrDst;
+
+DESCRIPTION
+
+upd constructs a destination string from parts supplied by the definition and
+update strings.  The parts are DRIVE, PATH, FILENAME and EXTENTION.  The
+update has priority over the definition as a source of parts.  The return
+value indicates which parts, if any, were copied.
+
+drive, path, filename, extension, fileext copy the corresponding parts, if
+any from the source to the destination and return non-zero if a part was
+copied and zero if no part copied.
+
+DRIVE is the initial string part upto and including the first colon.  If
+there is no colon, then there is no DRIVE part.
+
+PATH starts after the DRIVE part, if any, and goes up to and include last
+backslash character.
+
+FILENAME starts after PATH and goes up to but does NOT include a period.
+
+EXTENTION starts after filename with the period.
+
+FILEEXT is FILENAME and EXTENSION
+
+The following is the output from the example below.  The definition
+is c:\tools\h\tools.h.
+
+drive	  c:
+path	  \tools\h\
+filename  tools
+extention .h
+fileext   tools.h
+upd	  c:\temp\test.h
+
+RETURN VALUE
+
+upd returns the OR of the flags U_DRIVE, U_PATH, U_NAME, U_EXT, indicating
+which parts were returned.  TESTFLAG can be used to test the return value
+for the flags.
+
+drive, path, filename, extension, fileext return non-zero if a part was
+copied and zero if no part copied.
+
+IMPLEMENTATION
+
+
+SEE ALSO
+
+
+NOTE
+
+
+EXAMPLE
+#include <tools.h>
+
+/* N.B. in string constants \\ represents a single \ */
+char str[] = "c:\\tools\\h\\tools.h";
+
+DoPrint(pstr1, pstr2)
+char *pstr1, *pstr2;
+{
+    printf("%s%s\n", pstr1, pstr2);
+}
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    char buf[MAXPATHLEN];
+
+    drive(str, buf);		    DoPrint("drive     ", buf);
+    path(str, buf);		    DoPrint("path      ", buf);
+    filename(str, buf); 	    DoPrint("filename  ", buf);
+    extention(str, buf);	    DoPrint("extention ", buf);
+    fileext(str, buf);		    DoPrint("fileext   ", buf);
+    upd(str, "\\temp\\test", buf);  DoPrint("upd       ", buf);
+}

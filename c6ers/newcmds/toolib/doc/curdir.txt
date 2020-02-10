@@ -1,0 +1,40 @@
+SUMMARY curdir
+
+#include <tools.h>
+
+int curdir(pstrBuf, chDrive)
+char *pstrBuf;
+char chDrive;
+
+DESCRIPTION
+
+curdir constructs a string at pstrBuf that is the current directory of the
+specified drive.  If chDrive is zero, then the current drive is used.
+pstrBuf is assumed to be large enough to hold the path, e.g. MAXPATHLEN from
+tools.h.
+
+RETURN VALUE
+
+Returns non-zero if invalid drive else zero.
+
+IMPLEMENTATION
+
+Uses dos function 19h if no drive specified and 47h to get current directory.
+
+SEE ALSO   rootpath
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    char str[MAXPATHLEN];
+
+    curdir(str, 0); printf("current directory %s\n", str);
+}

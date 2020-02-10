@@ -1,0 +1,85 @@
+FULL:
+   set OAKFULL=1
+#
+# Copy the tools
+#
+   xcopy oaktools\makefull.bat     $(OAKDIR)\makeoak.bat      < oaktools\f.key
+   xcopy oaktools\oakenv.bat       $(OAKDIR)\oakenv.bat       < oaktools\f.key
+   xcopy oaktools\cleanful.bat     $(OAKDIR)\clean.bat        < oaktools\f.key
+   xcopy makefile.oak              $(OAKDIR)\makefile         < oaktools\f.key
+
+   xcopy oaktools\*.key            $(OAKDIR)
+   $(MAKE) /f tools\bin\source\buildmsg\copy.oak
+   xcopy tools\bin          $(OAKDIR)\tools\bin          < $(OAKDIR)\d.key
+   xcopy tools\tmp\holder.oak $(OAKDIR)\tools\tmp        < $(OAKDIR)\d.key
+   xcopy tools\include      $(OAKDIR)\tools\include /s   < $(OAKDIR)\d.key
+   xcopy tools\lib          $(OAKDIR)\tools\lib          < $(OAKDIR)\d.key
+#
+# Clean up the tools directory a bit...
+#
+   copy $(OAKDIR)\tools\bin\*.c $(OAKDIR)\tools\bin\source
+   del  $(OAKDIR)\tools\bin\*.c
+   copy $(OAKDIR)\tools\bin\*.asm $(OAKDIR)\tools\bin\source
+   del  $(OAKDIR)\tools\bin\*.asm
+   del  $(OAKDIR)\tools\bin\*.bat
+   del  $(OAKDIR)\tools\bin\cv.exe
+   del  $(OAKDIR)\tools\bin\cv.hlp
+   del  $(OAKDIR)\tools\bin\cvems.exe
+   ren  $(OAKDIR)\tools\bin\cv314.exe cv.exe
+   ren  $(OAKDIR)\tools\bin\cv314.hlp cv.hlp
+   del  $(OAKDIR)\tools\bin\pklite.exe
+   copy oaktools\pklite.bat $(OAKDIR)\tools\bin
+   ren  $(OAKDIR)\tools\bin\compress.exe compres2.exe
+   copy oaktools\compress.bat $(OAKDIR)\tools\bin
+   del  $(OAKDIR)\tools\bin\nosrvbld.exe
+   ren  $(OAKDIR)\tools\bin\nosrvbld.oak nosrvbld.exe
+
+#
+# Copy language directory
+#
+  -xcopy /s /e $(LR)\$(COUNTRY)\bios     $(OAKDIR)\lang\$(COUNTRY)\bios     < $(OAKDIR)\d.key
+#  -xcopy /s /e $(LR)\$(COUNTRY)\inc      $(OAKDIR)\lang\$(COUNTRY)\inc      < $(OAKDIR)\d.key
+  -xcopy /s /e $(LR)\$(COUNTRY)\messages $(OAKDIR)\lang\$(COUNTRY)\messages < $(OAKDIR)\d.key
+  -xcopy /s /e $(LR)\$(COUNTRY)\mkimage  $(OAKDIR)\lang\$(COUNTRY)\mkimage  < $(OAKDIR)\d.key
+  -xcopy /s /e $(LR)\$(COUNTRY)\tools    $(OAKDIR)\lang\$(COUNTRY)\tools    < $(OAKDIR)\d.key
+
+  -xcopy /s /e $(LR)\$(COUNTRY)\cmd\fdisk   $(OAKDIR)\lang\$(COUNTRY)\cmd\fdisk   < $(OAKDIR)\d.key
+  -xcopy /s /e $(LR)\$(COUNTRY)\cmd\setver  $(OAKDIR)\lang\$(COUNTRY)\cmd\setver  < $(OAKDIR)\d.key
+  -xcopy /s /e $(LR)\$(COUNTRY)\cmd\sort    $(OAKDIR)\lang\$(COUNTRY)\cmd\sort    < $(OAKDIR)\d.key
+  -xcopy /s /e $(LR)\$(COUNTRY)\cmd\cps\mirror  $(OAKDIR)\lang\$(COUNTRY)\cmd\cps\mirror  < $(OAKDIR)\d.key
+  -xcopy /s /e $(LR)\$(COUNTRY)\cmd\cps\rebuild $(OAKDIR)\lang\$(COUNTRY)\cmd\cps\rebuild < $(OAKDIR)\d.key
+
+  -xcopy /s /e $(LR)\$(COUNTRY)\dev\emm386 $(OAKDIR)\lang\$(COUNTRY)\dev\emm386 < $(OAKDIR)\d.key
+  -xcopy /s /e $(LR)\$(COUNTRY)\dev\himem  $(OAKDIR)\lang\$(COUNTRY)\dev\himem  < $(OAKDIR)\d.key
+  -xcopy /s /e $(LR)\$(COUNTRY)\dev\power  $(OAKDIR)\lang\$(COUNTRY)\dev\power  < $(OAKDIR)\d.key
+
+  -xcopy /s /e $(LR)\$(COUNTRY)\install\oem     $(OAKDIR)\lang\$(COUNTRY)\install\oem     < $(OAKDIR)\d.key
+  -xcopy /s /e $(LR)\$(COUNTRY)\install\common  $(OAKDIR)\lang\$(COUNTRY)\install\common  < $(OAKDIR)\d.key
+  -xcopy /s /e $(LR)\$(COUNTRY)\install\lib     $(OAKDIR)\lang\$(COUNTRY)\install\lib     < $(OAKDIR)\d.key
+  -xcopy /s /e $(LR)\$(COUNTRY)\install\include $(OAKDIR)\lang\$(COUNTRY)\install\include < $(OAKDIR)\d.key
+   del $(OAKDIR)\lang\$(COUNTRY)\install\oem\jastro.txt
+
+#
+# Copy everything else
+#
+   $(MAKE) /f lib\copy.oak
+   $(MAKE) /f inc\copy.oak
+   $(MAKE) /f h\copy.oak
+   $(MAKE) /f messages\copy.oak
+   $(MAKE) /f boot\copy.oak
+   $(MAKE) /f mkimage\copy.oak
+   $(MAKE) /f bios\copy.oak
+   $(MAKE) /f dos\copy.oak
+   $(MAKE) /f install\copy.oak
+   $(MAKE) /f install\lib\copy.oak
+   cd cmd
+   $(MAKE) /f build.oak
+   cd ..\dev
+   $(MAKE) /f build.oak
+   cd ..
+   -md $(OAKDIR)\compress
+   -md $(OAKDIR)\binaries
+   del $(OAKDIR)\*.key
+
+
+

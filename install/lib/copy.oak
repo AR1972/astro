@@ -1,0 +1,67 @@
+diris = install\lib
+
+all:
+  -md $(OAKDIR)\$(diris)
+
+   del   $(diris)\bios\*.*                               < $(OAKDIR)\ycr.key
+  -md $(OAKDIR)\$(diris)\bios
+   copy $(diris)\bios\*.*  $(OAKDIR)\$(diris)\bios
+   del $(OAKDIR)\$(diris)\bios\makefile
+   ren $(OAKDIR)\$(diris)\bios\makefile.oak $(OAKDIR)\$(diris)\bios\makefile
+
+   del   $(diris)\copy\*.*                               < $(OAKDIR)\ycr.key
+  -md $(OAKDIR)\$(diris)\copy
+   copy $(diris)\copy\*.*  $(OAKDIR)\$(diris)\copy
+   del $(OAKDIR)\$(diris)\copy\makefile
+   ren $(OAKDIR)\$(diris)\copy\makefile.oak $(OAKDIR)\$(diris)\copy\makefile
+
+   del   $(diris)\disk\*.*                               < $(OAKDIR)\ycr.key
+  -md $(OAKDIR)\$(diris)\disk
+   copy $(diris)\disk\*.*  $(OAKDIR)\$(diris)\disk
+   del $(OAKDIR)\$(diris)\disk\makefile
+   ren $(OAKDIR)\$(diris)\disk\makefile.oak $(OAKDIR)\$(diris)\disk\makefile
+
+   del   $(diris)\file\*.*                               < $(OAKDIR)\ycr.key
+  -md $(OAKDIR)\$(diris)\file
+   copy $(diris)\file\*.*  $(OAKDIR)\$(diris)\file
+   del $(OAKDIR)\$(diris)\file\makefile
+   ren $(OAKDIR)\$(diris)\file\makefile.oak $(OAKDIR)\$(diris)\file\makefile
+
+   del   $(diris)\hardware\*.*                           < $(OAKDIR)\ycr.key
+  -md $(OAKDIR)\$(diris)\hardware
+   copy $(diris)\hardware\*.*  $(OAKDIR)\$(diris)\hardware
+   del $(OAKDIR)\$(diris)\hardware\makefile
+   ren $(OAKDIR)\$(diris)\hardware\makefile.oak $(OAKDIR)\$(diris)\hardware\makefile
+
+   del   $(diris)\hdisk\*.*                              < $(OAKDIR)\ycr.key
+  -md $(OAKDIR)\$(diris)\hdisk
+   copy $(diris)\hdisk\*.*  $(OAKDIR)\$(diris)\hdisk
+   del $(OAKDIR)\$(diris)\hdisk\makefile
+   ren $(OAKDIR)\$(diris)\hdisk\makefile.oak $(OAKDIR)\$(diris)\hdisk\makefile
+
+   del   $(diris)\prompts\*.*                            < $(OAKDIR)\ycr.key
+  -md $(OAKDIR)\$(diris)\prompts
+   copy $(diris)\prompts\*.*  $(OAKDIR)\$(diris)\prompts
+   del $(OAKDIR)\$(diris)\prompts\makefile
+   ren $(OAKDIR)\$(diris)\prompts\makefile.oak $(OAKDIR)\$(diris)\prompts\makefile
+
+   del   $(diris)\strlib\*.*                             < $(OAKDIR)\ycr.key
+  -md $(OAKDIR)\$(diris)\strlib
+   copy $(diris)\strlib\*.*  $(OAKDIR)\$(diris)\strlib
+   del $(OAKDIR)\$(diris)\strlib\makefile
+   ren $(OAKDIR)\$(diris)\strlib\makefile.oak $(OAKDIR)\$(diris)\strlib\makefile
+
+   del   $(diris)\window\*.*                             < $(OAKDIR)\ycr.key
+  -md $(OAKDIR)\$(diris)\window
+   copy $(diris)\window\*.*  $(OAKDIR)\$(diris)\window
+   del $(OAKDIR)\$(diris)\window\makefile
+   ren $(OAKDIR)\$(diris)\window\makefile.oak $(OAKDIR)\$(diris)\window\makefile
+
+
+#   xcopy $(diris)\libfile.oak    $(OAKDIR)\$(diris)\libfile   < $(OAKDIR)\f.key
+   xcopy $(diris)\llibfile.oak   $(OAKDIR)\$(diris)\llibfile  < $(OAKDIR)\f.key
+   xcopy $(diris)\libuild.oak    $(OAKDIR)\$(diris)\libuild   < $(OAKDIR)\f.key
+   xcopy $(diris)\makefile.oak   $(OAKDIR)\$(diris)\makefile  < $(OAKDIR)\f.key
+   xcopy $(diris)\model.inc      $(OAKDIR)\$(diris)
+
+

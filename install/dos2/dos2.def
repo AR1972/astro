@@ -1,0 +1,30 @@
+;------------------------------------
+; DOS2.DEF module definition file
+;------------------------------------
+
+NAME           DOSSETUP WINDOWCOMPAT
+EXETYPE        WINDOWS
+DESCRIPTION    '2nd part of DOS install (c) Microsoft Corp., 1992'
+STUB           'WINSTUB.EXE'
+CODE           PRELOAD MOVEABLE 
+DATA           MOVEABLE MULTIPLE
+HEAPSIZE       32768
+STACKSIZE      8192
+
+EXPORTS        
+        fnButton
+        fnText
+	ProDlgProc
+	ProBarProc
+;       dsWelcomeDlg
+	wsDskTypeDlg            
+	wsFmtProDlg             
+	wsQueryStartDlg         
+	wsExitDlg
+	wsDefSetupDlgProc
+	wsSetupExit
+	wsUninstallDlg	    
+
+
+
+

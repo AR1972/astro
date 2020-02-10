@@ -1,0 +1,618 @@
+.comment ==============================================================
+.comment QBasic Environment Help
+.comment  This file contains Environment Help (for menus,
+.comment  dialog boxes, etc.). These are not error messages
+.comment ==============================================================
+.comment 25/11/91  Cleared comments
+.comment    --Martinju
+.comment ==============================================================
+.context hidGreetingBox
+:nWelkom bij QBasic
+  ş Druk op Esc voor de QBasic-programmeeromgeving.
+
+  ş Druk op Enter voor een Beknopt overzicht van QBasic.
+    Het Beknopt overzicht toont u hoe u de QBasic-omgeving
+    en het QBasic Help-systeem moet gebruiken.
+.comment ------------------------------------------------
+.comment     Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context hidFileOpen
+:nHet dialoogvenster Openen
+Gebruik dit om een bestaand programmabestand te openen.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄ- Openen ÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                 ³  Typ hier de naam van
+³ Bestandsnaam: ±±±±±±±± ÄÄÄÄÄÄÄÄÄÄ het bestand als dit
+³                                 ³  in de huidige directory
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ- (hier) staat, of
+³                                 ³
+³     Bestanden     Dir's/stations³  selecteer hier een
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  bestand of directory
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  of station als het
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  bestand zich ergens
+³                               ³  anders bevindt.
+³        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÀÄÄÄÄÄÄÄÄÄÄÄÙ
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Kies vervolgens <OK>.
+
+U kunt ook een nieuw station of nieuwe directory selecteren
+door deze in het tekstvak Bestandsnaam te typen.
+
+U kunt door de inhoud van andere stations en directory's
+bladeren door een jokerteken op te nemen in de bestandsnaam
+(zoals *.BAS) en een nieuw station en nieuwe directory te
+kiezen.
+
+Opmerking: Om een bestand te kunnen openen dat is aangemaakt
+           in GW-BASIC of BASICA, moet dit bestand in
+           GW-BASIC of BASICA zijn opgeslagen met de optie A.
+.context hidFileSave
+:nHet dialoogvenster Opslaan als
+Gebruik dit om het huidige bestand op te slaan onder een
+bepaalde naam.
+ÚÄÄÄÄÄÄÄÄÄÄ Opslaan als ÄÄÄÄÄÄÄÄÄ¿
+³                                ³  Accepteer deze naam of
+³ Bestandsnaam: ±±±±±±±±±±±±±±± ÄÄ typ hier een nieuwe naam.
+³                                ³
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ In deze directory wordt
+³                                ³  het bestand opgeslagen.
+³          Dir's/stations        ³
+³           ±±±±±±±±±±±  ÄÄÄÄÄÄÄÄÄ Gebruik Dir's/stations
+³           ±±±±±±±±±±±          ³  om het bestand ergens
+³           ±±±±±±±±±±±          ³  anders op te slaan.
+³                                ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Kies vervolgens <OK>.
+.context hidFilePrint
+:nHet dialoogvenster Afdrukken
+Gebruik dit om een programma of Help-onderwerp geheel of
+gedeeltelijk af te drukken. Zorg ervoor dat de printer die
+verbonden is met LPT1 op uw computer aan staat en gereed is
+om af te drukken. Kies vervolgens een van de volgende opties
+en druk op Enter:
+ÚÄÄÄÄÄÄ Afdrukken ÄÄÄÄÄÄ¿
+³ ± Alleen selectie  ÄÄÄÄ Drukt geselecteerde tekst af.
+³                       ³
+³ ± Venster        ÄÄÄÄÄÄ Drukt een procedure of tekst in
+³                       ³  het huidige venster af.
+³ ± Programma          ÄÄ Drukt het gehele huidige
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  programma af.
+
+De optie Programma is niet beschikbaar wanneer u
+Afdrukken kiest terwijl de cursor zich in het
+Help-venster bevindt.
+
+Tip: Selecteer voordat u de opdracht Afdrukken kiest de
+     gewenste tekst in uw programma of Help-venster.
+     Plaats de cursor aan het begin van de tekst die
+     u wilt afdrukken en druk op Shift+een cursortoets
+     tot alle tekst gemarkeerd is. Kies vervolgens de
+     opdracht Afdrukken.
+.context hidNewProc
+:nHet dialoogvenster Nieuwe SUB of Nieuwe FUNCTION
+Gebruik dit om een nieuwe SUB- of FUNCTION-procedure aan
+te maken. Typ de naam van de nieuwe procedure (maximaal
+40 tekens) in het tekstvak en kies vervolgens <OK>.
+
+Beschrijvende procedurenamen zijn een steun bij het
+onthouden van het gebruik van de procedure en verkleinen de
+kans dat u gelijkluidende namen gebruikt voor procedures of
+variabelen.
+.context hidViewSubs
+:nHet dialoogvenster SUB's
+Gebruik dit om SUB- en FUNCTION-procedures te bewerken of te
+verwijderen.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄ SUB's ÄÄÄÄÄÄÄÄÄÄÄÄ¿  Kies hier een item.
+³ Kies te bewerken programma:    ³  Eerst komt het module-
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄ niveau in hoofdletters;
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±  ³  procedures worden
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±  ³  ingesprongen.
+³                                ³
+³ XXX is xxxxxxxxxxxxxxxx ÄÄÄÄÄÄÄÄ Beschrijft gekozen item.
+³                                ³
+³<Actief bewerken> <Verwijderen> Ä Kies of u het gekozen
+³                                ³  item wilt bewerken of
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  verwijderen.
+
+Wanneer u <Actief bewerken> kiest, geeft QBasic de procedure
+in het actieve venster weer.
+.context hidSearchFind
+:nHet dialoogvenster Zoeken naar
+Gebruik dit om naar een bepaalde tekst te zoeken.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄ Zoeken naar ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  Typ hier een
+³                                      ³  nieuwe tekst of
+³ Tekst: ±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄÄÄÄ gebruik de reeds
+³                                      ³  aanwezige tekst.
+³ ± Hoofd-/kleine letters ± Heel woord Ä Kies type actie.
+³                                      ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Kies <OK>.
+
+Selecteer Hoofd-/kleine letters als u bij het zoeken
+onderscheid wilt maken tussen hoofd- en kleine letters.
+Kies Heel woord om overeenkomstige tekstreeksen binnen een
+woord uit te sluiten. De zoekactie Heel woord herkent een
+overeenkomst alleen wanneer de gevonden tekst omgeven is
+door spaties, leestekens of andere speciale tekens. De
+lengte van de zoektekst kan maximaal 127 tekens bedragen.
+.context hidSearchChange
+:nHet dialoogvenster Wijzigen
+Gebruik dit om een bepaalde tekst te vervangen door een
+andere tekst.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Wijzigen ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  Typ tekst of
+³                                          ³  gebruik de
+³ Tekst: ±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ gegeven tekst.
+³                                          ³
+³ Wijzigen in: ±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄÄ Typ wijziging.
+³                                          ³
+³ ± Hoofd-/kleine letters ± Heel woord ÄÄÄÄÄ Kies zoektype.
+³                                          ³
+³ <Wijzigen en bevestigen> <Alles wijzigen>Ä Kies of u de
+³                                          ³  wijziging wilt
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  bekijken of
+                                              ineens wilt
+                                              doorvoeren.
+
+Selecteer Hoofd-/kleine letters als u bij het zoeken
+onderscheid wilt maken tussen hoofd- en kleine letters.
+Kies Heel woord om overeenkomstige tekstreeksen binnen een
+woord uit te sluiten. De zoekactie Heel woord herkent een
+overeenkomst alleen wanneer de gevonden tekst omgeven is
+door spaties, leestekens of andere speciale tekens. De
+lengte van de zoektekst kan maximaal 127 tekens bedragen.
+.context hidConfirm
+:nHet dialoogvenster Wijzigen
+Er is een met de zoektekst overeenkomende tekst gevonden
+en deze is in het actieve venster gemarkeerd. U kunt nu:
+  ş <Wijzigen> kiezen om de wijziging door te voeren en
+    door te gaan met zoeken.
+  ş <Overslaan> kiezen om de tekst onveranderd te laten
+    en door te gaan met zoeken.
+  ş <Annuleren> kiezen om de tekst onveranderd te laten
+    en met zoeken te stoppen.
+.context hidOptnsDisplay
+:nHet dialoogvenster Weergave
+Gebruik dit om uw QBasic-scherm aan te passen.
+                 ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Weergave ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+                 ³ ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Kleuren ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+                 ³                      Voorgr.  Achtergr.³
+                 ³ ± Gewone tekst      ±±±±±±±±  ±±±±±±±± ³
+                 ³                     ±±±±±±±±  ±±±±±±±± ³
+Kleuren die u   ÄÄ± Huidig statement  ±±±±±±±±  ±±±±±±±± ³
+hier uitkiest,   ³                                        ³
+markeren de     ÄÄ± Breekpuntregels                      ³
+tekst tijdens    ³                                        ³
+het opsporen     ³ ÚÄÄÄÄÄÄÄÄÄ Weergave-opties ÄÄÄÄÄÄÄÄÄÄÄ¿³
+van fouten.      ³   ± Schuifbalken              Tabs: ±  ³
+                 ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+Verbergt of toont    ³  Voer het aantal spaties in dat ³
+schuifbalken op de   ³  de cursor moet verspringen    ÄÙ
+vensterweergave. ÄÄÄÄÙ  wanneer op Tab gedrukt wordt.
+
+U stelt de opties als volgt in:
+  1. Druk op Tab om de cursor naar het vak Kleuren of naar
+     het vak Weergave-opties te verplaatsen.
+  2. Gebruik de cursortoetsen om een kleur of weergave-optie
+     te kiezen.
+  3. Kies <OK> of druk op Enter om de door u gekozen opties
+     op te slaan.
+
+De instellingen worden opgeslagen en blijven van kracht de
+volgende keer dat u QBasic start.
+.context MSG_SearchPathInterp
+:nHet dialoogvenster Help-pad
+QBasic zoekt naar het helpbestand QBASIC.HLP in de
+directory's die u in dit dialoogvenster opgeeft. U hoeft
+het Help-pad niet in te stellen als u dit reeds gedaan hebt
+met behulp van de omgevingsvariabele PATH in DOS, of als
+QBASIC.HLP zich in de huidige directory bevindt.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Help-pad ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                           ³  Typ hier het
+³ Locatie (pad) van het bestand QBASIC.HLP: ³  station en
+³                                           ³  de directory
+³      ±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄÄÄ  waar
+³                                           ³  QBASIC.HLP
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  zich bevindt.
+
+Tip: Als QBasic het bestand QBASIC.HLP niet kan vinden,
+     doet u er goed aan te controleren of u de juiste
+     directorynaam hebt opgegeven.
+.comment ------------------------------------------------
+.comment   End of Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context m.f
+.context m.e
+.context m.v
+.context m.s
+.context m.r
+.context m.d
+.context m.o
+.context m.h
+:nQBasic menubalk
+Zo gebruikt u de QBasic menu's en opdrachten:
+
+  ş Activeer menu's en opdrachten door de aangegeven letter
+    in te drukken of door met de muis op een menu of
+    opdracht te klikken.
+  ş Gebruik de cursortoetsen of de muis om tussen menu's en
+    opdrachten te verplaatsen.
+.comment ------------------------------------------------
+.comment   UI Help for Menu Commands and Dialog Support
+.comment ------------------------------------------------
+.context MSG_HelpFileNew
+:nDe opdracht Nieuw
+Gebruik deze opdracht om een nieuw programma aan te maken.
+Wanneer u al een bestaand programma open hebt, verschijnt
+er een dialoogvenster met een aantal keuzemogelijkheden:
+  ş Kies <Ja> om het bestaande programma op te slaan.
+  ş Kies <Nee> om het programma af te sluiten zonder dit op
+    te slaan.
+  ş Kies <Annuleren> om de opdracht Nieuw te annuleren en
+    terug te keren naar het bestaande programma.
+
+Tip: Gebruik de opdracht Openen om een bestaand programma
+     te laden.
+.context MSG_HelpFileOpen
+:nDe opdracht Openen
+Gebruik deze opdracht om een bestaand programma te laden
+zodat u dit kunt uitvoeren of hier veranderingen in aan
+kunt brengen.
+
+Gebruik de opdracht Nieuw om een nieuw programma aan
+te maken.
+
+ Opmerking: Om een bestand te kunnen openen dat in GW-BASIC
+            of BASICA werd aangemaakt, moet dit in GW-BASIC
+            of BASICA met de optie A opgeslagen zijn.
+.context MSG_HelpFileSave
+:nDe opdracht Opslaan
+Gebruik deze opdracht om de huidige versie van uw programma
+op te slaan.
+
+QBasic vraagt u om een naam indien u het programma nog niet
+eerder hebt opgeslagen. Wanneer er al een ander programma
+bestaat met dezelfde naam, wordt dit programma overschreven.
+.context MSG_HelpFileSaveAs
+:nDe opdracht Opslaan als
+Gebruik deze opdracht om uw programma als een bestand op te
+slaan. Om een eerdere versie van uw programma te behouden,
+kunt u de nieuwe versie een andere naam geven in het
+tekstvak Bestandsnaam.
+.context MSG_HelpFilePrint
+:nDe opdracht Afdrukken
+Gebruik deze opdracht om een programma of Help-onderwerp
+geheel of gedeeltelijk af te drukken.
+
+U kunt:
+  ş Geselecteerde tekst afdrukken.
+  ş De inhoud van het actieve venster afdrukken.
+  ş Het gehele huidige programma (inclusief procedures)
+    afdrukken.
+
+QBasic drukt af op de printer die verbonden is met LPT1
+op uw computer.
+
+Tip: Selecteer tekst in uw programma of Help-venster
+     voor u de opdracht Afdrukken kiest. Plaats de cursor
+     aan het begin van de tekst die u wilt afdrukken. Druk
+     op Shift+een cursortoets totdat alle tekst geselecteerd
+     is en kies vervolgens de opdracht Afdrukken.
+.context MSG_HelpFileExit
+:nDe opdracht Afsluiten
+Gebruik deze opdracht om de QBasic-omgeving te verlaten.
+
+Wanneer u uw programma gewijzigd hebt sinds de laatste keer
+dat u het opgeslagen hebt, toont QBasic een dialoogvenster.
+  ş Kies <Ja> om de wijzigingen in uw programma op te slaan.
+  ş Kies <Nee> om de wijzigingen teniet te doen.
+  ş Kies <Annuleren> om de opdracht Afsluiten te annuleren
+    en terug te keren naar uw programma.
+.context MSG_HelpEditCut
+:nDe opdracht Knippen
+Gebruik Knippen (of druk op Shift+Del) om geselecteerde
+tekst te verwijderen en in het Klembord, een tijdelijke
+opslagplaats, te plaatsen.
+
+U kunt vervolgens de opdracht Plakken (Shift+Ins) gebruiken
+om de tekst op een nieuwe positie in het actieve venster te
+plaatsen. U kunt ook een nieuw of bestaand programma openen
+en daar de tekst invoegen.
+
+De tekst blijft in het Klembord aanwezig en kan meermaals
+geplakt worden. Elke keer dat u een stuk tekst knipt of
+kopieert, vervangt de nieuwe tekst de inhoud van het
+Klembord.
+
+Tip: U selecteert tekst door de cursor aan het begin van
+     de gewenste tekst te plaatsen en vervolgens op
+     Shift+een cursortoets te drukken.
+     U kunt geselecteerde tekst verwijderen zonder deze
+     naar het Klembord te kopi‰ren door op Del te drukken.
+.context MSG_HelpEditCopy
+:nDe opdracht Kopi‰ren
+Gebruik Kopi‰ren (of druk op Ctrl+Ins) om geselecteerde
+tekst naar het Klembord te kopi‰ren. De originele tekst
+blijft onveranderd.
+
+U kunt vervolgens de opdracht Plakken (Shift+Ins) gebruiken
+om de tekst op een nieuwe positie in het actieve venster te
+plaatsen. U kunt ook een nieuw of bestaand programma openen
+en daar de tekst invoegen.
+
+Tip: U selecteert tekst door de cursor aan het begin van
+     de gewenste tekst te plaatsen en vervolgens op
+     Shift+een cursortoets te drukken.
+
+De tekst blijft in het Klembord aanwezig en kan meermaals
+geplakt worden. Elke keer dat u een stuk tekst knipt of
+kopieert, vervangt de nieuwe tekst de inhoud van het
+Klembord.
+.context MSG_HelpEditPaste
+:nDe opdracht Plakken
+Gebruik Plakken (of druk op Shift+Ins) om een blok tekst
+van het Klembord op een bepaalde positie in het actieve
+venster in te voegen.
+
+U voegt tekst in door de cursor op de gewenste positie te
+plaatsen en vervolgens Plakken te kiezen.
+
+U vervangt een bepaald stuk tekst door een ander stuk tekst
+door de te vervangen tekst te selecteren en vervolgens
+Plakken te kiezen.
+
+Tip: U plaatst tekst in het Klembord met behulp van de
+     opdracht Knippen of Kopi‰ren. Nadat u Plakken hebt
+     gebruikt om tekst in te voegen, bevat het Klembord
+     nog altijd deze tekst, die vervolgens opnieuw geplakt
+     kan worden.
+.context MSG_HelpEditClear
+:nDe opdracht Wissen
+Gebruik Wissen (of druk op Del) om de geselecteerde tekst te
+verwijderen zonder deze naar het Klembord te kopi‰ren. De
+inhoud van het Klembord blijft hierdoor onveranderd.
+.context MSG_HelpEditNewSub
+:nDe opdracht Nieuwe SUB
+Gebruik deze opdracht om een SUB-procedure aan te maken.
+
+Typ in het dialoogvenster Nieuwe SUB een naam voor de
+procedure. QBasic voegt de statements SUB en END SUB voor de
+procedure in en geeft deze in het venster weer.
+
+Als u andere delen van het programma wilt bekijken of
+bewerken, moet u de opdracht SUB's gebruiken in het
+menu Beeld (of op F2 drukken).
+
+Tip: U kunt tevens een SUB-procedure aanmaken door het
+     QBasic-trefwoord SUB te gebruiken.
+.context MSG_HelpEditNewFunc
+:nDe opdracht Nieuwe FUNCTION
+Gebruik deze opdracht om een FUNCTION-procedure aan te maken.
+
+Typ in het dialoogvenster Nieuwe FUNCTION een naam voor de
+procedure. QBasic voegt de statements FUNCTION en
+END FUNCTION voor de procedure in en geeft deze in het
+venster weer.
+
+Als u andere delen van het programma wilt bekijken of
+bewerken, moet u de opdracht SUB's gebruiken in het
+menu Beeld (of op F2 drukken).
+
+Tip: U kunt tevens een FUNCTION-procedure aanmaken door het
+     QBasic-trefwoord FUNCTION te gebruiken.
+.context MSG_HelpViewSubs
+:nDe opdracht SUB's
+Gebruik deze opdracht om een SUB- of FUNCTION-procedure te
+bekijken of te bewerken of om een procedure te verwijderen.
+
+Tip: Om twee verschillende SUB- of FUNCTION-procedures
+     tegelijkertijd te bewerken of te bekijken, moet u de
+     opdracht Splitsen kiezen in het menu Beeld en daarna
+     de opdracht SUS's gebruiken om de procedures in elk
+     van de vensters weer te geven.
+.context MSG_HelpViewSplit
+:nDe opdracht Splitsen
+Gebruik deze opdracht om het venster horizontaal te
+splitsen en tegelijkertijd in twee delen van het programma
+te kunnen werken.
+
+Gebruik F6 en Shift+F6 om tussen de vensters te wisselen:
+  ş F6 verplaatst de cursor een venster omlaag.
+  ş Shift+F6 verplaatst de cursor een venster omhoog.
+
+U sluit het tweede venster door de cursor in het venster te
+plaatsen dat u open wilt houden en vervolgens opnieuw de
+opdracht Splitsen te kiezen.
+
+Met de muis kunt u het actieve venster vergroten of
+verkleinen door de venstergrens omlaag of omhoog te slepen.
+
+Met het toetsenbord vergroot of verkleint u het venster
+als volgt:
+  ş Alt+Plus(+)  maakt het venster ‚‚n regel groter.
+  ş Alt+Minus(-) maakt het venster ‚‚n regel kleiner.
+  ş Ctrl+F10     maakt dat het venster het hele scherm vult
+                 of brengt het terug tot de oorspronkelijke
+                 grootte.
+.context MSG_HelpViewOutputScreen
+:nDe opdracht Uitvoerscherm
+Gebruik de opdracht Uitvoerscherm (of druk op F4) om het
+scherm met programma-uitvoer te zien. Het uitvoerscherm
+geeft de resultaten weer van een programma dat in de
+QBasic-omgeving wordt uitgevoerd.
+
+Druk op een toets om naar QBasic terug te keren nadat u
+het uitvoerscherm hebt bekeken.
+.context MSG_HelpSearchFind
+:nDe opdracht Zoeken naar
+Gebruik deze opdracht om naar een tekst te zoeken. U kunt
+hierbij onderscheid laten maken tussen hoofd- en kleine
+letters en tussen hele woorden en delen van woorden.
+
+Gebruik de opdracht Wijzigen om een tekst te wijzigen.
+.context MSG_HelpSearchChange
+:nDe opdracht Wijzigen
+Gebruik deze opdracht om een bepaalde tekst te wijzigen in
+een andere tekst.
+
+U kunt:
+  ş Bij het zoeken onderscheid laten maken tussen hoofd-
+    en kleine letters en naar hele woorden laten zoeken.
+  ş Elke wijziging controleren alvorens deze door te voeren.
+  ş Alle wijzigingen ineens doorvoeren zonder controle.
+.context MSG_HelpSearchNext
+:nDe opdracht Volgende zoeken
+Gebruik Volgende zoeken (of druk op F3) om de zoekactie
+van de meest recente opdracht Zoeken naar of Wijzigen te
+herhalen.
+
+Als noch de opdracht Zoeken naar noch de opdracht Wijzigen
+werd uitgevoerd nadat de MS-DOS Editor werd gestart, zoekt
+de opdracht Volgende zoeken naar:
+  ş Het woord dat bij de cursor staat.
+  ş Het woord links van de cursor, als de cursor niet bij
+    een woord staat.
+.context MSG_HelpRunStart
+:nDe opdracht Starten
+Gebruik Starten (of druk op F5) om een programma uit te
+voeren vanaf het eerste uitvoerbare statement in de
+hoofdmodule.
+
+Als u een programma tijdens de uitvoering onderbreekt,
+wist Starten alle ingevoerde gegevens en wordt het
+programma vanaf het begin uitgevoerd.
+.context MSG_HelpRunRestart
+:nDe opdracht Opnieuw
+Gebruik deze opdracht om een programma voor te bereiden
+om vanaf het begin te starten. De opdracht Opnieuw wist
+alle gegevens die tijdens de uitvoering werden ingevoerd
+en markeert het eerste uitvoerbare statement.
+.context MSG_HelpRunContinue
+:nDe opdracht Doorgaan
+Gebruik Doorgaan (of druk op F5) om verder te gaan met de
+uitvoering van een programma nadat het is gestopt. De
+opdracht Doorgaan wist geen gegevens die tijdens de
+uitvoering werden ingevoerd en gaat verder vanaf het laatst
+uitgevoerde statement in plaats van vanaf het begin.
+
+De opdracht Doorgaan wordt vaak gebruikt om verder te gaan
+met de uitvoering van een programma na een breekpunt.
+.context MSG_HelpDebugStep
+:nDe opdracht Stap
+Gebruik Stap (of druk op F8) om ‚‚n statement in uw
+programma uit te voeren. Stap maakt het mogelijk om
+stapgewijs door de uitvoering van uw programma, inclusief
+procedures, te wandelen.
+.context MSG_HelpDebugPStep
+:nDe opdracht Procedurestap
+Gebruik Procedurestap (of druk op F10) om ‚‚n statement
+in uw programma uit te voeren en om een procedure-aanroep
+en de aangeroepen procedure als ‚‚n statement uit te voeren.
+
+Procedurestap maakt het, net als de opdracht Stap, mogelijk
+om stapgewijs door de uitvoering van uw programma te
+wandelen, maar het voorkomt dat u stapsgewijs door
+procedures moet gaan waarvan u weet dat deze correct werken.
+.context MSG_HelpDebugTraceOn
+:nDe opdracht Opsporen aan/uit
+Gebruik deze opdracht om elk statement in uw programma te
+markeren tijdens de uitvoering. Dit stelt u in staat het
+algemene verloop van uw programma te observeren. Druk op
+Ctrl+Break om de programma-uitvoering te onderbreken.
+.context MSG_HelpDebugToggleBp
+:nDe opdracht Breekpunt aan/uit
+Gebruik Breekpunt aan/uit (of druk op F9) om breekpunten
+in of uit te schakelen. Breekpunten zijn markeringen die
+bij de statements in uw programma worden geplaatst. Als uw
+programma tijdens de uitvoering op een breekpunt stuit,
+stopt het programma bij dat statement. QBasic markeert de
+breekpuntregel.
+
+Zo schakelt u een breekpunt in of uit:
+  1. Verplaatst de cursor naar de regel waar u het breekpunt
+     wilt hebben, of naar de gemarkeerde breekpuntregel.
+  2. Kies Breekpunt aan/uit (of druk op F9).
+
+Gebruik een breekpunt om op een punt in het programma te
+pauzeren waar u een probleem verwacht en doe het volgende:
+  ş Druk de waarden van de variabelen af in het
+    venster Direct.
+  ş Ga vanaf het breekpunt stapsgewijs door uw programma.
+.context MSG_HelpDebugClearAllBp
+:nDe opdracht Alle breekpunten wissen
+Gebruik deze opdracht om alle breekpunten uit uw programma
+te verwijderen.
+
+Gebruik Breekpunt aan/uit (of druk op F9) om afzonderlijke
+breekpunten uit te schakelen.
+.context MSG_HelpDebugSetNextStmt
+:nDe opdracht Volgend statement instellen
+Gebruik deze opdracht om de volgorde van de programma-
+uitvoering zodanig te wijzigen dat het volgende statement
+dat wordt uitgevoerd het statement bij de cursor is.
+.context MSG_HelpOptionsDisplay
+:nDe opdracht Weergave
+Gebruik deze opdracht voor het bepalen van:
+  ş Schermkleuren.
+  ş De aan/afwezigheid van schuifbalken in vensters.
+  ş Het aantal spaties dat Tab de cursor laat verplaatsen.
+
+Weergave-instellingen worden opgeslagen en blijven van
+kracht de volgende keer dat u QBasic start.
+.context MSG_HelpOptionsPaths
+:nDe opdracht Help-pad
+Gebruik deze opdracht om de directory's te wijzigen waarin
+QBasic naar het helpbestand QBASIC.HLP zoekt.
+.context MSG_HelpOptionsSyntax
+:nDe opdracht Controle syntaxis
+Gebruik deze opdracht om de controle van de syntaxis in of
+uit te schakelen. Wanneer Controle syntaxis aan is, doet
+QBasic het volgende bij elke coderegel die u invoert:
+  1. Controleert de regel op syntaxisfouten.
+  2. Formatteert de regel.
+  3. Vertaalt de regel in uitvoerbare vorm als de syntaxis
+     correct is.
+.context MSG_HelpHelpIndex
+:nDe opdracht Help-index
+Gebruik deze opdracht om de Help-index weer te geven. De
+Help-index is een alfabetische lijst Help-onderwerpen die
+onder meer trefwoorden uit de Basic-programmeertaal omvat.
+Elke term uit de index is gekoppeld aan bijbehorende
+informatie.
+
+Zo verkrijgt u Help:
+  1. Kies de opdracht Help-index in het menu Help (het
+     vraagteken (?) op de menubalk).
+  2. Druk op de toets die overeenkomt met de eerste letter
+     van het gewenste onderwerp.
+  3. Verplaats de cursor naar het onderwerp waarover u meer
+     informatie wilt en druk op F1.
+.context MSG_HelpHelpContents
+:nDe opdracht Inhoud
+Gebruik deze opdracht om de inhoudsopgave voor Help te zien.
+De inhoudsopgave bestaat uit een in onderwerpen opgesplitste
+tabel van Help-onderwerpen voor QBasic.
+
+Zo verkrijgt u Help over een onderwerp in de inhoudsopgave:
+  1. Kies de opdracht Inhoud in het menu Help (het
+     vraagteken (?) op de menubalk.
+  2. Druk op de toets die overeenkomt met de eerste letter
+     van het gewenste onderwerp. Herhaal dit totdat de
+     cursor zich bij het gewenste onderwerp bevindt.
+  3. Druk op F1.
+.context MSG_HelpHelpSyntax
+:nDe opdracht Onderwerp
+Gebruik deze opdracht om informatie weer te geven over het
+onderwerp dat wordt bepaald door de plaats van de cursor.
+Het onderwerp bij de cursor verschijnt als deel van de
+opdracht.
+
+U kunt ook Help over een onderwerp verkrijgen door op F1 te
+drukken of op de rechtermuisknop te klikken.
+.context MSG_HelpHelpHelp
+:nDe opdracht Help gebruiken
+Gebruik deze opdracht om het onderwerp Help gebruiken weer
+te geven. Help gebruiken beschrijft hoe u met de muis of het
+toetsenbord Help voor een onderwerp op het Qbasic-scherm kunt
+verkrijgen.
+.context MSG_HelpHelpAbout
+:nDe opdracht Info
+Gebruik deze opdracht om de copyright-informatie en het
+versienummer voor QBasic weer te geven.

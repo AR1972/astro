@@ -1,0 +1,13 @@
+prscg.obj+
+prsctl.obj+
+prsdebug.obj+
+prsexp.obj+
+prsid.obj+
+prslex.obj+
+prsmain.obj+
+prsnt.obj+
+prsnt1.obj+
+prsrwt.obj+
+prsstate.obj+
+prsstmt.obj+
+prsutil.obj+

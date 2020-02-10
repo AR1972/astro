@@ -1,0 +1,950 @@
+.comment MS-DOS Editor
+.context hidGreetingBox
+.context h.pg1
+:nBenvenuti in MS-DOS Editor
+  ş Premere Esc per entrare in ambiente MS-DOS Editor.
+
+  ş Premere Invio per consultare la Guida rapida di
+    MS-DOS Editor, che illustra l'uso di MS-DOS Editor
+    ed il sistema di Guida.
+.context hidFileOpen
+:nFinestra di dialogo Apri
+Viene usata per aprire e modificare un file gi… esistente.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Apri ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                 ³ Digitare qui il nome
+³ Nome del file: ±±±±±±±±   ÄÄÄÄÄÄ del file se questo si
+³                                 ³ trova nella directory
+³                                 ³ corrente
+³ C:\\DOS   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ (indicata qui), oppure
+³                                 ³
+³      File            Dir/Unit…  ³
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³ se il file si trova
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³ in un'altra directory,
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³ occorre selezionare il
+³                                 ³ file, la directory o
+³                               ³ l'unit… in questo punto.
+³        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÀÄÄÄÄÄÄÄÄÄÄÄÙ
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ Scegliere "OK".
+
+E' possibile, inoltre, selezionare un'unit… ed una
+directory nuove digitandole nella casella di testo
+"Nome del file".
+
+Per sfogliare il contenuto delle altre unit… e directory,
+digitare un nome di file utilizzando un carattere jolly
+(ad esempio *.TXT) nella casella di testo "Nome del file"
+e selezionare un'unit… o una directory nuova.
+.context hidFileSave
+:nFinestra di dialogo Salva con nome
+Viene usata per salvare ed assegnare un
+nome al file corrente.
+ÚÄÄÄÄÄÄÄÄÄSalva con nomeÄÄÄÄÄÄÄÄÄÄ¿
+³                                 ³ Confermare questo file
+³ Nome del file: ±±±±±±±± ÄÄÄÄÄÄÄÄ oppure digitare qui
+³                                 ³ un nome nuovo.
+³                                 ³
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Il file verr… salvato
+³                                 ³ in questa directory.
+³       Dir/Unit…                 ³
+³       ±±±±±±±±±±±               ³ Usare Dir/Unit… per
+³       ±±±±±±±±±±±      ÄÄÄÄÄÄÄÄÄ salvare in una
+³       ±±±±±±±±±±±               ³ directory o unit…
+³                                 ³ differenti.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ Scegliere "OK".
+.context hidFilePrint
+:nFinestra di dialogo Stampa
+Viene usata per stampare il documento in fase di modifica.
+ÚÄÄÄÄÄÄÄÄÄ Stampa ÄÄÄÄÄÄÄÄÄÄÄ¿
+³ ± Solo testo selezionato ÄÄ Stampa il testo selezionato.
+³                            ³
+³ ± Documento completo     ÄÄ Stampa l'intero documento.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+Se il cursore si trova nella finestra di guida,
+scegliendo il comando Stampa si avranno a disposizione le
+opzioni di stampa seguenti:
+ÚÄÄÄÄÄÄÄÄÄ Stampa ÄÄÄÄÄÄÄÄÄÄÄ¿
+³ ± Solo testo selezionato ÄÄ Stampa il testo di guida
+³                            ³ selezionato.
+³ ± Finestra corrente      ÄÄ Stampa l'intero argomento
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ di guida.
+
+MS-DOS Editor stampa utilizzando la stampante
+LPT1 collegata al sistema.
+
+Suggerimento   Selezionare il testo nel documento
+               oppure la finestra di guida prima di
+               scegliere il comando Stampa. Posizionare
+               il cursore all'inizio del testo che si
+               desidera stampare, premere Maiusc + tasti
+               di DIREZIONE per evidenziare il testo
+               e quindi scegliere il comando Stampa.
+.context hidSearchFind
+:nFinestra di dialogo Trova
+Viene usata per trovare una stringa
+di testo specifica.
+                                    Inserire la stringa
+                                    o utilizzare quella
+                                    gi… esistente.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Trova ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³
+³                                        ³ ³
+³ Trova: ±±±±±±±±±±±±±±±±±±±±   ÄÄÄÄÄÄÄÄÄÄÙ
+³                                        ³
+³ ± Maiuscole/Minuscole ± Parola intera ÄÄ Selezionare una
+³                                        ³  delle seguenti
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  opzioni.
+                                            Scegliere "OK".
+
+Selezionare "Maiuscole/Minuscole" perch‚ la ricerca sia
+sensibile alle maiuscole, oppure "Parola intera" per
+escludere la corrispondenza nell'ambito di parole o
+stringhe.
+L'opzione "Parola intera" riconosce la corrispondenza solo
+se il testo da cercare Š preceduto o seguito da spazi,
+punteggiatura o altri caratteri speciali. La stringa da
+trovare non deve superare i 127 caratteri.
+.context hidSearchChange
+:nFinestra di dialogo Cambia
+Viene usata per sostituire una stringa di testo
+con altro testo.
+                                      Inserire la stringa
+                                      o utilizzare quella
+                                      gi… esistente.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Cambia ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³
+³                                       ³ ³
+³ Trova    : ±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄÙ  Inserire
+³                                       ³    sostituzione.
+³ Cambia in: ±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄÄÄÄÙ
+³                                       ³
+³ ± Maiuscole/Minuscole ± Parola intera ÄÄÄ Selezionare una
+³                                       ³    delle seguenti
+³ <Trova e Verifica>    <Cambia tutto> ÄÄÄ¿ opzioni.
+³                                       ³  ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
+                                           ³
+                                      Scegliere se si
+                                      desidera controllare
+                                      o meno le modifiche
+                                      prima di apportarle.
+
+Selezionare "Maiuscole/Minuscole" perch‚ la ricerca sia
+sensibile alle maiuscole, oppure "Parola intera" per
+escludere la corrispondenza all'interno di parole
+o di stringhe.
+L'opzione "Parola intera" riconosce la corrispondenza solo
+se il testo da cercare Š preceduto o seguito da spazi,
+punteggiatura o altri caratteri speciali. La stringa di
+sostituzione non deve superare i 127 caratteri.
+.context hidConfirm
+:nFinestra di dialogo Cambia
+Quando viene trovata, una corrispondenza risulta evidenziata
+nella finestra corrente. A questo punto Š possibile:
+  ş Scegliere "Cambia" per effettuare la sostituzione e
+    continuare la ricerca.
+  ş Scegliere "Salta" per non modificare il testo e
+    continuare la ricerca.
+  ş Scegliere "Annulla" o premere Esc per lasciare il testo
+    inalterato e terminare la ricerca.
+.context hidOptnsDisplay
+:nFinestra di dialogo Schermo
+Viene usata per personalizzare la schermata di
+MS-DOS Editor.
+
+  I colori scelti qui...
+ ÚÄÄÙ
+ ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Schermo ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+ ³  ³ ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Colori ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³
+ ³  ³                                                     ³
+ ³  ³                         Primo piano  Sfondo         ³
+ ³  ³                         ±±±±±±±±     ±±±±±±±±       ³
+ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ      ±±±±±±±±     ±±±±±±±±       ³
+    ³ Colori scelti per la    ±±±±±±±±     ±±±±±±±±       ³
+    ³ finestra dell'editor di ±±±±±±±±     ±±±±±±±±       ³
+    ³ testo                  ±±±±±±±±     ±±±±±±±±       ³
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÙ              ±±±±±±±±     ±±±±±±±±       ³
+  ³ ³                                                     ³
+  ³ ³ ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Opzioni schermo ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³
+  ³ ³   ± Barre di scorrimento  Punti di tabulazione: ±   ³
+  ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³     ³    Nasconde o mostra                        ³
+  ÀÄ¿   ÀÄ   le barre sullo                  ÚÄÄÄÄÄÄÄÄÙ
+    ³        schermo.                        ³
+ ... sono riportati su         Inserire il numero di spazi
+ questo blocco di testo.       di cui si desidera far avan-
+                               zare il cursore premendo Tab.
+
+
+Come impostare le opzioni:
+  1. Premere Tab per spostare il cursore nelle caselle
+     "Colori" od "Opzioni schermo".
+  2. Usare i tasti di DIREZIONE per selezionare un colore
+     o un'opzione di schermo.
+  3. Scegliere "OK" o premere Invio per salvare le opzioni
+     selezionate.
+
+Le opzioni selezionate e salvate rimangono attive anche
+al successivo avvio di MS-DOS Editor.
+.context MSG_SearchPathEdit
+:nFinestra di dialogo Percorso di guida
+MS-DOS Editor cerca il file di guida EDIT.HLP nelle
+directory specificate in questa finestra di dialogo.
+Non Š necessario impostare il percorso di guida se Š
+gi… stato impostato utilizzando la variabile d'ambiente
+PATH in DOS o se il file EDIT.HLP si trova nella
+directory corrente.
+                                   Digitare unit…
+                                   e directory in cui
+                                   si trova EDIT.HLP.
+ÚÄÄÄÄÄÄÄÄÄÄ Percorso di guida ÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³
+³                                         ³ ³
+³ Percorso del file EDIT.HLP:             ³ ³
+³                                         ³ ³
+³     ±±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄÄÙ
+³                                         ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+Suggerimento   Se MS-DOS Editor non riesce a trovare
+               EDIT.HLP, occorrer… controllare di avere
+               specificato la directory corretta.
+.context m.f
+.context m.e
+.context m.s
+.context m.o
+.context m.h
+:nBarra menu di MS-DOS Editor
+Uso dei menu e dei comandi di MS-DOS Editor:
+
+  ş Per attivare i menu ed i comandi, premere la lettera
+    evidenziata o fare clic con il mouse sul menu o sul
+    comando.
+  ş Per spostarsi fra i menu ed i comandi, usare i tasti
+    di DIREZIONE o il mouse.
+.context MSG_HelpFileNew
+:nComando Nuovo
+Viene usato per creare un nuovo documento. Se c'Š gi… un
+documento aperto, verr… visualizzata una finestra di
+dialogo. A questo punto:
+
+  ş Scegliere "S" per salvare il documento esistente.
+  ş Scegliere "No" per chiudere il documento senza salvarlo.
+  ş Scegliere "Annulla" per annullare il comando Nuovo e
+    ritornare al documento precedente.
+
+Suggerimento   Usare il comando Apri per caricare un
+               documento esistente.
+.context MSG_HelpFileOpen
+:nComando Apri
+Viene usato per aprire un documento esistente e quindi
+poterlo modificare o stampare.
+
+Suggerimento   Usare il comando Nuovo per creare un
+               nuovo documento.
+.context MSG_HelpFileSave
+:nComando Salva
+Viene usato per salvare la versione corrente del documento.
+
+Se il documento non Š stato salvato in precedenza,
+MS-DOS Editor chieder… di assegnargli un nome. Se il
+documento che si desidera salvare ha lo stesso nome di un
+documento gi… esistente, quest'ultimo verr… sovrascritto.
+.context MSG_HelpFileSaveAs
+:nComando Salva con nome
+Viene usato per salvare il documento come file separato.
+Per conservare la versione precedente del documento,
+occorre rinominarla nella casella di testo "Nome del file".
+.context MSG_HelpFilePrint
+:nComando Stampa
+Viene usato per stampare un documento intero o parte
+di esso.
+
+E' possibile stampare:
+
+  ş Del testo selezionato.
+  ş Il contenuto della finestra della Guida.
+  ş L'intero documento corrente.
+
+MS-DOS Editor stampa utilizzando la stampante LPT1
+collegata al sistema.
+
+Suggerimento   Prima di scegliere il comando Stampa,
+               selezionare il testo nel documento o la
+               finestra di guida. Posizionare il cursore
+               all'inizio del testo che si desidera
+               stampare, premere Maiusc+tasti di DIREZIONE
+               per evidenziare tutto il testo, quindi
+               scegliere il comando Stampa.
+.context MSG_HelpFileExit
+:nComando Esci
+Viene usato per uscire dall'ambiente di MS-DOS Editor.
+
+Se il documento Š stato modificato dall'ultima volta che
+lo si Š salvato, MS-DOS Editor visualizza una finestra
+di dialogo.
+  ş Scegliere "S" per salvare il documento (modifiche
+    incluse).
+  ş Scegliere "No" per ignorare le modifiche.
+  ş Scegliere "Annulla" per annullare il comando Esci e
+    ritornare al documento.
+.context MSG_HelpEditCut
+:nComando Taglia
+Usare Taglia (o premere Maiusc+Canc) per rimuovere una
+parte di testo selezionato e collocarla temporaneamente
+in Appunti.
+
+Con il comando Incolla (Maiusc+Ins) Š possibile
+inserire il testo in una nuova posizione, oppure aprire
+un documento nuovo o gi… esistente ed inserire il testo.
+
+Il testo si trova ancora in Appunti e pu• essere incollato
+nuovamente. Ogni volta che una parte di testo viene tagliata
+o copiata, il nuovo testo sostituisce quello presente in
+Appunti.
+
+Suggerimento   Per selezionare del testo, posizionare
+               il cursore all'inizio del testo e premere
+               Maiusc+tasti di DIREZIONE. Per cancellare
+               del testo senza copiarlo in Appunti,
+               premere Canc.
+.context MSG_HelpEditCopy
+:nComando Copia
+Usare Copia (o premere Ctrl+Ins) per copiare la parte di
+testo selezionata in Appunti. Il testo originale non
+viene modificato.
+
+E' quindi possibile usare Incolla (Maiusc+Ins) per inserire
+il testo nella nuova posizione, oppure aprire un documento
+nuovo o gi… esistente ed inserire il testo.
+
+Suggerimento   Per selezionare una parte di testo,
+               posizionare il cursore all'inizio del testo
+               e premere Maiusc+tasti di DIREZIONE.
+
+Il testo si trova ancora in Appunti e pu• essere incollato
+nuovamente. Ogni volta che una parte di testo viene tagliata
+o copiata, il nuovo testo sostituisce quello presente in
+Appunti.
+.context MSG_HelpEditPaste
+:nComando Incolla
+Usare Incolla (o premere Maiusc+Ins) per inserire un
+blocco di testo da Appunti in qualsiasi punto del
+documento.
+
+Per inserire del testo, posizionare il cursore dove si
+desidera che il testo venga inserito e scegliere Incolla.
+
+Per sostituire una parte di testo, selezionarlo e
+scegliere Incolla.
+
+Suggerimento   Per collocare il testo in Appunti, occorre
+               usare Taglia o Copia. Dopo avere inserito
+               la parte di testo con il comando Incolla,
+               il testo Š ancora temporaneamente contenuto
+               in Appunti e pu• essere incollato nuovamente.
+.context MSG_HelpEditClear
+:nComando Cancella
+Usare Cancella (o premere Canc) per eliminare del testo
+selezionato senza copiarlo in Appunti. Il contenuto di
+Appunti non viene modificato.
+.context MSG_HelpSearchFind
+:nComando Trova
+Viene usato per cercare una stringa di testo. Esistono
+due opzioni: la prima rende la ricerca sensibile alle
+maiuscole, la seconda permette di cercare parole
+intere.
+
+Per cambiare una stringa, occorre usare il comando
+Cambia.
+.context MSG_HelpSearchChange
+:nComando Cambia
+Viene usato per sostituire una stringa di testo.
+
+E' possibile:
+  ş Usare le opzioni "Maiuscole/Minuscole" e "Parola
+    intera".
+  ş Controllare ciascuna sostituzione prima di
+    apportare una modifica.
+  ş Fare tutte le sostituzioni senza prima controllarle.
+.context MSG_HelpSearchNext
+:nComando Ripeti Trova
+Usare Ripeti Trova (o premere F3) per ripetere l'ultima
+ricerca portata a termine dal comando Trova o dal
+comando Cambia.
+
+Se i comandi Trova o Cambia non sono stati utilizzati
+dopo l'avvio di MS-DOS Editor, Ripeti Trova cerca
+l'occorrenza successiva alla:
+  ş Parola su cui Š posizionato il cursore
+  ş Parola alla sinistra del cursore, se il
+    cursore non Š posizionato su una parola.
+.context MSG_HelpOptionsDisplay
+:nComando Schermo
+Viene usato per scegliere:
+  ş I colori dello schermo.
+  ş Le barre di scorrimento nelle finestre.
+  ş Il numero di spazi di cui si desidera fare avanzare
+    il cursore premendo Tab.
+
+Le impostazioni nella finestra Schermo vengono salvate
+e rimangono attive anche all'avvio successivo di
+MS-DOS Editor.
+.context MSG_HelpOptionsPaths
+:nComando Percorso di guida
+Viene usato per cambiare le directory in cui MS-DOS
+Editor cerca il file di guida di MS-DOS Editor EDIT.HLP.
+.context MSG_HelpHelpStarted
+:nComando Guida introduttiva
+Viene usato per avere informazioni su:
+  ş Come usare i menu, i comandi e le finestre
+    di dialogo di MS-DOS Editor.
+  ş Come usare la Guida per MS-DOS Editor.
+  ş Come usare le opzioni all'avvio di MS-DOS Editor.
+  ş Copyright ed i marchi registrati di MS-DOS Editor.
+.context MSG_HelpHelpKeyboard
+:nComando Tastiera
+Viene usato per avere informazioni su:
+  ş Quali tasti premere per portare a termine
+    un'operazione in MS-DOS Editor.
+  ş Le combinazioni di tasti di WordStar che
+    possono essere usate in MS-DOS Editor.
+.context MSG_HelpHelpAbout
+:nComando Informazioni su
+Viene usato per visualizzare il numero della versione
+e le informazioni sul copyright di MS-DOS Editor.
+.context helpSurvivalId
+:nGuida rapida
+
+ \bUtilizzo di MS-DOS Editor:\p
+
+   ş Per attivare la barra menu di MS-DOS Editor, premere
+     Alt.
+   ş Per attivare i menu ed i comandi, premere la lettera
+     evidenziata.
+   ş Per spostarsi fra menu e comandi, usare i tasti di
+     DIREZIONE.
+   ş Per avere informazioni di guida su un menu selezionato,
+     un comando o una finestra di dialogo, premere F1.
+   ş Per uscire dalla Guida, premere Esc.
+
+ \bCome sfogliare il sistema di guida di MS-DOS Editor:\p
+
+   ş Per selezionare uno dei seguenti argomenti, premere il
+     tasto Tab o la prima lettera dell'argomento, quindi
+     premere Invio per visualizzare le informazioni su:
+
+     \i\p\aGuida introduttiva\vhelpStartedId\v\i\p    Come caricare ed utilizzare MS-DOS Editor
+                             ed il suo sistema di guida
+     \i\p\aTastiera\vhelpKeyboardId\v\i\p              Come modificare e spostarsi all'interno del
+                             testo e della Guida di MS-DOS Editor
+
+ Suggerimento  Questi argomenti sono disponibili anche nel menu ?.
+.context helpEditorHelp
+.context helpStartedId
+:nGuida introduttiva
+  \bGuida introduttiva\p   \i\p\aTastiera\vhelpKeyboardId\v\i\p   \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Questa sezione fornisce informazioni sull'avvio e l'uso di MS-DOS Editor.
+ Scegliere uno dei seguenti argomenti per avere informazioni su:
+
+   \i\p\aUso della Guida\vhelpOnHelpId\v\i\p
+   \i\p\aUso dei menu e dei comandi\v@sg.men\v\i\p
+   \i\p\aUso di una finestra di dialogo\v@sg.dia\v\i\p
+   \i\p\aOpzioni di MS-DOS Editor\v@sg.opt\v\i\p
+   \i\p\aCopyright e marchi registrati\v@cccp\v\i\p
+.context @sg.men
+:nUso dei menu e dei comandi
+  \i\p\aGuida introduttiva\vhelpStartedId\v\i\p  \i\p\aTastiera\vhelpKeyboardId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Usare la barra menu in alto sullo schermo per selezionare i menu e i comandi.
+
+ Funzione menu       Con il mouse...              Con la tastiera...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Visualizzare un     Spostare il puntatore del    Premere Alt per evidenziare
+ menu.               mouse sul menu e fare clic   le lettere del menu, quindi
+                     sul pulsante del mouse.      premere la lettera relativa
+                                                  al menu che si desidera
+                                                  visualizzare.
+
+ Scegliere un        Fare clic sul comando.       Premere il tasto che
+ comando.                                         corrisponde alla lettera
+                                                  evidenziata nel comando.
+
+
+ Annullare un        Fare clic all'esterno        Premere Esc.
+ comando.            del menu.
+
+ Suggerimento  Controllare la barra di riferimento in fondo allo schermo per
+               avere informazioni sull'operazione corrente. Scegliere una
+               delle voci fra parentesi facendo clic su di essa.
+.context @sg.dia
+:nUso di una finestra di dialogo
+  \i\p\aGuida introduttiva\vhelpStartedId\v\i\p  \i\p\aTastiera\vhelpKeyboardId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ MS-DOS Editor visualizza le finestre di dialogo quando vengono scelti dei
+ comandi che offrono delle opzioni.
+
+ Funzione finestra  Con il mouse...              Con la tastiera...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ  ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Selezionare una    Spostare il puntatore del    Premere Tab fino a quando
+ casella di testo   mouse nella casella di       il cursore sar… nella
+ per l'input.       testo e fare clic sul        casella di testo.
+                    pulsante del mouse.
+                    
+
+ Scegliere una      Fare doppio clic sulla voce. Selezionare la voce
+ voce dalla                                      premendo i tasti di
+ casella di                                      DIREZIONE, quindi premere
+ riepilogo.                                      Invio.
+
+ Scegliere una      Fare clic sull'opzione.      Spostarsi su un'opzione
+ opzione.                                        usando i tasti di DIREZIONE.
+
+ Attivare e         Fare clic sulla casella      Premere Tab per spostare il
+ disattivare una    di controllo.                cursore nella casella di
+ casella di                                      controllo, quindi premere
+ controllo.                                      Barra spaziatrice.
+
+ Scegliere un       Fare clic sul pulsante       Premere Tab per spostare il
+ pulsante di        di comando.                  cursore sul pulsante di
+ comando.                                        comando, quindi premere
+                                                 Invio.
+.context helpOnHelpId
+:nUso della Guida
+  \i\p\aGuida introduttiva\vhelpStartedId\v\i\p  \i\p\aTastiera\vhelpKeyboardId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Uso della Guida di MS-DOS Editor:
+
+   ş Per avere informazioni di guida sui menu, i comandi o le finestre di
+     dialogo di MS-DOS Editor, posizionare il cursore sulla voce del menu
+     o sul pulsante "Guida" e premere F1.
+
+   ş Per visualizzare gli argomenti di guida di MS-DOS Editor, premere Alt+?,
+     quindi la lettera evidenziata per scegliere il comando Guida introduttiva
+     oppure il comando Tastiera.
+
+   ş Per spostare il cursore all'interno della finestra di guida, premere F6.
+
+   ş Per scorrere le informazioni di guida, premere PGGIU' o PGSU.
+
+   ş Per spostare il cursore su un argomento correlato, premere Tab oppure la
+     prima lettera dell'argomento di guida. Gli argomenti correlati sono
+     racchiusi tra frecce evidenziate
+     (\i \p).
+
+   ş Per visualizzare un argomento correlato, posizionare il cursore
+     sull'argomento e premere F1, oppure fare clic sul pulsante destro
+     del mouse.
+
+   ş Per chiudere la finestra di guida, premere Esc.
+
+ MS-DOS Editor salva gli ultimi 20 argomenti di guida visualizzati. Per
+ rivederli premere Alt+F1 o fare pi— volte clic sul pulsante "Precedente".
+.context EDIT.COM
+.context EDIT
+.context @sg.opt
+:nOpzioni di MS-DOS Editor
+  \i\p\aGuida introduttiva\vhelpStartedId\v\i\p  \i\p\aTastiera\vhelpKeyboardId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Il comando EDIT avvia il file QBASIC.EXE ed il file d'ambiente MS-DOS
+ Editor, EDIT.COM. Dopo il comando Edit Š possibile utilizzare le seguenti
+ opzioni sulla riga di comando per caricare un file o modificare la
+ visualizzazione dello schermo:
+
+ \bEDIT [nomedelfile] [/B] [/G] [/H] [/NOHI]\p
+
+ Opzione   Descrizione
+ ÍÍÍÍÍÍÍÍ  ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ nome del  Assegna un nome al file che deve essere caricato all'avvio
+ file      di MS-DOS Editor.
+
+ /B        Permette di utilizzare un monitor monocromatico composito
+           con una scheda a colori. Se si possiede un monitor a colori
+           l'opzione /B visualizza MS-DOS Editor in bianco e nero.
+
+ /G        Imposta MS-DOS Editor in modo che aggiorni lo schermo CGA il
+           pi— velocemente possibile (funziona solo con computer che
+           utilizzano monitor CGA). L'hardware non supporta quest'opzione
+           completamente se si verifica l'effetto neve (puntini luminosi
+           che oscillano sullo schermo) quando MS-DOS Editor aggiorna
+           lo schermo. Se si desidera avere lo schermo libero, occorre
+           riavviare MS-DOS Editor senza usare l'opzione /G.
+
+ /H        Visualizza sull'hardware il numero massimo di righe.
+
+ /NOHI     Permette di utilizzare un monitor che non supporta alta
+           intensit…. Non pu• essere usata con computer laptop Compaq.
+.context @cccp
+.context .cccp
+:nCopyright e marchi registrati
+  \i\p\aGuida introduttiva\vhelpStartedId\v\i\p  \i\p\aTastiera\vhelpKeyboardId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  Le informazioni contenute nel presente documento sono soggette a
+  modifiche senza preavviso e non rappresentano un impegno da parte
+  della Microsoft Corporation. Il software descritto in questo documento
+  viene fornito con il Contratto di acquisto. Il software pu• essere
+  utilizzato solo in conformit… al contratto medesimo. Per nessun motivo
+  nessuna parte di questo sistema di Guida in linea pu• essere riprodotta
+  in qualsiasi forma o mezzo (inclusa la registrazione e la fotocopia)
+  senza il permesso scritto della Microsoft Corporation.
+
+  (C) Copyright Microsoft Corporation, 1987-1992.
+      Tutti i diritti riservati.
+
+  Microsoft, MS e MS-DOS sono marchi registrati.
+
+  Nella documentazione Microsoft il termine "DOS" viene utilizzato per
+  riferirsi sia a MS-DOS che ai sistemi operativi DOS per Personal
+  Computer IBM. Il nome di un sistema operativo specifico viene usato
+  quando Š necessario mettere in evidenza quelle caratteristiche che sono
+  uniche per quel sistema.
+
+  Compaq Š un marchio registrato della Compaq Computer Corporation.
+
+  IBM Š un marchio registrato della International Business Machines
+  Corporation.
+
+  WordStar Š un marchio registrato della MicroPro International Corporation.
+.context helpKeyboardId
+:nTastiera
+  \i\p\aGuida introduttiva\vhelpStartedId\v\i\p  \bTastiera\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Questa sezione spiega come ci si pu• spostare all'interno del testo e
+ come lo si pu• modificare utilizzando MS-DOS Editor.
+
+ Scegliere uno dei seguenti argomenti per avere informazioni su:
+
+     \i\p\aTasti di scelta rapida\v@.sk\v\i\p      \i\p\aTasti per la selezione del testo\v@sel.keys\v\i\p
+     \i\p\aTasti Guida\v@.hk\v\i\p                 \i\p\aTasti per inserire e copiare il testo\v@i.keys\v\i\p
+     \i\p\aTasti movimento cursore\v@m.keys\v\i\p     \i\p\aTasti per eliminare il testo\v@d.keys\v\i\p
+     \i\p\aTasti per scorrere il testo\v@s.keys\v\i\p \i\p\aTasti per trovare e cambiare il testo\v@fc.keys\v\i\p
+
+ MS-DOS Editor riconosce le combinazioni di tasti caratteristiche di altri
+ programmi Microsoft (ad esempio Microsoft Word) e quelle utilizzate da
+ WordStar. Le combinazioni di tasti di WordStar che possono essere usate\p
+ in MS-DOS Editor sono elencate nella colonna destra delle tabelle a tre
+ colonne che contengono le combinazioni.
+.context @.sk
+:nTasti di scelta rapida
+  \i\p\aGuida introduttiva\vhelpStartedId\v\i\p  \i\p\aTastiera\vhelpKeyboardId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  ÚÄPer inserireÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÚÄPer copiareÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Passa a inserisci/           Ins ³ ³ In Appunti              Ctrl+Ins ³
+  ³ sovrascrittura                   ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ Riga precedente      Home,Ctrl+N ³ ÚÄPer trovareÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Riga successiva       Fine+Invio ³ ³ Cerca testo             Ctrl+Q,F ³
+  ³ Da Appunti            Maiusc+Ins ³ ³ Ripeti Trova                  F3 ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ÚÄPer selezionareÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÚÄPer eliminareÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Caratteri/righe   Maiusc+Freccia ³ ³ Taglia riga corrente      Ctrl+Y ³
+  ³ Parole       Maiusc+Ctrl+Freccia ³ ³ Taglia fino alla        Ctrl+Q,Y ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ fine della riga                  ³
+  ÚÄGuidaÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³ Taglia testo         Maiusc+Canc ³
+  ³ Menu e comandi                F1 ³ ³ selezionato                      ³
+  ³ Guida introduttiva     Maiusc+F1 ³ ³ Cancella testo              Canc ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ selezionato                      ³
+                                       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+.context @m.keys
+:nTasti movimento cursore
+  \i\p\aGuida introduttiva\vhelpStartedId\v\i\p  \i\p\aTastiera\vhelpKeyboardId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Carattere a sinistra                     Freccia SINISTRA      Ctrl+S
+ Carattere a destra                       Freccia DESTRA        Ctrl+D
+ Parola a sinistra                        Ctrl+Freccia SINISTRA Ctrl+A
+ Parola a destra                          Ctrl+Freccia DESTRA   Ctrl+F
+ Riga precedente                          Freccia SU            Ctrl+E
+ Riga successiva                          Freccia GIU'          Ctrl+X
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Primo livello di rientro                 Home
+ della riga corrente
+ Inizio riga corrente                                           Ctrl+Q,S
+ Inizio riga successiva                   Ctrl+Invio            Ctrl+J
+ Fine della riga                          Fine                  Ctrl+Q,D
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Parte superiore della finestra                                 Ctrl+Q,E
+ Parte inferiore della finestra                                 Ctrl+Q,X
+ Finestra successiva                      F6
+ Aumenta dimensione finestra corrente     Alt+Pi—
+ Diminuisce dimensione finestra corrente  Alt+Meno
+.context @s.keys
+:nTasti per scorrere il testo
+  \i\p\aGuida introduttiva\vhelpStartedId\v\i\p  \i\p\aTastiera\vhelpKeyboardId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Riga precedente                  Ctrl+Freccia SU    Ctrl+W
+ Riga successiva                  Ctrl+Freccia GIU'  Ctrl+Z
+ Pagina precedente                PGSU               Ctrl+R
+ Pagina successiva                PGGIU'             Ctrl+C
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Finestra a sinistra              Ctrl+PGSU
+ Finestra a destra                Ctrl+PGGIU'
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Imposta segnalibro (massimo 4)   Ctrl+K,0-3
+ Vai ai segnalibro impostati      Ctrl+Q,0-3
+.context @sel.keys
+:nTasti per la selezione del testo
+  \i\p\aGuida introduttiva\vhelpStartedId\v\i\p  \i\p\aTastiera\vhelpKeyboardId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Carattere a sinistra         Maiusc+Freccia SINISTRA
+ Carattere a destra           Maiusc+Freccia DESTRA
+ Parola a sinistra            Maiusc+Ctrl+Freccia SINISTRA
+ Parola a destra              Maiusc+Ctrl+Freccia DESTRA
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Riga corrente                Maiusc+Freccia GIU'
+ Riga precedente              Maiusc+Freccia SU
+ Schermo SU                   Maiusc+PGSU
+ Schermo GIU'                 Maiusc+PGGIU'
+ Inizio del file              Maiusc+Ctrl+Home
+ Fine del file                Maiusc+Ctrl+Fine
+.context @i.keys
+:nTasti per inserire e copiare il testo
+  \i\p\aGuida introduttiva\vhelpStartedId\v\i\p  \i\p\aTastiera\vhelpKeyboardId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Passa fra le modalit… inserisci e sovrascrittura     Ins         Ctrl+V
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Copia il testo selezionato in Appunti                Ctrl+Ins
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Elimina il testo selezionato e lo copia in Appunti   Maiusc+Canc
+ Elimina la riga corrente e la copia in Appunti       Ctrl+Y
+ Elimina la riga intera e la copia in Appunti                     Ctrl+Q,Y
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Incolla il contenuto di Appunti                      Maiusc+Ins
+ Inserisce una riga al di sotto del cursore           Fine+Invio
+ Inserisce una riga al di sopra del cursore                       Home,Ctrl+N
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Inserisce caratteri speciali                                     Ctrl+P,
+                                                                  Ctrl+tasto
+.context @d.keys
+:nTasti per eliminare il testo
+  \i\p\aGuida introduttiva\vhelpStartedId\v\i\p  \i\p\aTastiera\vhelpKeyboardId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Elimina un carattere alla sinistra del cursore  Backspace    Ctrl+H
+ Elimina il carattere sul quale Š posizionato    Canc         Ctrl+G
+ il cursore
+ Elimina il resto della parola sulla quale Š                  Ctrl+T
+ posizionato il cursore
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Elimina testo selezionato                       Canc         Ctrl+G
+ Elimina gli spazi iniziali dalle                Maiusc+Tab
+ righe selezionate
+.context @fc.keys
+:nTasti per trovare e cambiare il testo
+  \i\p\aGuida introduttiva\vhelpStartedId\v\i\p  \i\p\aTastiera\vhelpKeyboardId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Ripeti Trova per la stessa       Ctrl+L o F3
+ stringa di testo
+ Cerca il testo                   Ctrl+Q,F
+ Cambia il testo                  Ctrl+Q,A
+.context @.hk
+:nTasti Guida
+  \i\p\aGuida introduttiva\vhelpStartedId\v\i\p  \i\p\aTastiera\vhelpKeyboardId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Visualizza la Guida dell'ambiente MS-DOS Editor     F1 (o fare clic sul
+                                                     pulsante destro del
+                                                     mouse)
+ Per uscire dalla Guida                              Esc
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Visualizza la Guida introduttiva                    Maiusc+F1
+ Visualizza il menu ?                                Alt+?
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Muove il cursore all'argomento di guida successivo  Tab
+ Muove il cursore all'argomento di guida precedente  Maiusc+Tab
+ Muove il cursore all'argomento di guida successivo  carattere
+ con carattere iniziale
+ Muove il cursore all'argomento di guida precedente  Maiusc+carattere
+ con carattere iniziale
+ Visualizza l'argomento di guida precedente (questa  Alt+F1 (o fare doppio
+ operazione pu• essere ripetuta fino a 20 volte)     clic sul pulsante
+                                                     "Precedente")
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Visualizza l'argomento di guida successivo nel      Ctrl+F1
+ file di guida
+ Visualizza l'argomento di guida precedente nel      Maiusc+Ctrl+F1
+ file di guida
+.context QB_ER_OM
+.context QB_ER_OS
+.context MSG_OutNearMem
+:nMemoria esaurita
+E' richiesta pi— memoria di quanta ne sia disponibile. Per 
+ottenere pi— memoria:
+  ş Uscire e diminuire il numero di buffer di DOS (BUFFERS=)
+    nel file CONFIG.SYS, quindi riavviare il computer.
+  ş Uscire e diminuire il numero di programmi residenti in 
+    memoria.
+  ş Uscire e diminuire il numero di driver di periferica 
+    caricati, quindi riavviare il computer.
+.context QB_ER_DF
+:nErrore sulla periferica
+MS-DOS Editor ha rilevato un errore della stampante.
+Assicurarsi che:
+  ş La stampante sia collegata alla periferica LPT1.
+  ş Il segnale online della stampante sia acceso.
+  ş La stampante sia ancora accesa.
+  ş Il cavo della stampante sia collegato sia al computer
+    che alla stampante.
+.context QB_ER_DTO
+:nTimeout di periferica
+MS-DOS Editor non ha ricevuto alcuna informazione da una 
+periferica (ad esempio la stampante) entro il periodo di 
+tempo prestabilito. Prima di stampare un documento, 
+assicurarsi che la stampante sia collegata alla 
+periferica LPT1.
+.context QB_ER_OP
+:nCarta esaurita
+La carta nella stampante Š esaurita oppure la stampante 
+non Š accesa.
+.context QB_ER_IER
+:nErrore interno
+Si Š vericato un errore interno in MS-DOS Editor che deve 
+essere riferito alla Microsoft.
+.context QB_ER_FNF
+:nFile non trovato
+Nella finestra di dialogo del comando Apri Š stato 
+specificato un file che non esiste. Occorre controllare  
+che il nome del file sia stato scritto in modo corretto 
+e che siano state scelte l'unit… e la directory corrette.
+.context QB_ER_IOE
+:nErrore I/O su periferica
+E' stato utilizzato il comando Stampa del menu File e si Š 
+verificato un errore della stampante. Occorre controllare 
+la stampante.
+.context QB_ER_DFL
+:nDisco pieno
+Il disco indicato non ha spazio sufficiente per salvare un 
+determinato file. Occorre cambiare il disco o indicare un 
+altro disco nella casella di riepilogo "Dir/Unit…".
+.context QB_ER_IFN
+.context QB_ER_BFN
+:nNome di file errato
+Il nome del file specificato contiene un numero eccessivo 
+di caratteri oppure sono stati usati caratteri non ammessi 
+nei nomi di file.
+.context QB_ER_DNA
+:nPeriferica non disponibile
+La periferica a cui si desidera accedere non Š in linea
+oppure non esiste. Occorre controllare che la periferica 
+sia accesa e collegata al computer.
+.context QB_ER_PRM
+:nPermesso negato
+Si Š cercato di scrivere su un disco protetto dalla 
+scrittura o in un file di sola lettura.
+
+Nel caso del file di sola lettura Š sufficiente scegliere 
+un nome di file diverso, per i dischi protetti dalla 
+scrittura occorre togliere la linguetta di protezione o 
+usare un altro disco.
+.context QB_ER_DNR
+:nDisco non pronto
+Lo sportello dell'unit… disco Š aperta, oppure il disco non
+Š stato inserito nell'unit….
+.context QB_ER_DME
+:nErrore di formato
+Il disco Š fisicamente danneggiato, o MS-DOS Editor non
+riconosce il formato del disco che si tenta di usare.
+Utilizzare un disco diverso oppure uscire e riformattare
+il disco corrente.
+.context QB_ER_TMF
+:nTroppi file
+Il numero di file collocati nella directory principale Š
+troppo elevato. E' necessario uscire e creare una
+subdirectory, quindi spostare i file di documento
+in quella subdirectory.
+.context QB_ER_PNF
+:nPercorso non trovato
+MS-DOS Editor non Š riuscito a trovare il percorso che Š
+stato specificato nella finestra di dialogo per il comando
+Apri o Salva con nome. Occorre controllare che il nome del
+percorso sia corretto.
+.context MSG_DocTooLarge
+:nDocumento troppo grande
+MS-DOS Editor non pu• caricare o copiare la parte del
+documento che eccede le 32.700 righe in lunghezza.
+
+E' possibile utilizzare un altro editor di testo per 
+dividere il documento in file pi— corti. Se si incorre 
+in questo problema usando il comando Copia, si pu• tentare 
+di copiare ed incollare parti di testo pi— corte.
+.context MSG_NotBlock
+:nQuesta operazione richiede un disco
+Si sta tentando di caricare da, o di salvare su, una 
+periferica diversa dall'unit… disco (come la tastiera 
+o la stampante).
+.context MSG_NoSearchString
+:nImpossibile trovare stringa di ricerca
+La casella di testo "Trova" era vuota quando Š stato 
+eseguito il comando Trova o il comando Cambia. Occorre 
+tornare alla casella di testo "Trova" ed inserire una 
+stringa di testo prima di scegliere "OK".
+.context MSG_SwitchDisks
+:nIl prompt Inserisci dischetto
+E' stata usata la lettera A: per l'unit… disco floppy mentre
+a questa unit… si Š assegnata la lettera B: o viceversa.
+
+Occorre assicurarsi che il file in cui si desidera
+utilizzare il comando si trovi nell'unit… disco floppy,
+quindi scegliere "OK". MS-DOS Editor visualizzer… il nome
+della nuova unit….
+.context MSG_MatchNotFound
+:nCorrispondenza non trovata
+MS-DOS Editor non ha trovato la stringa specificata.
+
+Il cursore rimane nella posizione in cui si trovava
+quando si Š iniziata la ricerca.
+.context MSG_ChangeComplete
+:nSostituzione compiuta
+L'operazione Trova/Sostituisci Š stata completata. Il
+cursore Š ritornato nella posizione in cui si trovava
+prima della ricerca.
+.context MSG_CantSetTabs
+:nImpossibile impostare le tabulazioni
+Se Š stato aperto un file che contiene una posizione
+di tabulazione impostata precedentemente, quest'ultima non
+pu• essere modificata con l'opzione "Punti di tabulazione"
+del comando Schermo. E' necessario salvare il file e
+scegliere il comando Nuovo per cancellare la finestra
+di MS-DOS Editor. Successivamente Š possibile scegliere il
+comando Schermo per impostare il punto di tabulazione e
+riaprire il file.
+.context MSG_NotSavedAll
+.context MSG_NotSaved
+:nSalvare file?
+Il documento corrente non Š mai stato salvato oppure non Š
+stato salvato dall'ultima volta che lo si Š modificato.
+E' possibile scegliere tra le seguenti alternative:
+  ş Scegliere "S" per salvare il documento, modifiche 
+    incluse.
+    Se al documento non Š stato assegnato un nome, verr…
+    richiesto di scegliere un nome di file.
+  ş Scegliere "No" per non salvare le modifiche apportate.
+    Se il documento Š nuovo e non Š mai stato salvato,
+    scegliendo "No" si annuller… l'intero documento.
+  ş Scegliere "Annulla" per annullare il comando e
+    tornare al documento.
+.context QB_ER_PAE
+:nErrore di accesso al percorso/file
+Assicurarsi che il nome del file o del percorso inseriti
+nella casella di testo siano nel formato corretto.
+Ciascun nome di file pu• contenere il nome di un'unit…
+ed un percorso parziale o intero.
+
+Questo errore si pu• inoltre verificare quando si tenta di
+salvare un file che sostituirebbe un file di sola lettura
+gi… esistente.
+.context MSG_MustSpecifyName
+:nSpecificare il nome
+In una finestra di dialogo Š stato scelto "OK" quando la
+casella di testo era vuota. Annullare questa finestra di
+dialogo di guida e digitare le specifiche del file o una
+stringa di testo nella casella di testo.
+.context MSG_Overwrite
+.context h.pg$
+:nSovrascrivere file esistente?
+  ş Scegliere "S" solo se si Š sicuri che
+    sovrascrivendo il contenuto del documento sul
+    disco con il contenuto del documento in memoria
+    non si perderanno informazioni importanti.
+  ş Scegliere "No" per visualizzare nuovamente la
+    finestra di dialogo ed inserire un nuovo nome di
+    file per salvare il documento corrente.
+  ş Scegliere "Annulla" per annullare il comando 
+    Salva con nome o il comando Esci e tornare al
+    documento.

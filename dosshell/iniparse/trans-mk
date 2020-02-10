@@ -1,0 +1,84 @@
+#   Compiler options:
+#   Always:
+#	 -c   compiler should not link
+#	 -W2  warning level 2 (max)
+#	 -AM  medium model code..near data, far code
+#	 -Zp  pack structures on byte boundaries
+#	 -Gc  Pascal calling conventions
+#   Debugging:
+#	 -Zi  codeview information
+#	 -DDEBUG define DEBUG for all code
+#
+#   Non-Debugging:
+#	 -Ox  total optimization
+#	      includes:
+#	      -Oa ingnore aliasing
+#	      -Oi intrinsic functions
+#	      -Ol loop optimizations
+#	      -Ot optimize for speed
+#	      -Gs disable stack checking
+#
+# DEBUG = TRUE
+#
+
+!IFDEF DEBUG
+#   Debugging compile line:
+CC = cl -c -DCC -DNOMINMAX -DCONVERT_UTILITY -DDEBUG -W2 -AM -Zip -Gc -DSMM -I ..\shellh
+!ELSE
+#   Non-Debuggin compile line:
+CC = cl -c -DCC -DNOMINMAX -DCONVERT_UTILITY -W2 -AM -Zp -Ox -Gc -DSMM -I ..\shellh
+!ENDIF
+
+#
+#   Assembler options:
+#	always:
+#	-MX preserve case of globals
+#	-D?SMALL small model
+#	Debugging:
+#	-DDEBUG define debug for all asm code
+#
+#   Debugging assembler line:
+ASM = masm -MX -D?SMALL -DDEBUG
+#   Non-Debugging assembler line:
+#ASM = masm -MX -D?SMALL
+#
+#   Linker options:
+#	/NOE no external dictionary for library search
+#	/MAP generate a map file
+#   Linker line:
+
+!IFDEF DEBUG
+LINK= link /NOEXT /MAP /LINE /CODEVIEW
+!ELSE
+LINK= link /NOEXT /MAP /FARCALL /PACKCODE /EXEPACK
+!ENDIF
+
+
+#
+#   Name is the name of the linker's output .exe file:
+NAME = trans
+#
+#   OBJS is a list of all .obj files that should be linke in, in order:
+OBJS = trans.obj iniparse.obj	lex.obj symbols.obj transtxt.obj
+#
+#   LIB is a list of libraries that should be linked in, in order:
+LIB =
+#
+#   Compile all C files in makefile's directory:
+#
+#   Make will have succeeded if make finishes with this file existing:
+goal: $(NAME).exe
+
+.c.obj:
+	$(CC) $*.c
+#
+#   Assemble all ASM files in makefile's directory, generate listing:
+.asm.obj:
+	$(ASM) $*.asm,$*.obj,$*.lst ;
+#
+#   Link OBJS to create NAME.exe file
+$(NAME).exe $(NAME).map: $(OBJS)
+	$(LINK) @<<
+	$(OBJS),
+	$(NAME), $(NAME),$(LIB);
+<<

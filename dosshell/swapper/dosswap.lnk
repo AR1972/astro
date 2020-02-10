@@ -1,0 +1,21 @@
+woamgr.obj	+
+woafile.obj	+
+woarlm.obj	+
+woaswapi.obj	+
+woakkc.obj	+
+woagrb.obj	+
+woainstd.obj	+
+woados.obj	+
+woaerr.obj	+
+woaswch.obj	+
+woamouse.obj	+
+woahp.obj	+
+woatsr.obj	+
+woautils.obj	+
+woapmrm.obj	+
+woaxms.obj	+
+woainit.obj	+
+woastk.obj
+dosswap.exe
+dosswap.map /map;
+

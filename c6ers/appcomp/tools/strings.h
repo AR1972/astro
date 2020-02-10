@@ -1,0 +1,106 @@
+/* TS = none */
+
+/* REVIEW - we could save some space by not repeating some strings */
+#define szError             "  Error -- "
+#define szWarning           "\n  Warning -- "
+
+/* ERROR MESSAGES AND OTHER STRINGS */
+#define szNoChecksum        szWarning "Checksum not currently supported\n"
+#define szNoQWithS          szWarning "'-q' flag causes Compress to ignore '-s' flag\n"
+#define szNoDestWith$       szWarning "'-$' flag causes Compress to ignore output filename\n"
+#define szCantOpenInput     szError "cannot open input file:  %s\n\n"
+#define szCantOpenOutput    szError "cannot open output file:  %s\n\n"
+#define szFileExists        szWarning "the file '%s' exists.\n"
+#define szAppendQ           "    Should I append to that file?  Yes or No? "
+#define szOverwriteYN       "    Should I try to overwrite it?  Yes or No? "
+#define szCantOverwrite     szWarning "unable to overwrite '%s'\n"
+#define szAlreadyCompressed szWarning "the file '%s' may already be compressed.\n\tShould I proceed?  Yes or No? "
+#define szFilenameTooLongSz szError "filename '%s.%s' is too long\n\n"
+#define szBytesCompressed   "   %1ld bytes compresses to %1ld bytes,  "
+#define szPercentSavings    "Savings: %1d percent\n"
+#define szNoSavings         "No Savings\n"
+#define szWroteBytes        "      Wrote %6ld bytes to output file '%s'\n"
+#define szNoOutputNames     szError "ran out of output file names (Max == 10)\n\n"
+#define szDecompSize        "Decompression would result in a file of %1ld bytes.\n"
+#define szNoDestInHeader    szError "no destination file name in source file header.\n\n\t\tYou need to supply one on the command line.\n"
+#define szSrcDestDifferent  szError "source and destination files must be different.\n\n"
+#define szTailBytes         "\n      Writing the remaining %1ld source bytes to the file '%s'\n"
+#define szDestDirWild       "Destination must be a directory in a wildcard compress.\n"
+#define szDestDirTree       "Destination must be a directory in a treecopy compress.\n"
+#define szTotals            "\nTotals: "
+#define szEnterSrcName      "\n\n    Enter the name and/or path for the compressed file: "
+#define szGetsFailure       szError "gets() failed.\n"
+#define szEnterDestName     "    Enter the name and/or path for the decompressed file: "
+#define szNoSrcFile         "No Source file found\n"
+
+
+/* These strings match up with error return codes in retcodes.h */
+#define szYorN              "Please enter Y or N "
+#define szInternalError     "Internal error\n"
+#define szNoHeader          "No header in file (file might not be compressed)\n"
+#define szUnknownAlgType    "Unknown compression algorithm\n"
+#define szBadHeader         "Bad header in file\n"
+#define szFilenameTooLong   "File name too long\n"
+#define szReadError         "Read error\n"
+#define szReadSeekError     "Error seeking for read\n"
+#define szWriteError        "Write error\n"
+#define szWriteSeekError    "Error seeking for write\n"
+#define szDestPatchError    "Cannot patch header in output file\n"
+#define szCompChecksumBad   "Compression checksums do not match\n"
+#define szDecompChecksumBad "Decompression checksums do not match\n"
+#define szCompLengthBad     "Compressed file length mismatch\n"
+#define szDecompLengthBad   "Decompressed file length mismatch\n"
+#define szGenericCompError  "Internal error during compression\n"
+#define szGenericDecompError  "Internal error during decompression\n"
+#define szSplitSizeTooSmall "Split size is too small to hold header\n"
+#define szOutOfMemory       "Out of memory\n"
+#define szZeckSplitFile     "Cannot recombine old format split files; only first file decompressed\n"
+
+
+/* COPYRIGHT NOTICES */
+#define szCompCopyright1   "Microsoft (R) Compression Utility - "
+#define szDecompCopyright1 "Microsoft (R) Decompression Utility - "
+#define szCopyright2  "Version 1.11\n"
+#define szCopyright3  "Copyright (c) Microsoft Corp 1989 - 1992.  All rights reserved.\n\n"
+
+
+/* USAGE MESSAGE FOR COMPRESSION */
+#define szCompUsage1  "Usage: compress [-aAlg -bceflq$ -sSize -tText -zSize] srcArg [destArg]\n"
+#define szCompUsage2  "   -a -- Choices for compression algorithm are:  [default = %1d]\n"
+#define szCompUsage3  "     %2d - Straight Copying with Header attached.\n"
+#define szCompUsage4  "     %2d - Copying while XORing each byte with 0xff.\n"
+#define szCompUsage5  "     %2d - the Steven Zeck algorithm.\n"
+#define szCompUsageJJJ1 "     %2d - Jeff Johnson's algorithm (LZSS + Huffman).\n"
+#define szCompUsage6  "   -be will include each file basename/extension in the header.\n"
+#define szCompUsageX  "   -c will include a checksum of each file in the header.\n"
+#define szCompUsage7  "   -f will force overwriting and recompression of files.\n"
+#define szCompUsage8  "   -l will NOT include each file length in the header.\n"
+#define szCompUsage9  "   -q will compute compressed file lengths (no output) (ignores -sz flags).\n"
+#define szCompUsage10  "   -s will split output into Size x 512 byte pieces naming each piece\n"
+#define szCompUsage11  "      with a sequentially higher numerical base name.\n"
+#define szCompUsage12  "   -t will include following Text in the header.\n"
+#define szCompUsage13  "      Text that includes spaces should be double-quoted.\n"
+#define szCompUsage14  "   -z will split off and compress just one piece, and leave the\n"
+#define szCompUsage15  "      remainder uncompressed in a second file.\n"
+#define szCompUsage16  "   -$ will turn OFF underscore renaming.  Specific destArg will override.\n"
+#define szCompUsage17  "\n   srcArg can be a filename, a wildcard pattern, or a directory.  The\n"
+#define szCompUsage18  "   latter will cause a tree walk operation.  destArg can be a directory,\n"
+#define szCompUsage19  "   a specific filebase, or omitted in which case digits are appended.\n"
+#define szCompUsage20  "   -x excludes OS/2 EAs from the header of the compressed file.\n"
+
+/* USAGE MESSAGE FOR DECOMPRESSION */
+#ifdef COMPLEX
+#define szDecompUsage1  "Usage: decomp [-afq] [srcArg [destArg]]\n"
+#else  /* !COMPLEX */
+#define szDecompUsage1  "Usage: decomp [-a] srcArg destArg\n"
+#endif /* !COMPLEX */
+
+#define szDecompUsage2  "   -a will append to the destination file, if it exists.\n"
+#define szDecompUsage3  "   -f will force overwriting if destination file exists.\n"
+#define szDecompUsage4  "      (Files cannot be decompressed in place.)\n"
+#define szDecompUsage5  "   -q will calculate size of uncompressed file (no output).\n\n"
+#define szDecompUsage6  "   srcArg can be a specific file or a wildcard pattern.  Either can be\n"
+#define szDecompUsage7  "   preceeded by a path.  destArg can be a specific file, a directory,\n"
+#define szDecompUsage8  "   or omitted.  In the last two cases, decomp will try to create a\n"
+#define szDecompUsage9  "   destination filename using information in the src file header\n"
+#define szDecompUsage10  "   or the src filename itself if the header is missing information.\n"

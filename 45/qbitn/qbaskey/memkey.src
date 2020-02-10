@@ -1,0 +1,446 @@
+.context CLEAR
+.context @CLEAR
+:nIstruzione CLEAR
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Chiude tutti i file, rilascia i buffer di file, azzera tutte le variabili
+comuni, imposta le variabili numeriche e le matrici come uguali a zero,
+imposta le variabili stringa come nulle e inizializza lo stack.
+Se specificato, CLEAR cambia le dimensioni dello stack.
+
+
+\bCLEAR [,,stack&]\p
+
+    ş \bstack&\p    Imposta le dimensioni, in byte, dello spazio dello stack
+                riservato per un programma.
+
+Esempio:
+    CLEAR ,,2000
+
+Si veda inoltre    \i\p\aERASE\v@ERASE\v\i\p
+.context SEG
+.context @SEG
+:nIstruzione DEF SEG
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Imposta l'indirizzo del segmento corrente.
+
+\bDEF SEG [=indirizzo]\p
+
+    ş \bindirizzo\p    Un indirizzo di segmento usato da BLOAD, BSAVE,
+                   CALL ABSOLUTE, PEEK o POKE; il valore dev'essere compreso
+                   tra 0 e 65.535. Se l'indirizzo viene omesso, DEF SEG
+                   reimposta l'indirizzo del segmento corrente come segmento
+                   di dati predefinito.
+
+
+Esempio:
+    DEF SEG = 0
+    Stato% = PEEK(&H417)              'Legge lo stato della tastiera.
+    POKE &H417, (Stato% XOR &H40)     'Cambia lo stato di Bloc Maius, bit 6.
+
+Si vedano inoltre    \i\p\aBSAVE e BLOAD\v@BLOAD\v\i\p    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aPEEK e POKE\v@PEEK\v\i\p
+.context FRE
+.context @FRE
+:nFunzione FRE
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Restituisce la quantit…, in byte, della memoria disponibile o non utilizzata.
+
+\bFRE(espressione numerica)\p
+\bFRE(espressioneastringa$)\p
+
+    ş \bespressione numerica\p    Un valore che specifica il tipo di memoria:
+
+                  Valore              FRE restituisce
+                  ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                  -1                  le dimensioni della matrice pi— grande
+                                      (non stringa) che Š possibile creare
+                  -2                  lo spazio dello stack non utilizzato
+                  un altro numero     lo spazio stringa disponibile.
+
+
+    ş \bespressioneastringa$\p    Un'espressione a stringa qualsiasi.
+                              FRE comprime lo spazio stringa in un blocco
+                              singolo per poi restituire la quantit… di
+                              spazio stringa disponibile.
+
+Esempio:
+    PRINT "Spazio stringa", FRE("")
+    PRINT "Spazio dello stack non utilizzato", FRE(-2)
+    PRINT "Spazio della matrice", FRE(-1)
+.context HEX$
+.context @HEX$
+.context OCT$
+.context @OCT$
+:nFunzioni HEX$ e OCT$
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+HEX$ restituisce un numero in forma di stringa esadecimale.
+OCT$ restituisce un numero in forma di stringa ottale.
+
+\bHEX$(espressione numerica&)\p
+\bOCT$(espressione numerica&)\p
+
+    ş \bespressione numerica&\p    Un'espressione numerica qualsiasi.
+                               L'espressione viene arrotondata ad un numero
+                               intero o ad un numero intero LONG prima di
+                               essere valutata.
+
+Esempio:
+    INPUT x
+    a$ = HEX$ (x)
+    b$ = OCT$ (x)
+    PRINT x; "decimale Š "; a$; " esadecimale e "; b$; " ottale."
+.context INSTR
+.context @INSTR
+:nFunzione INSTR
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Restituisce la posizione della prima occorrenza di una stringa all'interno
+di un'altra stringa.
+
+\bINSTR([inizio%,]espressioneastringa1$,espressioneastringa2$)\p
+
+    ş \binizio%\p                 Imposta la posizione del carattere da cui
+                              deve iniziare la ricerca. Se inizio% viene
+                              omesso, INSTR inizia dalla posizione 1.
+    ş \bespressioneastringa1$\p   La stringa in cui cercare.
+    ş \bespressioneastringa2$\p   La stringa da cercare.
+
+Esempio:
+    a$ = "Microsoft QBASIC"
+    PRINT "Posizione della stringa ="; INSTR(1, a$, "QBASIC")
+
+Si vedano inoltre    \i\p\aLEFT$ e RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p    \i\p\aMID$\v@MID$\v\i\p
+.context LCASE$
+.context @LCASE$
+.context UCASE$
+.context @UCASE$
+:nFunzioni LCASE$ e UCASE$
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Converte una stringa in una stringa di caratteri tutti maiuscoli o minuscoli.
+
+\bLCASE$(espressioneastringa$)\p
+\bUCASE$(espressioneastringa$)\p
+
+    ş \bespressioneastringa$\p    Un'espressione a stringa qualsiasi.
+
+Esempio:
+    Test$ = "LA stringa"
+    PRINT Test$
+    PRINT LCASE$(Test$); " in minuscolo"
+    PRINT UCASE$(Test$); " IN MAIUSCOLO"
+.context LEFT$
+.context @LEFT$
+.context RIGHT$
+.context @RIGHT$
+:nFunzioni LEFT$ e RIGHT$
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Restituiscono il numero indicato di caratteri pi— a destra o a sinistra in
+una stringa.
+
+\bLEFT$(espressioneastringa$,n%)\p
+\bRIGHT$(espressioneastringa$,n%)\p
+
+    ş \bespressioneasringa$\p    Un'espressione a stringa qualsiasi.
+    ş \bn%\p                     Il numero di caratteri che si desidera vengano
+                             restituiti, a partire dal carattere pi— a destra\p
+                             o pi— a sinistra.
+
+Esempio:
+    a$ = "Microsoft QBASIC"
+    PRINT LEFT$(a$, 5)     'Risultato:  Micro
+    PRINT RIGHT$(a$, 5)    'Risultato:  Basic
+
+Si veda    \i\p\aMID$\v@MID$\v\i\p
+.context LEN
+.context @LEN
+:nFunzione LEN
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Restituisce il numero di caratteri in una stringa o il numero di byte
+necessari per memorizzare una variabile.
+
+\bLEN(espressioneastringa$)\p
+\bLEN(variabile)\p
+
+    ş \bespressioneastringa$\p    Un'espressione a stringa qualsiasi.
+    ş \bvariabile\p               Una variabile non stringa qualsiasi.
+
+Esempio:
+    a$ = "Microsoft QBASIC"
+    PRINT LEN(a$)
+
+Si veda    \i\p\aOPEN\v@OPEN\v\i\p
+.context LTRIM$
+.context @LTRIM$
+.context RTRIM$
+.context @RTRIM$
+:nFunzioni LTRIM$ e RTRIM$
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Toglie gli spazi iniziali e finali da una stringa.
+
+\bLTRIM$(espressioneastringa$)\p
+\bRTRIM$(espressioneastringa$)\p
+
+    ş \bespressioneastringa$\p    Un'espressione a stringa qualsiasi.
+
+Esempio:
+    a$ = "    Basic    "
+    PRINT "*" + a$ + "*"            'Risultato:  *    Basic    *
+    PRINT "*" + LTRIM$(a$) + "*"    'Risultato:  *Basic    *
+    PRINT "*" + RTRIM$(a$) + "*"    'Risultato:  *    Basic*
+.context MID$
+.context @MID$
+:nFunzione e istruzione MID$
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+La funzione MID$ restituisce una parte di una stringa (sottostringa).
+L'istruzione MID$ sostituisce parte di una variabile stringa con un'altra
+stringa.
+
+\bMID$(espressioneastringa$,inizio%[,lunghezza%])\p
+\bMID$(variabilestringa$,inizio%[,lunghezza%])=espressioneastringa$\p
+
+    ş \bespressioneastringa$\p    La stringa dalla quale la funzione MID$ ricava
+                              una sottostringa oppure la stringa sostitutiva
+                              usata dall'istruzione MID$. La stringa pu•
+                              essere costituita da un'espressione a stringa
+                              qualsiasi.
+    ş \binizio%\p                 La posizione del primo carattere nella sotto-
+                              stringa che viene restituita o sostituita.
+    ş \blunghezza%\p              Il numero dei caratteri contenuti nella sotto-
+                              stringa. Se viene omessa la lunghezza, MID$
+                              restituisce o sostituisce tutti i caratteri
+                              alla destra della posizione di partenza.
+    ş \bvariabilestringa$\p       La variabile stringa che viene modificata
+                              dall'istruzione MID$.
+
+Esempio:
+    a$ = "Dov'‚ Parigi?"
+    PRINT MID$(a$, 10, 5)       'Risultato:  Parigi
+    Text$ = "Parigi, Francia"
+    PRINT Text$                 'Risultato:  Parigi, Francia
+    MID$(Text$, 8) = "Texas "
+    PRINT Text$                 'Risultato:  Parigi, Texas
+
+Si vedano inoltre    \i\p\aLEFT$ e RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p
+.context CVI
+.context @CVI
+.context CVS
+.context @CVS
+.context CVL
+.context @CVL
+.context CVD
+.context @CVD
+.context MKL$
+.context @MKL$
+.context MKI$
+.context @MKI$
+.context MKS$
+.context @MKS$
+.context MKD$
+.context @MKD$
+:nFunzioni MKn$ e CVn
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MKI$, MKL$, MKS$ e MKD$ convertono dei numeri in stringhe numeriche che
+possono venire memorizzate nelle variabili stringa dell'istruzione FIELD.
+CVI, CVL, CVS e CVD riconvertono le stringhe in numeri.
+
+\bMKI$(espressione intera%)\p
+\bMKL$(espressione intera lunga&)\p
+\bMKS$(espressione a precisione semplice!)\p
+\bMKD$(espressione a doppia precisione#)\p
+\bCVI(stringa numerica di 2 byte)\p
+\bCVL(stringa numerica di 4 byte)\p
+\bCVS(stringa numerica di 4 byte)\p
+\bCVD(stringa numerica di 8 byte)\p
+
+   Funzione    Restituisce          Funzione    Restituisce un numero
+   ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+   MKI$        stringa di 2 byte    CVI         intero
+   MKL$        stringa di 4 byte    CVL         intero LONG
+   MKS$        stringa di 4 byte    CVS         a precisione semplice
+   MKD$        stringa di 8 byte    CVD         a doppia precisione
+
+Si vedano inoltre    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aMKSMBF$, MKDMBF$, CVSMBF e CVDMBF\v@CVSMBF\v\i\p
+.context MKDMBF$
+.context @MKDMBF$
+.context MKSMBF$
+.context @MKSMBF$
+.context CVDMBF
+.context @CVDMBF
+.context CVSMBF
+.context @CVSMBF
+:nFunzioni MKSMBF$, MKDMBF$, CVSMBF e CVDMBF
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MKSMBF$ e MKDMBF$ convertono numeri in formato IEEE in stringhe numeriche in
+formato binario Microsoft che possono venire memorizzate nelle variabili
+stringa dell'istruzione FIELD.
+CVSMBF e CVDMBF riconvertono le stringhe in numeri in formato IEEE.
+
+\bMKSMBF$(espressione a precisione semplice!)\p
+\bMKDMBF$(espressione a doppia precisione#)\p
+\bCVSMBF (stringa numerica di 4 byte)\p
+\bCVDMBF (stringa numerica di 8 byte)\p
+
+    Funzione    Restituisce
+    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+    MKSMBF$     una stringa di 4 byte contenente un numero in formato
+                binario Microsoft
+    MKDMBF$     una stringa di 8 byte contenente un numero in formato
+                binario Microsoft
+    CVSMBF      un numero a precisione semplice in formato IEEE
+    CVDMBF      un numero a doppia precisione in formato IEEE
+
+    ş Queste funzioni vengono usate per poter utilizzare dei file di
+      dati creati con versioni precedenti di Basic.
+
+Esempio:
+    TYPE Buffer
+        NumSing AS STRING * 4
+        NumDopp AS STRING * 8
+    END TYPE
+    DIM BufferRec AS Buffer
+    OPEN "TESTDAT.DAT" FOR RANDOM AS #1 LEN = 12
+    NumS = 98.9
+    NumD = 645.3235622#
+    BufferRec.NumSing = MKSMBF$(NumS)
+    BufferRec.NumDopp = MKDMBF$(NumD)
+    PUT #1, 1, BufferRec
+    GET #1, 1, BufferRec
+    CLOSE #1
+    PRINT CVSMBF(BufferRec.NumSing), CVDMBF(BufferRec.NumDopp)
+
+Si vedano inoltre    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aMKn$ e CVn\v@CVS\v\i\p
+.context PEEK
+.context @PEEK
+.context POKE
+.context @POKE
+:nFunzione PEEK e istruzione POKE
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PEEK restituisce un valore di byte contenuto in una locazione di memoria
+specificata.
+POKE memorizza un valore di byte in una locazione di memoria specificata.
+
+\bPEEK(indirizzo)\p
+\bPOKE indirizzo,byte%\p
+
+    ş \bindirizzo\p   Un numero di byte relativo all'indirizzo del segmento
+                  corrente impostato da DEF SEG; il valore dev'essere
+                  compreso tra 0 e 65.535.
+    ş \bbyte%\p       Un numero di byte da memorizzare nella locazione di memoria
+                  specificata; il valore dev'essere compreso tra 0 e 255.
+
+Esempio:
+    DEF SEG = 0
+    Stato% = PEEK(&H417)              'Legge lo stato della tastiera.
+    POKE &H417, (Stato% XOR &H40)     'Cambia lo stato di Bloc Maius, bit 6.
+
+Si veda inoltre    \i\p\aDEF SEG\v@SEG\v\i\p
+.context SPACE$
+.context @SPACE$
+:nFunzione SPACE$
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Restituisce una stringa di spazi.
+
+\bSPACE$(n%)\p
+
+    ş \bn%\p    Il numero di spazi che si desiderano nella stringa.
+
+Esempio:
+    FOR i% = 1 TO 5
+        x$ = SPACE$ (i%)
+        PRINT x$; i%
+    NEXT i%
+
+Si vedano inoltre    \i\p\aSPC\v@SPC\v\i\p    \i\p\aSTRING$\v@STRING$\v\i\p
+.context STR$
+.context @STR$
+.context VAL
+.context @VAL
+:nFunzioni STR$ e VAL
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+STR$ restituisce un numero in forma di stringa.
+VAL riconverte un numero in forma di stringa in numero.
+
+\bSTR$(espressione numerica)\p
+\bVAL(espressioneastringa$)\p
+
+    ş \bespressione numerica\p    Un'espressione numerica qualsiasi.
+    ş \bespressioneastringa$\p    Un numero in forma di stringa.
+
+Esempio:
+    PRINT "65 decimale Š rappresentato in esadecimale da ";
+    PRINT "&H" + LTRIM$(STR$(41))
+    PRINT VAL(RIGHT$("Microsoft 1990", 4))
+.context STRING$
+.context @STRING$
+:nFunzione STRING$
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Restituisce una stringa di lunghezza specificata costituita dalla ripetizione
+dello stesso carattere.
+
+\bSTRING$(lunghezza%,{codice ascii% | espressioneastringa$})\p
+
+    ş \blunghezza%\p              La lunghezza della stringa.
+    ş \bcodice ascii%\p           Il codice ASCII del carattere da ripetere.
+    ş \bespressioneastringa$\p    Un'espressione a stringa qualsiasi.
+                              STRING$ riempie la stringa con il primo
+                              carattere contenuto in espressioneastringa$.
+
+Esempio:
+    PRINT STRING$(5, "-");
+    PRINT "Ciao";
+    PRINT STRING$(5, "-")
+
+Si veda inoltre    \i\p\aCodici di carattere ASCII\v@ac\v\i\p
+.context VARSEG
+.context @VARSEG
+.context VARPTR
+.context @VARPTR
+:nFunzioni VARPTR e VARSEG
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+VARPTR restituisce l'indirizzo dell'offset di una variabile.
+VARSEG restituisce l'indirizzo del segmento di una variabile.
+
+\bVARPTR(nomevariabile)\p
+\bVARSEG(nomevariabile)\p
+
+    ş \bnomevariabile\p    Una variabile Basic qualsiasi.
+
+Si vedano inoltre    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p   \i\p\aDEF SEG\v@SEG\v\i\p   \i\p\aPEEK e POKE\v@PEEK\v\i\p   \i\p\aVARPTR$\v@VARPTR$\v\i\p
+.context VARPTR$
+.context @VARPTR$
+:nFunzione VARPTR$
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Restituisce l'indirizzo di una variabile in forma di stringa che pu• essere
+utilizzata con l'istruzione DRAW e PLAY.
+
+\bVARPTR$(stringacomandi$)\p
+
+    ş \bstringacomandi$\p    Una variabile stringa contenente comandi DRAW o
+                         PLAY.
+
+Esempio:
+    Scala$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(Scala$)
+    NEXT i%
+
+Si vedano inoltre   \i\p\aDRAW\v@DRAW\v\i\p   \i\p\aPLAY (Musica)\v@PLAY\v\i\p    \i\p\aVARPTR e VARSEG\v@VARPTR\v\i\p
+

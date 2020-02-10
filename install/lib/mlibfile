@@ -1,0 +1,13 @@
+Mcommon.lib
+y
++copy\medium\filecopy.lib&
++prompts\medium\prompts.lib&
++window\medium\window.lib&
++strlib\medium\strlib.lib&
++file\medium\file_io.lib&
++disk\medium\disk_io.lib&
++bios\medium\bios_io.lib&
++hdisk\medium\hdisk.lib&
++hardware\medium\hardware.lib&
++pluscard\pluscard.lib;
+

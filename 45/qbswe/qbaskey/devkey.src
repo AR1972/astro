@@ -1,0 +1,821 @@
+.comment ******************************************************************
+.comment *  Device I/O Family - QBasic                                    *
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Combined INP/OUT.                                             *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/22/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments.                      *
+.comment ******************************************************************
+.comment *  6/8/90 stevesau                                               *
+.comment *  Combined LOCATE/CSRLIN/POS                                    *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/8/90 stevesau                                               *
+.comment *  Combined INPUT/LINE INPUT/INPUT#/LINE INPUT#, PRESET/PSET.    *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Combined CSRLIN/POS.                                          *
+.comment ******************************************************************
+.comment *  5/4/90 stevesau                                               *
+.comment *  Revised CLS, WIDTH.                                           *
+.comment *  Combined LPRINT/PRINT, LPRINT USING/PRINT USING.              *
+.comment *  Deleted SCREEN (combined with SCREEN Func. in Graphics).      *
+.comment *  Deleted Screen adapters, modes, displays info (created new    *
+.comment *  screen modes topic in Graphics).                              *
+.comment ******************************************************************
+.comment *  5/3/90 stevesau                                               *
+.comment *  Added link to OPEN File Modes to INPUT.                       *
+.comment *  Deleted WRITE (combined with WRITE # in File family).         *
+.comment *  Combined PRINT and PRINT # (from File family).                *
+.comment *  Added PRINT # info to PRINT USING.                            *
+.comment *  Moved PRINT USING format specifiers to separate node.         *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                              *
+.comment *  Added Screen Modes, Adapters and Displays, Attributes and     *
+.comment *  Colors, made links local.                                     *
+.comment *  Deleted links to individual Screen Modes on SCREEN.           *
+.comment *  Added Setting Screen Width (from WIDTH Details).              *
+.comment ******************************************************************
+.comment *  4/20/90 stevesau                                              *
+.comment *  Added action lines. 					  *
+.comment *  Deleted table from USING Keyword screen.			  *
+.comment *  Deleted OS/2 references.                                      *
+.comment ******************************************************************
+.comment *  4/17/90 Beth Preslar                                          *
+.comment *  Removed FormatX$ functions, SetFormatCC routine		  *
+.comment ******************************************************************
+.context BEEP
+.context @BEEP
+:nBEEP, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Genererar en signal fr†n datorns h”gtalare.
+
+\bBEEP\p
+.context CLS
+.context @CLS
+:nCLS, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Rensar sk„rmen.
+
+\bCLS [{0 | 1 | 2}]\p
+
+    CLS      Rensar ett arbetsomr†de med text eller grafik. Om ett
+             arbetsomr†de med grafik har definierats (med VIEW) rensas
+	     endast det arbetsomr†det. Annars rensas arbetsomr†det med text
+             eller hela sk„rmen.
+    CLS 0    Rensar sk„rmen fr†n all text och grafik.
+    CLS 1    Rensar arbetsomr†det med grafik, eller hela sk„rmen om inget
+             arbetsomr†de med grafik har definierats.
+    CLS 2    Rensar arbetsomr†det med text.
+
+Se „ven     \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+.context INKEY$
+.context @INKEY$
+:nINKEY$, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+L„ser ett tecken fr†n tangentbordet.
+
+\bINKEY$\p
+
+    ş INKEY$ returnerar tecknet null om det inte finns n†got tecken att
+      returnera.
+    ş F”r standardtangenter returnerar INKEY$ en str„ng p† 1 byte som
+      inneh†ller det l„sta tecknet.
+    ş F”r ut”kade tangenter returnerar INKEY$ en str„ng p† 2 byte som
+      best†r av tecknet null (ASCII 0) och tangentbordskoden.
+
+Exempel:
+    PRINT "Tryck p† Esc f”r att avsluta..."
+    DO
+    LOOP UNTIL INKEY$ = CHR$(27)    '27 „r ASCII-koden f”r Esc.
+
+Se „ven     \i\p\aTangentbordskoder\v@kbsct\v\i\p
+.context INP
+.context @INP
+.context OUT
+.context @OUT
+:nINP, funktion; OUT, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+INP returnerar en byte som l„sts fr†n en I/O-port.
+OUT skickar en byte till en I/O-port.
+
+\bINP(port%)\p
+\bOUT port%, data%\p
+
+    ş \bport%\p     Ett tal i intervallet 0 till 65 535 som identifierar
+                porten.
+    ş \bdata%\p     Ett numeriskt uttryck i intervallet 0 till 255 som skickas
+                till porten.
+
+Exempel:
+    x% = INP(&H3FC)          'L„s Modemstyrregister COM1.
+    OUT &H3FC, (x% XOR 1)    'ndra biten Dataterminal klar.
+
+Se „ven     \i\p\aWAIT\v@WAIT\v\i\p
+.context INPUT
+.context @INPUT
+:nINPUT, sats; LINE INPUT, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+INPUT l„ser indata fr†n tangentbordet eller en fil. LINE INPUT l„ser en rad
+p† upp till 255 tecken fr†n tangentbordet eller en fil.
+
+\bINPUT [;] ["prompt"{; | ,}] variabellista\p
+\bLINE INPUT [;] ["prompt";] variabel$\p
+\bINPUT #filnummer%, variabellista\p
+\bLINE INPUT #filnummer%, variabel$\p
+
+    ş \bprompt\p          En valfri literal str„ng som visas innan anv„ndaren
+                      skriver in sin data. Ett semikolon efter prompten
+                      l„gger till ett fr†getecken efter promptstr„ngen.
+    ş \bvariabellista\p   En eller flera variabler, †tskilda av komman, d„r
+                      data som skrivs in fr†n tangentbordet eller l„ses fr†n
+                      en fil lagras. Variabelnamn kan best† av upp till 40
+                      tecken och m†ste b”rja med en bokstav. Till†tna
+                      bokst„ver „r A-Z, 0-9, och punkt (.).
+    ş \bvariabel$\p       Inneh†ller en bokstavsrad som skrivits in fr†n
+                      tangentbordet eller l„sts fr†n en fil.
+    ş \bfilnummer%\p      Numret p† en ”ppen fil.
+
+    ş INPUT anv„nder komma f”r att skilja p† indata.
+      LINE INPUT l„ser alla tecken fram till ett vagnreturtecken.
+    ş Vid inmatning fr†n tangentbordet g”r ett semikolon direkt efter INPUT
+      att mark”ren „r kvar p† samma rad efter att anv„ndaren tryckt p†
+      returtangenten.
+
+Exempel:
+    CLS
+    OPEN "LIST" FOR OUTPUT AS #1
+    DO
+        INPUT "   NAMN:       ", Name$  'L„s indata fr†n tangentbordet.
+        INPUT "   LDER:      ", Age$
+        WRITE #1, Name$, Age$
+        INPUT "Vill du l„gga till en post"; R$
+    LOOP WHILE UCASE$(R$) = "J"
+    CLOSE #1
+    'Eka filen tillbaka.
+    OPEN "LIST" FOR INPUT AS #1
+    CLS
+    PRINT "Poster i filen:": PRINT
+    DO WHILE NOT EOF(1)
+        LINE INPUT #1, REC$  'L„s indata fr†n filen.
+        PRINT REC$           'Skriv ut indata p† sk„rmen.
+    LOOP
+    CLOSE #1
+    KILL "LIST"
+
+Se „ven     \i\p\aINKEY$\v@INKEY$\v\i\p    \i\p\aINPUT$\v@INPUT$\v\i\p    \i\p\aOPEN, sats - fill„gen\v@APPEND\v\i\p
+.context LIST
+.context @LIST
+.context KEY
+.context @KEY
+:nKEY, sats (tilldelning)
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Tilldelar str„ngv„rden till funktionstangenter, och visar tangentv„rden om
+s† ”nskas.
+
+\bKEY tangent%, str„nguttryck$\p
+\bKEY LIST\p
+\bKEY ON\p
+\bKEY OFF\p
+
+    ş \btangent%\p             Numret p† en funktionstangent. Anv„nd 1 till
+                           10 f”r funktionstangenterna F1 till F10. Anv„nd
+                           30 och 31 f”r funktionstangenterna F11 och F12
+                           p† ut”kade tangentbord.
+    ş \bstr„nguttryck$\p       En str„ng p† upp till 15 tecken som returneras
+                           n„r funktionstangenten trycks ned.
+    ş \bLIST\p                 Visar tilldelningarna f”r varje tangent.
+    ş \bON\p                   S„tter p† referensraden f”r funktionstangenter.
+    ş \bOFF\p                  St„nger av referensraden f”r funktionstangenter.
+
+Exempel:
+    KEY 4, "MENY" + CHR$ (13)
+    KEY LIST
+    KEY 4, ""
+    KEY LIST
+
+Se „ven     \i\p\aKEY, ON KEY (H„ndelseinf†ngning)\v@ketv\v\i\p
+.context KILL
+.context @KILL
+:nKILL, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Tar bort filer fr†n disken.
+
+\bKILL filspec$\p
+
+    ş \bfilspec$\p     Anger filen eller filerna som ska tas bort. Man kan
+                   anv„nda DOS-jokertecknen ? och *.
+
+Exempel:
+    INPUT "Fil som ska tas bort: "; f$
+    KILL f$
+
+Se „ven     \i\p\aFILES\v@FILES\v\i\p
+.context LOCATE
+.context @LOCATE
+.context CSRLIN
+.context @CSRLIN
+.context POS
+.context @POS
+:nLOCATE, sats; CSRLIN, POS, funktioner
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LOCATE flyttar mark”ren till en angiven position p† sk„rmen.
+CSRLIN returnerar mark”rens nuvarande radposition.
+POS returnerar mark”rens nuvarande kolumnposition.
+
+\bLOCATE  [rad%] [,[kolumn%] [,[mark”r%] [,start% [,slut%]]]]\p
+\bCSRLIN\p
+\bPOS(uttryck)\p
+
+    ş \brad%\p och \bkolumn%\p    Numret p† raden och kolumnen dit mark”ren flyttas.
+    ş \bmark”r%\p             Anger om mark”ren „r synlig:
+                            0 = osynlig, 1 = synlig
+    ş \bstart%\p och \bslut%\p    Heltalsuttryck i intervallet 0 till 31
+                          som anger den f”rsta och sista raden f”r
+                          mark”ravs”kning. Man kan „ndra mark”rens storlek
+                          genom att „ndra raderna f”r mark”ravs”kning.
+    ş \buttryck\b             Ett uttryck.
+
+Exempel:
+    CLS
+    LOCATE 5, 5
+    MinRad% = CSRLIN
+    MinKol% = POS(0)
+    PRINT "Position 1 (Tryck p† en tangent)"
+    DO
+    LOOP WHILE INKEY$ = ""
+    LOCATE (MinRad% + 2), (MinKol% + 2)
+    PRINT "Position 2"
+.context LPOS
+.context @LPOS
+:nLPOS, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar antalet tecken som s„nts till skrivaren sedan det senaste
+returtecknet.
+
+\bLPOS(n%)\p
+
+    ş \bn%\p    Anger en av f”ljande skrivarportar:
+              0 = LPT1, 1 = LPT1, 2 = LPT2, 3 = LPT3
+Exempel:
+    'F”r det h„r exemplet kr„vs en skrivare.
+    LPRINT
+    FOR i% = 1 TO 20
+        LPRINT i%;
+        IF LPOS(1) >= 10 THEN LPRINT     'B”rja p† en ny rad.
+    NEXT i%
+.context .opcom
+.context @opcom
+:nOPEN COM, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+™ppnar och initierar en kommunikationskanal f”r inmatning eller utmatning
+(I/O). Satsen OPEN COM m†ste exekveras innan en enhet kan anv„ndas f”r
+kommunikation med ett RS232-gr„nssnitt.
+
+\bOPEN "COMn: altlista1 altlista2" [FOR l„ge] AS [#]filnum% [LEN=reclen%]\p
+
+    ş \bn\p           Kommunikationsporten som ska ”ppnas (1 = COM1, 2 = COM2).
+    ş \baltlista1\p   De mest anv„nda kommunikationsparametrarna:
+                    \b[baud] [,[paritet] [,[data] [,[stopp]]]]\p
+                  baud „r ”verf”ringshastigheten p† den enhet som ska
+                  ”ppnas:
+                    75, 110, 150, 300, 600, 1200, 2400, 4800, 9600
+                  paritet „r metoden f”r paritetskontroll:
+                    N (ingen)        E (j„mn)        O (udda)
+                    S (bin„r nolla)  M (bin„r etta)  PE (paritetskontroll)
+                  data „r antalet databitar per byte:
+                    5, 6, 7, 8
+                  stopp „r antalet stoppbitar:
+                    1, 1.5, 2
+                  Standard: 300 baud, j„mn paritet, 7 databitar, 1 stoppbit.
+    ş \baltlista2\p   En lista ”ver de parametrar som man anv„nder mindre ofta,
+                  †tskilda med komman:
+
+                  Alternativ Beskrivning
+                  ÍÍÍÍÍÍÍÍÍÍ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                  ASC        ™ppnar enheten i ASCII-l„ge.
+                  BIN        ™ppnar enheten i bin„rl„ge.
+                  CD[m]      St„ller in tidsutl”sningsperioden
+                             (i millisekunder) p† linjen f”r b„rv†gsavk„nning.
+                  CS[m]      St„ller in tidsutl”sningsperioden
+                             (i millisekunder) p† linjen f”r
+                             Klart f”r s„ndning.
+                  DS[m]      St„ller in tidsutl”sningsperioden
+                             (i millisekunder) p† linjen f”r
+                             Datam„ngs klar.
+                  LF         S„nder ett radmatningstecken efter en radretur.
+                  OP[m]      Anger hur l„nge OPEN COM ska v„nta
+                             (i millisekunder) p† att alla
+                             kommunikationslinjer ska ”ppnas.
+                  RB[n]      St„ller in storleken (i byte) p†
+                             mottagningsbufferten.
+                  RS         F”rhindrar avk„nning av s„ndningsf”rfr†gan
+                             (Request to Send - RTS).
+                  TB[n]      St„ller in storleken (i byte) p†
+                             s„ndningsbufferten.
+
+    ş \bl„ge\p        INPUT, OUTPUT, eller RANDOM (standard).
+                  Se \i\p\aOPEN, sats (fill„gen)\v@APPEND\v\i\p.
+    ş \bfilnum%\p     Ett nummer mellan 1 och 255 som identifierar
+                  kommunikationskanalen s† l„nge den „r ”ppen.
+    ş \breclen%\p     Buffertstorlek i Direkt†tkomstl„ge
+                  (standard „r 128 byte).
+
+Exempel:
+    'Anv„nd det h„r exemplet f”r fels”kning vid seriell kommunikation.
+    'L†ngsam ”verf”ring, handskakning ignoreras, och buffertarna f”rstoras
+    OPEN "COM1:300,N,8,1,CD0,CS0,DS0,OP0,RS,TB2048,RB2048" FOR RANDOM AS #1
+
+Se „ven     \i\p\aOPEN\v@OPEN\v\i\p
+.context .penf
+.context @penf
+:nPEN, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar ljuspennans status.
+
+\bPEN(n%)\p
+
+    ş \bn%\p    Specificerar informationen som ska returneras om
+            ljuspennans status:
+
+            n%    Returnerar
+            ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+            0     Om pennan anv„nts sedan det senaste anropet
+                  (-1 „r ja, 0 „r nej)
+            1     x-koordinaten p† sk„rmen f”r senaste penntryckningen
+            2     y-koordinaten p† sk„rmen f”r senaste penntryckningen
+            3     Aktuell status f”r pennbrytaren (-1 f”r nere, 0 f”r uppe)
+            4     x-koordinaten p† sk„rmen d„r pennan senast l„mnade sk„rmen
+            5     y-koordinaten p† sk„rmen d„r pennan senast l„mnade sk„rmen
+            6     Teckenraden f”r senaste penntryckningen
+            7     Teckenkolumnen f”r senaste penntryckningen
+            8     Teckenraden d„r pennan senast l„mnade sk„rmen
+            9     Teckenkolumnen d„r pennan senast l„mnade sk„rmen
+
+Exempel:
+    DO
+      P = PEN(3)
+      LOCATE 1, 1: PRINT "Pennan „r ";
+      IF P THEN PRINT "nere" ELSE PRINT "uppe  "
+      PRINT "X ="; PEN(4), " Y ="; PEN(5); "  "
+    LOOP
+
+Se „ven     \i\p\aPEN, sats; ON PEN, sats\v@PEN\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aSk„rml„gen\v@screen.modes\v\i\p
+.context PLAY
+.context @PLAY
+:nPLAY, sats (Musik)
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Spelar efter noter.
+
+\bPLAY kommandostr„ng$\p
+
+    ş \bkommandostr„ng$\p   Ett str„nguttryck som inneh†ller ett eller fler
+                        av f”ljande PLAY-kommandon:
+
+      Kommandon f”r oktav och ton:
+        O\boktav\p     St„ller in den aktuella oktaven (0 - 6).
+        < eller >  Flyttar en oktav upp†t eller ned†t.
+        A - G      Spelar den angivna noten i den nuvarande oktaven.
+        N\bnot\p       Spelar den angivna noten (0 - 84) i
+                   7-oktavsintervallet (0 „r en paus).
+
+      Kommandon f”r l„ngd och tempo:
+        L\bl„ngd\p     Best„mmer l„ngden p† varje not (1 - 64).
+                   L1 „r en helnot,
+                   L2 „r en halvnot, osv.
+        ML         Spela med legato.
+        MN         Spela normalt.
+        MS         Spela med staccato.
+        P\bpaus\p      Anger en paus (1 - 64). P1 „r en helpaus,
+                   P2 „r en halvpaus, osv.
+        T\btempo\p     Best„mmer tempot i antal fj„rdedelar per minut (32 - 255).
+
+      Kommandon f”r musikplacering:
+        MF          Spelar musiken i f”rgrunden.
+        MB          Spelar musiken i bakgrunden.
+
+      Kommandon f”r suffix:
+        # or +      Kors-tecken. H”jer f”reg†ende ton ett halvt tonsteg.
+        -           B-tecken. S„nker f”reg†ende ton ett halvt tonsteg
+        .           Punktering. F”rl„nger tonen med h„lften.
+
+    ş Om du vill exekvera en delstr„ng f”r kommandot PLAY fr†n en
+      kommandostr„ng f”r kommandot PLAY, kan du anv„nda "X"-kommandot:
+
+      PLAY "X"+ VARPTR$(kommandostr„ng$)
+
+Exempel:
+    'Spela en durskala i 7 oktaver
+    skala$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(skala$)
+    NEXT i%
+
+Se „ven     \i\p\aBEEP\v@BEEP\v\i\p     \i\p\aPLAY, funktion\v@PLAYF\v\i\p  \i\p\aPLAY; ON PLAY (H„ndelseinf†ngning)\v@playev\v\i\p
+            \i\p\aSOUND\v@SOUND\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p         \i\p\aSkillnader j„mf”rt med BASICA\v@basica.diffs\v\i\p
+.context PMAP
+.context @PMAP
+:nPMAP, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar den f”nsterkoordinat som motsvarar en koordinat i ett arbetsomr†de,
+som definierats i satsen WINDOW, eller tv„rtom.
+
+\bPMAP (startkoordinat#, n%)\p
+
+ş \bstartkoordinat#\p En koordinat i ett f”nster eller i ett arbetsomr†de.
+ş \bn%\p              Ett v„rde som visar vilken koordinat som ska
+                  returneras:
+
+                  startkoordinat#              n%   Returnerar
+                  ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ        ÍÍ   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                  F”nstrets x-koordinat        0    Arbetsomr†dets x-koordinat
+                  F”nstrets y-koordinat        1    Arbetsomr†dets y-koordinat
+                  Arbetsomr†dets x-koordinat   2    F”nstrets x-koordinat
+                  Arbetsomr†dets y-koordinat   3    F”nstrets y-koordinat
+
+Exempel:
+    'Detta exempel kr„ver en grafikadapter som st”der sk„rml„ge 1.
+    SCREEN 1
+    WINDOW SCREEN (0, 0)-(100, 100)
+    PRINT "Logisk x=50, fysisk x="; PMAP(50, 0)
+    PRINT "Logisk y=50, fysisk y="; PMAP(50, 1)
+
+Se „ven     \i\p\aPOINT\v@POINT\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+.context POINT
+.context @POINT
+:nPOINT, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar den aktuella grafikmark”rens koordinater eller en bildpunkts
+f„rgattribut.
+
+\bPOINT {(n%) | (x%,y%)}\p
+
+    ş \b(n%)\p       Anger koordinattyp att returnera:
+
+                 n%    Returnerar
+                 ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                 0     Det aktuella arbetsomr†dets x-koordinat
+                 1     Det aktuella arbetsomr†dets y-koordinat
+                 2     Det aktuella f”nstrets x-koordinat
+                 3     Det aktuella f”nstrets y-koordinat
+
+    ş \b(x%,y%)\p    Koordinaterna f”r bildelementet som POINT kontrollerar
+                 f”r f„rg.
+                 Om korrdinaterna „r utanf”r det aktuella arbetsomr†det
+                 returnerar POINT -1.
+
+Exempel:
+    'Detta exempel kr„ver en f„rggrafikadapter.
+    SCREEN 1
+    LINE (0, 0)-(100, 100), 2
+    LOCATE 14, 1
+    FOR y% = 1 TO 10
+        FOR x% = 1 TO 10
+            PRINT POINT(x%, y%);
+        NEXT x%
+        PRINT
+    NEXT y%
+
+Se „ven     \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aPMAP\v@PMAP\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aF„rgattribut och v„rden\v@color.table\v\i\p
+.context PRESET
+.context @PRESET
+.context PSET
+.context @PSET
+:nPRESET, sats; PSET, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Rita en angiven punkt p† sk„rmen.
+
+\bPRESET [STEP] (x!,y!) [,f„rg%]\p
+\bPSET [STEP] (x!,y!) [,f„rg%]\p
+
+    ş \bSTEP\p       Anger att x! och y! uttrycks relativt den aktuella
+                 grafikmark”rens placering.
+    ş \b(x!,y!)\p    Sk„rmkoordinaterna f”r det bildelement som ska s„ttas.
+    ş \bf„rg%\p      Ett f„rgattribut som best„mmer bildelementets f„rg.
+                 Om f„rg% inte „r med anv„nder PRESET den aktuella
+                 bakgrunden, och PSET den aktuella f”rgrundsf„rgen.
+
+    ş Tillg„nglliga f„rgattribut beror p† din grafikadapter och sk„rml„get.
+      Koordinatv„rdena beror p† grafikadaptern, sk„rml„get och de senaste
+      VIEW- och WINDOW-satserna.
+
+Exempel:
+    'Det h„r exemplet kr„ver en f„rggrafikadapter.
+    SCREEN 1
+    FOR i% = 0 TO 320
+        PSET (i%, 100)
+        FOR delay% = 1 TO 100: NEXT delay%
+        PRESET (i%, 100)
+    NEXT i%
+
+Se „ven     \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aF„rgattribut och v„rden\v@color.table\v\i\p    \i\p\aSk„rml„gen\v@screen.modes\v\i\p
+.context PRINT
+.context @PRINT
+.context LPRINT
+.context @LPRINT
+:nPRINT, sats; LPRINT, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PRINT skriver data p† sk„rmen eller i en fil.
+LPRINT skriver data p† skrivaren LPT1.
+
+\bPRINT [#filnummer%,] [uttryckslista] [{; | ,}]\p
+\bLPRINT [uttryckslista] [{; | ,}]\p
+
+    ş \bfilnummer%\p        Numret p† en ”ppen fil. Om du inte anger ett
+                        filnummer skriver PRINT p† sk„rmen.
+    ş \buttryckslista\p     En lista p† ett eller flera numeriska uttryck
+                        eller str„nguttryck att skriva ut.
+    ş \b{; | ,}\p           Anger var n„sta utdata ska b”rja:
+                          ; betyder skriv direkt efter sista v„rdet.
+                          , betyder skriv vid b”rjan p† n„sta utskriftszon.
+                            En utskriftszon „r 14 tecken bred.
+
+Exempel:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT #1, USING "##.###  "; 12,12345
+    CLOSE
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT a$
+    LPRINT "Detta „r en rad"; 1
+    LPRINT "Detta „r en rad",
+    LPRINT 2
+
+Se „ven     \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p    \i\p\aWRITE\v@WRITE\v\i\p
+.context .zpu
+.context @zpu
+.context .lprintu
+.context @lprintu
+:nPRINT USING, sats; LPRINT USING, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PRINT USING skriver formaterad utdata p† sk„rmen screen eller i en fil.
+LPRINT USING skriver formaterad utdata p† skrivaren LPT1.
+
+\bPRINT [#filnummer%,] USING formatstr„ng$; uttryckslista [{; | ,}]\p
+\bLPRINT USING formatstr„ng$; uttryckslista [{; | ,}]\p
+
+    ş \bfilnummer%\p        Numret p† en ”ppen sekventiell fil.
+    ş \bformatstr„ng$;\p    Ett str„inguttryck som inneh†ller en eller flera
+                        \i\p\aformatspecificerare\v@forspec\v\i\p.
+    ş \buttryckslista\p     En lista p† ett eller flera numeriska eller
+                        str„nguttryck att skriva ut, †tskilda med komman,
+                        semikolon, blanksteg, eller tabbtecken.
+    ş \b{; | ,}\p           Anger var n„sta utdata ska b”rja:
+                          ; betyder skriv direkt efter sista v„rdet.
+                          , betyder skriv vid b”rjan p† n„sta utskriftszon.
+                            En utskriftszon „r 14 tecken bred.
+Exempel:
+    a = 123.4567
+    PRINT USING "###.##"; a
+    LPRINT USING "+###.####"; a
+    a$ = "ABCDEFG"
+    PRINT USING "!"; a$
+    LPRINT USING "\\ \\"; a$
+
+Se „ven     \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p
+.context @forspec
+:nFormatspecificerare
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                     \bTecken som formaterar ett numeriskt uttryck\p
+ \b#\p    Heltalsposition                    º \b-\p     Placeras efter siffran,
+ \b.\p    Decimalpunktsposition.             º       skriver efterf”ljande tecken
+ \b,\p    Placeras till v„nster om decimal-  º       f”r negativa tal.
+      punkten, och skiver ett komma efterº \b$$\p    Skiver inledande $.
+      var tredje siffra                  º
+ \b+\p    Positionen f”r talets tecken.      º \b**\p    Fyller inledande
+\b^^^^\p  Skriver p† exponentiellt format.   º       blanksteg med *.
+                                         º \b**$\p   Kombinerar ** och $$.
+
+                     \bTecken som formaterar ett str„nguttryck\p
+ \b&\p    Skriver hela str„ngen.             º \b\\ \\\p   Skriver de n f”rsta tecknen,
+ \b!\p    Skriver endast f”rsta tecknet i    º       d„r n „r antalet blanksteg
+      str„ngen.                          º       mellan snedstreck + 2.
+
+                       \bTecken f”r att skriva literala tecken\p
+ \b_\p    Skriver det f”ljande formaterings- º       De tecken som inte „r med
+      tecknet som en literal.            º       i denna tabell skrivs som
+                                         º       literaler.
+.context SOUND
+.context @SOUND
+:nSOUND, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Genererar ett ljud ur datorns h”gtalare.
+
+\bSOUND frekvens, duration\p
+
+    ş \bfrekvens\p     Ljudets frekvens i hertz; ett v„rde mellan
+                   37 och 32 767.
+    ş \bduration\p     Antalet ticks i systemets interna klocka som ljudet varar;
+                   ett v„rde mellan 0 och 65 535. Det g†r 18,2 ticks
+                   per sekund.
+
+Exempel:
+    FOR i% = 440 TO 1000 STEP 5
+    SOUND i%, i% / 1000
+    NEXT i%
+
+Se „ven     \i\p\aPLAY\v@PLAY\v\i\p
+.context SPC
+.context @SPC
+:nSPC, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Hoppar ”ver ett angivet antal blanksteg i en PRINT- eller LPRINT-sats.
+
+\bSPC(n%)\p
+
+    ş \bn%\p    Antal blanksteg att hoppa ”ver; ett v„rde mellan
+            0 och 32 767.
+
+Exempel:
+    PRINT "Text1"; SPC(10); "Text2"
+
+Se „ven     \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p
+            \i\p\aSPACE$\v@SPACE$\v\i\p           \i\p\aTAB\v@TAB\v\i\p
+.context STICK
+.context @STICK
+:nSTICK, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar koordinaterna f”r en styrspak.
+
+\bSTICK(n%)\p
+
+    ş \bn%\p    Anger den returnerade koordinaten:
+
+            n%    Returns
+            ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+            0     x-koordinaten f”r styrspak A
+            1     y-koordinaten f”r styrspak A
+            2     x-koordinaten f”r styrspak B
+            3     y-koordinaten f”r styrspak B
+
+    ş Du m†ste anropa STICK(0) innan STICK(1), STICK (2) eller STICK(3).
+      STICK(0) spelar in den aktuella koordinaten.
+
+Exempel:
+    Temp% = STICK(0)
+    PRINT STICK(2), STICK(3)
+
+Se „ven     \i\p\aSTRIG, funktion\v@strigf\v\i\p    \i\p\aSTRIG, sats; ON STRIG, sats\v@STRIG\v\i\p
+.context TAB
+.context @TAB
+:nTAB, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Flyttar textmark”ren till en angiven utskriftsposition.
+
+\bTAB(kolumn%)\p
+
+    ş \bkolumn%\p    Numret p† kolumnen f”r den nya utskriftspositionen.
+
+Exempel:
+    PRINT TAB(25); "Text"
+
+Se „ven     \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p
+            \i\p\aSPC\v@SPC\v\i\p    \i\p\aSPACE$\v@SPACE$\v\i\p
+.context .vupri
+.context @vupri
+:nVIEW PRINT, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+S„tter gr„nserna f”r ett arbetsomr†de med text.
+
+\bVIEW PRINT [”verrad% TO underrad%]\p
+
+    ş \b”verrad%\p   Numret p† den ”versta raden i arbetsomr†det med text.
+    ş \bunderrad%\p  Numret p† den nedersta raden i arbetsomr†det med text.
+
+    ş Om du inte har med agumenten ”verrad% och underrad%, g”r VIEW PRINT
+      hela sk„rmen till ett arbetsomr†de med text.
+    ş Intervallen f”r ”verrad% och underrad% beror p† sk„rml„get.
+
+Exempel:
+    VIEW PRINT 10 TO 15
+    FOR i% = 1 TO 100      'Utdata kommer att rulla.
+        PRINT i%
+    NEXT i%
+
+Se „ven     \i\p\aCLS\v@CLS\v\i\p    \i\p\aLOCATE\v@LOCATE\v\i\p    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p
+            \i\p\aSk„rml„gen\v@screen.modes\v\i\p
+.context WAIT
+.context @WAIT
+:nWAIT, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+St„nger av programexkveringen tills ett angivet bitm”nster „r indata fr†n en
+indataport.
+
+\bWAIT portnummer%, AND-uttryck% [,XOR-uttryck%]\p
+
+    ş \bportnummer%\p        Numret p† indataporten.
+    ş \bAND-uttryck%\p       Ett heltalsuttryck som WAIT kombinerar med v„rdet
+                         p† bitm”nstret, med hj„lp av operatorn AND. Om
+                         resultatet „r icke-noll, slutar WAIT att bevaka
+                         porten.
+    ş \bXOR-uttryck%\p       Kan anv„ndas f”r att s„tta p† eller st„nga av
+                         radbitar i bitm”nstret innan AND-operationen
+                         appliceras.
+
+Exempel:
+    'L„ser avbrottskontrollerarens portaddress &H20.
+    'Tryck p† valfri tangent f”r att fort„tta.
+    WAIT &H20, 1
+
+Se „ven     \i\p\aINP, OUT\v@INP\v\i\p    \i\p\aBooleska operatorer\v@AND\v\i\p
+.context WIDTH
+.context @WIDTH
+:nWIDTH, satser
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Tilldela en utdatarads bredd till en enhet (t ex en skrivare) eller en fil,
+eller „ndra antalet kolumner och rader som visas p† sk„rmen.
+
+\bWIDTH [kolumner%] [,rader%]\p
+\bWIDTH {#filnummer% | enhet$}, kolumner%\p
+\bWIDTH LPRINT kolumner%\p
+
+    ş \bkolumner%\p       Den ”nskade bredden i kolumner. Sk„rmens bredd m†ste
+                      vara 40 eller 80 kolumner.
+    ş \brader%\p          Den ”nskade h”jden i rader. V„rdet kan vara 25, 30, 43,
+                      50 eller 60, beroende p† din sk„rmadapter och
+                      sk„rml„get.
+    ş \b#filnummer%\p     Numret p† en ”ppen fil eller enhet.
+    ş \benhet$\p          Namnet p† en enhet:
+                        SCRN:, COM1:, COM2:, LPT1:, LPT2:, LPT3:
+
+Exempel:
+    OPEN "LPT1:" FOR OUTPUT AS #1
+    WIDTH #1, 132
+
+Se „ven     \i\p\aPRINT, LPRINT\v@LPRINT\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p
+.context WINDOW
+.context @WINDOW
+:nWINDOW, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definierar logiska dimensioner f”r det aktuella arbetsomr†det med grafik.
+Anv„nd satsen WINDOW f”r att definiera ditt eget koordinatsystem f”r ett
+arbetsomr†de.
+
+\bWINDOW [[SCREEN] (x1!,y1!)-(x2!,y2!)]\p
+
+    ş \bSCREEN\p       Inverterar den normala kartesiska riktningen p† sk„rmens
+                   y-koordinater s† att y-v„rdet ”kar fr†n l„ngst upp p†
+                   sk„rmen till l„ngst ned.
+    ş \b(x1!,y1!)\p    Logiska koordinater som anknyts till sk„rmkoordinaterna
+                   l„ngst upp till v„nster p† arbetsomr†det.
+    ş \b(x2!,y2!)\p    Logiska koordinater som anknyts till sk„rmkoordinaterna
+                   l„ngst upp till h”ger p† arbetsomr†det.
+
+    ş WINDOW utan n†gra argument st„nger av det logiska koordinatsystemet.
+    ş Anv„nd satsen VIEW om du vill „ndra storleken p† arbetsomr†det.
+
+Exempel:
+    'Det h„r exemplet kr„ver en f„rggrafikadapter.
+    SCREEN 1
+    FOR i% = 1 TO 10 STEP 2
+        WINDOW (-160 / i%, -100 / i%)-(160 / i%, 100 / i%)
+        CIRCLE (0, 0), 10
+    NEXT i%
+
+Se „ven     \i\p\aCLS\v@CLS\v\i\p    \i\p\aPMAP\v@PMAP\v\i\p    \i\p\aPOINT\v@POINT\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p
+.comment *****************************************************************
+.comment * One Keyword screen in this family.
+.comment *****************************************************************
+.context USING
+.context @USING
+:nUSING, nyckelord
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Specificerar formateringen f”r satserna PRINT USING och LPRINT USING, och
+palettilldelningarna f”r satsen PALETTE USING.
+
+Se „ven     \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p

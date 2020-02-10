@@ -1,0 +1,11 @@
+[[1]]='Residente Routinen zur UnterstÅtzung von Hercules-Grafikkarten. Version 1.12'
+
+[[2]]='Hercules BildschirmunterstÅtzungsroutinen sind bereits installiert.'
+
+[[3]]='Hercules Grafikkarte ist nicht vorhanden.',0DH,0AH
+[[4]]='Hercules BildschirmunterstÅtzungsroutinen nicht installiert.'
+
+[[5]]='Installieren Sie MSHERC.COM bevor ein Programm mit Grafik gestartet wird,', 0DH, 0AH
+[[6]]='da· eine Hercules-Grafikkarte erfordert.', 0DH, 0AH, 0DH, 0AH
+[[7]]='MSHERC [/HALF]', 0DH, 0AH
+[[8]]='  /HALF Ist zum gleichzeitigen Einsatz mit einem Farbadapter erforderlich.', 0DH, 0AH

@@ -1,0 +1,144 @@
+.context .spcxxx
+.context @spcxxx
+:nSPC Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\spcxxx.bas
+.context .tabx
+.context @tabx
+:nTAB Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\tabx.bas
+.context .inkx
+.context @inkx
+:nINKEY$ Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\inkx.bas
+.context .widthx
+.context @widthx
+:nWIDTH Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\widthx.bas
+.context .inptttx
+.context @inptttx
+:nINPUT Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\inptttx.bas
+.context .outx
+.context @outx
+:nINP and OUT Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\outx.bas
+.context .yprix
+.context @yprix
+:nPRINT Statement Programming Examples
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\yprix.bas
+.context .screensx
+.context @screensx
+:nPCOPY and SCREEN Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\screensx.bas
+.context .waitex
+.context @waitex
+:nWAIT Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\waitx.bas
+.context .zpux
+.context @zpux
+:nPRINT USING Statement Programming Examples
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\zpux.bas
+.context .writex
+.context @writex
+:nWRITE Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\writex.bas
+.context .clsx
+.context @clsx
+:nCLS and VIEW PRINT Statements Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\clsx.bas
+.context .windox
+.context @windox
+:nPMAP, VIEW and WINDOW Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\windox.bas
+.context .csrlinx
+.context @csrlinx
+:nCSRLIN Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\csrlinx.bas
+.context .setfkx
+.context @setfkx
+:nKEY Statements (Assignment) Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\setfkx.bas
+.context .killx
+.context @killx
+:nKILL Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\killx.bas
+.context .locatex
+.context @locatex
+:nLOCATE Statement Programming Examples
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\locatex.bas
+.context .lprintx
+.context @lprintx
+:nLPOS and LPRINT Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\lprintx.bas
+.context .pointx
+.context @pointx
+:nPOINT Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\pointx.bas
+.context .posx
+.context @posx
+:nPOS Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\posx.bas
+.context .presetx
+.context @presetx
+:nPRESET and PSET Statements Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\presetx.bas
+.context .beepx
+.context @beepx
+:nBEEP Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\beepx.bas
+.context .soundx
+.context @soundx
+:nSOUND Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\soundx.bas
+.context .lprintux
+.context @lprintux
+:nLPRINT USING Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\lprintux.bas

@@ -1,0 +1,160 @@
+TSR interface of CW apps to Key macro packages (MSKEY)
+======================================================
+
+The following interface is applicable for version 1.0 of Works:
+(compatibility with future versions is not guaranteed).
+
+
+When a CW App is started, it attempts to communicate with any TSR applications
+that may be present by issuing and interrupt 16H with the following parameters:
+
+	AX = 55FEH
+	DX = 0			-- version number
+	ES:BX = far pointer to call-back function
+	DS:CX = far pointer to repeat flags
+
+If a keyboard TSR is present, it will return :
+
+	AX = 4D4BH		-- ASCII "MK" -- NOT "MS" !!!
+	(registers BX, CX and DX may be trashed)
+
+When a TSR has returned this value, the CW app will not hook the INT 9 keyboard
+BUT the TSR MUST process keyboard input as detailed below (the 5500H interface).
+All other features (the call-back function, and termination) will be provided
+regardless of the return code (i.e. a TSR may use the call-back if it does
+not want to provide full keyboard support).
+
+Requesting Polling:
+===================
+
+The TSR will request that the keyboard gets polled by calling the call-back
+function with AH == 0.  This routine may trash AX, BX, CX and DX.
+This call should be called at INT 9 time.
+
+Repeat key support:
+===================
+
+If a TSR is present, the CW App will not hook INT 9.  Since we need some
+knowledge of what the keyboard is doing in order to handle special key
+repeat and such the following is required:
+
+1) at initialization (55FE), the TSR must save the far pointer to the
+	two repeat flags (DS:CX), i.e.
+
+	mov	word ptr [lpRepeat],cx
+	mov	word ptr [lpRepeat+2],ds
+
+2) at INT 9 time (when the user types a key)
+
+	assuming AL = value read from keyboard (bit 7 => break)
+
+	mov	ah,al
+	and	ah,80H			;* 80H if up, 00 if down
+	cmp	al,0E0H
+	je	dont_touch_fkey		;* skip for extended key
+	mov	es:[bx],ah
+	cmp	al,0F0H
+	je	dont_touch_fkey		;* skip for break
+	or	es:[bx+1],ah
+dont_touch_fkey:
+
+
+
+3) whenever a macro is activated (actually playing back), the first flag
+	should get set:
+
+	les	bx,lpRepeat
+	mov	byte ptr es:[bx],1
+	
+
+Request ALTUP ignored:
+======================
+
+The TSR can request that the application ignore the next release of the
+ALT key (to prevent from going into menu mode).  The call-back function
+is called with AH == 1.
+This call should NOT be called at INT 9 time.
+
+Any time a shift state transition of ALT UP (bit 3 of shift states going
+from on to off) occurs that the TSR does not want to go into menu mode,
+the TSR should do the following:
+
+	at INT 16 time, just before returning the new shift state with the
+	ALT off, call the callback with AH == 1.
+
+
+Special ESCAPE case:
+====================
+
+There are two different ESCAPE keys that the TSR can feed the application,
+a keyboard ESCAPE and a macro ESCAPE.  A keyboard ESCAPE is an escape typed
+from the keyboard in normal mode, this can serve as an abort.  A macro ESCAPE
+is an escape either played back from a macro or while recording a macro.
+A macro ESCAPE should not flush any keyboard buffer, a keyboard ESCAPE should.
+To facilitate this, the TSR will send macro ESCAPE keys in the normal buffer,
+but for keyboard ESCAPEs the following will be performed:
+
+1) the TSR will call the application's call back function with AH == 2.
+2) the TSR will flush it's internal buffer (including the ESCAPE).
+
+This call should be called at INT 9 time.
+
+
+Leaving:
+========
+
+When the App no longer wants to talk to the TSR it issues an interrupt 16H with:
+
+	AX = 55FEH
+	DX = -1				-- I'm leaving now
+
+	BX = 0				=> leaving for all time
+	BX = 1				=> leaving for a sub-shell
+
+
+Getting Keys:
+=============
+
+The CW App will request keys from the TSR by performing an INT 16H with :
+	AX = 5500H
+
+and the TSR will respond with:
+	Z flag => no character available
+	AL = ascii character code
+	AH = scan code
+	BL = shift state
+	BH = extended shift state
+
+The TSR must maintain the shift states properly, including the extended
+shift states (the space bar) and return valid shift states (in BX) regardless
+of whether a character is available.
+
+Backward Compatibility:
+=======================
+
+In order for a TSR package to work with both WORD and WORKS, it must respond
+to both the 55FFH and 55FEH hooks (please note that the video functions of the
+55FFH hook (WORD) are not applicable with the 55FEH hook (WORKS)).
+
+For an application that supports the 55FEH interface, supporting the keyboard
+extensions for the 55FFH interface is very easy.  The 5500H interface is
+backwardly compatible, and the only difference is the call-back function
+does not exist for the 55FFH interface.
+
+
+Extended Shift States:
+======================
+
+The extended shift state is defined as follows :
+
+bit 0		: 1 if SPACEBAR key was depressed when the key was depressed
+				0 otherwise
+bits 1 .. 7	: reserved
+
+
+Proper TSR Operation:
+=====================
+
+The TSR must pass to the CW App certain cases of keys and shift states
+that do not exist in the standard BIOS.
+

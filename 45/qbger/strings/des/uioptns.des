@@ -1,0 +1,58 @@
+DESCRIPTION 
+GLOBAL_INFO 
+	{
+	CHARACTER 
+	NO_OVERLAP 
+	CC_COMPILED 
+	}
+
+MODULE uioptns 
+	{
+	DIALOG dlgOptnsDisplay AT (11, 2, 60, 21) 
+	CAB_NAME CABOptnsDisplay 
+	HELP_ID hidOptnsDisplay 
+	DIALOG_PROC FDlgOptnsDisplay 
+	TMC_INIT tmcNull 
+	SUB_DIALOG sabOptnsQbas = fOptnsAll + fOptnsQbas 
+	SUB_DIALOG sabOptnsQedit = fOptnsAll + fOptnsQedit 
+		{
+		GROUP_BOX "Farben" AT (1, 0, 56, 17) 
+		IF fOptnsQbas 
+			RADIO_GROUP 
+                                TMC tmcColor ARG oColor
+			        {
+				RADIO_BUTTON "~1. " AT (2, 3, 7, 1) ACTION
+				RADIO_BUTTON "~2. " AT (2, 5, 7, 1) ACTION
+				RADIO_BUTTON "~3. " AT (2, 7, 7, 1) ACTION
+				}
+			GENERAL_PICTURE AT (9, 3, 20, 1) TMC tmcNormalText
+				RENDER_PROC  DisplayNormalTextWndProc 
+			GENERAL_PICTURE AT (9, 5, 20, 1) TMC tmcCurStmt
+				RENDER_PROC  DisplayCurStmtTextWndProc 
+			GENERAL_PICTURE AT (9, 7, 20, 1) TMC tmcBreakpoint
+				RENDER_PROC  DisplayBreakpointTextWndProc 
+                ENDIF
+                IF fOptnsQedit
+                        GENERAL_PICTURE AT (4, 5, 23, 2) TMC tmcQeditText
+				RENDER_PROC  DisplayQeditTextWndProc 
+		ENDIF 
+		TEXT "~Vordergrund" AT (30, 1, 12, 1) 
+		LIST_BOX AT (29, 2, 13, 10) TMC tmcCoFore ACTION ARG oCoFore 
+			LIST_BOX_PROC  WListProcColor 
+		TEXT "~Hintergrund" AT (44, 1, 12, 1) 
+		LIST_BOX AT (43, 2, 13, 10) TMC tmcCoBack ACTION ARG oCoBack 
+			LIST_BOX_PROC  WListProcColor 
+		GROUP_BOX "Optionen" AT (1, 13, 56, 4) 
+		CHECK_BOX "~Bildlaufleisten" AT (5, 15, 21, 1) ARG fScrollBars 
+		TEXT "~Tabulatorabstand:" AT (29, 15, 18, 1) 
+		EDIT AT (48, 15, 4, 1) ARG szTabStops 
+
+		OK_BUTTON AT (7, 18, 6, 1) DISMISS_CAB DEFAULT 
+                CANCEL_BUTTON AT (22, 18, 13, 1) DISMISS
+                PUSH_BUTTON "~Hilfe" AT (44, 18, 9, 1) TMC_IMPORT tmcHelp ACTION
+		}
+
+	}
+
+
+END_DESCRIPTION 

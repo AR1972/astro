@@ -1,0 +1,96 @@
+.context .callabsx
+.context @callabsx
+:nAbsolute, rutin - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\callabsx.bas
+.context .ca86x
+.context @ca86x
+:nInterrupt, InterruptX, rutiner - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\ca86x.bas
+.context .callbx
+.context @callbx
+:nCALL och SUB - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\callbx.bas
+.context .chainx
+.context @chainx
+:nCHAIN och COMMON - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\chainx.bas
+.context .ifx
+.context @ifx
+:nIF...THEN, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\ifx.bas
+.context .isx
+.context @isx
+:nSELECT, sats - programmeringsexempels
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\isx.bas
+.context .sleepx
+.context @sleepx
+:nSLEEP, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\sleepx.bas
+.context .ongox
+.context @ongox
+:nON...GOSUB, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\ongox.bas
+.context .dox
+.context @dox
+:nDO...LOOP, sats - programmeringsexempels
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\dox.bas
+.context .exitx
+.context @exitx
+:nEXIT, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\exitx.bas
+.context .fornx
+.context @fornx
+:nFOR...NEXT, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\fornx.bas
+.context .gosubx
+.context @gosubx
+:nGOSUB och RETURN, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\gosubx.bas
+.context .wendx
+.context @wendx
+:nWHILE...WEND statement - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\wendx.bas
+.context .gotox
+.context @gotox
+:nGOTO, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\gotox.bas
+.context .runxx
+.context @runxx
+:nRUN, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\runxx.bas
+.context .cnbx
+.context @cnbx
+:nCALL, CALLS (Icke-BASIC) - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\cnbx.bas

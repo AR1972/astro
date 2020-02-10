@@ -1,0 +1,254 @@
+.comment ******************************************************************
+.comment *  Procedure Family - QBasic                                     *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/16/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments.                      *
+.comment ******************************************************************
+.comment *  6/13/90 stevesau                                              *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/13/90 stevesau                                              *
+.comment *  Combined ENVIRON/ENVIRON$.                                    *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Added action lines.                                           *
+.comment *  Deleted SHELL Function (OS/2 only).                           *
+.comment *  Added parameter info from Details for DECLARE, FUNCTION, SUB. *
+.comment ******************************************************************
+.comment *  4/17/90 BethPr                                                *
+.comment *  Removed Command$ function, Declare Statement (Non-BASIC       *
+.comment *  procedures), Alias clause in the Declare statement,           *
+.comment *  Byval clause, Cdecl keyword.                                  *
+.comment ******************************************************************
+.context CONST
+.context @CONST
+:nInstruction CONST
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CONST d‚clare une ou plusieurs constantes symboliques.
+
+\bCONST nomConstante = expression [,nomConstante = expression]...\p
+
+    ş \bnomConstante\p        Nom de la constante. Ce nom peut comporter
+                          jusqu'… 40 caractŠres et doit commencer par une
+                          lettre. Les caractŠres valides sont A-Z, 0-9
+                          et le point (.).
+
+    ş \bexpression\p          Une expression assign‚e … la constante.
+                          Cette expression peut comprendre des expressions
+                          litt‚rales, d'autres constantes et des op‚rateurs
+                          arithm‚tiques ou logiques except‚ l'op‚rateur
+                          d'‚l‚vation … la puissance (^).
+
+Exemple:
+    CONST PI = 3.141593
+    INPUT "Rayon du cercle : "; r
+    PRINT "Aire = "; PI * r ^ 2
+.context DECLARE
+.context @DECLARE
+.context ANY
+.context @ANY
+:nInstruction DECLARE
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DECLARE d‚clare des proc‚dures FUNCTION ou SUB et fait effectuer la
+v‚rification des arguments.
+
+\bDECLARE {FUNCTION | SUB} nom [([listeParam])]\p
+
+    ş \bnom\p                 Le nom de la proc‚dure.
+
+    ş \blisteParam\p          Une ou plusieurs variables qui sp‚cifient
+                          les arguments pass‚s … la proc‚dure lors
+                          de son appel :
+
+             \bvariable[( )] [AS type] [, variable[( )] [AS type]]...\p
+
+             \bvariable\p     Un nom de variable BASIC.
+             \btype\p         Le type de la variable (INTEGER,
+                          LONG, SINGLE, DOUBLE, STRING, ou un
+                          type d‚fini par l'utilisateur). Le mot-cl‚
+                          ANY permet de passer un type ind‚termin‚.
+
+    ş DECLARE est n‚cessaire si vous appelez des proc‚dures SUB
+      sans utiliser CALL. QBasic g‚nŠre automatiquement les instructions
+      DECLARE lorsque vous sauvez votre programme.
+
+Exemple:
+    Le programme REMLINE.BAS illustre les d‚clarations de proc‚dures
+    FUNCTION et SUB. Pour afficher ou ex‚cuter ce programme, chargez
+    REMLINE.BAS en utilisant la commande Ouvrir du menu Fichier.
+
+Voir aussi    \i\p\aCALL\v@CALL\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context DEF
+.context @DEF
+:nInstruction DEF FN
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DEF FN d‚finit une fonction.
+
+\bDEF FNnom[(listeParam)] = expression\p
+\bDEF FNnom[(listeParam)]\p
+    \b[instructions]\p
+  \bFNnom = expression\p
+    \b[instructions]\p
+  \bEXIT DEF]\p
+    \b[instructions]\p
+  \bEND DEF\p
+
+    ş \blisteParam\p         Un ou plusieurs arguments sous la forme suivante :
+
+                       \bvariable[( )] [AS type] [, variable[( )] [AS type]]...\p
+
+                       \bvariable\p    Un nom de variable BASIC.
+                       \btype\p        Le type de la variable (INTEGER,
+                                   LONG, SINGLE, DOUBLE, STRING ou un
+                                   type d‚fini par l'utilisateur).
+
+    ş \bexpression\p       La valeur retourn‚e par la fonction.
+
+    ş L'instruction FUNCTION fournit une meilleure maniŠre de d‚finir
+      une fonction.
+
+Voir aussi    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p
+.context ENVIRON
+.context @ENVIRON
+.context ENVIRON$
+.context @ENVIRON$
+:nFonction ENVIRON$, Instruction ENVIRON
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ENVIRON$ retourne la valeur (chaŒne) d'une variable d'environnement DOS.
+ENVIRON modifie ou ajoute une variable dans l'environnement DOS.
+
+\bENVIRON$ (variableEnv$)\p
+\bENVIRON$ (n%)\p
+\bENVIRON expression$\p
+
+    ş \bvariableEnv$\p         Le nom d'une variable d'environnement.
+    ş \bn%\p                   Indique … ENVIRON$ de renvoyer la niŠme
+                           variable (chaŒne) de l'environnement DOS.
+
+    ş \bexpression$\p          Le nom et la valeur d'une variable d'environnement
+                           DOS (comme PATH ou PROMPT) sous une des formes
+                           suivantes :
+
+                           \bvariable$=chaŒne$\p
+                           \bvariable$ chaŒne$\p
+
+    ş Les modifications apport‚es par l'instruction ENVIRON sont
+      effac‚es … la fin du programme.
+
+Exemple:
+    ENVIRON "PATH=TEST"
+    PRINT ENVIRON$("PATH")
+.context FUNCTION
+.context @FUNCTION
+:nInstruction FUNCTION
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+FUNCTION d‚finit une proc‚dure FUNCTION.
+
+\bFUNCTION nom [(listeArg)] [STATIC]\p
+    \b[instructions]\p
+  \bnom = expression\p
+    \b[instructions]\p
+\bEND FUNCTION\p
+
+    ş \bnom\p              Nom de la fonction, le type retourn‚ est
+                       sp‚cifi‚ par le suffixe (%, &, !, # ou $).
+
+    ş \blisteArg\p         Une ou plusieurs variables qui sp‚cifient
+                       les arguments pass‚s … la proc‚dure lors
+                       de son appel :
+
+                       \bvariable[( )] [AS type] [, variable[( )] [AS type]]...\p
+
+                       \bvariable\p    Un nom de variable BASIC.
+                       \btype\p        Le type de la variable (INTEGER,
+                                   LONG, SINGLE, DOUBLE, STRING, ou un
+                                   type d‚fini par l'utilisateur).
+
+    ş \bSTATIC\p           Indique que les valeurs des variables locales
+                       … la fonction doivent ˆtre sauvegard‚s entre
+                       les appels … la fonction.
+
+    ş \bexpression\p       La valeur retourn‚e par la fonction.
+
+    ş Lors de l'appel d'une proc‚dure FUNCTION, vous pouvez indiquer que la
+      valeur d'un argument ne doit pas ˆtre modifi‚e par la fonction en
+      pla‡ant cet argument entre parenthŠses.
+
+
+Exemple:
+    Le programme REMLINE.BAS illustre l'appel de proc‚dures FUNCTION.
+    Pour afficher ou ex‚cuter ce programme, chargez REMLINE.BAS en 
+    utilisant la commande Ouvrir du menu Fichier.
+
+Voir aussi    \i\p\aDECLARE\v@DECLARE\v\i\p    \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context SHELL
+.context @SHELL
+:nInstruction SHELL
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SHELL suspend l'ex‚cution d'un programme BASIC pour ex‚cuter une commande DOS
+ou un fichier de commandes.
+
+\bSHELL [commande$]\p
+
+    ş \bcommande$\p    Nom d'une commande DOS ou d'un fichier .BAT.
+
+    ş L'ex‚cution du programme reprend … la fin de la commande DOS
+      ou du fichier de commandes.
+    ş Si la commande est omise, SHELL donne le contr“le … COMMAND.COM,
+      qui affiche l'invite. Utilisez la commande EXIT pour reprendre
+      l'ex‚cution de votre programme.
+
+Exemple:
+    SHELL "DIR"
+.context SUB
+.context @SUB
+:nInstruction SUB
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SUB d‚finit une proc‚dure SUB.
+
+\bSUB nom[(listeArg)] [STATIC]\p
+  \b[instructions]\p
+\bEND SUB\p
+
+    ş \bnom\p              Le nom de la proc‚dure SUB, jusqu'… 40
+                       caractŠres, sans suffixe d'indication de type.
+    ş \blisteArg\p         Une ou plusieurs variables indicant les
+                       arguments pass‚s … la proc‚dure lors de l'appel :
+
+                       \bvariable[( )] [AS type] [, variable[( )] [AS type]]...\p
+
+                       \bvariable\p    Un nom de variable BASIC.
+                       \btype\p        Le type de la variable (INTEGER,
+                                   LONG, SINGLE, DOUBLE, STRING, ou un
+                                   type d‚fini par l'utilisateur).
+
+    ş \bSTATIC\p           Indique que les valeurs des variables locales
+                       … la fonction doivent ˆtre sauvegard‚s entre
+                       les appels … la fonction.
+
+    ş Lors de l'appel d'une proc‚dure SUB, vous pouvez indiquer que la valeur
+      d'un argument ne doit pas ˆtre modifi‚e par la fonction en pla‡ant
+      cet argument entre parenthŠses.
+
+Exemple:
+    Le programme REMLINE.BAS illustre l'appel de proc‚dures SUB.
+    Pour afficher ou ex‚cuter ce programme, chargez REMLINE.BAS en 
+    utilisant la commande Ouvrir du menu Fichier.
+
+Voir aussi    \i\p\aCALL\v@CALL\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p
+

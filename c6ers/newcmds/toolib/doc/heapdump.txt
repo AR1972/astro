@@ -1,0 +1,37 @@
+
+SUMMARY   heapdump - dump  heap info to fp
+
+#include <tools.h>
+
+int     heapdump ( fp, iFormat )
+FILE    *fp;
+int     iFormat;
+
+
+DESCRIPTION
+
+       output to fp:
+           _asegds      unsigned
+           _asizds      unsigned
+           lHeapSize    long        if == -1 then heap error
+           lHeapFree    long        if lHeapSize == -1 then this is heap
+                                       error code
+           lHeapLargest long        if lHeapSize == -1 then zero
+  
+
+RETURN VALUE
+
+       returns
+           zero    - info written to fp
+           nonzero - error writing to fp
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+       Note: APPENDS to fp
+
+EXAMPLE
+
+

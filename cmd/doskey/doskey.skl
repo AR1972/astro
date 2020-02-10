@@ -1,0 +1,17 @@
+
+;===================
+:class 2	;Transient Portion messages for DOSKEY
+;===================
+:def 1 vers_mismatch
+:def 2 cant_change_bufsize
+:def 3 installed
+:def 4 syntax_error
+:def 5 help_info
+:def 6 out_o_macro_msg
+:def 7 IncorrectDOS
+:def 8 crlf_msg
+
+
+:class 1		; resident DOSKEY messages
+:def 20 more_prompt
+:def 21 num_prompt

@@ -1,0 +1,842 @@
+.comment ******************************************************************
+.comment *  Device I/O Family - QBasic                                    *
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Combined INP/OUT.                                             *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/22/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments.                      *
+.comment ******************************************************************
+.comment *  6/8/90 stevesau                                               *
+.comment *  Combined LOCATE/CSRLIN/POS                                    *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/8/90 stevesau                                               *
+.comment *  Combined INPUT/LINE INPUT/INPUT#/LINE INPUT#, PRESET/PSET.    *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Combined CSRLIN/POS.                                          *
+.comment ******************************************************************
+.comment *  5/4/90 stevesau                                               *
+.comment *  Revised CLS, WIDTH.                                           *
+.comment *  Combined LPRINT/PRINT, LPRINT USING/PRINT USING.              *
+.comment *  Deleted SCREEN (combined with SCREEN Func. in Graphics).      *
+.comment *  Deleted Screen adapters, modes, displays info (created new    *
+.comment *  screen modes topic in Graphics).                              *
+.comment ******************************************************************
+.comment *  5/3/90 stevesau                                               *
+.comment *  Added link to OPEN File Modes to INPUT.                       *
+.comment *  Deleted WRITE (combined with WRITE # in File family).         *
+.comment *  Combined PRINT and PRINT # (from File family).                *
+.comment *  Added PRINT # info to PRINT USING.                            *
+.comment *  Moved PRINT USING format specifiers to separate node.         *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                                              *
+.comment *  Added Screen Modes, Adapters and Displays, Attributes and     *
+.comment *  Colors, made links local.                                     *
+.comment *  Deleted links to individual Screen Modes on SCREEN.           *
+.comment *  Added Setting Screen Width (from WIDTH Details).              *
+.comment ******************************************************************
+.comment *  4/20/90 stevesau                                              *
+.comment *  Added action lines. 					  *
+.comment *  Deleted table from USING Keyword screen.			  *
+.comment *  Deleted OS/2 references.                                      *
+.comment ******************************************************************
+.comment *  4/17/90 Beth Preslar                                          *
+.comment *  Removed FormatX$ functions, SetFormatCC routine		  *
+.comment ******************************************************************
+.context BEEP
+.context @BEEP
+:nBEEP-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sendet ein Tonsignal an den Lautsprecher Ihres Computers.
+
+\bBEEP\p
+.context CLS
+.context @CLS
+:nCLS-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+L”scht den Bildschirm.
+
+\bCLS [{0 | 1 | 2}]\p
+
+    CLS      L”scht das Text- oder Grafikausgabefenster. Wenn mit VIEW ein
+             Grafikausgabefenster festgelegt wurde, wird nur das Grafik-
+             ausgabefenster gel”scht. Ansonsten wird das Textausgabefenster
+             oder der gesamte Bildschirm gel”scht.
+    CLS 0    L”scht allen Text und alle Grafiken vom Bildschirm.
+    CLS 1    L”scht das Grafikausgabefenster oder den gesamten Bildschirm,
+             wenn kein Grafikausgabefenster festgelegt wurde.
+    CLS 2    L”scht das Textausgabefenster.
+
+Siehe auch    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+.context INKEY$
+.context @INKEY$
+:nINKEY$-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Liest ein Zeichen von der Tastatur.
+
+\bINKEY$\p
+
+    ş INKEY$ gibt eine Null-Zeichenfolge zurck, wenn kein Zeichen zurck-
+      gegeben werden kann.
+    ş Fr Standardzeichen (ASCII 0-127) gibt INKEY$ eine 1-Byte-Zeichenfolge
+      zurck, die aus dem gelesenen Zeichen besteht.
+    ş Fr erweiterte Zeichen gibt INKEY$ eine 2-Byte-Zeichenfolge zurck, die
+      aus dem Nullzeichen (ASCII 0) und dem Tastatur-Abfragecode besteht.
+
+Beispiel:
+    PRINT "Drcken Sie Esc, um abzubrechen ..."
+    DO
+    LOOP UNTIL INKEY$ = CHR$(27)    '27 ist der ASCII-Code fr Esc.
+
+Siehe auch    \i\p\aTastatur-Abfragecodes\v@kbsct\v\i\p
+.context INP
+.context @INP
+.context OUT
+.context @OUT
+:nINP-Funktion, OUT-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+INP gibt ein von einem E/A-Anschluá eingelesenes Byte zurck.
+OUT sendet ein Byte an einen Hardware-E/A-Anschluá.
+
+\bINP(Anschluá%)\p
+\bOUT Anschluá%, Byte%\p
+
+    ş \bAnschluá%\p     Eine Ganzzahl zwischen 0 und 65.535, die den Anschluá
+                    kennzeichnet.
+    ş \bByte%\p         Ein numerischer Ausdruck zwischen 0 und 255, der an den
+                    Anschluá gesendet werden soll.
+
+Beispiel:
+    x% = INP(&H3FC)          'Modem-Control-Register von COM1 lesen.
+    OUT &H3FC, (x% XOR 1)    'Data-Terminal-Ready-Bit wechseln.
+
+Siehe auch    \i\p\aWAIT\v@WAIT\v\i\p
+.context INPUT
+.context @INPUT
+:nINPUT-, LINE INPUT-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+INPUT liest Eingabe von der Tastatur oder einer Datei ein. LINE INPUT liest
+eine Zeile mit bis zu 255 Zeichen von der Tastatur oder einer Datei ein.
+
+\bINPUT [;] ["Text"{; | ,}] Variablenliste\p
+\bLINE INPUT [;] ["Text";] Variable$\p
+\bINPUT #Dateinummer%, Variablenliste\p
+\bLINE INPUT #Dateinummer%, Variable$\p
+
+    ş \bText\p            Eine optionale literale Zeichenfolge, die auf dem
+                      Bildschirm dargestellt wird, bevor der Benutzer eine
+                      Eingabe macht. Wenn Text von einem Semikolon (;) ge-
+                      folgt wird, wird ein Fragezeichen an die Zeichen-
+                      folge angeh„ngt.
+    ş \bVariablenliste\p  Eine oder mehrere Variablen, die durch Kommas
+                      getrennt sind und in denen Daten gespeichert werden,
+                      die von der Tastatur oder von einer Datei eingelesen
+                      werden. Variablennamen k”nnen aus bis zu 40 Zeichen
+                      bestehen und mssen mit einem Buchstaben beginnen.
+                      Gltige Zeichen sind A-Z, 0-9 und Punkt (.).
+    ş \bVariable$\p       Zeile von Zeichen, die von der Tastatur oder von
+                      einer Datei eingelesen wurden.
+    ş \bDateinummer%\p    Die Nummer einer offenen Datei.
+
+    ş INPUT verwendet ein Komma als Trennzeichen zwischen Eintr„gen.
+      LINE INPUT liest alle Zeichen bis zu einem Wagenrcklaufzeichen ein.
+    ş Wenn INPUT unmittelbar von einem Semikolon (;) gefolgt wird, bleibt bei
+      der Eingabe von der Tastatur der Cursor auf derselben Zeile stehen,
+      nachdem der Benutzer die Eingabetaste drckt.
+
+Beispiel:
+    CLS
+    OPEN "LIST" FOR OUTPUT AS #1
+    DO
+        INPUT "   NAME:       ", Name$  'Eintrag von der Tastatur lesen.
+        INPUT "   ALTER:      ", Alter$
+        WRITE #1, Name$, Alter$
+        INPUT "Geben Sie einen weiteren Eintrag ein"; R$
+    LOOP WHILE UCASE$(R$) = "J"
+    CLOSE #1
+    'Inhalt der Datei wiedergeben.
+    OPEN "LIST" FOR INPUT AS #1
+    CLS
+    PRINT "Eintr„ge in der Datei:": PRINT
+    DO WHILE NOT EOF(1)
+        LINE INPUT #1, REC$  'Eintr„ge aus der Datei lesen.
+        PRINT REC$           'Eintr„ge auf dem Bildschirm ausgeben.
+    LOOP
+    CLOSE #1
+    KILL "LIST"
+
+Siehe auch    \i\p\aINKEY$\v@INKEY$\v\i\p    \i\p\aINPUT$\v@INPUT$\v\i\p    \i\p\aOPEN-Anweisung Dateimodus\v@APPEND\v\i\p
+.context LIST
+.context @LIST
+.context KEY
+.context @KEY
+:nKEY-Anweisung (Zuweisung)
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Weist Funktionstasten Zeichenfolgenwerte zu und zeigt diese an. (Die Anzeige
+ist optional).
+
+\bKEY Taste%, Zeichenfolge$\p
+\bKEY LIST\p
+\bKEY ON\p
+\bKEY OFF\p
+
+    ş \bTaste%\p               Die Nummer einer Funktionstaste. Verwenden Sie 1
+                           bis 10 fr die Funktionstasten F1 bis F10.
+                           Verwenden Sie 30 und 31 fr die Funktionstasten
+                           F11 and F12 auf erweiterten Tastaturen.
+    ş \bZeichenfolge$\p        Eine Zeichenfolge aus bis zu 15 Zeichen, die beim
+                           Drcken der Funktionstaste zurckgegeben wird.
+    ş \bLIST\p                 Zeigt an, was jeder Taste zugeordnet wurde.
+    ş \bON\p                   Schaltet die Funktionstastenzeile ein.
+    ş \bOFF\p                  Schaltet die Funktionstastenzeile aus.
+
+Beispiel:
+    KEY 4, "MENU" + CHR$ (13)
+    KEY LIST
+    KEY 4, ""
+    KEY LIST
+
+Siehe auch    \i\p\aKEY-, ON KEY-Anweisung (Ereignisverfolgung)\v@ketv\v\i\p
+.context KILL
+.context @KILL
+:nKILL-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+L”scht Dateien von der Diskette/Festplatte.
+
+\bKILL Datei$\p
+
+    ş \bDatei$\p    Bezeichnet die Datei(en), die gel”scht werden soll(en). Kann
+                den Pfad und die DOS-Platzhalterzeichen ? und * enthalten.
+
+Beispiel:
+    INPUT "Zu l”schende Datei: "; f$
+    KILL f$
+
+Siehe auch    \i\p\aFILES\v@FILES\v\i\p
+.context LOCATE
+.context @LOCATE
+.context CSRLIN
+.context @CSRLIN
+.context POS
+.context @POS
+:nLOCATE-Anweisung, CSRLIN-, POS-Funktionen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LOCATE Bewegt den Cursor zur angegebenen Stelle.
+CSRLIN Gibt die Zeile an, in der sich der Cursor gegenw„rtig befindet.
+POS Gibt die Spalte an, in der sich der Cursor gegenw„rtig befindet.
+
+\bLOCATE  [Zeile%] [,[Spalte%] [,[Cursor%] [,Start% [,Stop%]]]]\p
+\bCSRLIN\p
+\bPOS(Ausdruck)\p
+
+    ş \bZeile%\p und \bSpalte%\p  Die Zeilen- und Spaltennummer, an die sich der
+                          Cursor bewegen soll.
+    ş \bCursor%\p             Gibt an, ob der Cursor sichtbar ist oder nicht:
+                          0 = nicht sichtbar, 1 = sichtbar
+    ş \bStart%\p und \bStop%\p    Ganzzahlige Ausdrcke zwischen 1 und 31, die die
+                          Anfangs- und Endezeile des Cursors als Bildr”hren-
+                          Abtastlinien angeben.
+                          Sie k”nnen die Gr”áe des Cursors ver„ndern, indem
+                          Sie die Abtastlinien ver„ndern.
+    ş \bAusdruck\p            Ein beliebiger Ausdruck.
+
+Beispiel:
+    CLS
+    LOCATE 5, 5
+    MeineZeile% = CSRLIN
+    MeineSpalte% = POS(0)
+    PRINT "Position 1 (Beliebige Taste drcken)"
+    DO
+    LOOP WHILE INKEY$ = ""
+    LOCATE (MeineZeile% + 2), (MeinSpalte% + 2)
+    PRINT "Position 2"
+.context LPOS
+.context @LPOS
+:nLPOS-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt die Anzahl der Zeichen zurck, die seit dem letzten Wagenrcklauf an den
+Drucker gesandt wurden.
+
+\bLPOS(n%)\p
+
+    ş \bn%\p    Gibt einen der Druckeranschlsse an:
+              0 = LPT1, 1 = LPT1, 2 = LPT2, 3 = LPT3
+Beispiel:
+    'Dieses Beispiel erfordert einen Drucker.
+    LPRINT
+    FOR i% = 1 TO 20
+        LPRINT i%;
+        IF LPOS(1) >= 10 THEN LPRINT     'Neue Zeile beginnen.
+    NEXT i%
+.context .opcom
+.context @opcom
+:nOPEN COM-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+™ffnet und initialisiert einen Datenbertragungskanal fr E/A.
+Die Anweisung OPEN COM muá ausgefhrt werden, bevor ein Datenbertragungs-
+ger„t verwendet werden kann, das eine RS232-Schnittstelle benutzt.
+
+\bOPEN "COMn: Optionen1 Optionen2" [FOR Modus] AS [#]Dateinr% [LEN=Satzl„nge%]\p
+
+ ş \bn\p           Der zu ”ffnende Datenbertragungsanschluá: 1 = COM1,
+                                                              2 = COM2
+ ş \bOptionen1\p   Die am meisten verwendeten Datenbertragungsparameter:
+                 \b[Baud] [,[Parit„t] [,[Daten] [,[Stop]]]]\p
+               Baud ist die Baud-Rate des zu ”ffnenden Ger„ts:
+                 75, 110, 150, 300, 600, 1200, 2400, 4800, 9600
+               Parit„t gibt an, wie die Parit„t berprft werden soll:
+                 N (keine šberprfung)     E (gerade)    O  (ungerade)
+                 S (Leerzeichen)           M (markiert)  PE (mit Fehler-
+                                                                 prfung)
+               Daten ist die Anzahl der Datenbits pro Byte:  5, 6, 7, 8
+               Stop ist die Anzahl der Stopbits:  1, 1.5, 2
+               Standardeinstellung: 300 Baud, Parit„t gerade, 7 Datenbits,
+                                    1 Stopbit.
+ ş \bOptionen2\p   Eine Liste weniger h„ufig verwendeter Parameter, die
+               durch Kommas getrennt sind:
+
+               Option    Beschreibung
+               ÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+               ASC       ™ffnet das Ger„t im ASCII-Modus.
+               BIN       ™ffnet das Ger„t im Bin„r-Modus.
+               CD[m]     Legt die Fehlerwartezeit fr die Data-Carrier-Detect-
+                         Leitung (DCD) fest (in Millisekunden).
+               CS[m]     Legt die Fehlerwartezeit fr die Clear-To-Send-
+                         Leitung (CTS) fest (in Millisekunden).
+               DS[m]     Legt die Fehlerwartezeit fr die Data-Set-Ready-
+                         Leitung (DS) fest (in Millisekunden).
+               LF        Sendet ein Zeilenvorschubzeichen nach einem
+                         Wagenrcklaufzeichen.
+               OP[m]     Legt fest, wie lange OPEN COM warten soll, bis
+                         alle Dš-Verbindungen ge”ffnet sind (in
+                         Millisekunden).
+               RB[n]     Legt die Gr”áe des Empfangspuffers fest (in Byte).
+               RS        Unterdrckt das Erkennen einer Sendeanforderung.
+               TB[n]     Legt die Gr”áe des šbertragungspuffers fest
+                         (in Byte).
+
+ ş \bModus\p       INPUT, OUTPUT oder RANDOM (Standardeinstellung).
+               Siehe \i\p\aOPEN-Anweisung Dateimodus\v@APPEND\v\i\p.
+ ş \bDateinr%\p    Eine Ganzzahl zwischen 1 und 255, die den
+               Datenbertragungskanal kennzeichnet, solange er ge”ffnet ist.
+ ş \bSatzl„nge%\p  Puffergr”áe im Direktzugriffs-Modus (Vorgabe ist 128 Byte).
+
+Beispiel:
+    'Verwenden Sie dieses Beispiel zur Fehlersuche bei Problemen bei der
+    'seriellen Datenbertragung. Die Baud-Rate ist niedrig, Hardware-
+    'Handshake wird unterdrckt und die Puffer sind vergr”áert.
+    OPEN "COM1:300,N,8,1,CD0,CS0,DS0,OP0,RS,TB2048,RB2048" FOR RANDOM AS #1
+
+Siehe auch    \i\p\aOPEN\v@OPEN\v\i\p
+.context .penf
+.context @penf
+:nPEN-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt die Koordinaten des Lichtgriffels (Lightpen) zurck.
+
+\bPEN(n%)\p
+
+    ş \bn%\p    Gibt an, welche Informationen ber den Lichtgriffel
+            zurckgegeben werden sollen.
+
+            n%    Rckgabe
+            ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+            0     Stift wurde seit letztem Aufruf benutzt (ja = -1, nein = 0)
+            1     Die x-Koordinate der letzten Stiftverwendung
+            2     Die y-Koordinate der letzten Stiftverwendung
+            3     Der aktuelle Status des Stiftschalters (unten = -1,
+                  oben = 0).
+            4     Die x-Koordinate, an der der Stift zuletzt den Bildschirm
+                  verlassen hat.
+            5     Die y-Koordinate, an der der Stift zuletzt den Bildschirm
+                  verlassen hat.
+            6     Die Zeile der letzten Stiftverwendung
+            7     Die Spalte der letzten Stiftverwendung
+            8     Die Zeile, in der der Stift zuletzt den Bildschirm
+                  verlassen hat.
+            9     Die Spalte, in der der Stift zuletzt den Bildschirm
+                  verlassen hat.
+
+Beispiel:
+    DO
+      P = PEN(3)
+      LOCATE 1, 1: PRINT "Stiftschalter ist ";
+      IF P THEN PRINT "unten" ELSE PRINT "oben  "
+      PRINT "X ="; PEN(4), " Y ="; PEN(5); "  "
+    LOOP
+
+Siehe auch    \i\p\aPEN-, ON PEN-Anweisungen\v@PEN\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aBildschirmmodi\v@screen.modes\v\i\p
+.context PLAY
+.context @PLAY
+:nPLAY-Anweisung (Musik)
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Spielt Musik.
+
+\bPLAY Befehlsfolge$\p
+
+ ş \bBefehlsfolge$\p     Ein Zeichenfolgenausdruck, der einen oder mehrere der
+                     folgenden PLAY-Befehle enth„lt:
+
+   Oktaven- und Tonbefehle:
+     O\bOktave\p    Legt die aktuelle Oktave fest (0 - 6).
+     < oder >   Geht eine Oktave h”her oder tiefer.
+     A - G      Spielt den angegebenen Ton in der aktuellen Oktave.
+     N\bTon\p       Spielt den angegebenen Ton (0 - 84) im 7-Oktav-Bereich
+                (0 ist eine Pause).
+
+   Tonl„ngen- und Tempobefehle:
+     L\bL„nge\p     Legt die L„nge jedes Tons fest (1 - 64). L1 ist eine ganze
+                Note, L2 ist eine halbe Note, usw.
+     ML         Spielt die T”ne in Legato.
+     MN         Spielt die T”ne normal.
+     MS         Spielt die T”ne in Staccato.
+     P\bPause\p     Legt eine Pause fest (1 - 64). P1 ist eine ganze Pause,
+                P2 ist eine Halbe Pause, usw.
+     T\bTempo\p     Legt das Tempo fest in Viertelnoten pro Minute (32 - 255).
+
+   Modus-Befehle:
+     MF          Spielt Musik im Vordergrund.
+     MB          Spielt Musik im Hintergrund.
+
+   Suffix-Befehle:
+     # oder +    Erh”ht die vorangehende Note um einen Halbtonschritt.
+     -           Erniedrigt die vorangehende Note um einen Halbtonschritt.
+     .           Spielt die vorangehende Note 1,5 mal so lang wie angegeben.
+
+ ş Um von einer PLAY-Zeichenfolge eine PLAY-Sub-Zeichenfolge auszufhren,
+   verwenden Sie den Befehl "X":
+
+   PLAY "X"+ VARPTR$(Befehlsfolge$)
+
+Beispiel:
+    'Die Tonleiter in 7 verschiedenen Oktaven spielen
+    Tonleiter$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(Tonleiter$)
+    NEXT i%
+
+Siehe auch    \i\p\aBEEP\v@BEEP\v\i\p     \i\p\aPLAY-Funktion\v@PLAYF\v\i\p
+              \i\p\aPLAY-, ON PLAY-Anweisungen (Ereignisverfolgung)\v@playev\v\i\p
+              \i\p\aSOUND\v@SOUND\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p    \i\p\aUnterschiede zu BASICA\v@basica.diffs\v\i\p
+.context PMAP
+.context @PMAP
+:nPMAP-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt physikalische Koordinaten als die entsprechenden Fensterkoordinaten
+gem„á den Angaben der WINDOW-Anweisung zurck, und umgekehrt.
+
+\bPMAP (Startkoordinate#, n%)\p
+
+    ş \bStartkoordinate#\p    Eine Fenster- oder eine physikalische Koordinate.
+    ş \bn%\p                  Ein ganzzahliger Wert, der die zurckzugebende
+                              Koordinate bestimmt:
+
+               Startkoordinate#             n%   Rckgabe
+               ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ        ÍÍ   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+               x-Fensterkoordinate          0    Physikalische x-Koordinate
+               y-Fensterkoordinate          1    Physikalische y-Koordinate
+               Physikalische x-Koordinate   2    x-Fensterkoordinate
+               Physikalische y-Koordinate   3    y-Fensterkoordinate
+
+Beispiel:
+    'Dieses Beispiel erfordert eine Grafikkarte, die Bildschirmmodus 1
+    'untersttzt.
+    SCREEN 1
+    WINDOW SCREEN (0, 0)-(100, 100)
+    PRINT "Logisch x=50, physikalisch x="; PMAP(50, 0)
+    PRINT "Logisch y=50, physikalisch y="; PMAP(50, 1)
+
+Siehe auch    \i\p\aPOINT\v@POINT\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+.context POINT
+.context @POINT
+:nPOINT-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt die Koordinaten des grafischen Cursors oder den Farbwert eines
+Bildpunkts zurck.
+
+\bPOINT {(n%) | (x%,y%)}\p
+
+    ş \b(n%)\p       Legt das zu verwendende Koordinatensystem fest:
+
+                 n%    Rckgabe
+                 ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                 0     Die aktuelle physikalische x-Koordinate
+                 1     Die aktuelle physikalische y-Koordinate
+                 2     Die aktuelle x-Fensterkoordinate
+                 3     Die aktuelle y-Fensterkoordinate
+
+    ş \b(x%,y%)\p    Die Koordinaten des Bildpunkts, dessen Farbwert POINT
+                 berprft. Wenn sich der Bildpunkt nicht innerhalb
+                 des aktuellen Fensters befindet, gibt POINT -1 zurck.
+
+Beispiel:
+    'Dieses Beispiel erfordert eine Farbgrafikkarte.
+    SCREEN 1
+    LINE (0, 0)-(100, 100), 2
+    LOCATE 14, 1
+    FOR y% = 1 TO 10
+        FOR x% = 1 TO 10
+            PRINT POINT(x%, y%);
+        NEXT x%
+        PRINT
+    NEXT y%
+
+Siehe auch    \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aPMAP\v@PMAP\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+              \i\p\aFarbattribute und -werte\v@color.table\v\i\p
+.context PRESET
+.context @PRESET
+.context PSET
+.context @PSET
+:nPRESET-, PSET-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Diese Anweisungen stellen einen angegebenen Punkt auf dem Bildschirm dar.
+
+\bPRESET [STEP] (x!,y!) [,Farbe%]\p
+\bPSET [STEP] (x!,y!) [,Farbe%]\p
+
+ ş \bSTEP\p       Gibt an, daá x! und y! Positionen relativ zur aktuellen
+              Position des grafischen Cursors sind.
+ ş \b(x!,y!)\p    Die Bildschirm-Koordinaten des darzustellenden Bildpunkts.
+ ş \bFarbe%\p     Ein Farbattribut, das den Farbwert des Bildpunkts festlegt.
+              Wenn kein Farbattribut angegeben ist, verwendet PRESET die
+              aktuelle Hintergrund- und PSET die aktuelle Vordergrundfarbe.
+
+ ş Die zur Verfgung stehenden Farbattribute h„ngen von Ihrer Grafikkarte
+   und dem Bildschirmmodus ab. Die Koordinatenwerte h„ngen zus„tzlich noch
+   von den zuletzt verwendeten VIEW- und WINDOW-Anweisungen ab.
+
+Beispiel:
+    'Dieses Beispiel erfordert eine Farbgrafikkarte.
+    SCREEN 1
+    FOR i% = 0 TO 320
+        PSET (i%, 100)
+        FOR warten% = 1 TO 100: NEXT warten%
+        PRESET (i%, 100)
+    NEXT i%
+
+Siehe auch    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+              \i\p\aFarbattribute und -werte\v@color.table\v\i\p    \i\p\aBildschirmmodi\v@screen.modes\v\i\p
+.context PRINT
+.context @PRINT
+.context LPRINT
+.context @LPRINT
+:nPRINT-, LPRINT-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PRINT gibt Daten auf dem Bildschirm aus oder schreibt Daten in eine Datei.
+LPRINT druckt Daten auf dem Drucker LPT1 aus.
+
+\bPRINT [#Dateinummer%,] [Ausdruckliste] [{; | ,}]\p
+\bLPRINT [Ausdruckliste] [{; | ,}]\p
+
+    ş \bDateinummer%\p      Die Nummer einer ge”ffneten Datei. Wenn keine Datei-
+                        nummer angegeben wird, gibt PRINT die Daten an den
+                        Bildschirm aus.
+    ş \bAusdruckliste\p     Eine Liste eines oder mehrerer numerischer Ausdrcke
+                        oder Zeichenfolgenausdrcke, die gedruckt werden
+                        sollen.
+    ş \b{; | ,}\p           Legt den Anfang der Textausgabe fest:
+                          ; bedeutet, daá die Ausgabe unmittelbar nach dem
+                            letzten Wert erfolgen soll.
+                          , bedeutet, daá die Ausgabe am Anfang des n„chsten
+                            Ausgabebereichs erfolgen soll. Ausgabebereiche
+                            sind Bl”cke mit einer Breite von 14 Spalten.
+
+Beispiel:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT #1, USING "##.###  "; 12.12345
+    CLOSE
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT a$
+    LPRINT "Dies ist eine Zeile"; 1
+    LPRINT "Dies ist eine Zeile",
+    LPRINT 2
+
+Siehe auch    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p    \i\p\aWRITE\v@WRITE\v\i\p
+.context .zpu
+.context @zpu
+.context .lprintu
+.context @lprintu
+:nPRINT USING-, LPRINT USING-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PRINT USING gibt formatierte Daten auf dem Bildschirm aus oder schreibt
+            formatierte Datein in eine Datei.
+LPRINT USING druckt formatierte Daten auf dem Drucker LPT1 aus.
+
+\bPRINT [#Dateinummer%,] USING Formate$; Ausdruckliste [{; | ,}]\p
+\bLPRINT USING Formate$; Ausdruckliste [{; | ,}]\p
+
+ ş \bDateinummer%\p      Die Nummer einer ge”ffneten sequentiellen Datei.
+ ş \bFormate$;\p         Ein Zeichenfolgenausdruck, der einen oder mehrere
+                     \i\p\aFormat-Bezeichner\v@forspec\v\i\p enth„lt.
+ ş \bAusdruckliste\p     Eine Liste mit einem oder mehreren numerischen
+                     Ausdrcken oder einem oder mehreren Zeichenfolgenaus- ,
+                     drcken, die gedruckt werden sollen und die mit
+                     Kommas, Semikolons, Leerzeichen oder Tabs voneinander
+                     abgetrennt sind.
+ ş \b{; | ,}\p           Legt den Anfang der Textausgabe fest:
+                       ; bedeutet, daá die Ausgabe unmittelbar nach dem
+                         letzten Wert erfolgen soll.
+                       , bedeutet, daá die Ausgabe am Anfang des n„chsten
+                         Ausgabebereichs erfolgen soll. Ausgabebereiche
+                         sind Bl”cke mit einer Breite von 14 Spalten.
+Beispiel:
+    a = 123.4567
+    PRINT USING "###.##"; a
+    LPRINT USING "+###.####"; a
+    a$ = "ABCDEFG"
+    PRINT USING "!"; a$
+    LPRINT USING "\\ \\"; a$
+
+Siehe auch    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p
+.context @forspec
+:nFormat-Bezeichner
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+              \bZeichen, die einen numerischen Ausdruck formatieren\p
+ \b#\p    Position einer Ziffer             º \b-\p     Nach der Ziffer plaziert,
+ \b.\p    Position des Dezimalpunkts        º       druckt nachfolgendes Minus-
+ \b,\p    Wird links des Dezimalpunkts      º       zeichen fr negative Zahlen.
+      plaziert, druckt Komma nach jeder º \b$$\p    Druckt fhrendes $.
+      dritten Ziffer.                   º \b**\p    Fllt fhrende Leerstellen
+ \b+\p    Position des Nummernzeichens      º       mit einem *.
+\b^^^^\p  Druckt im Exponentialformat       º \b**$\p   Kombiniert ** und $$.
+
+            \bZeichen, die einen Zeichenfolgenausdruck formatieren\p
+ \b&\p    Druckt gesamte Zeichenfolge       º \b\\ \\\p   Druckt die ersten n Zeichen,
+ \b!\p    Druckt nur das erste Zeichen      º       wobei n die Anzahl der Leer-
+      der Zeichenfolge.                 º       zeichen zwischen den Schr„g-
+                                        º       strichen plus 2 ist.
+
+
+                     \bZeichen zum Drucken von Literalzeichen\p
+ \b_\p    Druckt das nachfolgende Forma-   º       Alle Zeichen, die nicht in
+      tierungszeichen als Literal.     º       dieser Tabelle enthalten sind,
+                                       º       werden als Literale gedruckt.
+.context SOUND
+.context @SOUND
+:nSOUND-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Erzeugt T”ne ber den Lautsprecher des Computers.
+
+\bSOUND Frequenz, Dauer\p
+
+    ş \bFrequenz\p    Die Tonfrequenz in Hertz. Werte zwischen 37 und 32.767
+                  sind gltig.
+    ş \bDauer\p       Die Anzahl der Systemtakte, ber die der Ton andauern soll.
+                  Werte zwischen 0 und 65.535 sind gltig. 18,2 Systemtakte
+                  dauern 1 Sekunde.
+
+Beispiel:
+    FOR i% = 440 TO 1000 STEP 5
+    SOUND i%, i% / 1000
+    NEXT i%
+
+Siehe auch    \i\p\aPLAY\v@PLAY\v\i\p
+.context SPC
+.context @SPC
+:nSPC-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+šberspringt die angegebene Anzahl von Leerzeichen in einer PRINT- oder
+LPRINT-Anweisung.
+
+\bSPC(n%)\p
+
+    ş \bn%\p    Die Anzahl der zu berspringenden Leerzeichen. Werte zwischen
+            0 und 32.767 sind gltig.
+
+Beispiel:
+    PRINT "Text1"; SPC(10); "Text2"
+
+Siehe auch    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p
+              \i\p\aSPACE$\v@SPACE$\v\i\p           \i\p\aTAB\v@TAB\v\i\p
+.context STICK
+.context @STICK
+:nSTICK-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt die Koordinaten eines Joysticks zurck.
+
+\bSTICK(n%)\p
+
+    ş \bn%\p    Gibt die zurckgegebenen Koordinaten an:
+
+            n%    Rckgabe
+            ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+            0     x-Koordinate von Joystick A
+            1     y-Koordinate von Joystick A
+            2     x-Koordinate von Joystick B
+            3     y-Koordinate von Joystick B
+
+    ş Sie mssen STICK(0) aufrufen, bevor Sie STICK(1), STICK (2) oder
+      STICK(3) aufrufen k”nnen.
+      STICK(0) speichert die gegenw„rtigen Koordinaten.
+
+Beispiel:
+    Temp% = STICK(0)
+    PRINT STICK(2), STICK(3)
+
+Siehe auch    \i\p\aSTRIG-Funktion\v@strigf\v\i\p    \i\p\aSTRIG-, ON STRIG-Anweisungen\v@STRIG\v\i\p
+.context TAB
+.context @TAB
+:nTAB-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Bewegt den Cursor zur angegebenen Druckposition.
+
+\bTAB(Spalte%)\p
+
+    ş \bSpalte%\p    Die Spaltennummer der neuen Druckposition.
+
+Beispiel:
+    PRINT TAB(25); "Text"
+
+Siehe auch    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p
+              \i\p\aSPC\v@SPC\v\i\p    \i\p\aSPACE$\v@SPACE$\v\i\p
+.context .vupri
+.context @vupri
+:nVIEW PRINT-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Legt die Grenzen des Bildschirm-Textfensters fest.
+
+\bVIEW PRINT [ZeileOben% TO ZeileUnten%]\p
+
+ ş \bZeileOben%\p       Die Nummer der obersten Zeile des Textfensters.
+ ş \bZeileUnten%\p      Die Nummer der untersten Zeile des Textfensters.
+
+ ş Wenn Sie die Argumente ZeileOben% und ZeileUnten% weglassen, legt
+   VIEW PRINT den gesamten Bilschirm als Textfenster fest.
+ ş Der gltige Wertebereich fr ZeileOben% und ZeileUnten% h„ngt vom
+   gew„hlten Bildschirm-Modus ab.
+
+Beispiel:
+    VIEW PRINT 10 TO 15
+    FOR i% = 1 TO 100      'Ausgabe wird rollen.
+        PRINT i%
+    NEXT i%
+
+Siehe auch    \i\p\aCLS\v@CLS\v\i\p    \i\p\aLOCATE\v@LOCATE\v\i\p    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p
+            \i\p\aBildschirmmodi\v@screen.modes\v\i\p
+.context WAIT
+.context @WAIT
+:nWAIT-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Wartet mit der Ausfhrung eines Programms und berwacht den Eingabeanschluá,
+bis ein festgelegtes Bit-Muster erhalten wird.
+
+\bWAIT Anschluánummer%, AND-Ausdruck% [,XOR-Ausdruck%]\p
+
+ ş \bAnschluánummer%\p    Die Nummer des Eingabeanschlusses.
+ ş \bAND-Ausdruck%\p      Ein ganzzahliger Ausdruck, den WAIT mit dem Wert des
+                      Bit-Musters unter Verwendung des AND-Operators
+                      kombiniert. Wenn das Ergebnis ein Wert ungleich Null
+                      ist, beendet WAIT die šberwachung des Anschlusses.
+ ş \bXOR-Ausdruck%\p      Kann dazu verwendet werden, Spalten-Bits im
+                      Bitmuster an- und auszuschalten, bevor die AND-
+                      Operation ausgefhrt wird.
+
+Beispiel:
+    'Liest die Adresse des Interrupt-Controllers &H20.
+    'Beliebige Taste drcken, um fortzufahren.
+    WAIT &H20, 1
+
+Siehe auch    \i\p\aINP, OUT\v@INP\v\i\p    \i\p\aBoole'sche Operatoren\v@AND\v\i\p
+.context WIDTH
+.context @WIDTH
+:nWIDTH-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Die WIDTH-Anweisungen weisen einer Datei oder einem Ger„t (z.B. einem
+Drucker) die Breite einer Ausgabezeile zu, oder sie ver„ndern die Anzahl der
+Zeilen und Spalten, die auf dem Bildschirm angezeigt werden.
+
+\bWIDTH [Spalten%] [,Zeilen%]\p
+\bWIDTH {#Dateinummer% | Ger„t$}, Spalten%\p
+\bWIDTH LPRINT Spalten%\p
+
+ ş \bSpalten%\p        Die gewnschte Breite in Spalten. Die Breite der Bild-
+                   schirmanzeige muá 40 oder 80 Spalten betragen.
+ ş \bZeilen%\p         Die gewnschte H”he der Bildschirmanzeige in Zeilen.
+                   Gltige Werte sind 25, 30, 43, 50 oder 60, je nach dem
+                   verwendeten Videoadapter und Bildschirm-Modus.
+ ş \b#Dateinummer%\p   Die Nummer einer ge”ffneten Datei oder eines Ger„ts.
+ ş \bGer„t$\p          Der Name des Ger„ts:
+                     SCRN:, COM1:, COM2:, LPT1:, LPT2:, LPT3:
+
+Beispiel:
+    OPEN "LPT1:" FOR OUTPUT AS #1
+    WIDTH #1, 132
+
+Siehe auch    \i\p\aPRINT, LPRINT\v@LPRINT\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p
+.context WINDOW
+.context @WINDOW
+:nWINDOW-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definiert die logischen Dimensionen des gegenw„rtigen Sichtfensters.
+Verwenden Sie die WINDOW-Anweisung, um Ihr eigenes Sichtkoordinatensystem zu
+definieren.
+
+\bWINDOW [[SCREEN] (x1!,y1!)-(x2!,y2!)]\p
+
+ ş \bSCREEN\p       Kehrt die normale (kartesische) Richtung der y-Bildschirm-
+                koordinaten um, so daá die y-Werte auf dem Bildschirm von
+                oben nach unten hin zunehmen.
+ ş \b(x1!,y1!)\p    Logische Koordinaten, die die obere linke Ecke des
+                Sichtfensters festlegen.
+ ş \b(x2!,y2!)\p    Logische Koordinaten, die die untere rechte Ecke des
+                Sichtfensters festlegen.
+
+ ş WINDOW ohne Argumente schaltet das logische Koordinatensystem aus.
+ ş Verwenden Sie die VIEW-Anweisung, um die Gr”áe des Sichtfensters
+   festzulegen.
+
+Beispiel:
+    'Dieses Beispiel erfordert eine Farbgrafikkarte.
+    SCREEN 1
+    FOR i% = 1 TO 10 STEP 2
+        WINDOW (-160 / i%, -100 / i%)-(160 / i%, 100 / i%)
+        CIRCLE (0, 0), 10
+    NEXT i%
+
+Siehe auch    \i\p\aCLS\v@CLS\v\i\p    \i\p\aPMAP\v@PMAP\v\i\p    \i\p\aPOINT\v@POINT\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p
+.comment *****************************************************************
+.comment * One Keyword screen in this family.
+.comment *****************************************************************
+.context USING
+.context @USING
+:nUSING-Schlsselwort
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Legt fr die Anweisungen PRINT USING und LPRINT USING die Formatierung sowie
+fr die Anweisung PALETTE USING die Farbpalettenordnungen fest.
+
+Siehe auch    \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p

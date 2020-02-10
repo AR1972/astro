@@ -1,0 +1,312 @@
+.comment ******************************************************************
+.comment *  Math Family - QBasic                                          *
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review comments/edits.                     *
+.comment ******************************************************************
+.comment *  6/12/90 stevesau                                              *
+.comment *  Incorporated RonS comments                                    *
+.comment ******************************************************************
+.comment *  5/12/90 stevesau                                              *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Combined ABS/SGN, ASC/CHR$, ATN/COS/SIN/TAN, CDBL/CSNG,       *
+.comment *  CINT/CLNG, DATE$ function/statement, TIME$ function/statement,*
+.comment *  LOG/EXP, FIX/INT, RANDOMIZE/RND.                              *
+.comment *  Deleted CCUR.                                                 *
+.comment *  Moved CVSMBF, etc., to Memory family.                         *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                              *
+.comment *  Added action lines. 					  *
+.comment *  Added info from Details to RND.                               *
+.comment ******************************************************************
+.comment *  4/11/90 BethPr                                                *
+.comment *  Removed nodes for DateSerial# Function, DateValue# Function,  *
+.comment *  Day& Function, DDB# Function, FV# Function, Hour& Function,   *
+.comment *  IPmt# Function, IRR# Function, Minute& Function, MIRR# Funct. *
+.comment *  Month& Function, Now# Function, NPer# Function, NPV# Function,*
+.comment *  Pmt# Function, PPmt# Function, PV# Function, Rate# Function,  *
+.comment *  Second& Function, Serial Numbers, SLN# Function, SYD# Funct., *
+.comment *  TimeSerial# Function, TimeValue# Function, Weekday& Function, *
+.comment *  Year& Function.                                               *
+.comment *  Financial and Date/Time Functions all removed for QBasic.     *
+.comment ******************************************************************
+.context ABS
+.context @ABS
+.context SGN
+.context @SGN
+:nABS y SGN, funciones
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ABS devuelve el valor absoluto de un n£mero.
+SGN devuelve un valor indicando el signo de una expresi¢n num‚rica
+(1 si es positivo, 0 si es cero o -1 si es negativo).
+
+\bABS(expresi¢n-num‚rica)\p
+\bSGN(expresi¢n-num‚rica)\p
+
+    ş \bexpresi¢n-num‚rica\p    Cualquier expresi¢n num‚rica.
+
+Ejemplo:
+    PRINT ABS(45.5 - 100!)           'Resultado:  54.5
+    PRINT SGN(1), SGN(-1), SGN(0)    'Resultado:  1  -1  0
+.context ASC
+.context @ASC
+.context CHR$
+.context @CHR$
+:nASC y CHR$, funciones
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ASC devuelve el c¢digo ASCII correspondiente al primer car cter de una
+expresi¢n de cadena.
+CHR$ devuelve el car cter correspondiente al c¢digo ASCII especificado.
+
+\bASC(expresi¢n-cadena$)\p
+\bCHR$(c¢digo-ascii%)\p
+
+    ş \bexpresi¢n-cadena$\p    Cualquier expresi¢n de cadena.
+    ş \bc¢digo-ascii%\p        El c¢digo ASCII del car cter deseado.
+
+Ejemplo:
+    PRINT ASC("Q")    'Resultado:  81
+    PRINT CHR$(65)    'Resultado:  A
+
+Vea tambi‚n  \i\p\aC¢digos de caracteres ASCII\v@ac\v\i\p
+.context ATN
+.context @ATN
+.context COS
+.context @COS
+.context SIN
+.context @SIN
+.context TAN
+.context @TAN
+:nATN, COS, SIN y TAN, funciones
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ATN devuelve la arcotangente de la expresi¢n num‚rica especificada.
+COS, SIN y TAN devuelven el coseno, el seno y la tangente del  ngulo
+especificado.
+
+\bATN(expresi¢n-num‚rica)\p
+\bCOS( ngulo)\p
+\bSIN( ngulo)\p
+\bTAN( ngulo)\p
+
+    ş \bexpresi¢n-num‚rica\p    La raz¢n entre los lados de un tri ngulo recto.
+    ş \b ngulo\p                Un  ngulo, expresado en radianes.
+
+    ş La funci¢n ATN devuelve un  ngulo en radianes.
+    ş Para convertir de grados a radianes, multiplique grados por (PI / 180).
+
+Ejemplo:
+    CONST PI=3.141592654
+    PRINT ATN(TAN(PI/4.0)), PI/4.0    'Resultado:  .7853981635  .7853981635
+    PRINT (COS(180 * (PI / 180)))     'Resultado:  -1
+    PRINT (SIN(90 * (PI / 180)))      'Resultado:  1
+    PRINT (TAN(45 * (PI / 180)))      'Resultado:  1.000000000205103
+.context CDBL
+.context @CDBL
+.context CSNG
+.context @CSNG
+:nCDBL y CSNG, funciones
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CDBL convierte una expresi¢n num‚rica en un valor de presici¢n doble.
+CSNG convierte una expresi¢n num‚rica en un valor de precisi¢n sencilla.
+
+\bCDBL(expresi¢n-num‚rica)\p
+\bCSNG(expresi¢n-num‚rica)\p
+
+    ş \bexpresi¢n-num‚rica\p    Cualquier expresi¢n num‚rica.
+
+Ejemplo:
+    PRINT 1 / 3, CDBL(1 / 3)    'Resultado:  .3333333  .3333333333333333
+    PRINT CSNG(975.3421515#)    'Resultado:  975.3422
+
+Vea tambi‚n  \i\p\aCINT, CLNG\v@CINT\v\i\p
+.context CINT
+.context @CINT
+.context CLNG
+.context @CLNG
+:nCINT y CLNG, funciones
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CINT redondea una expresi¢n num‚rica a entero.
+CLNG redondea una expresi¢n num‚rica a entero largo (de 4 bytes).
+
+\bCINT(expresi¢n-num‚rica)\p
+\bCLNG(expresi¢n-num‚rica)\p
+
+    ş \bexpresi¢n-num‚rica\p    Para CINT, cualquier expresi¢n num‚rica entre
+                            -32,768 y 32,767.
+                            Para CLNG, cualquier expresi¢n num‚rica entre
+                            -2,147,483,648 y 2,147,483,647.
+
+Ejemplo:
+    PRINT CINT(12.49), CINT(12.51)    'Resultado:  12  13
+    PRINT CLNG(338457.8)              'Resultado:  338458
+
+Vea tambi‚n  \i\p\aCDBL, CSNG\v@CDBL\v\i\p    \i\p\aFIX, INT\v@FIX\v\i\p
+.context .datef
+.context @datef
+.context DATE$
+.context @DATE$
+:nDATE$, funci¢n e instrucci¢n
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+La funci¢n DATE$ function devuelve la fecha actual del sistema de su
+computadora.
+La instrucci¢n DATE$ define la fecha actual en el sistema de su computadora.
+
+\bDATE$\p
+\bDATE$ = expresi¢n-cadena$\p
+
+    ş \bexpresi¢n-cadena$\p    La fecha, en una de las siguientes formas:
+                           dd-mm-aa, dd-mm-aaaa, dd/mm/aa, dd/mm/aaaa.
+
+    ş La funci¢n DATE$ devuelve una cadena en la forma mm-dd-aaaa.
+
+Ejemplo:
+    PRINT DATE$
+    DATE$ = "01-01-90"    'Nota: La nueva fecha del sistema permanecer 
+                          '      vigente hasta que usted la vuelva a cambiar.
+    PRINT "Fecha cambiada a "; DATE$
+
+Vea tambi‚n  \i\p\aTIME$\v@TIME$\v\i\p
+.context EXP
+.context @EXP
+.context LOG
+.context @LOG
+:nEXP y LOG, funciones
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+EXP devuelve "e" elevado a una potencia especificada, donde "e" es la base
+del logaritmo natural. LOG devuelve el logaritmo natural de una expresi¢n
+num‚rica.
+
+\bEXP(expresi¢n-num‚rica)\p
+\bLOG(expresi¢n-num‚rica)\p
+
+    ş \bexpresi¢n-num‚rica\p    Para EXP, un n£mero menor o igual que 88.02969.
+                            Para LOG, cualquier expresi¢n num‚rica positiva.
+
+Ejemplo:
+    PRINT EXP(0), EXP(1)         'Resultado:  1  2.718282
+    PRINT LOG(1), LOG(EXP(1))    'Resultado:  0  1
+.context FIX
+.context @FIX
+.context INT
+.context @INT
+:nFIX e INT, funciones
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+FIX trunca una expresi¢n de punto flotante, dejando la porci¢n entera.
+INT devuelve el entero m s grande que sea menor o igual que una expresi¢n
+num‚rica especificada.
+
+\bFIX(expresi¢n-num‚rica)\p
+\bINT(expresi¢n-num‚rica)\p
+
+    ş \bexpresi¢n-num‚rica\p    Cualquier expresi¢n num‚rica.
+
+Ejemplo:
+    PRINT FIX(12.49), FIX(12.54)    'Resultado:  12  12
+    PRINT INT(12.54), INT(-99.4)    'Resultado:  12  -100
+
+Vea tambi‚n   \i\p\aCINT, CLNG\v@CINT\v\i\p
+.context RANDOMIZE
+.context @RANDOMIZE
+.context RND
+.context @RND
+:nRANDOMIZE instrucci¢n, RND funci¢n
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+RANDOMIZE inicializa el generador de n£meros aleatorios.
+RND devuelve un n£mero aleatorio de precisi¢n sencilla entre 0 y 1.
+
+\bRANDOMIZE [semilla%]\p
+\bRND[(n#)]\p
+
+    ş \bsemilla%\p    Un n£mero utilizado para inicializar el generador de
+                  n£meros aleatorios.
+                  Si se omite, RANDOMIZE le pedir  dicho argumento.
+    ş \bn#\p          Un valor que especifica la forma en que RND generar  el
+                  siguiente n£mero aleatorio:
+
+            n#                             RND devuelve
+            ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+            Menor que 0                    El mismo n£mero para cualquier n#
+            Mayor que 0 (u omitido)        El siguiente n£mero aleatorio
+            0                              El £ltimo n£mero generado
+
+Ejemplo:
+    RANDOMIZE TIMER
+    x% = INT(RND * 6) + 1
+    y% = INT(RND * 6) + 1
+    PRINT "Tirar dos dados: dado 1 ="; x%; "y dado 2 ="; y%
+.context SQR
+.context @SQR
+:nSQR, funci¢n
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Devuelve la ra¡z cuadrada de una expresi¢n num‚rica.
+
+\bSQR(expresi¢n-num‚rica)\p
+
+    ş \bexpresi¢n-num‚rica\p    Un valor mayor o igual que cero.
+
+Ejemplo:
+    PRINT SQR(25), SQR(2)    'Resultado:  5  1.414214
+.context .tmf
+.context @tmf
+.context TIME$
+.context @TIME$
+:nTIME$, funci¢n e instrucci¢n
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+La funci¢n TIME$ devuelve la hora actual seg£n el sistema de su computadora.
+La instrucci¢n TIME$ define la hora actual en el sistema de la computadora.
+
+\bTIME$\p
+\bTIME$ = expresi¢n-cadena$\p
+
+  ş \bexpresi¢n-cadena$\p    La hora, en una de las siguientes formas:
+                           hh          Define la hora; los minutos y 
+                                       segundos cambian autom ticamente a 00.
+                           hh:mm       Define la hora y los minutos; los 
+                                       segundos cambian autom ticamente a 00.
+                           hh:mm:ss    Define la hora, los minutos y los
+                                       segundos.
+
+  ş La funci¢n TIME$ devuelve una cadena en la forma hh:mm:ss.
+
+Ejemplo:
+    PRINT TIME$
+    TIME$ = "08:00:58"    'Nota: La nueva hora del sistema permanecer 
+                          '      vigente hasta que la vuelva a cambiar.
+    PRINT "Hora cambiada a "; TIME$
+
+Vea tambi‚n  \i\p\aDATE$\v@DATE$\v\i\p
+.comment ******************************************************************
+.comment *  One arithmetic operator                                       *
+.comment ******************************************************************
+.context MOD
+.context @MOD
+:nMOD, operador aritm‚tico
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Divide un n£mero por otro y devuelve el residuo.
+
+\bexpresi¢n-num‚rica1 MOD expresi¢n-num‚rica2\p
+
+    ş \bexpresi¢n-num‚rica1\p    Cualquier expresi¢n num‚rica. Los n£meros
+      \bexpresi¢n-num‚rica2\p    reales ser n redondeados a enteros.
+
+Ejemplo:
+    PRINT 19 MOD 6.7    'QBasic redondea 6.7 a 7, luego hace la divisi¢n.
+                        'Resultado:  5

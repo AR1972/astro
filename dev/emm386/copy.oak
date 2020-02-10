@@ -1,0 +1,34 @@
+all:
+   xcopy emm386\makefile.oak $(OAKDIR)\dev\emm386\makefile   < $(OAKDIR)\f.key
+   xcopy emm386\romstruc.equ $(OAKDIR)\dev\emm386
+   xcopy emm386\romxbios.equ $(OAKDIR)\dev\emm386
+   xcopy emm386\dma.inc      $(OAKDIR)\dev\emm386
+   xcopy emm386\emm386.inc   $(OAKDIR)\dev\emm386
+   xcopy emm386\kbd.inc      $(OAKDIR)\dev\emm386
+   xcopy emm386\page.inc     $(OAKDIR)\dev\emm386
+   xcopy emm386\vdmseg.inc   $(OAKDIR)\dev\emm386
+   xcopy emm386\vdmsel.inc   $(OAKDIR)\dev\emm386
+   xcopy emm386\vm386.inc    $(OAKDIR)\dev\emm386
+   xcopy emm386\emmfunct.inc $(OAKDIR)\dev\emm386
+   xcopy emm386\emmdata.inc  $(OAKDIR)\dev\emm386
+   xcopy emm386\allocmem.inc $(OAKDIR)\dev\emm386
+   xcopy emm386\ps2ex.inc    $(OAKDIR)\dev\emm386
+   xcopy emm386\ps2equ.inc   $(OAKDIR)\dev\emm386
+   xcopy emm386\memm.lnk     $(OAKDIR)\dev\emm386
+   xcopy emm386\buglib.lib   $(OAKDIR)\dev\emm386
+   xcopy emm386\a20trap.asm  $(OAKDIR)\dev\emm386
+   xcopy emm386\dmatrap.asm  $(OAKDIR)\dev\emm386
+   xcopy emm386\dmaps2.asm   $(OAKDIR)\dev\emm386
+
+  -md $(OAKDIR)\lang\$(COUNTRY)\dev\emm386
+  -del $(OAKDIR)\lang\$(COUNTRY)\dev\emm386\emmmes.asm
+   copy  emm386\emmmes.obj   $(OAKDIR)\lang\$(COUNTRY)\dev\emm386
+   copy  emm386\errhndlr.obj $(OAKDIR)\lang\$(COUNTRY)\dev\emm386
+
+   xcopy emm386\*.obj        $(OAKDIR)\dev\emm386
+   del $(OAKDIR)\dev\emm386\emmmes.obj
+   del $(OAKDIR)\dev\emm386\errhndlr.obj
+
+#   xcopy emm386\*.obj        $(OAKDIR)\lang\$(COUNTRY)\dev\emm386  < $(OAKDIR)\d.key
+
+

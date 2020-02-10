@@ -1,0 +1,100 @@
+{\rtf1\ansi \deff0{\fonttbl{\f0\froman Tms Rmn;}{\f1\froman Symbol;}{\f2\fswiss Helv;}{\f3\froman Times New Roman;}{\f4\fswiss Arial;}{\f5\fmodern Courier New;}}{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;
+\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;}{\stylesheet{\s244 \fs16\up6 \sbasedon0\snext0 footnote reference;}{\s245 \fs20 \sbasedon0\snext245 footnote text;}{\s254\sb240 \b\f2\ul 
+\sbasedon0\snext0 heading 1;}{\fs20 \snext0 Normal;}}{\info{\author David Edelman}{\operator David Edelman}{\creatim\yr1992\mo9\dy3\hr16\min36}{\revtim\yr1992\mo9\dy3\hr16\min36}{\version2}{\edmins2}{\nofpages1}{\nofwords65536}{\nofchars65536}{\vern8368}}
+\widowctrl\ftnbj \sectd \linex0\endnhere \pard\plain \s254\sb240 \b\f2\ul {\plain \b\f4\fs16\up6 ${\footnote \pard\plain \s245 \fs20 {\fs16\up6 $} Contents for SmartMon Help} #{\footnote \pard\plain \s245 \fs20 {\fs16\up6 #} contents}}{\plain \b\f4 
+ Contents for SmartMon Help
+\par }\pard\plain \fs20 {\f4 
+\par SmartMon is a companion application to the SmartDrive 4.0 disk cache utility.  It  provides vi
+sual indications of cache activities, and allows you to alter the cache mode of each cacheable drive.  Through SmartMon you can manipulate the run-time parameters of SmartDrive and monitor the effect on cache efficiency.
+\par 
+\par SmartMon's functionalities are organized visually into four main groups.  Please click the appropriate topic for additional information:
+\par 
+\par }{\f4\uldb Cache Memory Controls}{\v\f4\uldb cmc}{\f4\uldb 
+\par Drive Caching  Controls}{\v\f4\uldb dcc}{\f4\uldb 
+\par Cache Hit Rate Display}{\v\f4\uldb chrd}{\f4\uldb 
+\par Options and Cache Activity Logging}{\v\f4\uldb ocal}{\f4\uldb 
+\par Iconic Display}{\v\f4\uldb icond}{\f4\uldb 
+\par }{\f4 
+\par }{\f4\uldb \page }{\b\f4\fs16\up6 ${\footnote \pard\plain \s245 \fs20 {\fs16\up6 $} Cache Memory Controls}}{\b\f4\uldb  }{\b\f4\fs16\up6 #{\footnote \pard\plain \s245 \fs20 {\fs16\up6 #} cmc}}{\b\f4\uldb  }{\b\f4 Cache Memory Controls
+\par }{\f4 
+\par The Cache Memory control group shows the cache size under DOS and under Windows.  The sizes are determined from the }{\f4\ul SmartDrive command line}{\v\f4 lu_command_line}{\f4  parameters when it is loaded, and cannot be altered from this application.
+
+\par 
+\par The COMMIT button forces SmartDrive to write back all cache elements that have not been committed to disk.  It is not necessary to commit the cache to disk manually, as SmartDrive itself will never let any writable cache element age for more than five 
+seconds.
+\par 
+\par The RESET button tells SmartDrive to commit the cache to disk and then discard all cache elements.  This also resets the cumulative average cache hit rate, which is shown on the information bar.
+\par 
+\par \page }{\b\f4\fs16\up6 ${\footnote \pard\plain \s245 \fs20 {\fs16\up6 $} Drive Caching Controls}}{\b\f4  }{\b\f4\fs16\up6 #{\footnote \pard\plain \s245 \fs20 {\fs16\up6 #} dcc}}{\b\f4  Drive Caching Controls
+\par }{\f4 
+\par Through the Drive Control section, you can select any drive available on your system and see its current cache mode.  There are three possible settings:  Cache Read Only, Cache Read and Write, and No Caching; and you can change the setting for the selecte
+d drive by click
+ing the appropriate radio button.  However, you will see that for some of the drives the radio buttons are all disabled (e.g., CD-ROM drives, RAM drives, and Network shares)  That is because SmartDrive does not cache them , and you will not be able to alt
+er their "No Caching" status.
+\par 
+\par When you exit Windows the current cache setting for each drive will remain in effect until the next time }{\f4\ul SmartDrive is loaded}{\v\f4\ul lu_load}{\f4 , at which time all drives will be reset to the }{\f4\ul default cache mode}{\v\f4\ul lu_default}
+{\f4  according to it
+s drive type.  SmartMon offers you an option to preserve the drive settings by re-writing the SmartDrive line in the batch file where SmartDrive is loaded.  For most people it is their AUTOEXEC.BAT file.  Please see the Options section for more detail.
+
+\par 
+\par \page }{\b\f4\fs16\up6 ${\footnote \pard\plain \s245 \fs20 {\fs16\up6 $} Cache Hit Rate Display}}{\b\f4  }{\b\f4\fs16\up6 #{\footnote \pard\plain \s245 \fs20 {\fs16\up6 #} chrd}}{\b\f4  Cache Hit Rate Display
+\par }{\f4 
+\par The Cache Hit Rate chart  shows a histogram of the instantaneous cache hit rate for a given number of time intervals, and at a given frequency.  The number of intervals defaults to 30, the frequency to 500 msec, and can be ch
+anged through the Options dialog box.  The instantaneous cache hit rate is calculated by the following formula:
+\par 
+\par \tab Hit_Rate = 100 * (Current_hits - Previous_hits) / (Current_total - Previous_total)
+\par 
+\par When the cache is idle (i.e., Current_total equals Previous_total), the histogram does not get updated.
+\par 
+\par SmartMon also displays the Average Cache Hit Rate in the information bar at the bottom of the window.  That number shows the cumulative hit rate since the time SmartMon was started, or the last cache reset.
+\par 
+\par }{\f4\uldb Iconic Display}{\v\f4\uldb icond}{\f4\uldb 
+\par }{\fs16\up6 \page 
+\par ${\footnote \pard\plain \s245 \fs20 {\fs16\up6 $} Iconic Display}}{\f4  }{\fs16\up6 #{\footnote \pard\plain \s245 \fs20 {\fs16\up6 #} icond}}{\f4  }{\b\f4 Iconic Display
+\par }{\f4 
+\par When SmartMon is minimized, the cache hit rate is displayed in numeric format.  If the cache was active, the icon displays the instantaneous hit rate for the sampling period.  On a color display, this number is shown in red; on a monochrome display, it is
+ shown in white.  If the cache was idle, the average hit rate is displayed in the current button text color.
+\par 
+\par The little disk drive bitmap in the lower part of the icon simulates a red light blinking when the cache is not idle.  The bitmap is updated at the same time as the hit rate, it does not reflect in real-time the activity of the cache or your hard disks.
+
+\par \page }{\b\f4\fs16\up6 ${\footnote \pard\plain \s245 \fs20 {\fs16\up6 $} Options and Cache Activity Logging}}{\b\f4  }{\b\f4\fs16\up6 #{\footnote \pard\plain \s245 \fs20 {\fs16\up6 #} ocal}}{\b\f4  Options and Cache Activity Logging
+\par }{\f4 
+\par Through the Options dialog box you can configure various SmartMon parameters, which are saved in WIN.INI under the [smartmon] section.
+\par 
+\par }{\b\f4 Cache Hit  Rate
+\par }{\f4 
+\par For Cache Hit Rate display, you can select the sampling frequency (from  50 to 10000 milliseconds, with 500 as default), and the number of  histogram
+ display intervals (from 3 to 100, with 30 as default).  In addition to controlling how often SmartMon samples the cache hit rate, the sampling frequency also determines the rate at which the histogram and the iconic display gets updated, as well as when 
+to write to the log file (when logging is enabled.)
+\par 
+\par }{\b\f4 Log File
+\par 
+\par }{\f4 For logging cache activities to file, you can select the file name, and the automatic stop time.  If the given log file exists, SmartMon will append to it.  Otherwise, the file will be creat
+ed.  You should specify the full pathname of the log file; otherwise, SmartMon will create the file in the current directory of the current drive.
+\par 
+\par The log file contains three columns of information.  The first is the timer tick count since the beginning of the current Windows session.  The second is the total number of cache accesses since the time SmartDrive was loaded.  The third is the number of 
+cache hits since the time SmartDrive was loaded.
+\par 
+\par The Automatic Stop time tells SmartMon to stop logging 
+to file after the specified number of minutes.  The minimum is one minute, the maximum is eight hours, the default is two hours.  You can also turn off this feature by unchecking the check box.  Note that changing the Automatic Stop time setting will affe
+ct  the current logging session, if one is underway.
+\par 
+\par }{\b\f4 Drive Control
+\par }{\f4 
+\par Assuming that you loaded SmartDrive from a batch file (typically it is loaded from the AUTOEXEC.BAT), on exit, SmartMon can rewrite the }{\f4\ul SmartDrive command line}{\v\f4\ul lu_command_line}{\f4  in the ba
+tch file to preserve the the drive cache settings.  If you choose not to use this feature (by unchecking the check box), any new drive setting would still remain in effect even after Windows exits.  But it will be lost the next time SmartDrive is loaded. 
+
+\par 
+\par The batch file you specify must be an existing file.  The default is the AUTOEXEC.BAT file on the boot drive.  SmartMon will not update the file if there is more than one SmartDrive line in it.
+\par }{\f4\fs16\up6 \page #{\footnote \pard\plain \s245 \fs20 {\fs16\up6 #} lu_command_line}}{\f4  smartdrv [[/E:elementsize] [/B:buffersize] [drive [+]|[-]] [size] [winsize]]...
+\par 
+\par /E:element size\tab Specifies the size of the cache elements (in bytes).
+\par /B:buffer size\tab Specifies the size of the read buffer.
+\par drive letter\tab Specifies the letter of the disk drive to cache.
+\par +\tab \tab Enables write-behind caching for the specified drive.
+\par -\tab \tab Disables all caching for the specified drive.
+\par size\tab \tab Specifies the amount of XMS memory (KB) used by the cache.
+\par winsize\tab \tab Specifies the amount of XMS memory (KB) used in Windows.
+\par \page }{\f4\fs16\up6 #{\footnote \pard\plain \s245 \fs20 {\fs16\up6 #} lu_load}}{\f4  Once started, SmartDrive cannot be reloaded until you reboot the machine.
+\par \page }{\f4\fs16\up6 #{\footnote \pard\plain \s245 \fs20 {\fs16\up6 #} lu_default}}{\f4  The default cache setting for a floppy drive is Cache Read Only.  For a fixed drive it is Cache Read and Write.
+\par }}

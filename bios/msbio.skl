@@ -1,0 +1,188 @@
+;/*
+; *                      Microsoft Confidential
+; *                      Copyright (C) Microsoft Corporation 1981-1991
+; *                      All Rights Reserved.
+; */
+;==============================================================================
+;REVISION HISTORY:
+;==============================================================================
+;===================
+:class 1
+;===================
+; MESSAGES FOR THE IBM BOOT SECTOR. NUL Terminated.
+; This is used by IBMBOOT and IBMLOAD program and it stays in IBMBOOT directory.
+;
+;SYSMSG  DB	 13,10,"Non-System disk or disk error",13,10
+;	 DB	 "Replace and strike any key when ready",13,10,0
+:use 01 BOOT SYSMSG
+
+;===================
+:class 2
+;===================
+; SINGLE DRIVE MESSAGE FOR IBMBIO.COM. NUL TERMINATED.
+
+
+:def 20 SNGMSG	DB	13,10,"Insert diskette for drive "
+:def 21 DRVLET	DB	"A: and strike",13,10,"any key when ready",13,10,10,0
+
+
+;==================
+:class 3
+;==================
+
+; displayed when there is a bad command in CONFIG.SYS. '$' TERMINATED, note
+;   that this message includes crlfm!
+
+:def 03 BADOPM	DB	13,10,"Unrecognized command in CONFIG.SYS"
+:def 04 CRLFM	DB	13,10,'$'
+:def 22 BadParm db	13,10,"Bad command or parameters - $"
+
+;displayed when installed device specifies too large a sector size.'$' terminated.
+; FORM: 	<BADSIZ_PRE>device name<BADSIZ_POST>
+:def 05 BADSIZ_PRE  DB	    13,10,"Sector size too large in file $"
+
+;displayed when installed device cannot be found. '$' terminated.
+; FORM: 	<BADLD_PRE>device name<BADLD_POST>
+:def 06 BADLD_PRE   DB	    13,10,"Bad or missing $"
+
+;displayed when command interpreter is not found. NUL terminated.
+; FORM: 	<BADLD_PRE><BADCOM><BADLD_POST>
+:def 07 BADCOM	DB	"Command Interpreter",0
+
+;displayed when country code, code page combination was not found in country.sys file. '$' terminated.
+; FORM: 	<BADCOUNTRY>
+:def 08 BADCOUNTRY DB	13,10,"Invalid country code or code page",13,10,"$"
+
+;displayed when code page id is missing or wrong syntax.
+; FORM: 	<BADCOUNTRYCOM>
+:def 09 BADCOUNTRYCOM DB 13,10,"Error in COUNTRY command",13,10,"$"
+
+;displayed when the memory left is not sufficient to handle COUTRY.SYS file
+; FORM: 	<INSUFMEMORY>
+:def 10 INSUFMEMORY DB 13,10, "Insufficient memory for COUNTRY.SYS file",13,10,"$"
+
+; displayed when there is insufficient memory. '$' TERMINATED, note
+;   that this message includes crlfm!
+:def 11 BADMEM	DB	13,10,"Configuration too large for memory",13,10,"$"
+
+; displayed when the attempt is made to install a block device which would
+;   have a drive letter > 'Z'
+:def 12 BADBLOCK DB	13,10,"Too many Block Devices",13,10,"$"
+
+; displayed when the attempt is made to install a stack with invalid
+;   combinations of # of stacks, stack size.
+:def 13 BADSTACK DB	13,10,"Invalid STACK parameters",13,10,"$"
+
+; - displayed when encountering a command that is not "install=" after
+;   we had a "Install=" command.
+; Translation::: Please leave the last blank space at the end of the line
+;		 as it is.
+:def 14 BADORDER DB	13,10,"Incorrect order in CONFIG.SYS line ","$"
+
+; - displayed when the command failed.
+; Translation::: Please leave the last blank space at the end of the line
+;		 as it is.
+:def 15 ERRORCMD DB	"Error in CONFIG.SYS line ","$"
+
+:def 29 OnOff       DB  "ONOFF"
+:def 30 StartMsg    DB  "Starting MS-DOS...",13,10,10,0
+:def 31 $PauseMsg   DB  "Press any key to continue . . .",13,10,"$"
+:def 32 $CleanMsg   DB  "MS-DOS is bypassing your CONFIG.SYS and AUTOEXEC.BAT files.",13,10,"$"
+:def 33 $InterMsg   DB  "MS-DOS will prompt you to confirm each CONFIG.SYS command.",13,10,"$"
+
+; - displayed when config.sys [menu] block exists
+;
+:def 34 $MenuHeader DB  13,10,"  MS-DOS 6 Startup Menu",13,10,"  อออออออออออออออออออออ",13,10,"$"
+
+; - displayed when config.sys [menu] block exists
+;
+:def 35 $MenuPrmpt  DB  "  Enter a choice: $"
+
+; - displayed when config.sys [menu] block exists
+; Translation::: Please leave the backspaces (8's) as-is; note that the
+; space between the colon and the closing bracket must be large enough to
+; print any of $ON, $OFF and $NONE, and that if the size of that space is
+; changed, the number backspaces (8's) has to be changed also.
+;
+:def 36 $Statusline DB  "  F5=Bypass startup files    F8=Confirm each CONFIG.SYS line [   ]$"
+
+; - displayed when config.sys interactive prompting enabled
+;
+:def 37 $InterPrmpt DB  " [Y,N]?$"
+
+; - displayed when config.sys [menu] block exists
+;
+:def 38 $YES        DB  "YES$"
+
+; - displayed when config.sys [menu] block exists
+;
+:def 39 $NO         DB  "NO $"
+
+; - displayed when a timeout for the config.sys [menu] block exists
+;
+:def 40 $TimeOut    DB  "Time remaining: $"
+
+; - displayed when Command Interpreter could not be exec'ed
+;
+:def 41 BadComPrmpt DB  "Enter correct name of Command Interpreter (eg, C:\COMMAND.COM)",13,10,"$"
+
+; - displayed when config.sys interactive prompting enabled
+;
+:def 42 $AutoPrmpt  DB  "Process AUTOEXEC.BAT [Y,N]?$"
+
+; displayed when more than 24 fixed disk partitions are found             ; M029
+:def 24 toomanydrivesmsg db "WARNING! Drives past Z: exist and will be ignored" ; M029
+
+:def 43 baddblspace	db "Wrong DBLSPACE.BIN version$"
+
+;==================
+:class 4
+;==================
+;MSBIO SYSINIT
+;Message for SYSINIT_BASE program.
+:def 16 Mem_alloc_err	db 13,10,"Memory allocation error","$"
+
+
+;==================
+:class 5
+;==================
+
+;	 PUBLIC FATAL_MSG
+:def 17 FATAL_MSG	DB	0DH,0AH,7,0DH,0AH
+			DB	"Internal stack overflow",0DH,0AH
+			DB	"System halted",0DH,0AH,"$"
+;
+;==================
+:class 6
+;==================
+
+; - displayed when DOS loads due to non-availability of HMA.
+;
+:def 18 DOSLOMSG DB     "HMA not available: Loading DOS low", 13, 10, "$"
+:def 23 FEMSG	DB	"Fatal Error:Cannot allocate Memory for DOS", 13, 10, "$"
+
+;==================
+:class 7
+;==================
+;MSBIO SYSINIT
+;Used only in TAIWAN version
+:def 19 bootfailmsg	db 13,10,"failed to boot - missing local driver $"
+
+;M043; new class added
+;==================
+:class 8
+;==================
+;MSBIO MSINIT
+;Used for IBM builds
+:def 25 IBMBootFailMsg	db "This version of DOS will boot only on IBM machines",13,10,0
+
+;New class for the benefit of POWER.EXE device driver - M070
+;==================
+:class 9
+;==================
+;
+:def 26 PowerSignOn
+
+;:END
+
+

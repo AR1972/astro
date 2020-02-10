@@ -1,0 +1,72 @@
+.context .dimx
+.context @dimx
+:nDIM, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\dimx.bas
+.context .cmmnx
+.context @cmmnx
+:nCOMMON, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\chainx.bas
+.context .datax
+.context @datax
+:nDATA, DATE$ och READ - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\datax.bas
+.context .erasex
+.context @erasex
+:n$STATIC, $DYNAMIC och ERASE - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\erasex.bas
+.context .letx
+.context @letx
+:nLET, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\letx.bas
+.context .redix
+.context @redix
+:nREDIM, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\redix.bas
+.context .sharedx
+.context @sharedx
+:nSHARED, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\sharedx.bas
+.context .statx
+.context @statx
+:nSTATIC, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\statx.bas
+.context .swapx
+.context @swapx
+:nSWAP, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\swapx.bas
+.context .optx
+.context @optx
+:nOPTION BASE, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\optx.bas
+.context .ubx
+.context @ubx
+:nUBOUND och LBOUND, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\ubx.bas
+.context .remx
+.context @remx
+:nREM, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\remx.bas

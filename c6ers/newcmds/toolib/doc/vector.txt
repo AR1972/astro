@@ -1,0 +1,69 @@
+SUMMARY VectorAlloc fAppendVector
+
+#include <tools.h>
+
+struct vectorType {
+    int max;                            /* max the vector can hold           */
+    int count;                          /* count of elements in vector       */
+    unsigned elem[1];                   /* elements in vector                */
+};
+
+struct vectorType *VectorAlloc(cElem)
+int cElem;
+
+flagType fAppendVector(ppVec, uElem)
+struct vectorType **ppVec;
+unsigned int uElem;
+
+DESCRIPTION
+
+VectorAlloc allocates a vector large enough to hold cElem elements.
+
+fAppendVector adds an element to a vector.  If the vector is full, a new
+larger vector is allocated, the old vector elements are copied, new appended
+and old vector deallocated.  If ppVec is NULL a vector of default length
+is allocated.
+
+RETURN VALUE
+
+VectorAlloc returns NULL if the vector could not be allocated else returns
+pointer to vector.
+
+fAppendVector zero if the element was not appended otherwise non-zero.
+*ppVec is updated of a new vector is allocated.
+
+IMPLEMENTATION
+
+
+SEE ALSO
+
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+#define BUFLEN 256
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    FILE *pFile;
+    struct vectorType *pVec;
+    char strLine[BUFLEN];
+    int i;
+
+    pVec = VectorAlloc(1);
+    if ((pFile = swopen("$USER:\\tools.ini", "to"))) {
+        while (swread(strLine, BUFLEN, pFile) &&
+             fAppendVector(&pVec, MakeStr(strLine)))
+            ;
+        swclose(pFile);
+        printf("Contents of $USER:\\tools.ini section [to]\n");
+        for (i=0; i< pVec->count; i++)
+            printf("%3d \"%s\"\n", i, (char *) pVec->elem[i]);
+        }
+}

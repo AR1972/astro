@@ -1,0 +1,11 @@
+txtdebug.obj+
+txtdata.obj+
+txtdeb.obj+
+txtdir.obj+
+txtfind.obj+
+txtload.obj+
+txtmgr.obj+
+txtmove.obj+
+txtsave.obj+
+txtthr.obj+
+txtutil.obj+

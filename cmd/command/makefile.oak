@@ -1,0 +1,188 @@
+#************************** makefile for cmd\command *********************
+MSG_DIR=$(LANG_SRC)\$(COUNTRY)\messages
+
+msg     =..\..\messages
+inc     =..\..\inc
+bins    =..\..\binaries
+cprs    =..\..\compress
+#extasw  =-I$(inc) -I$(msg) -I$(MSG_DIR) -D$(COUNTRY)
+
+!IFDEF ROMDOS
+loc	=..\..\romimg
+incloc  =-I$(loc)
+!ENDIF
+
+!IFNDEF ROMDOS
+dest    =command.com
+cpr     =command.co_
+sto     =$(LANG_SRC)\$(COUNTRY)\cmd\command\diskobjs
+!ELSE
+dest    =command.16
+cpr     =command.bi_
+sto     =romobjs
+!ENDIF
+
+
+!ifdef DEBUG
+
+deb     =-Zi
+deblink =/LI /MAP /CO
+
+!endif
+
+extasw  =-I$(inc) -I$(msg) -I$(MSG_DIR) -D$(COUNTRY) $(incloc) $(deb)
+exelink =$(deblink)
+
+#
+####################### dependencies begin here. #########################
+#
+
+!IFDEF        ROMDOS
+
+all: icopy $(dest) romhead.bin rescom.16
+
+!ELSE
+
+!IFNDEF       BUILDER
+
+all: icopy $(dest)
+
+!ELSE
+
+all: icopy $(dest) $(bins)\$(dest) $(cprs)\$(dest) $(cprs)\$(cpr)
+
+$(bins)\$(dest): $(dest)
+	    copy $(dest) $(bins)
+
+$(cprs)\$(dest): $(dest)
+	    copy $(dest) $(cprs)
+
+$(cprs)\$(cpr):  $(cpr)
+	    copy $(cpr) $(cprs)
+
+$(cpr):       $(dest)
+	    $(compress) $(dest) $(cpr)
+
+!ENDIF
+
+!ENDIF
+
+
+icopy:
+   copy $(sto)\*.obj
+
+
+command.ctl:   command.skl              \
+	       $(msg)\$(COUNTRY).msg
+#	       buildmsg.exe
+
+rdata.obj:     rdata.asm                \
+	       comsw.asm                \
+	       comseg.asm               \
+	       resmsg.equ               \
+!IFDEF ROMDOS
+               $(loc)\command.loc       \
+!ENDIF
+	       $(msg)\comrmsg.inc
+
+tdata.obj:     tdata.asm                \
+	       comsw.asm                \
+          $(inc)\version.inc       \
+	       comseg.asm               \
+	       $(inc)\dirent.inc        \
+	       $(inc)\curdir.inc        \
+	       $(inc)\error.inc         \
+	       ifequ.asm                \
+	       comequ.asm               \
+	       $(inc)\sysmsg.inc        \
+	       $(inc)\versiona.inc      \
+	       command.ctl              \
+	       $(inc)\msgdcl.inc        \
+	       $(inc)\msgserv.asm       \
+	       tranmsg.asm              \
+	       $(inc)\ea.inc
+
+uinit.obj:     uinit.asm                \
+	       comsw.asm                \
+          $(inc)\version.inc       \
+	       comseg.asm               \
+	       ifequ.asm                \
+	       $(MSG_DIR)\comimsg.inc
+
+!IFDEF ROMDOS
+
+romldr.obj:	romldr.asm $(loc)\command.loc
+
+romres.obj:	romres.asm $(loc)\command.loc comseg.asm
+
+!ENDIF
+
+!IFNDEF ROMDOS
+
+command.exc:   command1.obj   tenv2.obj      \
+	       command2.obj   tmisc1.obj     \
+	       rucode.obj     tmisc2.obj     \
+	       rdata.obj      tpipe.obj      \
+	       init.obj       parse2.obj     \
+	       iparse.obj     path1.obj      \
+	       uinit.obj      path2.obj      \
+	       tcode.obj      tucode.obj     \
+	       tbatch.obj     copy.obj       \
+	       tbatch2.obj    copypr1.obj    \
+	       tfor.obj       copypr2.obj    \
+	       dir.obj        cparse.obj     \
+	       tcmd1b.obj     tparse.obj     \
+	       tcmd2a.obj     tprintf.obj    \
+	       tcmd2b.obj     tdata.obj      \
+	       tenv.obj       tspc.obj       \
+	       stub.obj       loadhi.obj     \
+	       cratio.obj		     \
+               command.lnk
+	       $(link) $(exelink) @command.lnk
+
+$(dest):       command.exc
+
+!ELSE
+
+command.exc command.map:   command1.obj   tenv2.obj      \
+	       command2.obj   tmisc1.obj     \
+	       rucode.obj     tmisc2.obj     \
+	       rdata.obj      tpipe.obj      \
+	       init.obj       parse2.obj     \
+	       iparse.obj     path1.obj      \
+	       uinit.obj      path2.obj      \
+	       tcode.obj      tucode.obj     \
+	       tbatch.obj     copy.obj       \
+	       tbatch2.obj    copypr1.obj    \
+	       tfor.obj       copypr2.obj    \
+	       dir.obj        cparse.obj     \
+	       tcmd1b.obj     tparse.obj     \
+	       tcmd2a.obj     tprintf.obj    \
+	       tcmd2b.obj     tdata.obj      \
+	       tenv.obj       tspc.obj       \
+	       stub.obj       loadhi.obj     \
+          romldr.obj     romres.obj     \
+	       cratio.obj		     \
+          rom.lnk
+	       $(link) $(exelink) @rom.lnk
+
+command.com:   command.exc
+
+command.16:    command.com
+               copy command.com command.16
+
+romhead.bin:   romhead.asm $(loc)\command.loc
+               $(asm) $(aflags) romhead,,;
+               link /nologo /li romhead,,;
+               reloc romhead.exe romhead.bin
+
+rescom.16:     command.com command.map
+	       addpsp command.com command.tmp
+	       split command.tmp command.map INIT rescom1.tmp rescom2.tmp
+               split rescom1.tmp command.map CODERES rescom3.tmp rescom.16
+               del rescom?.tmp
+	       del command.tmp
+
+!ENDIF
+
+

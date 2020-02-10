@@ -1,0 +1,17 @@
+bios_io.lib
+y
++country.obj&
++datavers.obj&
++doint2f.obj&
++ctrlbrk.obj&
++findstr.obj&
++getbrk.obj&
++ibm_id.obj&
++keyboard.obj&
++memfree.obj&
++reboot.obj&
++setbrk.obj&
++tsr_tog.obj&
++video.obj&
++auxputs&
++win_chk;

@@ -1,0 +1,44 @@
+
+.SUFFIXES
+
+.LIBRARY .lib
+
+%if %defined(model)
+MODEL = $(model)
+%endif
+
+MODEL = s
+
+%if $(MODEL) == m
+LIB             = plibm.lib
+ASM_MODEL_FLAGS = -Dmemmodel=MEDIUM -DMMODEL
+C_MODEL_FLAGS   = -AM -NT PARAGON_TEXT
+%elseif $(MODEL) == s
+LIB             = plibs.lib
+ASM_MODEL_FLAGS = -Dmemmodel=SMALL
+C_MODEL_FLAGS   = -AS
+%elseif $(MODEL) == l
+LIB             = plibl.lib
+ASM_MODEL_FLAGS = -Dmemmodel=LARGE -DLMODEL
+C_MODEL_FLAGS   = -AL -NT PARAGON_TEXT
+%endif
+
+%echo MODEL = $(MODEL) (Type make MODEL =[m | l] for different model).
+
+.asm.obj:
+    *\msc\bin\masm -t -Ml -W2 -Dlanguage=PASCAL $(ASM_MODEL_FLAGS) $*;
+
+.c.obj:
+    *\c600\bin\cl -c -nologo $(C_MODEL_FLAGS) -W3 -Zl -Zp -Osleazrg -Gsr $<
+
+.INIT:
+    @%setenv INCLUDE=$(INCLUDE);\paragon\include;\c600\include
+
+$(LIB): $[f,,$[w,*.asm],obj] $[f,,$[w,*.c],obj]
+    %if !%file($@)
+    *\polylib\lib -make $@
+    %endif
+    *\polylib\lib $@ <@< 
+add $? NOASK
+<
+    *rm *.obj

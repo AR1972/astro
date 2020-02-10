@@ -1,0 +1,273 @@
+.context ABS
+.context @ABS
+.context SGN
+.context @SGN
+:nFunzioni ABS e SGN
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ABS restituisce il valore assoluto di un numero.
+SGN restituisce un valore che indica il segno di un'espressione numerica
+(1 se l'espressione Š positiva, 0 se Š uguale a zero o -1 se Š negativa).
+
+\bABS(espressione numerica)\p
+\bSGN(espressione numerica)\p
+
+    ş \bespressione numerica\p    Un'espressione numerica qualsiasi.
+
+Esempio:
+    PRINT ABS(45.5 - 100!)           'Risultato:  54.5
+    PRINT SGN(1), SGN(-1), SGN(0)    'Risultato:  1  -1  0
+.context ASC
+.context @ASC
+.context CHR$
+.context @CHR$
+:nFunzioni ASC e CHR$
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ASC restituisce il codice ASCII del primo carattere di un'espressione a
+stringa.
+CHR$ restituisce il carattere corrispondente ad un codice ASCII specificato.
+
+\bASC(espressioneastringa$)\p
+\bCHR$(codice ascii%)\p
+
+    ş \bespressioneastringa$\p     Un'espressione a stringa qualsiasi.
+    ş \bcodice ascii%\p            Il codice ASCII del carattere desiderato.
+
+Esempio:
+    PRINT ASC("Q")    'Risultato:  81
+    PRINT CHR$(65)    'Risultato:  A
+
+Si veda inoltre    \i\p\aCodici di carattere ASCII\v@ac\v\i\p
+.context ATN
+.context @ATN
+.context COS
+.context @COS
+.context SIN
+.context @SIN
+.context TAN
+.context @TAN
+:nFunzioni ATN, COS, SIN e TAN
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ATN restituisce l'arcotangente di un'espressione numerica specificata.
+COS, SIN e TAN restituiscono il seno, coseno e tangente di un angolo
+specificato.
+
+\bATN(espressione numerica)\p
+\bCOS(angolo)\p
+\bSIN(angolo)\p
+\bTAN(angolo)\p
+
+   ş \bespressione numerica\p  Il rapporto tra i due cateti di un triangolo retto.
+   ş \bangolo\p                Un angolo espresso in radianti.
+
+   ş La funzione ATN restituisce un angolo espresso in radianti.
+   ş Per convertire da gradi in radianti, moltiplicare i gradi per (PI / 180).
+
+Esempio:
+    CONST PI=3.141592654
+    PRINT ATN(TAN(PI/4.0)), PI/4.0    'Risultato:  .7853981635  .7853981635
+    PRINT (COS(180 * (PI / 180)))     'Risultato:  -1
+    PRINT (SIN(90 * (PI / 180)))      'Risultato:  1
+    PRINT (TAN(45 * (PI / 180)))      'Risultato:  1.000000000205103
+.context CDBL
+.context @CDBL
+.context CSNG
+.context @CSNG
+:nFunzioni CDBL e CSNG
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CDBL converte un'espressione numerica in un valore in doppia precisione.
+CSNG converte un'espressione numerica in un valore in precisione semplice.
+
+\bCDBL(espressione numerica)\p
+\bCSNG(espressione numerica)\p
+
+    ş \bespressione numerica\p    Un'espressione numerica qualsiasi.
+
+Esempio:
+    PRINT 1 / 3, CDBL(1 / 3)    'Risultato:  .3333333  .3333333333333333
+    PRINT CSNG(975.3421515#)    'Risultato:  975.3422
+
+Si vedano inoltre    \i\p\aCINT e CLNG\v@CINT\v\i\p
+.context CINT
+.context @CINT
+.context CLNG
+.context @CLNG
+:nFunzioni CINT e CLNG
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CINT arrotonda un'espressione numerica ad un numero intero.
+CLNG arrotonda un'espressione numerica ad un numero intero LONG di 4 byte.
+
+\bCINT(espressione numerica)\p
+\bCLNG(espressione numerica)\p
+
+    ş \bespressione numerica\p  Con CINT, un'espressione numerica qualsiasi
+                            compresa tra -32.768 e 32.767.
+                            Con CLNG, un'espressione numerica qualsiasi
+                            compresa tra -2.147.483.648 e 2.147.483.647.
+
+Esempio:
+    PRINT CINT(12.49), CINT(12.51)    'Risultato:  12  13
+    PRINT CLNG(338457.8)              'Risultato:  338458
+
+Si vedano inoltre    \i\p\aCDBL e CSNG\v@CDBL\v\i\p    \i\p\aFIX e INT\v@FIX\v\i\p
+.context .datef
+.context @datef
+.context DATE$
+.context @DATE$
+:nFunzione e istruzione DATE$
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+La funzione DATE$ restituisce la data corrente del sistema.
+L'istruzione DATE$ imposta la data corrente del sistema.
+
+\bDATE$\p
+\bDATE$ = espressioneastringa$\p
+
+    ş \bespressioneastringa$\p   La data espressa in un formato tra i seguenti:
+                             mm-gg-aa, mm-gg-aaaa, mm/gg/aa, mm/gg/aaaa.
+
+    ş La funzione DATE$ restituisce una stringa nel formato mm-gg-aaaa.
+
+Esempio:
+    PRINT DATE$
+    DATE$ = "01-01-90"        'Nota: la nuova data del sistema rimane valida
+                              '      finch‚ non viene cambiata di nuovo.
+    PRINT "Impostazione data "; DATE$
+
+Si veda inoltre    \i\p\aTIME$\v@TIME$\v\i\p
+.context EXP
+.context @EXP
+.context LOG
+.context @LOG
+:nFunzioni EXP e LOG
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+EXP restituisce il valore e elevato alla potenza indicata, dove e Š la base
+dei logaritmi naturali. LOG restituisce il logaritmo naturale di un'espres-
+sione numerica.
+
+\bEXP(espressione numerica)\p
+\bLOG(espressione numerica)\p
+
+    ş \bespressione numerica\p    Con EXP, un numero inferiore o uguale a
+                              88,02969.
+                              Con LOG, un'espressione numerica positiva
+                              qualsiasi.
+
+Esempio:
+    PRINT EXP(0), EXP(1)         'Risultato:  1  2.718282
+    PRINT LOG(1), LOG(EXP(1))    'Risultato:  0  1
+.context FIX
+.context @FIX
+.context INT
+.context @INT
+:nFunzioni FIX e INT
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+FIX tronca un'espressione a virgola mobile alla sua parte intera.
+INT restituisce il numero intero pi— grande minore o uguale ad un'espressione
+numerica.
+
+\bFIX(espressione numerica)\p
+\bINT(espressione numerica)\p
+
+    ş \bespressione numerica\p    Un'espressione numerica qualsiasi.
+
+Esempio:
+    PRINT FIX(12.49), FIX(12.54)    'Risultato:  12  12
+    PRINT INT(12.54), INT(-99.4)    'Risultato:  12  -100
+
+Si veda inoltre    \i\p\aCINT e CLNG\v@CINT\v\i\p
+.context RANDOMIZE
+.context @RANDOMIZE
+.context RND
+.context @RND
+:nIstruzione RANDOMIZE e funzione RND
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+RANDOMIZE inizializza il generatore di numeri casuali.
+RND restituisce un numero in precisione semplice compreso tra 0 e 1.
+
+\bRANDOMIZE [seme%]\p
+\bRND[(n#)]\p
+
+    ş \bseme%\p    Un numero usato per inizializzare il generatore di numeri
+               casuali. Se questo numero viene omesso, RANDOMIZE chiede di
+               specificarlo.
+    ş \bn#\p       Un valore che stabilisce come RND debba generare il numero
+               casuale successivo:
+
+        n#                                RND restituisce
+        ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+        minore di 0                       lo stesso numero per qualsiasi n#
+        maggiore di 0 (o nessun valore)   il numero casuale successivo
+        0                                 l'ultimo numero generato.
+
+Esempio:
+    RANDOMIZE TIMER
+    x% = INT(RND * 6) + 1
+    y% = INT(RND * 6) + 1
+    PRINT "Lancio di due dadi: dado 1 ="; x%; "e dado 2 ="; y%
+.context SQR
+.context @SQR
+:nFunzione SQR
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Restituisce la radice quadrata di un'espressione numerica.
+
+\bSQR(espressione numerica)\p
+
+    ş \bespressione numerica\p    Un valore maggiore od uguale a zero.
+
+Esempio:
+    PRINT SQR(25), SQR(2)    'Risultato:  5  1.414214
+.context .tmf
+.context @tmf
+.context TIME$
+.context @TIME$
+:nFunzione ed istruzione TIME$
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+La funzione TIME$ restituisce l'ora corrente del sistema.
+L'istruzione TIME$ imposta l'ora corrente del sistema.
+
+\bTIME$\p
+\bTIME$ = espressioneastringa$\p
+
+    ş \bespressioneastringa$\p   L'ora espressa in uno dei formati seguenti:
+                             oo          Imposta l'ora; i minuti e i secondi
+                                         sono impostati automaticamente a 00.
+                             oo:mm       Imposta l'ora e i minuti; i secondi
+                                         sono impostati automaticamente a 00.
+                             oo:mm:ss    Imposta l'ora, i minuti e i secondi.
+
+    ş La funzione TIME$ restituisce una stringa nel formato oo:mm:ss.
+
+Esempio:
+    PRINT TIME$
+    TIME$ = "08:00:58"    'Nota: l'ora del sistema rimane valida finch‚ non
+                          '      viene cambiata di nuovo.
+    PRINT "L'ora Š stata impostata a "; TIME$
+
+Si veda inoltre    \i\p\aDATE$\v@DATE$\v\i\p
+.context MOD
+.context @MOD
+:nOperatore aritmetico MOD
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Divide un numero per un altro e restituisce il resto.
+
+\bespressione numerica1 MOD espressione numerica2\p
+
+    ş \bespressione numerica1\p    Espressioni numeriche qualsiasi. I numeri
+      \bespressione numerica2\p    reali vengono arrotondati ad interi.
+
+Esempio:
+    PRINT 19 MOD 6.7    'QBASIC arrotonda 6.7 a 7 poi esegue la divisione.
+                        'Risultato:  5
+
+

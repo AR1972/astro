@@ -1,0 +1,15 @@
+dest    =minicmd.com
+
+extasw  =-DRAM_VERSION
+
+all: $(dest)
+
+minicmd.obj: minicmd.asm minicmd.inc dataseg.asm dataseg.inc
+
+minicmd.exe: minicmd.obj
+	link minicmd;
+
+minicmd.com: minicmd.exe
+	exe2bin minicmd.exe minicmd.com 
+
+

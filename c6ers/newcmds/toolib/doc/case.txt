@@ -1,0 +1,43 @@
+SUMMARY lower upper MakeStr
+
+#include <tools.h>
+
+char *lower(pstr)
+char *pstr;
+
+char *upper(pstr)
+char *pstr;
+
+DESCRIPTION
+
+lower and upper convert the string to lower and upper case.
+
+RETURN VALUE
+
+Return a pointer to converted string.
+
+IMPLEMENTATION
+
+Calls strlwr and strupr from C library.
+
+SEE ALSO
+
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+char str[] = "Mixed Case String";
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    char *pstrLower = lower(MakeStr(str));
+    char *pstrUpper = upper(MakeStr(str));
+
+    printf("%s\n%s\n%s\n", str, pstrLower, pstrUpper);
+}

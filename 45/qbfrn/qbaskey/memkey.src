@@ -1,0 +1,478 @@
+.comment ******************************************************************
+.comment *  Memory Family - QBasic                                        *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments                       *
+.comment ******************************************************************
+.comment *  6/12/90 stevesau                                              *
+.comment *  Incorporated RonS comments                                    *
+.comment ******************************************************************
+.comment *  5/13/90 stevesau                                              *
+.comment *  Combined MKn$/CVn, MKSMBF$/MKDMBF$/CVSMBF/CVDMBF, HEX$/OCT$,  *
+.comment *  LCASE$/UCASE$, LEFT$/RIGHT$, LTRIM$/RTRIM$,                   *
+.comment *  MID$ function/statement, PEEK/POKE, STR$/VAL.                 *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/12/90 stevesau                                              *
+.comment *  Reinserted VARTPR$ (need for PLAY and DRAW X command).        *
+.comment *  Deleted STACK function and statement.                         *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Reinserted VARPTR, VARSEG (need for CALL ABSOLUTE example).   *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Deleted SADD, SETMEM, SSEG, SSEGADD, VARPTR, VARSEG (moved    *
+.comment *  to Unsupported Keywords (Contents).                           *
+.comment *  Deleted CHR$ (combined with ASC in Math family).              *
+.comment *  Moved CVSMBF, etc., from Math family.                         *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Added action lines.						  *
+.comment ******************************************************************
+.comment *  4/17/90 BethPr                                                *
+.comment *  Removed StringAddress, StringAssign, StringLength and         *
+.comment *  StringRelease routines                                        *
+.comment ******************************************************************
+.context CLEAR
+.context @CLEAR
+:nInstruction CLEAR
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CLEAR ferme tous les fichiers, libŠre les tampons, r‚initialise toutes les
+variables communes, initialise les variables num‚riques et les tableaux
+… z‚ro, les variables chaŒnes … la chaŒne vide, et r‚initialise la pile.
+CLEAR peut aussi modifier la taille de la pile.
+
+\bCLEAR [,,pile&]\p
+
+    ş \bpile&\p    taille (en octets) de la pile pour votre programme.
+
+Exemple:
+    CLEAR ,,2000
+
+Voir aussi    \i\p\aERASE\v@ERASE\v\i\p
+.context SEG
+.context @SEG
+:nInstruction DEF SEG 
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DEF SEG d‚finit l'adresse du segment de m‚moire courant.
+
+\bDEF SEG [=adresse]\p
+
+    ş \badresse\p   Adresse de segment utilis‚e par BLOAD, BSAVE,
+                CALL ABSOLUTE, PEEK, ou POKE; une valeur comprise
+                entre 0 et 65 535. Si l'adresse est omise, DEF SEG
+                d‚finit l'adresse du segment courant comme ‚tant
+                l'adresse du segment de donn‚es.
+
+Exemple:
+    DEF SEG = 0
+    etat% = PEEK(&H417)              'Lit l'‚tat du clavier.
+    POKE &H417, (etat% XOR &H40)     'Inverse le Verr. Maj., bit 6.
+
+Voir aussi    \i\p\aBSAVE, BLOAD\v@BLOAD\v\i\p    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aPEEK, POKE\v@PEEK\v\i\p
+.context FRE
+.context @FRE
+:nFonction FRE
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+FRE retourne la quantit‚ (en octets) de m‚moire disponible ou non utilis‚e.
+
+\bFRE(exprNum)\p
+\bFRE(exprChaine$)\p
+
+    ş \bexprNum\p      valeur qui indique le type de m‚moire :
+
+            Valeur               FRE retourne
+            ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+            -1                  La taille du plus grand tableau
+                                (non-chaŒne) qu'il est possible
+                                de cr‚er
+            -2                  L'espace de pile disponible
+            Toute autre valeur  L'espace disponible pour les chaŒnes
+
+    ş \bexprChaine$\p  Expression de chaŒne. FRE compacte l'espace
+                   disponible pour les chaŒnes en un seul
+                   bloc et retourne sa taille.
+
+Exemple:
+    PRINT "Espace pour les chaŒnes ", FRE("")
+    PRINT "Espace de pile non utilis‚ ", FRE(-2)
+    PRINT "Espace pour les tableaux ", FRE(-1)
+.context HEX$
+.context @HEX$
+.context OCT$
+.context @OCT$
+:nFonctions HEX$, OCT$
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+HEX$ retourne une chaŒne contenant la repr‚sentation hexad‚cimale
+     d'un nombre.
+OCT$ retourne une chaŒne contenant la repr‚sentation octale
+     d'un nombre.
+
+
+\bHEX$(exprNum&)\p
+\bOCT$(exprNum&)\p
+
+    ş \bexprNum&\p    Expression num‚rique. L'expression est arrondie …
+                  un entier ou … un entier long avant d'ˆtre ‚valu‚e.
+
+Exemple:
+    INPUT x
+    a$ = HEX$ (x)
+    b$ = OCT$ (x)
+    PRINT x; "d‚cimal est ‚gal … "; a$; " hexad‚cimal et … "; b$; " octal."
+.context INSTR
+.context @INSTR
+:nFonction INSTR
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+INSTR retourne la position de d‚part de la premiŠre occurence d'une chaŒne
+dans une autre chaŒne.
+
+\bINSTR([depart%,]exprChaine1$,exprChaine2$)\p
+
+    ş \bdepart%\p         Indique la position du caractŠre … partir duquel
+                      la recherche commence. Si omis, INSTR commence
+                      la recherche au premier caractŠre.
+
+    ş \bexprChaine1$\p    La chaŒne explor‚e.
+    ş \bexprChaine2$\p    La chaŒne recherch‚e.
+
+Exemple:
+    a$ = "Microsoft QBasic"
+    PRINT "String position ="; INSTR(1, a$, "QBasic")
+
+Voir aussi    \i\p\aLEFT$, RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p    \i\p\aMID$\v@MID$\v\i\p
+.context LCASE$
+.context @LCASE$
+.context UCASE$
+.context @UCASE$
+:nFonctions LCASE$, UCASE$
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LCASE$ et UCASE$ convertissent une chaŒne en majuscules (UCASE$) ou
+en minuscules (LCASE$).
+
+\bLCASE$(exprChaine$)\p
+\bUCASE$(exprChaine$)\p
+
+    ş \bexprChaine$\p    Expression de chaŒne.
+
+Exemple:
+    Test$ = "LA chaŒne"
+    PRINT Test$
+    PRINT LCASE$(Test$); " en minuscules"
+    PRINT UCASE$(Test$); " en majuscules"
+.context LEFT$
+.context @LEFT$
+.context RIGHT$
+.context @RIGHT$
+:nFonctions LEFT$, RIGHT$
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LEFT$ et RIGHT$ retournent les n premiers (derniers) caractŠres d'une chaŒne
+de caractŠres donn‚e.
+
+\bLEFT$(exprChaine$,n%)\p
+\bRIGHT$(exprChaine$,n%)\p
+
+    ş \bexprChaine$\p    Expression de chaŒne.
+    ş \bn%\p             Nombre de caractŠres … renvoyer.
+
+Exemple:
+    a$ = "Microsoft QBasic"
+    PRINT LEFT$(a$, 5)     'Sortie :  Micro
+    PRINT RIGHT$(a$, 5)    'Sortie :  Basic
+
+Voir aussi    \i\p\aMID$\v@MID$\v\i\p
+.context LEN
+.context @LEN
+:nFonction LEN
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LEN retourne le nombre de caractŠres dans une chaŒne ou le nombre d'octets
+n‚cessaire au stockage d'une variable.
+
+\bLEN(exprChaine$)\p
+\bLEN(variable)\p
+
+    ş \bexprChaine$\p    Expression de chaŒne.
+    ş \bvariable\p       Variable non chaŒne.
+
+Exemple:
+    a$ = "Microsoft QBasic"
+    PRINT LEN(a$)              'Sortie : 16
+
+Voir aussi    \i\p\aOPEN\v@OPEN\v\i\p
+.context LTRIM$
+.context @LTRIM$
+.context RTRIM$
+.context @RTRIM$
+:nFonctions LTRIM$, RTRIM$
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LTRIM$ et RTRIM$ suppriment d'une chaŒne les espaces de tˆte ou de queue.
+
+\bLTRIM$(exprChaine$)\p
+\bRTRIM$(exprChaine$)\p
+
+    ş \bexprChaine$\p    Expression de chaŒne.
+
+Exemple:
+    a$ = "    BASIC    "
+    PRINT "*" + a$ + "*"            'Sortie :  *    BASIC    *
+    PRINT "*" + LTRIM$(a$) + "*"    'Sortie :   *BASIC    *
+    PRINT "*" + RTRIM$(a$) + "*"    'Sortie :   *    BASIC*
+.context MID$
+.context @MID$
+:nFonction et instruction MID$
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+La fonction MID$ retourne une partie d'une chaŒne (une sous-chaŒne).
+L'instruction MID$ remplace une partie d'une chaŒne par une autre chaŒne.
+
+\bMID$(exprChaine$,depart%[,long%])\p
+\bMID$(varChaŒne$,depart%[,longueur%])=exprChaine$\p
+
+    ş \bexprChaine$\p    La chaŒne … partir de laquelle la fonction MID$
+                     retourne une sous-chaŒne, ou chaŒne de remplacement
+                     utilis‚e par l'instruction MID$.
+    ş \bdepart%\p        Position du premier caractŠre de la sous-chaŒne
+                     renvoy‚e ou remplac‚e.
+    ş \blongueur%\p      Nombre de caractŠres dans la sous-chaŒne.
+                     Si omis, MID$ retourne ou remplace tous les caractŠres …
+                     droite de la position de d‚part.
+    ş \bvarChaine$\p     Variable de chaŒne modifi‚e par l'instruction MID$.
+
+Exemple:
+    a$ = "O— se trouve Paris?"
+    PRINT MID$(a$, 10, 5)       'Sortie :   Paris
+    Text$ = "Paris, France"
+    PRINT Text$                 'Sortie :   Paris, France
+    MID$(Text$, 8) = "Texas "
+    PRINT Text$                 'Sortie :   Paris, Texas
+
+Voir aussi    \i\p\aLEFT$, RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p
+.context CVI
+.context @CVI
+.context CVS
+.context @CVS
+.context CVL
+.context @CVL
+.context CVD
+.context @CVD
+.context MKL$
+.context @MKL$
+.context MKI$
+.context @MKI$
+.context MKS$
+.context @MKS$
+.context MKD$
+.context @MKD$
+:nFonctions MKn$, CVn
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MKI$, MKL$, MKS$, et MKD$ convertissent des expressions num‚riques en chaŒnes
+qui peuvent ˆtre stock‚es dans les chaŒnes d‚finies par l'instruction FIELD.
+CVI, CVL, CVS, et CVD convertissent ces chaŒnes en valeurs du type num‚rique
+correspondant.
+
+\bMKI$(exprEntier%)\p
+\bMKL$(exprEntierL&)\p
+\bMKS$(exprSimPrec!)\p
+\bMKD$(exprDblPrec#)\p
+\bCVI(chaineNum2)\p
+\bCVL(chaineNum4)\p
+\bCVS(chaineNum4)\p
+\bCVD(chaineNum8)\p
+
+    Fonction    retourne             Fonction    retourne
+    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+    MKI$        ChaŒne de 2 octets  CVI         Entier
+    MKL$        ChaŒne de 4 octets  CVL         Entier long
+    MKS$        ChaŒne de 4 octets  CVS         Simple pr‚cision
+    MKD$        ChaŒne de 8 octets  CVD         Double pr‚cision
+
+Voir aussi    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aMKSMBF$, MKDMBF$, CVSMBF, CVDMBF\v@CVSMBF\v\i\p
+.context MKDMBF$
+.context @MKDMBF$
+.context MKSMBF$
+.context @MKSMBF$
+.context CVDMBF
+.context @CVDMBF
+.context CVSMBF
+.context @CVSMBF
+:nFonctions MKSMBF$, MKDMBF$, CVSMBF, CVDMBF
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MKSMBF$ et MKDMBF$ convertissent des nombres r‚els au format IEEE en chaŒnes
+de format Microsoft-Binary, qui peuvent ˆtre stock‚es dans des chaŒnes
+d‚finies par l'instruction FIELD. CVSMBF et CVDMBF convertissent ces chaŒnes
+en nombres au format IEEE.
+
+\bMKSMBF$(exprSimPrec!)\p
+\bMKDMBF$(exprDblPrec#)\p
+\bCVSMBF (chaineNum4)\p
+\bCVDMBF (chaineNum8)\p
+
+   Fonction  retourne
+   ÍÍÍÍÍÍÍÍ  ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+   MKSMBF$   ChaŒne (4 octets) contenant un nombre au format Microsoft-Binary
+   MKDMBF$   ChaŒne (8 octets) contenant un nombre au format Microsoft-Binary
+   CVSMBF    Nombre simple pr‚cision au format IEEE
+   CVDMBF    Nombre double pr‚cision au format IEEE
+
+   ş Ces fonctions sont utiles pour l'utilisation de fichiers de donn‚es
+     cr‚‚s avec d'anciennes versions de BASIC.
+
+Exemple:
+    TYPE Tampon
+        SmpNom AS STRING * 4
+        DblNom AS STRING * 8
+    END TYPE
+    DIM EnrTampon AS Tampon
+    OPEN "TESTDAT.DAT" FOR RANDOM AS #1 LEN = 12
+    SNom = 98.9
+    DNom = 645.3235622#
+    EnrTampon.SmpNom = MKSMBF$(SNom)
+    EnrTampon.DblNom = MKDMBF$(DNom)
+    PUT #1, 1, EnrTampon
+    GET #1, 1, EnrTampon
+    CLOSE #1
+    PRINT CVSMBF(EnrTampon.SmpNom), CVDMBF(EnrTampon.DblNom)
+
+Voir aussi    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aMKn$, CVn\v@CVS\v\i\p
+.context PEEK
+.context @PEEK
+.context POKE
+.context @POKE
+:nFonction PEEK, Instruction POKE
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PEEK retourne l'octet stock‚ … l'emplacement de m‚moire sp‚cifi‚.
+POKE ‚crit un octet … l'emplacement de m‚moire sp‚cifi‚.
+
+\bPEEK(adresse)\p
+\bPOKE adresse,octet%\p
+
+    ş \badresse\p    Expression num‚rique comprise entre 0 et 65 535,
+                 adresse de l'octet dans le segment de m‚moire
+                 d‚fini par la derniŠre instruction DEF SEG ex‚cut‚e.
+    ş \boctet%\p     Expression num‚rique entiŠre comprise entre 0 et 255,
+                 donn‚e … ‚crire … l'emplacement de m‚moire.
+
+Exemple:
+    DEF SEG = 0
+    etat% = PEEK(&H417)              'Lit l'‚tat du clavier.
+    POKE &H417, (etat% XOR &H40)     'Modifie l'indicateur Verr Maj, bit 6.
+
+Voir aussi    \i\p\aDEF SEG\v@SEG\v\i\p
+.context SPACE$
+.context @SPACE$
+:nFonction SPACE$
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SPACE$ retourne une chaŒne d'espaces.
+
+\bSPACE$(n%)\p
+
+    ş \bn%\p    Nombre d'espaces d‚sir‚s.
+
+Exemple:
+    FOR i% = 1 TO 5
+        x$ = SPACE$ (i%)
+        PRINT x$; i%
+    NEXT i%
+
+Voir aussi    \i\p\aSPC\v@SPC\v\i\p    \i\p\aSTRING$\v@STRING$\v\i\p
+.context STR$
+.context @STR$
+.context VAL
+.context @VAL
+:nFonction STR$, VAL
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+STR$ retourne une chaŒne contenant la repr‚sentation d‚cimale de la valeur
+     d'une expression num‚rique.
+VAL retourne le nombre dont la repr‚sentation d‚cimale est contenue dans
+    une chaŒne.
+
+\bSTR$(exprNum)\p
+\bVAL(exprChaine$)\p
+
+    ş \bexprNum\p         Expression num‚rique.
+    ş \bexprChaine$\p     Repr‚sentation d‚cimale d'un nombre.
+
+Exemple:
+    PRINT "65 d‚cimal ‚quivaut …";
+    PRINT "&H" + LTRIM$(STR$(41))
+    PRINT VAL(RIGHT$("Microsoft 1990", 4))
+.context STRING$
+.context @STRING$
+:nFonction STRING$
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+STRING$ retourne une chaŒne compos‚e d'un mˆme caractŠre r‚p‚t‚.
+
+\bSTRING$(longueur%,{codeAscii% | exprChaine$})\p
+
+    ş \blongueur%\p      Longueur de la chaŒne.
+    ş \bcodeAscii%\p     Code ASCII du caractŠre r‚p‚t‚.
+    ş \bexprChaine$\p    Expression de chaŒne dont STRING$ utilise le
+                     premier caractŠre comme caractŠre r‚p‚t‚.
+
+Exemple:
+    PRINT STRING$(5, "-");
+    PRINT "Hello";
+    PRINT STRING$(5, "-")
+
+Voir aussi    \i\p\aCodes caractŠres ASCII\v@ac\v\i\p
+.context VARSEG
+.context @VARSEG
+.context VARPTR
+.context @VARPTR
+:nFonctions VARPTR, VARSEG
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+VARPTR retourne l'adresse d'une variable dans son segment.
+VARSEG retourne le num‚ro du segment contentant la variable.
+
+\bVARPTR(nomVariable)\p
+\bVARSEG(nomVariable)\p
+
+    ş \bnomVariable\p    Nom de variable BASIC.
+
+Voir aussi    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aDEF SEG\v@SEG\v\i\p    \i\p\aPEEK, POKE\v@PEEK\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p
+.context VARPTR$
+.context @VARPTR$
+:nFonction VARPTR$
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+VARPTR$ retourne une repr‚sentation sous forme de chaŒne de l'adresse d'une
+variable en vue de son utilisation dans les instructions DRAW et PLAY.
+
+\bVARPTR$(chaineCmd$)\p
+
+    ş \bchaineCmd$\p    Variable de chaŒne contenant des commandes
+                    DRAW ou PLAY.
+
+Exemple:
+    Echelle$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(Echelle$)
+    NEXT i%
+
+Voir aussi   \i\p\aDRAW\v@DRAW\v\i\p   \i\p\aPLAY (Musique)\v@PLAY\v\i\p    \i\p\aVARPTR, VARSEG\v@VARPTR\v\i\p
+

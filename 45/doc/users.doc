@@ -1,0 +1,87 @@
+Products using CW:
+
+Title (ver)	Group(liason)	Needs	Description
+				V I
+
+Shipped products:
+=================
+MANAGER 1.0	DOS(kurte)	3-S	MS-DOS replacement shell
+MANAGER 1.0+	DOS(kurte)	3-S	ITL releases
+WORKS 1.0	APPS(edr)	S-F	4 tools in 1
+NIF (almost)	NET(beng)	5-U	Network interface for OS/2
+
+
+Current products:
+=================
+WORKS 1.0x	APPS(edr)	S-F	OEM/ITL releases
+QBJ		BL(jamieb)	3-K	Kanji version of Quick Basic
+
+MULTIPLAN 4	APPS(tomhe)	CBOX	the last version !
+WORD 4		APPS(jodig)	CBOX	next version, non-CW interface
+
+
+Future products:
+================
+
+WORKS 2.0	APPS(edr)	S-FVI	next version (fall 88)
+QC 2.0		SL(andyp)	S-UV	Quick C integrated with VAP/Platform
+					(needs 2 dgroups).
+QB 5		BL(??)		???
+
+Z-SHELL		STOOLS(reubenb)	35-U	Integrated Development Environment.
+SUMO		DOS(mikedr)	35-U	Toolkit (like Norton)
+
+Speculating products:
+=====================
+
+EMAIL		APPS(bobm)	S-T	Electronic Mail TSR app.
+BOOKSHELF	CDR(???)	S-T	CW version of bookshelf
+CV		STOOLS(stever)	3-S	CodeView (Kanji ???)
+
+
+Potential future products:
+==========================
+
+WORD 6.0	APPS(jodig)	S-FU	Word with CW user interface
+
+
+Internal products:
+==================
+DE 1.0		APPS(davidfr)	3-U	Dialog Editor tool
+VCR		APPS(byronb)	S-U	Testing script playback/record
+
+
+Key: Version-Features:
+======================
+Version:
+	S => swapped DOS 3
+	3 => nonswapped DOS 3
+	5 => OS/2
+	CBOX => combination of "S" & "5", plus QINTER glue.
+Features:
+	U => windowing user interface
+	S => small size
+	F => full features
+	V => VAP
+	I => installable screen drivers
+	K => Kanji
+	T => TSR
+
+
+Future of CW:
+=============
+
+For Sure:
+	Kanji
+	Installable drivers
+	CBOX
+	Size reduction
+	VAP
+	MS-Key replacement
+	New SDM
+	Pixel screen drivers
+Potential:
+	TSR
+	QB/QC export dialogs (incl. DE).
+	PM special support
+

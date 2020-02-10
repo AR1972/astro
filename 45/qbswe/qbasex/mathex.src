@@ -1,0 +1,210 @@
+.context .DDB#x
+.context @DDB#x
+:nDDB#, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\ddbx.bas
+.context .FV#x
+.context @FV#x
+:nFV#, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\fvx.bas
+.context .IPmt#x
+.context @IPmt#x
+:nIPmt#, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\ipmtx.bas
+.context .IRR#x
+.context @IRR#x
+:nIRR# och NPV# - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\irrx.bas
+.context .MIRR#x
+.context @MIRR#x
+:nMIRR#, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\mirrx.bas
+.context .NPer#x
+.context @NPer#x
+:nNPer#, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\nperx.bas
+.context .Pmt#x
+.context @Pmt#x
+:nPmt# och PPmt# - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\pmtx.bas
+.context .PV#x
+.context @PV#x
+:nPV#, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\pvx.bas
+.context .Rate#x
+.context @Rate#x
+:nRate#, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\ratex.bas
+.context .SLN#x
+.context @SLN#x
+:nSLN#, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
+.include \bc71slm\examples\slnx.bas
+.context .SYD#x
+.context @SYD#x
+:nSYD#, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\sydx.bas
+.context .dateser#x
+.context @dateser#x
+:n$INCLUDE och DateSerial# - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\dateserx.bas
+.context .datevalue#x
+.context @datevalue#x
+:nDate, funktioner - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\datevalx.bas
+.context .Now#x
+.context @Now#x
+:nFormatX$, Now# - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\nowx.bas
+.context .TimeSerial#x
+.context @TimeSerial#x
+:nTime, funktioner - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\timserx.bas
+.context .CCURx
+.context @CCURx
+:nCCUR, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\ccurx.bas
+.context .tanx
+.context @tanx
+:nTAN, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\tanx.bas
+.context .atnx
+.context @atnx
+:nATN, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\atnx.bas
+.context .datesx
+.context @datesx
+:nDATE$, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\datesx.bas
+.context .tmfx
+.context @tmfx
+:nTIME$, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\tmfx.bas
+.context .tmsx
+.context @tmsx
+:nTIME$, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\tmsx.bas
+.context .absx
+.context @absx
+:nABS och DEFtype - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\absx.bas
+.context .cdblx
+.context @cdblx
+:nCDBL, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\cdblx.bas
+.context .clngx
+.context @clngx
+:nCLNG, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\clngx.bas
+.context .csngx
+.context @csngx
+:nCSNG, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\csngx.bas
+.context .cvsx
+.context @cvsx
+:nCVSMBF, CVDMBF, funktioner - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\cvsx.bas
+.context .ascx
+.context @ascx
+:nASC, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\ascx.bas
+.context .cosx
+.context @cosx
+:nCOS, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\cosx.bas
+.context .kexpx
+.context @kexpx
+:nEXP, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\kexpx.bas
+.context .fintx
+.context @fintx
+:nCINT, FIX och INT - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\fintx.bas
+.context .logx
+.context @logx
+:nLOG, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\logx.bas
+.context .randx
+.context @randx
+:nRANDOMIZE och RND - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\randx.bas
+.context .sgnx
+.context @sgnx
+:nSGN, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\sgnx.bas
+.context .fsinx
+.context @fsinx
+:nSIN, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\fsinx.bas
+.context .sqrx
+.context @sqrx
+:nSQR, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\sqrx.bas

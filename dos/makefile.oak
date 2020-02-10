@@ -1,0 +1,150 @@
+###     makefile for MS-DOS
+#
+#       The variable MFLAGS can be used to pass switches to MASM.
+#       For example:
+#           nmake MFLAGS=-DRESTRICTED_BUILD
+#
+
+!IF	"$(DEBUG)" == "soft_ice" || "$(debug)" == "soft_ice" || \
+	"$(DEBUG)" == "SOFT_ICE" || "$(debug)" == "SOFT_ICE"
+
+debug_flags = -Zd
+link_opts = /MAP /LI
+
+!ELSE
+
+link_opts = /MAP
+
+!ENDIF
+
+dest    =msdos.sys
+cpr     =msdos.sy_
+sto     =$(LANG_SRC)\$(COUNTRY)\dos\diskobjs
+
+msg	=..\messages
+inc     =..\inc
+bins    =..\binaries
+cprs    =..\compress
+
+extasw  =-I$(inc) $(debug_flags) $(MFLAGS) -D$(COUNTRY)
+
+#
+###################### Dependencies begin here ##########################
+#
+
+!IFNDEF       BUILDER
+
+all: icopy Build.IO $(dest)
+
+!ELSE
+
+all: icopy Build.IO $(dest) $(bins)\$(dest) $(cprs)\$(dest)
+
+$(bins)\$(dest): $(dest)
+            copy $(dest) $(bins)
+
+$(cprs)\$(dest): $(dest)
+            copy $(dest) $(cprs)
+
+!ENDIF
+
+
+icopy:
+   copy $(LANG_SRC)\$(COUNTRY)\dos\mstable.obj
+
+
+Build.IO:
+        cd ..\bios
+        $(MAKE)
+        cd ..\dos
+
+msdos.cl1: msdos.skl \
+	$(msg)\$(COUNTRY).msg
+
+msdos.cl2: msdos.skl \
+	$(msg)\$(COUNTRY).msg
+
+msdos.cl3: msdos.skl \
+	$(msg)\$(COUNTRY).msg
+
+msdos.cl4: msdos.skl \
+	$(msg)\$(COUNTRY).msg
+
+msdata.obj:   msdata.asm                \
+              mssw.asm                  \
+              $(inc)\ARENA.INC          \
+              $(inc)\CURDIR.INC         \
+              $(inc)\DEVSYM.INC         \
+              $(inc)\DPB.INC            \
+              $(inc)\FIND.INC           \
+              $(inc)\MI.INC             \
+              $(inc)\PDB.INC            \
+              $(inc)\SF.INC             \
+              $(inc)\VECTOR.INC         \
+              $(inc)\VERSIONA.INC       \
+              $(inc)\buffer.INC         \
+              $(inc)\dbcs.sw            \
+              $(inc)\dirent.INC         \
+              $(inc)\doscntry.inc       \
+              $(inc)\dosmac.INC         \
+              $(inc)\dosseg.inc         \
+              $(inc)\dossym.inc         \
+              $(inc)\error.INC          \
+              $(inc)\fastopen.inc       \
+              $(inc)\ms_data.asm        \
+              $(inc)\lmstub.asm         \
+              $(inc)\version.inc        \
+              $(inc)\xmm.inc            \
+              dostab.asm                \
+              $(inc)\const2.asm         \
+              msconst.asm               \
+              $(inc)\mshead.asm         \
+              $(inc)\BUGTYP.INC         \
+              $(inc)\ORIGIN.INC         \
+	      $(inc)\bdsize.inc		\
+	      $(inc)\wpatch.inc		\
+	      $(inc)\msbdata.inc	\
+              mpatch.asm                \
+              msdos.cl2
+
+msdosme.obj:  msdosme.asm               \
+              dosmes.inc                \
+              msdos.cl1                 \
+              mssw.asm                  \
+              $(inc)\VERSIONA.INC       \
+              $(inc)\buffer.INC         \
+              $(inc)\dbcs.sw            \
+              $(inc)\dirent.INC         \
+              divmes.inc                \
+              $(inc)\doscntry.inc       \
+              $(inc)\dosmac.INC         \
+              $(inc)\dosmac.inc         \
+              $(inc)\dosseg.inc         \
+              $(inc)\dossym.inc         \
+              $(inc)\error.INC          \
+              $(inc)\version.inc        \
+              $(inc)\yesno.asm
+
+origin.obj origin.lst: origin.asm $(inc)/DOSSEG.INC $(inc)/ORIGIN.INC \
+	$(inc)/dossym.inc $(inc)/bdsize.inc $(inc)/version.inc
+
+msdos.bin: msdos.cl1 msdos.cl2 dosprint.obj exepatch.obj \
+    msdata.obj mscode.obj msdosme.obj time.obj getset.obj \
+    parse.obj misc.obj misc2.obj crit.obj cpmio.obj cpmio2.obj \
+    mstable.obj msdisp.obj fcbio.obj fcbio2.obj segcheck.obj \
+    search.obj path.obj ioctl.obj delete.obj rename.obj finfo.obj \
+    dup.obj create.obj open.obj dinfo.obj isearch.obj buf.obj \
+    abort.obj close.obj dircall.obj disk.obj disk2.obj disk3.obj dir.obj \
+    dir2.obj dev.obj mknode.obj rom.obj fcb.obj msctrlc.obj fat.obj \
+    msproc.obj alloc.obj srvcall.obj util.obj macro.obj macro2.obj \
+    handle.obj file.obj lock.obj romfind.obj share.obj msinit.obj origin.obj \
+    makefile msdos.lnk
+	link $(link_opts) @msdos.lnk
+        reloc msdos.exe msdos.bin
+
+
+$(dest): msdos.bin
+        stripz msdos.bin $(dest)
+
+
+

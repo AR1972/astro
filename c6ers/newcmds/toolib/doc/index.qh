@@ -1,0 +1,112 @@
+.context h.index
+.context Tools API Index
+.topic Internal Tools API Index
+.freeze 5
+
+		\iTools API Index\p
+
+\bMODULE-NAME\p				\bfunction-name\p
+
+.list
+ARGS					argConfig
+ARGS					argSeqn
+ARGS					argOpen
+ARGS					argShut
+ARGS					argName
+ARGS					argValu
+BLANK					blank
+OPENDIR					closedir		OS2 only
+CTIME2L					ctime2l
+CTIME2L					ctime2tm
+CURDIR					curdir
+CURSOR					cursor
+CONNECT					Connect			DOS only
+CTIME2L					date2l
+DELNODE					delnode
+UPDATE					drive
+ENFILE					EnFile
+ERROR					error
+EXETYPE					exeType
+UPDATE					extention
+MOVE					Fill
+VECTOR					fAppendVector
+FAPPEND					fappend
+FASTCOPY				fastcopy		OS2 only
+FCOPY					fcopy
+FEXPUNGE				fexpunge
+CONNECT					fDisconnect		DOS only
+FDELETE					fdelete
+FIND					ffirst
+UPDATE					filename
+UPDATE					fileext
+PATHOPEN				findpath 
+FMATCH					fMatch
+FMOVE					fmove
+FIND					fnext
+FORFILE					forfile
+FORSEMI					forsemi
+PATHCHR					fPathChr
+FGETL					fputl
+FREESPAC				freespac
+PATHCHR					fSwitChr
+FTW					ftw			OS2 only
+GETATTR					getattr
+ENVORINI				getenvini
+GETL					getl
+GETL					getlinit
+GETL					getlpos
+HEAPCHK					heapchk
+HEAPDUMP				heapdump
+HEAPCHK					heapinfo
+HEAPCHK					heapsize
+HEAPCHK					heapfree
+INT					int25			DOS only
+INT					int26			DOS only
+KBHIT					kbhit
+MAXMIN					lmax
+MAXMIN					lmin
+MAPSTR					mapAbbrStr
+MAPENV					mapenv
+MAXMIN					max
+MAXMIN					min
+MGETL					mgetl
+MOVE					Move
+NTOI					ntoi
+OPENDIR					opendir			OS2 only
+UPDATE					path
+PATHCAT					pathcat
+PATHOPEN				pathopen
+PIPE					pipe			OS2 only
+PGETL					pgetl			OS2 only
+PNAME					pname
+OPENDIR					readdir			OS2 only
+OPENDIR					rewinddir		OS2 only
+ROOT					rootpath
+RSPAWN					rspawnl
+RSPAWN					rspawnv
+SCROLLDN				ScrollDn
+SCROLLUP				ScrollUp
+SETATTR					setattr
+STRING					strbscan
+STRING					strbskip
+STRING					strcmps
+STRING					strcmpis
+STRING					strend
+STRING					strpre
+STRPFX					striprefix
+STRPFX					strprefix
+INIT					swopen
+INIT					swclose
+INIT					swread
+INIT					swfind
+INIT					swgoto
+STRCMPS					strcmps
+STRCMPS					strcmpis
+SWCHNG					swchng
+SWCHNG					swchnglhs
+ZALLOC					tools_alloc				
+UPDATE					upd	
+UNTAB					UnTab
+VECTOR					VectorAlloc
+KBHIT					zgetch
+		

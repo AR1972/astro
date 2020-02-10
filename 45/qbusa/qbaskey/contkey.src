@@ -1,0 +1,569 @@
+.comment ******************************************************************
+.comment *  Control Family - QBasic                                       *
+.comment ******************************************************************
+.comment 01/09/91 - Cleaned up comments.
+.comment -- JeffWe
+.comment ******************************************************************
+.comment *                                                                *
+.context @CALL
+.context CALL
+:nCALL Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Transfers control to a SUB procedure.
+
+\b[CALL] name [([argumentlist])]\p
+
+    ş \bname\p            The name of the SUB procedure to call.
+    ş \bargumentlist\p    The variables or constants to pass to the SUB
+                      procedure. Separate multiple arguments with commas.
+                      Specify array arguments with the array name followed
+                      by empty parentheses.
+
+    ş If you omit the CALL keyword, also omit the parentheses around
+      argumentlist. Either declare the procedure in a DECLARE statement
+      before calling it, or save the program and QBasic automatically
+      generates a DECLARE statement.
+    ş To specify an argument whose value will not be changed by the
+      procedure, enclose the argument in parentheses.
+
+Example:
+    The program REMLINE.BAS illustrates calling SUB procedures. To view or
+    run this program, load REMLINE.BAS using the Open command from the File
+    menu.
+
+See Also    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context ABSOLUTE
+.context @ABSOLUTE
+:nCALL ABSOLUTE Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Transfers control to a machine-language procedure.
+
+\bCALL ABSOLUTE ([argumentlist,] offset%)\p
+
+    ş \bargumentlist\p    Arguments passed to a machine-language procedure
+                      as offsets from the current data segment.
+    ş \boffset%\p         The offset from the current code segment, set by
+                      DEF SEG, to the starting location of the procedure.
+
+Example:
+    'Calls routine for printing the screen to a local printer.
+    DIM a%(2)
+    DEF SEG = VARSEG(a%(0))
+    FOR i% = 0 TO 2
+       READ d%
+       POKE VARPTR(a%(0)) + i%, d%
+    NEXT i%
+    DATA 205, 5, 203  : ' int 5  retf  'Machine-language code
+                                       'for printing screen.
+    CALL ABSOLUTE(VARPTR(a%(0)))
+    DEF SEG
+
+See Also    \i\p\aCALL\v@CALL\v\i\p    \i\p\aVARPTR, VARSEG\v@VARPTR\v\i\p    \i\p\aDifferences from BASICA\v@basica.diffs\v\i\p
+.context CHAIN
+.context @CHAIN
+:nCHAIN Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Transfers control from the current program to another Basic program.
+
+\bCHAIN filespec$\p
+
+    ş \bfilespec$\p    The name of the program to which control is passed.
+
+Example:
+    'Assumes the program TEST.BAS is in a \\DOS directory.
+    CHAIN "C:\\DOS\\TEST.BAS"
+
+See Also    \i\p\aCALL\v@CALL\v\i\p    \i\p\aCOMMON\vCOMMON\v\i\p    \i\p\aRUN\vRUN\v\i\p    \i\p\aDifferences from BASICA\v@basica.diffs\v\i\p
+.context DO
+.context @DO
+.context LOOP
+.context @LOOP
+.context UNTIL
+.context @UNTIL
+:nDO...LOOP Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Repeats a block of statements while a condition is true or until a condition
+becomes true.
+
+\bDO [{WHILE | UNTIL} condition]\p
+    \b[statementblock]\p
+\bLOOP\p
+
+\bDO\p
+    \b[statementblock]\p
+\bLOOP [{WHILE | UNTIL} condition]\p
+
+    ş \bcondition\p    A numeric expression that Basic evaluates as true
+                   (nonzero) or false (zero).
+
+Example:
+    i% = 0
+    PRINT "Value of i% at beginning of loop is  "; i%
+    DO WHILE i% < 10
+        i% = i% + 1
+    LOOP
+    PRINT "Value of i% at end of loop is  "; i%
+
+See Also    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aWHILE...WEND\v@WHILE\v\i\p
+.context END
+.context @END
+:nEND Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Ends a program, procedure, block, or user-defined data type.
+
+\bEND [{DEF | FUNCTION | IF | SELECT | SUB | TYPE}]\p
+
+    ş \bDEF\p         Ends a multiline DEF FN function definition.
+    ş \bFUNCTION\p    Ends a FUNCTION procedure definition.
+    ş \bIF\p          Ends a block IF...THEN...ELSE statement.
+    ş \bSELECT\p      Ends a SELECT CASE block.
+    ş \bSUB\p         Ends a SUB procedure.
+    ş \bTYPE\p        Ends a user-defined data type definition.
+
+    ş If no argument is supplied, END ends the program and closes all files.
+
+Example:
+    PRINT "Game over."
+    END
+
+See Also    \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aIF...THEN...ELSE\v@IF\v\i\p    \i\p\aSELECT CASE\v@IS\v\i\p
+            \i\p\aSTOP\v@STOP\v\i\p      \i\p\aSUB\v@SUB\v\i\p         \i\p\aSYSTEM\v@SYSTEM\v\i\p              \i\p\aTYPE\v@TYPE\v\i\p
+.context EXIT
+.context @EXIT
+:nEXIT Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Exits a DO or FOR loop, a FUNCTION or SUB procedure, or a DEF FN function.
+
+\bEXIT {DEF | DO | FOR | FUNCTION | SUB}\p
+
+    ş \bDEF\p         Exits a DEF FN function.
+    ş \bDO\p          Exits a DO loop.
+    ş \bFOR\p         Exits a FOR loop.
+    ş \bFUNCTION\p    Exits a FUNCTION procedure.
+    ş \bSUB\p         Exits a SUB procedure.
+
+Example:
+    i% = 0
+    DO
+        i% = i% + 1
+        IF i% = 500 THEN EXIT DO
+    LOOP
+    PRINT "EXIT at"; i%
+
+See Also    \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context FOR
+.context @FOR
+:nFOR...NEXT Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Repeats a block of statements a specified number of times.
+
+\bFOR counter = start TO end [STEP increment]\p
+    \b[statementblock]\p
+\bNEXT [counter [,counter]...]\p
+
+    ş \bcounter\p          A numeric variable used as the loop counter.
+    ş \bstart\p and \bend\p    The initial and final values of the counter.
+    ş \bincrement\p        The amount the counter is changed each time through
+                       the loop.
+
+Example:
+    FOR i% = 1 TO 15
+        PRINT i%
+    NEXT i%
+    FOR i% = 7 to -6 STEP -3
+        PRINT i%
+    NEXT i%
+
+See Also    \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aWHILE...WEND\v@WHILE\v\i\p
+.context GOSUB
+.context @GOSUB
+.context RETURN
+.context @RETURN
+:nGOSUB...RETURN Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Branches to and returns from a subroutine.
+
+\bGOSUB line1\p
+\b.\p
+\b.\p
+\b.\p
+\bRETURN [line2]\p
+
+    ş \bline1\p    The label or line number of the first line of the subroutine.
+    ş \bline2\p    The label or line number where the subroutine returns.
+
+    ş If you don't supply a label or line number for RETURN, the program
+      continues execution at the statement following the GOSUB (for
+      subroutine calls) or where an event occurred (for event handling).
+      See the \i\p\aON\v@ON\v\i\p keyword for information about event-handling statements.
+    ş SUB and CALL statements provide a better alternative to GOSUB
+      subroutines.
+
+Example:
+    FOR i% = 1 TO 20
+        GOSUB Square
+    NEXT i%
+    END
+
+    Square:
+    PRINT i%, i% * i%
+    RETURN
+
+See Also    \i\p\aCALL\v@CALL\v\i\p    \i\p\aON Keyword\v@ON\v\i\p    \i\p\aON...GOSUB\v@ONGO\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context GOTO
+.context @GOTO
+:nGOTO Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Branches to a specified line.
+
+\bGOTO line\p
+
+    ş \bline\p    The label or number of the line to execute next.
+
+    ş DO...LOOP, SELECT CASE, IF...THEN...ELSE, SUB, and FUNCTION provide
+      better ways to control the flow of your program.
+    ş GOTO is also used as a keyword in the ON ERROR statement.
+
+\i\p\aExample\v@errhand.ex\v\i\p
+
+See Also    \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p     \i\p\aIF...THEN...ELSE\v@IF\v\i\p
+            \i\p\aON ERROR\v@onerr\v\i\p     \i\p\aON...GOTO\v@ongo\v\i\p    \i\p\aSELECT CASE\v@SELECT\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context THEN
+.context @THEN
+.context ELSE
+.context @ELSE
+.context ELSEIF
+.context @ELSEIF
+.context ENDIF
+.context @ENDIF
+.context IF
+.context @IF
+:nIF...THEN...ELSE Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Executes a statement or statement block depending on specified conditions.
+
+\bIF condition1 THEN\p
+    \b[statementblock-1]\p
+\b[ELSEIF condition2 THEN\p
+    \b[statementblock-2]]...\p
+\b[ELSE\p
+    \b[statementblock-n]]\p
+\bEND IF\p
+
+\bIF condition THEN statements [ELSE statements]\p
+
+    ş \bcondition1\p          Any expression that can be evaluated as
+      \bcondition2\p          true (nonzero) or false (zero).
+    ş \bstatementblock-1\p    One or more statements on one or more lines.
+      \bstatementblock-2\p
+      \bstatementblock-n\p
+    ş \bstatements\p          One or more statements, separated by colons.
+
+Example:
+    INPUT "1 or 2? ", i%
+    IF i% = 1 OR i% = 2 THEN
+        PRINT "OK"
+    ELSE
+        PRINT "Out of range"
+    END IF
+
+See Also    \i\p\aON...GOSUB\v@ongo\v\i\p    \i\p\aON...GOTO\v@ongo\v\i\p    \i\p\aSELECT CASE\v@IS\v\i\p
+.context @ongo
+.context .ongo
+:nON...GOSUB, ON...GOTO Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Branch to one of several locations, depending on the value of an expression.
+
+\bON expression% GOSUB line-list\p
+\bON expression% GOTO line-list\p
+
+    ş \bexpression%\p    An expression in the range 0 through 255.
+    ş \bline-list\p      A set of labels or line numbers. If the value of the
+                     expression is 1, the program branches to the first line
+                     in the list; if the expression is 2, it branches to the
+                     second line, and so on.
+
+    ş SELECT CASE provides a better way to perform multiple branching.
+
+Example:
+    FOR i% = 1 TO 2
+        ON i% GOSUB One, Two
+    NEXT i%
+    END
+
+    One: PRINT "One"
+    RETURN
+    Two: PRINT "Two"
+    RETURN
+
+See Also    \i\p\aON Keyword\v@ON\v\i\p    \i\p\aSELECT CASE\v@SELECT\v\i\p
+.context RUN
+.context @RUN
+:nRUN Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Runs the current program or a specified program.
+
+\bRUN [{linenumber | file$}]\p
+
+    ş \blinenumber\p    The line number in the current program where execution
+                    should begin. If no line number is specified, execution
+                    begins at the first executable line.
+    ş \bfile$\p 	The name of a Basic source file. QBasic assumes
+                    a .BAS extension.
+
+    ş RUN closes all files and clears program memory before loading a
+      program. Use the CHAIN statement to run a program without closing
+      open files.
+
+Example:
+    'Assumes the program TEST.BAS is in a \\DOS directory.
+    RUN "C:\\DOS\\TEST.BAS"
+
+See Also    \i\p\aCHAIN\v@CHAIN\v\i\p
+.context SELECT
+.context @SELECT
+.context CASE
+.context @CASE
+.context IS
+.context @IS
+:nSELECT CASE Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Executes one of several statement blocks depending on the value of an
+expression.
+
+\bSELECT CASE testexpression\p
+\bCASE expressionlist1\p
+  \b[statementblock-1]\p
+\b[CASE expressionlist2\p
+  \b[statementblock-2]]...\p
+\b[CASE ELSE\p
+  \b[statementblock-n]]\p
+\bEND SELECT\p
+
+    ş \btestexpression\p      Any numeric or string expression.
+    ş \bexpressionlist1\p     One or more expressions to match testexpression.
+      \bexpressionlist2\p     The IS keyword must precede any relational operators
+                          in an expression.
+    ş \bstatementblock-1\p    One or more statements on one or more lines.
+      \bstatementblock-2\p
+      \bstatementblock-n\p
+
+    ş The expressionlist arguments can have any of these forms or a
+      combination of them, separated by commas:
+
+      \bexpression[,expression]...\p
+      \bexpression TO expression\p
+      \bIS relational-operator expression\p
+
+          \bexpression\p             Any numeric or string expression compatible
+                                 with testexpression.
+          \brelational-operator\p    One of the following relational operators:
+                                   <, <=, >, >=, <>, or =.
+
+Example:
+    INPUT "Enter acceptable level of risk (1-5): ", Total
+    SELECT CASE Total
+
+        CASE IS >= 5
+            PRINT "Maximum risk and potential return."
+            PRINT "Choose stock investment plan."
+
+        CASE 2 TO 4
+            PRINT "Moderate to high risk and potential return."
+            PRINT "Choose mutual fund or corporate bonds."
+
+        CASE 1
+            PRINT "No risk, low return."
+            PRINT "Choose IRA."
+
+    END SELECT
+
+See Also    \i\p\aIF...THEN...ELSE\v@IF\v\i\p
+.context SLEEP
+.context @SLEEP
+:nSLEEP Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Suspends program execution.
+
+\bSLEEP [seconds&]\p
+
+    ş \bseconds&\p    Number of seconds to suspend the program.
+
+    ş If seconds& is 0 or is omitted, the program is suspended until a key
+      is pressed or a trapped event occurs.
+
+Example:
+    PRINT "Taking a 10-second nap..."
+    SLEEP 10
+    PRINT "Wake up!"
+
+See Also    \i\p\aWAIT\v@WAIT\v\i\p
+.context STOP
+.context @STOP
+:nSTOP Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Halts a program.
+
+\bSTOP\p
+
+    ş The STOP keyword also suspends trapping of events in these statements:
+
+      \i\p\aCOM, ON COM\v@COM\v\i\p      \i\p\aKEY, ON KEY\v@KETV\v\i\p         \i\p\aPEN, ON PEN\v@PEN\v\i\p
+      \i\p\aPLAY, ON PLAY\v@PLAYEV\v\i\p    \i\p\aSTRIG, ON STRIG\v@STRIG\v\i\p     \i\p\aTIMER, ON TIMER\v@TIMER\v\i\p
+
+Example:
+    FOR i% = 1 TO 10
+        PRINT i%
+        IF i% = 5 THEN STOP     'STOP pauses; F5 Continues.
+    NEXT i%
+
+See Also     \i\p\aEND\v@END\v\i\p    \i\p\aSYSTEM\v@SYSTEM\v\i\p
+.context SYSTEM
+.context @SYSTEM
+:nSYSTEM Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Closes all open files and returns control to the operating system.
+
+\bSYSTEM\p
+
+See Also    \i\p\aEND\v@END\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context TRON
+.context @TRON
+.context TROFF
+.context @TROFF
+:nTRON, TROFF Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+TRON and TROFF enable and disable tracing of program statements.
+
+\bTRON\p
+\bTROFF\p
+
+    ş QBasic's debugging features make these statements unnecessary.
+
+See Also    \i\p\aRun and Debug Keys\v@dk\v\i\p
+.context wend
+.context @wend
+.context WHILE
+.context @WHILE
+:nWHILE...WEND Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Executes a series of statements as long as a specified condition is true.
+
+\bWHILE condition\p
+\b.\p
+\b.\p
+\b.\p
+\bWEND\p
+
+    ş \bcondition\p    A numeric expression that Basic evaluates as true
+                   (nonzero) or false (zero).
+
+    ş DO...LOOP provides a better way to execute statements in a
+      program loop.
+
+See Also    \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p
+.comment ******************************************************************
+.comment * Boolean Operators
+.comment ******************************************************************
+.context AND
+.context @AND
+.context EQV
+.context @EQV
+.context IMP
+.context @IMP
+.context NOT
+.context @NOT
+.context OR
+.context @OR
+.context XOR
+.context @XOR
+:nBoolean Operators
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Boolean operators perform bit manipulations, Boolean operations, or tests on
+multiple relations. They return a true (nonzero) or false (zero) value to be
+used in making a decision.
+
+\bresult = expression1 boolean-operator expression2\p
+
+    ş \bboolean-operator\p    Any of the following Boolean operators:
+
+        NOT                 Bit-wise complement
+        AND                 Conjunction
+        OR                  Disjunction (inclusive "or")
+        XOR                 Exclusive "or"
+        EQV                 Equivalence
+        IMP                 Implication
+
+    ş Each operator returns results as indicated in the following truth
+      table. T is true (nonzero); F is false (zero):
+
+        Expression1  Expression2  NOT  AND  OR   XOR  EQV  IMP
+        ÍÍÍÍÍÍÍÍÍÍÍ  ÍÍÍÍÍÍÍÍÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ
+        T            T            F    T    T    F    T    T
+        T            F            F    F    T    T    F    F
+        F            T            T    F    T    T    F    T
+        F            F            T    F    F    F    T    T
+
+    ş Boolean operations are performed after arithmetic and relational
+      operations in order of precedence.
+    ş Expressions are converted to integers or long integers before a
+      Boolean operation is performed.
+    ş If the expressions evaluate to 0 or -1, a Boolean operation returns
+      0 or -1 as the result. Because Boolean operators do bit-wise
+      calculations, using values other than 0 for false and -1 for true may
+      produce unexpected results.
+.comment ******************************************************************
+.comment * Keywords
+.comment ******************************************************************
+.context NEXT
+.context @NEXT
+:nNEXT Keyword
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Increments and tests the counter in a FOR...NEXT loop or, when used with
+RESUME, continues execution from an error-trapping handler.
+
+See Also    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context STEP
+.context @STEP
+:nSTEP Keyword
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+In a FOR...NEXT loop, specifies how much to increase the counter in each
+iteration. In graphics statements, specifies that pixel coordinates are
+relative to the current graphics cursor position.
+
+See Also    \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aGET, PUT\v@ggx\v\i\p    \i\p\aLINE\v@LINE\v\i\p
+            \i\p\aPAINT\v@PAINT\v\i\p     \i\p\aPRESET, PSET\v@PRESET\v\i\p
+.context TO
+.context @TO
+:nTO Keyword
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Specifies ranges for:
+
+    ş A CASE clause of a SELECT CASE statement.
+    ş A loop counter in a FOR...NEXT loop.
+    ş Records to lock or unlock in a LOCK...UNLOCK statement.
+    ş Lower and upper bounds in a DIM or REDIM statement.
+
+See Also    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aLOCK, UNLOCK\v@LOCK\v\i\p    \i\p\aSELECT CASE\v@SELECT\v\i\p

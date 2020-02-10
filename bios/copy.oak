@@ -1,0 +1,17 @@
+all:
+   del bios\*.*                              < $(OAKDIR)\ycr.key
+   xcopy bios $(OAKDIR)\bios                 < $(OAKDIR)\d.key
+   del $(OAKDIR)\bios\makefile
+   ren $(OAKDIR)\bios\makefile.oak $(OAKDIR)\bios\makefile
+   del $(OAKDIR)\bios\msbio.lnk
+   ren $(OAKDIR)\bios\msbio.oak $(OAKDIR)\bios\msbio.lnk
+
+   del $(OAKDIR)\bios\msbior.lnk
+   del $(OAKDIR)\bios\rom8k.inc
+   del $(OAKDIR)\bios\romdinit.asm
+   del $(OAKDIR)\bios\romdrive.asm
+   del $(OAKDIR)\bios\romrd.asm
+   del $(OAKDIR)\bios\romrdhi.asm
+   del $(OAKDIR)\bios\romrdlo.asm
+
+

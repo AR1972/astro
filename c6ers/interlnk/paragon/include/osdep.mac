@@ -1,0 +1,33 @@
+;***
+;* $Workfile:   osdep.mac  $
+;* $Revision:   1.0  $
+;*   $Author:   Dave Sewell  $
+;*     $Date:   28 Apr 1989 17:00:06  $
+;*
+;* Macros which are different between XENIX and MS-DOS assemblies.
+;*
+;* NOTE:  This file does not need to be included directly, because it is
+;* included by "dos.mac".
+;***
+
+.8086
+
+MSDOS		EQU	1
+
+;*** Macro for the 80286 "leave" instruction. ***
+
+leave	    MACRO
+	    MOV     SP, BP
+	    POP     BP
+	    ENDM
+
+seterrno    MACRO
+	    MOV     _errno, AX
+	    XOR     AX, AX
+	    DEC     AX
+	    ENDM
+
+intdos	    MACRO   function
+	    MOV     AH, function
+	    INT     21H
+	    ENDM

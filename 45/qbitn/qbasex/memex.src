@@ -1,0 +1,156 @@
+.context .SSEGADDx
+.context @SSEGADDx
+:nSSEGADD Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\ssegaddx.bas
+.context .cvix
+.context @cvix
+:nCVx and MKx$ Families Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\cvix.bas
+.context .defsegx
+.context @defsegx
+:nDEF SEG, PEEK and POKE Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\defsegx.bas
+.context .frex
+.context @frex
+:nFRE and STACK Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\frex.bas
+.context .saddx
+.context @saddx
+:nSADD and SSEG Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\saddx.bas
+.context .varvarx
+.context @varvarx
+:nVARPTR, VARSEG Functions Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\varvarx.bas
+.context .setmemx
+.context @setmemx
+:nSETMEM Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\setmemx.bas
+.context .strasx
+.context @strasx
+:nStringAssign and StringRelease Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\strasx.bas
+.context .straddx
+.context @straddx
+:nStringAddress and StringLength Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\straddx.bas
+.context .clearx
+.context @clearx
+:nCLEAR Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\clearx.bas
+.context .smid$x
+.context @smid$x
+:nMID$ Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\smidx.bas
+.context .chrx
+.context @chrx
+:nCHR$ Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\chrx.bas
+.context .hexx
+.context @hexx
+:nHEX$ Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\hexx.bas
+.context .instrx
+.context @instrx
+:nINSTR Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\instrx.bas
+.context .lc$fx
+.context @lc$fx
+:nLCASE$ Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\lcfx.bas
+.context .left$x
+.context @left$x
+:nLEFT$ Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\leftx.bas
+.context .lenx
+.context @lenx
+:nLEN Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\lenx.bas
+.context .fmid$x
+.context @fmid$x
+:nMID$ Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\fmidx.bas
+.context .mksx
+.context @mksx
+:nMKSMBF$, MKDMBF$ Functions Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\mksx.bas
+.context @oct$x
+.context .oct$x
+:nOCT$ Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\octx.bas
+.context .right$x
+.context @right$x
+:nRIGHT$ Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\rightx.bas
+.context .sp$x
+.context @sp$x
+:nSPACE$ Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\spacex.bas
+.context .str$x
+.context @str$x
+:nSTR$, RTRIM$ and LTRIM$ Functions Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\strx.bas
+.context .str$$$x
+.context @str$$$x
+:nSTRING$ Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\stringx.bas
+.context .valx
+.context @valx
+:nVAL Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\valx.bas
+.context .ucax
+.context @ucax
+:nUCASE$ Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�
+.include \bc71slm\examples\ucax.bas

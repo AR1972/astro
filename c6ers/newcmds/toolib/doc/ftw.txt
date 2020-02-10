@@ -1,0 +1,52 @@
+
+SUMMARY   walk a file tree (OS2 1.2 only)
+
+#include <ftw.h>
+
+int ftw( char *path, int (*fn)(char *, struct stat *, int), int depth)
+
+DESCRIPTION
+
+  The ftw() function recursively  descends the directory hierarchy rooted in 
+path.  For each object in the hierarchy, ftw() calls fn(), passing it a 
+pointer to a null-terminated character string containing the name of the 
+object, a pointer to a STAT structure containing information about the object, 
+and an integer.  Possible values of the integer, defined in the <ftw.h> 
+header file, areFTW_F for a file, FTW_D for a directory, FTW_DNR for a 
+directory that cannot be read, and FTW_NS for an object for which STAT 
+could not successfully be executed.  If the integer is FTW_DNR, descendants 
+of that directory will not be processed.  If the integer is FTW_NS, the STAT
+structure will contain garbage.  An example of an object that would cause
+FTW_NS to be passed to fn() would be a file in a directory with read but
+without execute (search) permission.
+
+The ftw() function visits a directory before visiting any of its descendants.
+
+RETURN VALUE
+
+The tree traversal continues until the tree is exhausted, an invocation of
+fn() returns a nonzero value, or some error is detected within ftw() 
+(such as an I/O error).  If the tree is exhausted, ftw() returns zero.
+If fn() returns a nonzero value, ftw() stops its tree traversal and returns
+whatever value was returned by fn().  If ftw() detects an error, it returns
+-1 and sets the error type in errno.
+
+IMPLEMENTATION
+
+The ftw() function uses one file descriptor for each level in the tree.
+The depth argument limits the number of file descriptors so used.  If depth
+is zero or negative, the effect is the same as if it were 1.  Depth must
+not be greater than the number of file descriptors currently available for 
+use.  ftw() will run more quickly if depth is at least as large as the 
+number of levels in the tree.
+
+SEE ALSO   
+
+NOTE
+
+  Since ftw() is recursive, it is possible for it to terminate 
+with a memory fault when applied to very deep file structures.
+
+EXAMPLE
+
+

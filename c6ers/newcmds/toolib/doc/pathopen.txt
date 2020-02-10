@@ -1,0 +1,92 @@
+SUMMARY pathopen findpath
+
+#include <tools.h>
+
+flagType findpath(pstrFile, pbuf, fNew)
+char *pstrFile;
+char *pbuf;
+flagType fNew;
+
+FILE *pathopen(pstrName, pbuf, pmode)
+char *pstrName;
+char *pbuf;
+char *pmode;
+
+DESCRIPTION
+
+findpath tries to find the file specified by pstrFile.  If pstrFile is of
+the form $FOO:BAR where FOO is an environment variable each directory in the
+environment variable is searched else the current directory is searched.
+
+If the file is found and pbuf is filled in with the expanded path name and
+nonzero is returned.
+
+If the file is not found and fnew is FALSE, zero is returned
+
+If the file is not found and fnew is TRUE pbuf is filled in with the filename
+suitable for creating a new file and nonzero is returned, i.e. if pstrFile
+is of the form $FOO:BAR, the first directory in the environment variable FOO
+is used to create the filename.
+
+E.g.
+
+    PATH:C:\BIN;C:\MYBIN;
+
+if
+
+    findpath("$PATH:BAR", buf, TRUE);
+
+returns nonzero if BAR exists in C:\BIN or C:\MYBIN and buf contains either
+C:\BIN\BAR or C:\BIN\BAR; returns zero if BAR does not exist in either and
+contents of bar are undefined.
+
+    findpath("$PATH:BAR", buf, FALSE);
+
+always returns nonzero, buf is equal to C:\BIN\BAR or C:\BIN\BAR if it exists
+or C:\BIN\BAR if it doesn't exist in both.  (Note: stat(buf, pstatBuf) can
+be used to determine if the file exists.)
+
+pathopen expands pstrName to pbuf using findpath with fnew == TRUE and if
+it succeeds calls the C library routine fopen with pbuf and mode and returns
+the value returned by fopen.  If the call to findpath fails NULL is returned
+by pathopen.
+
+RETURN VALUE
+
+See above.
+
+IMPLEMENTATION
+
+
+SEE ALSO   fopen (C runtime)
+
+NOTE
+
+In findpath, pbuf must point to a buffer large enough to hold the expanded
+pathname, e.g. buf[MAXPATHLEN].
+
+EXAMPLE
+
+#include <tools.h>
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    char str[MAXPATHLEN];
+    flagType f;
+
+    f = findpath("$USER:\\tools.ini", str, TRUE ); printf("%d %s\n", f, str);
+    f = findpath("$USER:\\tools.tmp", str, TRUE ); printf("%d %s\n", f, str);
+    f = findpath("$USER:\\tools.tmp", str, FALSE); printf("%d %s\n", f, str);
+    f = findpath("test.c", str, TRUE ); printf("%d %s\n", f, str);
+}
+
+
+give the output assuming SET USER=C:\DANL and TOOLS.INI does exist, TOOLS.TMP
+does not exist in C:\DANL and TEST.C exists in current directory.
+
+	-1 c:\danl\tools.ini
+	-1 c:\danl\tools.tmp
+	 0 c:\danl\tools.tmp
+	-1 test.c

@@ -1,0 +1,926 @@
+.comment ===================================================
+.comment IBM DOS Editor Help
+.comment ===================================================
+.comment 25/11/91 Comments cleared
+.comment   -- Martinju
+.comment ===================================================
+.comment ------------------------------------------------
+.comment   Help for Menu titles
+.comment ------------------------------------------------
+.context hidGreetingBox
+.context h.pg1
+:nWelkom bij MS-DOS Editor
+  ş Druk op Esc voor de MS-DOS Editor omgeving.
+
+  ş Druk op Enter voor het MS-DOS Editor Beknopt overzicht.
+    Hierin wordt uitgelegd hoe u de MS-DOS Editor en het
+    MS-DOS Editor Help-systeem moet gebruiken.
+.comment ------------------------------------------------
+.comment     Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context hidFileOpen
+:nHet dialoogvenster Openen
+Gebruik dit venster om een bestaand bestand te openen
+dat u wilt bewerken.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄ Openen ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  Typ hier de
+³                                   ³  bestandsnaam als
+³ Bestandsnaam: ±±±±±±±± ÄÄÄÄÄÄÄÄÄÄÄÄ dit in de huidige
+³                                   ³  directory staat
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ (hier afgebeeld),
+³                                   ³  of:
+³    Bestanden       Dir's/stations ³  Selecteer hier
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±±   ³  een bestand of een
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±±   ³  directory of station
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±±   ³  als het bestand zich
+³                                 ³  elders bevindt.
+³        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÀÄÄÄÄÄÄÄÄÄÄÄÙ
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Kies vervolgens <OK>.
+
+U kunt ook een nieuw station en nieuwe directory selecteren
+door deze in het tekstvak "Bestandsnaam" te typen.
+
+U kunt door de inhoud van andere stations en directory's
+bladeren door jokertekens op te geven (bijv. *.TXT) in het
+tekstvak "Bestandsnaam" en een nieuw station of nieuwe
+directory te selecteren.
+.context hidFileSave
+:nHet dialoogvenster Opslaan als
+Gebruik dit dialoogvenster om het huidige bestand op te
+slaan onder een bepaalde naam.
+
+ÚÄÄÄÄÄÄÄÄÄÄ Opslaan als ÄÄÄÄÄÄÄÄÄÄ¿  Accepteer deze naam
+³                                 ³  of typ hier een
+³ Bestandsnaam: ±±±±±±±± ÄÄÄÄÄÄÄÄÄÄ nieuwe bestandsnaam.
+³                                 ³
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Bestand wordt in deze
+³                                 ³  directory opgeslagen.
+³           Dir's/stations        ³
+³            ±±±±±±±±±±±          ³  Gebruik dit tekstvak
+³            ±±±±±±±±±±± ÄÄÄÄÄÄÄÄÄÄ om het bestand elders
+³            ±±±±±±±±±±±          ³  op te slaan.
+³                                 ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Kies vervolgens <OK>.
+.context hidFilePrint
+:nHet dialoogvenster Afdrukken
+Gebruik dit venster om (een deel van) een document dat u
+aan het bewerken bent, af te drukken.
+ÚÄÄÄÄÄÄ Afdrukken ÄÄÄÄÄÄ¿
+³ ± Alleen selectie   ÄÄ Drukt de geselecteerde tekst af.
+³                       ³
+³ ± Volledig document ÄÄ Drukt het hele document af.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+Als de cursor zich in een Help-venster bevindt wanneer u de
+opdracht Afdrukken kiest, hebt u de volgende mogelijkheden:
+ÚÄÄÄÄÄÄ Afdrukken ÄÄÄÄÄÄ¿
+³ ± Alleen selectie   ÄÄ Drukt de geselecteerde tekst af.
+³                       ³
+³ ± Venster   ÄÄÄÄÄÄÄÄÄÄ Drukt het hele Help-venster af.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+De MS-DOS Editor drukt af op de printer die is aangesloten
+op LPT1 van uw computer.
+
+Tip: Selecteer tekst in uw document of Help-venster voordat
+     u de opdracht Afdrukken kiest. Plaats de cursor aan
+     het begin van de af te drukken tekst en druk op
+     Shift+cursortoetsen totdat alle tekst is geselecteerd.
+     Kies vervolgens de opdracht Afdrukken.
+.context hidSearchFind
+:nHet dialoogvenster Zoeken naar
+Gebruik dit venster om naar een bepaalde tekst te zoeken.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Zoeken naar ÄÄÄÄÄÄÄÄÄÄÄÄ¿  Voer tekst in of
+³                                       ³  gebruik aanwezige
+³ Tekst: ±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄÄÄÄÄ tekst.
+³                                       ³
+³ ± Hoofd-/kleine letters ± Heel woord ÄÄ Kies zoektype.
+³                                       ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Kies <OK>.
+
+Selecteer Hoofd-/kleine letters als u bij het zoeken
+onderscheid wilt maken tussen hoofd- en kleine letters.
+Kies Heel woord om overeenkomstige tekstreeksen binnen een
+woord uit te sluiten. De zoekactie Heel woord herkent een
+overeenkomst alleen wanneer de gevonden tekst omgeven is
+door spaties, leestekens of andere speciale tekens. De
+lengte van de zoektekst kan maximaal 127 tekens bedragen.
+.context hidSearchChange
+:nHet dialoogvenster Wijzigen
+Gebruik dit dialoogvenster om de zoektekst te wijzigen in
+een andere tekst.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Wijzigen ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  Typ tekst of
+³                                          ³  gebruik de
+³ Tekst: ±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ gegeven tekst.
+³                                          ³
+³ Wijzigen in: ±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄÄ Typ wijziging.
+³                                          ³
+³ ± Hoofd-/kleine letters ± Heel woord ÄÄÄÄÄ Kies zoektype.
+³                                          ³
+³ <Wijzigen en bevestigen> <Alles wijzigen>Ä Kies of u de
+³                                          ³  wijziging wilt
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  bekijken of
+					      ineens wilt
+					      doorvoeren.
+
+Selecteer Hoofd-/kleine letters als u bij het zoeken
+onderscheid wilt maken tussen hoofd- en kleine letters.
+Kies Heel woord om overeenkomstige tekstreeksen binnen een
+woord uit te sluiten. De zoekactie Heel woord herkent een
+overeenkomst alleen wanneer de gevonden tekst omgeven is
+door spaties, leestekens of andere speciale tekens. De
+lengte van de zoektekst kan maximaal 127 tekens bedragen.
+.context hidConfirm
+:nHet dialoogvenster Wijzigen
+Er is een met de zoektekst overeenkomende tekst gevonden
+en deze is in het actieve venster gemarkeerd. U kunt nu:
+  ş <Wijzigen> kiezen om de wijziging door te voeren en
+    door te gaan met zoeken.
+  ş <Overslaan> kiezen om de tekst onveranderd te laten
+    en door te gaan met zoeken.
+  ş <Annuleren> kiezen om de tekst onveranderd te laten
+    en met zoeken te stoppen.
+.context hidOptnsDisplay
+:nHet dialoogvenster Weergave
+Gebruik dit om uw MS-DOS Editor-scherm aan te passen.
+		 ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Weergave ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+		 ³ ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Kleuren ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+Kleuren die u    ³                       Voorgr.  Achtergr.³
+hier kiest... ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ  ±±±±±±±±  ±±±±±±±± ³
+		 ³ Kleuren instellen    ±±±±±±±±  ±±±±±±±± ³
+...worden in dit ³ voor editor-venster: ±±±±±±±±  ±±±±±±±± ³
+blok tekst weer- ³                     ±±±±±±±±  ±±±±±±±± ³
+gegeven. ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ           ±±±±±±±±  ±±±±±±±± ³
+		 ³                                         ³
+		 ³ ÚÄÄÄÄÄÄÄÄÄ Weergave-opties ÄÄÄÄÄÄÄÄÄÄÄ¿ ³
+		 ³   ± Schuifbalken              Tabs: ±   ³
+		 ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+Verbergt of toont    ³  Voer het aantal spaties in dat ³
+schuifbalken op de   ³  de cursor moet verspringen    ÄÙ
+vensterweergave. ÄÄÄÄÙ  wanneer op Tab gedrukt wordt.
+
+U stelt de opties als volgt in:
+  1. Druk op Tab om de cursor naar het vak Kleuren of naar
+     het vak Weergave-opties te verplaatsen.
+  2. Gebruik de cursortoetsen om een kleur of weergave-optie
+     te kiezen.
+  3. Kies <OK> of druk op Enter om de door u gekozen opties
+     op te slaan.
+
+De instellingen worden opgeslagen en blijven van kracht de
+volgende keer dat u MS-DOS Editor start.
+.context MSG_SearchPathEdit
+:nHet dialoogvenster Help-pad
+De MS-DOS Editor zoekt naar het helpbestand EDIT.HLP in
+de directory's die u in dit dialoogvenster opgeeft. U hoeft
+het Help-pad niet in te stellen als u dit reeds gedaan hebt
+met behulp van de omgevingsvariabele PATH in DOS, of als
+EDIT.HLP zich in de huidige directory bevindt.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Help-pad ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                           ³  Typ hier het
+³ Locatie (pad) van het bestand EDIT.HLP:   ³  station en
+³                                           ³  de directory
+³      ±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄÄÄ  waar
+³                                           ³  EDIT.HLP
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  zich bevindt.
+
+Tip: Als MS-DOS Editor het bestand EDIT.HLP niet kan
+     vinden, doet u er goed aan te controleren of u de
+     juiste directorynaam hebt opgegeven.
+.comment ------------------------------------------------
+.comment   End of Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context m.f
+.context m.e
+.context m.s
+.context m.o
+.context m.h
+:nMS-DOS Editor menubalk
+Zo gebruikt u de MS-DOS Editor menu's en opdrachten:
+
+  ş Activeer menu's en opdrachten door de aangegeven letter
+    in te drukken of door met de muis op een menu of
+    opdracht te klikken.
+  ş Gebruik de cursortoetsen of de muis om tussen menu's en
+    opdrachten te verplaatsen.
+.comment ------------------------------------------------
+.comment   UI Help for Menu Commands and Dialog Support
+.comment ------------------------------------------------
+.context MSG_HelpFileNew
+:nDe opdracht Nieuw
+Gebruik deze opdracht om een nieuw document aan te maken.
+Wanneer u al een document open hebt, verschijnt er een
+dialoogvenster met een aantal keuzemogelijkheden:
+  ş Kies <Ja> om het bestaande document op te slaan.
+  ş Kies <Nee> om het document te sluiten zonder dit op
+    te slaan.
+  ş Kies <Annuleren> om de opdracht Nieuw te annuleren en
+    terug te keren naar het bestaande document.
+
+Tip: Gebruik de opdracht Openen om een bestaand document
+     te laden.
+.context MSG_HelpFileOpen
+:nDe opdracht Openen
+Gebruik deze opdracht om een bestaand document te openen
+zodat u dit kunt bewerken of afdrukken.
+
+Tip: Gebruik de opdracht Nieuw om een nieuw document
+     aan te maken.
+.context MSG_HelpFileSave
+:nDe opdracht Opslaan
+Gebruik deze opdracht om de huidige versie van uw document
+op te slaan.
+
+De MS-DOS Editor vraagt u om een naam indien u het document
+nog niet eerder hebt opgeslagen. Wanneer er al een ander
+document bestaat met dezelfde naam, wordt dit document
+overschreven.
+.context MSG_HelpFileSaveAs
+:nDe opdracht Opslaan als
+Gebruik deze opdracht om uw document als een bestand op te
+slaan. Om een eerdere versie van uw document te behouden,
+kunt u de nieuwe versie een andere naam geven in het
+tekstvak Bestandsnaam.
+.context MSG_HelpFilePrint
+:nDe opdracht Afdrukken
+Gebruik deze opdracht om een document geheel of
+gedeeltelijk af te drukken.
+
+U kunt:
+  ş Geselecteerde tekst afdrukken.
+  ş De inhoud van het Help-venster afdrukken.
+  ş Het gehele huidige document afdrukken.
+
+De MS-DOS Editor drukt af op de printer die verbonden is
+met LPT1 op uw computer.
+
+Tip: Selecteer tekst in uw programma of Help-venster
+     voordat u de opdracht Afdrukken kiest. Plaats de cursor
+     aan het begin van de tekst die u wilt afdrukken. Druk
+     op Shift+een cursortoets totdat alle tekst geselecteerd
+     is en kies vervolgens de opdracht Afdrukken.
+.context MSG_HelpFileExit
+:nDe opdracht Afsluiten
+Gebruik deze opdracht om de MS-DOS Editor-omgeving te
+verlaten.
+
+Wanneer u uw document gewijzigd hebt sinds de laatste keer
+dat u het opgeslagen hebt, toont MS-DOS Editor een
+dialoogvenster.
+  ş Kies <Ja> om de wijzigingen in uw document op te slaan.
+  ş Kies <Nee> om de wijzigingen teniet te doen.
+  ş Kies <Annuleren> om de opdracht Afsluiten te annuleren
+    en terug te keren naar uw document.
+.context MSG_HelpEditCut
+:nDe opdracht Knippen
+Gebruik Knippen (of druk op Shift+Del) om geselecteerde
+tekst te verwijderen en in het Klembord, een tijdelijke
+opslagplaats, te plaatsen.
+
+U kunt vervolgens de opdracht Plakken (Shift+Ins) gebruiken
+om de tekst op een nieuwe positie in het actieve venster te
+plaatsen. U kunt ook een nieuw of bestaand document openen
+en daar de tekst invoegen.
+
+De tekst blijft in het Klembord aanwezig en kan meermaals
+geplakt worden. Elke keer dat u een stuk tekst knipt of
+kopieert, vervangt de nieuwe tekst de inhoud van het
+Klembord.
+
+Tip: U selecteert tekst door de cursor aan het begin van
+     de gewenste tekst te plaatsen en vervolgens op
+     Shift+een cursortoets te drukken.
+     U kunt geselecteerde tekst verwijderen zonder deze
+     naar het Klembord te kopi‰ren door op Del te drukken.
+.context MSG_HelpEditCopy
+:nDe opdracht Kopi‰ren
+Gebruik Kopi‰ren (of druk op Ctrl+Ins) om geselecteerde
+tekst naar het Klembord te kopi‰ren. De originele tekst
+blijft onveranderd.
+
+U kunt vervolgens de opdracht Plakken (Shift+Ins) gebruiken
+om de tekst op een nieuwe positie in het actieve venster te
+plaatsen. U kunt ook een nieuw of bestaand document openen
+en daar de tekst invoegen.
+
+Tip: U selecteert tekst door de cursor aan het begin van
+     de gewenste tekst te plaatsen en vervolgens op
+     Shift+een cursortoets te drukken.
+
+De tekst blijft in het Klembord aanwezig en kan meermaals
+geplakt worden. Elke keer dat u een stuk tekst knipt of
+kopieert, vervangt de nieuwe tekst de inhoud van het
+Klembord.
+.context MSG_HelpEditPaste
+:nDe opdracht Plakken
+Gebruik Plakken (of druk op Shift+Ins) om een blok tekst
+van het Klembord op een bepaalde positie in het document
+in te voegen.
+
+U voegt tekst in door de cursor op de gewenste positie te
+plaatsen en vervolgens Plakken te kiezen.
+
+U vervangt een bepaald stuk tekst door een ander stuk tekst
+door de te vervangen tekst te selecteren en vervolgens
+Plakken te kiezen.
+
+Tip: U plaatst tekst in het Klembord met behulp van de
+     opdracht Knippen of Kopi‰ren. Nadat u Plakken hebt
+     gebruikt om tekst in te voegen, bevat het Klembord
+     nog altijd deze tekst, die vervolgens opnieuw geplakt
+     kan worden.
+.context MSG_HelpEditClear
+:nDe opdracht Wissen
+Gebruik Wissen (of druk op Del) om de geselecteerde tekst te
+verwijderen zonder deze naar het Klembord te kopi‰ren. De
+inhoud van het Klembord blijft hierdoor onveranderd.
+.context MSG_HelpSearchFind
+:nDe opdracht Zoeken naar
+Gebruik deze opdracht om naar een tekst te zoeken. U kunt
+hierbij onderscheid laten maken tussen hoofd- en kleine
+letters en tussen hele woorden en delen van woorden.
+
+Gebruik de opdracht Wijzigen om een tekst te wijzigen.
+.context MSG_HelpSearchChange
+:nDe opdracht Wijzigen
+Gebruik deze opdracht om een bepaalde tekst te wijzigen in
+een andere tekst.
+
+U kunt:
+  ş Bij het zoeken onderscheid laten maken tussen hoofd-
+    en kleine letters en naar hele woorden laten zoeken.
+  ş Elke wijziging controleren alvorens deze door te voeren.
+  ş Alle wijzigingen ineens doorvoeren zonder controle.
+.context MSG_HelpSearchNext
+:nDe opdracht Volgende zoeken
+Gebruik Volgende zoeken (of druk op F3) om de zoekactie
+van de meest recente opdracht Zoeken naar of Wijzigen te
+herhalen.
+
+Als noch de opdracht Zoeken naar noch de opdracht Wijzigen
+werd uitgevoerd nadat de MS-DOS Editor werd gestart, zoekt
+de opdracht Volgende zoeken naar:
+  ş Het woord dat bij de cursor staat.
+  ş Het woord links van de cursor, als de cursor niet bij
+    een woord staat.
+.context MSG_HelpOptionsDisplay
+:nDe opdracht Weergave
+Gebruik deze opdracht voor het bepalen van:
+  ş Schermkleuren.
+  ş De aan/afwezigheid van schuifbalken in vensters.
+  ş Het aantal spaties dat Tab de cursor laat verplaatsen.
+
+Weergave-instellingen worden opgeslagen en blijven van
+kracht de volgende keer dat u de MS-DOS Editor start.
+.context MSG_HelpOptionsPaths
+:nDe opdracht Help-pad
+Gebruik deze opdracht om de directory's te wijzigen waarin
+de MS-DOS Editor naar het helpbestand EDIT.HLP zoekt.
+.context MSG_HelpHelpStarted
+:nDe opdracht Basisvaardigheden
+Gebruik deze opdracht voor informatie over:
+  ş Het gebruik van de MS-DOS Editor-menu's, opdrachten
+    en dialoogvensters.
+  ş Het verkrijgen van Help tijdens het gebruik van de
+    MS-DOS Editor.
+  ş Het gebruik van opties bij het starten van de
+    MS-DOS Editor.
+  ş MS-DOS Editor copyright en handelsmerken.
+.context MSG_HelpHelpKeyboard
+:nDe opdracht Toetsenbord
+Gebruik deze opdracht voor informatie over:
+  ş Toetsencombinaties voor het uitvoeren van taken met
+    de MS-DOS Editor.
+  ş WordStar-toetsencombinaties die gebruikt kunnen worden
+    in MS-DOS Editor.
+.context MSG_HelpHelpAbout
+:nDe opdracht Info
+Gebruik deze opdracht om het versienummer en de
+copyright-informatie voor de MS-DOS Editor weer te geven.
+.context helpSurvivalId
+:nBeknopt overzicht
+
+ \bDe MS-DOS Editor gebruiken:\p
+
+   ş Druk op Alt om de MS-DOS Editor menubalk te activeren.
+   ş Druk op de aangegeven letter om menu's en opdrachten
+     te activeren.
+   ş Verplaats met behulp van de cursortoetsen tussen menu's
+     en opdrachten.
+   ş Druk op F1 voor hulp over een geselecteerd menu,
+     dialoogvenster of een geselecteerde opdracht.
+   ş Druk op Esc om het menu Help te verlaten.
+
+ \bDoor het MS-DOS Editor Help-systeem bladeren:\p
+
+   ş Druk op Tab of de eerste letter van het onderwerp om
+     ‚‚n van de volgende onderwerpen te selecteren. Druk
+     vervolgens op Enter om de informatie te zien:
+
+     \i\p\aBasisvaardigheden\vhelpStartedId\v\i\p  Het laden en gebruiken van de MS-DOS Editor
+			  en het MS-DOS Editor Help-systeem
+     \i\p\aToetsenbord\vhelpKeyboardId\v\i\p        Het bewerken van en verplaatsen door tekst en
+			  het gebruik van MS-DOS Editor Help
+
+ Tip: Deze onderwerpen zijn tevens beschikbaar in het menu Help (aangegeven
+      met een vraagteken op de menubalk).
+.context helpEditorHelp
+.context helpStartedId
+:nBasisvaardigheden
+  \bBasisvaardigheden\p  \i\p\aToetsenbord\vhelpKeyboardId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ In dit gedeelte leert u om te gaan met de MS-DOS Editor.
+ Kies een van de volgende onderwerpen voor informatie over:
+
+   \i\p\aHelp gebruiken\vhelpOnHelpId\v\i\p
+   \i\p\aMenu's en opdrachten gebruiken\v@sg.men\v\i\p
+   \i\p\aEen dialoogvenster gebruiken\v@sg.dia\v\i\p
+   \i\p\aMS-DOS Editor-opties\v@sg.opt\v\i\p
+   \i\p\aCopyright en handelsmerken\v@cccp\v\i\p
+.context @sg.men
+:nMenu's en opdrachten gebruiken
+  \i\p\aBasisvaardigheden\vhelpStartedId\v\i\p  \i\p\aToetsenbord\vhelpKeyboardId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Gebruik de menubalk bovenaan het scherm om menu's en opdrachten te
+ selecteren.
+
+ Menu-handeling       Met de muis...               Met het toetsenbord...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Menu weergeven.      Verplaats de muisaanwijzer   Druk op Alt om de menu-
+		      naar de menunaam en "klik"   letters weer te geven
+		      op de muisknop (de knop      en druk op de aangegeven
+		      indrukken en daarna weer     letter voor het gewenste
+		      loslaten).                   menu.
+
+ Opdracht kiezen.     Klik op de opdrachtnaam.     Druk op de lettertoets
+						   die overeenkomt met
+						   de aangegeven letter
+						   in de opdracht.
+
+ Opdracht annuleren.  Klik buiten het menu.        Druk op Esc.
+
+ Tip: Controleer de statusbalk onderaan het scherm voor Help-informatie
+      over de huidige taak. Kies een tussen haakjes geplaatst onderwerp
+      door erop te klikken.
+.context @sg.dia
+:nEen dialoogvenster gebruiken
+  \i\p\aBasisvaardigheden\vhelpStartedId\v\i\p  \i\p\aToetsenbord\vhelpKeyboardId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ De MS-DOS Editor geeft dialoogvensters weer wanneer u opdrachten kiest
+ die opties bevatten.
+
+ Venster-handeling    Met de muis...               Met het toetsenbord...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Tekstvak voor        Verplaats de muisaanwijzer   Druk op Tab totdat de
+ invoer kiezen.       naar het tekstvak en klik    cursor zich in het
+		      op de muisknop.              tekstvak bevindt.
+
+ Onderwerp in         Dubbelklik op het            Selecteer het onderwerp
+ keuzelijst kiezen.   onderwerp.                   met behulp van de
+						   cursortoetsen en druk
+						   op Enter.
+
+ Optie kiezen.        Klik op de optie.            Ga naar de optie met
+						   de cursortoetsen.
+
+ Aankruisvakje        Klik op het                  Verplaats de cursor
+ in/uitschakelen.     aankruisvakje.               met behulp van Tab naar
+						   het aankruisvakje en
+						   druk op de spatiebalk.
+
+ Opdrachtknop         Klik op de                   Verplaats de cursor
+ kiezen.              opdrachtknop.                met behulp van Tab naar
+						   de opdrachtknop en
+						   druk op Enter.
+.context helpOnHelpId
+:nHelp gebruiken
+  \i\p\aBasisvaardigheden\vhelpStartedId\v\i\p  \i\p\aToetsenbord\vhelpKeyboardId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Het gebruik van MS-DOS Editor Help:
+
+   ş Plaats voor hulp over een MS-DOS Editor menu, opdracht of dialoogvenster
+     de cursor op het menu-onderwerp of op de knop <Help> en druk op F1.
+
+   ş Druk op Alt+? voor de MS-DOS Editor Help-onderwerpen. Druk vervolgens
+     op de aangegeven letter om de opdracht Basisvaardigheden of
+     Toetsenbord te kiezen.
+
+   ş Druk op F6 om de cursor naar het Help-venster te verplaatsen.
+
+   ş Druk op PgDn of PgUp om door de Help-informatie te bladeren.
+
+   ş Druk op Tab of de eerste letter van het Help-onderwerp om de cursor
+     naar een verwant onderwerp te verplaatsen. Verwante onderwerpen worden
+     omgeven door pijltjes (\i \p).
+
+   ş Plaats de cursor op een verwant onderwerp en druk op F1 of op de
+     rechtermuisknop om het verwante onderwerp weer te geven.
+
+   ş Druk op Esc om een Help-venster te sluiten.
+
+ De MS-DOS Editor bewaart de laatste 20 Help-onderwerpen die u hebt bekeken.
+ Druk herhaaldelijk op Alt+F1 of klik meermaals op <Terug> om deze
+ onderwerpen opnieuw te bekijken.
+.context EDIT.COM
+.context EDIT
+.context @sg.opt
+:nMS-DOS Editor-opties
+  \i\p\aBasisvaardigheden\vhelpStartedId\v\i\p  \i\p\aToetsenbord\vhelpKeyboardId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ De opdracht EDIT voert het bestand QBASIC.EXE uit en het bestand voor
+ de MS-DOS Editor-omgeving, EDIT.COM. U kunt de volgende opties typen op
+ de opdrachtregel na de opdracht EDIT om een bestand te laden of de
+ weergave van uw apparatuur te wijzigen:
+
+ \bEDIT [bestandsnaam] [/B] [/G] [/H] [/NOHI]\p
+
+ Optie       Beschrijving
+ ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ bestands-   Definieert het bestand dat moet worden geladen wanneer de
+ naam        MS-DOS Editor wordt gestart.
+
+ /B          Stelt u in staat een monochrome monitor te gebruiken met een
+	     CGA-kaart. De optie /B geeft de MS-DOS Editor in
+	     zwart/wit weer, zelfs als u een kleurenadapter hebt.
+
+ /G          Stelt de MS-DOS Editor in staat een CGA-scherm zo snel mogelijk
+	     bij te werken (werkt alleen met CGA-monitors). Als u 'sneeuw'
+	     (knipperende stipjes op het scherm) ziet wanneer MS-DOS Editor
+	     uw scherm bijwerkt, kan uw apparatuur deze optie niet volledig
+	     ondersteunen. Als u een schoon scherm prefereert moet u
+	     MS-DOS Editor opnieuw starten zonder de optie /G.
+
+ /H          Geeft het maximum aantal regels weer dat uw apparatuur kan
+	     weergeven.
+
+ /NOHI       Stelt u in staat een scherm te gebruiken dat geen hoge
+	     intensiteit ondersteunt. Deze optie is niet geschikt voor
+	     Compaq laptop-computers.
+.context @cccp
+.context .cccp
+:nCopyright en handelsmerken
+  \i\p\aBasisvaardigheden\vhelpStartedId\v\i\p  \i\p\aToetsenbord\vhelpKeyboardId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  De informatie in dit document kan zonder enige voorafgaande waarschuwing
+  worden gewijzigd en houdt geen enkele verplichting in voor
+  Microsoft Corporation. De software, zoals deze in dit document staat
+  beschreven, wordt geleverd onder de voorwaarden van een licentie-
+  overeenkomst of een niet-bekendmakingsovereenkomst. De bedoelde software
+  mag alleen volgens de voorwaarden van deze overeenkomsten worden
+  gebruikt of gekopieerd. Het is bij de wet verboden bedoelde software
+  te kopi‰ren op andere wijzen dan uitdrukkelijk beschreven in voornoemde
+  overeenkomsten. Behoudens de in of krachtens de Auteurswet van 1912
+  gestelde uitzonderingen, mag niets uit dit online Help-systeem worden
+  verveelvoudigd en/of openbaargemaakt door middel van druk, fotokopie,
+  microfilm, of op welke andere wijze dan ook en evenmin in een gegevens-
+  opzoeksysteem worden opgeslagen zonder voorafgaande schriftelijke
+  toestemming van Microsoft Corporation.
+
+  Mits anders vermeld zijn alle in de schermafdrukken, voorbeelduitvoer
+  en diverse voorbeelden vermelde bedrijven, personen, gegevens en
+  adressen fictief. Deze dienen slechts om het gebruik van een Microsoft-
+  produkt te illustreren.
+
+
+  (C) Copyright Microsoft Corporation, 1987-1991.
+      Alle rechten voorbehouden.
+
+  Microsoft, MS en MS-DOS zijn geregistreerde handelsmerken.
+
+  In de Microsoft documentatie wordt de term "DOS" gebruikt voor zowel
+  MS-DOS als IBM Personal Computer DOS besturingssystemen. Namen van
+  specifieke besturingssystemen worden genoemd wanneer het noodzakelijk
+  is om kenmerken te bespreken die uniek zijn voor deze besturingssystemen.
+
+  Compaq is een geregistreerd handelsmerk van Compaq Computer Corporation.
+
+  IBM is een geregistreerd handelsmerk van International Business Machines
+  Corporation.
+
+  WordStar is een geregistreerd handelsmerk van MicroPro International
+  Corporation.
+.context helpKeyboardId
+:nToetsenbord
+  \i\p\aBasisvaardigheden\vhelpStartedId\v\i\p  \bToetsenbord\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ In dit gedeelte wordt uitgelegd hoe u door tekst "wandelt" en tekst bewerkt
+ met de MS-DOS Editor.
+
+ Kies een van de onderstaande onderwerpen voor informatie over:
+
+     \i\p\aSneltoetsen\v@.sk\v\i\p                  \i\p\aTekstselectie-toetsen\v@sel.keys\v\i\p
+     \i\p\aHelp-toetsen\v@.hk\v\i\p                 \i\p\aInvoeg- en kopieertoetsen\v@i.keys\v\i\p
+     \i\p\aCursorverplaatsingstoetsen\v@m.keys\v\i\p   \i\p\aVerwijdertoetsen\v@d.keys\v\i\p
+     \i\p\a"Blader"-toetsen\v@s.keys\v\i\p             \i\p\aToetsen voor Zoeken naar en Wijzigen\v@fc.keys\v\i\p
+
+
+ De MS-DOS Editor herkent toetsencombinaties die in andere
+ Microsoft-programma's (zoals Microsoft Word) worden gebruikt, alsmede
+ WordStar-toetsencombinaties. WordStar-toetsencombinaties die in de
+ MS-DOS Editor kunnen worden gebruikt, staan in de meest rechtse kolom
+ vermeld in de uit drie kolommen bestaande tabellen met toetsencombinaties.
+.context @.sk
+:nSneltoetsen
+  \i\p\aBasisvaardigheden\vhelpStartedId\v\i\p  \i\p\aToetsenbord\vhelpKeyboardId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  ÚÄInvoegenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÚÄKopi‰renÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Invoegen/overschrijven       Ins ³ ³ Naar Klembord           Ctrl+Ins ³
+  ³ Regel erboven        Home,Ctrl+N ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ Regel eronder          End+Enter ³ ÚÄZoeken naarÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Vanaf Klembord         Shift+Ins ³ ³ Tekst zoeken            Ctrl+Q,F ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ Volgende zoeken               F3 ³
+  ÚÄSelecterenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ Tekens/regels         Shift+Pijl ³ ÚÄVerwijderenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Woorden          Shift+Ctrl+Pijl ³ ³ Huidige regel knippen     Ctrl+Y ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ Tot eind regel knippen  Ctrl+Q,Y ³
+  ÚÄHelp verkrijgenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³ Selectie knippen       Shift+Del ³
+  ³ Bij menu's en opdrachten      F1 ³ ³ Selectie wissen              Del ³
+  ³ Basisvaardigheden       Shift+F1 ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+.context @m.keys
+:nCursorverplaatsingstoetsen
+  \i\p\aBasisvaardigheden\vhelpStartedId\v\i\p  \i\p\aToetsenbord\vhelpKeyboardId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Teken naar links                           Pijl-links          Ctrl+S
+ Teken naar rechts                          Pijl-rechts         Ctrl+D
+ Woord naar links                           Ctrl+Pijl-links     Ctrl+A
+ Woord naar rechts                          Ctrl+Pijl-rechts    Ctrl+F
+ Regel omhoog                               Pijl-omhoog         Ctrl+E
+ Regel omlaag                               Pijl-omlaag         Ctrl+X
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Eerste inspringniveau huidige regel        Home
+ Begin van huidige regel                                        Ctrl+Q,S
+ Begin van volgende regel                   Ctrl+Enter          Ctrl+J
+ Eind van de regel                          End                 Ctrl+Q,D
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Begin van venster                                              Ctrl+Q,E
+ Einde van venster                                              Ctrl+Q,X
+ Naar volgend venster verplaatsen           F6
+ Huidige venster vergroten                  Alt+Plusteken
+ Huidige venster verkleinen                 Alt+Minteken
+.context @s.keys
+:n"Blader"-toetsen
+  \i\p\aBasisvaardigheden\vhelpStartedId\v\i\p  \i\p\aToetsenbord\vhelpKeyboardId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Regel omhoog                    Ctrl+Pijl-omhoog   Ctrl+W
+ Regel omlaag                    Ctrl+Pijl-omlaag   Ctrl+Z
+ Heel scherm omhoog              PgUp               Ctrl+R
+ Heel scherm omlaag              PgDn               Ctrl+C
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ E‚n venster naar links          Ctrl+PgUp
+ E‚n venster naar rechts         Ctrl+PgDn
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Bladwijzers instellen (max. 4)  Ctrl+K,0-3
+ Naar bladwijzers gaan           Ctrl+Q,0-3
+.context @sel.keys
+:nTekstselectie-toetsen
+  \i\p\aBasisvaardigheden\vhelpStartedId\v\i\p  \i\p\aToetsenbord\vhelpKeyboardId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Teken links van cursor        Shift+Pijl-links
+ Teken rechts van cursor       Shift+Pijl-rechts
+ Woord links van cursor        Shift+Ctrl+Pijl-links
+ Woord rechts van cursor       Shift+Ctrl+Pijl-rechts
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Huidige regel                 Shift+Pijl-omlaag
+ Regel erboven                 Shift+Pijl-omhoog
+ Scherm erboven                Shift+PgUp
+ Scherm eronder                Shift+PgDn
+ Tot begin van bestand         Shift+Ctrl+Home
+ Tot einde van bestand         Shift+Ctrl+End
+.context @i.keys
+:nInvoeg- en kopieertoetsen
+  \i\p\aBasisvaardigheden\vhelpStartedId\v\i\p  \i\p\aToetsenbord\vhelpKeyboardId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Overschakelen van invoegmodus naar overschrijfmodus  Ins         Ctrl+V
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Geselecteerde tekst naar het Klembord kopi‰ren       Ctrl+Ins
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Selectie verwijderen en naar Klembord kopi‰ren       Shift+Del
+ Huidige regel verwijderen en naar Klembord kopi‰ren  Ctrl+Y
+ Tot eind regel verwijderen en naar Klembord kopi‰ren             Ctrl+Q,Y
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Inhoud van Klembord plakken                          Shift+Ins
+ Blanco regel onder de cursor invoegen                End+Enter
+ Blanco regel boven de cursor invoegen                            Home,Ctrl+N
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Speciale tekens invoegen                             Ctrl+P,Ctrl+toets
+.context @d.keys
+:nVerwijdertoetsen
+  \i\p\aBasisvaardigheden\vhelpStartedId\v\i\p  \i\p\aToetsenbord\vhelpKeyboardId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ E‚n teken links van de cursor verwijderen       Backspace    Ctrl+H
+ E‚n teken bij de cursor verwijderen             Del          Ctrl+G
+ Rest van het woord bij de cursor verwijderen                 Ctrl+T
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Geselecteerde tekst verwijderen                 Del          Ctrl+G
+ Spaties aan begin selectie regels verwijderen   Shift+Tab
+.context @fc.keys
+:nToetsen voor Zoeken naar en Wijzigen
+  \i\p\aBasisvaardigheden\vhelpStartedId\v\i\p  \i\p\aToetsenbord\vhelpKeyboardId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Volgende zoeken voor zelfde tekst  Ctrl+L of F3
+ Zoeken naar tekst                  Ctrl+Q,F
+ Wijzigen van tekst                 Ctrl+Q,A
+.context @.hk
+:nHelp-toetsen
+  \i\p\aBasisvaardigheden\vhelpStartedId\v\i\p  \i\p\aToetsenbord\vhelpKeyboardId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Help bekijken voor de MS-DOS Editor-omgeving        F1 (of klik op de
+						     rechtermuisknop)
+ Help afsluiten                                      Esc
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Basisvaardigheden bekijken                          Shift+F1
+ Het menu Help weergeven                             Alt+?
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Cursor naar volgende Help-onderwerp verplaatsen     Tab
+ Cursor naar vorige Help-onderwerp verplaatsen       Shift+Tab
+ Cursor naar volgende Help-onderwerp verplaatsen     teken
+ dat begint met dit teken
+ Cursor naar vorige Help-onderwerp verplaatsen       Shift+teken
+ dat begint met dit teken
+ Vorig Help-onderwerp bekijken (maximaal 20 keer     Alt+F1 (of dubbelklik
+ te herhalen)                                        op de knop <Terug>)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Het volgende onderwerp in het Help-bestand bekijken Ctrl+F1
+ Het vorige onderwerp in het Help-bestand bekijken   Shift+Ctrl+F1
+.context QB_ER_OM
+.context QB_ER_OS
+.context MSG_OutNearMem
+:nOnvoldoende geheugen
+Er is meer geheugen nodig dan beschikbaar is. U kunt dit
+corrigeren door:
+  ş Het programma af te sluiten en het aantal DOS-buffers
+    (BUFFERS=) in uw bestand CONFIG.SYS te verminderen en
+    vervolgens uw computer opnieuw te starten.
+  ş Het programma af te sluiten en het aantal
+    geheugenresidente programma's te verminderen.
+  ş Het programma af te sluiten en het aantal
+    stuurprogramma's dat geladen is te verminderen en
+    vervolgens uw computer opnieuw te starten.
+.context QB_ER_DF
+:nApparaatfout
+De MS-DOS Editor is op een printerfout gestuit.
+Zorg ervoor dat:
+  ş De printer aangesloten is op LPT1.
+  ş Het online-lichtje van de printer brandt.
+  ş De printer aan staat en spanning krijgt.
+  ş De printerkabel juist verbonden is met de printer
+    en de computer.
+.context QB_ER_DTO
+:nApparaat "time-out"
+De MS-DOS Editor ontving geen informatie van een apparaat
+(zoals een printer) binnen de vooraf gestelde tijdslimiet.
+Als u probeerde een document af te drukken, moet u
+controleren of de printer aangesloten is op LPT1.
+.context QB_ER_OP
+:nGeen papier in printer
+Er zit geen papier in de printer of de printer staat uit.
+.context QB_ER_IER
+:nInterne fout
+Er is een interne fout opgetreden in de MS-DOS Editor
+die zou moeten worden gerapporteerd aan Microsoft.
+.context QB_ER_FNF
+:nBestand niet gevonden
+U hebt in het dialoogvenster Openen een bestand opgegeven
+dat niet bestaat. Controleer of u de bestandsnaam correct
+hebt ingevoerd en of u het juiste station en de juiste
+directory hebt opgegeven.
+.context QB_ER_IOE
+:nApparaat I/O-fout
+U hebt de opdracht Afdrukken in het menu Bestand gebruikt
+waarna een printerfout is opgetreden. Controleer de printer.
+.context QB_ER_DFL
+:nSchijf is vol
+Er is niet voldoende ruimte op de opgegeven schijf om het
+opgegeven bestand op te slaan. Plaats een andere diskette
+in het station of geef een andere schijf op in het tekstvak
+"Dir's/stations".
+.context QB_ER_IFN
+.context QB_ER_BFN
+:nVerkeerde bestandsnaam
+De opgegeven bestandsnaam bestaat uit te veel tekens of
+bevat tekens die niet toegestaan zijn in bestandsnamen.
+.context QB_ER_DNA
+:nApparaat niet beschikbaar
+Het apparaat waartoe u toegang probeert te krijgen is niet
+online of bestaat niet. Controleer of het apparaat aan staat
+en met uw computer verbonden is.
+.context QB_ER_PRM
+:nPermissie geweigerd
+U hebt geprobeerd naar een tegen schrijven beveiligde schijf
+te schrijven of naar een alleen-lezen-bestand.
+
+Gebruik een andere bestandsnaam om een alleen-lezen-conflict
+te voorkomen.
+Verwijder de schrijfbeveiliging of gebruik een andere schijf
+indien er een schrijfbeveiliging aanwezig is.
+.context QB_ER_DNR
+:nSchijf niet gereed
+Het diskettestation is niet vergrendeld of er zit geen
+diskette in het station.
+.context QB_ER_DME
+:nFout bij schijfmedium
+Er is een fysieke fout gevonden op de schijf, of de
+MS-DOS Editor kan de formattering van de schijf niet
+herkennen. Gebruik een andere schijf of sluit het
+programma af en formatteer de huidige schijf opnieuw.
+.context QB_ER_TMF
+:nTe veel bestanden
+U hebt te veel bestanden in uw hoofddirectory.
+U kunt dit probleem oplossen door het programma af te
+sluiten en een subdirectory aan te maken waarin u de
+documentbestanden plaatst.
+.context QB_ER_PNF
+:nPad niet gevonden
+De MS-DOS Editor kon het pad dat u hebt opgegeven in het
+dialoogvenster van de opdracht Openen of Opslaan als niet
+vinden. Controleer of u het pad juist hebt opgegeven.
+.context MSG_DocTooLarge
+:nDocument te groot
+De MS-DOS Editor kan geen document laden of deel van een
+document kopi‰ren dat meer dan 32.700 regels lang is.
+
+Gebruik een andere editor om uw document in meerdere
+kleinere bestanden te splitsen. Als deze fout optreedt
+bij het gebruik van de opdracht Kopi‰ren, moet u proberen
+kleinere porties tekst te kopi‰ren en te plakken.
+.context MSG_NotBlock
+:nBewerking vereist schijf
+U probeert van een apparaat zonder schijf (bijvoorbeeld een
+printer of toetsenbord) te laden of hierop iets op te slaan.
+.context MSG_NoSearchString
+:nGeen zoektekst
+Het tekstvak "Tekst" was leeg toen u de opdracht Zoeken naar
+of Wijzigen uitvoerde. Ga terug naar het tesktvak "Tekst" en
+typ een zoektekst alvorens <OK> te kiezen.
+.context MSG_SwitchDisks
+:nAansporing voor plaatsing diskette
+U hebt opgegeven dat de aanduiding voor uw diskettestation
+A: is terwijl het B: is, of B: terwijl het A: is.
+
+Zorg ervoor dat het bestand waarop de opdracht moet worden
+uitgevoerd zich in het diskettestation bevindt en kies <OK>.
+De MS-DOS Editor geeft een nieuwe stationsnaam weer.
+.context MSG_MatchNotFound
+:nZoektekst niet gevonden
+De MS-DOS Editor kon de opgegeven zoektekst niet vinden.
+
+De cursor blijft op de plaats staan waar u met zoeken bent
+begonnen.
+.context MSG_ChangeComplete
+:nWijzigen voltooid
+De opdracht Wijzigen is voltooid. De cursor is terug op de
+plaats waar u met zoeken bent begonnen.
+.context MSG_CantSetTabs
+:nTabs kunnen niet worden ingesteld
+Wanneer u een bestand open hebt met tabs die eerder zijn
+ingesteld, kunt u deze niet wijzigen met de optie Tabs van
+de opdracht Weergave. Sla uw bestand op en kies de opdracht
+Nieuw om het MS-DOS Editor-venster leeg te maken. Gebruik
+de opdracht Weergave om de tabs in te stellen en open uw
+bestand opnieuw.
+.context MSG_NotSavedAll
+.context MSG_NotSaved
+:nGeladen bestand opslaan?
+U document is ofwel nooit eerder opgeslagen of is gewijzigd
+sinds het de laatste keer werd opgeslagen. U kunt nu:
+  ş <Ja> kiezen om het document inclusief wijzigingen op
+    te slaan. Als het document nog geen naam heeft, wordt
+    u gevraagd een bestandsnaam op te geven.
+  ş <Nee> kiezen om uw wijzigingen teniet te doen. Als uw
+    document nieuw is en nog nooit is opgeslagen, doet <Nee>
+    uw hele document teniet.
+  ş <Annuleren> kiezen om de opdracht te annuleren en terug
+    te keren naar uw document.
+.context QB_ER_PAE
+:nFout bij toegang tot pad/bestand
+Zorg er voor dat de bestandsspecificatie die u in het
+tekstvak hebt opgegeven de juiste notatie bevat. Een
+bestandsnaam kan een stationsaanduiding en een volledig
+of gedeeltelijk pad bevatten.
+
+Deze fout kan ook optreden als u probeert een bestand op
+te slaan dat een bestaand alleen-lezen-bestand zou
+overschrijven.
+.context MSG_MustSpecifyName
+:nNaam moet worden opgegeven
+U koos <OK> in het dialoogvenster terwijl het tekstvak leeg
+was. Sluit dit Help-dialoogvenster en typ een
+bestandsspecificatie of tekenreeks in het tekstvak.
+.context MSG_Overwrite
+.context h.pg$
+:nBestaand bestand overschrijven?
+  ş Kies <Ja> als u er zeker van bent dat er geen
+    waardevolle gegevens verloren gaan wanneer u het
+    document op de schijf overschrijft met het document
+    dat zich in het geheugen bevindt.
+  ş Kies <Nee> om het dialoogvenster opnieuw weer te
+    geven en een unieke bestandsnaam voor het huidige
+    document op te geven.
+  ş Kies <Annuleren> om de opdracht Opslaan als of
+    Afsluiten te annuleren en naar uw document terug
+    te keren.

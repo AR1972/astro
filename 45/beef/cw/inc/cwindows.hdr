@@ -1,0 +1,27 @@
+/*
+	CW : Character Windows
+	cwindows.h
+
+	CC should be defined for compilation with Cmerge.
+
+    If defined, the following flags inhibit definition
+      of the indicated constants.
+
+    NOALL		Defines all the following:
+    NOMINMAX		Macros min(a,b) and max(a,b)
+    NOWND		WND / PWND typedef's or macros
+    NOWINSTYLES		WS_*
+    NOCOLOR		colors or ISA's
+    NORECT		typedefs ARC, RRC
+    NOMSG		typedef MSG
+    NOWINMESSAGES	WM_*
+    NOMENUS		menus
+    NOMEMMGR		LMEM_*
+    NODRAW		drawing macros / constants
+    NOSCROLL		SB_*
+    NOSUBSTYLES		BS_*, LBS_*, ES_*
+    NOVIRTUALKEYCODES	VK_*
+    NOMB		MB_* & ID's
+    NOPROCS		procedure definitions (always for CS)
+    NOWNDMACROS		window creation macros
+

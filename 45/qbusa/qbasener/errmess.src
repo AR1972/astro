@@ -1,0 +1,1105 @@
+.comment ****************************************************************
+.comment Error Message Help - QBasic                                    *
+.comment  This file contains all the error message help. Help on menu   *
+.comment  dialogs and related messages can be found in environ.src.     *
+.comment ****************************************************************
+.comment * 01/10/90 Cleaned comments.
+.comment *    -- JeffWe
+.comment ****************************************************************
+.comment * 01/23 - Fixed typo (chose -> choose) and deleted ERR code
+.comment           line from User-Generated Error message help.
+.context -9999
+:nTranslation momentarily stopped
+QBasic has stopped doing an item-by-item translation of the
+program line at the highlighted item. The error is
+ordinarily to the left of the item. You could:
+  þ Substitute an item suggested in the dialog box.
+  þ Correct any misspelled keywords.
+  þ Move the cursor to a keyword in the statement and press
+    F1 to see the correct syntax for the keyword.
+.context QB_ER_NF
+.context ER_NF
+:nNEXT without FOR
+Each NEXT statement must have a matching FOR statement.
+
+ERR code: 1
+.context QB_ER_SN
+.context ER_SN
+:nSyntax error
+The most common cause of this error is an incorrectly
+typed Basic keyword or argument. Check to make sure the
+program line is correct.
+
+ERR code: 2
+.context QB_ER_RG
+.context ER_RG
+:nRETURN without GOSUB
+The program just executed a RETURN statement without
+having executed a matching GOSUB statement.
+
+ERR code: 3
+.context QB_ER_OD
+.context ER_OD
+:nOut of DATA
+A READ statement has been executed but there are no DATA
+statements with unread data remaining in the program.
+
+ERR code: 4
+.context QB_ER_FC
+.context ER_FC
+:nIllegal function call
+You are attempting to give an improper or out-of-range
+argument to a Basic statement. Examples of such errors are:
+  þ A negative number is raised to a power that is not
+    an integer.
+  þ A negative record number is given when using GET or PUT.
+  þ An I/O function or statement (LOC or LOF, for example)
+    is performed on a device that does not support it.
+  þ Strings are concatenated to create a string greater
+    than 32,767 characters in length.
+  þ A BLOAD or BSAVE operation is directed to a non-disk
+    device.
+
+ERR code: 5
+.context QB_ER_OV
+.context ER_OV
+:nOverflow
+The result of a calculation or data-type conversion
+is too large for the given data type.
+
+ERR code: 6
+.context QB_ER_OM
+.context ER_OM
+:nOut of memory
+More memory was required than is available. To correct this:
+  þ Exit QBasic and reduce the number of DOS buffers, memory
+    resident programs, or loaded device drivers. Then
+    reboot your computer.
+  þ Make your program smaller.
+  þ Reduce the number or size of arrays.
+  þ Reduce the stack size by using the CLEAR statement.
+  þ Reduce the number of variables.
+
+ERR code: 7
+.context QB_ER_UL
+.context ER_UL
+:nLabel not defined
+A line label is referred to (in a GOTO statement, for
+example), but does not occur in the program.
+
+ERR code:  8
+.context QB_ER_SOR
+.context ER_SOR
+:nSubscript out of range
+An array element was referred to with a subscript that was
+outside the dimensions of the array, or an element of an
+undimensioned dynamic array was accessed. Check that the
+array is dimensioned and check the bounds of the array.
+
+You may also get this error if the array size exceeds 64K.
+Reduce the size of the array.
+
+ERR code: 9
+.context ER_DD
+:nDuplicate definition
+This error occurs if you try to change the dimensions of a
+static array while your program is running. To correct this,
+declare the array as dynamic using the REDIM statement.
+
+This error also occurs if you try to change the dimensions
+of a dynamic array using the DIM statement without first
+deallocating the array. To correct this, add an ERASE
+statement before dimensioning the array.
+
+ERR code: 10
+.context QB_ER_DD
+:nDuplicate definition
+You are attempting to create a new element in your program
+and have given it a name that is already being used. 
+
+For example:
+  þ A CONST statement uses the same name as an existing
+    variable.
+  þ A new variable or procedure has the same name as an
+    existing procedure.
+
+Starting a variable name with the letters "FN" is another
+way to generate this error, because FN is used exclusively
+with DEF FN.
+.context QB_ER_DV0
+.context ER_DV0
+:nDivision by zero
+This error can be caused by dividing by zero in an
+expression.
+
+ERR code: 11
+.context QB_ER_ID
+.context ER_ID
+:nIllegal in direct mode
+The highlighted statement is valid only within a program
+and cannot be used in the Immediate window. In general,
+the following statements and metacommands cannot be used
+in the Immediate window:
+  þ COMMON, CONST, DATA, DECLARE, DIM, OPTION, SHARED,
+    STATIC, and TYPE
+  þ $DYNAMIC, $STATIC metacommands
+  þ DEF FN...END DEF, ELSE IF, END IF, END TYPE
+    FUNCTION...END FUNCTION, REDIM, and SUB...END SUB
+
+ERR code: 12
+.context QB_ER_TM
+.context ER_TM
+:nType mismatch
+The variable is not of the required type. For example, you
+are trying to use the SWAP statement with a string variable
+and a numeric variable, or with two numeric variables of
+different types.
+
+ERR code: 13
+.context QB_ER_OS
+.context ER_OS
+:nOut of string space
+The string space needed for your string variables exceeds
+the amount available. To get more string space:
+  þ Reduce the number of variables.
+  þ Reduce the number or size of arrays of strings.
+  þ Reduce the stack size. Use the CLEAR statement to
+    resize the stack.
+
+ERR code: 14
+.comment -------------
+.comment   15 unused
+.comment -------------
+.context QB_ER_BS
+.context ER_BS
+:nString formula too complex
+Either a string formula is too long, or you have specified
+more than 15 string variables in an INPUT statement. Break
+the formula or INPUT statement into smaller parts.
+
+ERR code: 16
+.context QB_ER_CN
+:nQBasic cannot continue
+Cannot continue is a prompt that may occur while you are
+debugging. While your program was suspended (at a
+breakpoint, for example) you made a change to the program
+that has implications throughout the program. You may have
+changed the dimensions of an array, changed procedure
+arguments, or edited some other declarative statement. Use
+the dialog box and either:
+   þ Choose <OK> to keep the change and restart the program.
+   þ Choose <Cancel> to undo the change in your program
+     text. (You can do this if restarting interferes with
+     your debugging strategy.)
+.context ER_UF
+.context ER_CN
+.context ER_US
+.context QB_ER_UE
+.context ER_UE
+.context QB_ER_CaseElse
+.context ER_CaseElse
+:nUser-Generated Error
+You have used an ERROR statement to generate this error.
+.context QB_ER_UF
+:nQBasic function not defined
+The function defined by DEF FN does not exist, which
+can indicate one of the following conditions:
+   þ The DEF FN function is undefined.
+   þ The DEF FN function is attempting to call itself
+     recursively.
+.context QB_ER_NR
+.context ER_NR
+:nNo RESUME
+The end of the program was encountered while the program
+was executing an error-handling routine. Add a RESUME
+statement in the error-handling routine.
+
+ERR code: 19
+.context QB_ER_RE
+.context ER_RE
+:nRESUME without error
+A RESUME statement was executed, but there is no active
+error-handling routine.
+
+ERR code: 20
+.comment -------------
+.comment  21-23 unused
+.comment -------------
+.context ER_DTO
+:nDevice timeout
+The program did not receive information from a device, such
+as the printer, within the timeout period.
+
+ERR code: 24
+.context QB_ER_DTO
+:nDevice timeout
+QBasic did not receive information from a device, such as
+the printer, within the timeout period:
+  þ If you are attempting to print, make sure the printer
+    is attached to the device LPT1.
+.context ER_DF
+:nDevice fault
+A device has returned a hardware error, which can indicate
+one of the following conditions:
+   þ If you are attempting to print a file, the printer
+     is not attached to the device LPT1.
+   þ If you are transmitting data to a communications file,
+     the signals being tested with the OPEN COM statement
+     were not received within the timeout period.
+
+ERR code: 25
+.context QB_ER_DF
+:nQBasic device fault
+QBasic has detected a fault at the printer. Make sure that:
+   þ The printer online indicator light is still on.
+   þ The printer power is still on.
+   þ The printer cable is securely connected to the printer
+     and the computer.
+.context ER_FN
+.context QB_ER_FN
+:nFOR without NEXT
+Each FOR statement must have a matching NEXT statement.
+
+ERR code: 26
+.context QB_ER_OP
+.context ER_OP
+:nOut of paper
+The printer is out of paper, or it is not turned on.
+
+ERR code: 27
+.comment -------------
+.comment   28 unused
+.comment -------------
+.context QB_ER_WH
+.context ER_WH
+:nWHILE without WEND
+Each WHILE statement must have a matching WEND statement.
+
+ERR code: 29
+.context QB_ER_WE
+.context ER_WE
+:nWEND without WHILE
+Each WEND statement must have a matching WHILE statement.
+
+Also, verify that other control structures within the
+WHILE...WEND structure are correctly matched. For
+example, an IF without a matching ENDIF inside the
+WHILE...WEND structure will generate this error.
+
+ERR Code: 30
+.comment -------------
+.comment  31-32 unused
+.comment -------------
+.context QB_ER_DL
+.context ER_DL
+:nDuplicate label
+Two program lines were assigned the same line number or
+label. Each line number or label must be unique.
+
+Change the highlighted line number or label, or use the Find
+command from the Search menu to locate the duplicate number
+or label, then change that number or label to be unique.
+ 
+ERR code: 33
+.comment -------------
+.comment   34 unused
+.comment -------------
+.context QB_ER_US
+:nQBasic subprogram not defined
+You are attempting to call a SUB procedure that QBasic
+cannot find.
+
+Press F2 to view the SUB and FUNCTION procedures that are
+available.
+.context QB_ER_AC
+.context ER_AC
+:nArgument-count mismatch
+An incorrect number of arguments was used in a
+SUB or FUNCTION procedure call.
+
+Compare the DECLARE statement for the SUB or FUNCTION
+procedure with the CALL statement to make sure the argument
+list has the same number of items in both cases.
+
+ERR Code: 37
+.context QB_ER_UA
+.context ER_UA
+:nArray not defined
+Your program is attempting to use an array that is not
+currently defined.
+
+Verify that the array name is correct, and define the array
+with a DIM or REDIM statement.
+
+ERR code: 38
+.comment ----------
+.comment 39 unused
+.comment ----------
+.context QB_ER_VarReq
+.context ER_VarReq
+:nVariable required
+QBasic may have encountered an INPUT, LET, READ, or SHARED
+statement without a variable argument. QBasic may also have
+encountered a GET or PUT statement which didn't specify a
+variable when an operation was performed on a file opened
+in binary mode.
+
+ERR code: 40
+.comment -------------
+.comment  41-49 unused
+.comment -------------
+.context QB_ER_FOV
+.context ER_FOV
+:nFIELD overflow
+A FIELD statement attempted to allocate more bytes than
+were specified for the record length of a random file.
+Check the OPEN statement for the file to verify the
+record length.
+
+ERR code: 50
+.context QB_ER_IER
+.context ER_IER
+:nInternal error
+An internal error occurred in QBasic that should be
+reported to Microsoft.
+
+ERR code: 51
+.context QB_ER_BFN
+.context ER_BFN
+:nBad file name or number
+This error may occur because a statement or command refers
+to a file with a file number or name that is not specified
+in the OPEN statement or is out of the range of file numbers
+(valid range is 1-255) specified earlier in the program.
+
+ERR code: 52
+.context ER_FNF
+:nFile not found
+An OPEN or RUN or other Basic statement refers to a file
+that does not exist. 
+
+ERR code 53
+.context QB_ER_FNF
+:nQBasic File not found
+In the Open command dialog box, you specified a file
+that does not exist. Check to see that the filename is
+spelled correctly, and that you chose the correct
+drive and directory.
+
+ERR code 53
+.context QB_ER_BFM
+.context ER_BFM
+:nBad file mode
+The error may have occurred because:
+   þ A PUT or GET statement specified a sequential file.
+   þ A FIELD statement specified a file not opened for
+     random access.
+   þ A PRINT # statement specified a sequential file opened
+     for input.
+   þ An INPUT # statement specified a file opened for
+     output or appending.
+   þ You attempted to open a QuickBasic binary format file.
+
+ERR code: 54
+.context QB_ER_FAO
+.context ER_FAO
+:nFile already open
+This error is caused by one of the following conditions:
+   þ A sequential-output-mode OPEN statement has been
+     executed for a file that is already open.
+   þ A KILL statement refers to an open file.
+
+ERR code: 55
+.context QB_ER_FSA
+.context ER_FSA
+:nFIELD statement active
+A GET or PUT statement specified a record variable in a
+file for which FIELD statements had been executed.
+
+GET or PUT with a record-variable argument can be
+used only on a file if no FIELD statements have been
+executed for the file.
+
+ERR code: 56
+.context ER_IOE
+:nDevice I/O error
+An input or output error occurred while your program was
+using a device, such as the printer or disk drive.
+
+ERR code: 57
+.context QB_ER_IOE
+:nQBasic device I/O error
+You used the File menu's Print command and the printer
+malfunctioned. Check the printer.
+.context QB_ER_FAE
+.context ER_FAE
+:nFile already exists
+The filename specified in a NAME statement is identical
+to the name of a file that already exists. Specify another
+filename in the NAME statement, change directories, or
+rename or delete the existing file.
+
+ERR code: 58
+.context QB_ER_BRL
+.context ER_BRL
+:nBad record length
+The length of a record variable in a GET or PUT statement
+did not match the record length specified in the
+corresponding OPEN statement.
+
+ERR code: 59
+.comment -------------
+.comment   60 unused
+.comment -------------
+.context ER_DFL
+:nDisk full
+There wasn't enough room on the disk to complete a
+PRINT #, PRINT USING #, WRITE #, CLOSE, or PUT operation.
+
+ERR code: 61
+.context QB_ER_DFL
+:nQBasic disk full condition
+There isn't room on the specified disk to save the file.
+Save the file to another disk.
+
+.context QB_ER_RPE
+.context ER_RPE
+:nInput past end of file
+An INPUT # statement read from an empty file or from
+a file in which all data has already been read.
+
+To avoid this error, use the EOF function to detect the end
+of file.
+
+ERR code: 62
+.context QB_ER_BRN
+.context ER_BRN
+:nBad record number
+The record number in a PUT or GET statement was less than
+or equal to zero.
+
+ERR code: 63
+.context ER_IFN
+:nBad file name
+A filename does not follow the appropriate naming
+convention for BLOAD, BSAVE, KILL, or OPEN (for example,
+the filename has too many characters).
+
+ERR code: 64
+.context QB_ER_IFN
+:nBad file name
+The filename you specified either contains too many
+characters or characters that are not allowed in filenames.
+.comment -------------
+.comment  65-66 unused
+.comment -------------
+.context ER_TMF
+:nToo many files
+You have exceeded the number of file operations DOS allows
+in a root directory. If your program is opening, closing,
+and/or saving files in the root directory, change your
+program so it uses a subdirectory.
+
+ERR code: 67
+.context QB_ER_TMF
+:nQBasic too many files limit
+Your program has opened more disk files than QBasic can
+handle. You must close one or more of the open files
+before you can use QBasic commands.
+
+The easiest way to do this is with the Basic CLOSE
+statement:
+   1. Move the cursor to the Immediate window.
+   2. Enter CLOSE on the first available text line.
+   3. Press Enter to execute the statement.
+
+You can then execute QBasic commands. If your program was
+running, you will have to restart it.
+.context ER_DNA
+:nDevice unavailable
+The device you are attempting to access is not online or
+does not exist.
+
+ERR code: 68
+.context QB_ER_DNA
+:nQBasic device unavailable
+You are attempting to open a file on a device that does not
+exist in your system. Check the list of available device
+names in the Dirs/Drives list box in the Open dialog box
+and use one of those.
+.context QB_ER_CBO
+.context ER_CBO
+:nCommunication-buffer overflow
+During remote communications, the receive buffer
+overflowed.
+
+The size of the receive buffer is set by the RB option
+in the OPEN COM statement. To avoid this error, you can:
+  þ Check the buffer more frequently using the LOC
+    function.
+  þ Empty the buffer more often using the INPUT$ function.
+
+ERR code: 69
+.context ER_PRM
+:nPermission denied
+An attempt was made to write to a write-protected disk, or 
+to access a locked file.
+
+ERR code: 70
+.context QB_ER_PRM
+:nQBasic permission denied
+You are attempting to overwrite a read-only file or there is
+a write-protect tab on the disk you are trying to write to.
+
+To avoid the read-only conflict, use a different filename.
+Remove the tab or use a different disk if the write-protect
+tab is present.
+.context ER_DNR
+.context QB_ER_DNR
+:nDisk not ready
+The disk-drive door is open, or no disk is in the specified
+drive. Insert a disk in the drive, close the drive door, and
+retry the operation.
+
+ERR code: 71
+.context ER_DME
+:nDisk-media error
+Disk-drive hardware has detected a physical flaw on the
+disk.
+
+ERR code: 72
+.context QB_ER_DME
+:nQBasic Disk-media error
+QBasic does not recognize the format of the disk it is
+attempting to use. Use a different disk or exit QBasic
+and reformat the current disk.
+.context QB_ER_ADF
+.context ER_ADF
+:nFeature unavailable
+You may be attempting to use a feature of another version
+of Basic that is not available with Microsoft QBasic.
+
+ERR code: 73
+.context QB_ER_RAD
+.context ER_RAD
+:nRename across disks
+You attempted to rename a file with a new drive designation.
+You cannot rename a file with a new drive designation in
+QBasic.
+
+ERR code: 74
+.context ER_PAE
+.context QB_ER_PAE
+:nPath/file access error
+During an OPEN, MKDIR, CHDIR, or RMDIR operation, the 
+operating system was unable to make a correct connection 
+between the path and filename. 
+
+In the QBasic environment, make sure the file specification
+you entered in the text box is formatted correctly. Any 
+filename can contain a drive name and a full or partial
+path.
+
+This error can also occur when you try to save a file which
+would replace an existing read-only file.
+
+ERR code: 75
+.context ER_PNF
+:nPath not found
+During an OPEN, MKDIR, CHDIR, or RMDIR operation, the 
+operating system was unable to find the path specified.
+
+ERR code: 76
+.context QB_ER_PNF
+:nQBasic Path not found condition
+DOS was unable to find the path that you specified in
+the dialog box for the Open command, the Save command,
+or the Save As command. Check that you typed the
+path correctly.
+.comment -------------------------------------------
+.comment  Last of runtime errors - found at top of
+.comment  p. 5 in printout of BIGPIC.ERR
+.comment -------------------------------------------
+.context MSG_OutOfStack
+:nOut of stack space
+This error can occur when there are too many active 
+subroutine, FUNCTION, and SUB calls, or when a recursive
+FUNCTION procedure nests too deeply.
+
+Change the structure of your program, or use the
+CLEAR statement to increase the program's allotted
+stack space.
+.comment -----------------------------------------------
+.comment  User Interface Related Messages that could be
+.comment  described in user's guide error message
+.comment  appendix.
+.comment -----------------------------------------------
+.context MSG_CantCont
+:nCannot continue
+While paused during debugging (at a breakpoint, etc.),
+you made a change that prevents execution from continuing.
+You may have redimensioned an array, changed procedure
+arguments, or edited some other declarative statement.
+Use the dialog box and either:
+  þ Choose <OK> to keep the change and restart the program.
+  þ Choose <Cancel> to undo the change in your program
+    text. (You can do this if restarting interferes with
+    your debugging strategy.)
+.comment -----------------------------------------------
+.comment  Following are non-runtime errors.
+.comment -----------------------------------------------
+.context MSG_DupPrs
+:nDuplicate procedure names in file
+The file you attempted to open contains two SUB or FUNCTION
+procedures with the same name. Use an editor to rename
+one of them, then open your file in QBasic.
+.comment -----------------------------------------------
+.comment  General User Interface messages
+.comment -----------------------------------------------
+.context MSG_Overwrite
+:nOverwrite existing file
+Choose <Yes> only if you are sure that by overwriting the
+contents of the file on disk with the file contents in
+memory you won't lose valuable information.
+Otherwise:
+  þ Choose <No> to redisplay the dialog box and enter a
+    new, unique filename for saving the file in memory.
+  þ Choose <Cancel> to stop the command, leaving everything
+    as it was before you chose the command.
+.context MSG_DelProc
+:nDelete procedure confirmation
+Before deleting a procedure, the SUBs command verifies that
+you want to delete the procedure from the module. Either:
+  þ Choose <OK> to delete the procedure.
+  þ Choose <Cancel> to stop the deletion, leaving everything
+    as it was before you chose the command.
+.context MSG_MakeRem
+:nBlank lines not allowed
+Ordinarily the SUB or FUNCTION statement that begins a
+procedure is the first line in the View window. When you
+try to put a blank line above the SUB or FUNCTION statement,
+QBasic transforms the blank line into a comment line.
+.context MSG_NotSaved
+.context MSG_NotSavedAll
+:nFile not saved
+Your file has either never been saved or has not been saved
+since it last changed. Either:
+  þ Choose <Yes> to save the file, preserving your
+    changes.
+  þ Choose <No> to discard your changes.
+  þ Choose <Cancel> to cancel the command, leaving
+    everything as it was before you chose this command.
+.context MSG_BadNextStmt
+:nCannot cross procedure boundary
+During debugging, you used the Set Next Statement command to
+specify a statement that is in a procedure other than
+the one where program execution is suspended. In this case,
+QBasic ignores the Set Next Statement command.
+
+To continue debugging, move the suspended procedure into the
+View window. You can then use the Set Next Statement command
+to start running from any statement in that procedure.
+.context MSG_MustSpecifyName
+:nSpecify name
+You chose <OK> in a dialog box when the contents of the
+text box were blank. Type a module or procedure name in
+the text box and choose <OK> again.
+.context MSG_DataMoved
+:nDATA statements were moved
+QBasic requires that all DATA statements in a program be in
+the module-level code. QBasic automatically moves DATA
+statements to the module level.
+.context MSG_NoSearchString
+:nNo search string
+The Find What text box was empty when you executed a
+Find or Change command. Choose the command again and
+enter a text string before choosing <OK>.
+.context MSG_MatchNotFound
+:nMatch not found
+QBasic could not find the string specified.
+
+The cursor remains at the location where you started the
+search.
+.context MSG_ChangeComplete
+:nChange complete
+The search and replace task is complete. The cursor is
+back at the point where the search started.
+.context MSG_ReqSub
+:nSUB or FUNCTION required
+You selected the module name from the SUBs command
+dialog box. Select a SUB or FUNCTION procedure instead.
+.context MSG_SwitchDisks
+:nInsert diskette
+You have referred to your floppy disk drive as A: when
+it is named B:, or B: when it is named A:.
+
+Make sure the file you want this command to operate on
+is on a disk in the floppy disk drive, then choose <OK>.
+.context MSG_CantSetTabs
+:nCannot set Tabs
+When you have a file open that contains a previously set
+tab stop, it cannot be changed with the Tab Stops option
+from the Display command. Save your file, then use the
+New command to clear the QBasic View window.  Use the
+Display command to set the tab stop, then reopen your file.
+.context MSG_OutNearMem
+:nOut of data space
+QBasic ran out of room in memory for data, variables, and
+some other information. Try modifying your data space
+requirements as follows:
+  þ  Use a smaller file buffer in the OPEN statement's
+     LEN clause.
+  þ  Use the $DYNAMIC metacommand to create dynamic
+     arrays. Dynamic array data can usually be much
+     larger than static array data.
+  þ  Use fixed-length string arrays instead of
+     variable-length string arrays.
+  þ  Use the smallest data type that accomplishes
+     your task. Use integers whenever possible.
+  þ  Use CLEAR to modify the size of the stack.
+  þ  Do not use source lines longer than 256 characters.
+     Such lines require allocation of additional
+     text buffer space.
+.context MSG_ModTooLarge
+:nModule-level code too large
+The size of your module-level code exceeds QBasic's internal
+limit. Try moving some of the code into SUB or FUNCTION 
+procedures. 
+.context MSG_ProcTooLarge
+:nProcedure too large
+The size of the current procedure exceeds QBasic's internal
+limits. Make the procedure smaller by dividing it into
+several procedures.
+.comment -----------------------------------------------
+.comment     Section 2: QBI Parser Related Messages
+.comment -----------------------------------------------
+.context MSG_IdTooLong
+:nIdentifier too long
+The indicated identifier is longer than QBasic allows.
+Identifiers, such as variable names, must not be longer
+than 40 characters.
+.context MSG_BadId
+:nInvalid identifier
+You have used a character that is not valid in an
+identifier. Make sure that:
+  þ DEF FN procedure names contain only letters and
+    numbers.
+  þ FUNCTION and SUB procedure names start with a
+    letter and do not contain these special characters:
+    ., %, &, !, #, or $.
+.context MSG_IdImp
+:nIdentifier cannot end with %, &, !, #, $
+Identifiers cannot end with %, &, !, #, or $.
+
+The above suffixes are not allowed in type identifiers
+or in SUB procedure names.
+.context MSG_BadElemRef
+:nIdentifier cannot include period
+A period cannot be used in:
+  þ The name of a user-defined data type.
+  þ The name of an element in a user-defined type.
+  þ The name of a variable dimensioned as a
+    user-defined data type.
+
+Although variable names can contain periods, it is 
+recommended that a period be used only as a record variable 
+separator. If you have programs that use a period in
+variable names, you could change them to use mixed-case
+instead. For example, variable ALPHA.BETA would become 
+AlphaBeta.
+.context MSG_ExpTooComplex
+:nExpression too complex
+Certain internal limitations of QBasic have been exceeded.
+
+For example, during expression evaluation, strings that are
+not associated with variables are assigned temporary
+locations. A large number of such strings can cause this
+error to occur. Likewise, a numeric expression made up of
+many complicated subexpressions can cause this error.
+
+Try simplifying expressions or assigning strings to
+variables.
+.context MSG_IllegalNumber
+:nIllegal number
+You have used a number that is inappropriate for the
+context in which it is used. For example, QBasic does not
+allow you to declare a fixed-length string of zero length,
+so DIM X AS STRING * 0 is illegal. An illegal number also
+occurs if you declare contradictory values. For example,
+using an integer data type declaration suffix with a
+floating-point number (for example, 10.20%) causes this
+error.
+.context MSG_InvConst
+:nInvalid constant
+An invalid expression has been used to assign a value to a 
+symbolic constant.
+
+Numeric expressions assigned to symbolic constants can
+contain:
+   þ Numeric literals.
+   þ Previously defined symbolic constants.
+   þ Any of the arithmetic or logical operators except
+     exponentiation.
+
+String expressions assigned to a symbolic constant may 
+consist only of a single literal string, enclosed in double 
+quotation marks.
+.comment ------------------------------------------------
+.comment       Section 3: TextMgr/ReParse errors
+.comment ------------------------------------------------
+.context MSG_InvModLev
+:nIllegal outside of SUB, FUNCTION or DEF FN
+QBasic has encountered a statement that is not
+allowed in module-level code. For example, EXIT SUB, EXIT
+FUNCTION, or EXIT DEF statements are not allowed in
+module-level code.
+.context MSG_InvMain
+:nIllegal outside of SUB/FUNCTION
+QBasic has encountered a statement that is not
+allowed in module-level code or DEF FN functions. 
+.context MSG_InvProc
+:nIllegal in SUB, FUNCTION, or DEF FN
+The statement is not allowed inside a SUB or FUNCTION
+procedure or DEF FN function.
+.context MSG_InvBeforeProcDef
+:nStatement cannot precede SUB/FUNCTION definition
+Only comments and DEFtype statements are allowed before
+a procedure definition.
+.context MSG_ProcNoEnd
+:nSUB/FUNCTION without END SUB/FUNCTION
+The terminating statement is missing from a procedure.
+.context MSG_EndNoDef
+:nEND DEF without DEF
+An END DEF statement has no corresponding DEF statement.
+.context MSG_UndElem
+:nElement not defined
+You have attempted to use an element that you have not
+defined previously as part of a user-defined data type.
+
+For example, if you defined MYTYPE as containing elements
+A, B, and C, and you attempted to use the variable D as
+an element of MYTYPE, this message would appear.
+.context MSG_UndType
+:nType not defined
+A variable or parameter was declared with a undefined
+data type.
+
+Use the TYPE statement to define a data type.
+.context MSG_1stStmt
+:nMust be first statement on the line
+In block IF...THEN...ELSE constructs, IF, ELSE, ELSEIF, and
+END IF can only be preceded by a line number or label.
+
+In SELECT...END SELECT constructs, CASE and END SELECT can
+be preceded only by a line number or label.
+.context MSG_EndProc
+:nEND SUB or END FUNCTION must be last line
+You are attempting to add code after the last line in a 
+procedure. You must either return to the main module or 
+open another SUB or FUNCTION to add lines of code.
+.context MSG_NoEndType
+:nTYPE without END TYPE
+There is no END TYPE statement associated with a TYPE
+statement.
+.context MSG_NoType
+:nEND TYPE without TYPE
+There is no TYPE statement associated with an END TYPE
+statement.
+.context MSG_InvInTypeBlk
+:nStatement illegal in TYPE block
+Only comments and AS data type clauses are allowed between
+the TYPE and END TYPE statements.
+.context MSG_FNstart
+:nCannot start with 'FN'
+You used "FN" as the first two letters of a SUB or a
+FUNCTION procedure or variable name.
+
+"FN" can only be used as the first two letters when calling
+a DEF FN function.
+.context MSG_NotBlock
+:nOperation requires disk
+You are attempting to load from, or save to, a nondisk
+device such as the printer or keyboard.
+.context MSG_BadMeta
+:n$Metacommand error
+The syntax of a metacommand is incorrect.
+Metacommands must be preceded by a comment. For example, 
+both of the following $DYNAMIC metacommands are correct:
+
+REM  $DYNAMIC
+'  $DYNAMIC
+.context MSG_NoBpCase
+:nBreakpoint not allowed on CASE clause
+There are some restrictions on using breakpoints to debug 
+SELECT...END SELECT statements. You cannot place a 
+breakpoint on the first statement in the CASE block or
+after the END SELECT statement.
+
+To debug a SELECT...END SELECT statement with the aid of a 
+breakpoint, set the breakpoint on the SELECT CASE line in 
+your program. Then single-step through the rest of the 
+statement structure.
+.comment -----------------------------------
+.comment    Section 4:  Scan-time errors
+.comment -----------------------------------
+.context MSG_OBA
+:nArray already dimensioned
+This error can be caused by any of the following:
+  þ More than one DIM statement for the same static
+    array.
+  þ An attempt to change the dimensions of a dynamic
+    array with a DIM statement without using the ERASE
+    statement to deallocate the array first.
+  þ An OPTION BASE statement that occurs after an
+    array is dimensioned.
+.context MSG_COM
+:nMust precede executables
+A COMMON statement or a DECLARE statement occurs after an
+executable statement. COMMON and DECLARE statements must
+appear before any executable statements. All Basic
+statements are executable except the following:
+
+    COMMON                     OPTION BASE
+    CONST                      REM
+    DATA                       SHARED
+    DECLARE                    STATIC
+    DEFtype                    TYPE
+    DIM (for static arrays)    $STATIC and $DYNAMIC
+.context MSG_EWI
+:nEND IF without Block IF
+The IF keyword that starts an IF...ENDIF block is missing.
+
+Also check other control structures within the IF...ENDIF
+block and verify that they are correctly matched. For
+example, a nested IF block without a matching ENDIF
+inside the outer IF...ENDIF block generates this error.
+.context MSG_IWE
+:nBlock IF without END IF
+There is no corresponding END IF in a block IF...THEN
+statement.
+.context MSG_ElseWI
+:nELSE without IF
+An ELSE clause appears without a corresponding IF.
+Sometimes this error is caused by incorrectly nested IF
+statements.
+
+Also check other control structures within the IF...ENDIF
+block and verify that they are correctly matched. For
+example, a nested IF block without a matching ENDIF
+inside the outer IF...ENDIF block generates this error.
+.context MSG_ExitScope
+:nEXIT FOR not within FOR...NEXT
+An EXIT FOR statement is used outside of a FOR...NEXT
+statement.
+.context MSG_ExitDo
+:nEXIT DO not within DO...LOOP
+An EXIT DO statement is used outside of a DO...LOOP
+statement.
+.context MSG_Do
+:nDO without LOOP
+The terminating LOOP keyword is missing from a DO...LOOP
+statement.
+.context MSG_Loop
+:nLOOP without DO
+The DO starting a DO...LOOP statement is missing or
+or misspelled.
+
+Also check other control structures within the DO...LOOP
+structure and verify that they are correctly matched. For
+example, an IF block without a matching ENDIF inside the
+DO...LOOP structure generates this error.
+.context MSG_Select
+:nSELECT without END SELECT
+The terminating END SELECT keywords are missing from a
+SELECT CASE statement.
+.context MSG_Case
+:nCASE without SELECT
+The SELECT CASE keywords starting a SELECT CASE statement
+are missing or misspelled.
+
+Also check other structures within the SELECT...END SELECT 
+structure and verify that they are correctly matched. For 
+example, an IF block without a matching END IF inside the 
+SELECT...END SELECT structure generates this error.
+.context MSG_EndSelect
+:nEND SELECT without SELECT
+The SELECT CASE keywords beginning a SELECT CASE statement
+are missing or misspelled.
+
+Also check other control structures within the 
+SELECT...END SELECT structure and verify that they are
+correctly matched. For example, an IF block without a
+matching END IF inside the SELECT...END SELECT structure
+generates this error.
+.context MSG_InvFixStr
+:nFixed-length string illegal
+You cannot use a fixed-length string as a formal parameter
+to a SUB or FUNCTION procedure.
+.context MSG_InvTypedVar
+:nTyped variable not allowed in expression
+Variables of a user-defined data type cannot be passed as
+arguments. For example, the following expression, where X
+is a user-defined data type, is not permitted:
+
+CALL ALPHA(X)
+
+You can, however, pass elements of a user-defined data type
+as arguments, as follows:
+
+CALL Alpha(X.FirstEl)
+.context MSG_DefNoEnd
+:nDEF without END DEF
+There is no corresponding END DEF in a multi-line function
+definition.
+.context MSG_ParmTM
+:nParameter type mismatch
+A SUB or FUNCTION procedure parameter data type does not
+match the data type of the DECLARE statement's argument or
+the calling argument.
+.context MSG_ASRqd1st
+:nAS clause required on first declaration
+A variable that has not been declared using an AS clause is
+referred to with an AS clause.
+.context MSG_ASRqd
+:nAS clause required
+A variable declared with an AS clause is referred to
+without that clause.
+
+If the first declaration of a variable has an AS clause,
+every subsequent DIM, REDIM, SHARED, or COMMON statement
+that refers to that variable must have an AS clause.
+.context MSG_ExpectedCase
+:nIllegal placement of statements
+Statements and line labels are not permitted between
+SELECT CASE and the first CASE statement.
+
+Comments and the statement separator (:) are permitted.
+.context MSG_NoNumArr
+:nNumeric array illegal
+Elements of numeric arrays are not allowed as arguments
+to VARPTR$.
+
+Only simple variables and variable-length string array
+elements are permitted.
+.context MSG_InType
+:nIllegal outside of TYPE block
+The "element AS type" clause is permitted only within a
+TYPE...END TYPE block.
+.context MSG_SubCnt
+:nWrong number of dimensions
+An array reference contains the wrong number of dimensions.
+.context MSG_DefFnCtrl
+:nDEF FN not allowed in control statements
+DEF FN function definitions are not permitted inside control
+statements such as IF...THEN...ELSE and SELECT CASE.
+.context MSG_ForIndexInUse
+:nFOR index variable already in use
+This error occurs when the same variable is used as the
+counter argument in one FOR...NEXT statement and in a
+nested FOR...NEXT statement inside that loop.  Nested
+FOR...NEXT statements must use diffrent variables for
+their counter arguments.
+.context MSG_TypeTooLarge
+.context h.pg$
+:nType more than 65535 bytes
+A user-defined data type cannot exceed 64K.

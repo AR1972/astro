@@ -1,0 +1,47 @@
+
+SUMMARY  Connect  fDisconnect		DOS only
+
+#include <tools.h>
+
+int Connect (path, con, sub)
+char *path;
+char *con;
+char *sub;
+
+flagType fDisconnect (drive)
+int drive;
+
+DESCRIPTION
+
+Connect takes a name in the form \\mach\path and attempts to connect to
+the named machine.	Since DOS 3.x has problems with connections, we
+attach the connection to a drive.
+
+fDisconnect will delete a connection to a particular drive given
+the token returned by Connect.
+
+RETURN VALUE
+
+Connect returns -1 if connection was not successful, otherwise
+returns drive token.
+
+fDisconnect returns TRUE if disconnection was successful
+
+IMPLEMENTATION
+
+Connect parameters:
+path	network name of the form 
+	    \\machine\path  -or- 
+	    \\machine\shortname\path
+con 	buffer to place the successful connection
+sub 	buffer to place the remainder of the path
+
+fDisocnnect parameters:
+drive 	drive token
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+

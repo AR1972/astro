@@ -1,0 +1,882 @@
+.comment ===================================================
+.comment IBM DOS Editor Help
+.comment ===================================================
+.comment 25/11/91 Coments cleared
+.comment     -- Martinju
+.comment ===================================================
+.comment ------------------------------------------------
+.comment   Help for Menu titles
+.comment ------------------------------------------------
+.context hidGreetingBox
+.context h.pg1
+:nV„lkommen till MS-DOS Editor
+  ş Tryck p† Esc f”r att starta MS-DOS Editor.
+
+  ş Tryck p† Returtangenten f”r att se Nyb”rjarhj„lp
+    f”r MS-DOS Editor. Nyb”rjarhj„lp hj„lper dig
+    att b”rja anv„nda MS-DOS Editor och Hj„lp
+    f”r MS-DOS Editor.
+.comment ------------------------------------------------
+.comment     Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context hidFileOpen
+:nDialogrutan ™ppna
+Anv„nds f”r att ”ppna en existerande fil.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄ ™ppna ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                 ³  Skriv namnet p†
+³ Filnamn: ±±±±±±±± ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ filen h„r om den „r i
+³                                 ³  den aktuella katalogen
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ  (som syns h„r), eller
+³                                 ³
+³      Filer     Kataloger/Enheter³
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  V„lj en fil h„r,
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  eller en katalog eller
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  enhet om filen
+³                               ³  finns n†gon annanstans.
+³        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÀÄÄÄÄÄÄÄÄÄÄÄÙ
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  V„lj <OK>.
+
+Man kan ocks† v„lja en ny enhet och katalog genom att skriva
+dem i textrutan Filnamn.
+
+Om du vill bl„ddra igenom inneh†llet i andra kataloger och
+enheter, kan du skriva ett filnamn med jokertecken
+(som i *.BAS) i textrutan Filnamn, och v„lja en annan enhet
+eller katalog.
+.context hidFileSave
+:nDialogrutan Spara som
+Anv„nds f”r att spara och ge namn p† den aktuella filen.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄ Spara som ÄÄÄÄÄÄÄÄÄ¿
+³                                ³  Acceptera filnamnet
+³ Filnamn: ±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄ eller skriv ett nytt
+³                                ³  namn h„r.
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ  Filen sparas i
+³                                ³  den h„r katalogen.
+³        Kataloger/Enheter       ³
+³           ±±±±±±±±±±±  ÄÄÄÄÄÄÄÄÄ Anv„nd Kataloger/Enheter
+³           ±±±±±±±±±±±          ³  f”r att spara i en annan
+³           ±±±±±±±±±±±          ³  katalog eller enhet.
+³                                ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  V„lj <OK>.
+.context hidFilePrint
+:nDialogrutan Skriv ut
+Anv„nds f”r att skriva ut hela eller delar av det dokument
+du redigerar
+ÚÄÄÄÄÄÄÄÄ Skriv ut ÄÄÄÄÄ¿
+³ ± Markerad text ÄÄÄÄÄÄÄ Skriver ut markerad text.
+³                       ³
+³ ± Hela dokumentet ÄÄÄÄÄ Skriver ut hela dokumentet.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+Om mark”ren „r i Hj„lpf”nstret n„r du v„ljer kommandot
+Skriv ut har du f”ljande utskriftalternativ:
+ÚÄÄÄÄÄÄÄÄ Skriv ut ÄÄÄÄÄ¿
+³ ± Markerad text ÄÄÄÄÄÄÄ Skriver ut markerad text.
+³                       ³
+³ ± Aktuellt f”nster ÄÄÄÄ Skriver ut hela hj„lpavsnittet.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+MS-DOS Editor skriver ut p† den skrivare som „r
+kopplad till LPT1-enheten p† din dator.
+
+Tips: Markera texten i ditt program eller i Hj„lpf”nstret
+      innan du v„ljer kommandot Skriv ut. Placera mark”ren
+      i b”rjan av den text du t„nker skriva ut. Tryck p†
+      Skift+mark”rtangenterna tills hela texten „r markerad,
+      och v„lj kommandot Skriv ut.
+.context hidSearchFind
+:nDialogrutan S”k
+Anv„nds f”r att s”ka efter en specifik textstr„ng.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ S”k ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                   ³  Skriv in str„ngen
+³ S”k efter: ±±±±±±±±±±±±±±±±±±±± ÄÄÄ eller anv„nd den
+³                                   ³  str„ng som „r  h„r.
+³ ± VERSALER/gemener ± Hela ord ÄÄÄÄÄ V„lj s”ks„tt.
+³                                   ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  V„lj <OK>.
+
+V„lj Matcha VERSALER/gemener om det har betydelse vid
+s”kningen, eller Hela ord f”r att utesluta matchningar inom
+ord eller str„ngar. Helordss”kningar lyckas bara om
+m†ltexten „r omgiven av blankslag, skiljetecken, eller andra
+specialtecken. S”ktexten kan inneh†lla h”gst 127 tecken.
+.context hidSearchChange
+:nDialogrutan Ers„tt
+Anv„nds f”r att ers„tta en textstr„ng med en annan.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Ers„tt ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                   ³  Skriv in str„ngen
+³ S”k efter:  ±±±±±±±±±±±±±±±±±±±± ÄÄ eller anv„nd den
+³                                   ³  str„ng som „r h„r.
+³ Ers„tt med: ±±±±±±±±±±±±±±±±±±±± ÄÄ Skriv in ers„ttning.
+³                                   ³
+³ ± VERSALER/gemener ± Hela ord ÄÄÄÄÄÄ V„lj s”ks„tt.
+³                                   ³
+³ <S”k & Bekr„fta> <Ers„tt allt> ÄÄÄÄ V„lj om du vill
+³                                   ³  bekr„fta
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ers„ttningarna eller
+				       ers„tta allt.
+
+V„lj Matcha VERSALER/gemener om det har betydelse vid
+s”kningen, eller Hela ord f”r att utesluta matchningar inom
+ord eller str„ngar. Helordss”kningar lyckas bara om
+m†ltexten „r omgiven av blankslag, interpunktion, eller
+andra specialtecken. S”ktexten kan inneh†lla h”gst 127
+tecken.
+.context hidConfirm
+:nDialogrutan Ers„tt
+Str„ngen har hittats och „r markerad i det aktiva f”nstret.
+Du har f”ljande alternativ:
+  ş V„lj <Ers„tt> f”r att ers„tta och forts„tta
+    s”ka.
+  ş V„lj <Hoppa ”ver> f”r att l„mna texten utan „ndringar
+    och forts„tta s”ka.
+  ş V„lj <Avbryt> f”r att l„mna texten utan „ndringar och
+    sluta s”ka.
+.context hidOptnsDisplay
+:nDialogrutan Sk„rm
+Anv„nds f”r att anpassa sk„rmen i MS-DOS Editor.
+	    ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄSk„rmÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+De f„rger   ³ ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄF„rgerÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+du v„ljer   ³                           F”rgrund  Bakgrund ³
+h„r... ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ ±±±±±±±±  ±±±±±±±± ³
+...kommer   ³ St„ll in f„rger f”r       ±±±±±±±±  ±±±±±±±± ³
+att synas i ³ textredigeringsf”nstret:  ±±±±±±±±  ±±±±±±±± ³
+det h„r     ³                          ±±±±±±±±  ±±±±±±±± ³
+textblocket.ÄÄÄÄÄÄÄÄÄÄÄÙ                ±±±±±±±±  ±±±±±±±± ³
+	    ³                                              ³
+	    ³ ÚÄÄÄÄÄÄÄÄÄÄSk„rmalternativÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³
+	    ³   ± Rullningslister           Tabbl„gen: ±   ³
+	    ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+D”ljer eller    ³        Skriv det antal blankslags-   ³
+visar    ÄÄÄÄÄÄÄÙ        utrymmen som du vill att     ÄÙ
+rullningslister          Tabb ska flytta fram
+n„r f”nster visas.       mark”ren .
+
+V„lj alternativ s† h„r:
+  1. Tryck p† Tabbtangenten f”r att flytta mark”ren till
+     alternativrutan F„rger eller alternativrutan
+     Sk„rmalternativ.
+  2. Anv„nd mark”rtangenterna f”r att v„lja en f„rg eller
+     sk„rmalternativ.
+  3. V„lj <OK> eller tryck p† Returtangenten f”r att spara
+     de alternativ du valt.
+
+Inst„llningarna sparas och finns kvar n„sta g†ng du startar
+MS-DOS Editor.
+.context MSG_SearchPathEdit
+:nDialogrutan S”kv„g till Hj„lp
+MS-DOS Editor s”ker efter hj„lpfilen EDIT.HLP i de
+kataloger du v„ljer i den h„r dialogrutan. Du beh”ver inte
+v„lja S”kv„g till Hj„lp om du redan har gjort det med
+kommandot PATH i DOS, eller om EDIT.HLP „r i den aktuella
+katalogen.
+ÚÄÄÄÄÄÄÄÄÄÄ S”kv„g till Hj„lp ÄÄÄÄÄÄÄÄÄÄ¿
+³                                       ³
+³     S”kv„g f”r filen EDIT.HLP:        ³
+³                                       ³  Skriv in enhet
+³     ±±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄ och katalog
+³                                       ³  d„r EDIT.HLP
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  finns.
+
+Tips: Om MS-DOS Editor inte kan hitta EDIT.HLP, b”r du
+      kontrollera att du skrivit in r„tt katalognamn.
+.comment ------------------------------------------------
+.comment   End of Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context m.f
+.context m.e
+.context m.s
+.context m.o
+.context m.h
+:nMenyraden i MS-DOS Editor
+S† h„r anv„nder man menyer och kommandon i
+MS-DOS Editor:
+
+  ş Om du vill aktivera menyer och kommandon, trycker du
+    antingen p† den tangent som motsvarar den ljusmarkerade
+    bokstaven eller ocks† klickar du p† en meny eller ett
+    kommando med musen.
+  ş Om du vill f”rflytta dig mellan menyer och kommandon,
+    anv„nder du mark”rtangenterna eller musen.
+.comment ------------------------------------------------
+.comment   UI Help for Menu Commands and Dialog Support
+.comment ------------------------------------------------
+.context MSG_HelpFileNew
+:nKommandot Nytt
+Anv„nds n„r du vill skapa ett nytt dokument. En dialogruta
+visas om du redan har ett dokument ”ppet. I s† fall:
+  ş V„lj <Ja> f”r att spara dokumentet.
+  ş V„lj <Nej> f”r att st„nga dokumentet utan att spara det.
+  ş V„lj <Avbryt> f”r att avbryta kommandot Nytt och g†
+    tillbaka till dokumentet.
+
+Tips: Anv„nd kommandot ™ppna f”r att ladda ett befintligt
+dokument.
+.context MSG_HelpFileOpen
+:nKommandot ™ppna
+Anv„nds f”r att ladda ett dokument s† att du kan redigera
+det eller skriva ut det.
+
+Tips: Anv„nd kommandot Nytt f”r att skapa ett nytt dokument.
+.context MSG_HelpFileSave
+:nKommandot Spara
+Anv„nds f”r att spara den aktuella versionen av ett
+dokument.
+
+MS-DOS Editor ber om ett namn om du inte har sparat
+dokumentet tidigare. Om ett existerande dokument har samma
+namn som det dokument som h†ller p† att sparas, kommer
+det existerande dokumentet att skrivas ”ver.
+.context MSG_HelpFileSaveAs
+:nKommandot Spara som
+Anv„nds f”r att spara ett dokument som en fil. Om du vill
+beh†lla den tidigare versionen av dokumentet kan du ge det
+ett nytt namn i textrutan Filnamn.
+.context MSG_HelpFilePrint
+:nKommandot Skriv ut
+Anv„nds f”r att skriva ut hela eller delar av ett program.
+
+Man kan skriva ut:
+  ş Markerad text.
+  ş Inneh†llet i Hj„lpf”nstret.
+  ş Hela dokumentet.
+
+MS-DOS Editor skriver ut p† den skrivare som „r
+ansluten till LPT1-enheten p† din dator.
+
+Tips: Markera texten i programmet eller i Hj„lpf”nstret
+      innan du v„ljer kommandot Skriv ut. Placera mark”ren
+      i b”rjan av den text du t„nker skriva ut. Tryck p†
+      Skift+mark”rtangenterna tills hela texten „r markerad,
+      och v„lj kommandot Skriv ut.
+.context MSG_HelpFileExit
+:nKommandot Avsluta
+Anv„nds f”r att l„mna MS-DOS Editor.
+
+Om ditt dokument har „ndrats sedan du sparade den sist,
+visar MS-DOS Editor en dialogruta.
+  ş V„lj <Ja> f”r att spara dokumentet, inklusive „ndringar.
+  ş V„lj <Nej> f”r att ”verge „ndringarna.
+  ş V„lj <Avbryt> f”r att avbryta kommandot Avsluta, och g†
+    tillbaka till dokumentet.
+.context MSG_HelpEditCut
+:nKommandot Klipp ut
+Anv„nd Klipp ut (eller tryck p† Skift+Del) f”r att ta bort
+markerad text och l„gga den i Urklipp, som „r en tillf„llig
+f”rvaringsyta.
+
+Sedan kan du anv„nda Klistra in (Skift+Ins) f”r att infoga
+texten p† ett annat st„lle i det aktiva f”nstret. Du kan
+ocks† ”ppna en ny eller existerande programfil och infoga
+texten.
+
+Texten „r fortfarande i Urklipp och kan klistras in igen.
+Varje g†ng du klipper ut eller kopierar text kommer den nya
+texten att ers„tta texten i Urklipp.
+
+Tips: Om du vill markera text, placerar du mark”ren i b”rjan
+      av texten och trycker p† Skift+mark”rtangenterna.
+      Om du vill ta bort markerad text utan att kopiera den
+      till Urklipp, trycker du p† Del-tangenten.
+.context MSG_HelpEditCopy
+:nKommandot Kopiera
+Anv„nd Kopiera (eller tryck p† Ctrl+Ins) f”r att kopiera
+markerad text och l„gga den i Urklipp. Den ursprungliga
+texten „r of”r„ndrad.
+
+Sedan kan du anv„nda Klistra in (Skift+Ins) f”r att infoga
+texten p† ett annat st„lle i det aktiva f”nstret. Du kan
+ocks† ”ppna en ny eller existerande programfil och infoga
+texten.
+
+Tips: Om du vill markera text, placerar du mark”ren i
+      b”rjan av texten och trycker p† Skift+mark”rtangenterna.
+
+Texten „r fortfarande i Urklipp och kan klistras in igen.
+Varje g†ng du klipper ut eller kopierar text kommer den nya
+texten att ers„tta texten i Urklipp.
+.context MSG_HelpEditPaste
+:nKommandot Klistra in
+Anv„nd Klistra in (eller tryck p† Skift+Ins) f”r att infoga
+ett textblock fr†n Urklipp p† vilken plats som helst i det
+aktiva f”nstret.
+
+Om du vill infoga text, kan du placera mark”ren d„r du vill
+att texten ska infogas och v„lja Klistra in.
+
+Om du vill ers„tta en text med en annan, kan du markera
+texten som ska ers„ttas och v„lja Klistra in.
+
+Tips: Om du vill l„gga text i Urklipp, anv„nder du Klipp ut
+      eller Kopiera. Efter att du infogat text med hj„lp av
+      Klistra in finns texten fortfarande kvar i Urklipp,
+      och kan klistras in igen.
+.context MSG_HelpEditClear
+:nKommandot Radera
+Anv„nd Radera (eller tryck p† Del-tangenten) om du vill ta
+bort markerad text utan att kopiera den till Urklipp.
+Inneh†llet i Urklipp f”rblir of”r„ndrat.
+.context MSG_HelpSearchFind
+:nKommandot S”k
+Anv„nds f”r att s”ka efter en textstr„ng. Du kan v„lja
+Matcha VERSALER/gemener om det har betydelse vid s”kningen,
+eller g”ra en helordss”kning.
+
+Anv„nd Ers„tt f”r att ers„tta en str„ng.
+.context MSG_HelpSearchChange
+:nKommandot Ers„tt
+Anv„nds f”r att ers„tta en textstr„ng med en annan.
+
+Du har f”ljande alternativ:
+  ş V„lj Matcha VERSALER/gemener eller g”r en
+    helordss”kning.
+  ş Bekr„fta ers„ttningarna innan de utf”rs.
+  ş Ers„tt allt utan att bekr„fta varje ers„ttning.
+.context MSG_HelpSearchNext
+:nKommandot Upprepa s”kning
+Anv„nd Upprepa s”kning (eller tryck p† F3) f”r att upprepa
+den s”kning som utf”rdes av det senaste av kommandona S”k
+eller Ers„tt.
+
+Om inget av kommandona S”k eller Ers„tt har utf”rts sedan
+MS-DOS Editor startades, s”ker kommandot Upprepa
+s”kning efter n„sta f”rekomst av:
+  ş Det ord som mark”ren st†r p†.
+  ş Det ord som „r till v„nster om mark”ren, om mark”ren
+    inte st†r p† ett ord.
+.context MSG_HelpOptionsDisplay
+:nKommandot Sk„rm
+Anv„nds f”r att st„lla in:
+  ş Sk„rmf„rger.
+  ş Rullningslister i f”nster.
+  ş Antalet blanka som Tabbtangenten flyttar fram mark”ren.
+
+Inst„llningarna sparas och finns kvar n„sta g†ng du startar
+MS-DOS Editor.
+.context MSG_HelpOptionsPaths
+:nKommandot S”kv„g till Hj„lp
+Anv„nds f”r att „ndra de kataloger som MS-DOS Editor
+s”ker igenom f”r att hitta hj„lpfilen EDIT.HLP.
+.context MSG_HelpHelpStarted
+:nKommandot Komma ig†ng
+Anv„nds om man vill ha information om:
+  ş hur man anv„nder menyer, kommandon och dialogrutor i
+    MS-DOS Editor.
+  ş hur man f†r Hj„lp om hur man anv„nder MS-DOS Editor.
+  ş hur man startar MS-DOS Editor p† olika s„tt.
+  ş MS-DOS Editor - copyright och varum„rken.
+.context MSG_HelpHelpKeyboard
+:nKommandot tangentbord
+Anv„nds om man vill ha information om:
+  ş Tangenttryckningar som kan anv„ndas i
+    MS-DOS Editor.
+  ş Tangenttryckningar kompatibla med WordStar som kan
+    anv„ndas i MS-DOS Editor.
+.context MSG_HelpHelpAbout
+:nKommandot Om
+Anv„nds f”r att se versionsnummer och information om
+copyright f”r MS-DOS Editor.
+.context helpSurvivalId
+:nNyb”rjarhj„lp
+
+ \bAnv„nda MS-DOS Editor:\p
+
+   ş Om du vill aktivera menyraden i MS-DOS Editor,
+     trycker du p† Alt-tangenten.
+   ş Om du vill aktivera menyer och kommandon, trycker du p† den
+     ljusmarkerade bokstaven.
+   ş Om du vill flytta mellan menyer och kommandon, anv„nder du
+     mark”rtangenterna.
+   ş Om du vill f† hj„lp om en meny, ett kommando eller en dialogruta,
+     trycker du p† F1.
+   ş Om du vill avluta Hj„lp, trycker du p† Esc-tangenten.
+
+ \bBl„ddra igenom Hj„lpsystemet i MS-DOS Editor:\p
+
+   ş Om du vill v„lja ett av f”ljande avsnitt, trycker du p† Tabb eller f”rsta
+     bokstaven i avnsnittets namn. Tryck p† Retur-tangenten f”r att se:
+
+     \i\p\aKomma ig†ng\vhelpStartedId\v\i\p  Laddning och anv„ndning av MS-DOS Editor
+		    och Hj„lpsystemet i MS-DOS Editor
+     \i\p\aTangentbord\vhelpKeyboardId\v\i\p  Redigering av och f”rflyttning i text och
+		    Hj„lp i MS-DOS Editor
+
+ Tips: De h„r avsnitten „r ocks† tillg„ngliga fr†n ?-menyn.
+.context helpEditorHelp
+.context helpStartedId
+:nKomma ig†ng
+  \bKomma ig†ng\p  \i\p\aTangentbord\vhelpKeyboardId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Det h„r avsnittet hj„lper dig att starta och anv„nda MS-DOS Editor.
+ V„lj ett av f”ljande avsnitt, om du vill se information om:
+
+   \i\p\aAnv„nda Hj„lp\vhelpOnHelpId\v\i\p
+   \i\p\aAnv„nda menyer och kommandon\v@sg.men\v\i\p
+   \i\p\aAnv„nda en dialogruta\v@sg.dia\v\i\p
+   \i\p\aMS-DOS Editor kommandorad\v@sg.opt\v\i\p
+   \i\p\aCopyright och varum„rken\v@cccp\v\i\p
+.context @sg.men
+:nAnv„nda menyer och kommandon
+  \i\p\aKomma ig†ng\vhelpStartedId\v\i\p  \i\p\aTangentbord\vhelpKeyboardId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Anv„nd menyraden l„ngst upp p† sk„rmen f”r att v„lja menyer och kommandon.
+
+ tg„rd               Med en mus...                Med ett tangentbord...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Visa en meny.        Flytta pekaren till          Tryck p† Alt f”r att
+		      menynamnet, tryck sedan      ljusmarkera menynamnen,
+		      och sl„pp ("klicka")         tryck sedan p† den bokstav
+		      musknappen.                  som lyser i den ”nskade
+						   menyn.
+
+ V„lja ett kommando.  Klicka p† kommandonamnet.    Tryck p† den bokstav som
+						   motsvarar den
+						   ljusmarkerade bokstaven i
+						   kommandot.
+
+ Avbryta ett          Klicka utanf”r menyn.        Tryck p† Esc.
+ kommando.
+
+ Tips: Titta p† statusf„ltet l„ngst ner p† sk„rmen, f”r att f† hj„lp om den
+       †tg„rd du utf”r f”r tillf„llet. V„lj element inom vinkelparenteser
+       genom att klicka p† elementet.
+.context @sg.dia
+:nAnv„nda en dialogruta
+  \i\p\aKomma ig†ng\vhelpStartedId\v\i\p  \i\p\aTangentbord\vhelpKeyboardId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ MS-DOS Editor visar dialogrutor n„r du v„ljer ett kommando som har
+ tillval.
+
+ tg„rd               Med en mus...                Med ett tangentbord...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Markera en           Flytta pekaren till          Tryck p† Tabb tills
+ textruta f”r         textrutan, tryck sedan       mark”ren „r i textrutan.
+ inmatning.           och sl„pp ("klicka")
+		      musknappen.
+
+ V„lja ett element    Dubbelklicka p† elementet.   Ljusmarkera elementet,
+ i en listruta.                                    genom att trycka p†
+						   mark”rtangenterna, och
+						   tryck p† Retur-tangenten.
+
+ V„lja ett            Klicka p† alternativet.      Flytta till ett alternativ
+ alternativ.                                       med mark”rtangenterna.
+
+ St„nga av eller      Klicka i kryssrutan.         Anv„nd Tabb f”r att flytta
+ s„tta p† en                                       mark”ren till kryssrutan,
+ kryssruta.                                        och tryck p†
+						   blankslagstangenten.
+
+ V„lja en             Klicka p†                    Anv„nd Tabb f”r att flytta
+ kommandoknapp.       kommandoknappen.             mark”ren till
+						   kommandoknappen, och tryck
+						   p† Retur-tangenten.
+.context helpOnHelpId
+:nAnv„nda Hj„lp
+  \i\p\aKomma ig†ng\vhelpStartedId\v\i\p  \i\p\aTangentbord\vhelpKeyboardId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Anv„nda MS-DOS Editor Hj„lp:
+
+   ş Om du vill f† hj„lp om en meny, ett kommando eller en dialogruta i
+     MS-DOS Editor placerar du mark”ren p† menyordet eller knappen
+     <Hj„lp>, och trycker p† F1.
+
+   ş Om du vill se avsnitt i Hj„lp f”r MS-DOS Editor, trycker du f”rst
+     p† Alt+? och sedan p† den ljusmarkerade bokstaven f”r att v„lja
+     kommandot Komma ig†ng eller kommandot Tangentbord.
+
+   ş Om du vill flytta mark”ren till f”nstret Hj„lp, trycker du p† F6.
+
+   ş Om du vill rulla genom informationen i Hj„lp, trycker du p† PgDn eller
+     PgUp.
+
+   ş Om du vill flytta mark”ren till ett n„rliggande avsnitt, trycker du p†
+     Tabb eller den f”rsta bokstaven i Hj„lpavsnittet. N„rliggande avsnitt
+     omges av ljusmarkerade pilar (\i \p).
+
+   ş Om du vill se ett n„rliggande „mne, placerar du mark”ren varsomhelst i
+     avsnittet och trycker p† F1 eller klickar p† h”gerknappen p† musen.
+
+   ş Om du vill st„nga ett Hj„lp-f”nster, trycker du p† Esc.
+
+ MS-DOS Editor sparar de 20 senaste avsnitten i Hj„lp som du sett. Om du
+ vill se dem igen, trycker du p† Alt+F1 eller klickar p† knappen <Bak†t>.
+.context EDIT.COM
+.context EDIT
+.context @sg.opt
+:nMS-DOS Editor kommandorad
+  \i\p\aKomma ig†ng\vhelpStartedId\v\i\p  \i\p\aTangentbord\vhelpKeyboardId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Kommandot EDIT k”r filen QBASIC.EXE och milj”filen f”r MS-DOS Editor,
+ EDIT.COM. Du kan skriva f”ljande v„xlar p† kommandoraden i DOS efter
+ kommandot EDIT, om du vill ladda en fil eller „ndra inst„llningarna f”r
+ sk„rmen:
+
+ \bEDIT [filnamn] [/B] [/G] [/H] [/NOHI]\p
+
+ V„xel       Beskrivning
+ ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ filnamn     Namnet p† den fil som ska laddas n„r MS-DOS Editor startar.
+
+ /B          F”r anv„ndning av en monokrom sk„rm med f„rggrafikkort.
+	     V„xeln /B visar MS-DOS Editor monokromt om du har en
+	     f„rgsk„rm.
+
+ /G          St„ller in MS-DOS Editor att uppdatera en CGA-sk„rm s† fort
+	     som m”jligt (fungerar bara med maskiner som anv„nder
+	     CGA-sk„rmar). Om du f†r vitt flimmer n„r MS-DOS Editor
+	     uppdaterar sk„rmen, beror det p† att h†rdvaran inte kan st”dja
+	     den h„r v„xeln. Om du f”redrar en ren sk„rm, starta
+	     MS-DOS Editor utan v„xeln /G.
+
+ /H          Visar det maximala antalet rader som din h†rdvara kan
+	     klara av.
+
+ /NOHI       F”r anv„ndning av sk„rmar som inte st”der h”g intensitet.
+	     Kan inte anv„ndas f”r Compaq laptop datorer.
+.context @cccp
+.context .cccp
+:nCopyright och registrerade varum„rken
+  \i\p\aKomma ig†ng\vhelpStartedId\v\i\p  \i\p\aTangentbord\vhelpKeyboardId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  Inneh†llet i detta dokument kan „ndras utan f”reg†ende meddelande och
+  utg”r inget bindande †tagande fr†n Microsoft Corporation. Den programvara
+  som beskrivs, st„lls till f”rfogande under licensavtal eller sekretessavtal.
+  Programvaran f†r endast anv„ndas eller kopieras i enlighet med avtalets
+  villkor. Det „r i lag f”rbjudet att kopiera programvaran till medium som
+  inte uttryckligen specificerats i licensavtalet eller i sekretessavtal.
+  Ingen del av denna dokumentation f†r †terges eller ”verf”ras i n†gon form
+  eller p† n†got s„tt, elektroniskt eller mekaniskt, inklusive fotokopiering
+  och inspelning, f”r n†got som helst „ndam†l utan uttryckligt skriftligt
+  medgivande fr†n Microsoft Corporation.
+
+  (C) Copyright Microsoft Corporation, 1987-1991.
+      Med ensamr„tt.
+
+  Microsoft, MS, MS-DOS, Microsoft Press och GW-BASIC „r registrerade
+  varum„rken.
+
+  I Microsofts dokumentation anv„nds termen "DOS" f”r att referera till b†de
+  MS-DOS och IBM PC-DOS. Namnet p† ett specifikt operativsystem anv„nds n„r
+  det „r n”dv„ndigt att referera till egenskaper som „r unika f”r systemet.
+
+  Compaq „r ett registrerat varum„rke som tillh”r Compaq Computer Corporation.
+
+  IBM „r ett registrerat varum„rke som tillh”r the International
+  Business Machines Corporation.
+
+  WordStar „r ett registrerat varum„rke som tillh”r MicroPro International
+  Corporation.
+.context helpKeyboardId
+:nTangentbord
+  \i\p\aKomma ig†ng\vhelpStartedId\v\i\p  \bTangentbord\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Det h„r avsnittet avser att hj„lpa dig flytta i och redigera text n„r du
+ anv„nder MS-DOS Editor.
+
+ V„lj ett avsnitt nedan om du vill se information om:
+
+     \i\p\aSnabbtangenter\v@.sk\v\i\p                  \i\p\aTextmarkeringstangenter\v@sel.keys\v\i\p
+     \i\p\aHj„lptangenter\v@.hk\v\i\p                  \i\p\aInfognings- och kopieringstangenter\v@i.keys\v\i\p
+     \i\p\aMark”rf”rflyttningstangenter\v@m.keys\v\i\p    \i\p\aRaderingstangenter\v@d.keys\v\i\p
+     \i\p\aTextrullningstangenter\v@s.keys\v\i\p          \i\p\aS”k- och ers„ttningsangenter\v@fc.keys\v\i\p
+
+ MS-DOS Editor k„nner b†de igen tangentkombinationer som kan vara bekanta
+ f”r anv„ndare av andra Microsoftprogram (som t ex Microsoft Word) och
+ tangentkombinationer i WordStar. De tangentkombinationer fr†n WordStar
+ som kan anv„ndas i MS-DOS Editor listas i h”gerspalten i den trespaltade
+ tangentkombinationstabellen.
+.context @.sk
+:nSnabbtangenter
+  \i\p\aKomma ig†ng\vhelpStartedId\v\i\p  \i\p\aTangentbord\vhelpKeyboardId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  ÚInfogningÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÚKopieringÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Infogning/”verskrivning      Ins ³ ³ Till Urklipp            Ctrl+Ins ³
+  ³ Raden ovanf”r        Home,Ctrl+N ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ Raden under            End+Retur ³ ÚS”kningÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Fr†n Urklipp           Skift+Ins ³ ³ S”k efter text          Ctrl+Q,F ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ Upprepa s”kning               F3 ³
+  ÚMarkeringÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ Tecken/Rader           Skift+Pil ³ ÚRaderingÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Ord               Skift+Ctrl+Pil ³ ³ Klipp ut aktuell rad      Ctrl+Y ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ Klipp ut till radslut   Ctrl+Q,Y ³
+  ÚHj„lpÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³ Klipp ut markerad text Skift+Del ³
+  ³ Om menyer och kommandon       F1 ³ ³ Radera markerad text         Del ³
+  ³ Komma ig†ng             Skift+F1 ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+.context @m.keys
+:nMark”rf”rflyttningstangenter
+  \i\p\aKomma ig†ng\vhelpStartedId\v\i\p  \i\p\aTangentbord\vhelpKeyboardId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Tecken till v„nster                             V„nsterpil       Ctrl+S
+ Tecken till h”ger                               H”gerpil         Ctrl+D
+ Ord till v„nster                                Ctrl+V„nsterpil  Ctrl+A
+ Ord till h”ger                                  Ctrl+H”gerpil    Ctrl+F
+ Rad upp†t                                       Uppil            Ctrl+E
+ Rad ned†t                                       Nedpil           Ctrl+X
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ F”rsta indenteringsniv†n p† nuvarande rad       Home
+ B”rjan p† nuvarande rad                                          Ctrl+Q,S
+ B”rjan p† n„sta rad                             Ctrl+Retur       Ctrl+J
+ Slutet p† raden                                 End              Ctrl+Q,D
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ H”gst upp i f”nstret                                             Ctrl+Q,E
+ L„ngst ned i f”nstret                                            Ctrl+Q,X
+ Flytta till n„sta f”nster                       F6
+ ™ka storleken p† det aktiva f”nstret            Alt+Plus
+ Minska storleken p† det aktiva f”nstret         Alt+Minus
+.context @s.keys
+:nTextrullningstangenter
+  \i\p\aKomma ig†ng\vhelpStartedId\v\i\p  \i\p\aTangentbord\vhelpKeyboardId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Rad upp†t                                       Ctrl+Uppil       Ctrl+W
+ Rad ned†t                                       Ctrl+Nedpil      Ctrl+Z
+ Sida upp†t                                      PgUp             Ctrl+R
+ Sida ned†t                                      PgDn             Ctrl+C
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Ett f”nster till v„nster                        Ctrl+PgUp
+ Ett f”nster till h”ger                          Ctrl+PgDn
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ S„tt bokm„rke (h”gst 4)                         Ctrl+K,0-3
+ G† till bokm„rke                                Ctrl+Q,0-3
+.context @sel.keys
+:nTextmarkeringstangenter
+  \i\p\aKomma ig†ng\vhelpStartedId\v\i\p  \i\p\aTangentbord\vhelpKeyboardId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Tecken till v„nster                             Skift+V„nsterpil
+ Tecken till h”ger                               Skift+H”gerpil
+ Ord till v„nster                                Skift+Ctrl+V„nsterpil
+ Ord till h”ger                                  Skift+Ctrl+H”gerpil
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Nuvarande rad                                   Skift+Nedpil
+ Raden ovanf”r                                   Skift+Uppil
+ Sk„rm upp†t                                     Skift+PgUp
+ Sk„rm ned†t                                     Skift+PgDn
+ Till b”rjan av filen                            Skift+Ctrl+Home
+ Till slutet av filen                            Skift+Ctrl+End
+.context @i.keys
+:nInfognings- och kopieringstangenter
+  \i\p\aKomma ig†ng\vhelpStartedId\v\i\p  \i\p\aTangentbord\vhelpKeyboardId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ V„xla mellan infognings- och ”verskrivningsl„ge Ins              Ctrl+V
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Kopiera markerad text till Urklipp              Ctrl+Ins
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Radera markerad text och kopiera till Urklipp   Skift+Del
+ Radera nuvarande rad och kopiera till Urklipp   Ctrl+Y
+ Radera till radslut och kopiera till Urklipp                     Ctrl+Q,Y
+ ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Klistra in inneh†llet i Urklipp                 Skift+Ins
+ Infoga en tom rad under mark”ren                End,Retur
+ Infoga en tom rad ovanf”r mark”ren                               Home,Ctrl+N
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Infoga specialtecken                            Ctrl+P,Ctrl+tangent
+.context @d.keys
+:nRaderingstangenter
+  \i\p\aKomma ig†ng\vhelpStartedId\v\i\p  \i\p\aTangentbord\vhelpKeyboardId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Radera ett tecken till v„nster om mark”ren      Backsteg         Ctrl+H
+ Radera det tecken d„r mark”ren „r placerad      Del              Ctrl+G
+ Radera resten av ordet d„r mark”ren „r placerad                  Ctrl+T
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Radera markerad text                            Del              Ctrl+G
+ Radera inledande blanksteg fr†n markerade rader Skift+Tabb
+.context @fc.keys
+:nS”k- och ers„ttningsangenter
+  \i\p\aKomma ig†ng\vhelpStartedId\v\i\p  \i\p\aTangentbord\vhelpKeyboardId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Upprepa s”kning                                 Ctrl+L eller F3
+ S”ka efter text                                 Ctrl+Q,F
+ Ers„tta text                                    Ctrl+Q,A
+.context @.hk
+:nHj„lptangenter
+  \i\p\aKomma ig†ng\vhelpStartedId\v\i\p  \i\p\aTangentbord\vhelpKeyboardId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Se Hj„lp om milj”n i MS-DOS Editor                       F1 (eller klicka p†
+							      h”gerknappen p†
+							      musen)
+ Avsluta Hj„lp                                            Esc
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Se Komma ig†ng                                           Skift+F1
+ Visa ?-menyn                                             Alt+?
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Flytta mark”ren till n„sta avsnitt i Hj„lp               Tabb
+ Flytta mark”ren till f”reg†ende avsnitt i Hj„lp          Skift+Tabb
+ Flytta mark”ren till n„sta avsnitt som b”rjar p†         bokstav
+ Flytta mark”ren till f”reg†ende avsnitt som b”rjar p†    Skift+bokstav
+ Se f”reg†ende avsnitt i Hj„lp (kan upprepas 20 g†nger)   Alt+F1 (eller
+							  klicka p† knappen
+							  <Bak†t>)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Se n„sta avsnitt i Hj„lp                                 Ctrl+F1
+ Se f”reg†ende avsnitt i Hj„lp                            Skift+Ctrl+F1
+.context QB_ER_OM
+.context QB_ER_OS
+.context MSG_OutNearMem
+:nSlut p† minnet
+Mer minne kr„vdes „n vad som „r tillg„ngligt. S† h„r r„ttar
+du till felet:
+  ş Avsluta och minska antalet DOS-buffertar (BUFFERS=)
+    i filen CONFIG.SYS. Starta sedan om datorn.
+  ş Avsluta och minska antalet minnesresidenta program.
+  ş Avsluta och minska antalet laddade drivrutiner.
+    Starta sedan om datorn.
+.context QB_ER_DF
+:nEnhetsfel
+MS-DOS har uppt„ckt ett fel p† skrivaren. F”rs„kra dig om
+att:
+  ş Skrivaren „r ansluten till LPT1-enheten p† din dator.
+  ş Skrivarens online-lampa fortfarande „r t„nd.
+  ş Str”mmen till skrivaren fortfarande „r p†.
+  ş Skrivarens kabel „r ansluten till skrivaren och
+    datorn.
+.context QB_ER_DTO
+:nTiden ute f”r enheten
+MS-DOS Editor tog inte emot information fr†n en enhet,
+t ex en skrivare, inom tidsperioden.
+Om du f”rs”ker skriva ut ett dokument, b”r du f”rs„kra dig
+om att skrivaren „r ansluten till LPT1-enheten.
+.context QB_ER_OP
+:nSlut p† papper
+Det „r antingen slut p† papper i skrivaren, eller ocks† „r
+den avst„ngd.
+.context QB_ER_IER
+:nInternt fel
+Ett internt fel intr„ffade i MS-DOS Editor som b”r
+rapporteras till Microsoft.
+.context QB_ER_FNF
+:nFil saknas
+I dialogrutan f”r kommandot ™ppna, angav du en fil som inte
+existerar. Kontrollera om du har stavat filnamnet riktigt,
+och att du valde r„tt enhet och katalog!
+.context QB_ER_IOE
+:nEnhetsfel (I/O)
+Du anv„nde kommandot Skriv ut p† Arkiv-menyn, och det blev
+n†got fel p† skrivaren. Kontrollera skrivaren!
+.context QB_ER_DFL
+:ndisken full
+Det finns inte tillr„ckligt med plats p† den angivna disken
+f”r att spara filen. Spara filen p† en annan disk eller
+ange en annan disk i listrutan Kataloger/Enheter.
+.context QB_ER_IFN
+.context QB_ER_BFN
+:nFelaktigt filnamn
+Filnamnet som du angav inneh†ller antingen f”r m†nga tecken,
+eller tecken som inte „r till†tna i filnamn.
+.context QB_ER_DNA
+:nEnhet ej tillg„nglig
+Enheten som du f”rs”kte att komma †t „r inte ansluten,
+eller finns inte. F”rs„kra dig om att enheten „r p† och
+ansluten till datorn.
+.context QB_ER_PRM
+:nBeh”righet saknas
+Ett f”rs”k gjordes att skriva p† en skrivskyddad disk eller
+fil.
+
+Om du vill undvika skrivskyddskonflikten, kan du anv„nda
+ett annat filnamn. Tag bort skrivskyddet eller anv„nd en
+annan diskett, om det sitter ett skrivskydd p† disketten.
+.context QB_ER_DNR
+:nDisken „r inte klar
+Diskettluckan „r ”ppen, eller s† finns det ingen diskett i
+enheten.
+.context QB_ER_DME
+:nFel p† disken
+Ett fysiskt fel har uppt„ckts p† disken, eller s† k„nner
+inte MS-DOS Editor igen det diskformat den f”rs”ker att
+anv„nda. Anv„nd en annan disk, eller avsluta och formatera
+om den aktuella disken!
+.context QB_ER_TMF
+:nF”r m†nga filer
+Du har f”r m†nga filer i rotkatalogen. Om du vill l”sa det
+h„r problemet m†ste du avsluta, skapa en underkatalog och
+sedan l„gga dukumentfilerna i den underkatalogen.
+.context QB_ER_PNF
+:nKan inte hitta s”kv„gen
+MS-DOS Editor kunde inte hitta den s”kv„g som du angav
+i dialogrutan f”r kommandona ™ppna, Spara och Spara som.
+Kontrollera att du skrivit in s”kv„gen korrekt.
+.context MSG_DocTooLarge
+:nDokumentet „r f”r stort
+MS-DOS Editor kan inte ladda eller kopiera en del av
+ett dokument som ”verstiger 32 700 rader.
+
+Anv„nd en annan redigerare till att dela upp dokumentet i
+flera mindre filer. Om det h„r felet intr„ffar n„r du
+anv„nder kommandot Kopiera, kan du du f”rs”ka att kopiera
+och klistra in mindre textdelar.
+.context MSG_NotBlock
+:nOperationen kr„ver en disk
+Du f”rs”ker att ladda fr†n eller spara p† en icke-diskenhet,
+som t ex en skrivare eller ett tangentbord.
+.context MSG_NoSearchString
+:nIngen s”kstr„ng
+Textrutan S”k efter var tom n„r du exekverade ett av
+kommandona S”k eller Ers„tt. V„lj kommandot igen, och skriv
+in en textstr„ng innan du v„ljer <OK>!
+.context MSG_SwitchDisks
+:nS„tt in disketten
+Du har refererat till en dikettenhet som A: n„r den heter
+B:, eller B: n„r den heter A:.
+
+F”rs„kra dig om att filen du vill att det h„r kommandot
+ska operera p† „r p† en diskett i diskettenheten! V„lj
+sedan <OK>. MS-DOS Editor visar ett nytt enhetsnamn †t
+dig.
+.context MSG_MatchNotFound
+:nStr„ngen ej funnen
+MS-DOS Editor kunde inte hitta den angivna
+textstr„ngen.
+
+Mark”ren „r kvar p† den plats d„r du startade s”kningen.
+.context MSG_ChangeComplete
+:nErs„ttning klar
+S”kning och ers„ttning „r klar. Mark”ren „r †ter p† den
+plats d„r s”kningen startade.
+.context MSG_CantSetTabs
+:nKan inte st„lla in tabbl„gen
+Om du har en fil ”ppen som inneh†ller ett tidigare inst„llt
+tabbl„ge kan det inte „ndras med alternativet Tabbl„gen i
+kommandot Sk„rm. Spara filen, och anv„nd kommandot Nytt till
+att rensa redigeringsf”nstret i MS-DOS Editor. Anv„nd
+kommandot Sk„rm till att st„lla in tabbl„gen, och ”ppna
+filen igen!
+.context MSG_NotSavedAll
+.context MSG_NotSaved
+:nSpara laddad fil?
+Ditt aktuella dokument har antingen aldrig sparats eller
+har inte sparats sedan det sist „ndrades. G”r n†got av
+f”ljande:
+  ş V„lj <Ja> om du vill spara dokumentet, inklusive
+    „ndringar. Om dokumentet inte har n†got namn, kommer du
+    att f† en fr†ga om vad filen ska heta.
+  ş V„lj <Nej> om du vill bortse fr†n „ndringarna. Om
+    dokumentet „r nytt och aldrig sparats, kommer <Nej> att
+    radera hela dokumentet.
+  ş V„lj <Avbryt> om du vill avbryta kommandot och
+    †terv„nda till dokumentet.
+.context QB_ER_PAE
+:ntkomstfel f”r s”kv„g/fil
+F”rs„kra dig om att filangivelsen du skrev in i textrutan
+har r„tt format. Alla filnamn kan inneh†lla ett enhetsnamn
+och en fullst„ndig eller partiell s”kv„g.
+
+Det h„r felet kan ocks† intr„ffa om du f”rs”ker spara en fil
+som skulle byta ut en existerande skrivskyddad fil.
+.context MSG_MustSpecifyName
+:nAnge namn
+Du valde <OK> i en dialogruta n„r textrutan var tom. Rensa
+den h„r hj„lpdialogrutan och skriv in en filangivelse eller
+textstr„ng i textrutan.
+.context MSG_Overwrite
+.context h.pg$
+:nSkriva ”ver existerande fil?
+V„lj <Ja> bara om du „r s„ker p† att du om du skriver ”ver
+inneh†llet i filen p† disken med filinneh†llet i minnet
+inte kommer att f”rlora v„rdefull information. Annars g”r
+du s† h„r:
+  ş V„lj <Nej> om du vill se dialogrutan igen och skriva in
+    ett nytt, unikt filnamn att spara filen i minnet p†.
+  ş V„lj <Avbryt> om du vill avbryta kommandot Spara som
+    eller Avsluta, och †terv„nda till dokumentet.

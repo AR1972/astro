@@ -1,0 +1,32 @@
+
+SUMMARY  Perform MSDOS absolute disk read/write
+
+#include <tools.h>
+
+cProc	int25,<PUBLIC>,<SI,DI>
+parmB	drive
+parmD	dst
+parmW	count
+parmW	sector
+
+cProc	int26,<PUBLIC>,<si,di>
+parmB	drive
+parmD	src
+parmW	count
+parmW	sector
+
+DESCRIPTION
+
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+
+

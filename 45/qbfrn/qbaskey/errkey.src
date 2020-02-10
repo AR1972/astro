@@ -1,0 +1,145 @@
+.comment ******************************************************************
+.comment *  Error Trapping Family - QBasic                                *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/22/90 stevesau                                              *
+.comment *  Incorporated final edit/review comments                       *
+.comment ******************************************************************
+.comment *  6/11/90 stevesau                                              *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/9/90 stevesau                                               *
+.comment *  Deleted ERR.                                                  *
+.comment *  Reinserted RESUME NEXT.                                       *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  4/20/90 stevesau                                              *
+.comment *  Added action lines. 					  *
+.comment *  Deleted LOCAL, RESUME NEXT from ON ERROR and RESUME syntax.   *
+.comment ******************************************************************
+.comment *  4/17/90 bethpr                                                *
+.comment *  Deleted Local Keyword node					  *
+.comment ******************************************************************
+.context @ERL
+.context @ERR
+.context ERL
+.context ERR
+:nFonctions ERR, ERL 
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ERR retourne le code d'erreur pour l'erreur la plus r‚cente.
+ERL retourne le num‚ro de ligne o— l'erreur s'est produite,
+    ou le num‚ro de la ligne la plus proche pr‚c‚dant l'endroit
+    o— l'erreur s'est produite.
+
+\bERR\p
+\bERL\p
+
+    ş ERL ne retourne pas d'‚tiquette de ligne. Si il n'y a pas de num‚ro
+      de ligne dans le programme, ERL retourne 0.
+
+\i\p\aExemple\v@errhand.ex\v\i\p
+
+Voir aussi  \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+            \i\p\aCodes d'erreur d'ex‚cution\v@rtect\v\i\p
+.context ERROR
+.context @ERROR
+:nInstruction ERROR 
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Simule l'apparition d'une erreur BASIC ou d'une erreur d‚finie
+par l'utilisateur.
+
+\bERROR expression%\p
+
+    ş \bexpression%\p    Code d'une erreur BASIC ou d‚finie par
+                     l'utilisateur, de valeur comprise entre 1 et 255.
+                     Pour d‚finir votre propre code d'erreur,
+                     utilisez une valeur non list‚e dans
+                     la liste des \i\p\aCodes d'erreur d'ex‚cution\v@rtect\v\i\p.
+
+\i\p\aExemple\v@errhand.ex\v\i\p
+
+Voir aussi    \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERR, ERL\v@ERR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context .onerr
+.context @onerr
+:nInstruction ON ERROR
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Active le traitement d'erreurs et, quand une erreur d'ex‚cution se
+produit, indique au programme de brancher vers une proc‚dure de traitement
+d'erreurs ou de reprendre l'ex‚cution.
+
+\bON ERROR {GOTO ligne | RESUME NEXT}\p
+
+    ş \bGOTO ligne\p     Branche … la premiŠre ligne de la routine de
+                     traitement d'erreurs, sp‚cifi‚e par une ‚tiquette
+                     ou un num‚ro de ligne. Pour d‚sactiver le traitement
+                     d'erreurs, sp‚cifiez GOTO 0.
+    ş \bRESUME NEXT\p    Poursuit l'ex‚cution … l'instruction suivant
+                     celle qui a caus‚ l'erreur d'ex‚cution.
+                     La fonction ERR est utilis‚e pour obtenir
+                     le code de l'erreur d'ex‚cution.
+
+    ş Si ON ERROR n'est pas utilis‚, toute erreur d'ex‚cution
+      termine le programme.
+
+\i\p\aExemple\v@errhand.ex\v\i\p
+
+Voir aussi    \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERR, ERL\v@ERR\v\i\p    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aGOTO\v@GOTO\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context @RESUME
+.context RESUME
+:nInstruction RESUME
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Poursuit l'ex‚cution du programme aprŠs l'appel d'une routine
+de traitement d'erreurs.
+
+\bRESUME [{ligne | NEXT}]\p
+
+    ş \bligne\p    Etiquette ou num‚ro de ligne o— l'ex‚cution se
+               poursuit. Si ligne est ‚gal … 0 ou est omis,
+               l'ex‚cution reprend … l'instruction qui a caus‚
+               l'erreur.
+    ş \bNEXT\p     Poursuit l'ex‚cution … l'instruction suivant
+               celle qui a caus‚ l'erreur.
+
+\i\p\aExemple\v@errhand.ex\v\i\p
+
+Voir aussi    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p
+.context errhand.ex
+.context @errhand.ex
+:nExemple de traitement d'erreurs
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Illustre ERDEV, ERDEV$, ERL, ERR, ERROR, ON ERROR, et RESUME.
+
+   ON ERROR GOTO Gestion_err
+10 CHDIR "a:\\"               'Cause "Disque non prˆt" (ERR 71)
+                              's'il n'y a pas de disque dans l'unit‚ A:.
+20 y% = 0
+30 x% = 5 / y%                'ERR 11 "Division par z‚ro."
+40 PRINT "x% ="; x%
+50 ERROR 57                   'ERR 57 "Erreur d'E/S du p‚riph‚rique."
+
+Gestion_err:
+  PRINT
+  PRINT "Erreur "; ERR; " … la ligne "; ERL
+  SELECT CASE ERR
+    CASE 71
+      PRINT "P‚riph‚rique "; ERDEV$; " code d'erreur = "; ERDEV
+      RESUME NEXT
+    CASE 11
+      INPUT "Par quelle valeur voulez-vous diviser ?"; y%
+      RESUME                  'Recommencer ligne 30 avec nouveau y%.
+    CASE ELSE
+      PRINT "Erreur non pr‚vue, programme termin‚."
+      END
+  END SELECT
+

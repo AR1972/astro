@@ -1,0 +1,140 @@
+.comment ******************************************************************
+.comment *  Error Trapping Family - QBasic                                *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for Basic language and products.*
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/22/90 stevesau                                              *
+.comment *  Incorporated final edit/review comments                       *
+.comment ******************************************************************
+.comment *  6/11/90 stevesau                                              *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/9/90 stevesau                                               *
+.comment *  Deleted ERR.                                                  *
+.comment *  Reinserted RESUME NEXT.                                       *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  4/20/90 stevesau                                              *
+.comment *  Added action lines. 					  *
+.comment *  Deleted LOCAL, RESUME NEXT from ON ERROR and RESUME syntax.   *
+.comment ******************************************************************
+.comment *  4/17/90 bethpr                                                *
+.comment *  Deleted Local Keyword node					  *
+.comment ******************************************************************
+.context @ERL
+.context @ERR
+.context ERL
+.context ERR
+:nFun‡oes ERR, ERL
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ERR retorna o c¢digo de erro de tempo de execu‡ao para a £ltima ocorrˆncia
+    de um erro.
+ERL retorna o n£mero da linha em que o erro foi detectado, ou o n£mero da
+    linha mais pr¢xima antes da linha onde o erro foi detectado.
+
+\bERR\p
+\bERL\p
+
+    ş ERL nao retorna nomes das linhas. Se nao houverem os n£meros das linhas
+      no programa, ERL retorna 0.
+
+\i\p\aExemplo\v@errhand.ex\v\i\p
+
+See Also    \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+            \i\p\aC¢digos de Erro de Execu‡ao\v@rtect\v\i\p
+
+.context ERROR
+.context @ERROR
+:nInstru‡ao ERROR
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Simula uma ocorrˆncia de um erro Basic ou um erro definido pelo usu rio.
+
+\bERROR expressao%\p
+
+    ş \bexpressao%\p     O c¢digo de erro de um erro Basic ou um erro definido
+                     pelo usu rio; um valor na faixa de 1 … 255. Para definir
+                     seu pr¢prio erro, use um valor que nao esteja listado na
+                     tabela Basic \i\p\aC¢digos de Erro de Execu‡ao\v@rtect\v\i\p.
+
+\i\p\aExemplo\v@errhand.ex\v\i\p
+
+Consulte tamb‚m  \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p   \i\p\aERR, ERL\v@ERR\v\i\p   \i\p\aON ERROR\v@onerr\v\i\p
+                 \i\p\aRESUME\v@RESUME\v\i\p
+.context .onerr
+.context @onerr
+:nInstru‡ao ON ERROR
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Permite o tratamento de erro e, quando ocorre um erro de execu‡ao, direciona o
+programa para uma rotina de tratamento de erro ou continua a execu‡ao.
+
+\bON ERROR {GOTO linha | RESUME NEXT}\p
+
+    ş \bGOTO linha\p     Desvia para a primeira linha da rotina de tratamento
+                     de erro, especificada por um nome ou n£mero de linha.
+                     Para desativar o tratamento de erro, especifique
+                     GOTO 0.
+    ş \bRESUME NEXT\p    Reinicia a execu‡ao com a instru‡ao seguinte …
+                     instru‡ao que causou o erro de execu‡ao. Use a
+                     fun‡ao ERR para obter o c¢digo do erro.
+
+    ş Quando ON ERROR nao ‚ usado, qualquer erro de execu‡ao suspende o
+      programa.
+
+\i\p\aExemplo\v@errhand.ex\v\i\p
+
+Consulte tamb‚m  \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p   \i\p\aERR, ERL\v@ERR\v\i\p   \i\p\aERROR\v@ERROR\v\i\p   \i\p\aGOTO\v@GOTO\v\i\p
+                 \i\p\aRESUME\v@RESUME\v\i\p
+.context @RESUME
+.context RESUME
+:nInstru‡ao RESUME
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Continua a execu‡ao do programa ap¢s um procedimento de recupera‡ao de erro.
+
+\bRESUME [{linha | NEXT}]\p
+
+    ş \blinha\p   O nome ou o n£mero de linha onde a execu‡ao reinicia. Se
+              a linha for 0 ou for omitida, a execu‡ao reinicia na
+              instru‡ao que tenha causado um erro.
+    ş \bNEXT\p    A execu‡ao reinicia na instru‡ao seguinte … instru‡ao
+              que causou o erro.
+
+\i\p\aExemplo\v@errhand.ex\v\i\p
+
+Consulte tamb‚m    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p
+.context errhand.ex
+.context @errhand.ex
+:nExemplo de Rotina de Tratamento
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+'Mostra como usar ERDEV, ERDEV$, ERL, ERR, ERROR, ON ERROR e RESUME.
+   ON ERROR GOTO Rotina
+10 CHDIR "a:\\"                'Causa ERR 71 "Disco nao est  pronto"
+                              'se nao houver disco na Unidade A.
+20 y% = 0
+30 x% = 5 / y%                'ERR 11 "Divisao por zero."
+40 PRINT "x% ="; x%
+50 ERROR 57                   'ERR 57 "Erro de dispositivo de E/S."
+
+Rotina:
+  PRINT
+  PRINT "Erro  "; ERR; " na linha "; ERL
+  SELECT CASE ERR
+    CASE 71
+      PRINT "Usando o dispositivo "; ERDEV$; " c¢digo de erro = "; ERDEV
+      RESUME NEXT
+    CASE 11
+      INPUT "Qual valor vocˆ deseja dividir por"; y%
+      RESUME                  'Repete linha 30 com novo valor de y%.
+    CASE ELSE
+      PRINT "Erro inesperado, finalizando o programa."
+      END
+  END SELECT

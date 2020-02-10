@@ -1,0 +1,755 @@
+.comment ******************************************************************
+.comment *  Device I/O Family - QBasic                                    *
+.comment ******************************************************************
+.comment * 01/09/91 Cleaned up comments.
+.comment *  -- JeffWe
+.comment ******************************************************************
+.context BEEP
+.context @BEEP
+:nBEEP Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Generates a beep sound from your computer's speaker.
+
+\bBEEP\p
+.context CLS
+.context @CLS
+:nCLS Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Clears the screen.
+
+\bCLS [{0 | 1 | 2}]\p
+
+    CLS      Clears either the text or graphics viewport. If a graphics
+             viewport has been set (using VIEW), clears only the graphics
+             viewport. Otherwise, clears the text viewport or entire screen.
+    CLS 0    Clears the screen of all text and graphics.
+    CLS 1    Clears the graphics viewport or the entire screen if no graphics
+             viewport has been set.
+    CLS 2    Clears the text viewport.
+
+See Also    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+.context INKEY$
+.context @INKEY$
+:nINKEY$ Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Reads a character from the keyboard.
+
+\bINKEY$\p
+
+    ş INKEY$ returns a null string if there is no character to return.
+    ş For standard keys, INKEY$ returns a 1-byte string containing the
+      character read.
+    ş For extended keys, INKEY$ returns a 2-byte string made up of the null
+      character (ASCII 0) and the keyboard scan code.
+
+Example:
+    PRINT "Press Esc to exit..."
+    DO
+    LOOP UNTIL INKEY$ = CHR$(27)    '27 is the ASCII code for Esc.
+
+See Also    \i\p\aKeyboard Scan Codes\v@kbsct\v\i\p
+.context INP
+.context @INP
+.context OUT
+.context @OUT
+:nINP Function, OUT Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+INP returns a byte read from a hardware I/O port.
+OUT sends a byte to a hardware I/O port.
+
+\bINP(port%)\p
+\bOUT port%, data%\p
+
+    ş \bport%\p     A number in the range 0 through 65,535 that identifies
+                the port.
+    ş \bdata%\p     A numeric expression in the range 0 through 255 to send
+                to the port.
+
+Example:
+    x% = INP(&H3FC)          'Read COM1 Modem Control Register.
+    OUT &H3FC, (x% XOR 1)    'Change Data Terminal Ready bit.
+
+See Also    \i\p\aWAIT\v@WAIT\v\i\p
+.context INPUT
+.context @INPUT
+:nINPUT, LINE INPUT Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+INPUT reads input from the keyboard or a file. LINE INPUT reads a line of
+up to 255 characters from the keyboard or a file.
+
+\bINPUT [;] ["prompt"{; | ,}] variablelist\p
+\bLINE INPUT [;] ["prompt";] variable$\p
+\bINPUT #filenumber%, variablelist\p
+\bLINE INPUT #filenumber%, variable$\p
+
+    ş \bprompt\p          An optional literal string that is displayed before
+                      the user enters data. A semicolon after prompt appends
+                      a question mark to the prompt string.
+    ş \bvariablelist\p    One or more variables, separated by commas, in which
+                      data entered from the keyboard or read from a file is
+                      stored. Variable names can consist of up to 40
+                      characters and must begin with a letter. Valid
+                      characters are A-Z, 0-9, and period (.).
+    ş \bvariable$\p       Holds a line of characters entered from the keyboard
+                      or read from a file.
+    ş \bfilenumber%\p     The number of an open file.
+
+    ş INPUT uses a comma as a separator between entries.
+      LINE INPUT reads all characters up to a carriage return.
+    ş For keyboard input, a semicolon immediately after INPUT keeps the
+      cursor on the same line after the user presses the Enter key.
+
+Example:
+    CLS
+    OPEN "LIST" FOR OUTPUT AS #1
+    DO
+        INPUT "   NAME:       ", Name$  'Read entries from the keyboard.
+        INPUT "   AGE:        ", Age$
+        WRITE #1, Name$, Age$
+        INPUT "Add another entry"; R$
+    LOOP WHILE UCASE$(R$) = "Y"
+    CLOSE #1
+    'Echo the file back.
+    OPEN "LIST" FOR INPUT AS #1
+    CLS
+    PRINT "Entries in file:": PRINT
+    DO WHILE NOT EOF(1)
+        LINE INPUT #1, REC$  'Read entries from the file.
+        PRINT REC$           'Print the entries on the screen.
+    LOOP
+    CLOSE #1
+    KILL "LIST"
+
+See Also    \i\p\aINKEY$\v@INKEY$\v\i\p    \i\p\aINPUT$\v@INPUT$\v\i\p    \i\p\aOPEN Statement File Modes\v@APPEND\v\i\p
+.context LIST
+.context @LIST
+.context KEY
+.context @KEY
+:nKEY Statement (Assignment)
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Assigns string values to function keys and, optionally, displays key values.
+
+\bKEY key%, stringexpression$\p
+\bKEY LIST\p
+\bKEY ON\p
+\bKEY OFF\p
+
+    ş \bkey%\p                 The number of a function key. Use 1 through 10 for
+                           function keys F1 through F10. Use 30 and 31 for
+                           function keys F11 and F12 on extended keyboards.
+    ş \bstringexpression$\p    A string of up to 15 characters that is returned
+                           when the function key is pressed.
+    ş \bLIST\p                 Displays the assignments for each key.
+    ş \bON\p                   Turns on the function-key display line.
+    ş \bOFF\p                  Turns off the function-key display line.
+
+Example:
+    KEY 4, "MENU" + CHR$ (13)
+    KEY LIST
+    KEY 4, ""
+    KEY LIST
+
+See Also    \i\p\aKEY, ON KEY (Event Trapping)\v@ketv\v\i\p
+.context KILL
+.context @KILL
+:nKILL Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Deletes files from disk.
+
+\bKILL filespec$\p
+
+    ş \bfilespec$\p    Identifies the file or files to delete. It may include
+                   a path and the DOS wildcard characters ? and *.
+
+Example:
+    INPUT "File to delete: "; f$
+    KILL f$
+
+See Also    \i\p\aFILES\v@FILES\v\i\p
+.context LOCATE
+.context @LOCATE
+.context CSRLIN
+.context @CSRLIN
+.context POS
+.context @POS
+:nLOCATE Statement, CSRLIN, POS Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LOCATE moves the cursor to a specified position on the screen.
+CSRLIN returns the current row position of the cursor.
+POS returns the current column position of the cursor.
+
+\bLOCATE  [row%] [,[column%] [,[cursor%] [,start% [,stop%]]]]\p
+\bCSRLIN\p
+\bPOS(expression)\p
+
+    ş \brow%\p and \bcolumn%\p    The number of the row and column to which the
+                          cursor moves.
+    ş \bcursor%\p             Specifies whether the cursor is visible:
+                            0 = invisible, 1 = visible
+    ş \bstart%\p and \bstop%\p    Integer expressions in the range 0 through 31
+                          that specify the first and last cursor scan lines.
+                          You can change the cursor size by changing the
+                          cursor scan lines.
+    ş \bexpression\b          Any expression.
+
+Example:
+    CLS
+    LOCATE 5, 5
+    MyRow% = CSRLIN
+    MyCol% = POS(0)
+    PRINT "Position 1 (Press any key)"
+    DO
+    LOOP WHILE INKEY$ = ""
+    LOCATE (MyRow% + 2), (MyCol% + 2)
+    PRINT "Position 2"
+.context LPOS
+.context @LPOS
+:nLPOS Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns the number of characters sent to a printer since the last carriage
+return was sent.
+
+\bLPOS(n%)\p
+
+    ş \bn%\p    Indicates one of the printer ports:
+              0 = LPT1, 1 = LPT1, 2 = LPT2, 3 = LPT3
+Example:
+    'This example requires a printer.
+    LPRINT
+    FOR i% = 1 TO 20
+        LPRINT i%;
+        IF LPOS(1) >= 10 THEN LPRINT     'Begin a new line.
+    NEXT i%
+.context .opcom
+.context @opcom
+:nOPEN COM Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Opens and initializes a communications channel for input or output (I/O).
+The OPEN COM statement must be executed before a device can be used for
+communication using an RS232 interface.
+
+\bOPEN "COMn: optlist1 optlist2" [FOR mode] AS [#]filenum% [LEN=reclen%]\p
+
+    ş \bn\p           The communications port to open (1 = COM1, 2 = COM2).
+    ş \boptlist1\p    The most-often-used communications parameters:
+                    \b[baud] [,[parity] [,[data] [,[stop]]]]\p
+                  baud is the baud rate of the device to be opened:
+                    75, 110, 150, 300, 600, 1200, 2400, 4800, 9600
+                  parity is the method of parity checking:
+                    N (none)     E (even)    O (odd)
+                    S (space)    M (mark)    PE (enable error checking)
+                  data is the number of data bits per byte:
+                    5, 6, 7, 8
+                  stop is the number of stop bits:
+                    1, 1.5, 2
+                  Defaults: 300 baud, even parity, 7 data bits, 1 stop bit.
+    ş \boptlist2\p    A list of less-often-used parameters, separated by commas:
+
+                  Option    Description
+                  ÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                  ASC       Opens the device in ASCII mode.
+                  BIN       Opens the device in binary mode.
+                  CD[m]     Sets the timeout period (in milliseconds) on the
+                            Data Carrier Detect (DCD) line.
+                  CS[m]     Sets the timeout period (in milliseconds) on the
+                            Clear to Send (CTS) line.
+                  DS[m]     Sets the timeout period (in milliseconds) on the
+                            Data Set Ready (DS) line.
+                  LF        Sends a line-feed character after a carriage
+                            return.
+                  OP[m]     Specifies how long (in milliseconds) OPEN COM
+                            waits for all communications lines to become open.
+                  RB[n]     Sets the size (in bytes) of the receive buffer.
+                  RS        Suppresses detection of Request to Send (RTS).
+                  TB[n]     Sets the size (in bytes) of the transmit buffer.
+
+    ş \bmode\p        INPUT, OUTPUT, or RANDOM (the default).
+                  See \i\p\aOPEN Statement File Modes\v@APPEND\v\i\p.
+    ş \bfilenum%\p    A number in the range 1 through 255 that identifies the
+                  communications channel as long as it is open.
+    ş \breclen%\p     Random-access-mode buffer size (default is 128 bytes).
+
+Example:
+    'Use this example for trouble shooting serial communications problems.
+    'Slow baud, hardware handshaking is ignored and buffers are enlarged.
+    OPEN "COM1:300,N,8,1,CD0,CS0,DS0,OP0,RS,TB2048,RB2048" FOR RANDOM AS #1
+
+See Also    \i\p\aOPEN\v@OPEN\v\i\p
+.context .penf
+.context @penf
+:nPEN Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns the status of the light pen.
+
+\bPEN(n%)\p
+
+    ş \bn%\p    Specifies the information to be returned about light pen status:
+
+            n%    Returns
+            ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+            0     Whether pen was used since last call (-1 if yes, 0 if no)
+            1     The x screen coordinate of the last pen press
+            2     The y screen coordinate of the last pen press
+            3     The current pen switch status (-1 if down, 0 if up)
+            4     The x screen coordinate where the pen last left the screen
+            5     The y screen coordinate where the pen last left the screen
+            6     The character row of the last pen press
+            7     The character column of the last pen press
+            8     The character row where the pen last left the screen
+            9     The character column where the pen last left the screen
+
+Example:
+    DO
+      P = PEN(3)
+      LOCATE 1, 1: PRINT "Pen is ";
+      IF P THEN PRINT "down" ELSE PRINT "up  "
+      PRINT "X ="; PEN(4), " Y ="; PEN(5); "  "
+    LOOP
+
+See Also    \i\p\aPEN, ON PEN Statements\v@PEN\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aScreen Modes\v@screen.modes\v\i\p
+.context PLAY
+.context @PLAY
+:nPLAY Statement (Music)
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Plays musical notes.
+
+\bPLAY commandstring$\p
+
+    ş \bcommandstring$\p    A string expression that contains one or more of
+                        the following PLAY commands:
+
+      Octave and tone commands:
+        O\boctave\p    Sets the current octave (0 - 6).
+        < or >     Moves up or down one octave.
+        A - G      Plays the specified note in the current octave.
+        N\bnote\p      Plays a specified note (0 - 84) in the seven-octave
+                   range (0 is a rest).
+
+      Duration and tempo commands:
+        L\blength\p    Sets the length of each note (1 - 64). L1 is whole note,
+                   L2 is a half note, etc.
+        ML         Sets music legato.
+        MN         Sets music normal.
+        MS         Sets music staccato.
+        P\bpause\p     Specifies a pause (1 - 64). P1 is a whole-note pause,
+                   P2 is a half-note pause, etc.
+        T\btempo\p     Sets the tempo in quarter notes per minute (32 - 255).
+
+      Mode commands:
+        MF          Plays music in foreground.
+        MB          Plays music in background.
+
+      Suffix commands:
+        # or +      Turns preceding note into a sharp.
+        -           Turns preceding note into a flat.
+        .           Plays the preceding note 3/2 as long as specified.
+
+    ş To execute a PLAY command substring from a PLAY command string,
+      use the "X" command:
+
+      PLAY "X"+ VARPTR$(commandstring$)
+
+Example:
+    'Play scale in 7 different octaves
+    scale$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(scale$)
+    NEXT i%
+
+See Also    \i\p\aBEEP\v@BEEP\v\i\p     \i\p\aPLAY Function\v@PLAYF\v\i\p    \i\p\aPLAY, ON PLAY (Event Trapping)\v@playev\v\i\p
+            \i\p\aSOUND\v@SOUND\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p    \i\p\aDifferences from BASICA\v@basica.diffs\v\i\p
+.context PMAP
+.context @PMAP
+:nPMAP Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns the window coordinate equivalent to a viewport coordinate, as defined
+by the WINDOW statement, or vice versa.
+
+\bPMAP (startcoordinate#, n%)\p
+
+    ş \bstartcoordinate#\p    A window or viewport coordinate.
+    ş \bn%\p                  A value indicating which coordinate is returned:
+
+                          startcoordinate#        n%   Returns
+                          ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ   ÍÍ   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                          Window x coordinate     0    Viewport x coordinate
+                          Window y coordinate     1    Viewport y coordinate
+                          Viewport x coordinate   2    Window x coordinate
+                          Viewport y coordinate   3    Window y coordinate
+
+Example:
+    'This example requires a graphics adapter that supports screen mode 1.
+    SCREEN 1
+    WINDOW SCREEN (0, 0)-(100, 100)
+    PRINT "Logical x=50, physical x="; PMAP(50, 0)
+    PRINT "Logical y=50, physical y="; PMAP(50, 1)
+
+See Also    \i\p\aPOINT\v@POINT\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+.context POINT
+.context @POINT
+:nPOINT Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns the current graphics cursor coordinates or the color attribute of a
+specified pixel.
+
+\bPOINT {(n%) | (x%,y%)}\p
+
+    ş \b(n%)\p       Indicates the type of coordinate to return:
+
+                 n%    Returns
+                 ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                 0     The current viewport x coordinate
+                 1     The current viewport y coordinate
+                 2     The current window x coordinate
+                 3     The current window y coordinate
+
+    ş \b(x%,y%)\p    The coordinates of the pixel that POINT checks for color.
+                     If the coordinates are outside the current viewport,
+                     POINT returns -1.
+
+Example:
+    'This example requires a color graphics adapter.
+    SCREEN 1
+    LINE (0, 0)-(100, 100), 2
+    LOCATE 14, 1
+    FOR y% = 1 TO 10
+        FOR x% = 1 TO 10
+            PRINT POINT(x%, y%);
+        NEXT x%
+        PRINT
+    NEXT y%
+
+See Also    \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aPMAP\v@PMAP\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aColor Attributes and Values\v@color.table\v\i\p
+.context PRESET
+.context @PRESET
+.context PSET
+.context @PSET
+:nPRESET, PSET Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Draw a specified point on the screen.
+
+\bPRESET [STEP] (x!,y!) [,color%]\p
+\bPSET [STEP] (x!,y!) [,color%]\p
+
+    ş \bSTEP\p       Specifies that the x! and y! are expressed relative
+                 to the current graphics cursor location.
+    ş \b(x!,y!)\p    The screen coordinates of the pixel to be set.
+    ş \bcolor%\p     A color attribute that sets the pixel color. If color% is
+                 omitted, PRESET uses the current background and PSET uses
+                 the current foreground color.
+
+    ş Available color attributes depend on your graphics adapter and screen
+      mode. Coordinate values depend on the graphics adapter, screen mode,
+      and most recent VIEW and WINDOW statements.
+
+Example:
+    'This example requires a color graphics adapter.
+    SCREEN 1
+    FOR i% = 0 TO 320
+        PSET (i%, 100)
+        FOR delay% = 1 TO 100: NEXT delay%
+        PRESET (i%, 100)
+    NEXT i%
+
+See Also    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aColor Attributes and Values\v@color.table\v\i\p    \i\p\aScreen Modes\v@screen.modes\v\i\p
+.context PRINT
+.context @PRINT
+.context LPRINT
+.context @LPRINT
+:nPRINT, LPRINT Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PRINT writes data to the screen or to a file.
+LPRINT prints data on the printer LPT1.
+
+\bPRINT [#filenumber%,] [expressionlist] [{; | ,}]\p
+\bLPRINT [expressionlist] [{; | ,}]\p
+
+    ş \bfilenumber%\p       The number of an open file. If you don't specify a
+                        file number, PRINT writes to the screen.
+    ş \bexpressionlist\p    A list of one or more numeric or string expressions
+                        to print.
+    ş \b{; | ,}\p           Determines where the next output begins:
+                          ; means print immediately after the last value.
+                          , means print at the start of the next print zone.
+                            Print zones are 14 characters wide.
+
+Example:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT #1, USING "##.###  "; 12.12345
+    CLOSE
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT a$
+    LPRINT "This is a line"; 1
+    LPRINT "This is a line",
+    LPRINT 2
+
+See Also    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p    \i\p\aWRITE\v@WRITE\v\i\p
+.context .zpu
+.context @zpu
+.context .lprintu
+.context @lprintu
+:nPRINT USING, LPRINT USING Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PRINT USING writes formatted output to the screen or to a file.
+LPRINT USING prints formatted output on the printer LPT1.
+
+\bPRINT [#filenumber%,] USING formatstring$; expressionlist [{; | ,}]\p
+\bLPRINT USING formatstring$; expressionlist [{; | ,}]\p
+
+    ş \bfilenumber%\p       The number of an open sequential file.
+    ş \bformatstring$;\p    A string expression containing one or more
+                        \i\p\aformat specifiers\v@forspec\v\i\p.
+    ş \bexpressionlist\p    A list of one or more numeric or string expressions
+                        to print, separated by commas, semicolons, spaces,
+                        or tabs.
+    ş \b{; | ,}\p           Determines where the next output begins:
+                          ; means print immediately after the last value.
+                          , means print at the start of the next print zone.
+                            Print zones are 14 characters wide.
+Example:
+    a = 123.4567
+    PRINT USING "###.##"; a
+    LPRINT USING "+###.####"; a
+    a$ = "ABCDEFG"
+    PRINT USING "!"; a$
+    LPRINT USING "\\ \\"; a$
+
+See Also    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p
+.context @forspec
+:nFormat Specifiers
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                     \bCharacters that format a numeric expression\p
+ \b#\p    Digit position.                    º \b-\p     Placed after digit, prints
+ \b.\p    Decimal point position.            º       trailing sign for negative
+ \b,\p    Placed left of the decimal point,  º       numbers.
+      prints a comma every third digit.  º \b$$\p    Prints leading $.
+ \b+\p    Position of number sign.           º \b**\p    Fills leading spaces with *.
+\b^^^^\p  Prints in exponential format.      º \b**$\p   Combines ** and $$.
+
+                     \bCharacters used to format a string expression\p
+ \b&\p    Prints entire string.              º \b\\ \\\p   Prints first n characters,
+ \b!\p    Prints only the first character    º       where n is the number of
+      of the string.                     º       blanks between slashes + 2.
+
+                     \bCharacters used to print literal characters\p
+ \b_\p    Prints the following formatting    º       Any character not in this
+      character as a literal.            º       table is printed as a
+                                         º       literal.
+.context SOUND
+.context @SOUND
+:nSOUND Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Generates a sound through your computer's speaker.
+
+\bSOUND frequency, duration\p
+
+    ş \bfrequency\p    The frequency of the sound in hertz; a value in the range
+                   37 through 32,767.
+    ş \bduration\p     The number of system clock ticks the sound lasts; a value
+                   in the range 0 through 65,535. There are 18.2 clock ticks
+                   per second.
+
+Example:
+    FOR i% = 440 TO 1000 STEP 5
+    SOUND i%, i% / 1000
+    NEXT i%
+
+See Also    \i\p\aPLAY\v@PLAY\v\i\p
+.context SPC
+.context @SPC
+:nSPC Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Skips a specified number of spaces in a PRINT or LPRINT statement.
+
+\bSPC(n%)\p
+
+    ş \bn%\p    The number of spaces to skip; a value in the range
+            0 through 32,767.
+
+Example:
+    PRINT "Text1"; SPC(10); "Text2"
+
+See Also    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p
+            \i\p\aSPACE$\v@SPACE$\v\i\p           \i\p\aTAB\v@TAB\v\i\p
+.context STICK
+.context @STICK
+:nSTICK Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns the coordinates of a joystick.
+
+\bSTICK(n%)\p
+
+    ş \bn%\p    Indicates the coordinate returned:
+
+            n%    Returns
+            ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+            0     x coordinate of joystick A
+            1     y coordinate of joystick A
+            2     x coordinate of joystick B
+            3     y coordinate of joystick B
+
+    ş You must call STICK(0) before STICK(1), STICK (2), or STICK(3).
+      STICK(0) records the current coordinates.
+
+Example:
+    Temp% = STICK(0)
+    PRINT STICK(2), STICK(3)
+
+See Also    \i\p\aSTRIG Function\v@strigf\v\i\p    \i\p\aSTRIG, ON STRIG Statements\v@STRIG\v\i\p
+.context TAB
+.context @TAB
+:nTAB Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Moves the text cursor to a specified print position.
+
+\bTAB(column%)\p
+
+    ş \bcolumn%\p    The column number of the new print position.
+
+Example:
+    PRINT TAB(25); "Text"
+
+See Also    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p
+            \i\p\aSPC\v@SPC\v\i\p    \i\p\aSPACE$\v@SPACE$\v\i\p
+.context .vupri
+.context @vupri
+:nVIEW PRINT Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sets the boundaries of the screen text viewport.
+
+\bVIEW PRINT [toprow% TO bottomrow%]\p
+
+    ş \btoprow%\p       The number of the top row of the text viewport.
+    ş \bbottomrow%\p    The number of the bottom row of the text viewport.
+
+    ş If you omit the toprow% and bottomrow% arguments, VIEW PRINT sets the
+      entire screen as the text viewport.
+    ş Ranges for toprow% and bottomrow% depend on the screen mode.
+
+Example:
+    VIEW PRINT 10 TO 15
+    FOR i% = 1 TO 100      'Output will scroll.
+        PRINT i%
+    NEXT i%
+
+See Also    \i\p\aCLS\v@CLS\v\i\p    \i\p\aLOCATE\v@LOCATE\v\i\p    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p
+            \i\p\aScreen Modes\v@screen.modes\v\i\p
+.context WAIT
+.context @WAIT
+:nWAIT Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Suspends program execution until a specified bit pattern is input from an
+input port.
+
+\bWAIT portnumber%, AND-expression% [,XOR-expression%]\p
+
+    ş \bportnumber%\p        The number of the input port.
+    ş \bAND-expression%\p    An integer expression that WAIT combines with the
+                         bit pattern value using an AND operator. When the
+                         result is nonzero, WAIT stops monitoring the port.
+    ş \bXOR-expression%\p    Can be used to turn line bits on and off in the bit
+                         pattern before the AND operation is applied.
+
+Example:
+    'Reads the interrupt controller port address &H20.
+    'Press any key to continue.
+    WAIT &H20, 1
+
+See Also    \i\p\aINP, OUT\v@INP\v\i\p    \i\p\aBoolean Operators\v@AND\v\i\p
+.context WIDTH
+.context @WIDTH
+:nWIDTH Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Assign an output-line width to a device (such as a printer) or file, or
+change the number of screen-display columns and rows.
+
+\bWIDTH [columns%] [,rows%]\p
+\bWIDTH {#filenumber% | device$}, columns%\p
+\bWIDTH LPRINT columns%\p
+
+    ş \bcolumns%\p        The desired width in columns. Screen display width
+                      must be 40 or 80 columns.
+    ş \brows%\p           The desired screen-display height in rows. The value
+                      can be 25, 30, 43, 50, or 60, depending on your
+                      display adapter and screen mode.
+    ş \b#filenumber%\p    The number of an open file or device.
+    ş \bdevice$\p         The name of a device:
+                        SCRN:, COM1:, COM2:, LPT1:, LPT2:, LPT3:
+
+Example:
+    OPEN "LPT1:" FOR OUTPUT AS #1
+    WIDTH #1, 132
+
+See Also    \i\p\aPRINT, LPRINT\v@LPRINT\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p
+.context WINDOW
+.context @WINDOW
+:nWINDOW Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Defines logical dimensions for the current graphics viewport. Use the WINDOW
+statement to define your own viewport coordinate system.
+
+\bWINDOW [[SCREEN] (x1!,y1!)-(x2!,y2!)]\p
+
+    ş \bSCREEN\p       Inverts the normal Cartesian direction of the y screen
+                   coordinates so that y values increase from the top of the
+                   screen to the bottom.
+    ş \b(x1!,y1!)\p    Logical coordinates that map to the upper-left screen
+                   coordinates of the viewport.
+    ş \b(x2!,y2!)\p    Logical coordinates that map to the lower-right screen
+                   coordinates of the viewport.
+
+    ş WINDOW with no arguments disables the logical coordinate system.
+    ş Use the VIEW statement to change the size of the viewport.
+
+Example:
+    'This example requires a color graphics adapter.
+    SCREEN 1
+    FOR i% = 1 TO 10 STEP 2
+        WINDOW (-160 / i%, -100 / i%)-(160 / i%, 100 / i%)
+        CIRCLE (0, 0), 10
+    NEXT i%
+
+See Also    \i\p\aCLS\v@CLS\v\i\p    \i\p\aPMAP\v@PMAP\v\i\p    \i\p\aPOINT\v@POINT\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p
+.comment *****************************************************************
+.comment * One Keyword screen in this family.
+.comment *****************************************************************
+.context USING
+.context @USING
+:nUSING Keyword
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Specifies formatting for PRINT USING and LPRINT USING statements and the
+palette assignments for the PALETTE USING statement.
+
+See Also    \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p

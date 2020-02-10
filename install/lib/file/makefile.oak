@@ -1,0 +1,33 @@
+.asm.obj:
+	$(asm) -DMODEL_LARGE $(ainc) $(aflags) $*.asm,$*.obj;
+
+.c.obj:
+	$(cc) -AL $(cflags) -Fo$*.obj $*.c
+
+
+include	= ..\..\include
+extasw	= -I.. -I..\..
+extcsw	= -Os -Gs -I. -I$(include) -c
+
+
+file_io.lib:	f_absdel.obj	\
+		f_exists.obj	\
+		f_isdir.obj	\
+		f_rdwr.obj	\
+		f_ren.obj	\
+		f_replac.obj
+	del file_io.lib
+	lib @libfile
+
+f_absdel.obj:	f_absdel.c	$(include)\alias.h $(include)\disk_io.h
+
+f_exists.obj:	f_exists.c	$(include)\disk_io.h
+
+f_isdir.obj:	f_isdir.c	$(include)\disk_io.h
+
+f_rdwr.obj:	f_rdwr.c 	$(include)\disk_io.h
+
+f_ren.obj:	f_ren.c		$(include)\disk_io.h
+
+f_replac.obj:	f_replac.c	$(include)\disk_io.h
+

@@ -1,0 +1,312 @@
+#include "windows.h"
+#include "wsrc.h"
+#include "pro.h"
+#include "lib\\common\sulib.h"
+#include "helpcon.h"
+
+#define BMP BITMAP PRELOAD MOVEABLE
+#define ICO ICON   PRELOAD MOVEABLE
+
+disk        ICO disks04.ico
+setup       ICO setup.ico
+
+// use EGA bitmaps as default (lowest res)
+
+reboot          BMP bmp\ega\REBOOT.bmp
+reboot640x480   BMP bmp\vga\REBOOT.bmp
+reboot1024x768  BMP bmp\8514\REBOOT.bmp
+
+/* from win 3.1 */
+
+DLG_PROGRESS DIALOG PRELOAD 36, 37, 226, 73
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "MS-DOS Setup"
+FONT 8, "System"
+CLASS CLS_MYDLGS
+BEGIN
+    CONTROL         "", ID_BAR    , "pro", 0x0000, 24, 33, 180, 15
+    CONTROL         "", ID_STATUS1, "Static", SS_SIMPLE | SS_NOPREFIX, 29, 7, 190, 10
+    CONTROL         "", ID_STATUS2, "Static", SS_SIMPLE | SS_NOPREFIX, 29, 19, 190, 10
+    PUSHBUTTON      "E&xit Setup", ID_EXIT, 90, 54, 48, 13
+    ICON            "setup", ID_NULL, 5, 3, 16, 16
+END
+
+/* from slick */
+
+DLG_BADDOSEXIT DIALOG PRELOAD 47, 50, 282, 107
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "WARNING"
+FONT 8, "Helv"
+CLASS CLS_MYDLGS
+BEGIN
+    HELPCONTEXT     (HLP_BADDOSEXIT)
+    DEFPUSHBUTTON   "C&ontinue Setup", ID_OK, 215, 6, 61, 15, WS_GROUP
+    PUSHBUTTON      "E&xit Setup", ID_EXITSETUP, 215, 24, 61, 15
+    PUSHBUTTON      "&Help", ID_HELP, 215, 42, 61, 15
+    LTEXT           "MS-DOS 5.0 is not completely installed. If you exit Setup now, you need to restore your original version of DOS. ", ID_NULL, 6, 6, 187, 18, NOT WS_GROUP
+    LTEXT           "1. Insert the disk you labeled UNINSTALL 1 in drive A.", ID_NULL, 13, 44, 186, 11, NOT WS_GROUP
+    LTEXT           "2. Choose the Exit Setup button.", ID_NULL, 13, 58, 141, 10, NOT WS_GROUP
+    LTEXT           "Your computer will restart, and will display instructions on how to restore your original DOS.",ID_NULL, 22, 69, 181, 19, NOT WS_GROUP
+    LTEXT           "To exit Setup and restore your original DOS:", ID_NULL, 6, 30, 158, 10
+    LTEXT           "3. Follow the instructions on the screen.", ID_NULL, 13, 90, 141, 10, NOT WS_GROUP
+END
+
+DLG_UNINSTALL DIALOG PRELOAD 50, 59, 212, 61
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "MS-DOS Setup"
+FONT 8, "Helv"
+CLASS CLS_MYDLGS
+BEGIN
+    HELPCONTEXT     (HLP_UNINSTALL)
+    DEFPUSHBUTTON   "OK", ID_OK, 171, 6, 35, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", ID_EXIT, 171, 23, 35, 14
+    PUSHBUTTON      "&Help", ID_HELP, 171, 40, 35, 14
+    LTEXT           "Insert the disk you labeled %s in drive A.", ID_STATUS0, 31, 4, 122, 17, NOT WS_GROUP
+    ICON            "Disk", 105, 5, 1, 18, 21, NOT WS_GROUP
+    LTEXT           "Caution: Any files currently on this disk will be deleted.", ID_NULL, 31, 29, 128, 20, NOT WS_GROUP
+END
+
+
+DLG_FMTTYPE DIALOG PRELOAD 50, 80, 241, 58
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "MS-DOS Setup"
+FONT 8, "Helv"
+CLASS CLS_MYDLGS
+BEGIN
+    HELPCONTEXT     (HLP_FMTTYPE)
+    DEFPUSHBUTTON   "OK", ID_OK, 200, 6, 35, 14
+    PUSHBUTTON      "Cancel", ID_EXIT, 200, 23, 35, 14
+    PUSHBUTTON      "&Help", ID_HELP, 200, 40, 35, 14
+    LTEXT           "Select the capacity of your UNINSTALL disk(s).", ID_NULL, 34, 4, 160, 11, NOT WS_GROUP
+    CONTROL         "1.44 MB", ID_HIGH_DENSITY, "Button", BS_AUTORADIOBUTTON, 69, 20, 41, 12
+    CONTROL         "720K", ID_LOW_DENSITY,   "Button", BS_AUTORADIOBUTTON, 69, 32, 38, 12
+    ICON            "Disk", ID_NULL, 5, 1, 18, 21
+END
+
+
+DLG_FMTSTATUS DIALOG PRELOAD 62, 77, 191, 65
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "Helv"
+CAPTION "Please Wait"
+BEGIN
+    ICON    "Disk", ID_NULL, 5, 1, 18, 21
+    LTEXT   "Please wait while Setup formats your UNINSTALL disk.", ID_NULL, 33, 3, 133, 19, NOT WS_GROUP
+    CTEXT   "85% Complete.", ID_STATUS0, 33, 40, 132, 12, NOT WS_GROUP
+END
+
+DLG_DOSREBOOT DIALOG PRELOAD 52, 75, 197, 102
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Setup Complete"
+FONT 8, "Helv"
+BEGIN
+    LTEXT           "Windows and MS-DOS are now installed.", ID_STATUS0, 8, 6, 142, 11, NOT WS_GROUP
+    CTEXT           "&Restart", ID_STATUS1, 81, 89, 38, 10
+    CONTROL         "#reboot", ID_REBOOT, "sbutton", 0x0001 | WS_TABSTOP, 85, 55, 30, 30
+    LTEXT           "To exit Setup and restart your computer, remove any floppy disks from your drives and choose the Restart button. The choices you made during Setup will take effect after your computer restarts.", 
+                    ID_NULL, 8, 18, 186, 34, NOT WS_GROUP
+END
+
+DLG_EXPRESSINSERTDISK DIALOG PRELOAD 76, 28, 238, 75
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "MS-DOS Setup"
+FONT 8, "Helv"
+CLASS CLS_MYDLGS
+BEGIN
+    HELPCONTEXT     (HLP_EXPRESSINSERTDISK)
+    ICON            "disk", ID_NULL, 10, 10, 18, 20
+    CTEXT           "Insert the disk labeled", ID_NULL, 40, 12, 143, 8
+    CTEXT           "", ID_STATUS0, 40, 26, 143, 8, SS_NOPREFIX
+    CTEXT           "", ID_STATUS1, 40, 40, 143, 8, SS_NOPREFIX
+    LTEXT           "When you are ready, press ENTER or choose the Continue button.", ID_NULL, 9, 62, 222, 10
+    DEFPUSHBUTTON   "C&ontinue", ID_OK, 185, 6, 47, 14
+    PUSHBUTTON      "E&xit Setup", ID_EXIT, 185, 23, 47, 14
+    PUSHBUTTON      "&Help", ID_HELP, 185, 40, 47, 14
+END
+
+DLG_COPYERROR DIALOG 79, 58, 189, 60
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Error Copying a File"
+FONT 8, "Helv"
+CLASS CLS_MYDLGS
+BEGIN
+    CTEXT           "", ID_STATUS1, 1, 5, 187, 34, NOT WS_GROUP
+    DEFPUSHBUTTON   "&Retry", ID_RETRY, 36, 43, 36, 14
+    PUSHBUTTON      "&Skip",  ID_IGNORE, 75, 43, 36, 14
+    PUSHBUTTON      "E&xit",  ID_EXIT, 114, 43, 36, 14
+END
+
+#if 0
+
+DLG_UNINSTALLINFO DIALOG PRELOAD 47, 50, 282, 106
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "MS-DOS Setup"
+FONT 8, "Helv"
+CLASS CLS_MYDLGS
+BEGIN
+    HELPCONTEXT     (HLP_UNINSTALLINFO)
+    DEFPUSHBUTTON   "C&ontinue", ID_OK, 227, 6, 49, 16, WS_GROUP
+    PUSHBUTTON      "E&xit Setup", ID_EXIT, 227, 25, 49, 16
+    PUSHBUTTON      "&Help", ID_HELP, 227, 44, 49, 16
+    LTEXT           "Setup is ready to upgrade your system to MS-DOS 5.0.  Do not interrupt Setup during the upgrade process.", 
+                    ID_NULL, 6, 7, 190, 17, NOT WS_GROUP
+    LTEXT           "Label a floppy disk UNINSTALL 1, if you have not already done so. Setup saves some of your original DOS files on the UNINSTALL disk, which must work in drive A. (If you are using 360K disks, you might need two disks.)", 
+                    ID_NULL, 6, 29, 196, 35, NOT WS_GROUP
+    LTEXT           "Caution: Any files currently on the UNINSTALL disk(s) will be deleted.", 
+                    ID_NULL, 6, 88, 263, 13, NOT WS_GROUP
+    LTEXT           "When you are ready, press ENTER or choose the Continue button.", 
+                    ID_NULL, 6, 66, 224, 10
+END
+
+#endif
+
+/*
+ *  random strings used in the code
+ */
+STRINGTABLE PRELOAD MOVEABLE
+BEGIN
+    IDS_WAITOLDDOS    ,"Creating OLD_DOS directory."
+    IDS_WAITCOPYRECHD ,"Copying recovery files to your hard disk."
+    IDS_WAITCOPYRECFL ,"Copying recovery files to the floppy disk."
+    IDS_WAITCOPY      ,"Copying MS-DOS files."
+    IDS_WAITDEL	      ,"Deleting files."
+    IDS_WAITREN	      ,"Renaming files."
+    IDS_COPYING       ,"Copying %s"
+    IDS_DISKS         ,"disks"
+    IDS_OUTOFDISK     ,"Insufficient disk space; exit Setup and delete one or more files to free some disk space.\n"
+    IDS_EXITNOTSETUP  ,"MS-DOS 5.0 is not correctly installed. Are you sure you want to exit Setup?"
+    IDS_EXITCAP       ,"Exit MS-DOS Setup"
+    IDS_OEMDISKS      ,"oemdisks"
+    IDS_PLEASE_INSERT ,"Please insert the "
+    IDS_INTO_DRIVE    ,"into drive %s:"
+    IDS_NOTREADY      ,"Please make sure the disk is in drive A and the drive door is closed."
+    IDS_WRITEPROTECT  ,"Your UNINSTALL disk is write-protected. Please remove the write-protect tab, or label another disk UNINSTALL and insert it in drive A."
+    IDS_HELP_ERROR    ,"Problems with the Help system. The WINHELP.EXE or DOSSETUP.HLP files might be missing."
+    IDS_HELPFILE      ,"DOSSETUP.HLP"
+    IDS_KB1200        ,"1.2 MB"
+    IDS_KB360         ,"360K"
+
+END
+
+STRINGTABLE PRELOAD MOVEABLE
+BEGIN
+   IDS_CPYERRPREFIX     ,"The following file was not copied correctly:\n"
+   IDS_DOSCPYERROR      ,"Error opening --> %s\n"
+   IDS_DOSCPYERROR + 1  ,"Error reading --> %s\n"
+   IDS_DOSCPYERROR + 2  ,"Error writing --> %s\n"
+   IDS_DOSCPYERROR + 3  ,"Error renaming --> %s\n"
+   IDS_DOSCPYERROR + 4  ,"Error deleting --> %s\n"
+   IDS_DOSCPYERROR + 5  ,"Error creating --> %s\n"
+   IDS_DOSCPYERROR + 6  ,"Error processing --> %s\n"
+END
+
+STRINGTABLE PRELOAD MOVEABLE
+BEGIN
+   IDS_DOSERROPT         ,"To continue, choose OK."
+   IDS_DOSERROPT + 1     ,"To exit Setup, choose OK."
+END
+
+STRINGTABLE PRELOAD MOVEABLE
+BEGIN
+   IDS_DSKPREPERR        ,"Setup has detected errors that make this disk unusable. Please use a different disk."
+   IDS_DSKPREPERR + 1    ,"You have already used this disk. Please use a different disk."
+   IDS_DSKPREPERR + 2    ,"The disk in drive A is your distribution disk. Please use a different disk."
+   IDS_DSKPREPERR + 3    ,"There is insufficient space on this disk. Please use a different disk."
+END
+
+/*
+ *  DOS error names
+ */
+STRINGTABLE PRELOAD MOVEABLE
+BEGIN
+    IDS_ERROR                       ,"DOS Error #%d"
+    IDS_ERROR + ERROR_FILENOTFOUND  ,"File not found; unable to copy file"
+    IDS_ERROR + ERROR_PATHNOTFOUND  ,"Path not found; unable to copy file"
+    IDS_ERROR + ERROR_NOFILEHANDLES ,"Too many open files"
+    IDS_ERROR + ERROR_ACCESSDENIED  ,"Access denied; unable to copy file"
+    IDS_ERROR + ERROR_NOMEMORY      ,"Insufficient memory"
+    IDS_ERROR + ERROR_DISKINVALID   ,"Disk drive invalid"
+    IDS_ERROR + ERROR_WRITE         ,"Write error; unable to copy file"
+    IDS_ERROR + ERROR_READ          ,"Read error; unable to copy file"
+    IDS_ERROR + ERROR_SHARE         ,"Network error; unable to copy file"
+END
+
+/*
+ *  Fatal DOS install errors
+ */
+STRINGTABLE PRELOAD MOVEABLE
+BEGIN
+   IDS_FERROR                   ,"Insufficient memory."
+   IDS_FERROR + 1               ,"Unknown program error detected."
+   IDS_FERROR + 2               ,"Cannot identify your version of DOS."
+   IDS_FERROR + 3               ,"Unrecoverable disk error."
+   IDS_FERROR + 4               ,"Error reading the DOSSETUP.INI file."
+   IDS_FERROR + 5               ,"Hard disk is not readable."
+   IDS_FERROR + 6               ,"Error setting new hard-disk parameters."
+   IDS_FERROR + 7               ,"Cannot write to hard disk."
+   IDS_FERROR + 8               ,"No active partition on hard disk."
+   IDS_FERROR + 9               ,"Bad master boot record on hard disk."
+   IDS_FERROR + 10              ,"Bad boot record on hard disk."
+   IDS_FERROR + 11              ,"System files on hard disk are unreadable."
+   IDS_FERROR + 12              ,"Bad extended boot record."
+   IDS_FERROR + 13              ,"Bad UNINSTALL disk."
+   IDS_FERROR + 14              ,"Error renaming old utilities."
+   IDS_FERROR + 15              ,"Error creating .NUL file in TMP directory."
+   IDS_FERROR + 16              ,"Unreadable COMMAND.COM file on hard disk."
+   IDS_FERROR + 17              ,"Corrupt DOSSETUP.INI file."
+   IDS_FERROR + 18              ,"Cannot find COMMAND.COM."
+   IDS_FERROR + 19              ,"Cannot find original system files."
+   IDS_FERROR + 20              ,"Corrupt DOSSETUP.INI file."
+   IDS_FERROR + 21              ,"Error moving files from DOS directory."
+   IDS_FERROR + 22              ,"Root directory is full."
+   IDS_FERROR + 23              ,"Error deleting temporary files."
+   IDS_FERROR + 24              ,"Error updating version table in MSDOS.SYS."
+   IDS_FERROR + 25              ,"Insufficient floppy disk drive capacity."
+   IDS_FERROR + 26              ,"Error reading file SETUP.INF."
+   IDS_FERROR + 27              ,"Corrupt SETUP.INF file."
+   IDS_FERROR + 28              ,"Error loading library file NEWINT13.DLL."
+END
+
+STRINGTABLE PRELOAD MOVEABLE
+BEGIN
+   IDS_NONFATAL_CAPTION         ,"MS-DOS Installation Error"
+   IDS_FATAL_CAPTION            ,"Unrecoverable MS-DOS Installation Error"
+   IDS_FERROREXIT               ,"System will return to the DOS command prompt."
+   IDS_FERRORABORT              ,"System will restart."
+END
+
+STRINGTABLE PRELOAD MOVEABLE
+BEGIN
+   IDS_PERCENT                  ,"% Complete."
+END
+
+STRINGTABLE PRELOAD MOVEABLE
+BEGIN
+   IDS_DOS                      ,".dos"
+END
+
+STRINGTABLE PRELOAD MOVEABLE
+BEGIN
+   IDS_FSTATUS                  ,"File: %s "
+   IDS_FSTATUS + 1              ,"File: %s "
+   IDS_FSTATUS + 2              ,"File: %s "
+   IDS_FSTATUS + 3              ,"File: %s "
+   IDS_FSTATUS + 4              ,"Creating tmp. directory %s "
+   IDS_FSTATUS + 5              ,"                                      "
+END
+
+STRINGTABLE PRELOAD MOVEABLE
+BEGIN
+   IDS_DOSREADME                ,"                           WARNING"
+   IDS_DOSREADME  + 1           ,""
+   IDS_DOSREADME  + 2           ,"All of the files in this directory are needed by the"
+   IDS_DOSREADME  + 3           ,"MS-DOS 5.0 Uninstall program. If you delete any files"
+   IDS_DOSREADME  + 4           ,"from this directory, you will be unable to restore"
+   IDS_DOSREADME  + 5           ,"your original version of DOS."
+   IDS_DOSREADME  + 6           ,""
+   IDS_DOSREADME  + 7           ,"If you are sure you will not need to restore your original"
+   IDS_DOSREADME  + 8           ,"DOS, you can have MS-DOS delete these files and remove the "
+   IDS_DOSREADME  + 9           ,"OLD_DOS directory by typing DELOLDOS at the MS-DOS prompt."
+END
+
+
+

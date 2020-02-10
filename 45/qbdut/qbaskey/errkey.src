@@ -1,0 +1,140 @@
+.comment ******************************************************************
+.comment *  Error Trapping Family - QBasic                                *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for Basic language and products.*
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/22/90 stevesau                                              *
+.comment *  Incorporated final edit/review comments                       *
+.comment ******************************************************************
+.comment *  6/11/90 stevesau                                              *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/9/90 stevesau                                               *
+.comment *  Deleted ERR.                                                  *
+.comment *  Reinserted RESUME NEXT.                                       *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  4/20/90 stevesau                                              *
+.comment *  Added action lines. 					  *
+.comment *  Deleted LOCAL, RESUME NEXT from ON ERROR and RESUME syntax.   *
+.comment ******************************************************************
+.comment *  4/17/90 bethpr                                                *
+.comment *  Deleted Local Keyword node					  *
+.comment ******************************************************************
+.context @ERL
+.context @ERR
+.context ERL
+.context ERR
+:nERR, ERL Functions
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ERR retourneert een "run-time"-foutcode voor de meest recente fout.
+ERL retourneert het regelnummer waar de fout optrad, of het
+dichtstbijzijnde nummer voor de regel waar de fout optrad.
+
+\bERR\p
+\bERL\p
+
+    ş ERL retourneert geen regellabels. Als het programma geen regelnummers
+      bevat, retourneert ERL 0.
+
+\i\p\aVoorbeeld\v@errhand.ex\v\i\p
+
+Zie ook     \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+            \i\p\a"Run-time"-foutcodes\v@rtect\v\i\p
+.context ERROR
+.context @ERROR
+:nHet statement ERROR
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Simuleert een Basic-fout of een door de gebruiker gedefinieerde fout.
+
+\bERROR uitdrukking%\p
+
+    ş \buitdrukking%\p   De foutcode of een Basic-fout of door gebruiker
+                     gedefinieerde fout; een waarde in het bereik van
+                     1 tot en met 255. Om uw eigen fout te defini‰ren,
+                     moet u een waarde uit de Basic-tabel
+                     \i\p\a"Run-time"-foutcodes\v@rtect\v\i\p kiezen.
+
+\i\p\aVoorbeeld\v@errhand.ex\v\i\p
+
+Zie ook     \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERR, ERL\v@ERR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context .onerr
+.context @onerr
+:nHet statement ON ERROR
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Maakt foutafhandeling mogelijk en stuurt uw programma, wanneer er een
+"run-time"-fout optreedt, ofwel naar een foutafhandelingsroutine of laat
+de programma-uitvoering vervolgen.
+
+\bON ERROR {GOTO regel | RESUME NEXT}\p
+
+    ş \bGOTO regel\p     Gaat naar de eerste regel van de
+                     foutafhandelingsroutine, opgegeven door een label of
+                     regelnummer. Geef GOTO 0 op om de foutafhandeling
+                     uit te schakelen.
+    ş \bRESUME NEXT\p    Vervolgt uitvoering vanaf het statement dat volgt
+                     op het statement dat de "run-time"-fout veroorzaakte.
+                     Gebruik de ERR-functie om de foutcode voor de fout
+                     te verkrijgen.
+
+    ş Als ON ERROR niet wordt gebruikt, be‰indigen "run-time"-fouten uw
+      programma.
+
+\i\p\aVoorbeeld\v@errhand.ex\v\i\p
+
+Zie ook     \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERR, ERL\v@ERR\v\i\p    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aGOTO\v@GOTO\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context @RESUME
+.context RESUME
+:nHet statement RESUME
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Vervolgt de programma-uitvoering na de uitvoering van een
+foutafhandelingsroutine.
+
+\bRESUME [{regel | NEXT}]\p
+
+    ş \bregel\p   Het label of nummer van de regel waar de programma-uitvoering
+              moet worden vervolgd. Als de regel 0 is of is weggelaten, gaat
+              het programma verder met het statement dat de fout veroorzaakte.
+    ş \bNEXT\p    Vervolgt programma-uitvoering vanaf het statement dat volgt
+              op het statement dat de fout veroorzaakte.
+
+\i\p\aVoorbeeld\v@errhand.ex\v\i\p
+
+Zie ook     \i\p\aERROR\v@ERROR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p
+.context errhand.ex
+.context @errhand.ex
+:nVoorbeeld van foutafhandeling
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+'Illustreert ERDEV, ERDEV$, ERL, ERR, ERROR, ON ERROR en RESUME.
+   ON ERROR GOTO Foutafhandeling
+10 CHDIR "a:\\"                'Veroorzaakt ERR 71 "Schijf niet gereed"
+                              'als er geen diskette in station A zit.
+20 y% = 0
+30 x% = 5 / y%                'ERR 11 "Delen door nul."
+40 PRINT "x% ="; x%
+50 ERROR 57                   'ERR 57 "Apparaat I/O-fout."
+
+Foutafhandeling:
+  PRINT
+  PRINT "Fout "; ERR; " op regel "; ERL
+  SELECT CASE ERR
+    CASE 71
+      PRINT "Apparaat in gebruik "; ERDEV$; " foutcode apparaat = "; ERDEV
+      RESUME NEXT
+    CASE 11
+      INPUT "Door welke waarde wilt u delen"; y%
+      RESUME                  'Probeer regel 30 opnieuw met nieuwe waarde y%.
+    CASE ELSE
+      PRINT "Onverwachte fout, programma wordt be‰indigd."
+      END
+  END SELECT

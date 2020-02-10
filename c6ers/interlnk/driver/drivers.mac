@@ -1,0 +1,562 @@
+;***
+;* $Workfile:   drivers.mac  $
+;* $Revision:   1.2  $
+;*   $Author:   Dave Sewell  $
+;*     $Date:   08 Aug 1989 16:44:04  $
+;***
+
+                SUBTTL  MS-DOS device driver definitions
+                PAGE    66, 132
+
+COMMENT @
+    drivers.mac : December 9, 1988 : Alan Butt
+
+    This files contains a set of "Standard" definitions for all Expansion
+    Box device drivers
+@
+
+OPTION PROC:PRIVATE
+
+recover    MACRO
+        jmp     short $+2
+        ENDM
+
+MICROSOFT_OEM_ID        EQU  0
+SEWELL_OEM_ID           EQU  (298 SHL 5)
+INTERLNK_ID             EQU  0
+
+VFXD_Device_ID EQU  SEWELL_OEM_ID OR INTERLNK_ID
+EXECUTION_TIME_BOOST        EQU 10000  ; Time in milliseconds to extend slice
+RELEASE_TIME_SLICE_2F       EQU 1680h  ; Int 2F API function to release slice
+SERIAL_IDLER                EQU 0
+SET_VMSTAT_HIGH_PRI_BACK    EQU 1      ; Set High_Priority_Background flag for VM
+RESET_VMSTAT_HIGH_PRI_BACK  EQU 2      ; Reset  "          "           "
+ADJUST_EXECUTION_TIME       EQU 3      ; Extend current time slice for VM
+RELEASE_TIME_SLICE          EQU 4      ; Release current time slice for VM
+PARALLEL_IDLER              EQU 5
+
+INTERLNK_MULTIPLEX_ID       EQU 56H
+                                        
+;--- Definition of bits in the sequence number/flags byte
+
+BYTE_LENGTH             EQU     10000000B
+CONTINUED_PACKET        EQU     01000000B
+COMPRESSED              EQU     00100000B
+SEVEN_WIRE              EQU     00010000B
+USE_CHECKSUM            EQU     00001000B
+ECHOPLEX                EQU     00000100B
+SEQUENCE_BITS           EQU     00000011B
+IDLE_BITS               EQU     11111100B
+
+COMM_CRIT_ERR   EQU     (88 - 13H)
+
+MINIMUM_TICKS           EQU 5
+RECV_PACK_TICKS         EQU 401
+SYNC_TICKS              EQU (2 * 18)
+CONNECT_TICKS           EQU 5
+
+SEQUENCE_BITS           EQU     00000011B
+
+MAX_FIXUPS      EQU     5
+
+; Device attribute codes:  ATT_* define the various bits to be used in th
+; device driver attribute word of the device header.
+
+ATT_CHARACTER   equ     8000H           ; Character device
+ATT_BLOCK       equ     0000H           ; Block device
+ATT_IOCTL       equ     4000H           ; IOCTL read and write supported
+ATT_NON_IBM     equ     2000H           ; Non-IBM format (block)
+ATT_OUTBUSY     equ     2000H           ; Output Until Busy supported (Char)
+ATT_OCRM        equ     0800H           ; Open/Close/Removeable media supported*
+ATT_GEN_IOCTL   equ     0040H           ; Generic IOCTL & Get/Set log dev**
+ATT_INT29       equ     0010H           ; accepts special interupt 29h
+ATT_CLOCK       equ     0008H           ; this is the CLOCK device
+ATT_NUL         equ     0004H           ; Current NUL device
+ATT_HUGE        equ     0002H           ; 32-bit sector addressing (block)
+ATT_STDOUT      equ     0002H           ; Current standard output (character)
+ATT_STDIN       equ     0001H           ; Current standard input
+                                        ; *  MS-DOS 3.0+
+                                        ; ** MS-DOS 3.2+
+
+DEVICE_NAME_SIZE    EQU 8               ; Characters in device_header.name_num
+
+device_header   STRUC                   ; Device header structure
+    next_offset dw  -1                  ; Link to next driver (offset)
+    next_seg    dw  -1                  ; Link to next driver (segment)
+    attribute   dw  ATT_CHARACTER       ; Device driver attribute word
+    strategy    dw  ?                   ; Offset to strategy entry point
+    inter       dw  ?                   ; Offset to interrupt entry point
+    name_num    db  "        "          ; Device name or number of units
+device_header   ENDS
+
+STATUS_ERROR    equ     8000H           ; error status
+STATUS_BUSY     equ     0200H           ; busy status
+STATUS_DONE     equ     0100H           ; Done
+
+ERR_WRITE_PROT  equ     00H             ; write-protect error
+ERR_UNK_UNIT    equ     01H             ; Unknown unit
+ERR_NOT_READY   equ     02H             ; Drive not ready
+ERR_UNK_COMMAND equ     03H             ; Unknown command
+ERR_CRC         equ     04H             ; CRC error
+ERR_BAD_LENGTH  equ     05H             ; Bad drive request structure length
+ERR_SEEK        equ     06H             ; Seek error
+ERR_UNK_MEDIA   equ     07H             ; Unknown media
+ERR_NOT_FOUND   equ     08H             ; Sector not found
+ERR_PAPER_OUT   equ     09H             ; Printer out of paper
+ERR_WRITE_FAULT equ     0aH             ; Write fault
+ERR_READ_FAULT  equ     0bH             ; Read fault
+ERR_FAILURE     equ     0ch             ; General Failure
+ERR_DISK_CHANGE equ     0fh             ; Invalid disk change
+
+
+INIT_DRIVER         EQU      0
+MEDIA_CHECK         EQU      1
+BUILD_BPB           EQU      2
+IOCTL_READ          EQU      3
+READ                EQU      4
+ND_READ             EQU      5
+INPUT_STATUS        EQU      6
+FLUSH_INPUT         EQU      7
+WRITE               EQU      8
+WRITE_VERIFY        EQU      9
+OUTPUT_STATUS       EQU     10
+FLUSH_OUTPUT        EQU     11
+IOCTL_WRITE         EQU     12
+DEVICE_OPEN         EQU     13
+DEVICE_CLOSE        EQU     14
+REMOVABLE_MEDIA     EQU     15
+OUTPUT_UNTIL_BUSY   EQU     16
+GENERIC_IOCTL       EQU     19
+GET_LOGICAL_DEVICE  EQU     23
+SET_LOGICAL_DEVICE  EQU     24
+
+MAX_VOLUME      EQU     12              ; Maximum volume label length
+
+MEDIA_CHANGED       equ -1              ; Media changed code
+MEDIA_DONT_KNOW     equ 0               ; Don't know if media has changed or not
+MEDIA_NOT_CHANGED   equ 1               ; Media has not changed code
+
+bios_parameter_block    STRUC
+    bytes_per_sector    dw  ?           ; Bytes per sector
+    sectors_per_unit    db  ?           ; Sectors per cluster (power of 2)
+    reserved_sectors    dw  ?           ; Number of reserved sectors (start @ 0)
+    number_of_fats      db  ?           ; Number of file allocation tables
+    root_dir_entries    dw  ?           ; Maximum root directory entries
+    total_sectors       dw  ?           ; Total number of sectors for media
+    media_id_byte       db  ?           ; Media ID byte
+    sectors_per_fat     dw  ?           ; Number of sectors occupied by one FAT
+    sectors_per_track   dw  ?           ; Sectors per track (MS-DOS 3.0+)
+    number_of_heads     dw  ?           ; Number of heads (MS-DOS 3.0+)
+    hidden_sectors      dw  ?           ; Number of hidden sectors (MS-DOS 3.0+)
+    high_hidden         dw  ?           ; High order word of hidden sects (3.2+)
+    long_total_sectors  dd  ?           ; Total number of sectors if 08H-09H
+                                        ; (total_sectors) is zero (MS-DOS 3.2+)
+                        db  6 dup (?)
+bios_parameter_block    ENDS
+
+; If number of clusters addressable on a device is greater than or equal to
+; MIN_16_BIT_CLUSTERS, then 16-bit FAT table entries must be used
+
+MIN_16_BIT_CLUSTERS     EQU 4087        ; 0FF7H
+
+;   The disk paramenter structure is used by undocumented DOS calls 0x32, 0x52,
+;   and 0x53.  This structure is defined for MS-DOS 2.0 - MS-DOS 4.0.
+;
+;   The structures for the disk parameter blocks differ according to the DOS
+;   version.
+
+dpb_dos2                STRUC           ; DOS's Disk Parameter Block
+
+    dpb2_drive              db  ?       ; Drive # (0 = A, 1 = B, ...)
+    dpb2_unit               db  ?       ; Unit number within device driver
+    dpb2_bytes_per_sector   dw  ?       ; Number of bytes per sector
+    dpb2_max_cluster        db  ?       ; Largest sector number in cluster
+                                        ;  add one for number of sectors/cluster
+    dpb2_log2_cluster       db  ?       ; Log base two of the cluster size
+    dpb2_reserved_sectors   dw  ?       ; Number of reserved (boot) sectors
+    dpb2_number_of_fats     db  ?       ; Number of copies of the FAT
+    dpb2_root_dir_entries   dw  ?       ; Number of root directory entries
+    dpb2_first_data         dw  ?       ; First sector of data on medium
+    dpb2_max_number         dw  ?       ; Largest possible cluster number
+                                        ;  subtract one for number of clusters
+    dpb2_sectors_per_fat    db  ?       ; Number of sectors in one FAT copy
+    dpb2_first_root         dw  ?       ; First sector of root directory
+    dpb2_device_driver      dd  ?       ; Corresponding device driver address
+    dpb2_media_id           db  ?       ; Media descriptor byte
+    dpb2_valid              db  ?       ; 0FF indicates block must be rebuild
+    dpb2_next_block         dd  ?       ; address of next device block in list
+
+    dpb2_dir_start          dw  ?       ; Starting cluster of current directory
+                                        ;  zero indicates the root directory
+    dpb2_path_name          db 64 DUP(?) ; ASCIIZ current directory path string
+
+dpb_dos2                ENDS
+
+dpb_dos3                STRUC           ; DOS's Disk Parameter Block
+
+    dpb3_drive              db  ?       ; Drive # (0 = A, 1 = B, ...)
+    dpb3_unit               db  ?       ; Unit number within device driver
+    dpb3_bytes_per_sector   dw  ?       ; Number of bytes per sector
+    dpb3_max_cluster        db  ?       ; Largest sector number in cluster
+                                        ;  add one for number of sectors/cluster
+    dpb3_log2_cluster       db  ?       ; Log base two of the cluster size
+    dpb3_reserved_sectors   dw  ?       ; Number of reserved (boot) sectors
+    dpb3_number_of_fats     db  ?       ; Number of copies of the FAT
+    dpb3_root_dir_entries   dw  ?       ; Number of root directory entries
+    dpb3_first_data         dw  ?       ; First sector of data on medium
+    dpb3_max_number         dw  ?       ; Largest possible cluster number
+                                        ;  subtract one for number of clusters
+    dpb3_sectors_per_fat    db  ?       ; Number of sectors in one FAT copy
+    dpb3_first_root         dw  ?       ; First sector of root directory
+    dpb3_device_driver      dd  ?       ; Corresponding device driver address
+    dpb3_media_id           db  ?       ; Media descriptor byte
+    dpb3_valid              db  ?       ; 0FF indicates block must be rebuild
+    dpb3_next_block         dd  ?       ; address of next device block in list
+
+    dpb3_unknown_zero       dw  ?       ; Unknown value (usually zero?)
+    dpb3_unknown_ffff       dw  ?       ; Unknown value (usually ffff?)
+
+dpb_dos3                ENDS
+
+dpb_dos4                STRUC           ; DOS's Disk Parameter Block
+
+    dpb4_drive              db  ?       ; Drive # (0 = A, 1 = B, ...)
+    dpb4_unit               db  ?       ; Unit number within device driver
+    dpb4_bytes_per_sector   dw  ?       ; Number of bytes per sector
+    dpb4_max_cluster        db  ?       ; Largest sector number in cluster
+                                        ;  add one for number of sectors/cluster
+    dpb4_log2_cluster       db  ?       ; Log base two of the cluster size
+    dpb4_reserved_sectors   dw  ?       ; Number of reserved (boot) sectors
+    dpb4_number_of_fats     db  ?       ; Number of copies of the FAT
+    dpb4_root_dir_entries   dw  ?       ; Number of root directory entries
+    dpb4_first_data         dw  ?       ; First sector of data on medium
+    dpb4_max_number         dw  ?       ; Largest possible cluster number
+                                        ;  subtract one for number of clusters
+    dpb4_sectors_per_fat    db  ?       ; Number of sectors in one FAT copy
+    dpb4_unknown_byte       db  ?       ; Unknown byte (usually 00)
+    dpb4_first_root         dw  ?       ; First sector of root directory
+    dpb4_device_driver      dd  ?       ; Corresponding device driver address
+    dpb4_media_id           db  ?       ; Media descriptor byte
+    dpb4_valid              db  ?       ; 0FF indicates block must be rebuild
+    dpb4_next_block         dd  ?       ; address of next device block in list
+
+    dpb4_unknown_zero       dw  ?       ; Unknown value (usually zero?)
+    dpb4_unknown_ffff       dw  ?       ; Unknown value (usually ffff?)
+
+dpb_dos4                ENDS
+
+MAX_DEVICES         EQU     26          ; Maximum number of units for the block
+                                        ; device drivers.
+
+MAX_CHAR_DEVICES    EQU     20          ; Max # of character devices
+
+MAX_PORTS           EQU     8           ; Size of ports array (in words)
+
+; Minimum and maximum serial block sizes.
+
+PRODUCT_DOSLINK     EQU     0
+PRODUCT_VERSION     EQU     ((MAJOR_VER SHL 8) OR MINOR_VER)
+
+static_rhp      STRUC                   ; Static RHP definition
+    rhp_length      db  ?               ; Request header length
+    rhp_unit        db  ?               ; Block-device unit number
+    rhp_command     db  ?               ; Command code (driver subfunction)
+    rhp_status      dw  ?               ; Driver return status
+                    db  8 DUP (?)
+static_rhp      ENDS
+
+init_req        STRUC                   ; initialize request
+                    db  TYPE static_rhp DUP (?)
+                    db  (12H - (TYPE static_rhp)) DUP (?)
+    init_cmd        dd  ?               ; Segment:Offset of line loading driver
+    init_first      db  ?               ; First unit number
+init_req        ENDS
+
+init_ans        STRUC                   ; Initialization answer
+                    db  TYPE static_rhp DUP (?)
+    init_units      db  ?               ; Units supported
+    init_end        dd  ?               ; Segment:offset free mem above driver
+    init_bpb        dd  ?               ; Segment:Offset BPB pointer array
+init_ans        ENDS
+
+
+
+media_check_req STRUC                   ; Media Check request
+                    db  TYPE static_rhp DUP (?)
+    media_id        db  ?               ; Media ID byte -- NOTE: this offset is
+media_check_req ENDS                    ;  used by several other requests!
+
+media_check_ans STRUC                   ; Media check answer
+                    db  TYPE static_rhp DUP (?)
+                    db  ?
+    media_changed   db  ?               ; Media changed code
+    media_label     dd  ?               ; Segment:Offset of volume label
+media_check_ans ENDS
+
+
+
+build_bpb_req   STRUC                   ; Build BPB request
+                    db  TYPE static_rhp DUP (?)
+    media_id        db  ?               ; Media ID byte
+    bpb_fat         dd  ?               ; Segment:Offset of FAT buffer
+build_bpb_req   ENDS
+
+build_bpb_ans   STRUC                   ; Build BPB answer
+                    db  TYPE static_rhp DUP (?)
+                    db  (12H - (TYPE static_rhp)) DUP (?)
+    bpb_bpb         dd  ?               ; Segment:Offset of BPB
+build_bpb_ans   ENDS
+
+
+
+io_req          STRUC ; Read/Write/Write-Verify/IOCTL-Read/IOCTL-Write request
+                    db  TYPE static_rhp DUP (?)
+    media_id        db  ?               ; Media ID byte
+    io_data         dd  ?               ; Segment:Offset of data
+    io_requested    dw  ?               ; Bytes/Sectors Requested
+    io_start        dw  ?               ; Starting sector number (LSW)
+    io_start_high   dw  ?               ; Starting sector (MSW) (DOS 3.31 only)
+                    dw  ?
+    io_huge_start   dd  ?               ; 32-bit starting sector number
+io_req          ENDS
+
+io_ans          STRUC ; Read/Write/Write-Verify/IOCTL-Read/IOCTL-Write answer
+                    db  TYPE static_rhp DUP (?)
+                    db  (12H - (TYPE static_rhp)) DUP (?)
+    io_transfered   dw  ?               ; Bytes/Sectors transfered
+                    dw  ?
+    io_label        dd  ?               ; Segment:Offset of volume label
+io_ans          ENDS
+
+
+nd_read_ans     STRUC                   ; Non-Destructive read answer
+                    db  TYPE static_rhp DUP (?)
+    nd_read_char    db  ?               ; Character read
+nd_read_ans     ENDS
+
+gen_ioctl_req   STRUC                   ; Generic IOCTL request
+                    db  TYPE static_rhp DUP (?)
+    gen_category    db  ?               ; Category (major) code
+    gen_function    db  ?               ; Function (minor) code
+    gen_si          dw  ?               ; SI register contents
+    gen_di          dw  ?               ; DI register contents
+    gen_data        dd  ?               ; Segment:Offset of data package
+gen_ioctl_req   ENDS
+
+media_id_buffer STRUC
+    mib_info_level      dw  ?
+    mib_serial_number   dd  ?
+    mib_volume_label    db  11 dup (?)
+    mib_file_sys_type   db   8 dup (?)
+media_id_buffer ENDS
+
+device_params   STRUC
+    dpSpecFunc          db  ?   ;special functions
+    dpDevType           db  ?   ;device type
+    dpDevAttr           dw  ?   ;device attributes
+    dpCylinders         dw  ?   ;number of cylinders
+    dpMediaType         db  ?   ;media type
+    dpBPB               db  TYPE bios_parameter_block DUP (?)
+device_params   ENDS
+
+
+
+MEDIA_5_25_DS_15    equ 0F9H            ; 5.25" double sided, 15 sector
+MEDIA_5_25_SS_9     equ 0FCH            ; 5.25" single sided, 9 sector
+MEDIA_5_25_DS_9     equ 0FDH            ; 5.25" double sided, 9 sector
+MEDIA_5_25_SS_8     equ 0FEH            ; 5.25" single sided, 8 sector
+MEDIA_5_25_DS_8     equ 0FFH            ; 5.25" double sided, 8 sector
+MEDIA_3_5_DS_9      equ 0F9H            ; 3.5"  double sided, 9 sector
+MEDIA_FIXED_DISK    equ 0F8H            ; Fixed disk
+MEDIA_3_5_DS_18     equ 0F0H            ; 3.5"  double sided, 18 sector
+;* Page 458 of MS-DOS Encyclopedia indicates that the media ID byte for
+;* 3.5" double sided, 18 sector disks is 0F0H, but page 96 of the same
+;* same reference indicates that this media ID is 0F9H
+;*
+
+CR              EQU     13              ; ASCII carrage return
+LF              EQU     10              ; ASCII line feed
+
+COMMENT #
+    Below are the segment and group definitions for the driver.
+
+        o  CORE         Core code that is ALWAYS loaded.
+        o  BLOCK        Block device driver code - loaded if drives redirected
+        o  SERIAL       Serial 3-wire polled I/O routines
+        o  PARALLEL     Parallel 11-wire I/O routines
+        o  PRINTER      Printer redirection code
+        o  INIT         Device driver initialization code
+        o  MAIN         Code that is executed when .EXE file run as a program
+        o  STACK        Stack used when executed as a .EXE file
+
+    All of the groups will belong to the group DRIVER and will be ordered
+    as in the above list.  The resident code must come before the transient
+    data and code.  Segment CORE must be at the begining because the device
+    driver header must be located at location zero.  The CS, DS, and SS
+    registers will be ASSUMED to be at GROUP DRIVER.  All code and data must be
+    assigned to one of these segments.
+#
+
+                .SEQ                    ; Segments must appear in this order
+
+    CORE        SEGMENT WORD PUBLIC 'CODE'
+    CORE        ENDS
+
+    BLOCK       SEGMENT WORD PUBLIC 'CODE'
+    BLOCK       ENDS
+                
+    SERIAL      SEGMENT WORD PUBLIC 'CODE'
+    SERIAL      ENDS
+
+    PARALLEL    SEGMENT WORD PUBLIC 'CODE'
+    PARALLEL    ENDS
+
+    PRINTER     SEGMENT WORD PUBLIC 'CODE'
+    PRINTER     ENDS
+
+    VARLEN      SEGMENT WORD PUBLIC 'CODE'
+    VARLEN      ENDS
+
+    INIT        SEGMENT WORD PUBLIC 'CODE'
+    INIT        ENDS
+
+    MAIN        SEGMENT WORD PUBLIC 'CODE'
+    MAIN        ENDS
+
+    STACK       SEGMENT WORD STACK 'STACK'
+    STACK       ENDS
+
+    DRIVER      GROUP CORE, BLOCK, SERIAL, PARALLEL, PRINTER
+    DRIVER      GROUP VARLEN, INIT, MAIN, STACK
+
+                ASSUME  DS:DRIVER, CS:DRIVER, SS:DRIVER
+
+DVR             EQU     <OFFSET DRIVER>
+
+STACK_SIZE      EQU     256             ; Stack size for device drivers & TSRs
+MAX_PRINTERS    EQU     3               ; Max printers that can be redirected
+
+LOCAL_MODE      equ     0               ; Current operating mode values for
+REMOTE_MODE     equ     1               ; auxiliary drivers and print
+AUTO_MODE       equ     2               ; redirector
+
+COMMENT @
+    pchar -- prints a character using DOS output
+@
+pchar           MACRO   char
+
+                mov     ah, 02H         ; Print character
+    IFDIFI  <char>,<dl>
+                mov     dl, char
+    ENDIF
+                int     21H
+
+                ENDM
+
+
+
+COMMENT @
+    pmsg -- prints a '$' terminated string on the default output
+    display (using int 21H, subfunction 9).  This function is safe to use
+    at initialize time.
+    Arguments:
+        message     starting offset of message to be printed
+                    or dx if offset is in dx.
+    uses register   ah, dx
+@
+
+pmsg            MACRO   message
+
+                mov     dx, DVR:message
+                call    print_msg
+
+                ENDM
+
+
+block_driver    STRUC                   ; Template of main block driver
+                        db  TYPE device_header DUP (?)  ; Device driver header
+    o_fingerprint       db  DEVICE_NAME_SIZE DUP (?)    ; Driver fingerprint
+    o_send_pack         dw  ?                   ; Send_pack entry point
+    o_recv_pack         dw  ?                   ; Recv_pack entry point
+    o_start_transaction dw  ?                   ; Start transaction entry point
+    o_end_transaction   dw  ?                   ; End transaction entry point
+    o_send_sync         dw  ?                   ; Send Sync entry point
+    o_master_code       dw  ?                   ; Master driver id code
+    o_eboxprn_seg       dw  ?                   ; EBOXPRN.COM TSR load segment
+    o_default_units     db  ?                   ; Default max number of devices
+    o_recv_timeout      dw  ?                   ; Timeout for recv_pack
+    o_crc_errors        dw  ?                   ; Number of CRC errors recieved
+    o_initialized       db  ?                   ; Driver Initialized flag
+    o_max_devices       db  ?                   ; Maximum # of devices allowed
+    o_first_unit        db  ?                   ; First drive number
+    o_units             db  ?                   ; # of devices
+    o_slave_units       db  ?                   ; # of Block devices on slave
+    o_drive_mapping     db  MAX_DEVICES DUP (?) ; Drive mapping table
+    o_invalid           db  MAX_DEVICES DUP (?) ; Device invalid flag
+    o_busy_semaphore    db  ?                   ; Communications busy semaphore
+    o_port_address      dw  ?
+    o_bios_port_num     db  ?
+    o_is_serial         db  ?
+
+block_driver    ENDS
+
+
+auxiliary_driver    STRUC               ; Template of auxiliary driver
+
+                        db  TYPE device_header DUP (?)  ; Device driver header
+                        db  DEVICE_NAME_SIZE DUP (?)    ; Driver fingerprint
+                        db  DEVICE_NAME_SIZE DUP (?)    ; Driver signature
+    o_remote_name       db  DEVICE_NAME_SIZE DUP (?)    ; Remote device name
+    o_aux_code          dw  ?                   ; Master arbitrary id code
+    o_replacement       db  ?                   ; Replacement driver flag
+    o_aux_mode          db  ?                   ; Current Mode of operation
+    o_aux_initialized   db  ?                   ; Driver initialized flag
+    o_id_code           db  ?                   ; Identification code
+
+auxiliary_driver    ENDS
+
+
+redirector_tsr  STRUC                   ; Template of the BIOS redirector
+
+                        db  STACK_SIZE + 5CH DUP (?)    ; Room for PSP & STACK
+    o_tsr_fingerprint   db  DEVICE_NAME_SIZE DUP (?)    ; TSR Fingerprint
+    o_tsr_signature     db  DEVICE_NAME_SIZE DUP (?)    ; TSR Signature
+    o_tsr_mode          db  ?                           ; Current operating mode
+    o_port_map          db  MAX_PRINTERS DUP (?)        ; Redirection port map
+    o_side              db  ?                           ; 0 Local/!0 remote printing
+
+redirector_tsr  ENDS
+
+MAX_SERIAL_PORTS    EQU     4
+MAX_PARALLEL_PORTS  EQU     4
+
+MAX_SERIAL_BLOCK    EQU     8192
+
+BAUD_1200       EQU     0
+BAUD_2400       EQU     1
+BAUD_4800       EQU     2
+BAUD_9600       EQU     3
+BAUD_19200      EQU     4
+BAUD_38400      EQU     5
+BAUD_57600      EQU     6
+BAUD_115200     EQU     7
+
+SERIAL_PORT_DEF STRUC
+    sp_address  dw      ?
+    sp_biosnum  db      ?
+    irqnum      db      ?               ; IRQ number for serial ports
+    maxbaud     dw      ?               ; Maximum baud rate for serial ports
+SERIAL_PORT_DEF ENDS
+
+PARALLEL_PORT_DEF STRUC
+    pp_address  dw      ?
+    pp_biosnum  db      ?
+PARALLEL_PORT_DEF ENDS
+
+Win386_Startup_Info_Struc STRUC
+    SIS_Version             db  3, 0
+    SIS_Next_Dev_Ptr        dd  0
+    SIS_Virt_Dev_File_Ptr   dd  Virt_Dev_File
+    SIS_Reference_Data      dd  0
+    SIS_Instance_Data_Ptr   dd  0
+Win386_Startup_Info_Struc ENDS

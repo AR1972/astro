@@ -1,0 +1,1147 @@
+.comment ****************************************************************
+.comment Error Message Help - QBasic                                    *
+.comment  This file contains all the error message help. Help on menu   *
+.comment  dialogs and related messages can be found in environ.src.     *
+.comment ****************************************************************
+.comment 8/1/90 bethpr                                                  *
+.comment Changed references to DOS Editor to MS-DOS Editor              *
+.comment ****************************************************************
+.comment 7/29/90 bethpr                                                 *
+.comment Changed text, as appropriate, for BASIC language and products. *
+.comment ****************************************************************
+.comment 6/29/90 stevesau                                               *
+.comment Incorporated final review comments                             *
+.comment ****************************************************************
+.comment 6/20/90 stevesau                                               *
+.comment Incorporated final review edits.                               *
+.comment ****************************************************************
+.comment 5/4/90 -- Bethpr                                               *
+.comment Changed $Metacommand Error context string back to MSG_BadMeta  *
+.comment ****************************************************************
+.comment 4/17/90 QBasic Edits -- Bethpr
+.comment Removed Add watchpoint, Binary file contained an unknown
+.comment statement, Binary file contained an unknown statement or
+.comment data type, Common in Quick library too small, Duplicate
+.comment module base names loaded.  Can't compile., Edit Include file,
+.comment Feature removed, File previously loaded, Include file too large,
+.comment All 8 ISAM error messages, Key already in use, Key file bad or
+.comment missing.  Using default., Make .Lib, Missing menu text or path,
+.comment Modified Include file, Module exists, Module not found.  Unload
+.comment module from program?, Must be between 2 and 10, Procedure
+.comment already defined in Quick library, Program contains unsupported
+.comment statements, Save Include file, Statement cannot occur within
+.comment include file, Symbol help not found, Too many applications,
+.comment Turn off include lines toggle command, Type not valid for ISAM.
+.comment ****************************************************************
+.context -9999
+:n™vers„ttningen tillf„lligt stoppad
+QBasic har stoppat ”vers„ttningen av elementen p†
+programraden vid det ljusmarkerade ordet. Felet „r
+vanligtvis till v„nster om ordet. Du kan:
+  ş byta ut ett element som f”resl†s i dialogrutan.
+  ş korrigera eventuellt felstavade nyckelord.
+  ş flytta matk”ren till ett nyckelord i satsen och trycka
+    p† F1. D† f†r du se den korrekta syntaxen f”r
+    nyckelordet.
+.context QB_ER_NF
+.context ER_NF
+:nNEXT utan FOR
+Varje NEXT-sats m†ste ha en motsvarande FOR-sats.
+
+ERR kod: 1
+.context QB_ER_SN
+.context ER_SN
+:nSyntaxfel
+Den vanligast f”rekommande orsaken till det h„r felet „r
+ett felskrivet nyckelord eller argument. Kontrollera att
+programraden „r korrekt!
+
+ERR kod: 2
+.context QB_ER_RG
+.context ER_RG
+:nRETURN utan GOSUB
+Programmet har just exekverat en RETURN-sats utan att ha
+exekverat en motsvarande GOSUB-sats.
+
+ERR kod: 3
+.context QB_ER_OD
+.context ER_OD
+:nSlut p† DATA
+En READ-sats har exekverats, men det finns inga DATA-satser
+med ol„st data kvar i programmet.
+
+ERR kod: 4
+.context QB_ER_FC
+.context ER_FC
+:nOgiltigt funktionsanrop
+Du f”rs”ker ge ett felaktigt argument, eller ett argument
+som „r utanf”r sitt intervall, till en Basic-sats. Exempel
+p† s†dana fel „r:
+  ş Ett negativt tal har upph”jts till ett tal som inte „r
+    ett heltal.
+  ş Ett negativt postnummer har getts n„r en GET- eller
+    PUT-sats anv„nds.
+  ş En I/O-funktion eller I/O-sats (t ex LOC eller LOF) har
+    utf”rts p† en enhet som inte st”der den.
+  ş Str„ngar har konkatenerats f”r att skapa en str„ng som
+    „r l„ngre „n 32 767 tecken.
+  ş En BLOAD- eller BSAVE-operation har styrts till en enhet
+    som inte „r en diskenhet.
+
+ERR kod: 5
+.context QB_ER_OV
+.context ER_OV
+:n™verskridning
+Resultatet p† en ber„kning eller datatypkonvertering „r f”r
+stor f”r den angivna datatypen.
+
+ERR kod: 6
+.context QB_ER_OM
+.context ER_OM
+:nSlut p† minnet
+Mer minne kr„vdes „n vad som „r tillg„ngligt. S† h„r r„ttar
+du till felet:
+  ş Avsluta QBasic och minska antalet DOS-buffertar,
+    minnesresidenta program eller laddade drivrutiner.
+    Starta sedan om datorn.
+  ş G”r programmet mindre.
+  ş Minska antalet eller storleken p† matriserna.
+  ş Minska stackstorleken genom att anv„nda CLEAR-satsen.
+  ş Minska antalet variabler.
+
+ERR kod: 7
+.context QB_ER_UL
+.context ER_UL
+:nEtiketten „r inte definierad
+En radetikett som refereras till (i t ex en GOTO-sats)
+f”rekommer inte i programmet.
+
+ERR kod:  8
+.context QB_ER_SOR
+.context ER_SOR
+:nIndex utanf”r intervallet
+Ett matriselement som refererats till har ett index som „r
+utanf”r matrisens dimensioner, eller s† har du f”rs”kt komma
+†t ett element i en odimensionerad dynamisk matris.
+Kontrollera att matrisen „r dimensionerad, och kontrollera
+gr„nserna f”r matrisen.
+
+Du kan ocks† f† det h„r felet om matrisstorleken ”verstiger
+64K. Minska storleken p† matrisen!
+
+ERR kod: 9
+.context ER_DD
+:nIndex utanf”r intervallet
+Det h„r felet intr„ffar om du f”rs”ker „ndra dimensionerna
+p† en statisk matris medan programmet k”r. Om du vill r„tta
+till det h„r felet ska du deklarera matrisen som dynamisk
+med hj„lp av REDIM-satsen.
+
+Detta fel intr„ffar „ven om du f”rs”ker „ndra dimensionerna
+p† en dynamisk matris genom att anv„nda DIM-satsen utan att
+f”rst deallokera matrisen. Om du vill r„tta till det h„r
+felet ska du l„gga till en ERASE-sats innan du dimensionerar
+matrisen.
+
+ERR kod: 10
+.context QB_ER_DD
+:nDefinitionen finns redan
+Du f”rs”ker skapa ett nytt element i programmet, och har
+gett det ett namn som redan anv„nds.
+
+Exempel:
+  ş En CONST-sats anv„nder samma namn som en existerande
+    variabel.
+  ş En ny variabel eller procedur har samma namn som en
+    existerande procedur.
+
+Att starta ett variabelnamn med bokst„verna "FN" „r ett
+annat s„tt att generera det h„r felet, eftersom FN anv„nds
+uteslutande med DEF FN.
+.context QB_ER_DV0
+.context ER_DV0
+:nDivision med noll
+Det h„r felet kan intr„ffa om man dividerar med noll i ett
+uttryck.
+
+ERR kod: 11
+.context QB_ER_ID
+.context ER_ID
+:nOgiltigt i direktl„get
+Den ljusmarkerade satsen „r endast giltig i ett program och
+kan inte anv„ndas i Direktf”nstret. I allm„nhet kan inte
+f”ljande satser och metakommandon anv„ndas i
+Direktf”nstret:
+  ş COMMON, CONST, DATA, DECLARE, DIM, OPTION, SHARED,
+    STATIC och TYPE
+  ş Metakommandona $DYNAMIC och $STATIC
+  ş DEF FN...END DEF, ELSE IF, END IF, END TYPE
+    FUNCTION...END FUNCTION, REDIM och SUB...END SUB
+
+ERR kod: 12
+.context QB_ER_TM
+.context ER_TM
+:nOlika typer
+Variabeln „r inte av r„tt typ. Exempelvis kanske du f”rs”ker
+anv„nda SWAP-satsen med en str„ngvariabel och en numerisk
+variabel, eller med tv† numeriska variabler av olika typ.
+
+ERR kod: 13
+.context QB_ER_OS
+.context ER_OS
+:nSlut p† str„ngutrymme
+Str„ngutrymmet som beh”vs f”r str„ngvariablerna ”verstiger
+m„ngden tillg„ngligt utrymme. Om du vill ha mer
+str„ngutrymme kan du:
+  ş Minska antalet variabler.
+  ş Minska antalet eller storleken p† matriser eller
+    str„ngar.
+  ş Minska stackutrymmet. Anv„nd CLEAR-satsen om du vill
+    „ndra storlek p† stacken!
+
+ERR kod: 14
+.comment -------------
+.comment   15 unused
+.comment -------------
+.context QB_ER_BS
+.context ER_BS
+:nStr„ngformeln f”r komplex
+Antingen „r en str„ngformel f”r l†ng, eller ocks† har du
+angivit mer „n 15 str„ngvariabler i en INPUT-sats. Dela upp
+formeln eller INPUT-satsen i mindre delar!
+
+ERR kod: 16
+.context QB_ER_CN
+:nQBasic: kan inte forts„tta
+Detta fel kan intr„ffa n„r du h†ller p† att fels”ka ett
+program. Medan programmet var stoppat (t ex vid en
+brytpunkt) gjorde du „ndringar i programmet som har
+f”ljdverkningar genom hela programmet. Du kan ha „ndrat
+dimensionerna p† en matris, „ndrat procedurargument eller
+redigerat n†gon annan deklarativ sats. Anv„nd dialogrutan
+och g”r n†got av f”ljande:
+   ş V„lj <OK> om du vill spara „ndringarna och starta om
+     programmet.
+   ş V„lj <Avbryt> om du vill †ngra de „ndringar som du
+     gjort i programkoden. (Detta kan du g”ra om det visar
+     sig att omstart inte st„mmer med din
+     fels”kningsstrategi.)
+.context ER_UF
+.context ER_CN
+.context ER_US
+.context QB_ER_UE
+.context ER_UE
+.context QB_ER_CaseElse
+.context ER_CaseElse
+:nAnv„ndargenererat fel
+Du har anv„nt en ERROR-sats f”r att generera det h„r felet.
+.context QB_ER_UF
+:nQBasic: funktionen inte definierad
+Funktionen som definierats med DEF FN finns inte, vilket
+kan indikera n†got av f”ljande f”rh†llanden:
+   ş Funktionen som definierats med DEF FN „r inte
+     definierad.
+   ş Funktionen som definierats med DEF FN f”rs”ker att
+     anropa sig sj„lv rekursivt.
+.context QB_ER_NR
+.context ER_NR
+:nRESUME finns inte
+Slutet p† programmet har n†tts medan programmet exekverade
+en felhanterande rutin. L„gg till en RESUME-sats i den
+felhanterande rutinen!
+
+ERR kod: 19
+.context QB_ER_RE
+.context ER_RE
+:nRESUME utan fel
+En RESUME-sats exekverades, men det fanns ingen aktiv
+felhanterande rutin.
+
+ERR kod: 20
+.comment -------------
+.comment  21-23 unused
+.comment -------------
+.context ER_DTO
+:nTiden ute f”r enheten
+Programmet tog inte emot information fr†n en enhet, t ex en
+skrivare, inom tidsperioden.
+
+ERR kod: 24
+.context QB_ER_DTO
+:nTiden ute f”r enheten
+QBasic tog inte emot information fr†n en enhet, t ex en
+skrivare, inom tidsperioden:
+  ş Om du f”rs”ker skriva ut, b”r du f”rs„kra dig om att
+    skrivaren „r ansluten till LPT1-enheten.
+.context ER_DF
+:nEnhetsfel
+En enhet har returnerat ett h†rdvarufel, vilket kan bero
+p† n†got av f”ljande:
+   ş Om du f”rs”ker skriva ut en fil, kan det h„nda att
+     skrivaren inte „r ansluten till LPT1-enheten.
+   ş Om du f”rs”ker s„nda data till en kommunikationsfil,
+     kan det h„nda att de signaler som testas med satsen
+     OPEN COM inte togs emot inom tidsperioden.
+
+ERR kod: 25
+.context QB_ER_DF
+:nQBasic: enhetsfel
+QBasic har uppt„ckt ett fel p† skrivaren. F”rs„kra dig om
+att:
+   ş Skrivarens online-lampa fortfarande „r t„nd.
+   ş Str”mmen till skrivaren fortfarande „r p†.
+   ş Skrivarens kabel „r ansluten till skrivaren och
+     datorn.
+.context ER_FN
+.context QB_ER_FN
+:nFOR utan NEXT
+Varje FOR-sats m†ste ha en motsvarande NEXT-sats.
+
+ERR kod: 26
+.context QB_ER_OP
+.context ER_OP
+:nSlut p† papper
+Det „r antingen slut p† papper i skrivaren, eller ocks† „r
+den avst„ngd.
+
+ERR kod: 27
+.comment -------------
+.comment   28 unused
+.comment -------------
+.context QB_ER_WH
+.context ER_WH
+:nWHILE utan WEND
+Varje WHILE-sats m†ste ha en motsvarande WEND-sats.
+
+ERR kod: 29
+.context QB_ER_WE
+.context ER_WE
+:nWEND utan WHILE
+Varje WEND-sats m†ste ha en motsvarande WHILE-sats.
+
+Kontrollera ocks† om andra kontrollstrukturer inom
+WHILE...WEND-strukturen har korrekt matchning. T ex kan en
+IF-sats utan en motsvarande ENDIF-sats innanf”r
+WHILE...WEND-strukturen generera det h„r felet.
+
+ERR kod: 30
+.comment -------------
+.comment  31-32 unused
+.comment -------------
+.context QB_ER_DL
+.context ER_DL
+:nEtiketten finns redan
+Tv† programrader tilldelades samma radnummer eller etikett.
+Varje radnummer eller etikett m†ste vara unik.
+
+ndra det ljusmarkerade radnumret eller etiketten, eller
+anv„nd kommandot S”k i S”k-menyn om du vill hitta dubblerade
+nummer eller etiketter, och „ndra raden eller etiketten s†
+den blir unik.
+ 
+ERR kod: 33
+.comment -------------
+.comment   34 unused
+.comment -------------
+.context QB_ER_US
+:nQBasic: delprogrammet inte definierat
+Du f”rs”ker anropa ett delprogram (SUB) som QBasic inte kan
+hitta.
+
+Tryck p† F2 om du vill se de tillg„ngliga delprogrammen
+(SUB) och funktionerna (FUNCTION).
+.context QB_ER_AC
+.context ER_AC
+:nFelaktigt antal argument
+Ett felaktigt antal argument har anv„nts i ett anrop till
+ett delprogram (SUB) eller en funktion (FUNCTION).
+
+J„mf”r DECLARE-satsen f”r SUB- eller FUNCTION-satsen med
+CALL-satsen, och f”rs„kra dig om att argumentlistan har
+samma antal element i b†da fallen.
+
+ERR kod: 37
+.context QB_ER_UA
+.context ER_UA
+:nMatrisen inte definierad
+Programmet f”rs”ker att anv„nda en matris som inte „r
+definierad.
+
+Kontrollera att matrisnamnet „r korrekt, och definiera
+matrisen med en DIM- eller REDIM-sats.
+
+ERR kod: 38
+.comment ----------
+.comment 39 unused
+.comment ----------
+.context QB_ER_VarReq
+.context ER_VarReq
+:nVariabel kr„vs
+QBasic kan ha n†tt en av satserna INPUT, LET, READ eller
+SHARED utan n†got variabelargument. QBasic kan „ven ha n†tt
+en GET- eller PUT-sats som inte angav en variabel n„r en
+operation utf”rdes p† en fil som ”ppnats i bin„rl„ge.
+
+ERR kod: 40
+.comment -------------
+.comment  41-49 unused
+.comment -------------
+.context QB_ER_FOV
+.context ER_FOV
+:n™verskridning i FIELD-satsen
+En FIELD-sats f”rs”kte att allokera flera byte „n vad som
+angetts f”r direktfilens postl„ngd. Kontrollera filens
+OPEN-sats f”r att f† reda p† postl„ngden.
+
+ERR kod: 50
+.context QB_ER_IER
+.context ER_IER
+:nInternt fel
+Ett internt fel intr„ffade i QBasic som b”r rapporteras
+till Microsoft.
+
+ERR kod: 51
+.context QB_ER_BFN
+.context ER_BFN
+:nFelaktigt filnamn eller nummer
+Det h„r felet kan intr„ffa eftersom en sats eller ett
+kommando refererar till en fil med ett filnummer eller
+filnamn som inte angetts i OPEN-satsen eller som „r utanf”r
+intervallet f”r filnummer (giltigt intervall „r 1-255),
+vilket angetts tidigare i programmet.
+
+ERR kod: 52
+.context ER_FNF
+:nFil saknas
+En OPEN-sats, RUN-sats eller n†gon annan Basic-sats
+refererar till en fil som inte existerar.
+
+ERR kod 53
+.context QB_ER_FNF
+:nQBasic: Fil saknas
+I dialogrutan f”r kommandot ™ppna, angav du en fil som inte
+existerar. Kontrollera om du har stavat filnamnet riktigt,
+och att du valde r„tt enhet och katalog!
+
+ERR kod 53
+.context QB_ER_BFM
+.context ER_BFM
+:nFelaktigt fill„ge
+Felet kan ha intr„ffat eftersom:
+   ş en PUT- eller GET-sats specificerade en sekventiell
+     fil.
+   ş en FIELD-sats specificerade en fil som inte ”ppnats
+     f”r direkt†tkomst.
+   ş en PRINT #-sats specificerade en sekventiell fil som
+     ”ppnats f”r inmatning.
+   ş en INPUT #-sats specificerade en fil som ”ppnats f”r
+     utmatning eller till„gg.
+   ş du f”rs”kte ”ppna en fil p† QuickBasic bin„rformat.
+
+ERR kod: 54
+.context QB_ER_FAO
+.context ER_FAO
+:nFilen redan ”ppen
+Det h„r felet kan orsakas av ett av f”ljande f”rh†llanden:
+   ş En OPEN-sats f”r sekventiellt utmatningsl„ge har
+     exekverats f”r en fil som redan „r ”ppen.
+   ş En KILL-sats refererar till en ”ppen fil.
+
+ERR kod: 55
+.context QB_ER_FSA
+.context ER_FSA
+:nFIELD-sats aktiv
+En GET- eller PUT-sats angav en postvariabel i en fil som
+FIELD-satser exekverats f”r.
+
+GET eller PUT med ett postvariabelargument kan bara anv„ndas
+p† en fil om inga FIELD-satser har exekverats f”r filen.
+
+ERR kod: 56
+.context ER_IOE
+:nEnhetsfel (I/O)
+Ett inmatnings- eller utmatningsfel intr„ffade medan
+programmet anv„nde en enhet, som t ex en skrivare eller
+en diskenhet.
+
+ERR kod: 57
+.context QB_ER_IOE
+:nQBasic: Enhetsfel (I/O)
+Du anv„nde kommandot Skriv ut p† Arkiv-menyn, och det blev
+n†got fel p† skrivaren. Kontrollera skrivaren!
+.context QB_ER_FAE
+.context ER_FAE
+:nFilen finns redan
+Filnamnet som angavs i en NAME-sats „r identiskt med namnet
+p† en fil som redan existerar. Ange ett annat filnamn i
+NAME-satsen, byt katalog, eller byt namn p† eller radera den
+existerande filen!
+
+ERR kod: 58
+.context QB_ER_BRL
+.context ER_BRL
+:nFelaktig postl„ngd
+L„ngden p† en postvariabel i en GET- eller PUT-sats st„mde
+inte ”verens med postl„ngden som angetts i den motsvarande
+OPEN-satsen.
+
+ERR kod: 59
+.comment -------------
+.comment   60 unused
+.comment -------------
+.context ER_DFL
+:nDisken „r full
+Dett fanns inte tillr„ckligt med utrymme p† disken f”r att
+utf”ra n†gon av operationerna PRINT #, PRINT USING #,
+WRITE #, CLOSE eller PUT.
+
+ERR kod: 61
+.context QB_ER_DFL
+:nQBasic: disken full
+Det finns inte tillr„ckligt med plats p† den angivna disken
+f”r att spara filen. Spara filen p† en annan disk!
+
+.context QB_ER_RPE
+.context ER_RPE
+:nInmatning efter filslut
+En INPUT #-sats l„ste fr†n en tom fil eller fr†n en fil som
+all data redan l„sts fr†n.
+
+Om du vill undvika det h„r felet, kan du anv„nda funktionen
+EOF till att uppt„cka slutet p† filen.
+
+ERR kod: 62
+.context QB_ER_BRN
+.context ER_BRN
+:nFelaktigt postnummer
+Postnumret i en PUT- eller GET-sats var mindre „n eller lika
+med noll.
+
+ERR kod: 63
+.context ER_IFN
+:nFelaktigt filnamn
+Ett filnamn f”ljer inte namnkonventionerna f”r BLOAD, BSAVE,
+KILL eller OPEN (exempelvis kan filnamnet inneh†lla f”r
+m†nga tecken).
+
+ERR kod: 64
+.context QB_ER_IFN
+:nFelaktigt filnamn
+Filnamnet som du angav inneh†ller antingen f”r m†nga tecken,
+eller tecken som inte „r till†tna i filnamn.
+.comment -------------
+.comment  65-66 unused
+.comment -------------
+.context ER_TMF
+:nF”r m†nga filer
+Du har ”verskridit antalet filoperationer som DOS till†ter
+i en rotkatalog. Om programmet ”ppnar, st„nger och/eller
+sparar filer i rotkatalogen, b”r du „ndra programmet s† att
+det anv„nder en underkatalog.
+
+ERR kod: 67
+.context QB_ER_TMF
+:nQBasic: f”r m†nga filer
+Programmmet har ”ppnat fler diskfiler „n QBasic kan hantera.
+Du m†ste st„nga en eller fler ”ppna filer innan du kan
+anv„nda QBasic-kommandon.
+
+Det enklaste s„ttet att g”ra detta „r genom att anv„nda
+Basic-satsen CLOSE:
+   1. Flytta mark”ren til Direktf”nstret.
+   2. Skriv in CLOSE p† den f”rst tillg„ngliga textraden.
+   3. Tryck p† Retur-tangenten, s† exekveras satsen.
+
+Sedan kan du exekvera QBasic-kommandon. Om programmet k”rde
+m†ste du starta om det.
+.context ER_DNA
+:nEnhet ej tillg„nglig
+Enheten som du f”s”kta komma †t „r inte inkopplad, eller
+finns inte.
+
+ERR kod: 68
+.context QB_ER_DNA
+:nQBasic: enhet ej tillg„nglig
+Du f”rs”ker att ”ppna en fil p† en enhet som inte finns i
+systemet. Kontrollera listan p† tillg„ngliga enhetsnamn i
+listrutan Kataloger/Enheter i dialogrutan ™ppna, och anv„nd
+en av dessa.
+.context QB_ER_CBO
+.context ER_CBO
+:nKommunikationsbufferten full
+Under fj„rrkommunikation blev mottagningsbufferten full.
+
+Storleken p† mottagningsbufferten st„lls in med alternativet
+RB i satsen OPEN COM. Om du vill undvika det h„r felet kan
+du:
+  ş kontrollera bufferten oftare, genom att anv„nda
+    funktionen LOC.
+  ş t”mma bufferten oftare, genom att anv„nda funktionen
+    INPUT$.
+
+ERR kod: 69
+.context ER_PRM
+:nBeh”righet saknas
+Ett f”rs”k gjordes att skriva p† en skrivskyddad disk, eller
+att komma †t en l†st fil.
+
+ERR kod: 70
+.context QB_ER_PRM
+:nQBasic: beh”righet saknas
+Du f”rs”ker att skriva ”ver en skrivskyddad fil, eller s†
+sitter det ett skrivskydd p† den diskett som du f”rs”ker att
+skriva p†.
+
+Om du vill undvika skrivskyddskonflikten, kan du anv„nda
+ett annat filnamn. Tag bort skrivskyddet eller anv„nd en
+annan diskett, om det sitter ett skrivskydd p† disketten.
+.context ER_DNR
+.context QB_ER_DNR
+:nDisken „r inte klar
+Diskettluckan „r ”ppen, eller s† finns det ingen diskett i
+den angivna enheten. St„ng diskettluckan, och g”r ett nytt
+f”rs”k!
+
+ERR kod: 71
+.context ER_DME
+:nFel p† disken
+Diskh†rdvaran har uppt„ckt ett fysiskt fel p† disken.
+
+ERR kod: 72
+.context QB_ER_DME
+:nQBasic: fel p† disken
+QBasic k„nner inte igen det diskformat den f”rs”ker att
+anv„nda. Anv„nd en annan disk, eller avsluta QBasic och
+formatera om den aktuella disken.
+.context QB_ER_ADF
+.context ER_ADF
+:nEgenskapen ej tillg„nglig
+Du kanske f”rs”ker anv„nda en egenskap fr†n en annan version
+av Basic som inte „r tillg„nglig i Microsoft QBasic.
+
+ERR kod: 73
+.context QB_ER_RAD
+.context ER_RAD
+:nNamnbyte till annan fil
+Du f”rs”kte byta namn p† en fil med en ny enhetsbeteckning.
+Du kan inte byta namn p† en fil med en ny enhetsbeteckning i
+QBasic.
+
+ERR kod: 74
+.context ER_PAE
+.context QB_ER_PAE
+:ntkomstfel f”r s”kv„g/fil
+Under en av operationerna OPEN, MKDIR, CHDIR eller RMDIR,
+kunde inte operativsystemet g”ra en riktig f”rbindelse
+mellan s”kv„gen och filnamnet.
+
+F”rs„kra dig om att filangivelsen i QBasic-milj”n som du
+skrev in i textrutan har r„tt format! Alla filnamn kan
+inneh†lla ett enhetsnamn och en fullst„ndig eller partiell
+s”kv„g.
+
+Det h„r felet kan ocks† intr„ffa om du f”rs”ker spara en fil
+som skulle byta ut en existerande skrivskyddad fil.
+
+ERR kod: 75
+.context ER_PNF
+:nKan inte hitta s”kv„gen
+Under en av operationerna OPEN, MKDIR, CHDIR eller RMDIR
+kunde inte operativsystemet hitta den angivna s”kv„gen.
+
+ERR kod: 76
+.context QB_ER_PNF
+:nQBasic: kan inte hitta s”kv„gen
+DOS kunde inte hitta den s”kv„g som du angav i dialogrutan
+f”r kommandona ™ppna, Spara och Spara som. Kontrollera att
+du skrivit in s”kv„gen korrekt.
+.comment -------------------------------------------
+.comment  Last of runtime errors - found at top of
+.comment  p. 5 in printout of BIGPIC.ERR
+.comment -------------------------------------------
+.context MSG_OutOfStack
+:nSlut p† stackutrymme
+Det h„r felet kan intr„ffa om det finns f”r m†nga aktiva
+anrop fr†n subrutiner, funktioner som definierats med
+FUNCTION och delprogram som definierats med SUB, eller om en
+rekursiv funktion definierad med FUNCTION n„star sig f”r
+djupt.
+
+ndra programmets struktur, eller anv„nd CLEAR-satsen f”r
+att ”ka programmets tilldelade stackutrymme.
+.comment -----------------------------------------------
+.comment  User Interface Related Messages that could be
+.comment  described in user's guide error message
+.comment  appendix.
+.comment -----------------------------------------------
+.context MSG_CantCont
+:nKan inte forts„tta
+Medan programmet var stoppat (t ex vid en brytpunkt) gjorde
+du „ndringar i programmet som f”rhindrar exekveringen att
+forts„tta.
+Du kan ha „ndrat dimensionerna p† en matris, „ndrat
+procedurargument eller redigerat n†gon annan deklarativ
+sats. Anv„nd dialogrutan och g”r n†got av f”ljande:
+   ş V„lj <OK> om du vill spara „ndringarna och starta om
+     programmet.
+   ş V„lj <Avbryt> om du vill †ngra de „ndringar som du
+     gjort i programkoden. (Detta kan du g”ra om det visar
+     sig att omstart inte st„mmer med din
+     fels”kningsstrategi.)
+.comment -----------------------------------------------
+.comment  Following are non-runtime errors.
+.comment -----------------------------------------------
+.context MSG_DupPrs
+:nProcedurnamnet i filen finns redan
+Filen du f”rs”kte ”ppna inneh†ller tv† delprogran eller
+funktioner med samma namn. Anv„nd en redigerare till att
+byta namn p† en av dem, och ”ppna sedan filen i QBasic!
+.comment -----------------------------------------------
+.comment  General User Interface messages
+.comment -----------------------------------------------
+.context MSG_Overwrite
+:nSkriva ”ver existerande fil
+V„lj <Ja> bara om du „r s„ker p† att du om du skriver ”ver
+inneh†llet i filen p† disken med filinneh†llet i minnet
+inte kommer att f”rlora v„rdefull information.
+Annars g”r du s† h„r:
+  ş V„lj <Nej> om du vill se dialogrutan igen och skriva in
+    ett nytt, unikt filnamn att spara filen i minnet p†.
+  ş V„lj <Avbryt> om du vill avbryta kommandot, och l„mna
+    allting som det var innan du valde kommandot.
+.context MSG_DelProc
+:nTa bort procedur
+Innan en procedur tas bort kontrollerar kommandot
+Funktioner & delprogram om du vill ta bort proceduren fr†n
+modulen. G”r n†got av f”ljande:
+  ş V„lj <OK> om du vill ta bort proceduren.
+  ş V„lj <Avbryt> om du vill avbryta borttagandet, s† att
+    allting f”rblir som det var innan du valde kommandot.
+.context MSG_MakeRem
+:nBlankrader ej till†tna
+Orden SUB eller FUNCTION „r vanligtvis de f”rsta som
+inleder en procedur p† f”rsta raden i f”nstret. Om du
+f”rs”ker l„gga in en blankrad ovanf”r satserna SUB eller
+FUNCTION g”r QBasic om raderna till kommentarer.
+.context MSG_NotSaved
+.context MSG_NotSavedAll
+:nFilen „r inte sparad
+Din fil har antingen aldrig sparats eller har inte sparats
+sedan den sist „ndrades. G”r n†got av f”ljande:
+  ş V„lj <Ja> om du vill spara filen med de „ndringar du har
+    gjort.
+  ş V„lj <Nej> om du vill bortse fr†n „ndringarna.
+  ş V„lj <Avbryt> om du vill avbryta kommandot, s† att
+    allting f”rblir som det var innan du valde kommandot.
+.context MSG_BadNextStmt
+:nKan inte korsa procedurgr„nsen
+Under fels”kning anv„nde du kommandot N„sta sats till att
+ange en sats som „r i en procedur, men inte i den d„r
+programexekveringen avbr”ts. I s† fall ignorerar QBasic
+kommandot N„sta sats.
+
+Om du vill fors„tta fels”kningen ska du flytta den avbrutna
+proceduren till redigeringsf”nstret. Sedan kan du anv„nda
+kommandot N„sta sats till att b”rja exekvering fr†n vilken
+sats som helst i proceduren.
+.context MSG_MustSpecifyName
+:nAnge namn
+Du valde <OK> i en dialogruta n„r textrutan var tom. Skriv
+ett modul- eller ett procedurnamn i textrutan och v„lj <OK>
+igen!
+.context MSG_DataMoved
+:nDATA-satser flyttades
+QBasic kr„ver att alla DATA-satser i ett program ska vara i
+koden p† modulniv†. QBasic flyttar automatiskt DATA-satser
+till modulniv†n.
+.context MSG_NoSearchString
+:nIngen s”kstr„ng
+Textrutan S”k efter var tom n„r du exekverade ett av
+kommandona S”k eller Ers„tt. V„lj kommandot igen, och skriv
+in en textstr„ng innan du v„ljer <OK>!
+.context MSG_MatchNotFound
+:nStr„ngen ej funnen
+QBasic kunde inte hitta den angivna textstr„ngen.
+
+Mark”ren „r kvar p† den plats d„r du startade s”kningen.
+.context MSG_ChangeComplete
+:nErs„ttning klar
+S”kning och ers„ttning „r klar. Mark”ren „r †ter p† den
+plats d„r s”kningen startade.
+.context MSG_ReqSub
+:nSUB eller FUNCTION kr„vs
+Du valde ett modulnamn fr†n dialogrutan i kommandot
+Funktioner & delprogram. V„lj ett delprogram (SUB) eller en
+funktion (FUNCTION) ist„llet.
+.context MSG_SwitchDisks
+:nS„tt in disketten
+Du har refererat till en dikettenhet som A: n„r den heter
+B:, eller B: n„r den heter A:.
+
+F”rs„kra dig om att filen du vill att det h„r kommandot
+ska operera p† „r p† en dikett i diskettenheten! V„lj
+sedan <OK>.
+.context MSG_CantSetTabs
+:nKan inte st„lla in tabbl„gen
+Om du har en fil ”ppen som inneh†ller ett tidigare inst„llt
+tabbl„ge kan det inte „ndras med alternativet Tabbl„gen i
+kommandot Sk„rm. Spara filen, och anv„nd kommandot Ny till
+att rensa redigeringsf”nstret i QBasic. Anv„nd kommandot
+Sk„rm till att st„lla in tabbl„gen, och ”ppna filen igen!
+.context MSG_OutNearMem
+:nSlut p† datautrymme
+QBasic fick slut p† plats i minnet f”r data, variabler och
+en del annan information. F”rs”k att „ndra dina krav p†
+datautrymme p† f”ljande s„tt:
+  ş  Anv„nd en mindre filbuffert i OPEN-satsens LEN-del!
+  ş  Anv„nd metakommandot $DYNAMIC till att skapa dynamiska
+     matriser! Dynamisk matrisdata kan vanligtvis vara
+     mycket st”rre „n statisk matrisdata.
+  ş  Anv„nd str„ngmatriser med fast l„ngd ist„llet f”r
+     str„ngmatriser med variabel l„ngd!
+  ş  Anv„nd den minsta datatyp du beh”ver f”r dina syften!
+     Anv„nde heltal n„r s† „r m”jligt!
+  ş  Anv„nd CLEAR till att „ndra storleken p† stacken!
+  ş  Anv„nd inte k„llkodsrader som „r l„ngre „n 256 tecken!
+     S†dana rader kr„ver allokering av ytterligare utrymme
+     f”r textbufferten.
+.context MSG_ModTooLarge
+:nKoden f”r modulniv†n „r f”r stor
+Storleken p† koden p† modulniv† ”verstiger QBasics interna
+gr„ns. F”rs”k att flytta en del kod in i ett delprogram
+(SUB) eller en funktion (FUNCTION)!
+.context MSG_ProcTooLarge
+:nProceduren „r f”r stor
+Storleken p† den aktuella proceduren ”verstiger QBasics
+interna gr„ns. G”r proceduren mindre genom att dela upp den
+i flera procedurer!
+.comment -----------------------------------------------
+.comment     Section 2: QBI Parser Related Messages
+.comment -----------------------------------------------
+.context MSG_IdTooLong
+:nIdentifieraren „r f”r l†ng
+Identiferaren „r l„ngre „n QBasic till†ter. Identifierare,
+s†som variabelnamn, f†r inte vara l„ngre „n 40 tecken.
+.context MSG_BadId
+:nOgiltig identifierare
+Du har anv„nt ett tecken som inte „r giltigt i en
+identifierare. F”rs„kra dig om att:
+  ş funktioner som definieras med DEF FN har namn som bara
+    inneh†ller bokst„ver och siffror.
+  ş funktioner som definieras med FUNCTION och delprogram
+    som defnieras med SUB har namn som b”rjar med en bokstav
+    och inte inneh†ller n†gon av f”ljande specialtecken:
+    ., %, &, !, # eller $.
+.context MSG_IdImp
+:nIdentifierare kan inte sluta med %, &, !, #, $
+Identifierare kan inte sluta med %, &, !, # eller $.
+
+Ovanst†ende suffix „r inte till†tna i typidentifierare eller
+i namn p† delprogram som definierats med SUB.
+.context MSG_BadElemRef
+:nIdentifierare kan inte inneh†lla punkt
+Punkt kan inte anv„ndas i:
+  ş namnet p† en anv„ndardefinierad datatyp.
+  ş namnet p† ett element i en anv„ndardefinierad datatyp.
+  ş namnet p† en variabel som dimensionerats som en
+    anv„ndardefinierad datatyp.
+
+ven om variablenamn kan inneh†lla punkter, rekommenderas
+det att punkt bara anv„nds som postvariabelseparator. Om du
+har program som anv„nder punkt i variabelnamn kan du „ndra
+dem s† de anv„nder en blandning av versaler och gemener
+ist„llet. T ex s† skulle variabeln ALPHA.BETA bli AlphaBeta.
+.context MSG_ExpTooComplex
+:nUttrycket f”r komplext
+En del interna begr„nsningar f”r QBasic har ”verskridits.
+
+Under uttrycksevaluering „r str„ngar som inte „r kopplade
+till variabler tilldelade tillf„lliga minnesutrymmen. Ett
+stort antal s†dana str„ngar kan orsaka det h„r felet. ven
+ett numeriskt uttryck som best†r av flera komplicerade
+deluttryck kan orsaka det h„r felet.
+
+F”rs”k att f”renkla uttryck eller tilldela str„ngar till
+variabler!
+.context MSG_IllegalNumber
+:nOgiltigt tal
+Du har anv„nt ett tal som inte „r giltigt f”r det sammanhang
+d„r det anv„nds. QBasic till†ter exempelvis inte att man
+deklarerar en str„ng med fast l„ngd till l„ngden noll.
+D„rf”r „r DIM X AS STRING * 0 ogiltigt. Ett ogiltigt tal
+f”rekommer ocks† om man deklarerar motstridiga v„rden. Ett
+exempel n„r det h„r felet kan intr„ffa „r om man anv„nder
+ett datatypssuffix f”r heltal med ett flyttal (t ex 10.20%).
+.context MSG_InvConst
+:nOgiltig konstant
+Ett ogiltigt uttryck har anv„nts f”r att tilldela ett v„rde
+till en symbolisk konstant.
+
+Numeriska uttryck som inneh†ller symboliska konstanter kan
+inneh†lla:
+   ş Numeriska literaler.
+   ş Tidigare definierade symboliska konstanter.
+   ş N†got av de aritmetiska eller logiska operatorerna utom
+     exponentiering.
+
+Str„nguttryck som tilldelats en symbolisk konstant f†r bara
+best† av en enda literal str„ng omgiven av dubbla
+citationstecken.
+.comment ------------------------------------------------
+.comment       Section 3: TextMgr/ReParse errors
+.comment ------------------------------------------------
+.context MSG_InvModLev
+:nOgiltigt utanf”r SUB, FUNCTION eller DEF FN
+QBasic har kommit till en sats som inte „r till†ten i kod
+p† modulniv†. Exempelvis satserna EXIT SUB, EXIT FUNCTION
+eller EXIT DEF „r inte till†tna i kod p† modulniv†.
+.context MSG_InvMain
+:nOgiltigt utanf”r SUB/FUNCTION
+QBasic har kommit till en sats som inte „r till†ten i kod
+p† modulniv† eller funktioner som definierats med DEF FN.
+.context MSG_InvProc
+:nOgiltigt i SUB, FUNCTION eller DEF FN
+Satsen „r inte till†ten innanf”r ett delprogram (SUB) eller
+en funktion (FUNCTION och DEF FN).
+.context MSG_InvBeforeProcDef
+:nSats kan inte f”reg† SUB/FUNCTION-definition
+Entast kommentarer och DEFtyp-satser „r till†tna f”re en
+procedurdefinition.
+.context MSG_ProcNoEnd
+:nSUB/FUNCTION utan END SUB/FUNCTION
+Avslutande sats fattas i en procedur.
+.context MSG_EndNoDef
+:nEND DEF utan DEF
+En END DEF-sats har ingen motsvarande DEF-sats.
+.context MSG_UndElem
+:nElementet inte definierat
+Du har f”rs”kt att anv„nda ett element som du inte tidigare
+har definierat som del av den anv„ndardefinierade datatypen.
+
+Om du t ex har definierat MINTYP som inneh†llande element
+A, B och C, och f”rs”ker att anv„nda variabel D som ett
+element av typen MINTYP, s† f†r du det h„r meddelandet.
+.context MSG_UndType
+:nTypen inte definierad
+En variabel eller parameter deklarerades med en odefinierad
+datatyp.
+
+Anv„nd TYPE-satsen om du vill definiera en datatyp.
+.context MSG_1stStmt
+:nM†ste vara f”rsta satsen p† raden
+I IF...THEN...ELSE-block kan IF, ELSE, ELSEIF och END IF
+endast f”reg†s av ett radnummer eller en etikett.
+
+I SELECT...END SELECT-konstruktioner kan CASE och END SELECT
+endast f”reg†s av ett radnummer eller en etikett.
+.context MSG_EndProc
+:nEND SUB eller END FUNCTION m†ste vara p† sista raden
+Du f”rs”ker att l„gga till kod efter sista raden i en
+procedur. Du m†ste antingen †terv„nda till huvudmodulen
+eller ”ppna ett annat delprogram (SUB) eller en annan
+funktion (FUNCTION) om du vill l„gga till flera rader med
+kod.
+.context MSG_NoEndType
+:nTYPE utan END TYPE
+Det finns ingen END TYPE-sats kopplad till TYPE-satsen.
+.context MSG_NoType
+:nEND TYPE utan TYPE
+Det finns ingen TYPE-sats kopplad till END TYPE-satsen.
+.context MSG_InvInTypeBlk
+:nSats ej till†tet i TYPE-block
+Endast kommentarer och AS datatypssatser „r till†tna mellan
+satserna TYPE och END TYPE.
+.context MSG_FNstart
+:nKan inte b”rja med 'FN'
+Du anv„nde "FN" som de tv† f”rsta bokst„verna i namnet p†
+ett delprogram (SUB), en funktion (FUNCTION) eller en
+variabel.
+
+"FN" kan bara anv„ndas som de tv† f”rsta bokst„verna i anrop
+av en funktion som definierats med DEF FN.
+.context MSG_NotBlock
+:nOperationen kr„ver en disk
+Du f”rs”ker att ladda fr†n eller spara p† en icke-diskenhet,
+som t ex en skrivare eller ett tangentbord.
+.context MSG_BadMeta
+:n$Metakommandofel
+Syntaxen f”r ett metakommando „r felaktig. Metakommandon
+m†ste f”reg†s av en kommentar. T ex s† „r b†da av de
+f”ljande metakommandona $DYNAMIC korrekta:
+
+REM  $DYNAMIC
+'  $DYNAMIC
+.context MSG_NoBpCase
+:nBrytpunkt ej till†ten i CASE-sats
+Det finns en del restriktioner p† hur brytpunkter kan
+anv„ndas f”r att fels”ka SELECT...END SELECT-satser. Man kan
+inte placera en brytpunkt p† f”rsta satsen i CASE-block
+eller efter satsen END SELECT.
+
+Om du vill fels”ka en SELECT...END SELECT-sats med hj„lp av
+en brytpunkt, kan du placera brytpunkten p† raden
+SELECT CASE i programmet. Sedan kan du stega dig sats f”r
+sats genom resten av satsstrukturen.
+.comment -----------------------------------
+.comment    Section 4:  Scan-time errors
+.comment -----------------------------------
+.context MSG_OBA
+:nMatrisen redan dimensionerad
+Det h„r felet kan orsakas av n†got av f”ljande:
+  ş Fler „n en DIM-sats f”r samma statiska matris.
+  ş Ett f”sr”k att „ndra dimensionerna p† en dynamisk
+    matris med en DIM-sats utan att anv„nda ERASE-satsen
+    f”r att deallokera matrisen f”rst.
+  ş En OPTION BASE-sats som f”rekommer efter en matris „r
+    dimensionerad.
+.context MSG_COM
+:nM†ste f”reg† exekverbara satser
+En COMMON-sats eller en DECLARE-sats f”rekommer efter en
+exekverbar sats. COMMON- och DECLARE-satser m†ste st†
+f”re exekverabara satser. Alla Basic-satser „r exkverbara
+utom f”ljande:
+
+    COMMON                       OPTION BASE
+    CONST                        REM
+    DATA                         SHARED
+    DECLARE                      STATIC
+    DEFtyp                       TYPE
+    DIM (f”r statiska matriser)  $STATIC och $DYNAMIC
+.context MSG_EWI
+:nEND IF utan IF-block
+Nyckelordet IF som inleder ett IF...ENDIF-block fattas.
+
+Kontrollera ocks† andra kontrollstrukturer inom
+IF...ENDIF-blocket och f”rs„kra dig om att de „r r„tt
+matchade. T ex ett n„stat IF-block utan matchande ENDIF
+innanf”r det yttre IF...ENDIF-blocket genererar det h„r
+felet.
+.context MSG_IWE
+:nIF-block utan END IF
+Det finns inget motsvarande END IF i ett IF...THEN-block.
+.context MSG_ElseWI
+:nELSE utan IF
+En ELSE-sats f”rekommer utan motavarande IF. Ibland kan
+det h„r felet orsakas av felaktigt n„stade IF-satser.
+
+Kontrollera ocks† andra kontrollstrukturer inom
+IF...ENDIF-blocket och f”rs„kra dig om att de „r r„tt
+matchade. T ex ett n„stat IF-block utan matchande ENDIF
+innanf”r det yttre IF...ENDIF-blocket genererar det h„r
+felet.
+.context MSG_ExitScope
+:nEXIT FOR inte inom FOR...NEXT
+En EXIT FOR-sats anv„nds utanf”r en FOR...NEXT-sats.
+.context MSG_ExitDo
+:nEXIT DO inte inom DO...LOOP
+En EXIT DO-sats anv„nds utanf”r en DO...LOOP-sats.
+.context MSG_Do
+:nDO utan LOOP
+Det avslutande nyckelordet LOOP fattas i en DO...LOOP-sats.
+.context MSG_Loop
+:nLOOP utan DO
+Ordet DO som startar en DO...LOOP-sats fattas eller „r
+felstavat.
+
+Kontrollera ocks† andra kontrollstrukturer inom
+DO...LOOP-strukturen och f”rs„kra dig om att de „r r„tt
+matchade. T ex ett n„stat IF-block utan matchande ENDIF
+innanf”r DO...LOOP-strukturen genererar det h„r felet.
+.context MSG_Select
+:nSELECT utan END SELECT
+Det avslutande nyckelordet END SELECT fattas i en
+SELECT CASE-sats.
+.context MSG_Case
+:nCASE utan SELECT
+Nyckelorden SELECT CASE som inleder en SELECT CASE-sats
+fattas eller „r felstavat.
+
+Kontrollera ocks† andra kontrolstrukturer inom
+SELECT...END SELECT-strukturen och f”rs„kra dig om att de
+„r r„tt matchade. T ex ett n„stat IF-block utan matchande
+ENDIF innanf”r SELECT...END SELECT-strukturen genererar det
+h„r felet.
+.context MSG_EndSelect
+:nEND SELECT utan SELECT
+Nyckelorden SELECT CASE som inleder en SELECT CASE-sats
+fattas eller „r felstavat.
+
+Kontrollera ocks† andra kontrollstrukturer inom
+SELECT...END SELECT-strukturen och f”rs„kra dig om att de
+„r r„tt matchade. T ex ett n„stat IF-block utan matchande
+ENDIF innanf”r SELECT...END SELECT-strukturen genererar det
+h„r felet.
+.context MSG_InvFixStr
+:nStr„ng med fast l„ngd ej till†ten
+Du kan inte anv„nda en str„ng med fast l„ngd som formell
+parameter till ett delprogram (SUB) eller en funktion
+(FUNCTION).
+.context MSG_InvTypedVar
+:nTypad variabel ej till†ten i uttryck
+Variabler av en anv„ndardefinierad datatyp kan inte skickas
+som argument. T ex f”ljande uttryck, d„r X „r en
+anv„ndardefinierad datatyp, „r inte till†ten:
+
+CALL ALPHA(X)
+
+Man kan dock skicka element i en anv„ndardefinierad datatyp
+som argument, enligt f”ljande:
+
+CALL Alpha(X.FirstEl)
+.context MSG_DefNoEnd
+:nDEF utan END DEF
+Det finns ingen motsvarande END DEF i en flerradig
+funktionsdefinition.
+.context MSG_ParmTM
+:nOlika parametertyper
+Datatypen p† en parameter f”r ett delprogram (SUB) eller
+en funktion (FUNCTION) matchar inte datatypen i
+DECLARE-satsens argument eller det anropande argumentet.
+.context MSG_ASRqd1st
+:nAS-sats kr„vs vid f”rsta deklaration
+En variabel som inte har deklarerats med hj„lp av en AS-sats
+refereras till med en AS-sats.
+.context MSG_ASRqd
+:nAS-sats kr„vs
+En variabel som har detfinierats med hj„lp av en AS-sats
+refereras till utan den satsen.
+
+Om den f”rsta deklarationen av en variabel har en AS-sats
+m†ste alla f”ljande DIM, REDIM, SHARED eller COMMON-satser
+som refererar till den variablen ha en AS-sats.
+.context MSG_ExpectedCase
+:nEj till†ten placering av satser
+Satser och radetiketter „r inte till†tna mellan SELECT CASE
+och den f”rsta CASE-satsen.
+
+Kommentarer och satsseparatorn (:) „r till†tna.
+.context MSG_NoNumArr
+:nNumerisk matris ej till†ten
+Element i numeriska matriser „r inte till†tna som argument
+till VARPTR$.
+
+Endast enkla variabler och str„ngmatriselement med variabel
+l„ngd „r till†tna.
+.context MSG_InType
+:nOgiltigt utanf”r TYPE-block
+Satsen "element AS typ" „r bara till†ten inom ett
+TYPE...END TYPE-block.
+.context MSG_SubCnt
+:nFel antal dimensioner
+En matrisreferens inneh†ller fel antal dimensioner.
+.context MSG_DefFnCtrl
+:nDEF FN ej till†tet i kontrollsatser
+Definition av funktioner med DEF FN „r inte till†tna
+innanf”r kontrollsatser, s†som IF...THEN...ELSE och
+SELECT CASE.
+.context MSG_ForIndexInUse
+:nFOR indexvariabel anv„nds redan
+Det h„r felet intr„ffar n„r samma variabel anv„nds som
+r„knarargument i en FOR...NEXT-sats och i en n„stad
+FOR...NEXT-sats innanf”r den slingan. N„stade
+FOR...NEXT-satser m†ste anv„nda olika variabler f”r
+r„knarargumenten.
+.context MSG_TypeTooLarge
+.context h.pg$
+:nTyp st”rre „n 65535 byte
+En anv„ndardefinierad datatyp kan inte ”verstiga 64K.

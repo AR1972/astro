@@ -1,0 +1,647 @@
+.comment ******************************************************************
+.comment *  Graphics Family - QBasic                                      *
+.comment ******************************************************************
+.comment *  7/13/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  6/28/90 stevesau                                              *
+.comment *  Incorporated final review comments/edits.                     *
+.comment *  Split up SCREEN function and statement.                       *
+.comment ******************************************************************
+.comment *  6/12/90 stevesau                                              *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/11/90 stevesau                                              *
+.comment *  Replaced Attributes and Colors node with COLOR example        *
+.comment *  showing color codes.                                          *
+.comment *  Combined GET/PUT.                                             *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/10/90 stevesau                                              *
+.comment *  Reinserted X command in DRAW.                                 *
+.comment *  Added Attributes and Colors node.                             *
+.comment ******************************************************************
+.comment *  5/4/90 stevesau                                               *
+.comment *  Combined SCREEN function and statement (from Dev I/O family). *
+.comment *  Created new Screen Modes topic.                               *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                              *
+.comment *  Added action lines.						  *
+.comment *  Made COLOR Attributes link local.                             *
+.comment *  Deleted references to X command in DRAW.                      *
+.comment *  Added DRAW macro language screens, made links local.          *
+.comment *  Added DRAW - Differences from BASICA.                         *
+.comment ******************************************************************
+.context CIRCLE
+.context @CIRCLE
+:nCIRCLE-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Zeichnet auf dem Bildschirm einen Kreis oder eine Ellipse.
+
+\bCIRCLE [STEP] (x!,y!),Radius![,[Farbe%] [,[Start!] [,[Ende!] [,Aspekt!]]]]\p
+
+    ş \bSTEP\p	     Gibt an, daá die Koordinaten relativ zu der aktuellen
+		 Grafik-Cursorposition sind.
+    ş \b(x!,y!)\p    Die Koordinaten fr den Mittelpunkt des Kreises oder
+		 der Ellipse
+    ş \bRadius!\p    Der Radius des Kreises oder der Ellipse in Einheiten
+		 des aktuellen Koordinatensystems, bestimmt durch die
+		 zuletzt ausgefhrten SCREEN-, VIEW- und WINDOW-Anweisungen.
+    ş \bFarbe%\p     Ein Farbattribut, das die Farbe des Kreises
+		 bestimmt. Die verfgbaren Farbattribute h„ngen von Ihrer
+		 Farbgrafikkarte und dem Bildschirmmodus, bestimmt mit
+		 der letzten SCREEN-Anweisung, ab.
+    ş \bStart!\p     Der Anfangswinkel fr den Kreisbogen, angegeben im
+		 Bogenmaá.
+    ş \bEnde!\p      Der Endwinkel fr den Kreisbogen, angegeben im
+		 Bogenmaá.
+    ş \bAspekt!\p    Das Verh„ltnis der L„nge von der y-Achse zu der L„nge
+		 der x-Achse; verwendet zum Zeichnen von Ellipsen.
+
+    ş Die Umwandlung von Grad in Bogenmaá erfolgt durch die
+      Multiplikation der Grad mit (PI / 180).
+
+Beispiel:
+    'Dieses Beispiel ben”tigt eine Farbgrafikkarte.
+    SCREEN 2
+    CIRCLE (320, 100), 200
+    CIRCLE STEP (0,0), 100
+
+Siehe auch  \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aFarbattribute und -werte\v@color.table\v\i\p     \i\p\aBildschirmmodi\v@screen.modes\v\i\p
+.context COLOR
+.context @COLOR
+:nCOLOR-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Setzt die Bildschirmfarben.
+
+\bCOLOR [Vordergrund%] [,[Hintergrund%] [,Rahmen%]]\p Bildschirmmodus 0 (nur Text)
+\bCOLOR [Hintergrund%] [,Palette%]\p                  Bildschirmmodus 1
+\bCOLOR [Vordergrund%]\p                              Bildschirmmodi 4, 12, 13
+\bCOLOR [Vordergrund&] [,Hintergrund&]\p              Bildschirmmodi 7-10
+
+ ş \bVordergrund%\p   Eine Zahl, die die Vordergrundfarben des Bildschirms
+   \bVordergrund&\p   setzt. Im Bildschirmmodus 0 bestimmt das Farbattribut
+                  Vordergrund% die Farbe des Textes. In den anderen
+                  Bildschirmmodi ist Vordergrund% ein Farbattribut
+                  oder ein 4-Bit-Farbwert (nur beim Bildschirmmodus 4),
+                  der die Farben fr Text und das Zeichnen von Linien
+                  setzt.
+ ş \bHintergrund%\p   Eine Zahl, die die Hintergrundfarben des Bildschirms
+   \bHintergrund&\p   setzt. Im Bildschirmmodus 0 ist Hintergrund% ein
+                  Farbattribut. Im Bildschirmmodus 1 ist Hintergrund% ein
+                  4-Bit-Farbwert. In den Bildschirmmodi 7-10 ist
+                  Hintergrund& ein Farbwert.
+ ş \bRahmen%\p        Ein Farbattribut, das die Farbe des Bildschirm-
+                  rahmens setzt.
+ ş \bPalette%\p       Eine Zahl (0 oder 1), welche von zwei Mengen von
+                  Farbattributen verwendet werden soll:
+
+
+                  Palette%     Attribut 1     Attribut 2     Attribut 3
+                  ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍ
+                  0           Grn           Rot            Braun
+                  1           Cyanblau       Magenta        Weiá
+
+ ş Die verfgbaren Farbattribute und -werte h„ngen von Ihrer Farbgrafik-
+   karte und der Bildschirmmodus von der zuletzt ausgefhrten SCREEN-
+   Anweisung ab.
+ ş Wenn Ihr System mit einer EGA-, VGA- oder MCGA-Karte ausgerstet ist,
+   dann verwenden Sie die PALETTE-Anweisung, um die Farbzuweisungen
+   der Farbattribute zu „ndern.
+
+Beispiel:
+    'Dieses Beispiel ben”tigt eine Farbgrafikkarte.
+    SCREEN 7
+    FOR i% = 0 TO 15
+        COLOR i%
+        PRINT i%
+    NEXT i%
+
+Siehe auch    \i\p\aDRAW\v@DRAW\v\i\p         \i\p\aPAINT\v@PAINT\v\i\p    \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+              \i\p\aFarbattribute und -werte\v@color.table\v\i\p        \i\p\aBildschirmmodi\v@screen.modes\v\i\p
+.context @color.table
+:nFarbattribute und -werte
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+             \bFarb-Bildschirm                  Monochrom-Bildschirm\p
+             ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ  ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bFarb         Standard-        Angezeigte      Standard-     Angezeigte\p
+\b-attribut    farbwert\p(a)\b      Farbe           farbwert      Farbe\p
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+\bBildschirmmodi 0, 7, 8, 9\p(b)\b, 12 und	13\p
+0            0                Schwarz         0(c)          Aus
+1            1                Blau                          Unterstrichen(d)
+2            2                Grn            1(c)          Ein(d)
+3            3                Cyanblau        1(c)          Ein(d)
+4            4                Rot             1(c)          Ein(d)
+5            5                Magenta         1(c)          Ein(d)
+6            6                Braun           1(c)          Ein(d)
+7            7                Hellgrau        1(c)          Ein(d)\p
+8            8                Grau            0(c)          Aus
+9            9                Hellblau                      Hervorgehoben
+                                                            Unterstrichen
+10           10               Hellgrn        2(c)          Hervorgehoben
+11           11               Hellcyan        2(c)          Hervorgehoben
+12           12               Hellrot         2(c)          Hervorgehoben
+13           13               Pink            2(c)          Hervorgehoben
+14           14               Gelb            2(c)          Hervorgehoben
+15           15               Weiá            0(c)          Aus\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bBildschirmmodi 1 und 9\p(e)
+
+0            0                Schwarz         0             Aus
+1            11               Hellcyan        2             Hervorgehoben
+2            13               Pink            2             Hervorgehoben
+3            15               Weiá            0             Weiá aus
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bBildschirmmodi 2 und 11\p
+0            0                Schwarz         0             Aus
+1            15               Weiá            0             Weiá aus
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  (a)  EGA-Farbwerte. VGA und MCGA verwenden Bildschirmfarbwerte, die visuell
+       „quivalente Farben erzeugen.
+  (b)  Fr VGA oder EGA mit mehr als 64K Video-Speicher.
+  (c)  Nur fr den Modus 0.
+  (d)  Aus falls fr den Hintergrund verwendet.
+  (e)  EGA mit mehr als 64K Video-Speicher.
+
+Siehe auch    \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p   \i\p\aSCREEN\v@SCREEN\v\i\p
+              \i\p\aBildschirmmodi\v@screen.modes\v\i\p
+.context DRAW
+.context @DRAW
+:nDRAW-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Zeichnet ein Objekt.
+
+\bDRAW Stringausdruck$\p
+
+ ş \bStringausdruck$\p   Ein Zeichenkettenausdruck, der einen oder
+                     mehrere der folgenden Zeichenbefehle enth„lt.
+
+   Befehle zum Zeichen von Linien und zum Bewegen des Cursors:
+     D[n%]          Bewegt den Cursor n% Einheiten nach unten.
+     E[n%]          Bewegt den Cursor n% Einheiten nach oben und nach rechts.
+     F[n%]          Bewegt den Cursor n% Einheiten nach unten und nach rechts.
+     G[n%]          Bewegt den Cursor n% Einheiten nach unten und nach links.
+     H[n%]          Bewegt den Cursor n% Einheiten nach oben und nach links.
+     L[n%]          Bewegt den Cursor n% Einheiten nach links.
+     M[{+|-}]x%,y%  Bewegt den Cursor auf Punkt x%,y%. Wenn dem x%
+                    ein + oder ein - vorausgeht, wird der Cursor relativ
+                    zum aktuellen Punkt verschoben.
+     R[n%]          Bewegt den Cursor n% Einheiten nach rechts.
+     U[n%]          Bewegt den Cursor n% Einheiten nach oben.
+     [B]            Wahlweises Pr„fix, das den Cursor ohne Zeichnen bewegt.
+     [N]            Wahlweises Pr„fix, das zeichnet und den Cursor dann
+                    wieder auf die Ausgangsposition zurcksetzt.
+
+    Farb-, Rotations- und Skalierungsbefehle:
+      An%              Rotiert ein Objekt n% * 90 Grad (n% kann 0, 1, 2
+                       oder 3 sein).
+      Cn%              Setzt die Zeichenfarbe (n% ist ein Farbattribut).
+      Pn1%,n2%         Setzt die Fll- und Randfarben eines Objektes
+                       (n1% ist das Fllfarbenattribut, n2% ist das
+                       Randfarbattribut).
+      Sn%              Bestimmt den Streckungsfaktor, indem die L„nge einer
+                       Einheit einer Cursor-Bewegung festgelegt wird. Der
+                       Vorgabewert von n% ist 4, was einem Pixel entspricht.
+      TAn%             Dreht einen Winkel um n% Grad (-360 bis 360).
+
+ ş Wenn Sie n% bei dem Zeilenzeichnen- und Cursor-Bewegungsbefehl
+   weglassen, dann wird der Cursor um eine Einheit bewegt.
+ ş Um einen DRAW-Teilzeichenkettenausdruck von einem DRAW Zeichen-
+   kettenausdruck auszufhren, verwenden Sie den Befehl "X":
+
+   DRAW "X"+ VARPTR$(Zeichenkettenausdruck$)
+
+Beispiel:
+    'Dieses Beispiel ben”tigt eine Farbgrafikkarte.
+    SCREEN 1
+    Dreieck$ = "F60 L120 E60"
+    DRAW "C2 X" + VARPTR$(Dreieck$)
+    DRAW "BD30 P1,2 C3 M-30,-30"
+
+Siehe auch    \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p      \i\p\aSCREEN\v@SCREEN\v\i\p       \i\p\aVARPTR$\v@VARPTR$\v\i\p
+              \i\p\aFarbattribute und -werte\v@color.table\v\i\p    \i\p\aUnterschiede zu BASICA\v@basica.diffs\v\i\p
+.context .ggx
+.context @ggx
+.context .pgfx
+.context @pgfx
+:nGET-, PUT-Anweisungen (Grafik)
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+Die GET-Anweisung bertr„gt einen grafischen Bildschirmausschnitt.
+Die PUT-Anweisung zeigt das durch die GET-Anweisung bertragene Bild an.
+
+\bGET [STEP] (x1!,y1!)-[STEP](x2!,y2!), Datenfeldname[(Index%)]\p
+\bPUT [STEP] (x1!,y1!), Datenfeldname[(Index%)] [,Aktionsverb]\p
+
+    ş \bSTEP\p	     Gibt an, daá die Koordinaten relativ zu der
+		 aktuellen Position des Grafikcursors sind.
+    ş \b(x1!,y1!)\p  Die oberen linken Koordinaten des durch GET
+                  bertragenen Bildes oder von der Bildschirmposition,
+		  an der PUT das Bild ausgibt.
+    ş \b(x2!,y2!)\p  Die unteren rechten Koordinaten des bertragenen Bildes.
+    ş \bDatenfeldname\p  Der Name des Datenfeldes, in dem das Bild
+		    gespeichert wird.
+                    Siehe auch \i\p\aBilddatenfelder und Kompatibilit„ten\v@ggx.arrays\v\i\p,
+		    um die erfoderliche Gr”áe des Datenfeldes zu bestimmen.
+    ş \bIndex%\p	Der Datenfeldindex, ab dem die Speicherung des
+		    Bildes beginnt.
+    ş \bAktionsverb\p	Ein Schlssekwort, das anzeigt, wie das Bild
+		    angezeigt ist.
+
+	     Schlsselwort	Aktion
+             ÍÍÍÍÍÍÍÍÍÍÍÍÍ      ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+	     AND		Mischt ein gespeichertes Bild mit einem
+				bereits existierenden Bild.
+	     OR			Legt ein gespeichertes Bild ber ein
+				bereits existierendes Bild.
+	     PSET		Zeichnet ein gespeichertes Bild, l”scht
+				ein bereits existierendes Bild.
+	     PRESET		Zeichnet ein gespeichertes Bild in
+				invertierten Farben, l”scht das bereits
+				existierende Bild.
+	     XOR		Zeichnet ein gespeichertes Bild oder l”scht
+				ein vorher gezeichnetes Bild, w„hrend es
+				den Hintergrund aufbewahrt, um
+				Animationseffekte zu produzieren.
+
+    ş Eine PUT-Anweisung sollte immer in dem gleichen oder einem kompatiblen
+      Bildschirmmodus wie die GET-Anweisung, die zum šbertragen eines Bildes
+      verwendet wird, ausgefhrt werden.
+      Siehe auch \i\p\aBilddatenfelder und Kompatibilit„ten\v@ggx.arrays\v\i\p.
+
+Beispiel:
+    'Dieses Beispiel erfordert eine Farbgrafikkarte.
+    SCREEN 1
+    DIM Box%(1 TO 200)
+    x1% = 0: x2% = 10: y1% = 0: y2% = 10
+    LINE (x1%, y1%)-(x2%, y2%), 2, BF
+    GET (x1%, y1%)-(x2%, y2%), Box%
+    DO
+        PUT (x1%, y1%), Box%, XOR
+        x1% = RND * 300
+        y1% = RND * 180
+        PUT (x1%, y1%), Box%
+    LOOP WHILE INKEY$ = ""
+
+Siehe auch    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aBildschirmmodi\v@screen.modes\v\i\p
+.context @ggx.arrays
+:nBilddatenfelder und Kompatibilit„ten
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Verwenden Sie Bits-pro-Bildpunkt-pro-Ebene und Ebenen-Werte, um die
+erforderliche Gr”áe eines Datenfeldes zu bestimmen, das einen Grafik-
+Bildausschnitt speichern soll. Bits-pro-Bildpunkt-pro-Ebene und Ebenen-
+Werte bestimmen ebenfalls zusammen mit der horizontalen Aufl”sung, welche
+Bildschirmmodi kompatibel sind.
+                                                             Horizontale
+                                Bits pro Bildpunkt           Aufl”sung
+Bildschirmmodus                 pro Ebene          Ebenen    (in Bildpunkten)
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ
+1                               2                  1         320
+2, 4, 11                        1                  1         640
+3                               1                  1         720
+7                               1                  4         320
+8, 9 (>64K Video-Speicher), 12  1                  4         640
+9 (64K Video-Speicher), 10      1                  2         640
+13                              8                  1         320
+
+Die folgende Formel ergibt die erforderliche Gr”áe eines Datenfeldes zum
+Aufnehmen eines bertragenen Bildes in Byte an.
+
+Gr”áe% = 4 + INT(((PMAP (x2!, 0) - PMAP (x1!, 0) + 1) *
+        (BitsProBildpunktProEbene%) + 7) / 8) * Ebenen% *
+        (PMAP (y2!, 1) - PMAP (y1!, 1) + 1)
+
+GET- und PUT-Operationen sind kompatibel bei Bildschirmmodi mit
+der gleichen horizontalen Aufl”sung und Bits-pro-Bildpunkt-pro-Ebenen-
+und Ebenenwerten. Beispielsweise sind die Bildschirmmodi 2, 4 und
+11, und die Bildschirmmodi 8 und 12 kompatibel.
+
+Siehe auch    \i\p\aSCREEN\v@SCREEN\v\i\p   \i\p\aBildschirmmodi\v@screen.modes\v\i\p
+.context LINE
+.context @LINE
+:nLINE-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Zeichnet eine Linie oder ein Rechteck auf dem Bildschirm.
+
+\bLINE [[STEP](x1!,y1!)]-[STEP](x2!,y2!) [,[Farbe%] [,[B | BF] [,Stil%]]]\p
+
+    ş \bSTEP\p		Gibt die Koordinaten relativ zu der aktuellen
+		    Position des Grafik-Cursors an.
+    ş \b(x1!,y1!)\p,	Die Bildschirmkoordinaten am Anfang der Linie und
+      \b(x2!,y2!)\p	am Ende der Line.
+    ş \bFarbe%\p	Ein Farbattribut, das die Farbe der Linie oder
+                    des Rechtecks bestimmt. Die verfgbaren Farbattribute
+                    h„ngen von Ihrer Farbgrafikkarte und dem Bildschirm-
+                    modus der zuletzt ausgefhrten SCREEN-Anweisung ab.
+    ş \bB\p		Zeichnet ein Rechteck anstatt einer Linie.
+    ş \bBF\p            Zeichnet ein ausgeflltes Rechteck.
+    ş \bStil%\p 	Ein 16-Bit Wert, dessen Bit-Wert bestimmt, welche
+                    Bildpunkte und welche nicht gezeichnet werden. Wird
+                    verwendet um gestrichelte oder gepunktete Linien zu
+		    zeichnen.
+
+Beispiel:
+    'Dieses Beispiel erfordert eine Farbgrafikkarte
+    SCREEN 1
+    LINE (110, 70)-(190, 120), , B
+    LINE (0, 0)-(320, 200), 3, , &HFF00
+
+Siehe auch    \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p    \i\p\aPRESET, PSET\v@PSET\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+              \i\p\aFarbattribute und -werte\v@color.table\v\i\p       \i\p\aBildschirmmodi\v@screen.modes\v\i\p
+.context PAINT
+.context @PAINT
+:nPAINT-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Fllt eine Grafik-Bereich mit einer angegebenen Farbe oder einem Muster aus.
+
+\bPAINT [STEP](x!,y!)[,[{Farbe%|Kachel$}] [,[Randfarbe%] [,Hintergrundfarbe$]]]\p
+
+    ş \bSTEP\p            Gibt an, daá die Koordinaten relativ zu der
+		      aktuellen Position des Grafik-Cursors sind.
+    ş \b(x!,y!)\p	  Die Bildschirmkoordinate, an denen das Zeichnen
+		      begonnen werden soll.
+    ş \bFarbe%\p	  Ein Farbattribut, das die Fllfarbe angibt.
+    ş \bKachel$\p         Ein Fllmuster, das 8 Bit breit und bis zu 64 Byte
+		      lang ist, definiert wie folgt:
+
+			Kachel$ = CHR$(arg1) + CHR$(arg2) + ... + CHR$(argn%)
+
+		      Die Argumente von CHR$ sind Zahlen zwischen 0 und
+		      255. Jedes CHR$(argn%) definiert ein Byte, einen
+		      Ausschnitt von 8 Bildpunkten von dem Muster basierend
+		      auf dem Bin„rformat der Zahl.
+    ş \bRandfarbe%\p	  Ein Farbattribut, das die Randfarbe des
+		      auszufllenden Bereichs angibt. PAINT beendet das
+		      Ausfllen eines Bereiches, wenn es auf einen Rand
+		      mit der angegebenen Farbe st”át.
+    ş \bHintergrund$\p    Ein 1-Byte, 8-Bildpunkte Hintergrundmuster
+		      Die Angabe des Hintegrundmuster erlaubt Ihnen ber einen
+		      bereits ausgefllten Bereich zu malen.
+
+
+    ş Die verfgbaren Farbattribute h„ngen von Ihrer Grafikkarte und
+      dem Bildschirmmodus ab, der durch die zuletzt ausgefhrte SCREEN-
+      Anweisung angegeben wurde.
+
+Beispiel:
+    'Dieses Beispiel erfordert eine Farbgrafikkarte.
+    SCREEN 1
+    CIRCLE (106, 100), 75, 1
+    LINE (138, 35)-(288, 165), 1, B
+    PAINT (160, 100), 2, 1
+
+Siehe auch    \i\p\aASC, CHR$\v@CHR$\v\i\p    \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+              \i\p\aFarbattribute und -werte\v@color.table\v\i\p      \i\p\aBildschirmmodi\v@screen.modes\v\i\p
+.context PALETTE
+.context @PALETTE
+:nPALETTE-, PALETTE USING-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Wechselt die Farbzuweisungen der Farbattribute in dem aktuellen Bildschirm-
+modus. PALETTE und PALETTE USING kann auf Systemen verwendet werden, die
+mit einer EGA-, VGA-, oder MCGA-Graifikkarte ausgerstet sind.
+
+\bPALETTE [Attribut%,Farbe&]\p
+\bPALETTE USING Datenfeldname#[(Index%)]\p
+
+ ş \bAttribut%\p       Das zu wechselnde Farbattribut.
+ ş \bFarbe&\p          Ein Farbwert, der einem Attribut zugewiesen werden soll.
+ ş \bDatenfeldname#\p  Ein Datenfeld von Farbwerten, die an die Attribute
+                   des aktuellen Bildschirmmodus zugewiesen  werden sollen.
+                   Das Datenfeld muá groá genug sein, um allen Attributen
+                   Farben zuzuweisen.
+ ş \bIndex%\p          Der Index des ersten Datenfeldelements, das an ein
+                   Attribut zugewiesen werden soll.
+
+ ş Die verfgbaren Farbattribute und -werte h„ngen von der Grafik-
+   karte Ihres Systems ab und von dem Bildschirmmodus, der von
+   der zuletzt ausgefhrten SCREEN-Anweisung gesetzt worden ist.
+
+Beispiel:
+    'Dieses Beispiel erfordert eine Farbgrafikkarte
+    PALETTE 0, 1
+    SCREEN 1
+    FOR i% = 0 TO 3: a%(i%) = i%: NEXT i%
+    LINE (138, 35)-(288, 165), 3, BF
+    LINE (20, 10)-(160, 100), 2, BF
+    DO
+        FOR i% = 0 TO 3
+            a%(i%) = (a%(i%) + 1) MOD 16
+        NEXT i%
+        PALETTE USING a%(0)
+    LOOP WHILE INKEY$ = ""
+
+Siehe auch    \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+              \i\p\aFarbattribute und -werte\v@color.table\v\i\p    \i\p\aBildschirmmodi\v@screen.modes\v\i\p
+.context PCOPY
+.context @PCOPY
+:nPCOPY-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Kopiert eine Seite des Video-Speichers zu einer anderen.
+
+\bPCOPY Quellseite%,Zielseite%\p
+
+    ş \bQuellseite%\p     Die Nummer der zu kopierenden Video-Seite.
+    ş \bZielseite%\p      Die Nummer der Video-Seite, auf die kopiert wird.
+
+    ş Der Wert, der die Video-Seite angibt, h„ngt von der Gr”áe des
+      Video-Speichers und dem aktuellen Bildschirmmodus ab.
+
+Beispiel:
+    PCOPY 1, 3
+
+Siehe auch    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aBildschirmmodi\v@screen.modes\v\i\p
+.context SCREEN
+.context @SCREEN
+:nSCREEN-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Setzt den Bildschirmmodus und andere Charakteristika von Ihrem Bildschirm.
+
+\bSCREEN Modus% [,[Farbschalter%] [,[A-Seite%] [,V-Seite%]]]\p
+
+    ş \bModus%\p          Setzt den Bildschirmmodus. Siehe auch \i\p\aBildschirmmodi\v@screen.modes\v\i\p.
+    ş \bFarbschalter%\p   Ein Wert (0 oder 1), der zwischen Farb- und
+                      Monochromanzeige umschaltet (nur Modi 0 und 1):
+
+                      Modus     Wert           Aktion
+                      ÍÍÍÍÍ   ÍÍÍÍÍÍÍÍÍÍ  ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+		      0       0 	  Farbe ausschalten
+		      0       Nicht Null  Farbe einschalten
+		      1       0 	  Farbe einschalten
+		      1       Nicht Null  Farbe aussschalten
+
+    ş \bA-Seite%\p	 Die Bildschirmseite, an die Text- oder Grafikausgaben
+                     geschrieben werden.
+    ş \bV-Seite%\p	 Die Bildschirmseite, die zur Zeit auf dem
+                     Bildschirm angezeigt wird.
+
+Beispiel:
+    'Dieses Beispiel erfordert einen Farbgrafikadapter.
+    SCREEN 1	    '320 x 200 Grafik
+    LINE (110, 70)-(190, 120), , B
+    LINE (0, 0)-(320, 200), 3, , &HFF00
+
+Siehe auch    \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p      \i\p\aPAINT\v@PAINT\v\i\p
+              \i\p\aSCREEN-Funktion\v@screenf\v\i\p      \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p    \i\p\aBildschirmmodi\v@screen.modes\v\i\p
+.context @screen.modes
+:nBildschirmmodi
+  \i\p\aInhalt\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Die nachfolgende Tabelle beschreibt die Bildschirmmodi:
+
+ÄÄÄÄÄÄÄÄÄÄMDPA, CGA, Hercules, Olivetti, EGA, VGA oder MCGA GrafikadapterÄÄÄÄ
+SCREEN 0: Nur im Textmodus
+    ş 40 x 25, 40 x 43, 40 x 50, 80 x 25, 80 x 43, oder 80 x 50 Textformat,
+      8 x 8 Zeichenfeldgr”áe (8 x 14, 9 x 14, oder 9 x 16 mit EGA oder VGA)
+    ş Zuweisung von 16 Farben zu jedem der 16 Attribute (mit CGA oder EGA)
+    ş Zuweisung von 64 Farben zu jedem der 16 Attribute (mit EGA oder VGA)
+    ş In Abh„ngigkeit von der Textaufl”sung und dem Adapter, 8 Bildschirm-
+      speicherseiten (0-7), 4 Seiten (0-3), 2 Seiten (0-1), oder 1 Seite (0)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄCGA-, EGA-, VGA- oder MCGA-AdapterÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 1: 320 x 200 Grafik
+    ş 40 x 25 Textformat, 8 x 8 Zeichenfeldgr”áe
+    ş Zuweisung von 16 Hintergrundfarben und einer aus zwei S„tzen der 3
+      Vordergrundfarben unter Verwendung der COLOR-Anweisung mit CGA
+    ş Zuweisung von 16 Farben zu 4 Attributen mit EGA oder VGA
+    ş 1 Bildschirmspeicherseite (0)
+SCREEN 2: 640 x 200 Grafik
+    ş 80 x 25 Textformat, 8 x 8 Zeichenfeldgr”áe
+    ş Zuweisung von 16 Farben zu 2 Attributen mit EGA oder VGA
+    ş 1 Bildschirmspeicherseite (0)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄHercules-, Olivetti- oder AT&T-AdapterÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 3: Hercules-Adapter erforderlich, nur fr Monochrom-Monitore
+    ş 720 x 348 Grafik
+    ş 80 x 25 Textformat, 9 x 14 Zeichenfeldgr”áe
+    ş Normalerweise 2 Bildschirmspeicherseiten (0-1); 1 Seite (0), falls
+      ein zweiter Bildschirmadapter installiert ist
+    ş PALETTE-Anweisung wird nicht untersttzt
+    ş Rufen Sie den Hercules-Treiber MSHERC.COM auf, bevor Sie den
+      Bildschirmmodus 3 verwenden
+SCREEN 4:
+    ş Untersttzt die Olivetti Personal Computer Modelle M24, M240, M28,
+      M280, M380, M380/C und M380/T und AT&T Personal Computer, der
+      Serie 6300
+    ş 640 x 400 Grafik
+    ş 80 x 25 Textformat, 8 x 16 Zeichenfeldgr”áe
+    ş Zuweisung von 1 von 16 Farben als Vordergrundfarbe (ausgew„hlt durch
+      die COLOR-Anweisung); Hintergrund ist als schwarz festgelegt.
+    ş 1 Bildschirmspeicherseite (0)
+    ş PALETTE-Anweisung wird nicht untersttzt.
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄEGA oder VGA-AdapterÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 7: 320 x 200 Grafik
+    ş 40 x 25 Textformat, 8 x 8 Zeichenfeldgr”áe
+    ş Zuweisung von 16 Farben zu jedem der 16 Attribute
+    ş Falls 64KB EGA Adapterspeicher, 2 Bildschirmspeicherseiten (0-1);
+      ansonsten 8 Seiten (0-7)
+SCREEN 8: 640 x 200 Grafik
+    ş 80 x 25 Textformat, 8 x 8 Zeichenfeldgr”áe
+    ş Zuweisung von 16 Farben zu jedem der 16 Attribute
+    ş Falls 64KB EGA Adapterspeicher, 2 Bildschirmspeicherseiten (0-1);
+      ansonsten 4 Seiten (0-3)
+SCREEN 9: 640 x 350 Grafik
+    ş 80 x 25 oder 80 x 43 Textformat, 8 x 14 oder 8 x 8 Zeichenfeldgr”áe
+    ş Zuweisung von 16 Farben zu 4 Attributen (64 KB Adapterspeicher) oder
+      64 Farben zu 16 Attributen (mehr als 64 KB Adapterspeicher)
+    ş Falls 64KB EGA Adapterspeicher, 1 Bildschirmspeicherseite (0);
+      ansonsten 2 Seiten (0-1)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄEGA oder VGA Adapter, nur fr Monochrom-MonitoreÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 10: 640 x 350 Grafik, nur fr Monochrom-Monitore
+    ş 80 x 25 oder 80 x 43 Textformat, 8 x 14 oder 8 x 8 Zeichenfeldgr”áe
+    ş Zuweisung von bis zu 9 Pseudofarben zu 4 Attributen
+    ş 2 Bildschirmspeicherseiten (0-1), 256 KB Adapterspeicher erforderlich
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄVGA oder MCGA-AdapterÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Screen 11 (VGA oder MCGA)
+    ş 640 x 480 Grafik
+    ş 80 x 30 oder 80 x 60 Textformat, 8 x 16 oder 8 x 8 Zeichenfeldgr”áe
+    ş Zuweisung von bis zu 256 KB Farben zu 2 Attributen
+    ş 1 Bildschirmspeicherseite (0)
+Screen 12 (VGA)
+    ş 640 x 480 Grafik
+    ş 80 x 30 oder 80 x 60 Textformat, 8 x 16 oder 8 x 8 Zeichenfeldgr”áe
+    ş Zuweisung von bis zu 256 KB Farben zu 16 Attributen
+    ş 1 Bildschirmspeicherseite (0)
+Screen 13 (VGA oder MCGA)
+    ş 320 x 200 Grafik
+    ş 40 x 25 Textformat, 8 x 8 Zeichenfeldgr”áe
+    ş Zuweisung von bis zu 256 KB Farben zu 256 Attributen
+    ş 1 Bildschirmspeicherseite (0)
+
+Siehe auch    \i\p\aSCREEN-Anweisung\v@SCREEN\v\i\p
+.context @screenf
+:nSCREEN-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt den ASCII-Wert oder die Farbattribute von einem Zeichen an einer
+angegebene Bildschirmposition zurck.
+
+\bSCREEN (Zeile%,Spalte% [,Farbkennzeichen%])\p
+
+    ş \bZeile%\p	     Die Zeilenkoordinate eines Zeichens.
+    ş \bSpalte%\p	     Die Spaltenkoordinate eines Zeichens.
+    ş \bFarbkennzeichen%\p   Ein Wert (0-1), der angibt, was zurck-
+                         gegeben werden soll.
+
+		Wert			Rckgabe
+                ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+		0 (falls ausgelassen)	ASCII-Code des Zeichens.
+		1			Farbattribute des Zeichens.
+Beispiel:
+    CLS
+    PRINT "Hallo"
+    PRINT "Der ASCII-Wert des Zeichens bei 1,1 ist"; SCREEN(1, 1)
+
+Siehe auch    \i\p\aPOINT\v@POINT\v\i\p    \i\p\aSCREEN-Anweisung\v@SCREEN\v\i\p
+              \i\p\aASCII-Zeichencodes\v@ac\v\i\p    \i\p\aFarbattribute und -werte\v@color.table\v\i\p
+.context VIEW
+.context @VIEW
+:nVIEW-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definiert die Gr”áe und die Stelle eines Darstellungsfeldes, an dem Grafik
+auf dem Bildschirm ausgeben werden kann.
+
+\bVIEW [[SCREEN] (x1!,y1!)-(x2!,y2!) [,[Farbe%] [,Rand%]]]\p
+
+    ş \bSCREEN\p		 Gibt an, daá die Koordinaten relativ zum
+                             Bildschirm und nicht zum Darstellungsfeld sind.
+    ş \b(x1!,y1!)-(x2!,y2!)\p	 Die Koordinaten zweier sich diagonal gegen-
+			     berliegenden Seiten des Darstellungsfeldes.
+    ş \bFarbe%\p		 Ein Farbattribut, das die Fllfarbe des
+			     Darstellungsfeldes bestimmt.
+    ş \bborder%\p                Ein Farbattribut, das die Randfarbe des
+                             Darstellungsfeldes bestimmt.
+
+    ş Falls keine Argumente angegeben werden, ist der komplette Bildschirm\p
+      das Darstellungsfeld.
+    ş Die verfgbaren Farben h„ngen von Ihrer Farbgrafikkarte und dem
+      Bildschirmmodus, gesetzt durch die zuletzt ausgefhrte SCREEN-
+      Anweisung, ab.
+
+Beispiel:
+    'Dieses Beispiel erfordert eine Farbgrafikkarte.
+    SCREEN 1
+    VIEW (10, 10)-(300, 180), , 1
+    LOCATE 1, 11: PRINT "Ein groáes Grafikdarstellungsfeld";
+    VIEW SCREEN (80, 80)-(200, 125), , 1
+    LOCATE 11, 11: PRINT "Ein kleines Grafikdarstellungsfeld";
+
+Siehe auch    \i\p\aCLS\v@CLS\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p     \i\p\aWINDOW\v@WINDOW\v\i\p
+              \i\p\aFarbattribute und -werte\v@color.table\v\i\p    \i\p\aBildschirmmodi\v@screen.modes\v\i\p

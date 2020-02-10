@@ -1,0 +1,63 @@
+DESCRIPTION 
+GLOBAL_INFO 
+	{
+	CHARACTER 
+	NO_OVERLAP 
+	CC_COMPILED 
+	}
+
+MODULE uisearch 
+	{
+	DIALOG dlgSearchChange AT (11, 5, 66, 14) 
+	CAB_NAME CABSearchChange 
+	HELP_ID hidSearchChange 
+	TMC_INIT tmcNull 
+		{
+		GROUP_BOX "" AT (16, 0, 43, 3) 
+		GROUP_BOX "" AT (16, 3, 43, 3) 
+		TEXT "~Buscar:" AT (1, 1, 11, 1) 
+		EDIT AT (17, 1, 41, 1) ARG szFindWhat 
+
+		TEXT "~Cambiar a:" AT (1, 4, 11, 1) 
+		EDIT AT (17, 4, 41, 1) ARG szChangeTo 
+
+		CHECK_BOX "~May£s/min£s" AT (4, 8, 18, 1) ARG fMatchCase 
+		CHECK_BOX "~Palabra completa" AT (36, 8, 22, 1) ARG fWholeWord 
+                PUSH_BUTTON "Buscar y ~verificar" AT (1, 11, 20, 1) TMC tmcFindAndVerify DISMISS_CAB DEFAULT
+                PUSH_BUTTON "~Cambiar todo" AT (23, 11, 14, 1) TMC tmcChangeAll DISMISS_CAB
+                CANCEL_BUTTON AT (41, 11, 10, 1) DISMISS
+                PUSH_BUTTON "~Ayuda" AT (54, 11, 7, 1) TMC_IMPORT tmcHelp ACTION
+		}
+
+	DIALOG dlgSearchFind AT (10, 7, 59, 11) 
+	CAB_NAME CABSearchFind 
+	HELP_ID hidSearchFind 
+	TMC_INIT tmcNull 
+		{
+		GROUP_BOX "" AT (12, 0, 44, 3) 
+		TEXT "~Buscar:" AT (1, 1, 11, 1) 
+		EDIT AT (13, 1, 42, 1) ARG szFindWhat 
+
+		TEXT SZ_FROM_CAB szChangeTo AT (1, 2, 2, 1) 
+		CHECK_BOX "~May£s/min£s" AT (4, 5, 17, 1) ARG fMatchCase 
+		CHECK_BOX "~Palabra completa" AT (30, 5, 22, 1) ARG fWholeWord 
+		OK_BUTTON AT (8, 8, 6, 1) DISMISS_CAB DEFAULT 
+		CANCEL_BUTTON AT (22, 8, 12, 1) DISMISS 
+		PUSH_BUTTON "~Ayuda" AT (41, 8, 9, 1) TMC_IMPORT tmcHelp ACTION 
+		}
+
+	DIALOG dlgConfirm AT (13, 19, 53, 5) 
+	CAB_NAME CABConfirm 
+	HELP_ID hidConfirm 
+	TMC_INIT tmcNull 
+		{
+		PUSH_BUTTON "~Cambiar" AT (1, 2, 12, 1) TMC tmcChange DISMISS DEFAULT 
+		PUSH_BUTTON "~Omitir" AT (15, 2, 10, 1) TMC tmcSkip DISMISS 
+                CANCEL_BUTTON AT (28, 2, 12, 1) DISMISS
+		PUSH_BUTTON "~Ayuda" AT (41, 2, 9, 1) TMC_IMPORT tmcHelp ACTION 
+		}
+
+	}
+
+
+END_DESCRIPTION 

@@ -1,0 +1,13 @@
+# Runs through all of the install directories and creates
+# installation programs.
+
+ALL:
+   cd lib
+   $(MAKE)
+   cd ..\oem
+   $(MAKE)
+   cd $(ODKROOT)\install\oemdata
+   $(MAKE)
+   cd $(OAKROOT)\install
+
+

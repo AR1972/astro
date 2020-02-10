@@ -1,0 +1,21 @@
+
+SUMMARY getattr - return attribute for a directory entry
+
+#include <tools.h>
+
+int getattr (pname)
+char *pname;
+
+DESCRIPTION
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+

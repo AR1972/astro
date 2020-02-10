@@ -1,0 +1,222 @@
+.context CONST
+.context @CONST
+:nIstruzione CONST
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Dichiara una o pi— costanti simboliche.
+
+\bCONST nomecostante = espressione [,nomecostante = espressione]...\p
+
+    ş \bnomecostante\p    Il nome della costante. Il nome pu• comprendere fino a
+                      40 caratteri e deve iniziare con una lettera. Caratteri
+                      ammessi sono A-Z, 0-9 ed il punto.
+    ş \bespressione\p     Un'espressione assegnata alla costante. L'espressione
+                      pu• comprendere caratteri alfanumerici (ad esempio 1.0),
+                      costanti, un operatore aritmetico o logico qualsiasi
+                      esclusi gli esponenti (^) o una stringa alfabetica
+                      singola.
+
+Esempio:
+    CONST PI = 3.141593
+    INPUT "Raggio del cerchio: "; r
+    PRINT "Area = "; PI * r ^ 2
+.context DECLARE
+.context @DECLARE
+.context ANY
+.context @ANY
+:nIstruzione DECLARE
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Dichiara una procedura FUNCTION o SUB e richiama la modalit… di controllo
+del tipo di dati dell'argomento.
+
+\bDECLARE {FUNCTION | SUB} nome [([elencoparametri])]\p
+
+    ş \bnome\p               Il nome della procedura.
+    ş \belencoparametri\p    Una o pi— variabili che specificano i parametri da
+                         mandare alla procedura quando questa viene chiamata:
+
+                     \bvariabile[( )] [AS tipo] [, variabile[( )] [AS tipo]]...\p
+
+                     \bvariabile\p    Il nome di una variabile Basic.
+                     \btipo\p         Il tipo di dati relativo alla variabile
+                                  (INTEGER, LONG, SINGLE, DOUBLE, STRING o
+                                  un tipo di dati definito dall'utente).
+                                  ANY indica un tipo di dati qualsiasi.
+
+    ş DECLARE Š obbligatorio se vengono chiamate delle procedure senza CALL.
+      QBASIC genera in maniera automatica delle istruzioni DECLARE quando il
+      programma viene salvato.
+
+Esempio:
+    Il programma REMLINE.BAS mostra come vengono dichiarate le procedure
+    FUNCTION e SUB. Per esaminare o eseguire questo programma, caricare
+    REMLINE.BAS utilizzando il comando Apri dal menu File.
+
+Si vedano inoltre    \i\p\aCALL\v@CALL\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context DEF
+.context @DEF
+:nIstruzione DEF FN
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definisce una funzione.
+
+\bnomeDEF FN[(elencoparametri)] = espressione\p
+\bnomeDEF FN[(elencoparametri)]\p
+    \b[bloccoistruzioni]\p
+  \bnomeFN = espressione\p
+    \b[bloccoistruzioni]\p
+  \bEXIT DEF]\p
+    \b[bloccoistruzioni]\p
+  \bEND DEF\p
+
+    ş \belencoparametri\p    Uno o pi— argomenti nel formato seguente:
+
+                     \bvariabile[( )] [AS tipo] [, variabile[( )] [AS tipo]]...\p
+
+                     \bvariabile\p   Il nome di una variabile Basic.
+                     \btipo\p        Il tipo di dati relativo alla variabile
+                                 (INTEGER, LONG, SINGLE, DOUBLE, STRING o un
+                                 tipo di dati definito dall'utente).
+
+    ş \bespressione\p        Il valore di ritorno della funzione.
+
+    ş Per definire una funzione Š consigliato l'uso dell'istruzione FUNCTION.
+
+Si vedano inoltre    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSHARED e STATIC\v@STATIC\v\i\p
+.context ENVIRON
+.context @ENVIRON
+.context ENVIRON$
+.context @ENVIRON$
+:nFunzione ENVIRON$ e istruzione ENVIRON
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ENVIRON$ restituisce una stringa di ambiente DOS.
+ENVIRON cambia od aggiunge una stringa nella tabella di ambiente DOS.
+
+\bENVIRON$ (variabileambiente$)\p
+\bENVIRON$ (n%)\p
+\bENVIRON espressioneastringa$\p
+
+    ş \bvariabileambiente$\p      Il nome della variabile di ambiente DOS.
+    ş \bn%\p                      Indica ad ENVIRON$ di restituire la stringa
+                              n-esima dalla tabella di ambiente.
+    ş \bespressioneastringa$\p    Il nome e l'impostazione di una variabile di
+                              ambiente DOS, come PATH o PROMPT, in uno dei
+                              formati seguenti:
+
+                              \bvariabileambiente$=stringaambiente$\p
+                              \bvariabileambiente$ stringaambiente$\p
+
+    ş I cambiamenti apportati con l'istruzione ENVIRON vengono persi quando
+      si esce dal programma.
+
+Esempio:
+    ENVIRON "PATH=TEST"
+    PRINT ENVIRON$("PATH")
+.context FUNCTION
+.context @FUNCTION
+:nIstruzione FUNCTION
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definisce una procedura FUNCTION.
+
+\bFUNCTION nome [(elencoparametri)] [STATIC]\p
+    \b[bloccoistruzioni]\p
+  \bnome = espressione\p
+    \b[bloccoistruzioni]\p
+\bEND FUNCTION\p
+
+    ş \bnome\p              Il nome della funzione e del tipo di dati che vengono
+                        restituiti, indicati da un suffisso relativo al tipo
+                        di dati (%, &, !, # o $).
+    ş \belencoparametri\p   Una o pi— variabili che indicano i parametri da
+                        passare alla funzione quando questa viene chiamata:
+
+                     \bvariabile[( )] [AS tipo] [, variabile[( )] [AS tipo]]...\p
+
+                     \bvariabile\p    Il nome di una variabile Basic.
+                     \btipo\p         Il tipo di dati relativo alla variabile
+                                  (INTEGER, LONG, SINGLE, DOUBLE, STRING o un
+                                  tipo di dati definito dall'utente).
+
+    ş \bSTATIC\p           Specifica che i valori delle variabili locali della
+                       funzione vengono salvati tra una chiamata e l'altra.
+    ş \bespressione\p      Il valore di ritorno della funzione.
+
+    ş Quando si chiama una funzione, Š possibile specificare che il
+      valore di un argomento non deve essere cambiato dalla funzione
+      racchiudendo tale valore tra parentesi.
+
+
+Esempio:
+    Il programma REMLINE.BAS mostra come chiamare delle procedure FUNCTION.
+    Per esaminare o eseguire il programma, caricare REMLINE.BAS usando il
+    comando Apri dal menu File.
+
+
+Si vedano inoltre    \i\p\aDECLARE\v@DECLARE\v\i\p    \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aSHARED e STATIC\v@STATIC\v\i\p
+                     \i\p\aSUB\v@SUB\v\i\p
+.context SHELL
+.context @SHELL
+:nIstruzione SHELL
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sospende l'esecuzione di un programma in Basic per eseguire un comando DOS
+o un file batch DOS.
+
+\bSHELL [stringacomandi$]\p
+
+    ş \bstringacomandi$\p    Il nome di un comando DOS o di un file batch.
+
+    ş Il programma riprende l'esecuzione quando Š stata portata a termine
+      l'esecuzione del comando DOS o del file batch.
+    ş Se viene omessa la stringa dei comandi, SHELL richiama una shell DOS
+      e visualizza il prompt di DOS. Per riprendere l'esecuzione del
+      programma, usare il comando EXIT.
+
+
+Esempio:
+    SHELL "DIR"
+.context SUB
+.context @SUB
+:nIstruzione SUB
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definisce una procedura SUB.
+
+\bSUB nome[(elencoparametri)] [STATIC]\p
+  \b[bloccoistruzioni]\p
+\bEND SUB\p
+
+    ş \bnome\p                Il nome di una procedura SUB, lungo fino a 40
+                          caratteri e senza il suffisso del tipo di dati.
+    ş \belencoparametri\p     Una o pi— variabili che specificano i parametri
+                          da passare alla procedura SUB quando questa viene
+                          chiamata:
+
+                     \bvariabile[( )] [AS tipo] [, variabile[( )] [AS tipo]]...\p
+
+                     \bvariabile\p   Il nome di una variabile Basic.
+                     \btipo\p        Il tipo di dati relativo alla variabile
+                                 (INTEGER, LONG, SINGLE, DOUBLE, STRING o un
+                                 tipo i dati definito dall'utente).
+
+    ş \bSTATIC\p           Specifica che i valori delle variabili locali della
+                       procedura SUB vengono salvati tra una chiamata di
+                       funzione e l'altra.
+
+    ş Quando viene chiamata una Procedura SUB, Š possibile specificare
+      che il valore di un argomento non deve essere cambiato dalla
+      procedura racchiudendo tale valore tra parentesi.
+
+
+Esempio:
+    Il programma REMLINE.BAS mostra come chiamare una procedura SUB. Per
+    esaminare o eseguire il programma, caricare REMLINE.BAS utilizzando il
+    comando Apri dal menu File.
+
+
+Si vedano inoltre    \i\p\aCALL\v@CALL\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p
+                     \i\p\aSHARED e STATIC\v@STATIC\v\i\p
+

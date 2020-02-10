@@ -1,0 +1,42 @@
+SUMMARY  exeType
+
+#include <tools.h>
+
+exeType( filename ) 
+char *filename;
+
+DESCRIPTION
+ *  exeType( filename ) -   Return the type of .EXE, based on a quick
+ *			    examination of the header.	If it is a new .EXE
+ *			    and the OS ( Windows, DOS 4.X, 286DOS ) cannot
+ *			    be guessed accurately, just return "new exe".
+ *
+ *  The algorithm is:
+ *
+ *	if ( File is too short for old-style header )	==> NOT AN EXE
+ *	if ( MZ signature not found )			==> NOT AN EXE
+ *	if ( Offset of relocation table != 0x40 )	==> Old-style .EXE
+ *	if ( File is too short for new-style header )	==> NOT AN EXE
+ *	if ( New Magic number is wrong )		==> Old-stype .EXE
+ *	if ( Dynalink flag set )			==> Dyna-link lib
+ *	if ( minalloc in old header is 0xFFFF ) 	==> 286DOS .EXE
+ *	if ( Import table is empty )			==> DOS 4 .EXE
+ *	if ( Resource Table is not empty )		==> Windows .EXE
+ *	if ( Stub loader is present )
+ *	   if ( "This" is at 0x4E )			==> 286DOS .EXE
+	   else 					==> Bound .EXE
+ *	else						==> New-style .EXE
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+Pull in the #defined values from tools.h
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+

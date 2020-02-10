@@ -1,0 +1,46 @@
+DESCRIPTION 
+GLOBAL_INFO 
+	{
+	CHARACTER 
+	NO_OVERLAP 
+	CC_COMPILED 
+	}
+
+MODULE uimsgbox 
+	{
+	DIALOG dlgPrompt AT (12, 7, 55, 10) 
+	CAB_NAME CABPrompt 
+	TMC_INIT tmcNull 
+		{
+		TEXT SZ_FROM_CAB szPromptHeader AT (1, 1, 51, 1) CENTER 
+		EDIT AT (2, 4, 49, 1) ARG szPrompt 
+
+		OK_BUTTON AT (4, 7, 6, 1) DISMISS_CAB DEFAULT 
+		CANCEL_BUTTON AT (18, 7, 12, 1) DISMISS 
+		PUSH_BUTTON "~Socorro" AT (38, 7, 11, 1) TMC_IMPORT tmcHelp ACTION 
+		GROUP_BOX "" AT (1, 3, 51, 3) 
+		}
+
+	DIALOG dlgGreetingBox AT (9, 5, 62, 11) 
+	CAB_NAME CABGreetingBox 
+	HELP_ID hidGreetingBox 
+	TMC_INIT tmcNull 
+	SUB_DIALOG sabGreetingQbas = fGreetingQbas 
+	SUB_DIALOG sabGreetingQedit = fGreetingQedit 
+		{
+		IF fGreetingQedit 
+			TEXT "Bem-vindo ao Editor do MS-DOS" AT (14, 1, 30, 1) 
+		ENDIF 
+		IF fGreetingQbas 
+			TEXT "Bem-vindo ao QBasic do MS-DOS" AT (14, 1, 30, 1) 
+		ENDIF 
+		TEXT "Copyright (C) Microsoft Corporation, 1987-1992." AT (5, 3, 48, 1)
+		TEXT "Todos os direitos reservados." AT (14, 4, 30, 1) CENTER 
+		PUSH_BUTTON "Pressione Enter para visualizar o Guia de Utiliza‡ao" AT (2, 6, 56, 1) TMC tmcSurvival DISMISS DEFAULT 
+		PUSH_BUTTON "Pressione ESC para remover esta caixa de di logo" AT (4, 8, 52, 1) TMC_IMPORT tmcCancel DISMISS 
+		}
+
+	}
+
+
+END_DESCRIPTION 

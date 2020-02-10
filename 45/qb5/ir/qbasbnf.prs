@@ -1,0 +1,854 @@
+TOKENS:
+   /* prslex.c assumes next 5 tokens are contiguous */
+   tkEtInteger("%"),   /* short integer type char */
+   tkEtLong("&"),      /* long integer type char */
+   tkEtSingle("!"),    /* single precision type char */
+   tkLbs ("#"),        /* double precision type char */
+   tkEtString("$"),    /* string type char */
+
+   tkDQuote("\042"),
+   tkIdiv ("\\", operator),
+   tkNewLine ("\n"),
+   tkHTab ("\t"),
+   tkPwr ("^", operator),
+   tkUScore ("_"),
+   tkSQuote ("'"),
+   tkLParen ("(", operator),
+   tkRParen (")", operator),
+   tkMult ("*", operator),
+   tkAdd ("+", operator),
+   tkComma (","),
+   tkMinus ("-", operator),
+   tkDiv ("/", operator),
+   tkColon (":"),
+   tkSColon (";"),
+   tkLT ("<", operator),
+   tkEQ ("=", operator),
+   tkGT (">", operator),
+   tkQMark ("?"),
+
+   /* BASIC's lexical analyzer requires that reserved words are organized    */
+   /* in alphabetical order */
+   tkABS ("ABS"),
+   tkACCESS ("ACCESS"),
+   tkALIAS ("ALIAS"),
+   tkAND ("AND", operator),
+   tkANY ("ANY"),
+   tkAPPEND ("APPEND"),
+   tkAS ("AS"),
+   tkASC ("ASC"),
+   tkATN ("ATN"),
+
+   tkBASE ("BASE"),
+   tkBEEP ("BEEP"),
+   tkBINARY ("BINARY"),
+   tkBLOAD ("BLOAD"),
+   tkBSAVE ("BSAVE"),
+   tkBYVAL ("BYVAL"),
+
+   tkCALL ("CALL"),
+   tkCALLS ("CALLS"),
+   tkCASE ("CASE"),
+   tkCDBL ("CDBL"),
+   tkCDECL ("CDECL"),
+   tkCHAIN ("CHAIN"),
+   tkCHDIR ("CHDIR"),
+   tkCHR_ ("CHR$"),
+   tkCINT ("CINT"),
+   tkCIRCLE ("CIRCLE"),
+   tkCLEAR ("CLEAR"),
+   tkCLNG ("CLNG"),
+   tkCLOSE ("CLOSE"),
+   tkCLS ("CLS"),
+   tkCOLOR ("COLOR"),
+   tkCOM ("COM"),
+   tkCOMMAND_ ("COMMAND$"),
+   tkCOMMON ("COMMON", no_direct),
+   tkCONST ("CONST", no_direct),
+   tkCOS ("COS"),
+   tkCSNG ("CSNG"),
+   tkCSRLIN ("CSRLIN"),
+   tkCVD ("CVD"),
+   tkCVDMBF ("CVDMBF"),
+   tkCVI ("CVI"),
+   tkCVL ("CVL"),
+   tkCVS ("CVS"),
+   tkCVSMBF ("CVSMBF"),
+
+   tkDATA ("DATA", no_direct),
+   tkDATE_ ("DATE$"),
+   tkDECLARE ("DECLARE", no_direct),
+   tkDEF ("DEF"),
+   tkDEFDBL ("DEFDBL", no_direct),
+   tkDEFINT ("DEFINT", no_direct),
+   tkDEFLNG ("DEFLNG", no_direct),
+   tkDEFSNG ("DEFSNG", no_direct),
+   tkDEFSTR ("DEFSTR", no_direct),
+   tkDIM ("DIM", no_direct),
+   tkDO ("DO"),
+   tkDOUBLE ("DOUBLE"),
+   tkDRAW ("DRAW"),
+
+   tkELSE ("ELSE"),
+   tkELSEIF ("ELSEIF", no_direct),
+   tkEND ("END"),
+   tkENDIF ("ENDIF"),
+   tkENVIRON ("ENVIRON"),
+   tkENVIRON_ ("ENVIRON$"),
+   tkEOF ("EOF"),
+   tkEQV ("EQV", operator),
+   tkERASE ("ERASE"),
+   tkERDEV ("ERDEV"),
+   tkERDEV_ ("ERDEV$"),
+   tkERL ("ERL"),
+   tkERR ("ERR"),
+   tkERROR ("ERROR"),
+   tkEXIT ("EXIT"),
+   tkEXP ("EXP"),
+
+   tkFIELD ("FIELD"),
+   tkFILEATTR ("FILEATTR"),
+   tkFILES ("FILES"),
+   tkFIX ("FIX"),
+   tkFOR ("FOR"),
+   tkFRE ("FRE"),
+   tkFREEFILE ("FREEFILE"),
+   tkFUNCTION ("FUNCTION", no_direct),
+
+   tkGET ("GET"),
+   tkGOSUB ("GOSUB"),
+   tkGOTO ("GOTO"),
+
+   tkHEX_ ("HEX$"),
+
+   tkIF ("IF"),
+   tkIMP ("IMP", operator),
+   tkINKEY_ ("INKEY$"),
+   tkINP ("INP"),
+   tkINPUT ("INPUT"),
+   tkINPUT_ ("INPUT$"),
+   tkINSTR ("INSTR"),
+   tkINT ("INT"),
+   tkINTEGER ("INTEGER"),
+   tkIOCTL ("IOCTL"),
+   tkIOCTL_ ("IOCTL$"),
+   tkIS ("IS"),
+
+   tkKEY ("KEY"),
+   tkKILL ("KILL"),
+
+   tkLBOUND ("LBOUND"),
+   tkLCASE_ ("LCASE$"),
+   tkLEFT_ ("LEFT$"),
+   tkLEN ("LEN"),
+   tkLET ("LET"),
+   tkLINE ("LINE"),
+   tkLIST ("LIST"),
+   tkLOC ("LOC"),
+   tkLOCAL ("LOCAL"),
+   tkLOCATE ("LOCATE"),
+   tkLOCK ("LOCK"),
+   tkLOF("LOF"),
+   tkLOG ("LOG"),
+   tkLONG ("LONG"),
+   tkLOOP ("LOOP"),
+   tkLPOS ("LPOS"),
+   tkLPRINT ("LPRINT"),
+   tkLSET ("LSET"),
+   tkLTRIM_ ("LTRIM$"),
+
+   tkMID_ ("MID$"),
+   tkMKD_ ("MKD$"),
+   tkMKDIR ("MKDIR"),
+   tkMKDMBF_ ("MKDMBF$"),
+   tkMKI_ ("MKI$"),
+   tkMKL_ ("MKL$"),
+   tkMKS_ ("MKS$"),
+   tkMKSMBF_ ("MKSMBF$"),
+   tkMOD ("MOD", operator),
+
+   tkNAME ("NAME"),
+   tkNEXT ("NEXT"),
+   tkNOT ("NOT", operator),
+
+   tkOCT_ ("OCT$"),
+   tkOFF ("OFF"),
+   tkON ("ON"),
+   tkOPEN ("OPEN"),
+   tkOPTION ("OPTION", no_direct),
+   tkOR ("OR", operator),
+   tkOUT ("OUT"),
+   tkOUTPUT ("OUTPUT"),
+
+   tkPAINT ("PAINT"),
+   tkPALETTE ("PALETTE"),
+   tkPCOPY ("PCOPY"),
+   tkPEEK ("PEEK"),
+   tkPEN ("PEN"),
+   tkPLAY ("PLAY"),
+   tkPMAP ("PMAP"),
+   tkPOINT ("POINT"),
+   tkPOKE ("POKE"),
+   tkPOS ("POS"),
+   tkPRESET ("PRESET"),
+   tkPRINT ("PRINT"),
+   tkPSET ("PSET"),
+   tkPUT ("PUT"),
+
+   tkRANDOM ("RANDOM"),
+   tkRANDOMIZE ("RANDOMIZE"),
+   tkREAD ("READ"),
+   tkREDIM ("REDIM", no_direct),
+   tkREM ("REM"),
+   tkRESET ("RESET"),
+   tkRESTORE ("RESTORE"),
+   tkRESUME ("RESUME"),
+   tkRETURN ("RETURN"),
+   tkRIGHT_ ("RIGHT$"),
+   tkRMDIR ("RMDIR"),
+   tkRND ("RND"),
+   tkRSET ("RSET"),
+   tkRTRIM_ ("RTRIM$"),
+   tkRUN ("RUN"),
+
+   tkSADD ("SADD"),
+   tkSCREEN ("SCREEN"),
+   tkSEEK ("SEEK"),
+   tkSEG ("SEG"),
+   tkSELECT ("SELECT"),
+   tkSETMEM ("SETMEM"),
+   tkSGN ("SGN"),
+   tkSHARED ("SHARED", no_direct),
+   tkSHELL ("SHELL"),
+   tkSIGNAL ("SIGNAL"),
+   tkSIN ("SIN"),
+   tkSINGLE ("SINGLE"),
+   tkSLEEP ("SLEEP"),
+   tkSOUND ("SOUND"),
+   tkSPACE_ ("SPACE$"),
+   tkSPC ("SPC"),
+   tkSQR ("SQR"),
+   tkSTATIC ("STATIC", no_direct),
+   tkSTEP ("STEP"),
+   tkSTICK ("STICK"),
+   tkSTOP ("STOP"),
+   tkSTR_ ("STR$"),
+   tkSTRIG ("STRIG"),
+   tkSTRING_ ("STRING$"),
+   tkSTRING ("STRING"),
+   tkSUB ("SUB", no_direct),
+   tkSWAP ("SWAP"),
+   tkSYSTEM ("SYSTEM"),
+
+   tkTAB ("TAB"),
+   tkTAN ("TAN"),
+   tkTHEN ("THEN"),
+   tkTIME_ ("TIME$"),
+   tkTIMER ("TIMER"),
+   tkTO ("TO"),
+   tkTROFF ("TROFF"),
+   tkTRON ("TRON"),
+   tkTYPE ("TYPE", no_direct),
+
+   tkUBOUND ("UBOUND"),
+   tkUCASE_ ("UCASE$"),
+   tkUEVENT ("UEVENT"),
+   tkUNLOCK ("UNLOCK"),
+   tkUNTIL ("UNTIL"),
+   tkUSING ("USING"),
+
+   tkVAL ("VAL"),
+   tkVARPTR ("VARPTR"),
+   tkVARPTR_ ("VARPTR$"),
+   tkVARSEG ("VARSEG"),
+   tkVIEW ("VIEW"),
+
+   tkWAIT ("WAIT"),
+   tkWEND ("WEND"),
+   tkWHILE ("WHILE"),
+   tkWIDTH ("WIDTH"),
+   tkWINDOW ("WINDOW"),
+   tkWRITE ("WRITE"),
+
+   tkXOR ("XOR", operator);
+
+Statements:
+   tkBEEP EMIT(opStBeep);
+   tkBLOAD Exp optCommaExp;
+     <Cg1or2Args(opStBload1)>
+   tkBSAVE expCommaExp commaExp EMIT(opStBsave);
+   tkCALL (MARK(1) IdSubRef
+      [tkLParen IdCallArg {tkComma IdCallArg} tkRParen]);
+     <CgCall(opStCall)>
+   tkCALLS MARK(1) IdSubRef
+     [tkLParen Exp {tkComma Exp} tkRParen];
+     <CgCall(opStCalls)>
+   tkCASE (tkELSE EMIT(opStCaseElse)) | (caseItem {tkComma caseItem});
+   tkCHAIN Exp EMIT(opStChain);
+   tkCHDIR Exp EMIT(opStChdir);
+/* DELETE commaOptExpNull */
+   tkCIRCLE coordStep commaExp
+     [tkComma [Exp MARK(1)]
+       [CommaNoEos (Exp | EMIT(opNull)) EMIT(opCircleStart)
+         [CommaNoEos [Exp EMIT(opCircleEnd)]
+           [commaExp EMIT(opCircleAspect)]]]];
+      <CgCircle(opStCircle)>
+/* tkCIRCLE coordStep commaExp [tkComma [Exp MARK(1)]           */
+/*    [commaOptExpNull EMIT(opCircleStart)                      */
+/*       [commaOptExpNull EMIT(opCircleEnd)                     */
+/*          [commaExp EMIT(opCircleAspect)]]]];                 */
+/*    <CgCircle(opStCircle)>                                    */
+   tkCLEAR NArgsMax3;
+     <CgStmtCnt(opStClear)>
+   tkCLOSE [optFilenum {tkComma optFilenum}];
+     <CgStmtCnt(opStClose)>
+   tkCLS (Exp | EMIT(opUndef)) EMIT(opStCls);
+   tkCOLOR NArgsMax3;
+     <CgStmtCnt(opStColor)>
+   tkCOM fn1arg EMIT(opEvCom) evSwitch;
+   tkCOMMON (tkSHARED EMIT(opShared) EMIT(opStCommon) EMITFFFF
+               ((tkDiv IdNamCom tkDiv) | EMITFFFF) ACTIONidShared) |
+            (EMIT(opStCommon) EMITFFFF
+               ((tkDiv IdNamCom tkDiv) | EMITFFFF))
+     ACTIONidCommon IdAryI {tkComma IdAryI};
+   tkCONST EMIT(opStConst) ConstAssign {tkComma ConstAssign};
+   /* tkDATA is handled specially by parser */
+   tkDATE_ tkEQ Exp EMIT(opStDate_);
+   tkDECLARE
+      ((tkFUNCTION IdFuncDecl) | (tkSUB IdSubDecl))
+      /* removed CDECL and ALIAS support */
+      MARK(3) parms;
+     <CgDeclare(opStDeclare)>
+   tkDEF IdFn MARK(3) parms [tkEQ MARK(5) Exp];
+     <CgDeclare(opStDefFn)>
+   tkDEF tkSEG [tkEQ Exp];
+     <Cg0or1Args(opStDefSeg0)>
+   tkDEFINT DeflistI2;
+   tkDEFLNG DeflistI4;
+   tkDEFSNG DeflistR4;
+   tkDEFDBL DeflistR8;
+   tkDEFSTR DeflistSD;
+   tkDIM [tkSHARED ACTIONidShared EMIT(opShared)] EMIT(opStDim) EMITFFFF 
+					IdAryDim {tkComma IdAryDim};
+   tkDO (tkWHILE Exp EMIT(opStDoWhile) EMITFFFF) |
+        (tkUNTIL Exp EMIT(opStDoUntil) EMITFFFF) |
+        (EMIT(opStDo));
+   tkDRAW Exp EMIT(opStDraw);
+   tkELSEIF  Exp tkTHEN EMIT(opStElseIf) EMITFFFF [StatementList];
+   tkELSE EMIT(opStElse) EMITFFFF [StatementList];
+   tkEND (tkDEF EMIT(opStEndDef) EMIT(2) EMITFFFF) | 
+         (tkFUNCTION EMIT(opStEndProc)) | 
+         (tkIF EMIT(opStEndIfBlock) ErrIfNot1st) |
+         (tkSELECT EMIT(opStEndSelect)) | 
+         (tkSUB EMIT(opStEndProc)) |
+         (tkTYPE EMIT(opStEndType) EMITFFFF) |
+         (EMIT(opStEnd));
+   tkENDIF EMIT(opStEndIfBlock) ErrIfNot1st;
+   tkENVIRON Exp EMIT(opStEnviron);
+   tkERASE IdArray {tkComma IdArray};
+      <CgStmtCnt(opStErase)>
+   tkERROR Exp EMIT(opStError);
+   tkEXIT (((tkDEF | tkFUNCTION | tkSUB) EMIT(opStExitProc)) |
+           (tkDO EMIT(opStExitDo)) |
+           (tkFOR EMIT(opStExitFor)) EMITFFFF);
+   tkFIELD optFilenum EMIT(opFieldInit)
+       commaExp tkAS IdAryElem EMIT(opFieldItem)
+      {commaExp tkAS IdAryElem EMIT(opFieldItem)};
+   tkFILES [Exp];
+     <Cg0or1Args(opStFiles0)>
+   tkFOR IdFor tkEQ Exp tkTO Exp
+     ((tkSTEP Exp EMIT(opStForStep)) | EMIT(opStFor))
+     EMITFFFF EMITFFFF;  /* oBp and oText operands */
+     /* IdFor gives error if the index var was not a scalar */
+   tkFUNCTION ErrIfNot1st IdFuncDef MARK(3) parms [tkSTATIC MARK(4)];
+     <CgDeclare(opStFunction)>
+   /* GET [#]chan [, [rec] [, id]] */
+   tkGET optFilenum
+    (((tkComma
+     ((Exp (tkComma IdAryElemRef EMIT(opStGetRec3) EMITFFFF) | EMIT(opStGet2)) |
+      (tkComma IdAryElemRef EMIT(opStGetRec2) EMITFFFF)))) |
+     EMIT(opStGet1));
+   tkGET coordStep tkMinus coord2Step tkComma IdAryGetPut EMIT(opStGraphicsGet);
+   tkGOSUB EMIT(opStGosub) LabLn;
+   tkGOTO EMIT(opStGoto) LabLn;
+   tkIF Exp IfStmt;
+   tkINPUT 
+    [(lbsInpExpComma MARK(16)) |
+     (tkSColon MARK(2) [LitString MARK(4) (tkSColon | (tkComma MARK(1)))]) |
+     (LitString MARK(4) (tkSColon | (tkComma MARK(1))))]
+    MARK(8) IdAryElemRef EMIT(opStInput) {tkComma IdAryElemRef EMIT(opStInput)}
+    EMIT(opInputEos);
+      <CgInput(opInputPrompt)>
+   tkIOCTL optFilenum commaExp EMIT(opStIoctl);
+   tkKEY ((tkOFF EMIT(opStKey) EMIT(0)) |
+          (tkON EMIT(opStKey) EMIT(1)) |
+          (tkLIST EMIT(opStKey) EMIT(2)) |
+          (fn1arg EMIT(opEvKey) evSwitch) |
+          (expCommaExp EMIT(opStKeyMap)));
+   tkKILL Exp EMIT(opStKill);
+   tkLET EMIT(opStLet) Assignment;
+   tkLINE [coordStep] tkMinus coord2Step
+     [tkComma [Exp MARK(1)]
+       [tkComma [(RwBF MARK(3)) | (RwB (RwF MARK(3)) | MARK(2))]
+         [commaExp MARK(4)]]];
+     <CgLineStmt(opStLine)>
+   tkLINE tkINPUT
+    [(lbsInpExpComma MARK(16)) |
+     (tkSColon MARK(2) [LitString MARK(4) (tkSColon | (tkComma MARK(1)))]) |
+     (LitString MARK(4) (tkSColon | (tkComma MARK(1))))]
+    IdAryElemRef;
+      <CgInput(opStLineInput)>
+   tkLOCATE NArgsMax5;
+     <CgStmtCnt(opStLocate)>
+   tkLOCK optFilenum 
+      [tkComma (Exp MARK(1) [tkTO MARK(2) Exp]) | (tkTO MARK(3) Exp)];
+      <CgLock(opStLock)>
+   tkLOOP ((tkWHILE Exp EMIT(opStLoopWhile)) |
+         (tkUNTIL Exp EMIT(opStLoopUntil)) |
+         (EMIT(opStLoop)))
+        EMITFFFF;
+   tkLPRINT EMIT(opStLprint) printList;
+   tkLSET MARK(1) IdAryElemRef MARK(2) tkEQ Exp;
+      <CgMoveOpsToEnd(opStLset)>
+   tkMID_ tkLParen MARK(1) IdAryElemRef MARK(2) exp12 tkRParen tkEQ Exp;
+      <Cg3or4Args(opStMid_2)>
+   tkMKDIR Exp EMIT(opStMkdir);
+   tkNAME Exp tkAS Exp EMIT(opStName);
+   tkNEXT (IdFor EMIT(opStNextId) EMITFFFF EMITFFFF
+            {tkComma IdFor
+              EMIT(opStNextId) EMITFFFF EMITFFFF}) |
+          (EMIT(opStNext) EMITFFFF EMITFFFF);
+   tkON (event (tkGOSUB ((Lit0 EMIT(opEvGosub) EMITFFFF) |
+                         (EMIT(opEvGosub) LabLn)))) |
+        (tkERROR tkGOTO ((Lit0 EMIT(opStOnError) EMITFFFF) |
+                      (EMIT(opStOnError) LabLn))) |
+        (Exp (tkGOTO MARK(1)) | (tkGOSUB MARK(2)) LabLn {tkComma LabLn});
+      <CgOn()>
+   tkOPEN Exp
+    ([(tkFOR ((tkAPPEND  MARK(1)) |
+              (tkINPUT   MARK(2)) | 
+              (tkOUTPUT  MARK(3)) |
+              (tkRANDOM  MARK(4)) |
+              (tkBINARY  MARK(5))))]
+     [tkACCESS ((tkREAD  MARK(6) [tkWRITE MARK(8)]) | (tkWRITE MARK(7)))]
+     [(tkLOCK ((tkREAD ((tkWRITE MARK(11)) | MARK(9))) |
+               (tkWRITE MARK(10)))) |
+      (tkSHARED MARK(12))]
+     tkAS optFilenum [tkLEN tkEQ Exp MARK(13)])  |
+    (tkComma optFilenum exp12 MARK(14));
+      <CgOpen(opStOpen2)>
+   tkOPTION tkBASE ((Lit0 EMIT(opStOptionBase0)) |
+                    (Lit1 EMIT(opStOptionBase1)));
+   tkOUT expCommaExp EMIT(opStOut);
+   /* PAINT (x,y) ==> <coords> null null opStPaint2 */
+   /* PAINT (x,y), a, b ==> <coords> a b opStPaint2 */
+   /* PAINT (x,y), a, b, c ==> <coords> a b c opStPaint3 */
+   tkPAINT coordStep commaOptExp commaOptExp
+      ((commaExp EMIT(opStPaint3)) | (EMIT(opStPaint2)));
+   tkPALETTE ((tkUSING IdAryGetPut EMIT(opStPaletteUsing)) |
+      (expCommaExp EMIT(opStPalette2)) |
+      (EMIT(opStPalette0)));
+   tkPCOPY expCommaExp EMIT(opStPCopy);
+   tkPEN EMIT(opEvPen) evSwitch;
+   tkPLAY Exp EMIT(opStPlay);
+   tkPLAY EMIT(opEvPlay0) evSwitch;
+   tkPOKE expCommaExp EMIT(opStPoke);
+   tkPRESET coordStep optCommaExp;
+      <Cg2or3Args(opStPreset)>
+   tkPRINT [lbsExpComma] printList;
+   tkPSET coordStep optCommaExp;
+      <Cg2or3Args(opStPset)>
+   /* PUT [#]chan [, [rec] [, id]] */
+   tkPUT optFilenum
+    (((tkComma
+     ((Exp (tkComma IdAryElemRef EMIT(opStPutRec3) EMITFFFF) | EMIT(opStPut2)) |
+      (tkComma IdAryElemRef EMIT(opStPutRec2) EMITFFFF)))) |
+     EMIT(opStPut1));
+   /* NOTE: values for OR..XOR are passed straight through to runtime */
+   tkPUT coordStep tkComma IdAryGetPut EMIT(opStGraphicsPut)
+     ((tkComma
+       (tkAND EMIT(1)) |
+       (tkOR EMIT(0)) | 
+       (tkPRESET EMIT(2)) | 
+       (tkPSET EMIT(3)) | 
+       (tkXOR EMIT(4))) |
+     (EMITFFFF));
+   tkRANDOMIZE ((Exp EMIT(opStRandomize1)) | EMIT(opStRandomize0));
+   tkREAD IdAryElemRef EMIT(opStRead) {tkComma IdAryElemRef EMIT(opStRead)};
+   tkREDIM [tkSHARED ACTIONidShared EMIT(opShared)]
+      IdAryRedim {tkComma IdAryRedim};
+   /* tkREM is handled specially by parser */
+   tkRESET EMIT(opStReset);
+   tkRESTORE MARK(1) [LabLn MARK(2)];
+      <CgInsert0or1(opStRestore0)>
+   tkRESUME MARK(1) [(Lit0 MARK(3)) | (LabLn MARK(2)) | (tkNEXT MARK(4))];
+   /* NOTE: Lit0 must precede LabLn, or LabLn will recognize 0 as valid label */
+      <CgInsert0or1(opStResume0)>
+   tkRETURN MARK(1) [LabLn MARK(2)];
+      <CgInsert0or1(opStReturn0)>
+   tkRMDIR Exp EMIT(opStRmdir);
+   tkRSET MARK(1) IdAryElemRef MARK(2) tkEQ Exp;
+      <CgMoveOpsToEnd(opStRset)>
+   tkRUN [(Ln MARK(1)) | (Exp MARK(2))];
+      <CgRun()>
+   tkSCREEN NArgsMax4;
+     <CgStmtCnt(opStScreen)>
+   tkSEEK optFilenum commaExp EMIT(opStSeek);
+   tkSELECT tkCASE Exp EMIT(opStSelectCase) EMITFFFF;
+   tkSHARED EMIT(opStShared) EMITFFFF ACTIONidShared IdAry {tkComma IdAry};
+   tkSHELL [Exp];
+      <Cg0or1Args(opStShell0)>
+   tkSIGNAL fn1arg EMIT(opEvSignal) evSwitch;
+   tkSLEEP ( (Exp EMIT(opStSleep1)) | (EMIT(opStSleep0)) );
+   tkSOUND expCommaExp EMIT(opStSound);
+   tkSTATIC EMIT(opStStatic) EMITFFFF ACTIONidStatic IdAryI {tkComma IdAryI};
+   tkSTOP EMIT(opStStop) EMIT(opNop);
+   /* opNop is emitted so user interface TRACING looks ok when STOP executes */
+   tkSTRIG (fn1arg EMIT(opEvStrig) evSwitch) | tkON | tkOFF;
+   /* NOTE that STRIG ON and STRIG OFF generate no pcode - dead statements */
+   tkSUB ErrIfNot1st IdSubDef MARK(3) parms [tkSTATIC MARK(4)];
+     <CgDeclare(opStSub)>
+   tkSWAP IdAryElemRef tkComma IdAryElemRef EMIT(opStSwap) EMITFFFF;
+   tkSYSTEM EMIT(opStSystem);
+   tkTIME_ tkEQ Exp EMIT(opStTime_);
+   tkTIMER EMIT(opEvTimer0) evSwitch;
+   tkTROFF EMIT(opStTroff);
+   tkTRON EMIT(opStTron);
+   tkTYPE EMIT(opStType) EMITFFFF IdType;
+   tkUNLOCK optFilenum
+      [tkComma (Exp MARK(1) [tkTO MARK(2) Exp]) | (tkTO MARK(3) Exp)];
+      <CgLock(opStUnlock)>
+   tkUEVENT EMIT(opEvUEvent) evSwitch;
+   tkVIEW ((tkPRINT (Exp tkTO Exp EMIT(opStViewPrint2)) |
+                    (EMIT(opStViewPrint0))) |
+           (tkSCREEN fn2arg tkMinus fn2arg commaOptExp commaOptExp
+               EMIT(opStViewScreen)) |
+           (fn2arg tkMinus fn2arg commaOptExp commaOptExp EMIT(opStView)) |
+           (EMIT(opStView0)));
+/* tkVIEW ((tkPRINT (Exp tkTO Exp EMIT(opStViewPrint2)) |  */
+/*                  (EMIT(opStViewPrint0))) | */
+/*         (((tkSCREEN fn2arg tkMinus fn2arg EMIT(opStViewScreen)) | */
+/*           (fn2arg tkMinus fn2arg EMIT(opStView))) */
+/*          [commaOptExpNil EMIT(opViewColor) */
+/*            [commaExp EMIT(opViewBoundary)]] ) | */
+/*         (EMIT(opStView0))); */
+   tkWAIT Exp exp12;
+      <Cg2or3Args(opStWait2)>
+   tkWEND EMIT(opStWend) EMITFFFF;
+   tkWHILE Exp EMIT(opStWhile) EMITFFFF;
+   tkWIDTH (tkLbs Exp EMIT(opLbs) tkComma Exp EMIT(opStWidthFile)) | 
+           (tkLPRINT Exp EMIT(opStWidthLprint)) |
+           ((Exp (commaExp | EMIT(opUndef))) |
+            (tkComma EMIT(opUndef) Exp) EMIT(opStWidth2));
+   tkWINDOW ((tkSCREEN fn2arg tkMinus fn2arg EMIT(opStWindowScreen)) |
+             (fn2arg tkMinus fn2arg EMIT(opStWindow)) |
+             (EMIT(opStWindow0)));
+   tkWRITE EMIT(opStWrite) [lbsExpComma]
+      ((Exp {(tkComma | tkSColon) EMIT(opPrintItemComma) Exp}
+        EMIT(opPrintItemEos)) |
+       (EMIT(opPrintEos)));
+
+Functions:
+   tkABS fn1arg EMIT(opFnAbs);
+   tkASC fn1arg EMIT(opFnAsc);
+   tkATN fn1arg EMIT(opFnAtn);
+   tkCDBL fn1arg EMIT(opCoerce,ET_R8);
+   tkCHR_ fn1arg EMIT(opFnChr_);
+   tkCINT fn1arg EMIT(opCoerce,ET_I2);
+   tkCLNG fn1arg EMIT(opCoerce,ET_I4);
+   tkCOMMAND_ EMIT(opFnCommand_);
+   tkCOS fn1arg EMIT(opFnCos);
+   tkCSNG fn1arg EMIT(opCoerce,ET_R4);
+   tkCSRLIN EMIT(opFnCsrlin);
+   tkCVD fn1arg EMIT(opFnCvd);
+   tkCVDMBF fn1arg EMIT(opFnCvdmbf);
+   tkCVI fn1arg EMIT(opFnCvi);
+   tkCVL fn1arg EMIT(opFnCvl);
+   tkCVS fn1arg EMIT(opFnCvs);
+   tkCVSMBF fn1arg EMIT(opFnCvsmbf);
+   tkDATE_ EMIT(opFnDate_);
+   tkENVIRON_ fn1arg EMIT(opFnEnviron_);
+   tkEOF fn1arg EMIT(opFnEof);
+   tkERDEV EMIT(opFnErdev);
+   tkERDEV_ EMIT(opFnErdev_);
+   tkERL EMIT(opFnErl);
+   tkERR EMIT(opFnErr);
+   tkEXP fn1arg EMIT(opFnExp);
+   tkFILEATTR fn2arg EMIT(opFnFileattr);
+   tkFIX fn1arg EMIT(opFnFix);
+   tkFRE fn1arg EMIT(opFnFre);
+   tkFREEFILE EMIT(opFnFreefile);
+   tkHEX_ fn1arg EMIT(opFnHex_);
+   tkINKEY_ EMIT(opFnInkey_);
+   tkINP fn1arg EMIT(opFnInp);
+   tkINPUT_ tkLParen Exp [tkComma optFilenum] tkRParen;
+     <Cg1or2Args(opFnInput_1)>
+   tkINSTR fn23arg; <Cg2or3Args(opFnInstr2)>
+   tkINT fn1arg EMIT(opFnInt);
+   tkIOCTL_ tkLParen optFilenum tkRParen EMIT(opFnIoctl_);
+   tkLBOUND fnBoundArg; <Cg1or2Args(opFnLbound1)>
+   tkLCASE_ fn1arg EMIT(opFnLcase_);
+   tkLEFT_ fn2arg EMIT(opFnLeft_);
+   tkLEN fn1arg EMIT(opFnLen) EMITFFFF;
+   tkLOC fn1arg EMIT(opFnLoc);
+   tkLOF fn1arg EMIT(opFnLof);
+   tkLOG fn1arg EMIT(opFnLog);
+   tkLPOS fn1arg EMIT(opFnLpos);
+   tkLTRIM_ fn1arg EMIT(opFnLtrim_);
+   tkMID_ fn23arg; <Cg2or3Args(opFnMid_2)>
+   tkMKD_ fn1arg EMIT(opFnMkd_);
+   tkMKDMBF_ fn1arg EMIT(opFnMkdmbf_);
+   tkMKI_ fn1arg EMIT(opFnMki_);
+   tkMKL_ fn1arg EMIT(opFnMkl_);
+   tkMKS_ fn1arg EMIT(opFnMks_);
+   tkMKSMBF_ fn1arg EMIT(opFnMksmbf_);
+   tkOCT_ fn1arg EMIT(opFnOct_);
+   tkPEEK fn1arg EMIT(opFnPeek);
+   tkPEN fn1arg EMIT(opFnPen);
+   tkPLAY fn1arg EMIT(opFnPlay);
+   tkPMAP fn2arg EMIT(opFnPmap);
+   tkPOINT fn12arg; <Cg1or2Args(opFnPoint1)>
+   tkPOS fn1arg EMIT(opFnPos);
+   tkRIGHT_ fn2arg EMIT(opFnRight_);
+   tkRND [fn1arg]; <Cg0or1Args(opFnRnd)>
+   tkRTRIM_ fn1arg EMIT(opFnRtrim_);
+   tkSADD tkLParen IdAryElemRef tkRParen EMIT(opFnSadd);
+   tkSCREEN fn23arg; <Cg2or3Args(opFnScreen2)>
+   tkSEEK fn1arg EMIT(opFnSeek);
+   tkSETMEM fn1arg EMIT(opFnSetmem);
+   tkSGN fn1arg EMIT(opFnSgn);
+   tkSHELL fn1arg EMIT(opFnShell);
+   tkSIN fn1arg EMIT(opFnSin);
+   tkSPACE_ fn1arg EMIT(opFnSpace_);
+   tkSQR fn1arg EMIT(opFnSqr);
+   tkSTICK fn1arg EMIT(opFnStick);
+   tkSTR_ fn1arg EMIT(opFnStr_);
+   tkSTRIG fn1arg EMIT(opFnStrig);
+   tkSTRING_ fn2arg EMIT(opFnString_);
+   tkTAN fn1arg EMIT(opFnTan);
+   tkTIME_ EMIT(opFnTime_);
+   tkTIMER EMIT(opFnTimer);
+   tkUBOUND fnBoundArg; <Cg1or2Args(opFnUbound1)>
+   tkUCASE_ fn1arg EMIT(opFnUcase_);
+   tkVAL fn1arg EMIT(opFnVal);
+   tkVARPTR tkLParen IdAryElemRef tkRParen EMIT(opFnVarptr);
+   tkVARPTR_ tkLParen IdAryElemRef tkRParen EMIT(opFnVarptr_) EMITFFFF;
+   tkVARSEG tkLParen IdAryElemRef tkRParen EMIT(opFnVarseg);
+
+/* please keep the nonterminals organized alphabetically */
+/* state nonterminals begin with lower case */
+/* external nonterminals begin with upper case */
+
+NonTerminals:
+
+/* ACTION non terminals, by convention, don't consume anything, */
+/* they just take some parser action (like setting a state variable) */
+/* and always return PR_GoodSyntax */
+
+ACTIONidCommon:
+   EXTERNAL;
+ACTIONidShared:
+   EXTERNAL;
+ACTIONidStatic:
+   EXTERNAL;
+Assignment:
+   EXTERNAL MSG_ExpAssignment;  /* "var=exp" */
+/* AsClause, AsClauseAny and AsClausePrim are invoked by NtId() */
+/* accepts:  AS INTEGER...STRING */
+AsClausePrim:
+   ((tkINTEGER EMIT(opAsTypeExp) EMIT(ET_I2)) |
+    (tkLONG EMIT(opAsTypeExp) EMIT(ET_I4)) |
+    (tkSINGLE EMIT(opAsTypeExp) EMIT(ET_R4)) |
+    (tkDOUBLE EMIT(opAsTypeExp) EMIT(ET_R8)) |
+    (tkSTRING EMIT(opAsTypeExp) EMIT(ET_SD)));
+    <INDEX>
+/* accepts:  AS INTEGER...STRING or AS <userType> */
+AsClause:
+    AsClausePrim | (EMIT(opAsType) IdType);
+   <INDEX>
+/* accepts:  AS INTEGER...STRING or AS <userType> or AS ANY */
+AsClauseAny:
+    AsClausePrim |
+    (tkANY EMIT(opAsTypeExp) EMIT(ET_IMP)) |
+    (EMIT(opAsType) IdType);
+    <INDEX>
+caseItem:
+   (Exp ((tkTO Exp EMIT(opStCaseTo)) | EMIT(opStCase))) |
+   ([tkIS] CaseRelation);
+CaseRelation:
+   EXTERNAL MSG_ExpRel;  /* <,<=,=,<>,>,>= */
+commaExp:
+   tkComma Exp;
+/* ',exp' ==> <exp>;  ',...' ==>opUndef;  '' ==> opUndef */
+commaOptExp:
+   commaOptExpNil | EMIT(opUndef);
+/* ',exp' ==> <exp>;  ',...' ==>opUndef; */
+commaOptExpNil:
+   (CommaNoEos (Exp | EMIT(opUndef)));
+/* ',exp' ==> <exp>;  ',...' ==>opNull; */
+commaOptExpNull:
+   (CommaNoEos (Exp | EMIT(opNull)));
+CommaNoEos:
+   EXTERNAL;
+ConstAssign:
+   EXTERNAL;
+coordStep:
+   (tkSTEP fn2arg EMIT(opCoordStep)) | (fn2arg EMIT(opCoord));
+coord2Step:
+   (tkSTEP fn2arg EMIT(opCoordStepSecond)) | (fn2arg EMIT(opCoordSecond));
+DeflistI2:
+   EXTERNAL;  /* "letter" */
+DeflistI4:
+   EXTERNAL;  /* "letter" */
+DeflistR4:
+   EXTERNAL;  /* "letter" */
+DeflistR8:
+   EXTERNAL;  /* "letter" */
+DeflistSD:
+   EXTERNAL;  /* "letter" */
+EndPrint:
+   EXTERNAL;
+EndPrintExp:
+   EXTERNAL;
+EMITFFFF:
+   EMIT(UNDEFINED);
+ErrIfNot1st:
+   EXTERNAL; /* generates error if not 1st statement on line */
+event:
+   (tkCOM fn1arg EMIT(opEvCom)) |
+   (tkKEY fn1arg EMIT(opEvKey)) |
+   (tkPEN EMIT(opEvPen)) |
+   (tkPLAY fn1arg EMIT(opEvPlay1)) |
+   (tkSIGNAL fn1arg EMIT(opEvSignal)) |
+   (tkSTRIG fn1arg EMIT(opEvStrig)) |
+   (tkTIMER fn1arg EMIT(opEvTimer1)) |
+   (tkUEVENT EMIT(opEvUEvent));
+evSwitch:
+   (tkON EMIT(opEvOn)) | (tkOFF EMIT(opEvOff)) | (tkSTOP EMIT(opEvStop));
+Exp:
+   EXTERNAL MSG_ExpExp;  /* "expression" */
+exp12:
+   commaExp optCommaExp;
+expCommaExp:
+   Exp tkComma Exp;
+fn1arg:
+   tkLParen Exp tkRParen;
+fn12arg:                /* expects 1 or 2 arguments */
+   tkLParen Exp optCommaExp tkRParen;
+fn2arg:
+   tkLParen expCommaExp tkRParen;
+fn23arg:                /* expects 2 or 3 arguments */
+   tkLParen Exp exp12 tkRParen;
+fnBoundArg:
+   tkLParen IdArray optCommaExp tkRParen;
+IdAry:
+   EXTERNAL MSG_ExpVar;  /* "id[()]" */
+IdAryDim:
+   EXTERNAL MSG_ExpVar;  /* "id[(exp [TO exp][,...])]" */
+IdAryRedim:
+   EXTERNAL MSG_ExpVar;  /* "id[(exp [TO exp][,...])]" */
+IdAryElem:
+   EXTERNAL MSG_ExpVar;  /* "id[(exp[,exp...])]" */
+IdAryElemRef:
+   EXTERNAL MSG_ExpVar;  /* "id[(exp[,exp...])]" */
+IdAryGetPut:
+   EXTERNAL MSG_ExpVar;  /* "id[(exp[,exp...])]" */
+IdAryI:
+   EXTERNAL MSG_ExpVar;  /* "id[([integer])]" */
+IdArray:
+   EXTERNAL MSG_ExpVar;  /* "variable" */
+IdCallArg:
+   EXTERNAL MSG_ExpIdCallArg;  /* "[BYVAL] [SEG] expression" */
+IdFor:
+   EXTERNAL MSG_ExpVar;  /* "variable" */
+IdFn:
+   EXTERNAL;  /* "FNid" - error if not found */
+IdFuncDecl:
+   EXTERNAL;  /* "id" - error if not found */
+IdFuncDef:
+   EXTERNAL;  /* "id" - error if not found */
+IdType:
+   EXTERNAL MSG_ExpId;  /* "identifier" */
+IdNamCom:
+   EXTERNAL;  /* "id" - error if not found */
+IdParm:
+   EXTERNAL MSG_ExpIdParm;  /* "[BYVAL | SEG] variable" */
+IdSubDecl:
+   EXTERNAL;  /* "id" - error if not found */
+IdSubDef:
+   EXTERNAL;  /* "id" - error if not found */
+IdSubRef:
+   EXTERNAL;  /* "id" - error if not found */
+IfStmt:
+   EXTERNAL;
+LabLn:
+   EXTERNAL MSG_ExpLabLn;  /* "label or line number" */
+   /* causes 16 bit oNam for label to be emitted */
+lbsExpComma:
+   tkLbs Exp EMIT(opLbs) EMIT(opChanOut) tkComma;
+lbsInpExpComma:
+   tkLbs Exp EMIT(opLbs) EMIT(opInputChan) tkComma;
+LitString:
+   EXTERNAL MSG_ExpLitString;  /* "string" */
+Lit0:
+   EXTERNAL MSG_ExpLit0;  /* "0" */
+Lit1:
+   EXTERNAL MSG_ExpLit1;  /* "1" */
+Ln:
+   EXTERNAL MSG_ExpLabLn;  /* "line number" */
+   /* causes 16 bit oNam for line number to be emitted */
+NArgsMax3:
+   EXTERNAL MSG_ExpNArgs;  /* "[exp],..." */
+NArgsMax4:
+   EXTERNAL MSG_ExpNArgs;  /* "[exp],..." */
+NArgsMax5:
+   EXTERNAL MSG_ExpNArgs;  /* "[exp],..." */
+   /* flag word (1) is emitted for each specified arg */
+   /* flag word (0) is emitted for each unspecified arg */
+optCommaExp:
+   [commaExp];
+optFilenum:
+   (tkLbs Exp EMIT(opLbs)) | Exp;
+parms:
+   [tkLParen MARK(6) [IdParm {tkComma IdParm}] tkRParen];
+parms1:
+   [tkLParen MARK(6) IdParm {tkComma IdParm} tkRParen];
+printItem:
+   (EndPrint) |
+   (tkTAB fn1arg EMIT(opPrintTab)) |
+   (tkSPC fn1arg EMIT(opPrintSpc)) |
+   (tkComma EMIT(opPrintComma)) |
+   (tkSColon EMIT(opPrintSemi)) |
+   (Exp (tkComma EMIT(opPrintItemComma)) |
+        (tkSColon EMIT(opPrintItemSemi)) |
+        (EndPrintExp));
+printList:
+   {printItem} [tkUSING Exp EMIT(opUsing) tkSColon {printUsingItem}];
+
+/* The items which can follow USING differ in several ways		      */
+/*  (1) ',' characters are mapped to ';' since the "advance to next print     */
+/*	field" action of ',' doesn't make sense with USING.		      */
+/*									      */
+/*  (2) No extra ';' or ',' are allowed (i.e. "print using x,,y" is illegal)  */
+/*	An exception to this is that a single 				      */
+/*	';' and ',' are allowed following TAB(x) 			      */
+/*	and SPC(x) where they are ignored. In a normal PRINT item list such   */
+/*	occurrences of ';' and ',' would generate opPrintSemi and opPrintComma*/
+/*	opcodes, respectively.						      */
+printUsingItem:
+   (EndPrint) |
+   (((tkTAB fn1arg EMIT(opPrintTab)) |
+     (tkSPC fn1arg EMIT(opPrintSpc)))
+	       [tkSColon | tkComma]) |
+   (Exp ((tkComma | tkSColon) EMIT(opPrintItemSemi)) |
+        (EndPrintExp));
+RwB:
+   EXTERNAL MSG_ExpRwB;  /* "B" */
+RwF:
+   EXTERNAL MSG_ExpRwF;  /* "F" */
+RwBF:
+   EXTERNAL MSG_ExpRwBF;  /* "BF" */
+Statement:
+   EXTERNAL MSG_ExpStatement;  /* "statement" */
+StatementList:
+   EXTERNAL MSG_ExpStatement;  /* "statement" */

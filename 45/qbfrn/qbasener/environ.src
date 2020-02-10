@@ -1,0 +1,681 @@
+.comment ==============================================================
+.comment QBasic Environment Help
+.comment  This file contains Environment Help (for menus,
+.comment  dialog boxes, etc.). These are not error messages
+.comment ==============================================================
+.comment 7/29/90 Bethpr
+.comment Changed text, as appropriate, for BASIC language and products.
+.comment Changed Print dialog box help to "Selected Text Only" as per
+.comment upcoming change to UI in Rel.07.  Also changed Cut and Copy
+.comment commands help; edited out the line "The Clipboard can only
+.comment hold one item of text at a time" as it was redundant of the
+.comment line that followed it.  This keeps these help nodes from
+.comment scrolling by one line.
+.comment ==============================================================
+.comment 7/24/90 Bethpr
+.comment Instances where QBasic left as QBASIC are in Open Dialog and
+.comment Save As Dialog as a path name (\QBASIC), and in Help Path
+.comment Dialog and Help Path Command as a filename (QBASIC.HLP).
+.comment ==============================================================
+.comment 7/17/90 stevesau
+.comment Incorporated final QA/copy edits.
+.comment ==============================================================
+.comment 7/6/90 stevesau
+.comment Moved menu bar help from contents.src.
+.comment ==============================================================
+.comment 6/21/90 stevesau
+.comment Incorporated review comments and edits, revised and tightened.
+.comment ==============================================================
+.comment 6/15/90 stevesau
+.comment Added File Save context.
+.comment ==============================================================
+.comment 5/24/90 - Bethpr
+.comment Added info to Open command and Open dialog about use of
+.comment GW-BASIC/BASICA ,A switch.
+.comment ===================================================
+.comment 5/4/90 - Bethpr
+.comment Removed Shift+F8 and Shift+F10 history support, as per tomb;
+.comment reworded Split command to be more specific about closing a
+.comment second window.
+.comment ==============================================================
+.comment 4/13/90 Bethpr
+.comment The following nodes have been removed:
+.comment Add watch command, Break on errors command, Calls menu,
+.comment Calls menu commands, Create file command, Create file dialog,
+.comment Customize menu, customize menu command, Customize menu dialog,
+.comment Delete all watch command, Delete watch command,
+.comment Delete watch dialog, File load command, File load dialog,
+.comment File unload command, History on command, Included file command,
+.comment Included lines command, Instant watch command, 
+.comment Instant watch dialog, Label command, Make EXE command,
+.comment Make EXE dialog, Make library command, Make library dialog,
+.comment Merge command, Merge command dialog, Modify COMMAND$ command,
+.comment Modify COMMAND$ prompt, Module to unload prompt, Redo command,
+.comment Right mouse command, Right mouse dialog, Run DOS command,
+.comment Run DOS command dialog, Save all command, Save command,
+.comment Trace on command, Undo command, Utility menu,
+.comment Watch window expression prompt, Watchpoint command, 
+.comment Find and label dialog, Customize menu command
+.comment ==============================================================
+.context hidGreetingBox
+:nBienvenue dans QBasic
+  ş Appuyez sur ECHAP pour appeler l'environnement
+    de programmation de QBasic.
+
+  ş Appuyez sur ENTREE pour afficher le Guide ‚l‚mentaire
+    de QBasic. Ce guide pr‚sente des informations de base
+    sur l'utilisation de l'environnement QBasic et de son
+    systŠme d'aide.
+.comment ------------------------------------------------
+.comment     Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context hidFileOpen
+:nBoŒte de dialogue Ouvrir
+Utilis‚e pour ouvrir un fichier source.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄ Ouvrir ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                 ³  Tapez le nom du fichier
+³ Nom du fichier: ±±±±±±±± ÄÄÄÄÄÄÄÄ ici s'il se trouve dans
+³                                 ³  le r‚pertoire en cours
+³ C:\\QBASIC ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ (indiqu‚ ici) ou
+³                                 ³
+³      Fichiers       R‚p./Unit‚s ³
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  S‚lectionnez un fichier
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  ou un r‚pertoire ou
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  une unit‚ si le
+³                               ³  fichier se trouve
+³        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÀÄÄÄÄÄÄÄÄ ailleurs, puis
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  choisissez <OK>.
+
+Vous pouvez ‚galement s‚lectionner une nouvelle unit‚ et
+un nouveau r‚pertoire en tapant leur nom dans la zone de
+texte Nom du fichier.
+
+Pour consulter le contenu des autres unit‚s et r‚pertoires,
+tapez une sp‚cification de fichier avec des caractŠres
+g‚n‚riques (telle que *.BAS) dans la zone de texte Nom du
+fichier et s‚lectionnez une autre unit‚ ou un autre
+r‚pertoire.
+
+Remarque : Pour ouvrir un fichier cr‚‚ avec GW-BASIC ou
+           avec BASICA, le fichier doit avoir ‚t‚ enregistr‚
+           … partir de GW-BASIC ou BASICA avec l'option ,A.
+.context hidFileSave
+:nBoŒte de dialogue Enregistrer sous
+Utilis‚e pour enregistrer et nommer le fichier en cours.
+ÚÄÄÄÄÄÄÄÄÄ Enregistrer sous ÄÄÄÄÄ¿
+³                                ³  Acceptez ce nom de
+³ Nom du fichier: ±±±±±±±±±±±±± ÄÄ fichier ou tapez un
+³                                ³  autre nom ici.
+³ C:\\QBASIC ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Le fichier est enre-
+³                                ³  gistrer dans ce
+³           R‚p./Unit‚s          ³  r‚pertoire.
+³           ±±±±±±±±±±±  ÄÄÄÄÄÄÄÄÄ Utilisez R‚p./Unit‚s
+³           ±±±±±±±±±±±          ³  pour enregistrer le 
+³           ±±±±±±±±±±±          ³  fichier dans un autre
+³                                ³  r‚pertoire ou une
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  autre unit‚.
+                                    Puis choisissez <OK>.
+.context hidFilePrint
+:nBoŒte de dialogue Imprimer
+Utilis‚e pour imprimer l'ensemble ou une partie d'un
+programme ou d'un sujet d'aide. V‚rifiez que l'imprimante
+connect‚e au port LPT1 de l'ordinateur est sous tension et
+prˆte … imprimer. Choisissez ensuite l'une des options
+ci-dessous et appuyez sur ENTREE :
+ÚÄÄÄÄÄÄÄÄ Print ÄÄÄÄÄÄÄÄ¿
+³ ± Texte s‚lectionn‚  ÄÄ Imprime le texte s‚lectionn‚.
+³                       ³
+³ ± Fenˆtre active ÄÄÄÄÄÄ Imprime une proc‚dure ou du
+³                       ³  texte de la fenˆtre en cours.
+³ ± Programme entier ÄÄÄÄ Imprime l'ensemble du programme
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  en cours.
+
+L'option Programme entier n'est pas disponible si
+le curseur se trouve dans la fenˆtre d'aide lorsque vous
+s‚lectionnez Imprimer.
+
+Suggestion : S‚lectionnez du texte dans le programme ou
+             dans la fenˆtre d'aide avant de choisir la
+             commande Imprimer. Placez le curseur au d‚but
+             du texte … imprimer, appuyez sur MAJ+touches
+             de DIRECTION jusqu'… ce que tout le texte soit
+             mis en surbrillance, puis choisissez la
+             commande Imprimer.
+.context hidNewProc
+:nBoŒte de dialogue Nouvelle SUB ou FUNCTION
+Utilis‚e pour cr‚er une nouvelle proc‚dure SUB ou FUNCTION.
+Tapez le nom de la nouvelle proc‚dure (40 caractŠres
+maximum) dans la zone de texte, puis choisissez <OK>.
+
+L'utilisation de noms descriptifs pour les proc‚dures vous
+permet de vous souvenir plus facilement de leurs fonctions
+et minimise le risque de dupliquer le nom d'une autre
+proc‚dure ou d'une variable.
+.context hidViewSubs
+:nBoŒte de dialogue SUBs
+Utilis‚e pour modifier ou supprimer des proc‚dures
+SUB et FUNCTION.
+ÚÄÄÄÄÄÄÄÄÄÄ SUBs ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  S‚lectionnez un
+³ Choisissez ... … modifier.    ³  ‚l‚ment ici.
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄ Le niveau module est
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±± ³  list‚ en 1er en majus-
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±± ³  cules; les proc‚dures
+³                               ³  sont mises en retrait.
+³ XXX est xxxxxxxxxxxxxxxx ÄÄÄÄÄÄ Description de l'‚l‚-
+³                               ³  ment s‚lectionn‚.
+³  <Modifier>     <Supprimer>   ÄÄ Choisissez l'action :
+³                               ³  modification ou suppres-
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  sion de l'‚l‚ment
+                                   s‚lectionn‚.
+
+Si vous choisissez <Modifier>, QBasic affiche la proc‚dure
+dans la fenˆtre active.
+.context hidSearchFind
+:nBoŒte de dialogue Chercher
+Utilis‚e pour trouver une chaŒne de texte.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄ Chercher ÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                 ³  Tapez la chaŒne ou
+³ Texte … chercher : ±±±±±±±±±±±± Ä utilisez celle qui se
+³                                 ³  trouve ici.
+³ ± Diff. Maj/min   ± Mot entier  Ä S‚lectionnez le type
+³                                 ³  de recherche.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Puis, choisissez <OK>.
+
+S‚lectionnez Diff‚rencier Majuscules/minuscules pour
+diff‚rencier les majuscules des minuscules ou Mot entier
+pour exclure les correspondances … l'int‚rieur de mots ou
+de chaŒnes. Les recherches de mots entiers ne signalent de
+correspondance que lorsque le texte trouv‚ est entour‚
+d'espaces, de signes de ponctuation ou d'autres caractŠres
+sp‚ciaux. La chaŒne … rechercher peut contenir un maximum
+de 127 caractŠres.
+.context hidSearchChange
+:nBoŒte de dialogue Remplacer
+Utilis‚e pour remplacer une chaŒne par une autre.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Remplacer ÄÄÄÄÄÄÄÄÄ¿
+³                                   ³  Tapez une chaŒne ou
+³ Texte … chercher : ±±±±±±±±±±±±±± Ä utilisez celle qui
+³                                   ³  se trouve ici.
+³ Remplacer par :    ±±±±±±±±±±±±±± Ä Tapez la chaŒne de
+³                                   ³  remplacement.
+³ ± Diff. Maj/min     ± Mot entier  Ä S‚lectionnez le type
+³                                   ³  de recherche.
+³ <Chercher et v‚rif.><Tout rempl.> Ä Choisissez si vous
+³                                   ³  voulez confirmer les
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  remplacements ou les
+                                       effectuer sans
+                                       confirmation.
+
+S‚lectionnez Diff‚rencier Majuscules/minuscules pour
+diff‚rencier les majuscules des minuscules ou Mot entier
+pour exclure les correspondances … l'int‚rieur de mots
+ou de chaŒnes. Les recherches de mots entiers ne signalent
+de correspondance que lorsque le texte trouv‚ est entour‚
+d'espaces, de signes de ponctuation ou d'autres caractŠres
+sp‚ciaux. La chaŒne de remplacement peut contenir un maximum
+de 127 caractŠres.
+.context hidConfirm
+:nBoŒte de dialogue Remplacer
+Une correspondance a ‚t‚ trouv‚e et est mise en surbrillance
+dans la fenˆtre en cours. Vous pouvez :
+  ş Choisir <Remplacer> pour effectuer le remplacement et
+    continuer la recherche.
+  ş Choisir <Passer> pour laisser le texte inchang‚ et
+    continuer la recherche.
+  ş Choisir <Annuler> ou appuyer sur ECHAP pour laisser
+    le texte inchang‚ et arrˆter la recherche.
+.context hidOptnsDisplay
+:nBoŒte de dialogue Affichage
+Utilis‚e pour personnaliser l'‚cran de l'Editeur MS-DOS.
+                 ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Affichage ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+                 ³ ÚÄÄÄÄÄÄÄÄÄÄÄÄ Couleurs ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+                 ³                     Texte     Fond    ³
+                 ³ ± Texte normal     ±±±±±±±±  ±±±±±±±± ³
+                 ³                    ±±±±±±±±  ±±±±±±±± ³
+Les couleurs   ÄÄÄ± Inst. courante   ±±±±±±±±  ±±±±±±±± ³
+choisies ici     ³                                       ³
+mettent du texte Ä± Points d'arrˆt                      ³
+en surbrillance  ³                                        ³
+pendant la mise  ³ ÚÄÄÄÄÄÄÄÄÄ Options d'affichage ÄÄÄÄÄÄÄ¿³
+au point         ³   ± Barres de d‚fil.   Tabulations: ±  ³
+                 ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+Masque ou affiche    ³     Tapez le nombre d'espaces   ³
+les barres de        ³     correspondant … chaque      ³
+d‚filement dans      ³     tabulation.                 ³
+les fenˆtres. ÄÄÄÄÄÄÄÙ     ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+Pour d‚finir les options :
+  1. Appuyez sur TAB pour placer le curseur dans la boŒte
+     Couleurs ou Options d'affichage.
+  2. Utilisez les touches de direction pour s‚lectionner
+     une couleur ou une option d'affichage.
+  3. Choisissez <OK> ou appuyez sur ENTREE pour enregistrer
+     les options s‚lectionn‚es.
+
+Les d‚finitions d'options sont enregistr‚es et restent
+actives jusqu'au lancement suivant de QBasic.
+.context MSG_SearchPathInterp
+:nBoŒte de dialogue Chemin de l'aide
+QBasic cherche le fichier d'aide QBASIC.HLP dans les
+r‚pertoires sp‚cifi‚s dans cette boŒte de dialogue. Il
+n'est pas n‚cessaire de d‚finir le chemin de l'aide si vous
+l'avez d‚j… fait avec la variable d'environnement PATH
+de MS-DOS ou si QBASIC.HLP se trouve dans le r‚pertoire
+en cours.
+ÚÄÄÄÄÄÄÄÄÄÄÄ Chemin de l'aide ÄÄÄÄÄÄÄÄÄÄ¿
+³                                       ³
+³  Emplacement du fichier QBASIC.HLP :  ³
+³                                       ³  Tapez l'unit‚ et
+³      ±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄ le r‚pertoire
+³                                       ³  o— se trouve
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  QBASIC.HLP.
+
+Suggestion : Si QBasic ne trouve pas QBASIC.HLP,
+             v‚rifiez que vous avez sp‚cifi‚ le nom
+             de r‚pertoire correct.
+.comment ------------------------------------------------
+.comment   End of Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context m.f
+.context m.e
+.context m.v
+.context m.s
+.context m.r
+.context m.d
+.context m.o
+.context m.h
+:nBarre des menus QBasic
+Utilisation des menus et commandes de QBasic :
+
+  ş Pour activer les menus et commandes, appuyez sur la
+    lettre en surbrillance ou cliquez sur le menu ou la
+    commande.
+  ş Pour se d‚placer entre les menus et les commandes,
+    utilisez les touches de direction ou la souris.
+.comment ------------------------------------------------
+.comment   UI Help for Menu Commands and Dialog Support
+.comment ------------------------------------------------
+.context MSG_HelpFileNew
+:nCommande Nouveau
+Utilis‚e pour cr‚er un nouveau programme. Une boŒte de
+dialogue apparaŒt si un programme est d‚j… ouvert. Vous
+pouvez alors :
+  ş Choisir <Oui> pour enregistrer le programme.
+  ş Choisir <Non> pour fermer le programme sans 
+    l'enregistrer.
+  ş Choisir <Annuler> pour annuler la commande Nouveau
+    programme et retourner au programme.
+
+Suggestion : Utilisez la commande Ouvrir pour charger un
+             programme existant.
+.context MSG_HelpFileOpen
+:nCommande Ouvrir
+Utilis‚e pour ouvrir un programme de maniŠre … pouvoir
+l'ex‚cuter ou le modifier.
+
+Utilisez la commande Nouveau pour cr‚er un
+nouveau programme.
+
+Remarque : Pour ouvrir un fichier cr‚‚ avec GW-BASIC ou
+           avec BASICA, le fichier doit avoir ‚t‚
+           enregistr‚ … partir de GW-BASIC ou BASICA
+           avec l'option ,A.
+.context MSG_HelpFileSave
+:nCommande Enregistrer
+Utilis‚e pour enregistrer un programme.
+
+QBasic vous demande un nom si vous n'avez jamais enregistr‚
+le programme auparavant. S'il existe d‚j… un programme qui
+porte le nom sp‚cifi‚, il est remplac‚ par le nouveau
+programme.
+.context MSG_HelpFileSaveAs
+:nCommande Enregistrer sous
+Utilis‚e pour enregistrer un programme dans un fichier. Pour
+conserver la version pr‚c‚dente du programme, changez le
+nom dans la zone de texte Nom du fichier.
+.context MSG_HelpFilePrint
+:nCommande Imprimer
+Utilis‚e pour imprimer l'ensemble ou une partie d'un
+programme, ou un sujet d'aide.
+
+Vous pouvez imprimer :
+  ş Le texte s‚lectionn‚.
+  ş Le contenu de la fenˆtre d'aide.
+  ş Le programme entier (y compris les proc‚dures).
+
+QBasic envoie les donn‚es vers l'imprimante connect‚e au
+port LPT1 de l'ordinateur.
+
+Suggestion : S‚lectionnez du texte dans le programme ou 
+             dans la fenˆtre d'aide avant de choisir la
+             commande Imprimer. Placez le curseur au d‚but
+             du texte … imprimer, appuyez sur MAJ+touches
+             de direction jusqu'… ce que tout le texte soit
+             mis en surbrillance, puis choisissez la
+             commande Imprimer.
+.context MSG_HelpFileExit
+:nCommande Quitter
+Utilis‚e pour quitter l'environnement de QBasic.
+
+Si le programme a ‚t‚ modifi‚ depuis son dernier
+enregistrement, QBasic affiche une boŒte de dialogue. 
+  ş Choisissez <Oui> pour enregistrer le programme,
+    y compris les modifications.
+  ş Choisissez <Non> pour ignorer les modifications.
+  ş Choisissez <Annuler> pour annuler la commande Quitter
+    et retourner au programme.
+.context MSG_HelpEditCut
+:nCommande Couper
+Utilisez Couper (ou appuyez sur MAJ+SUPPR) pour supprimer
+le texte s‚lectionn‚ et le placer dans le tampon,
+qui est une zone d'enregistrement temporaire.
+
+Vous pouvez ensuite utiliser la commande Coller (MAJ+INSER)
+pour ins‚rer le contenu du tampon … un nouvel
+endroit. Vous pouvez ‚galement ouvrir ou cr‚er un programme
+pour y ins‚rer le texte.
+
+Le texte reste dans le tampon et peut ˆtre coll‚
+… nouveau. Chaque fois que vous copiez ou coupez un bloc
+de texte, ce bloc remplace le contenu pr‚c‚dent du tampon.
+
+Suggestion : Pour s‚lectionner du texte, placez le curseur
+             au d‚but du bloc et appuyez sur MAJ+touches
+             de direction. Pour supprimer le texte
+             s‚lectionn‚ sans le copier dans le tampon,
+             appuyez sur SUPPR.
+.context MSG_HelpEditCopy
+:nCommande Copier
+Utilisez Copier (ou appuyez sur CTRL+INSER) pour copier le
+texte s‚lectionn‚ dans le tampon. L'original reste
+inchang‚.
+
+Vous pouvez ensuite utiliser Coller (MAJ+INSER) pour ins‚rer
+le texte … un nouvel endroit. Vous pouvez ‚galement ouvrir
+ou cr‚er un programme pour y ins‚rer le texte.
+
+Suggestion : Pour s‚lectionner du texte, placez le curseur
+             au d‚but du bloc et appuyez sur MAJ+touches de
+             DIRECTION.
+
+Le texte reste dans le tampon et peut ˆtre coll‚
+… nouveau. Chaque fois que vous copiez ou coupez un bloc
+de texte, ce bloc remplace le contenu pr‚c‚dent du tampon.
+.context MSG_HelpEditPaste
+:nCommande Coller
+Utilisez Coller (ou appuyez sur MAJ+INSER) pour ins‚rer un
+bloc de texte (le contenu du tampon) … un endroit
+quelconque de la fenˆtre active.
+
+Pour ins‚rer du texte, placez le curseur … l'endroit d‚sir‚
+et choisissez Coller.
+
+Pour remplacer un bloc de texte par un autre, s‚lectionnez
+le texte … remplacer et choisissez Coller.
+
+Suggestion : Pour placer du texte dans le tampon,
+             utilisez la commande Couper ou Copier. AprŠs
+             l'insertion du texte avec Coller, le tampon
+             contient toujours le texte, et ce dernier
+             peut ˆtre … nouveau coll‚.
+.context MSG_HelpEditClear
+:nCommande Effacer
+Utilisez Effacer (ou appuyez sur SUPPR) pour supprimer
+le texte s‚lectionn‚ sans le copier dans le tampon.
+Le contenu du tampon reste inchang‚.
+.context MSG_HelpEditNewSub
+:nCommande Nouvelle SUB
+Utilis‚e pour cr‚er une proc‚dure SUB.
+
+Tapez un nom pour la proc‚dure dans la boŒte de dialogue
+SUB suivant. QBasic insŠre des instructions SUB et END SUB
+pour la proc‚dure et affiche cette derniŠre dans la fenˆtre
+d'affichage.
+
+Si vous voulez afficher ou modifier d'autres parties du
+programme, utilisez la commande SUBs du menu Affichage (ou
+appuyez sur F2).
+
+Suggestion : Vous pouvez ‚galement cr‚er une proc‚dure SUB
+             … l'aide du mot-cl‚ SUB de QBasic.
+.context MSG_HelpEditNewFunc
+:nCommande Nouvelle FUNCTION
+Utilis‚e pour cr‚er une proc‚dure FUNCTION.
+
+Tapez un nom pour la proc‚dure dans la boŒte de dialogue
+SUB suivant. QBasic insŠre des instructions FUNCTION et
+END FUNCTION pour la proc‚dure et l'affiche dans la
+fenˆtre d'affichage.
+
+Si vous voulez afficher ou modifier d'autres parties du
+programme, utilisez la commande SUBs du menu Affichage
+(ou appuyez sur F2).
+
+Suggestion : Vous pouvez ‚galement cr‚er une proc‚dure 
+             FUNCTION … l'aide du mot-cl‚ FUNCTION
+             de QBasic.
+.context MSG_HelpViewSubs
+:nCommande SUBs
+Utilis‚e pour afficher ou modifier une proc‚dure SUB ou
+FUNCTION, ou pour supprimer une proc‚dure.
+
+Suggestion : Pour afficher ou modifier deux proc‚dures SUB
+             ou FUNCTION en mˆme temps, choisissez la
+             commande Diviser la fenˆtre dans le menu
+             Affichage, puis utilisez la commande SUBs pour
+             afficher les proc‚dures dans chacune des
+             fenˆtres.
+.context MSG_HelpViewSplit
+:nCommande Diviser la fenˆtre
+Utilis‚e pour diviser horizontalement la fenˆtre d'affichage
+et travailler simultan‚ment sur deux parties d'un programme.
+
+Utilisez F6 et MAJ+F6 pour passer d'une fenˆtre … l'autre :
+  ş F6 place le curseur dans la fenˆtre suivante.
+  ş MAJ+F6 place le curseur dans la fenˆtre pr‚c‚dente.
+
+Pour fermer une fenˆtre d'affichage secondaire, placez le
+curseur dans la fenˆtre que vous voulez conserver et
+choisissez … nouveau Partager.
+
+Pour modifier la taille de la fenˆtre active avec une
+souris, faites glisser la bordure de la fenˆtre vers le
+haut ou vers le bas.
+
+Pour dimensionner la fenˆtre active … partir du clavier,
+utilisez :
+  ş ALT+Plus(+)  pour l'agrandir d'une ligne.
+  ş ALT+Moins(-) pour la r‚duire d'une ligne.
+  ş CTRL+F10     Pour l'afficher en plein ‚cran ou lui 
+                 redonner sa taille pr‚c‚dente.
+.context MSG_HelpViewOutputScreen
+:nCommande Ecran de sortie
+Utilisez Ecran de sortie (ou appuyez sur F4) pour afficher
+l'‚cran de sortie, qui pr‚sente les r‚sultats du programme
+ex‚cut‚ dans l'environnement QBasic.
+
+Appuyez sur une touche quelconque pour retourner … QBasic
+aprŠs l'examen de l'‚cran de sortie.
+.context MSG_HelpSearchFind
+:nCommande Chercher
+Utilis‚e pour rechercher une chaŒne de texte. Vous pouvez
+demander que la commande diff‚rencie les majuscules et les
+minuscules ou qu'elle ne signale que les correspondances
+de mots entiers.
+
+Pour remplacer une chaŒne, utilisez la commande Remplacer.
+.context MSG_HelpSearchChange
+:nCommande Remplacer
+Utilis‚ pour remplacer une chaŒne de texte par une autre.
+
+Vous pouvez :
+  ş Diff‚rencier les majuscules des minuscules ou
+    restreindre la recherche aux correspondances de mots
+    entiers.
+  ş Confirmer chaque remplacement avant qu'il soit
+    effectu‚.
+  ş Effectuer tous les remplacements sans les confirmer.
+.context MSG_HelpSearchNext
+:nCommande Poursuivre la recherche
+Utilisez Poursuivre la recherche (ou appuyez sur F3) pour
+r‚p‚ter la recherche effectu‚e par la commande Chercher ou
+Remplacer la plus r‚cente.
+
+Si aucune commande Chercher ou Remplacer n'a ‚t‚ ex‚cut‚e
+depuis le lancement de QBasic, la commande Poursuivre la
+recherche effectue la recherche suivante :
+  ş Occurrence suivante du mot sur lequel se trouve
+    le curseur.
+  ş Occurrence suivante du mot imm‚diatement … gauche
+    du curseur, si le curseur ne se trouve pas sur un mot.
+.context MSG_HelpRunStart
+:nCommande D‚marrer
+Utilisez D‚marrer (ou appuyez sur MAJ+F5) pour lancer
+l'ex‚cution d'un programme … partir de la premiŠre
+instruction ex‚cutable du module principal.
+
+Si vous arrˆtez un programme en cours d'ex‚cution, la
+commande D‚marrer efface toutes les donn‚es que vous avez
+entr‚es et relance l'ex‚cution … partir du d‚but du
+programme.
+.context MSG_HelpRunRestart
+:nCommande Red‚marrer
+Utilis‚e pour pr‚parer relancer un programme … partir
+du d‚but. Red‚marrer efface toutes les donn‚es entr‚es
+pendant l'ex‚cution du programme et met la premiŠre
+instruction ex‚cutable en surbrillance.
+.context MSG_HelpRunContinue
+:nCommande Continuer
+Utilisez Poursuivre (ou appuyez sur F5) pour relancer
+l'ex‚cution d'un programme aprŠs une interruption. La
+commande Poursuivre n'efface pas les donn‚es qui ont ‚t‚
+entr‚es pendant l'ex‚cution du programme et elle relance
+l'ex‚cution … partir de la derniŠre instruction ex‚cut‚e,
+plut“t qu'… partir du d‚but du programme.
+
+La commande Poursuivre est souvent utilis‚e pour relancer
+l'ex‚cution aprŠs un point d'arrˆt.
+.context MSG_HelpDebugStep
+:nCommande Pas … pas
+Utilisez Pas … pas (ou appuyez sur F8) pour ex‚cuter une
+instruction unique du programme. Cette commande permet
+d'ex‚cuter un programme, y compris les proc‚dures, pas …
+pas.
+.context MSG_HelpDebugPStep
+:nCommande Trace raccourcie
+Utilisez Trace raccourcie (ou appuyez sur F10) pour
+ex‚cuter une instruction unique du programme. Cette commande 
+ex‚cute un appel de proc‚dure ainsi que la proc‚dure appel‚e 
+comme une seule instruction.
+
+La commande Trace raccourcie, de mˆme que la commande Pas …
+pas, permet d'ex‚cuter un programme pas … pas, mais elle
+vous ‚vite d'ex‚cuter pas … pas les proc‚dures si vous
+savez qu'elles fonctionnent correctement.
+.context MSG_HelpDebugTraceOn
+:nCommande Tracer
+Utilis‚e pour mettre en surbrillance chaque instruction du
+programme lors de son ex‚cution. Ceci vous permet
+d'observer le d‚roulement de l'ex‚cution. Appuyez sur
+CTRL+PAUSE pour interrompre l'ex‚cution.
+.context MSG_HelpDebugToggleBp
+:nCommande Point d'arrˆt
+Utilisez Point d'arrˆt (ou appuyez sur F9) pour activer ou
+d‚sactiver les points d'arrˆt. Ces derniers sont des
+marqueurs associ‚s … certaines instructions du programme.
+Si un programme rencontre un point d'arrˆt pendant son
+ex‚cution, il s'arrˆte sur cette instruction. QBasic met
+en surbrillance la ligne o— se trouve le point d'arrˆt.
+
+Pour activer ou d‚sactiver un point d'arrˆt :
+  1. Placez le curseur sur la ligne o— vous voulez activer
+     le point d'arrˆt ou sur une ligne de point d'arrˆt
+     en surbrillance.
+  2. Choisissez Point d'arrˆt (ou appuyez sur F9).
+
+Utilisez les points d'arrˆt pour interrompre le programme
+aux endroits o— vous suspectez la pr‚sence d'un problŠme,
+puis :
+  ş Imprimez les valeurs des variables dans la fenˆtre
+    imm‚diate.
+  ş Ex‚cutez le programme pas … pas … partir du point
+    d'arrˆt.
+.context MSG_HelpDebugClearAllBp
+:nCommande Supprimer tous les points d'arrˆt
+Utilis‚e pour supprimer tous les points d'arrˆt du programme.
+
+Utilisez Point d'arrˆt (ou appuyez sur F9) pour d‚sactiver
+individuellement chaque point d'arrˆt.
+.context MSG_HelpDebugSetNextStmt
+:nCommande D‚finir l'instruction suivante
+Utilis‚ pour changer l'ordre d'ex‚cution des instructions
+d'un programme. L'instruction ex‚cut‚e aprŠs cette commande
+est celle sur laquelle se trouve le curseur.
+.context MSG_HelpOptionsDisplay
+:nCommande Affichage
+Utilis‚e pour contr“ler :
+  ş Les couleurs … l'affichage.
+  ş Les barres de d‚filement dans les fenˆtres.
+  ş Le nombre d'espaces de d‚placement du curseur … chaque
+    utilisation de la touche TAB.
+
+Les options d'affichage sont enregistr‚es et restent actives
+lors du lancement suivant de QBasic.
+.context MSG_HelpOptionsPaths
+:nCommande Chemin de l'aide
+Utilis‚e pour changer les r‚pertoires dans lesquels QBasic
+recherche le fichier d'aide, QBASIC.HLP.
+.context MSG_HelpOptionsSyntax
+:nCommande V‚rifier la syntaxe
+Utilis‚e pour activer ou d‚sactiver Contr“le de syntaxe.
+Lorsque la v‚rification de la syntaxe est active, QBasic
+suit la proc‚dure ci-dessous chaque fois que vous entrez une
+ligne de code :
+  1. Examine la ligne pour d‚celer les erreurs de syntaxe.
+  2. Formate la ligne.
+  3. Traduit la ligne sous forme ex‚cutable si la syntaxe
+     est correcte.
+.context MSG_HelpHelpIndex
+:nCommande Index
+Utilis‚e pour afficher l'index d'aide, qui est une liste
+alphab‚tique des sujets d'aide, y compris les mots cl‚s du
+langage BASIC. Chaque expression dans l'index est li‚e … des
+informations suppl‚mentaires.
+
+Pour obtenir de l'aide :
+  1. Choisissez la commande Index dans le menu Aide.
+  2. Appuyez sur la touche qui correspond … la premiŠre
+     lettre de l'‚l‚ment.
+  3. Placez le curseur sur l'‚l‚ment pour lequel vous
+     d‚sirez obtenir de l'aide, puis appuyez sur F1.
+.context MSG_HelpHelpContents
+:nCommande Table des matiŠres
+Utilis‚e pour afficher la table des matiŠres de l'aide. Cette
+table des matiŠres constitue un guide th‚matique pour les
+informations pr‚sent‚es dans l'aide de QBasic.
+
+Pour obtenir de l'aide sur un ‚l‚ment quelconque de la table
+des matiŠres :
+  1. Choisissez la commande Table des matiŠres dans le menu
+     Aide.
+  2. Appuyez sur la touche qui correspond … la premiŠre
+     lettre de l'‚l‚ment. R‚p‚tez ceci jusqu'… ce que le
+     curseur se trouve sur le sujet d‚sir‚.
+  3. Appuyez sur F1.
+.context MSG_HelpHelpSyntax
+:nCommande Sujet
+Utilis‚e pour afficher des informations sur un sujet
+d‚termin‚ par la position en cours du curseur. Le sujet sur
+lequel se trouve le curseur apparaŒt dans la commande.
+
+Vous pouvez ‚galement afficher de l'aide sur un sujet en
+appuyant sur F1 ou en cliquant le bouton droit de la souris.
+.context MSG_HelpHelpAbout
+:nCommmande A propos de
+Utilis‚e pour afficher le num‚ro de version et le copyright
+de QBasic.
+.context MSG_HelpHelpHelp
+:nCommande Guide de l'aide
+Utilis‚e pour afficher le sujet Utiliser l'aide, qui d‚crit
+l'utilisation de la souris et du clavier pour obtenir de
+l'aide sur un ‚l‚ment affich‚ sur l'‚cran de QBasic.

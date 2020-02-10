@@ -1,0 +1,78 @@
+SUMMARY heapchk heapset heapinfo
+
+#include <tools.h>
+
+long lHeapSize;
+long lHeapFree;
+long lHeapLargest;
+
+int heapchk ( );
+
+int heapset ( fillchar )
+int fillchar;
+
+int heapinfo ( );
+
+long heapsize ( );
+
+long heapfree ( );
+
+DESCRIPTION
+
+heapchk checks the heap for consistency.
+
+heapset sets free nodes in the heap to the fillchar.
+
+heapinfo set the values of lHeapSize, lHeapFree, lHeapLargest. lHeapSize is
+the size of the heap in bytes (including headers), lHeapFree is free space
+(including headers), lHeapLargest is size in bytes of the largest free node
+(doesn't include 2 bytes needed for the header).
+
+heapsize calls heapinfo and if HEAPOK returns lHeapSize else returns
+error code.
+
+heapfree, same as heapsize, except returns number of free bytes (including
+headers) in heap.
+
+
+RETURN VALUE
+
+heapchk, heapset and heapinfo return HEALPOK if operation successful.
+
+All return HEAPCANTFIND or HEAPBADNODE if there are problems with the heap.
+Since heapsize and heapfree return longs, you must do appropriate casting.
+
+    HEAPOK          - completed okay, or not initialized yet
+    HEAPCANTFIND    - can't find heap, initial node trashed
+    HEAPBADNODE     - malformed node somewhere in heap
+
+
+IMPLEMENTATION
+
+
+
+EXAMPLE
+
+#include <tools.h>
+
+extern long lHeapSize;
+extern long lHeapFree;
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    flagType fHeapChk;
+
+    if ( ( fHeapChk = heapchk ( ) ) != HEAPOK )
+        fprintf ( stderr, "%s\n", ( fHeapChk == HEAPCANTFIND ?
+            "Can't find heap" : "Damaged heap" ) );
+
+    if ( ( fHeapChk = heapset ( '?') ) != HEAPOK )
+        fprintf ( stderr, "%s\n", ( fHeapChk == HEAPCANTFIND ?
+            "Can't find heap" : "Damaged heap" ) );
+
+    if ( heapinfo ( ) == HEAPOK )
+        fprintf ( stderr, "Heap size:%5ld  used:%5ld\n", lHeapSize,
+            lHeapSize - lHeapFree );
+}

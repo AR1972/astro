@@ -1,0 +1,44 @@
+Future Features / Ideas for CW:
+===============================
+
+-- Efficiency review
+	* axMac optimize for 80
+	* WORD / DWORD align data
+	* CC 5.0
+	* optimize screen drawing
+	* optimize thunk scanning / global memory allocation
+	* fix global realloc (fixed DGROUP etc).
+	* split into a real library
+
+-- Organization
+	* Isolate the KERNEL stuff (separate project ?)
+
+-- Pixel modes
+	* more robust support (multiple code pages)
+
+-- BIOS safe I/O variant (optimize)
+
+-- DDE interface
+	(a) Menu / Dialog interface
+	(b) EMM control (paging control)
+	(c) App specific control (like Lotus i/f) + context.
+
+BUGS:
+=====
+
+Global Realloc (alloc & copy is bogus)
+DOC: SetDialogCaption -- string must be static (for now).
+
+
+Issues for DBCS Edit manager:
+=============================
+
+* WM_CHAR - double byte or 2 WM_CHAR messages ??
+
+* Left->Right not top->bottom
+* Weird wrapping rules at right hand side (not QB's prob).
+* QB Text manager (255 chars or bytes ?)
+* general DBCS support (cursor movement etc)
+
+* 2 methods of K-K conversion
+

@@ -1,0 +1,408 @@
+.comment ******************************************************************
+.comment *  Structure Family - QBasic                                     *
+.comment ******************************************************************
+.comment * 1/10/90 Cleaned comments.
+.comment *    -- JeffWe
+.comment ******************************************************************
+.context $STATIC
+.context @$STATIC
+.context $DYNAMIC
+.context @$DYNAMIC
+:n$STATIC, $DYNAMIC Metacommands
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Set the default array storage.
+
+\b{REM | '} $STATIC\p
+\b{REM | '} $DYNAMIC\p
+
+    ş \b{REM | '}\p    REM or a remark character (') must precede metacommands.
+    ş \b$STATIC\p      Specifies that arrays declared in subsequent DIM
+                   statements are static arrays (unless they are declared in
+                   a non-static SUB or FUNCTION procedure). Array storage is
+                   allocated when you start the program, and remains fixed.
+    ş \b$DYNAMIC\p     Specifies that arrays declared in subsequent DIM
+                   statements are dynamic arrays. Array storage is allocated
+                   dynamically while the program runs.
+
+    ş DIM and REDIM usually provide a better way to specify whether arrays
+      are dynamic or static.
+
+See Also    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aREM\v@REM\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p
+.context COMMON
+.context @COMMON
+:nCOMMON Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Defines global variables that can be shared throughout a program or between
+chained programs.
+
+\bCOMMON [SHARED] variablelist\p
+
+    ş \bSHARED\p          Indicates that variables are shared with all SUB
+                      or FUNCTION procedures.
+    ş \bvariablelist\p    One or more variables to be shared:
+
+                      \bvariable[( )] [AS type] [, variable[( )] [AS type]]...\p
+
+		      \bvariable\p    A Basic variable name. Variable names can
+                                  consist of up to 40 characters and must
+                                  begin with a letter. Valid characters are
+                                  A-Z, 0-9, and period (.).
+                      \btype\p        The data type of the variable (INTEGER,
+                                  LONG, SINGLE, DOUBLE, STRING, or a
+                                  user-defined data type).
+
+    ş Unless it has been declared as a static array in a preceding DIM
+      statement, an array variable in a COMMON statement is a dynamic array.
+      Its dimensions must be set in a later DIM or REDIM statement.
+
+See Also    \i\p\aCHAIN\v@CHAIN\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p
+            \i\p\aSHARED, STATIC\v@SHARED\v\i\p           \i\p\aSUB\v@SUB\v\i\p
+.context DATA
+.context @DATA
+.context READ
+.context @READ
+.context RESTORE
+.context @RESTORE
+:nDATA, READ, RESTORE Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DATA specifies values to be read by subsequent READ statements.
+READ reads those values and assigns them to variables.
+RESTORE allows READ to reread values in specified DATA statements.
+
+\bDATA constant[,constant]...\p
+\bREAD variablelist\p
+\bRESTORE [line]\p
+
+    ş \bconstant\p        One or more numeric or string constants specifying
+                      the data to be read. String constants containing
+                      commas, colons, or leading or trailing spaces are
+                      enclosed in quotation marks (" ").
+    ş \bvariablelist\p    One or more variables, separated by commas, that are
+                      assigned data values. Variable names can consist of up
+                      to 40 characters and must begin with a letter. Valid
+                      characters are A-Z, 0-9, and period (.).
+    ş \bline\p            The label or line number of a DATA statement. If line
+                      is omitted, the next READ statement reads values in
+                      the first DATA statement in the program.
+
+    ş DATA statements can be entered only at the module level. They cannot
+      be used in procedures.
+
+Example:
+    FOR i% = 1 TO 3
+        READ a%, b$
+        PRINT a%, b$
+        RESTORE
+    NEXT i%
+    DATA 1, "Repeat"
+.context DEFINT
+.context @DEFINT
+.context DEFLNG
+.context @DEFLNG
+.context DEFSNG
+.context @DEFSNG
+.context DEFDBL
+.context @DEFDBL
+.context DEFSTR
+.context @DEFSTR
+:nDEFtype Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sets the default data type for variables, DEF FN functions, and FUNCTION
+procedures.
+
+\bDEFINT letterrange [,letterrange]...\p
+\bDEFLNG letterrange [,letterrange]...\p
+\bDEFSNG letterrange [,letterrange]...\p
+\bDEFDBL letterrange [,letterrange]...\p
+\bDEFSTR letterrange [,letterrange]...\p
+
+    ş \bletterrange\p    A letter or range of letters (such as A-M). QBasic
+                     sets the default data type for variables, DEF FN
+                     functions, and FUNCTION procedures whose names begin
+                     with the specified letter or letters as follows:
+
+                     Statement    Default Data Type
+                     ÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                     DEFINT       Integer
+                     DEFLNG       Long integer
+                     DEFSNG       Single precision
+                     DEFDBL       Double precision
+                     DEFSTR       String
+
+    ş A data-type suffix (%, &, !, #, or $) always takes precedence over a
+      DEFtype statement.
+    ş Single-precision is the default data type if you do not specify a
+      DEFtype statement.
+    ş After you specify a DEFtype statement in your program, QBasic
+      automatically inserts a corresponding DEFtype statement in each
+      procedure you create.
+
+Example:
+    DEFDBL A-Z
+    a = SQR(3)
+    PRINT "Square root of 3 = "; a
+
+See Also    \i\p\aDifferences from BASICA\v@basica.diffs\v\i\p
+.context DIM
+.context @DIM
+.context REDIM
+.context @REDIM
+:nDIM, REDIM Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DIM declares an array or specifies a data type for a non-array variable.
+REDIM declares or resizes a dynamic array, erasing any previous values.
+
+\bDIM [SHARED] variable[(subscripts)] [AS type]\p
+             \b[,variable[(subscripts)] [AS type]]...\p
+\bREDIM [SHARED] variable(subscripts) [AS type]\p
+               \b[,variable(subscripts) [AS type]]...\p
+
+    ş \bSHARED\p        Specifies that variables are shared with all SUB or
+                    FUNCTION procedures in the module.
+    ş \bvariable\p      The name of an array or variable.
+    ş \bsubscripts\p    Dimensions of the array, expressed as follows:
+
+                    \b[lower TO] upper [,[lower TO] upper]...\p
+
+                    \blower\p    The lower bound of the array's subscripts. The
+                             default lower bound is zero.
+                    \bupper\p    The upper bound.
+
+    ş \bAS type\p       Declares the data type of the array or variable
+                    (INTEGER, LONG, SINGLE, DOUBLE, STRING, or a
+                    user-defined data type).
+
+    ş DIM declares either static or dynamic arrays. Unless array storage has
+      been determined by $STATIC, $DYNAMIC, or COMMON, arrays dimensioned
+      with numbers are static and arrays dimensioned with variables are
+      dynamic. REDIM always declares dynamic arrays.
+    ş Static array storage is allocated when you start a program and
+      remains fixed. Dynamic array storage is allocated while a program runs.
+
+Example:
+    ' $DYNAMIC
+    DIM A(49, 49)
+    REDIM A(19, 14)
+
+See Also    \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aERASE\v@ERASE\v\i\p    \i\p\aOPTION BASE\v@BASE\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p
+            \i\p\a$STATIC, $DYNAMIC\v@$DYNAMIC\v\i\p    \i\p\aDifferences from BASICA\v@basica.diffs\v\i\p
+.context ERASE
+.context @ERASE
+:nERASE Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Reinitializes array elements or frees dynamic array storage space.
+
+\bERASE arrayname [,arrayname]...\p
+
+    ş \barrayname\p    The name of an array.
+
+    ş For static arrays, ERASE sets each element of a numeric array to zero
+      and each element of a string array to null.
+    ş For dynamic arrays, ERASE frees the memory used by the array. You must
+      redeclare the array's dimensions with REDIM or DIM before using it.
+
+Example:
+    DIM a%(0)
+    a%(0) = 6
+    PRINT "Before: "; a%(0)
+    ERASE a%
+    PRINT "After: "; a%(0)
+
+See Also    \i\p\aCLEAR\v@CLEAR\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context LBOUND
+.context @LBOUND
+.context UBOUND
+.context @UBOUND
+:nLBOUND, UBOUND Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Return the lower and upper bound (smallest or largest available subscript)
+for the specified array dimension.
+
+\bLBOUND(array[,dimension%])\p
+\bUBOUND(array[,dimension%])\p
+
+    ş \barray\p         The name of the array.
+    ş \bdimension%\p    Indicates the array dimension whose lower or upper
+                    bound is returned. Use 1 for the first dimension, 2
+                    for the second dimension, etc. The default is 1.
+
+Example:
+    DIM a%(1 TO 3, 2 TO 7)
+    PRINT LBOUND(a%, 1), UBOUND(a%, 2)
+
+See Also    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context LET
+.context @LET
+:nLET Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Assigns the value of an expression to a variable.
+
+\b[LET] variable=expression\p
+
+    ş \bvariable\p      Any variable. Variable names can consist of up to 40
+                    characters and must begin with a letter. Valid characters
+                    are A-Z, 0-9, and period (.).
+    ş \bexpression\p    Any expression that provides a value to assign.
+
+    ş Use of the optional LET keyword is not recommended. The
+      variable=expression assignment statement performs the same action
+      with or without LET.
+
+See Also    \i\p\aLSET, RSET\v@LSET\v\i\p
+.context OPTION
+.context @OPTION
+.context BASE
+.context @BASE
+:nOPTION BASE Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sets the default lower bound for array subscripts.
+
+\bOPTION BASE {0 | 1}\p
+
+    ş The DIM statement TO clause provides a better way to set the lower
+      bound of an array subscript.
+
+See Also    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aLBOUND, UBOUND\v@UBOUND\v\i\p
+.context REM
+.context @REM
+:nREM Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Allows explanatory remarks to be inserted in a program.
+
+\bREM remark\p
+\b' remark\p
+
+    ş \bremark\p    Any text.
+
+    ş Remarks are ignored when the program runs unless they contain
+      metacommands.
+    ş A remark can be inserted on a line after an executable statement if it
+      is preceded by the single-quote (') form of REM or if REM is preceded
+      by a colon (:).
+
+Example:
+    REM    This is a comment.
+    '      This is also a comment.
+    PRINT "Test1"       'This is a comment after a PRINT statement.
+    PRINT "Test2" :  REM This is also a comment after a PRINT statement.
+
+See Also    \i\p\a$STATIC, $DYNAMIC\v@$STATIC\v\i\p
+.context SHARED
+.context @SHARED
+.context STATIC
+.context @STATIC
+:nSHARED, STATIC Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SHARED gives procedures access to module-level variables.
+STATIC makes a variable local to a function or procedure and preserves its
+value between calls.
+
+\bSHARED variable[()] [AS type] [,variable[()] [AS type]]...\p
+\bSTATIC variable[()] [AS type] [,variable[()] [AS type]]...\p
+
+    ş \bvariable\p    The name of the module-level variable to share or variable
+                  to make static. Variable names can consist of up to 40
+                  characters and must begin with a letter. Valid characters
+                  are A-Z, 0-9, and period (.).
+    ş \bAS type\p     Declares the data type of the variable (INTEGER, LONG,
+                  SINGLE, DOUBLE, STRING, or a user-defined type).
+
+Example:
+    The program REMLINE.BAS illustrates using the SHARED and STATIC
+    statements. To view or run this program, load REMLINE.BAS using the Open
+    command from the File menu.
+
+See Also    \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context SWAP
+.context @SWAP
+:nSWAP Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Exchanges the values of two variables.
+
+\bSWAP variable1, variable2\p
+
+    ş \bvariable1\p and \bvariable2\p    Two variables of the same data type.
+
+Example:
+    a% = 1: b% = 2
+    PRINT "Before: "; a%, b%
+    SWAP a%, b%
+    PRINT "After: "; a%, b%
+.context TYPE
+.context @TYPE
+:nTYPE Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Defines a data type containing one or more elements.
+
+\bTYPE usertype\p
+  \belementname AS typename\p
+  \b[elementname AS typename]\p
+\b.\p
+\b.\p
+\b.\p
+\bEND TYPE\p
+
+    ş \busertype\p       The name of the data type being defined. The name can
+                     consist of up to 40 characters and must begin with a
+                     letter. Valid characters are A-Z, 0-9, and period (.).
+    ş \belementname\p    An element of the user-defined data type.
+    ş \btypename\p       The element's type (INTEGER, LONG, SINGLE, DOUBLE,
+                     STRING, or a user-defined data type).
+
+    ş Use DIM, REDIM, COMMON, STATIC, or SHARED to create a variable of a
+      user-defined data type.
+
+Example:
+    TYPE Card
+        Suit AS STRING * 9
+        Value AS INTEGER
+    END TYPE
+    DIM Deck(1 TO 52) AS Card
+    Deck(1).Suit = "Club"
+    Deck(1).Value = 2
+    PRINT Deck(1).Suit, Deck(1).Value
+
+See Also    \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p
+.comment ******************************************************************
+.comment *  Data Type Keywords screen                                     *
+.comment ******************************************************************
+.context INTEGER
+.context @INTEGER
+.context LONG
+.context @LONG
+.context SINGLE
+.context @SINGLE
+.context DOUBLE
+.context @DOUBLE
+.context STRING
+.context @STRING
+:nData Type Keywords
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Specify the data type for a variable in a declarative statement or
+parameter list:
+
+    ş \bINTEGER\p      A 16-bit signed integer variable.
+    ş \bLONG\p         A 32-bit signed integer variable.
+    ş \bSINGLE\p       A single-precision 32-bit floating-point variable.
+    ş \bDOUBLE\p       A double-precision 64-bit floating-point variable.
+    ş \bSTRING * n%\p  A fixed-length string variable n% bytes long.
+    ş \bSTRING\p       A variable-length string variable.
+
+See Also    \i\p\aAS\v@AS\v\i\p	   \i\p\aBasic Character Set\v@fun.character.set\v\i\p	 \i\p\aCOMMON\v@COMMON\v\i\p
+            \i\p\aDECLARE\v@DECLARE\v\i\p     \i\p\aDEF FN\v@DEF\v\i\p                       \i\p\aDIM, REDIM\v@DIM\v\i\p
+            \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p               \i\p\aSUB\v@SUB\v\i\p
+            \i\p\aTYPE\v@TYPE\v\i\p

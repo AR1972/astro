@@ -1,0 +1,25 @@
+
+SUMMARY return amount of freespace on a drive
+
+#include <tools.h>
+
+long freespac (d)
+int d;
+
+DESCRIPTION
+
+	Return free space on current drive ...
+
+RETURN VALUE
+
+	Free space or -1 if error.... ?
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+

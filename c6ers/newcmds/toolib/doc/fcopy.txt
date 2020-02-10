@@ -1,0 +1,37 @@
+SUMMARY fcopy
+
+#include <tools.h>
+
+char *fcopy(pstrSrc, pstrDest)
+char *pstrSrc;
+char *pstrDest;
+
+DESCRIPTION
+
+fcopy copies the source to the destination preserving attributes and filetimes.
+
+RETURN VALUE
+
+Returns NULL if OK or a char point to the corresponding text of the error.
+
+IMPLEMENTATION
+
+
+SEE ALSO  fappend fdelete 
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    char *pstr;
+
+    if ((pstr = fcopy("temp.xpl", "temp.hlp")))
+            printf("Error: %s\n");
+}

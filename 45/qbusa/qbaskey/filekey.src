@@ -1,0 +1,621 @@
+.comment ******************************************************************
+.comment *  File I/O Family - QBasic                                      *
+.comment ******************************************************************
+.comment * 1/10/91 Cleaned up comments.
+.comment *   -- JeffWe
+.comment ******************************************************************
+.context BLOAD
+.context @BLOAD
+.context BSAVE
+.context @BSAVE
+:nBSAVE, BLOAD Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+BSAVE copies the contents of an area of memory to a file.
+BLOAD loads a file created by BSAVE into memory.
+
+\bBSAVE filespec$, offset%, length&\p
+\bBLOAD filespec$[,offset%]\p
+
+    ş \bfilespec$\p    For BSAVE, a file to which an area of memory (a
+                   byte-for-byte memory image) is copied. For BLOAD,
+                   a memory-image file created by a previous BSAVE.
+    ş \boffset%\p      For BSAVE, the offset of the starting address of the
+                   area of memory being saved. For BLOAD, the offset of
+                   the address where loading starts.
+    ş \blength&\p      The number of bytes to copy (from 0 through 65,535).
+
+    ş The starting address of the memory area saved or loaded is determined
+      by the offset and the most recent DEF SEG statement.
+
+See Also    \i\p\aDEF SEG\v@SEG\v\i\p    \i\p\aVARPTR, VARSEG\v@VARSEG\v\i\p    \i\p\aDifferences from BASICA\v@basica.diffs\v\i\p
+.context CHDIR
+.context @CHDIR
+.context MKDIR
+.context @MKDIR
+.context RMDIR
+.context @RMDIR
+.context FILES
+.context @FILES
+:nCHDIR, MKDIR, RMDIR, FILES Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CHDIR changes a drive's default directory. MKDIR creates a subdirectory.
+MRDIR removes a subdirectory. FILES displays the contents of the current
+directory or a specified directory.
+
+\bCHDIR pathname$\p
+\bMKDIR pathname$\p
+\bRMDIR pathname$\p
+\bFILES [filespec$]\p
+
+    ş \bpathname$\p    The path of the new default directory, subdirectory to
+                   create, or subdirectory to remove.
+    ş \bfilespec$\p    A filename or path (may include a drive and DOS wildcard
+                   characters). If you don't specify a filespec$, FILES
+                   displays all files in the current directory.
+
+Example:
+    MKDIR "C:\\TEMP\\TEST"
+    CHDIR "C:\\TEMP"
+    FILES
+    RMDIR "TEST"
+.context CLOSE
+.context @CLOSE
+:nCLOSE Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Closes one or more open files or devices.
+
+\bCLOSE [[#]filenumber%[,[#]filenumber%]...]\p
+
+    ş \bfilenumber%\p    The number of an open file or device.
+
+    ş CLOSE with no arguments closes all open files and devices.
+
+Example:
+    CLS
+    INPUT "Enter filename: ", n$
+    OPEN n$ FOR OUTPUT AS #1
+    PRINT #1, "This is saved to the file."
+    CLOSE
+    OPEN n$ FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT "Read from file: "; a$
+    CLOSE
+
+See Also    \i\p\aEND\v@END\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aRESET\v@RESET\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context EOF
+.context @EOF
+:nEOF Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Tests for the end of a file. EOF returns true (nonzero) if the end of a file
+has been reached.
+
+\bEOF(filenumber%)\p
+
+    ş \bfilenumber%\p    The number of an open file.
+
+Example:
+    CLS
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    FOR i% = 1 TO 10
+        WRITE #1, i%, 2 * i%, 5 * i%
+    NEXT i%
+    CLOSE #1
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    DO
+        LINE INPUT #1, a$
+        PRINT a$
+    LOOP UNTIL (EOF(1))
+
+See Also    \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aLOC\v@LOC\v\i\p    \i\p\aLOF\v@LOF\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p
+.context ERDEV
+.context @ERDEV
+.context ERDEV$
+.context @ERDEV$
+:nERDEV, ERDEV$ Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ERDEV returns an error code from the last device that generated a critical
+error. ERDEV$ returns the name of the device that generated the error.
+
+\bERDEV\p
+\bERDEV$\p
+
+    ş The low byte of the value returned by ERDEV contains the DOS error
+      code. The high byte contains device-attribute information.
+
+\i\p\aExample\v@errhand.ex\v\i\p
+
+See Also    \i\p\aERR, ERL\v@ERR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p
+.context FIELD
+.context @FIELD
+:nFIELD Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Allocates space for variables in a random-access file buffer.
+
+\bFIELD [#]filenumber%, fieldwidth% AS stringvariable$\p
+                    \b[,fieldwidth% AS stringvariable$] ...\p
+
+    ş \bfilenumber%\p        The number of an open file.
+    ş \bfieldwidth%\p        The number of characters in the field.
+    ş \bstringvariable$\p    A variable that identifies the field and contains
+                         field data.
+
+    ş Record variables usually provide a better way to handle record data.
+
+Example:
+    OPEN "FILEDAT.DAT" FOR RANDOM AS #1 LEN = 80
+    FIELD #1, 30 AS name$, 50 AS address$
+
+See Also    \i\p\aGET, PUT\v@GET\v\i\p    \i\p\aLSET, RSET\v@LSET\v\i\p    \i\p\aTYPE\v@TYPE\v\i\p    \i\p\aDifferences from BASICA\v@basica.diffs\v\i\p
+.context FILEATTR
+.context @FILEATTR
+:nFILEATTR Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns information about an open file.
+
+\bFILEATTR(filenumber%,attribute%)\p
+
+    ş \bfilenumber%\p    The number of an open file.
+    ş \battribute%\p     Specifies the type of information to return. When
+                     attribute% is 1, FILEATTR returns a value indicating
+                     the file's access mode:
+
+                     Value   Mode
+                     ÍÍÍÍÍ   ÍÍÍÍÍÍ
+                     1       Input
+                     2       Output
+                     4       Random
+                     8       Append
+                     32      Binary
+
+                     When attribute% is 2, FILEATTR returns the DOS file
+                     handle.
+
+Example:
+    OPEN "TEST.DAT" FOR BINARY AS #1
+    PRINT FILEATTR(1, 1)
+    CLOSE
+
+See Also    \i\p\aOPEN\v@OPEN\v\i\p
+.context FREEFILE
+.context @FREEFILE
+:nFREEFILE Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns the next valid unused file number.
+
+\bFREEFILE\p
+
+Example:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT "Next file number: "; FREEFILE
+    CLOSE
+
+See Also    \i\p\aOPEN\v@OPEN\v\i\p
+.context GET
+.context @GET
+.context PUT
+.context @PUT
+:nGET, PUT Statements (File I/O)
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+GET reads from a file into a random-access buffer or variable.
+PUT writes a variable or random-access buffer to a file.
+
+\bGET [#]filenumber%[,[recordnumber&][,variable]]\p
+\bPUT [#]filenumber%[,[recordnumber&][,variable]]\p
+
+    ş \bfilenumber%\p      The number of an open file.
+    ş \brecordnumber&\p    For random-access files, the number of the record to
+                       read or write. For binary-mode files, the byte
+                       position where reading or writing starts.
+    ş \bvariable\p         For GET, a variable used to receive input from the
+                       file. For PUT, a variable that contains output to
+                       write to the file. The variable is usually a variable
+                       of a user-defined data type.
+
+Example:
+    TYPE TestRecord
+        Student AS STRING * 20
+        Score AS SINGLE
+    END TYPE
+    DIM MyClass AS TestRecord
+    OPEN "FINAL.DAT" FOR RANDOM AS #1 LEN = LEN(MyClass)
+    MyClass.Student = "MarySa"
+    MyClass.Score = 99
+    PUT #1, 1, MyClass
+    CLOSE #1
+    OPEN "FINAL.DAT" FOR RANDOM AS #1 LEN = LEN(MyClass)
+    GET #1, 1, MyClass
+    PRINT "STUDENT:", MyClass.Student
+    PRINT "SCORE:", MyClass.Score
+    CLOSE #1
+    KILL "FINAL.DAT"
+
+See Also    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aGET, PUT (Graphics)\v@ggx\v\i\p    \i\p\aLSET, RSET\v@LSET\v\i\p
+            \i\p\aMKn$, CVn Functions\v@MKI$\v\i\p               \i\p\aTYPE\v@TYPE\v\i\p
+.context INPUT$
+.context @INPUT$
+:nINPUT$ Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns a string of characters read from a specified file.
+
+\bINPUT$(n[,[#]filenumber%])\p
+
+    ş \bn\p              The number of characters (bytes) to read.
+    ş \bfilenumber%\p    The number of an open file. If filenumber% is
+                     omitted, INPUT$ reads from the keyboard.
+
+Example:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT #1, "The text"
+    CLOSE
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    PRINT INPUT$(3, 1)        'Print first 3 characters.
+    CLOSE
+
+See Also    \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p
+.context IOCTL
+.context @IOCTL
+.context IOCTL$
+.context @IOCTL$
+:nIOCTL Statement, IOCTL$ Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+IOCTL transmits a control string to a device driver.
+IOCTL$ returns current status information from a device driver.
+
+\bIOCTL [#]filenumber%, string$\p
+\bIOCTL$([#]filenumber%)\p
+
+    ş \bfilenumber%\p    The number of an open device.
+    ş \bstring$\p        The control string sent to the device.
+
+    ş IOCTL control strings and the information returned by IOCTL$ depend
+      on the device driver. See your device-driver documentation for
+      information about IOCTL control strings and what is returned by IOCTL$.
+.context LOC
+.context @LOC
+:nLOC Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns the current position within a file.
+
+\bLOC(filenumber%)\p
+
+    ş \bfilenumber%\p    The number of an open file or device.
+
+    ş For binary files, LOC returns the position of the last byte read or
+      written.
+    ş For random-access files, LOC returns the number of the last record
+      read from or written to the file.
+    ş For sequential files, LOC returns the current byte position in the
+      file, divided by 128.
+
+Example:
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+       PUT #1, , i%
+    NEXT i%
+    SEEK #1, 2
+    GET #1, , i%
+    PRINT "Data: "; i%; " Current record: "; LOC(1); " Next: "; SEEK(1)
+
+See Also    \i\p\aEOF\v@EOF\v\i\p    \i\p\aSEEK\v@SEEK\v\i\p
+.context LOCK
+.context @LOCK
+.context UNLOCK
+.context @UNLOCK
+:nLOCK, UNLOCK Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LOCK limits or prevents access to a file by a network process.
+UNLOCK releases the locks imposed by the last LOCK statement.
+
+\bLOCK [#]filenumber% [,{record& | [start&] TO end&}]\p
+\bUNLOCK [#]filenumber% [,{record& | [start&] TO end&}]\p
+
+    ş \bfilenumber%\p        The number of an open file.
+    ş \brecord&\p            For random-access files, the number of a record to
+                         lock, relative to the first record in the file.
+                         For binary files, the number of a byte to lock,
+                         relative to the first byte in the file.
+    ş \bstart&\p and \bend&\p    The numbers of the first and last records or bytes
+                         in a range of records or bytes to lock or unlock.
+
+    ş For sequential files, LOCK and UNLOCK affect the entire file.
+
+Example:
+    'This example runs only in a network environment.
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+        PUT #1, , i%
+    NEXT i%
+    LOCK #1, 2         'Lock record 2.
+    GET #1, 2, i%
+    UNLOCK #1, 2       'Unlock record 2.
+.context LOF
+.context @LOF
+:nLOF Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns the length of a file in bytes.
+
+\bLOF(filenumber%)\p
+
+    ş \bfilenumber%\p    The number of an open file.
+
+Example:
+    INPUT "Enter filename: "; f$
+    OPEN f$ FOR BINARY AS #1
+    PRINT "File length = "; LOF(1)
+    CLOSE
+.context LSET
+.context @LSET
+.context RSET
+.context @RSET
+:nLSET, RSET Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LSET and RSET move data into a random-access file buffer (in preparation for
+a PUT statement) and left- or right-justify the value of a string variable.
+LSET also copies the contents of one record variable to another.
+
+\bLSET stringvariable$=stringexpression$\p
+\bRSET stringvariable$=stringexpression$\p
+\bLSET recordvariable1=recordvariable2\p
+
+    ş \bstringvariable$\p      Any string variable or a random-access file field
+                           defined in a FIELD statement.
+    ş \bstringexpression$\p    For LSET, the left-justified version of
+                           stringvariable$. For RSET, the right-justified
+                           version of stringvariable$.
+    ş \brecordvariable1\p      Record variables of any user-defined data type.
+      \brecordvariable2\p      Use LSET to assign a record variable of one data
+                           type to a different user-defined data type.
+
+Example:
+    OPEN "FILEDAT.DAT" FOR RANDOM AS #1 LEN = 10
+    FIELD #1, 5 AS Ls1$, 5 AS Rs1$
+    LSET Ls1$ = "LSET"
+    RSET Rs1$ = "RSET"
+    PUT #1, 1
+    CLOSE #1
+    OPEN "FILEDAT.DAT" FOR RANDOM AS #1 LEN = 10
+    FIELD #1, 5 AS Ls2$, 5 AS Rs2$
+    GET #1, 1
+    PRINT "*" + Ls2$ + "*", "*" + Rs2$ + "*"
+    CLOSE #1
+
+See Also    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aGET, PUT\v@PUT\v\i\p
+.context NAME
+.context @NAME
+:nNAME Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Renames a file or directory.
+
+\bNAME oldspec$ AS newspec$\p
+
+    ş \boldspec$\p and \bnewspec$\p    The name of an existing file and the new name
+                               for the file. Each name may include a path.
+
+Example:
+    INPUT "Old Name: "; OldFN$
+    INPUT "New Name: "; NewFN$
+    NAME OldFN$ AS NewFN$
+
+See Also    \i\p\aFILES\v@FILES\v\i\p
+.context OPEN
+.context @OPEN
+:nOPEN Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Opens a file or device.
+
+\bOPEN file$ [FOR mode] [ACCESS access] [lock] AS [#]filenumber% [LEN=reclen%]\p
+
+    ş \bfile$\p          The name of the file or device. The file name may
+                     include a drive and path.
+    ş \bmode\p           One of the following file modes: APPEND, BINARY, INPUT,
+                     OUTPUT, or RANDOM. See \i\p\aOPEN Statement File Modes\v@APPEND\v\i\p.
+    ş \baccess\p         In network environments, specifies whether the file is
+                     opened for READ, WRITE, or READ WRITE access.
+                     See \i\p\aOPEN Statement ACCESS Clause\v@ACCESS\v\i\p.
+    ş \block\p           Specifies the file locking in network environments:
+                     SHARED, LOCK READ, LOCK WRITE, LOCK READ WRITE.
+    ş \bfilenumber%\p    A number in the range 1 through 255 that identifies the
+                     file while it is open.
+    ş \breclen%\p        For random-access files, the record length (default is
+                     128 bytes). For sequential files, the number of
+                     characters buffered (default is 512 bytes).
+
+Example:
+    INPUT "Enter Filename: "; n$
+    OPEN n$ FOR OUTPUT AS #1
+    PRINT #1, "This is saved to the file."
+    CLOSE
+    OPEN n$ FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT "Read from file: "; a$
+    CLOSE
+
+See Also    \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aFREEFILE\v@FREEFILE\v\i\p    \i\p\aOPEN COM\v@opcom\v\i\p    \i\p\aTYPE\v@TYPE\v\i\p
+            \i\p\aOPEN Statement Alternate Syntax\v@openalt\v\i\p
+.context APPEND
+.context @APPEND
+.context BINARY
+.context @BINARY
+.context OUTPUT
+.context @OUTPUT
+.context RANDOM
+.context @RANDOM
+:nOPEN Statement File Modes
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+The APPEND, BINARY, INPUT, OUTPUT, and RANDOM keywords are used in the
+OPEN statement to specify file modes. INPUT, OUTPUT, and RANDOM are also
+used in the OPEN COM statement.
+
+    ş APPEND specifies that the file is to be opened for sequential output
+      and sets the file pointer to the end of the file. A PRINT # or
+      WRITE # statement then extends (appends to) the file.
+    ş BINARY specifies a binary-file mode. In binary mode, you can read or
+      write information to any byte position in the file using GET or PUT
+      statements.
+    ş INPUT specifies that the file is opened for sequential input.
+    ş OUTPUT specifies that the file is opened for sequential output.
+    ş RANDOM specifies that the file is opened in random-access file mode.
+      RANDOM is the default file mode.
+
+See Also    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aOPEN COM\v@opcom\v\i\p    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aWRITE\v@WRITE\v\i\p
+.context ACCESS
+.context @ACCESS
+:nOPEN Statement ACCESS Clause
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Specifies the type of access users have to an opened file.
+
+\bACCESS {READ | WRITE | READ WRITE}\p
+
+    ş \bREAD\p          Opens a file for reading only.
+    ş \bWRITE\p         Opens a file for writing only.
+    ş \bREAD WRITE\p    Opens a file for both reading and writing. READ WRITE
+                    mode is valid only for random-access and binary-mode
+                    files, and files opened for APPEND (sequential access).
+
+See Also    \i\p\aOPEN\v@OPEN\v\i\p
+.context @openalt
+.context .openalt
+:nOPEN Statement Alternate Syntax
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bOPEN mode2$,[#]filenum%,file$[,reclen%]\p
+
+    ş \bmode2$\p      A string expression that begins with one of the
+                  following characters and specifies the file mode:
+                    O    Sequential output mode.
+                    I    Sequential input mode.
+                    R    Random-access file input/output mode.
+                    B    Binary-file mode.
+                    A    Sequential output mode. Sets the file pointer to
+                         the end of the file and the record number to the
+                         last record of the file. A PRINT # or WRITE #
+                         statement extends (appends to) the file.
+    ş \bfilenum%\p    A number in the range 1 through 255 that identifies
+                  the file while it is open.
+    ş \bfile$\p       The name of the file (may include drive and path).
+    ş \breclen%\p     For random-access files, the record length in bytes.
+                  For sequential files, the number of characters buffered.
+
+    ş QBasic supports this syntax for compatibility with programs written
+      in earlier versions of BASIC.
+
+See Also    \i\p\aOPEN\v@OPEN\v\i\p
+.context RESET
+.context @RESET
+:nRESET Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Closes all open files and devices.
+
+\bRESET\p
+
+See Also    \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aEND\v@END\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context SEEK
+.context @SEEK
+:nSEEK Function and Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+The SEEK function returns the current file position.
+The SEEK statement sets the file position for the next read or write.
+
+\bSEEK(filenumber%)\p
+\bSEEK [#]filenumber%, position&\p
+
+    ş \bfilenumber%\p    The number of an open file.
+    ş \bposition&\p      The position where the next read or write occurs. For
+                     random-access files, a record number. For other files,
+                     the byte position relative to the beginning of the file.
+                     The first byte is at position 1.
+
+Example:
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+        PUT #1, , i%
+    NEXT i%
+    SEEK #1, 2
+    GET #1, , i%
+    PRINT "Data: "; i%; " Current record: "; LOC(1); " Next: "; SEEK(1)
+
+See Also    \i\p\aGET, PUT\v@GET\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p
+.context WRITE
+.context @WRITE
+:nWRITE Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Writes data to the screen or a sequential file.
+
+\bWRITE [[#]filenumber%,] expressionlist\p
+
+    ş \bfilenumber%\p       The number of an open sequential file. If the file
+                        number is omitted, WRITE writes to the screen.
+    ş \bexpressionlist\p    One or more variables or expressions, separated by
+                        commas, whose values are written to the screen or
+                        file.
+
+    ş WRITE inserts commas between items and quotation marks around strings
+      as they are written. WRITE writes values to a file in a form that can
+      be read by the INPUT statement.
+
+Example:
+    CLS
+    OPEN "LIST" FOR OUTPUT AS #1
+    DO
+        INPUT "   NAME:       ", Name$
+        INPUT "   AGE:        ", Age$
+        WRITE #1, Name$, Age$
+        INPUT "Add another entry"; R$
+    LOOP WHILE UCASE$(R$) = "Y"
+    CLOSE #1
+    'Print the file to the screen.
+    OPEN "LIST" FOR INPUT AS #1
+    CLS
+    PRINT "Entries in file:": PRINT
+    DO WHILE NOT EOF(1)
+        INPUT #1, Rec1$, Rec2$   'Read entries from file.
+        PRINT Rec1$, Rec2$       'Print the entries on the screen.
+    LOOP
+    CLOSE #1
+    KILL "LIST"
+
+See Also    \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p
+.comment *******************************************************************
+.comment *  AS Keyword
+.comment *******************************************************************
+.context AS
+.context @AS
+:nAS Keyword
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Performs different actions as part of several statements:
+
+    ş Specifies a variable type when used in the COMMON, DECLARE, DEF FN,
+      DIM, FUNCTION, REDIM, SHARED, STATIC, and SUB statements.
+    ş Specifies an element type in a user-defined data type when used in
+      the TYPE statement.
+    ş Assigns a file number to a file or device when used in the OPEN
+      statement.
+    ş Specifies a field name when used in the FIELD statement.
+    ş Specifies a new file name when used in the NAME statement.
+
+See Also    \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p     \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+            \i\p\aFIELD\v@FIELD\v\i\p     \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aNAME\v@NAME\v\i\p      \i\p\aOPEN\v@OPEN\v\i\p
+            \i\p\aSHARED, STATIC\v@SHARED\v\i\p          \i\p\aSUB\v@SUB\v\i\p       \i\p\aTYPE\v@TYPE\v\i\p

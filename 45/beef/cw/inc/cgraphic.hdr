@@ -1,0 +1,8 @@
+/*
+	CW : Character Windows
+	cgraphic.h : Graphic Drawing
+
+	Yes, COW not only does Windows, but it does graphics too
+
+	CC should be defined for compilation with Cmerge.
+

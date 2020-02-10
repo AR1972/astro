@@ -1,0 +1,626 @@
+.comment ******************************************************************
+.comment *  Control Family - QBasic                                       *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, to BASIC language and products. *
+.comment ******************************************************************
+.comment *  7/10/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/22/90 stevesau                                              *
+.comment *  Incorporated final edit/review comments.                      *
+.comment ******************************************************************
+.comment *  6/6/90 stevesau                                               *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Combined GOSUB...RETURN/RETURN.                               *
+.comment *  Deleted STOP example (not recommended).                       *
+.comment *  Incorporated review comments and edits.                       *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/6/90 stevesau                                               *
+.comment *  Incorporated review comments.                                 *
+.comment ******************************************************************
+.comment *  4/30/90 stevesau                                              *
+.comment *  Combined logical operators.                                   *
+.comment *  Changed Absolute to CALL ABSOLUTE                             *
+.comment ******************************************************************
+.comment *  4/18/90 stevesau                                              *
+.comment *  Deleted CALL (NON-BASIC), Interrupt.			  *
+.comment *  Added action lines.						  *
+.comment ******************************************************************
+.comment *                                                                *
+.context @CALL
+.context CALL
+:nCALL-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+šbergibt die Kontrolle an eine SUB-Prozedur
+
+\b[CALL] Name [([Argumentliste])]\p
+
+    ş \bName\p           Der Name der aufzurufenden SUB-Prozedur.
+    ş \bArgumentliste\p  Die Variablen oder Konstanten, die and die
+                     SUB-Prozedur bergeben werden. Argumente der
+                     Liste werden durch Kommas getrennt. Datenfeld-
+                     argumente werden durch die Angabe des Datenfeld-
+                     namens und nachstehenden leeren Klammern angegeben.
+
+
+    ş Falls Sie das Schlsselwort CALL weglassen, mssen Sie auch die
+      Klammern um die Argumentliste weglassen. Deklarieren Sie entweder
+      die Prozedur mit einer DECLARE-Anweisung vor dem Aufruf oder
+      speichern Sie das Programm und QBASIC erzeugt die DECLARE-
+      Anweisung automatisch.
+    ş Ein Argument, dessen Wert in der Prozedur nicht ge„ndert wird,
+      muá in Klammern gesetzt werden.
+
+Beispiel:
+    Das Programm REMLINE.BAS zeigt den Aufruf einer SUB-Prozedur. Um das
+    Programm anzusehen oder auszufhren, mssen Sie REMLINE.BAS mit dem
+    Befehl ™ffnen des Mens Datei ”ffnen.
+
+Siehe auch    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p     \i\p\aSUB\v@SUB\v\i\p
+.context ABSOLUTE
+.context @ABSOLUTE
+:nCALL ABSOLUTE-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+šbergibt die Kontrolle an eine Prozedur in Maschinensprache.
+
+\bCALL ABSOLUTE ([Argumentliste,] Offset%)\p
+
+    ş \bArgumentliste\p   Argumente, die an eine Prozedur in Maschinen-
+		      sprache als Offsets zum aktuellen Datensegment
+		      bergeben werden.
+    ş \bOffset%\p	  Das Offset von dem aktuellen Code-Segment,
+                      angegeben durch DEF SEG, bis zur Anfangsadresse der
+		      Prozedur.
+
+Beispiel:
+    'Ruft eine Routine auf, die den Bildschirminhalt auf dem Drucker druckt.
+    DIM a%(2)
+    DEF SEG = VARSEG(a%(0))
+    FOR i% = 0 TO 2
+       READ d%
+       POKE VARPTR(a%(0)) + i%, d%
+    NEXT i%
+    DATA 205, 5, 203  : ' int 5  retf  'Code in Maschinesprache
+				       'zum Drucken des Bildschirminhalts.
+    CALL ABSOLUTE(VARPTR(a%(0)))
+    DEF SEG
+
+Siehe auch    \i\p\aCALL\v@CALL\v\i\p    \i\p\aVARPTR, VARSEG\v@VARPTR\v\i\p    \i\p\aUnterschiede zu BASICA\v@basica.diffs\v\i\p
+.context CHAIN
+.context @CHAIN
+:nCHAIN-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+šbergibt die Kontrolle von dem aktuellen Programm an ein anderes BASIC
+Programm.
+
+\bCHAIN Dateiangabe$\p
+
+    ş \bDateiangabe$\p	  Der Name des Programms, an das die Kontrolle
+                      bergeben wird.
+
+Beispiel:
+    'Nimmt an, daá das Programm TEST.BAS in dem Verzeichnis \\DOS ist.
+    CHAIN "C:\\DOS\\TEST.BAS"
+
+Siehe auch    \i\p\aCALL\v@CALL\v\i\p    \i\p\aCOMMON\vCOMMON\v\i\p    \i\p\aRUN\vRUN\v\i\p    \i\p\aUnterschiede zu BASICA\v@basica.diffs\v\i\p
+.context DO
+.context @DO
+.context LOOP
+.context @LOOP
+.context UNTIL
+.context @UNTIL
+:nDO...LOOP-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Wiederholt einen Anweisungsblock solange bis eine Bedingung wahr ist oder
+bis die Bedingung wahr wird.
+
+\bDO [{WHILE | UNTIL} Bedingung]\p
+    \b[Anweisungsblock]\p
+\bLOOP\p
+
+\bDO\p
+    \b[Anweisungsblock]\p
+\bLOOP [{WHILE | UNTIL} Bedingung]\p
+
+    ş \bBedingung\p    Ein numerischer Ausdruck, den BASIC als wahr
+		   (ungleich Null) oder falsch (gleich Null) auswertet.
+
+Beispiel:
+    i% = 0
+    PRINT "Wert von i% am Schleifenanfang ist "; i%
+    DO WHILE i% < 10
+        i% = i% + 1
+    LOOP
+    PRINT "Wert von i% am Schleifenende ist "; i%
+
+Siehe auch    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aWHILE...WEND\v@WHILE\v\i\p
+.context END
+.context @END
+:nEND-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Beendet ein Programm, eine Prozedur, einen Block oder einen
+benutzerdefinierten Datentyp.
+
+\bEND [{DEF | FUNCTION | IF | SELECT | SUB | TYPE}]\p
+
+    ş \bDEF\p	      Beendet eine mehrzeilige DEF FN-Funktionsdefinition
+    ş \bFUNCTION\p    Beendet eine FUNCTION-Prozedurdefinition.
+    ş \bIF\p	      Beendet eine Block-Anweisung IF...THEN...ELSE.
+    ş \bSELECT\p      Beendet einen SELECT CASE-Block.
+    ş \bSUB\p	      Beendet eine SUB-Procedure.
+    ş \bTYPE\p	      Beendet die Definition eines benutzerdefinierten
+		  Datentyps.
+
+    ş Falls keine Argumente angegeben werden, beendet END das Programm
+      und schlieát alle Dateien.
+
+Beispiel:
+    PRINT "Spiel zu Ende."
+    END
+
+Siehe auch    \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aIF...THEN...ELSE\v@IF\v\i\p    \i\p\aSELECT CASE\v@IS\v\i\p
+              \i\p\aSTOP\v@STOP\v\i\p      \i\p\aSUB\v@SUB\v\i\p         \i\p\aSYSTEM\v@SYSTEM\v\i\p              \i\p\aTYPE\v@TYPE\v\i\p
+.context EXIT
+.context @EXIT
+:nEXIT-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Bewirkt das sofortig Verlassen einer DO- oder FOR-Schleife, einer FUNCTION-
+oder SUB-Prozedur oder einer DEF FN-Funktion.
+
+\bEXIT {DEF | DO | FOR | FUNCTION | SUB}\p
+
+    ş \bDEF\p	      Beendet eine DEF FN-Funktion.
+    ş \bDO\p	      Beendet eine DO-Schleife.
+    ş \bFOR\p	      Beendet eine FOR-Schleife.
+    ş \bFUNCTION\p    Beendet eine FUNCTION-Prozedur.
+    ş \bSUB\p	      Beendet eine SUB-Prozedur.
+
+Beispiel:
+    i% = 0
+    DO
+        i% = i% + 1
+        IF i% = 500 THEN EXIT DO
+    LOOP
+    PRINT "Beendet bei "; i%
+\p
+Siehe auch    \i\p\aDEF FN\v@DEF\v\i\p   \i\p\aDO...LOOP\v@DO\v\i\p   \i\p\aFOR...NEXT\v@FOR\v\i\p   \i\p\aFUNCTION\v@FUNCTION\v\i\p   \i\p\aSUB\v@SUB\v\i\p
+.context FOR
+.context @FOR
+:nFOR...NEXT-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Wiederholt einen Anweisungsblock so oft wie angegeben
+
+\bFOR Z„hler = Start TO Ende [STEP Schrittweite]\p
+    \b[Anweisungsblock]\p
+\bNEXT [Z„hler [,Z„hler]...]\p
+
+ ş \bZ„hler\p            Eine numerische Variable, die als Schleifenz„hler dient.
+ ş \bStart\p und \bEnde\p    Der Anfangs- und Endwert des Z„hlers.
+ ş \bSchrittweite\p      Der Betrag, um den der Z„hler bei jedem
+                     Schleifendurchlauf erh”ht wird.
+
+Beispiel:
+    FOR i% = 1 TO 15
+        PRINT i%
+    NEXT i%
+    FOR i% = 7 to -6 STEP -3
+        PRINT i%
+    NEXT i%
+
+Siehe auch    \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aWHILE...WEND\v@WHILE\v\i\p
+.context GOSUB
+.context @GOSUB
+.context RETURN
+.context @RETURN
+:nGOSUB...RETURN-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Verzweigt zu und kehrt von einem Unterprogramm zurck.
+
+\bGOSUB Zeile1\p
+\b.\p
+\b.\p
+\b.\p
+\bRETURN [Zeile2]\p
+
+    ş \bZeile1\p	Die Marke oder Zeilennummer der ersten Zeile des
+		    Unterprogramms.
+    ş \bZeile2\p	Die Marke oder Zeilennummer zu der das Unterprogramm
+			nach der Beendigung zurckkehrt.
+
+    ş Wenn Sie keine Zeilenmarke oder Zeilennummer bei RETURN angeben,
+      fhrt das Programm die Ausfhrung mit der nach GOSUB folgenden
+      Anweisung fort (bei Unterprogrammaufrufen) oder wo ein Ereignis
+      auftrat (Bei Ereignisbehandlung). Informieren Sie sich unter dem
+      Schlsselwort \i\p\aON\v@ON\v\i\p ber Anweisungen zur Ereignisbehandlung.
+    ş Die Anweisungen SUB und CALL sind im Vergleich zu GOSUB Unter-
+      programmen eine bessere Alternative.
+
+Beispiel:
+    FOR i% = 1 TO 20
+	GOSUB Quadrat
+    NEXT i%
+    END
+
+    Quadrat:
+    PRINT i%, i% * i%
+    RETURN
+
+Siehe auch    \i\p\aCALL\v@CALL\v\i\p    \i\p\aON-Schlsselwort\v@ON\v\i\p    \i\p\aON...GOSUB\v@ONGO\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context GOTO
+.context @GOTO
+:nGOTO-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Verzweigt zu der angegebenen Zeile.
+
+\bGOTO Zeile\p
+
+    ş \bZeile\p    Eine Zeilenmarke oder -nummer, die als n„chstes ausgefhrt
+	       werden soll.
+
+    ş DO...LOOP, SELECT CASE, IF...THEN...ELSE, SUB und FUNCTION eignen
+      sich besser zur Ablaufkontrolle Ihres Programmes.
+    ş GOTO wird auch als Schlssewort in der ON ERROR-Anweisung verwendet.
+
+\i\p\aBeispiel\v@errhand.ex\v\i\p
+
+Siehe auch    \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p     \i\p\aIF...THEN...ELSE\v@IF\v\i\p
+              \i\p\aON ERROR\v@onerr\v\i\p     \i\p\aON...GOTO\v@ongo\v\i\p    \i\p\aSELECT CASE\v@SELECT\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context THEN
+.context @THEN
+.context ELSE
+.context @ELSE
+.context ELSEIF
+.context @ELSEIF
+.context ENDIF
+.context @ENDIF
+.context IF
+.context @IF
+:nIF...THEN...ELSE-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Fhrt eine Anweisung oder einen Anweisungsblock in Abh„ngigkeit von den
+angegebenen Bedingungen aus.
+
+\bIF Bedingung1 THEN\p
+    \b[Anweisungblock-1]\p
+\b[ELSEIF Bedingung2 THEN\p
+    \b[Anweisungblock-2]]...\p
+\b[ELSE\p
+    \b[Anweisungblock-n]]\p
+\bEND IF\p
+
+\bIF Bedingung THEN Anweisungen [ELSE Anweisungen]\p
+
+    ş \bBedingung1\p         Jeder Ausdruck, der als wahr (ungleich Null) oder
+      \bBedingung2\p         als falsch (gleich Null) ausgewerterte werden kann.
+    ş \bAnweisungsblock-1\p  Eine oder mehrere Anweisungen, auf einer oder
+      \bAnweisungsblock-2\p  mehreren Zeilen.
+      \bAnsweisungsblock-n\p
+    ş \bAnweisungen\p        Eine oder mehrere Anweisungen durch Doppelpunkte
+                         getrennt.
+
+Beispiel:
+    INPUT "1 oder 2 ? ", i%
+    IF i% = 1 OR i% = 2 THEN
+        PRINT "OK"
+    ELSE
+	PRINT "Auáerhalb des Bereichs"
+    END IF
+
+Siehe auch    \i\p\aON...GOSUB\v@ongo\v\i\p    \i\p\aON...GOTO\v@ongo\v\i\p    \i\p\aSELECT CASE\v@IS\v\i\p
+.context @ongo
+.context .ongo
+:nON...GOSUB-, ON...GOTO-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Verzweigt zu einer von mehreren Stellen in Abh„ngigkeit des Wertes des
+Ausdrucks.
+
+\bON Ausdruck% GOSUB Zeilenliste\p
+\bON Ausdruck% GOTO Zeilenliste\p
+
+    ş \bAusdruck%\p	 Ein Ausdruck im Bereich 0 bis 255.
+    ş \bZeilenliste\p	 Eine Menge von Marken oder Zeilennummern.
+		     Wenn der Wert des Ausdrucks 1 ist, verzweigt das
+		     Programm zu der ersten Zeile in der Liste; Wenn
+		     der Wert des Ausdrucks 2 ist, verzweigt das Programm
+		     zu der zweiten Zeile in der Liste, usw.
+
+    ş SELECT CASE eignet sich besser zur Programmierung mehrfacher
+      Verzweigungen.
+
+Beispiel:
+    FOR i% = 1 TO 2
+	ON i% GOSUB Eins, Zwei
+    NEXT i%
+    END
+
+    Eins: PRINT "Eins"
+    RETURN
+    Zwei: PRINT "Zwei"
+    RETURN
+
+Siehe auch    \i\p\aON-Schlsselwort\v@ON\v\i\p    \i\p\aSELECT CASE\v@SELECT\v\i\p
+.context RUN
+.context @RUN
+:nRUN-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+L„át das aktuelle Programm oder ein angegebenes Programm ablaufen.
+
+\bRUN [{Zeilennummer | Datei$}]\p
+
+    ş \bZeilennummer\p	Die Zeilennummer des aktuellen Programms, an der
+		    die Ausfhrung beginnen soll. Wenn keine Zeilennummer
+		    angegeben wird, beginnt die Ausfhrung in der ersten
+		    ausfhrbaren Zeile.
+    ş \bDatei$\p        Der Name der BASIC Quelldatei. QBASIC nimmt an, daá
+		    der Dateiname die Erweiterung .BAS besitzt.
+
+    ş RUN schlieát alle Dateien und l”scht den Programmspeicher vor dem
+      Laden eines Programms. Verwenden Sie die Anweisung CHAIN, um ein
+      Programm ohne das Schlieáen der offenen Dateien zu starten.
+
+Beispiel:
+    'Es wird angenommen, daá sich das Programm TEST.BAS im Verzeichnis
+    ' \\DOS befindet.
+    RUN "C:\\DOS\\TEST.BAS"
+
+Siehe auch    \i\p\aCHAIN\v@CHAIN\v\i\p
+.context SELECT
+.context @SELECT
+.context CASE
+.context @CASE
+.context IS
+.context @IS
+:nSELECT CASE-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Fhrt einen von mehreren Anweisungsbl”cken in Abh„ngigkeit vom Wert des
+Ausdrucks aus.
+
+\bSELECT CASE Testausdruck\p
+\bCASE Ausdrucksliste1\p
+  \b[Anweisungsblock-1]\p
+\b[CASE Ausdrucksliste2\p
+  \b[Anweisungsblock-2]]...\p
+\b[CASE ELSE\p
+  \b[Anweisungsblock-n]]\p
+\bEND SELECT\p
+
+   ş \bTestausdruck\p       Jeder numerische Ausdruck oder Zeichenkettenausdruck
+   ş \bAusdrucksliste1\p    Ein oder mehrere zu Testausdruck passende
+			Ausdrcke.
+     \bAusdrucksliste2\p    Das Schlssekwort IS muá vor jedem vergleichendem
+                        (relationalem) Operator in einem Ausdruck stehen.
+   ş \bAnweisungsblock-1\p  Ein oder mehrere Anweisungen auf ein oder
+     \bAnweisungsblock-2\p  mehreren Zeilen.
+     \bAnweisungsblock-n\p
+
+   ş Die Argumente der Ausdrucksliste k”nnen jede der Formen oder
+     eine Kombination, getrennt durch ein Komma, sein:
+
+      \bAusdruck[,Ausdruck]...\p
+      \bAusdruck TO Ausdruck\p
+      \bIS Vergleichsoperator Ausdruck\p
+
+          \bAusdruck\p            Jeder numerische Ausdruck oder Zeichketten-
+                              ausdruck, der zu Testausdruck kompatibel ist.
+
+          \bVergleichsoperator\p  Einer der folgenden Vergleichsoperatoren:
+			      <, <=, >, >=, <>, or =.
+
+Beispiel:
+    INPUT "Geben Sie die erwnschte Risikostufe ein (1-5): ", Total
+    SELECT CASE Total
+
+        CASE IS >= 5
+            PRINT "Maximales Risiko mit potentiell hohem Gewinn."
+	    PRINT "Investieren Sie in Aktien."
+
+        CASE 2 TO 4
+	    PRINT "Mittleres bis hohes Risiko mit potentiell hohem Gewinn."
+            PRINT "Investieren Sie in Anleihen und Schuldverschreibungen."
+
+        CASE 1
+	    PRINT "Kein Risiko mit niedrigem Gewinn."
+	    PRINT "Geben Sie Ihr Geld auf ein Sparkonto."
+
+    END SELECT
+
+Siehe auch    \i\p\aIF...THEN...ELSE\v@IF\v\i\p
+.context SLEEP
+.context @SLEEP
+:nSLEEP-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Unterbricht die Ausfhrung des Programms vorbergehend.
+
+\bSLEEP [Sekunden&]\p
+
+    ş \bSekunden&\p	  Anzahl von Sekunden, fr die das Programm
+		      unterbrochen werden soll.
+
+    ş Falls Sekunden 0 ist oder ausgelassen wird, wird das Programm solange
+      unterbrochen bis eine Taste gedrckt wird und ein Ereignis auftritt.
+
+Beispiel:
+    PRINT "10 Sekunden Pause..."
+    SLEEP 10
+    PRINT "Weiter geht's!"
+
+Siehe auch    \i\p\aWAIT\v@WAIT\v\i\p
+.context STOP
+.context @STOP
+:nSTOP-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+H„lt ein Programm an.
+
+\bSTOP\p
+
+    ş Das Schlsselwort STOP setzt in den folgenden Anweisungen
+      auch die Abfrage von Ergeignissen aus:
+
+      \i\p\aCOM, ON COM\v@COM\v\i\p      \i\p\aKEY, ON KEY\v@KETV\v\i\p         \i\p\aPEN, ON PEN\v@PEN\v\i\p
+      \i\p\aPLAY, ON PLAY\v@PLAYEV\v\i\p    \i\p\aSTRIG, ON STRIG\v@STRIG\v\i\p     \i\p\aTIMER, ON TIMER\v@TIMER\v\i\p
+
+Beispiel:
+    FOR i% = 1 TO 10
+        PRINT i%
+	IF i% = 5 THEN STOP	'STOP unterbricht; F5, um fortzusetzen.
+    NEXT i%
+
+Siehe auch    \i\p\aEND\v@END\v\i\p    \i\p\aSYSTEM\v@SYSTEM\v\i\p
+.context SYSTEM
+.context @SYSTEM
+:nSYSTEM-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Schlieát alle ge”ffneten Dateien und bergibt die Kontrolle an
+das Betriebssystem.
+
+\bSYSTEM\p
+
+Siehe auch    \i\p\aEND\v@END\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context TRON
+.context @TRON
+.context TROFF
+.context @TROFF
+:nTRON-, TROFF-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+TRON und TROFF schaltet das Verfolgen von Programmanweisungen ein und aus.
+
+\bTRON\p
+\bTROFF\p
+
+    ş Die QBASIC Debug-Funktionen machen diese Anweisung berflssig.
+
+Siehe auch    \i\p\aTasten fr Programmablauf und Fehlerbehebung\v@dk\v\i\p
+.context wend
+.context @wend
+.context WHILE
+.context @WHILE
+:nWHILE...WEND-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Fhrt eine Reihe von Anweisungen aus solange die angegebene Bedingung
+wahr ist.
+
+\bWHILE Bedingung\p
+\b.\p
+\b.\p
+\b.\p
+\bWEND\p
+
+    ş \bBedingung\p	Ein numerischer Ausdruck, den BASIC als wahr
+                    (ungleich Null) oder falsch (gleich Null) auswertet.
+
+    ş DO...LOOP bietet eine bessere Methode, um Anweisungen in einer
+      Programmschleife auszufhren.
+
+Siehe auch    \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p
+.comment ******************************************************************
+.comment * Boolean Operators
+.comment ******************************************************************
+.context AND
+.context @AND
+.context EQV
+.context @EQV
+.context IMP
+.context @IMP
+.context NOT
+.context @NOT
+.context OR
+.context @OR
+.context XOR
+.context @XOR
+:nBoolesche Operatoren
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Boolesche Operatoren fhren Bit-Manipulationen, boolesche Operationen oder
+Tests auf vielen Relationen aus. Der Rckgabewert wahr (ungleich Null)
+oder falsch (gleich Null) wird fr das F„llen von Entscheidungen verwendet.
+
+\bErgebnis = Ausdruck1 Boolescher-Operator Ausdruck2\p
+
+    ş \bBoolescher Operator\p   Einer der folgenden Boole'schen Operatoren:
+
+	NOT		    Bitweises Komplement
+	AND		    Konjunktion
+	OR		    Disjunktion (inclusive "or")
+        XOR                 Exklusives "Oder"
+        EQV                 quivalenz
+	IMP		    Implikation
+
+    ş Jeder Operator gibt ein Ergebnis zurck. Die Werte der einzelenen
+      Operatoren sind in der nachfolgenden Wahrheitstabelle aufgefhrt.
+      W steht fr wahr (ungleich Null); F fr falsch (gleich Null)
+
+        Ausdruck 1   Ausdruck 2   NOT  AND  OR   XOR  EQV  IMP
+        ÍÍÍÍÍÍÍÍÍÍÍ  ÍÍÍÍÍÍÍÍÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ
+	W	     W		  F    W    W	 F    W    W
+	W	     F		  F    F    W	 W    F    F
+	F	     W		  W    F    W	 W    F    W
+	F	     F		  W    F    F	 F    W    W
+
+    ş Boolesche Operationen werden nach arithmetischen und vergleichenden
+      (relationalen) Operationen nach ihrer Rangfolge abgearbeitet.
+    ş Ausdrcke werden in Ganzahl- oder lange Ganzzahlwerte umgewandelt
+      bevor eine boolesche Operation ausgefhrt wird.
+    ş Wenn ein Ausdruck zu dem Ergebnis 0 oder -1 fhrt, gibt die boolesche
+      Operation den Wert 0 oder -1 als Ergebnis zurck. Da boolesche
+      Operatoren bitweise Berechnungen durchfhren, fhrt das Verwenden
+      von anderen Werten als 0 fr falsch und -1 fr wahr eventuell zu
+      unerwarteten Ergebnissen.
+.comment ******************************************************************
+.comment * Keywords
+.comment ******************************************************************
+.context NEXT
+.context @NEXT
+:nNEXT-Schlsselwort
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Erh”ht und testet den Z„hler in einer FOR...NEXT-Schleife oder fhrt, wenn
+es zusammen mit RESUME verwendet wird, die Ausfhrung einer Fehlerbehand-
+lungsroutine weiter.
+
+Siehe auch    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context STEP
+.context @STEP
+:nSTEP-Schlsselwort
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Bei einer FOR...NEXT-Schleife gibt es an, wieviel der Z„hler bei jeder
+Iteration erh”ht wird. Bei Grafik-Anweisungen gibt es an, daá die die
+Punkt-Koordinaten relativ zur aktuellen Cursor-Position sind.
+Siehe auch    \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aGET, PUT\v@ggx\v\i\p    \i\p\aLINE\v@LINE\v\i\p
+              \i\p\aPAINT\v@PAINT\v\i\p     \i\p\aPRESET, PSET\v@PRESET\v\i\p
+.context TO
+.context @TO
+:nTO-Schlsselwort
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt den Bereich an fr:
+
+    ş Die CASE-Klausel einer SELECT CASE-Anweisung.
+    ş Den Schleifenz„hler in einer FOR...NEXT-Schleife.
+    ş Gesperrte und nicht gesperrte Datens„tze in einer LOCK...UNLOCK-
+      Anweisung.
+    ş Die oberen und unteren Grenzen in einer DIM oder REDIM-Anweisung.
+
+Siehe auch    \i\p\aDIM, REDIM\v@DIM\v\i\p   \i\p\aFOR...NEXT\v@FOR\v\i\p   \i\p\aLOCK, UNLOCK\v@LOCK\v\i\p   \i\p\aSELECT CASE\v@SELECT\v\i\p

@@ -1,0 +1,446 @@
+.comment ******************************************************************
+.comment *  Structure Family - QBasic                                     *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  6/16/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments                       *
+.comment ******************************************************************
+.comment *  6/13/90 stevesau                                              *
+.comment *  Incorporated RonS coments.                                    *
+.comment ******************************************************************
+.comment *  5/14/90 stevesau                                              *
+.comment *  Combined DATA/READ/RESTORE, DIM/REDIM, LBOUND/UBOUND,         *
+.comment *  SHARED/STATIC.                                                *
+.comment *  Incorporated review comments.                                 *
+.comment *  Second pass done, DONE, DUN!                                  *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Added action lines.                                           *
+.comment *  Combined $STATIC and $DYNAMIC and Metacommands Syntax info.   *
+.comment *  Moved info from Details to DIM, COMMON, ERASE, READ, SHARED,  *
+.comment *  STATIC.                                                       *
+.comment *  Added TYPE statement info from ISAM file.                     *
+.comment ******************************************************************
+.comment *  4/17/90 Bethpr                                                *
+.comment *  Removed $Include metacommand; in Data Type Keywords node,     *
+.comment *  removed currency; removed $Include from Metacommands Syntax   *
+.comment *  node; removed Preserve from Redim statement                   *
+.comment ******************************************************************
+.context $STATIC
+.context @$STATIC
+.context $DYNAMIC
+.context @$DYNAMIC
+:n$STATIC, metakommando; $DYNAMIC, metakommando
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Anger det lagringss„tt som ska anv„ndas f”r matriser.
+
+\b{REM | '} $STATIC\p
+\b{REM | '} $DYNAMIC\p
+
+    ş \b{REM | '}\p    REM eller ett kommentartecken (') m†ste f”reg†
+                   metakommandon.
+    ş \b$STATIC\p      Anger att de matriser som deklareras i de kommande
+                   DIM-satserna „r statiska matriser (s†vida de inte
+                   deklareras i ett icke-statiskt delprogram eller i en
+                   funktion). Matrisutrymmet allokeras n„r du startar
+                   programmet och f”rblir fast.
+    ş \b$DYNAMIC\p     Anger att de matriser som deklareras i de kommande
+                   DIM-satserna „r dynamiska matriser. Matrisutrymmet
+                   allokeras dynamiskt medan programmet k”r.
+
+    ş DIM och REDIM „r vanligtvis ett b„ttre s„tt att ange om matriser „r
+      dynamiska eller statiska.
+
+Se „ven     \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aREM\v@REM\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p
+.context COMMON
+.context @COMMON
+:nCOMMON, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definierar globala variabler som kan anv„ndas var som helst i ett program
+eller i kedjade program.
+
+\bCOMMON [SHARED] variabellista\p
+
+    ş \bSHARED\p          Anger att variablerna „r gemensamma f”r alla
+                      delprogram eller funktioner.
+    ş \bvariabellista\p   En eller fler variabler:
+
+                      \bvariabel[( )] [AS typ] [, variabel[( )] [AS typ]]...\p
+
+		      \bvariabel\p    Ett variabelnamn i Basic. Variabelnamn kan
+                                  best† av upp till 40 tecken och m†ste b”rja
+                                  med en bokstav. Giltiga tecken „r A-Z, 0-9
+                                  och punkt (.).
+                      \btyp\p         Variabelns datatyp (INTEGER, LONG, SINGLE,
+                                  DOUBLE, STRING eller en anv„ndardefinierad
+                                  datatyp).
+
+    ş En matrisvariabel i en COMMON-sats „r en dynamisk matris, s†vida den
+      inte har deklarerats som en statisk matris i en tidigare sats.
+      Dimensionerna p† matrisen m†ste anges i en senare DIM-sats eller
+      REDIM-sats.
+
+Se „ven     \i\p\aCHAIN\v@CHAIN\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p
+            \i\p\aSHARED, STATIC\v@SHARED\v\i\p           \i\p\aSUB\v@SUB\v\i\p
+.context DATA
+.context @DATA
+.context READ
+.context @READ
+.context RESTORE
+.context @RESTORE
+:nDATA, sats; READ, sats; RESTORE, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DATA anger v„rden som ska l„sas av efterf”ljande READ-satser.
+READ l„ser v„rdena och tilldelar dem till variabler.
+RESTORE l†ter READ l„sa om v„rdena i angivna DATA-satser.
+
+\bDATA konstant[,konstant]...\p
+\bREAD variabellista\p
+\bRESTORE [rad]\p
+
+    ş \bkonstant\p        En eller fler numeriska konstanter eller
+		      str„ngkonstanter som anger vilka data som ska l„sas.
+                      Str„ngkonstanter som inneh†ller komman, kolon, eller
+		      inledande eller efterf”ljande blanksteg skrivs inom
+		      citationstecken (" ").
+    ş \bvariabellista\p   En eller fler variabler, †tskilda av komman,
+                      som tilldelas datav„rden. Variabelnamn kan best† av
+		      upp till 40 tecken och m†ste b”rja med en bosktav.
+                      Giltiga tecken „r A-Z, 0-9 och punkt (.).
+    ş \brad\p             Etiketten eller radnumret d„r en DATA-sats finns.
+                      Om rad inte finns med l„ser n„sta READ-sats v„rden i
+                      den f”rsta DATA-satsen i programmet.
+
+    ş DATA-satser kan bara skrivas in p† modulniv†. De kan inte anv„ndas
+      i procedurer.
+
+Exempel:
+    FOR i% = 1 TO 3
+        READ a%, b$
+        PRINT a%, b$
+        RESTORE
+    NEXT i%
+    DATA 1, "Repetera"
+.context DEFINT
+.context @DEFINT
+.context DEFLNG
+.context @DEFLNG
+.context DEFSNG
+.context @DEFSNG
+.context DEFDBL
+.context @DEFDBL
+.context DEFSTR
+.context @DEFSTR
+:nDEFtyp, satser
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+St„ller in standarddatatyp f”r variabler, funktioner skapade med DEF FN,
+och funktioner skapade med FUNCTION.
+
+\bDEFINT bokstavsintervall [,bokstavsintervall]...\p
+\bDEFLNG bokstavsintervall [,bokstavsintervall]...\p
+\bDEFSNG bokstavsintervall [,bokstavsintervall]...\p
+\bDEFDBL bokstavsintervall [,bokstavsintervall]...\p
+\bDEFSTR bokstavsintervall [,bokstavsintervall]...\p
+
+    ş \bbokstavsintervall\p    En bokstav eller ett bokstavsintervall
+                           (som t ex A-M). QBasic st„ller in standarddatatyp
+                           f”r variabler, funktioner skapade med DEF FN, och
+                           funktioner skapade med FUNCTION, vars namn b”rjar
+			   med den eller de angivna bokst„verna enligt
+                           f”ljande tabell:
+
+                           Sats         Standarddatatyp
+                           ÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                           DEFINT       Heltal
+                           DEFLNG       L†ngt heltal
+                           DEFSNG       Enkelprecision
+                           DEFDBL       Dubbelprecision
+                           DEFSTR       Str„ng
+
+    ş Ett datatypssuffix (%, &, !, # eller $) har alltid presedens ”ver
+      en DEFtyp-sats.
+    ş Enkelprecision „r standarddatatypen om om du inte anger en
+      DEFtyp-sats.
+    ş Efter att du har angett en DEFtyp-sats i ditt program, infogar QBasic
+      automatiskt en motsvarande DEFtyp-sats i varje procedur som du skapar.
+
+Exempel:
+    DEFDBL A-Z
+    a = SQR(3)
+    PRINT "Kvadratroten ur 3 = "; a
+
+Se „ven     \i\p\aSkillnader j„mf”rt med BASICA\v@basica.diffs\v\i\p
+.context DIM
+.context @DIM
+.context REDIM
+.context @REDIM
+:nDIM, sats; REDIM, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DIM deklarerar en matris eller anger en datatyp f”r en variabel som inte „r
+en matris.
+REDIM deklarerar eller „ndrar storlek p† en dynamisk matris och raderar alla
+tidigare v„rden.
+
+\bDIM [SHARED] variabel[(index)] [AS typ]\p
+             \b[,variabel[(index)] [AS typ]]...\p
+\bREDIM [SHARED] variabel(index) [AS typ]\p
+               \b[,variabel(index) [AS typ]]...\p
+
+    ş \bSHARED\p	Anger att variabeln „r gemensam f”r alla delprogram
+                    eller funktioner i modulen.
+    ş \bvariabel\p      Namnet p† en matris eller variabel.
+    ş \bindex\p         Matrisens dimensioner, uttryckt p† f”ljande s„tt:
+
+                    \b[l„gre TO] ”vre [,[l„gre TO] ”vre]...\p
+
+                    \bl„gre\p    L„gre gr„nsen f”r matrisens index.
+                             Standardgr„nsen „r noll.
+                    \b”vre\p     ™vre gr„nsen.
+
+    ş \bAS typ\p        Deklarerar matrisens eller variabelns datatyp
+                    (INTEGER, LONG, SINGLE, DOUBLE, STRING eller en
+                    anv„ndardefinierad datatyp).
+
+    ş DIM deklarerar antingen statiska eller dynamiska matriser. S†vida
+      matrisutrymmet inte har best„mts av $STATIC, $DYNAMIC eller COMMON,
+      „r matriser som dimensionerats med tal statiska, och matriser som
+      dimensionerats med variabler dynamiska. REDIM deklarerar alltid
+      dynamiska matriser.
+    ş Utrymmet f”r statiska matriser allokeras n„r du startar programmet och
+      f”rblir fast. Utrymmet f”r dynamiska matriser allokeras medan
+      programmet k”r.
+
+Exempel:
+    ' $DYNAMIC
+    DIM A(49, 49)
+    REDIM A(19, 14)
+
+Se „ven     \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aERASE\v@ERASE\v\i\p    \i\p\aOPTION BASE\v@BASE\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p
+            \i\p\a$STATIC, $DYNAMIC\v@$DYNAMIC\v\i\p    \i\p\aSkillnader j„mf”rt med BASICA\v@basica.diffs\v\i\p
+.context ERASE
+.context @ERASE
+:nERASE, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+terinitierar matriselement, eller frig”r lagringsutrymme f”r dynamiska
+matriser.
+
+\bERASE matrisnamn [,matrisnamn]...\p
+
+    ş \bmatrisnamn\p    Namnet p† en matris.
+
+    ş F”r statiska matriser s„tter ERASE alla element i en numerisk matris
+      till noll, och alla element i en str„ngmatris till null.
+    ş F”r dynamiska matriser frig”r ERASE det minne som matrisen anv„nder.
+      Du m†ste deklarera om matrisens dimensioner med REDIM eller DIM innan
+      du kan anv„nda den.
+
+Exempel:
+    DIM a%(0)
+    a%(0) = 6
+    PRINT "F”re: "; a%(0)
+    ERASE a%
+    PRINT "Efter: "; a%(0)
+
+Se „ven     \i\p\aCLEAR\v@CLEAR\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context LBOUND
+.context @LBOUND
+.context UBOUND
+.context @UBOUND
+:nLBOUND, funktion; UBOUND, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar den l„gre och ”vre gr„nsen (minsta eller st”rsta tillg„ngliga
+index) f”r den angivna matrisdimensionen.
+
+\bLBOUND(matris[,dimension%])\p
+\bUBOUND(matris[,dimension%])\p
+
+    ş \bmatris\p        Namnet p† matrisen.
+    ş \bdimension%\p    Anger den matrisdimension vars ”vre eller l„gre
+                    gr„ns ska returneras. Anv„nd 1 f”r den f”rsta
+                    dimensionen, 2 f”r den andra dimensionen, o s v.
+                    Standard „r 1.
+
+Exempel:
+    DIM a%(1 TO 3, 2 TO 7)
+    PRINT LBOUND(a%, 1), UBOUND(a%, 2)
+
+Se „ven     \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context LET
+.context @LET
+:nLET, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Tilldelar v„rdet p† ett uttryck till en variabel.
+
+\b[LET] variabel=uttryck\p
+
+    ş \bvariabel\p      En variabel. Variabelnamn kan best† av upp till 40
+                    tecken, och m†ste b”rja med en bokstav. Giltiga tecken
+                    „r A-Z, 0-9 och punkt (.).
+    ş \buttryck\p       Ett uttryck som ger ett v„rde som kan tilldelas.
+
+    ş Anv„ndning av det valfria nyckelordet LET rekommenderas inte.
+      Tilldelningssatsen variabel=utryck utf”r samma sak med eller utan LET.
+
+Se „ven     \i\p\aLSET, RSET\v@LSET\v\i\p
+.context OPTION
+.context @OPTION
+.context BASE
+.context @BASE
+:nOPTION BASE, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+St„ller in standardv„rdet f”r den l„gre gr„nsen p† matrisindex.
+
+\bOPTION BASE {0 | 1}\p
+
+    ş Satsen DIM sats TO „r ett b„ttre s„tt att st„lla in den l„gre gr„nsen
+      f”r matrisindex.
+
+Se „ven     \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aLBOUND, UBOUND\v@UBOUND\v\i\p
+.context REM
+.context @REM
+:nREM, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+L†ter dig infoga f”rklarande kommentarer i ett program.
+
+\bREM kommentar\p
+\b' kommentar\p
+
+    ş \bkommentar\p    Valfri text.
+
+    ş Kommentarerna ignoreras n„r programmet k”r, s†vida de inte inneh†ller
+      metakommandon.
+    ş En kommentar kan infogas p† en rad efter en exekverbar sats om den
+      f”reg†s av ett enkelt citationstecken ('), eller om REM f”reg†s av
+      ett kolon (:).
+
+Exempel:
+    REM    Det h„r „r en kommentar.
+    '      Det h„r „r ocks† en kommentar.
+    PRINT "Test1"       'Det h„r „r en kommentar efter en PRINT-sats.
+    PRINT "Test2" :  REM Det h„r „r ocks† en kommentar efter en PRINT-sats.
+
+Se „ven     \i\p\a$STATIC, $DYNAMIC\v@$STATIC\v\i\p
+.context SHARED
+.context @SHARED
+.context STATIC
+.context @STATIC
+:nSHARED, sats; STATIC, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SHARED ger procedurer tillg†ng till variabler p† modulniv†.
+STATIC g”r variabler lokala f”r en funktion eller procedur, och bevarar dem
+mellan anropen.
+
+\bSHARED variabel[()] [AS typ] [,variabel[()] [AS typ]]...\p
+\bSTATIC variabel[()] [AS typ] [,variable[()] [AS typ]]...\p
+
+    ş \bvariabel\p    Namnet p† en variabel p† modulniv† som ska delas,
+                  eller en variabel som ska g”ras statisk. Variabelnamn
+                  kan best† av upp till 40 tecken, och m†ste b”rja med en
+                  bokstav. Giltiga tecken „r A-Z, 0-9 och punkt (.).
+    ş \bAS typ\p      Deklarerar variabelns datatyp (INTEGER, LONG,
+                  SINGLE, DOUBLE, STRING eller en anv„ndardefinierad
+                  datatyp).
+
+Exempel:
+    Programmet REMLINE.BAS illustrerar hur man anv„nder satserna SHARED och
+    STATIC. Om du vill se eller k”ra det programmet, kan du ladda REMLINE.BAS
+    genom att anv„nda kommandot ™ppna i Arkiv-menyn.
+
+Se „ven     \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context SWAP
+.context @SWAP
+:nSWAP, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+V„xlar v„rdet p† tv† variabler.
+
+\bSWAP variabel1, variabel2\p
+
+    ş \bvariabel1\p och \bvariabel2\p    Tv† variabler av samma datatyp.
+
+Exempel:
+    a% = 1: b% = 2
+    PRINT "F”re: "; a%, b%
+    SWAP a%, b%
+    PRINT "Efter: "; a%, b%
+.context TYPE
+.context @TYPE
+:nTYPE, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definierar en datatyp, som inneh†ller en eller tv† element.
+
+\bTYPE anv„ndartyp\p
+  \belementnamn AS typnamn\p
+  \b[elementnamn AS typnamn]\p
+\b.\p
+\b.\p
+\b.\p
+\bEND TYPE\p
+
+    ş \banv„ndartyp\p    Namnet p† den datatyp som definieras. Namnet kan
+                     best† av upp till 40 tecken, och m†ste b”rja med en
+                     bokstav. Giltiga tecken „r A-Z, 0-9 och punkt (.).
+    ş \belementnamn\p    Ett element av den anv„ndardefinierade datatypen.
+    ş \btypnamn\p        Elementets typ (INTEGER, LONG, SINGLE, DOUBLE,
+                     STRING eller en anv„ndardefinierad datatyp).
+
+    ş Anv„nd DIM, REDIM, COMMON, STATIC eller SHARED, om du vill skapa en
+      variabel av en anv„ndardefinierad datatyp.
+
+Exempel:
+    TYPE Card
+        Suit AS STRING * 9
+        Value AS INTEGER
+    END TYPE
+    DIM Deck(1 TO 52) AS Card
+    Deck(1).Suit = "Club"
+    Deck(1).Value = 2
+    PRINT Deck(1).Suit, Deck(1).Value
+
+Se „ven     \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p
+.comment ******************************************************************
+.comment *  Data Type Keywords screen                                     *
+.comment ******************************************************************
+.context INTEGER
+.context @INTEGER
+.context LONG
+.context @LONG
+.context SINGLE
+.context @SINGLE
+.context DOUBLE
+.context @DOUBLE
+.context STRING
+.context @STRING
+:nDatatypsnyckelord
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Anger datatypen f”r en variabel i en deklarativ sats eller parameterlista:
+
+    ş \bINTEGER\p      En 16-bitars heltalsvariabel.
+    ş \bLONG\p         En 32-bitars heltalsvariabel.
+    ş \bSINGLE\p       En 32-bitars flyttalsvariabel med enkelprecision.
+    ş \bDOUBLE\p       En 64-bitars flyttalsvariabel med dubbelprecision.
+    ş \bSTRING * n%\p  En str„ngvariabel med fast l„ngd, n% byte l†ng.
+    ş \bSTRING\p       En str„ngvariabel med varierbar l„ngd.
+
+Se „ven     \i\p\aAS\v@AS\v\i\p          \i\p\aTeckenupps„ttning i Basic\v@fun.character.set\v\i\p    \i\p\aCOMMON\v@COMMON\v\i\p
+            \i\p\aDECLARE\v@DECLARE\v\i\p     \i\p\aDEF FN\v@DEF\v\i\p                       \i\p\aDIM, REDIM\v@DIM\v\i\p
+            \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p               \i\p\aSUB\v@SUB\v\i\p
+            \i\p\aTYPE\v@TYPE\v\i\p

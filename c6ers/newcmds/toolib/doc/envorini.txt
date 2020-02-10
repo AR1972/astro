@@ -1,0 +1,73 @@
+SUMMARY getenvini
+
+#include <tools.h>
+
+char *getenvini(pstrEnv, pstrSection)
+char *pstrEnv;
+char *pstrSection;
+
+
+DESCRIPTION
+
+getenvini looks for an environment variable pstrSection_pstrEnv, e.g.
+if pstrEnv is "mysrc" and pstrSection is "to", getenvini looks for the
+environment variable "TO_MYSRC".  (The strings are converted to upper case
+because environment variables are upper case'd even though their value is
+mixed case.)
+
+If found and the value has non-white space characters, then a copy of the
+value is returned.
+
+If found and the value has only white space characters, then NULL is returned.
+
+If the combined string is not found in the environment then the file
+$USER:\TOOLS.INI and getenvini tries to find a section [pstrSection] and
+an entry "pstrEnv=".  The value of the entry is the string to the right of the
+=.
+
+If found and the value has non-white space characters, then a copy of the
+value is returned.
+
+If found and the value has only white space characters, then NULL is returned.
+
+If not found then NULL is returned.
+
+
+If the return value is non-NULL you must free the returned string when you
+are done with it.
+
+
+RETURN VALUE
+
+
+IMPLEMENTATION
+
+Calls getenv(pstrEnv) from C library and swfind from Tools.lib.
+
+SEE ALSO
+
+
+NOTE
+
+
+EXAMPLE
+
+Env contains
+
+    set mysrc=c:\MYSRC
+
+or TOOLS.INI contains
+
+[to]
+    mysrc=c:\MYSRC
+
+
+
+#include <tools.h>
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    printf("%s\n", getenvini ("mysrc", "to"));
+}

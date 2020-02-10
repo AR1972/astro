@@ -1,0 +1,219 @@
+Multiple Configuration Boot
+---------------------------
+
+We are trying to solve following problems with multiple configuration
+processing:
+
+ 1. Ability to boot without processing CONFIG.SYS and AUTOEXEC.BAT
+
+ 2. Ability to conditionally process different lines/sections of
+    CONFIG.SYS and AUTOEXEC.BAT based on a user-specified configuration,
+    and to set environment variables based on that configuration
+
+ 3. Ability to interactively execute or skip any line in CONFIG.SYS,
+    in order to speed up system tuning and problem determination
+
+NOTE:  This feature does not address dual or a multi-boot option.
+Dual/multi boot normally refers to an ability to boot from different
+partitions or an ability to boot different operating systems.  The proposed
+multi-configuration architecture is compatible with the existing dual-boot
+and multi-boot software (OS/2 1.2/2.0, ROMDOS, etc).
+ 
+Configuration blocks are defined in CONFIG.SYS through the use bracketed
+headings, similar to those found in Windows INI files.  The headings are
+called block names, and are single words used both to define the blocks and
+to refer to them in a special block called the MENU block.  Examples of
+block names are MINIMUM, NETWORK, CDROM, DATABASE, etc.
+
+The block name MENU is a pre-defined block name used to define the menu
+that is displayed at boot-time.  A MENU block can only contain certain
+MENU-related commands;  all other lines are ignored.  These commands are:
+
+    Commands        Syntax and definition
+
+    MENUITEM        MENUITEM=blockname[,description]
+
+                    Each MENUITEM entry for which blockname is a valid
+                    block name will create a selection on the boot-time
+                    menu.  The first selection is number 1, and so on,
+                    up to the maximum of 9.  The description field is what
+                    will be displayed on the screen;  if it is omitted,
+                    then the block name itself is used.
+
+    MENUDEFAULT     MENUDEFAULT=blockname[,timeout]
+
+                    This establishes which of the MENUITEMs displayed will
+                    be highlighted on the screen as the default selection
+                    (ie, the selection that will be chosen if the user
+                    presses Enter or if a timeout occurs).  When no default
+                    is explicitly set, the default is selection 0 (NONE).
+                    The timeout, if present, is a number from 0 to 90.
+                    This establishes the number of seconds to wait before
+                    automatically selecting the default configuration.  If
+                    it is 0, this forces automatic selection of the default,
+                    bypassing menu display.  If, however, the INTERACTIVE
+                    BOOT attention key (Enter) has been pressed prior to
+                    booting, the menu, if any, is displayed regardless.
+                    Pressing any key while the time-out counter is counting
+                    down disables time-out.
+
+    MENUCOLOR       MENUCOLOR=x[,y]
+
+                    x and y are numbers that define text and screen color.
+                    The numbers must be one of the following:
+
+                            0   Black       8   Gray
+                            1   Blue        9   Bright Blue
+                            2   Green      10   Bright Green
+                            3   Cyan       11   Bright Cyan
+                            4   Red        12   Bright Red
+                            5   Magenta    13   Bright Magenta
+                            6   Brown      14   Yellow
+                            7   White      15   Bright White
+
+                    Choose differing values for x and y, otherwise the text
+                    may not be readable.  Also, on most systems, screen
+                    colors 8-15 are identical to 0-7; the only difference
+                    being that the text flashes.
+
+    NUMLOCK         NUMLOCK={ON|OFF}
+
+                    Because the menu makes use of arrow keys, this allows
+                    users to configure the Num-Lock setting of the numeric
+                    keypad.  Because the menu is displayed before any drivers
+                    or programs are run, there is no other way to configure
+                    the keyboard programatically.
+
+
+The MENU block is typically placed at the top of CONFIG.SYS, but neither it
+nor any other block is required to be in any particular position or order.
+
+Here is an example of a block-structured CONFIG.SYS:
+
+    [menu]
+    menudefault=normal,30
+    menuitem=normal,My normal configuration
+    menuitem=database,Drivers required for my SQL database
+    menuitem=reference,Drivers for my information retrieval system
+
+    [common]
+    files=20
+    buffers=20
+    shell=c:\dos\command.com /p c:\dos
+
+    [reference]
+    include dataBase
+    device=c:\dos\ansi.sys
+    device=c:\cdrom\scsi.sys
+
+    [normal]
+    device=c:\dos\setver.exe
+
+    [database]
+    device=c:\net\pcxmod.sys
+    device=c:\net\pcxmoda.sys
+
+    [common]
+
+Any lines occuring before the first block heading will be considered
+common to all configurations, and will always be executed first.  This
+provides backward compatibility with setup/installation programs that simply
+add lines to the top of CONFIG.SYS.  Common lines can also be explicitly
+inserted at any point by using the predefined COMMON block heading.
+A COMMON block should always be placed at the end of CONFIG.SYS as well,
+again to provide better backward compatibility (reducing the need to
+manually edit CONFIG.SYS just to make newly installed changes effective).
+
+The INCLUDE command has been added to allow commands to be grouped into
+logical sub-blocks and then included by larger configuration blocks.  The
+primary goal is to allow any CONFIG.SYS to be structured in such a way that
+each unique line appears only once in the file, simplifying upgradability
+and maintainability of the file.
+
+All lines are processed in the order they appear.  The only exception to
+this ordering is when the INCLUDE command is used to include a block from
+within another block.
+
+If the boot-time menu is enabled (meaning: if a MENU block exists and a
+default has not been enforced through a timeout of 0), then the following
+boot menu is displayed for the specified time during DOS initialization.
+Based on the above example, this menu would look like:
+
+MS-DOS boot options:
+
+  0. NONE
+  1. MY NORMAL CONFIGURATION
+  2. DRIVERS REQUIRED FOR MY SQL DATABASE
+  3. DRIVERS FOR MY INFORMATION RETRIEVAL SYSTEM
+
+Select an option (ESC for clean boot):         [30]  [Interactive mode: OFF ]
+
+with selection #1 highlighted.  The user can change the highlighted selection
+with up/down cursor keys, and can choose the highlighted selection by
+pressing Enter.  He can also choose any selection directly by pressing the
+associated number (0, 1, 2 or 3 in the above example).  If no key is pressed
+within the specified time, then the system will boot as if the user chose the
+highlighted (default) selection.
+
+Option 0 (NONE) boots without executing any blocks in CONFIG.SYS.  Only
+common lines (and any explicit COMMON blocks) are processed;  AUTOEXEC.BAT
+is still processed normally, and the environment variable BOOT will be
+set to COMMON.  All the remaining numbered options (1,2 or 3 in this example)
+will set the BOOT environment variable to the associated block name (NORMAL,
+DATABASE or REFERENCE in the above example).
+
+Other keys function as follows:
+
+    Escape selects "clean boot", which disables all CONFIG.SYS and
+    AUTOEXEC.BAT processing;  the same feature is supported by pressing the
+    CLEAN BOOT attention key (Escape) prior to the display of the DOS
+    boot-time menu (but after the machine has reset the disk drives, keyboard,
+    LEDs, etc).  Note: for this to be useful, you will have to have a copy of
+    COMMAND.COM in your root directory.
+
+    Enter selects the currently highlighted (default) selection
+
+    The right/left cursor keys toggle the current INTERACTIVE boot setting,
+    which can either be:
+
+        ON      Prompt before processing every line in CONFIG.SYS
+        OFF     Do not prompt on every line (except for lines containing '?')
+        NONE    Do not prompt on any line (even lines containing '?')
+
+The default INTERACTIVE setting is OFF, unless the INTERACTIVE BOOT attention
+key (Enter) is pressed prior to the display of the configuration menu, in
+which case the default is ON.
+
+To force interactive prompting for inidividual lines, place a '?' immediately
+after the command;  eg:
+
+    device?=c:\dos\ansi.sys
+
+which results in the following prompt:
+
+    DEVICE=C:\DOS\ANSI.SYS? (Yes,No,All):
+
+Pressing Y executes the command normally, N skips the command, and A answers
+Y to this and all subsequent prompts (in other words, it forces INTERACTIVE
+mode to NONE).
+
+The SET command can now be used in CONFIG.SYS to set environment variables
+for the shell.  You can use SET to change the value of a previously defined
+variable (only the final setting is effective), even the predefined BOOT
+variable.
+
+Like the shell's SET command, the '=' is required, and the whitespace
+surrounding the '=' is significant.  So all of the following commands
+
+    SET FOO=BAR
+    SET FOO = BAR
+    SET FOO= BAR
+
+have different effects.
+
+"SET variable=" removes variable, if any, from the environment.
+
+"%variable%" substitution is not supported in CONFIG.SYS.
+
+There is also no imposed limit of 128 characters per environment variable
+when set from CONFIG.SYS.

@@ -1,0 +1,31 @@
+/DOSSEG /MAP /SEG:1024 /E+
+ main.obj       +
+ mainmenu.obj   +
+ d_menus.obj    +
+ c_menus.obj    +
+ fdisk.obj      +
+ reboot.obj     +
+ bootrec.obj    +
+ fdboot.obj     +
+ display.obj    +
+ input.obj      +
+ tdisplay.obj   +
+ vdisplay.obj   +
+ space.obj      +
+ partinfo.obj   +
+ video.obj      +
+ makepart.obj   +
+ rempart.obj    +
+ int13.obj      +
+ diskout.obj    +
+ messages.obj   +
+ fdparse.obj    +
+ convert.obj    +
+ global.obj     +
+ _parse.obj     +
+ _msgret.obj    +
+ fdiskm.obj
+fdisk.exe,
+fdisk.map,
+..\..\lib\MAPPER.lib +
+..\..\lib\comsubs.lib;

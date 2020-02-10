@@ -1,0 +1,35 @@
+
+SUMMARY  maximum and minimum routines.
+
+#include <tools.h>
+
+cProc	max,<PUBLIC>
+parmW	a
+parmW	b
+
+cProc	min,<PUBLIC>
+parmW	a
+parmW	b
+
+cProc	lmax,<PUBLIC>
+parmD	a
+parmD	b
+
+cProc	lmin,<PUBLIC>
+parmD	a
+parmD	b
+
+
+
+DESCRIPTION
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+

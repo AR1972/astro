@@ -1,0 +1,8 @@
+[[1]]='Routine di supporto della scheda video Hercules. Versione 1.12'
+[[2]]='Routine di supporto della scheda video Hercules gi… installate.'
+[[3]]='Scheda video Hercules assente.',0DH,0AH
+[[4]]='Routine di supporto della scheda video Hercules non installate.'
+[[5]]='Installa MSHERC.COM prima di eseguire programmi grafici che richiedono', 0DH, 0AH
+[[6]]='la scheda grafica Hercules.', 0DH, 0AH, 0DH,0AH
+[[7]]='MSHERC [/HALF]', 0DH, 0AH
+[[8]]='  /HALF Da usare se è installata anche una scheda a colori.', 0DH, 0AH

@@ -1,0 +1,112 @@
+.comment ******************************************************************
+.comment *  Error Trapping Family - QBasic                                *
+.comment ******************************************************************
+.comment * 01/09/91 Cleaned up comments.
+.comment *  -- JeffWe
+.comment ******************************************************************
+.context @ERL
+.context @ERR
+.context ERL
+.context ERR
+:nERR, ERL Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ERR returns the run-time error code for the most recent error.
+ERL returns the line number where the error occurred, or the closest line
+number before the line where the error occurred.
+
+\bERR\p
+\bERL\p
+
+    ş ERL does not return line labels. If there are no line numbers in the
+      program, ERL returns 0.
+
+\i\p\aExample\v@errhand.ex\v\i\p
+
+See Also    \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+            \i\p\aRun-Time Error Codes\v@rtect\v\i\p
+.context ERROR
+.context @ERROR
+:nERROR Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Simulates an occurrence of a Basic error or a user-defined error.
+
+\bERROR expression%\p
+
+    ş \bexpression%\p	 The error code of a Basic or user-defined error; a
+                     value in the range 1 through 255. To define your own
+		     error, use a value that isn't listed in the Basic
+                     \i\p\aRun-Time Error Codes\v@rtect\v\i\p table.
+
+\i\p\aExample\v@errhand.ex\v\i\p
+
+See Also    \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERR, ERL\v@ERR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context .onerr
+.context @onerr
+:nON ERROR Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Enables error handling and, when a run-time error occurs, directs your
+program to either branch to an error-handling routine or resume execution.
+
+\bON ERROR {GOTO line | RESUME NEXT}\p
+
+    ş \bGOTO line\p      Branches to the first line of the error-handling
+                     routine, specified by a label or line number. To
+                     disable error handling, specify GOTO 0.
+    ş \bRESUME NEXT\p    Resumes execution with the statement following the
+                     statement that caused the run-time error. Use the ERR
+                     function to obtain the error code for the error.
+
+    ş If ON ERROR isn't used, any run-time error ends your program.
+
+\i\p\aExample\v@errhand.ex\v\i\p
+
+See Also    \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERR, ERL\v@ERR\v\i\p    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aGOTO\v@GOTO\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context @RESUME
+.context RESUME
+:nRESUME Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Resumes program execution after an error-handling routine.
+
+\bRESUME [{line | NEXT}]\p
+
+    ş \bline\p    The label or number of the line where execution resumes. If
+              line is 0 or omitted, execution resumes with the statement
+              that caused the error.
+    ş \bNEXT\p    Resumes execution at the statement following the statement
+              that caused the error.
+
+\i\p\aExample\v@errhand.ex\v\i\p
+
+See Also    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p
+.context errhand.ex
+.context @errhand.ex
+:nError-Handling Example
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+'Illustrates ERDEV, ERDEV$, ERL, ERR, ERROR, ON ERROR, and RESUME.
+   ON ERROR GOTO Handler
+10 CHDIR "a:\\"                'Causes ERR 71 "Disk not ready"
+                              'if no disk in Drive A.
+20 y% = 0
+30 x% = 5 / y%                'ERR 11 "Division by zero."
+40 PRINT "x% ="; x%
+50 ERROR 57                   'ERR 57 "Device I/O error."
+
+Handler:
+  PRINT
+  PRINT "Error "; ERR; " on line "; ERL
+  SELECT CASE ERR
+    CASE 71
+      PRINT "Using device "; ERDEV$; " device error code = "; ERDEV
+      RESUME NEXT
+    CASE 11
+      INPUT "What value do you want to divide by"; y%
+      RESUME                  'Retry line 30 with new value of y%.
+    CASE ELSE
+      PRINT "Unexpected error, ending program."
+      END
+  END SELECT

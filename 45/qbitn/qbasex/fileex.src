@@ -1,0 +1,144 @@
+.comment This is the beginning of the BAS7EX help file.
+.comment h.title provides a title for PWB.
+.comment *
+.context h.title
+Microsoft BASIC Programming Examples Help
+.context h.pg1
+.context @CHDRIVEx
+.context .CHDRIVEx
+:nCHDRIVE and CURDIR$ Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\chdrivex.bas
+.context .DIR$x
+.context @DIR$x
+:nDIR$ Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\dirx.bas
+.context .iocxxx
+.context @iocxxx
+:nIOCTL and IOCTL$ Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\ioctlx.bas
+.context .linputp#x
+.context @linputp#x
+:nLINE INPUT # and WRITE # Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\linputpx.bas
+.context .lockx
+.context @lockx
+:nLOCK...UNLOCK Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\lockx.bas
+.context .resetx
+.context @resetx
+:nRESET Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\resetx.bas
+.context .seeksx
+.context @seeksx
+:nSEEK and RESTORE Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\seekx.bas
+.context .bloadx
+.context @bloadx
+:nBLOAD Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\bloadx.bas
+.context .bsavex
+.context @bsavex
+:nBSAVE and GET Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\bsavex.bas
+.context .erdevx
+.context @erdevx
+:nERDEV, ERDEV$ Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\erdevx.bas
+.context .fieldx
+.context @fieldx
+:nFIELD Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\fieldx.bas
+.context .freefx
+.context @freefx
+:nCLOSE, FREEFILE, and OPEN Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\freefx.bas
+.context .gfiox
+.context @gfiox
+:nGET Statement (File I/O) Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\gfiox.bas
+.context .pfiox
+.context @pfiox
+:nPUT and TYPE Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\pfiox.bas
+.context .zchdirx
+.context @zchdirx
+:nCHDIR and MKDIR Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\chdirx.bas
+.context .filesx
+.context @filesx
+:nFILES Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\filesx.bas
+.context .inpzzzx
+.context @inpzzzx
+:nEOF and INPUT # Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\inpzzzx.bas
+.context .input$x
+.context @input$x
+:nINPUT$ Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\inputsfx.bas
+.context .lsetx
+.context @LSETx
+:nLSET and RSET Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\lsetx.bas
+.context .namex
+.context @namex
+:nNAME Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\namex.bas
+.context .psfx
+.context @psfx
+:nPRINT # Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\psfx.bas
+.context .rmdirx
+.context @rmdirx
+:nRMDIR Statement Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\rmdirx.bas
+.context .locx
+.context @locx
+:nLOC Function Programming Example
+                       \bExample\p                 \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\locx.bas

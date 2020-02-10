@@ -1,0 +1,33 @@
+
+SUMMARY 
+
+#include <tools.h>
+
+strcmps (p1, p2)
+register char *p1, *p2;
+
+strcmpis (p1, p2)
+register char *p1, *p2;
+
+DESCRIPTION
+
+   strcmps - compare strings and ignore spaces 
+   compare two strings, ignoring white space, case is significant, return
+   0 if identical, <>0 otherwise
+
+   compare two strings, ignoring white space, case is not significant, return
+   0 if identical, <>0 otherwise
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+
+   
+

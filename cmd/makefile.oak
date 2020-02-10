@@ -1,0 +1,25 @@
+#************************** CMD Root level Makefile ***********************
+#
+
+all:
+        cd cps
+        $(MAKE)
+        cd ..\doskey
+        $(MAKE)
+        cd ..\fdisk
+        $(MAKE)
+        cd ..\format
+        $(MAKE)
+        cd ..\keyb
+        $(MAKE)
+        cd ..\mode
+        $(MAKE)
+        cd ..\setver
+        $(MAKE)
+        cd ..\sort
+        $(MAKE)
+        cd ..\sys
+        $(MAKE)
+	cd ..
+
+

@@ -1,0 +1,46 @@
+;/*
+; *                      Microsoft Confidential
+; *                      Copyright (C) Microsoft Corporation 1991
+; *                      All Rights Reserved.
+; */
+
+;RECOVER Utility
+;Message Service Routine
+
+:util  RECOVER					;BEGIN UTIL
+
+:class A					;EXTENDED ERRORS
+;-------					 ---------------
+:def 2 CR,LF,"File not found",CR,LF              ;File not found
+
+
+						;COMMON & DEFINED MSGS
+;-------					 ------------
+:def  3 CR,LF,"Cannot RECOVER an ASSIGNED or SUBST'd drive",CR,LF
+:def  4 CR,LF,"Invalid drive or file name",CR,LF
+:def  5 CR,LF,"Warning - directory full",CR,LF
+
+:def  6 CR,LF,"Cannot RECOVER a Network Drive", CR,LF  ;Cannot %1 a Network drive
+;:def  7 CR,LF,"Recover not available on drive %1",CR,LF
+:def  8 CR,LF,"%1 file(s) recovered",CR,LF
+:def  9 CR,LF,"%1 of %2 bytes recovered",CR,LF
+
+;:use  COMMON28 				     ;Press any key... ;AC000;bgb
+:def  10 CR,LF,"Press any key to begin recovery of the",CR,LF,"file(s) on drive %1",CR,LF,CR,LF ;AN000;bgb
+:def  11 CR,LF,"Can not read file allocation table",CR,LF
+:def  12 CR,LF,"Can not write file allocation table",CR,LF
+:def  13 CR,LF
+:use  14 extend8			 ;insufficent memory			 ;an013;bgb
+:use  15 COMMON1
+
+; 300 - 399 reserved for options help message
+:def 300  RECOVER /?
+:def 301  RECOVER /?
+:def 302  RECOVER /?
+:def 303  RECOVER /?
+
+:def 400 "All files in directory will be reconstructed", CR, LF, "Are  you sure (Y/N)? "
+:def 401 "The entire drive will be reconstructed", CR, LF, "Are  you sure (Y/N)? "
+
+:end						;END UTIL
+

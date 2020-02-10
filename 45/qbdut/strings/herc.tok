@@ -1,0 +1,12 @@
+[[1]]='Hercules Resident Video Support Routines. Versie 1.12'
+
+[[2]]='Hercules Video Support Routines reeds ge‹nstalleerd.'
+
+[[3]]='Geen Hercules video-kaart aanwezig.',0DH,0AH
+[[4]]='Hercules Video Support Routines niet ge‹nstalleerd.'
+
+
+[[5]]='Installeert MSHERC.COM voordat programma''s worden', 0DH, 0AH
+[[6]]='gestart die een Hercules grafische kaart nodig hebben.', 0DH, 0AH, 0DH,0AH
+[[7]]='MSHERC [/HALF]', 0DH, 0AH
+[[8]]='  /HALF Noodzakelijk als ook een kleurenadapter is ge‹nstalleerd.', 0DH, 0AH

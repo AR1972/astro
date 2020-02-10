@@ -1,0 +1,12 @@
+[[1]]='Rotinas Residentes de Suporte de V¡deo Hercules. Versao 1.12'
+
+[[2]]='Rotinas de Suporte de V¡deo Hercules j  foram instaladas.'
+
+[[3]]='Placa de V¡deo Hercules nao foi encontrada.',0DH,0AH
+[[4]]='Rotinas de Suporte de V¡deo Hercules nao foram instaladas.'
+
+
+[[5]]='Instala o MSHERC.COM antes de executar programas gr ficos que requerem', 0DH, 0AH
+[[6]]='a placa gr fica da Hercules.', 0DH, 0AH, 0DH,0AH
+[[7]]='MSHERC [/HALF]', 0DH, 0AH, 0DH, 0AH
+[[8]]='  /HALF       Use quando houver tambem um adaptador colorido instalado.', 0DH, 0AH

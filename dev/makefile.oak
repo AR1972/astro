@@ -1,0 +1,20 @@
+#************************** DEV root level Makefile ***********************
+
+
+all:
+   cd ansi
+   $(MAKE)
+   cd ..\display
+   $(MAKE)
+   cd ..\himem
+   $(MAKE)
+   cd ..\keyboard
+   $(MAKE)
+   cd ..\printer
+   $(MAKE)
+   cd ..\emm386
+   $(MAKE)
+   cd ..\power
+   $(MAKE)
+   cd ..
+

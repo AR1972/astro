@@ -1,0 +1,7 @@
+bddebug.obj+
+bdmgr.obj+
+dshcmd.obj+
+dshstrng.obj+
+dshstubc.obj+
+init.obj+
+rterror.obj+

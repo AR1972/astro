@@ -1,0 +1,63 @@
+DESCRIPTION 
+GLOBAL_INFO 
+	{
+	CHARACTER 
+	NO_OVERLAP 
+	CC_COMPILED 
+	}
+
+MODULE uisearch 
+	{
+	DIALOG dlgSearchChange AT (11, 5, 58, 14) 
+	CAB_NAME CABSearchChange 
+	HELP_ID hidSearchChange 
+	TMC_INIT tmcNull 
+		{
+		GROUP_BOX "" AT (12, 0, 43, 3) 
+		GROUP_BOX "" AT (12, 3, 43, 3) 
+		TEXT "~S”k efter:" AT (1, 1, 11, 1) 
+		EDIT AT (13, 1, 41, 1) ARG szFindWhat 
+
+		TEXT "~Ers„tt med:" AT (1, 4, 11, 1) 
+		EDIT AT (13, 4, 41, 1) ARG szChangeTo 
+
+		CHECK_BOX "~Matcha gemener/VERSALER" AT (4, 8, 28, 1) ARG fMatchCase
+		CHECK_BOX "Hela ~ord" AT (36, 8, 16, 1) ARG fWholeWord 
+		PUSH_BUTTON "S”k och ~Bekr„fta" AT (1, 11, 18, 1) TMC tmcFindAndVerify DISMISS_CAB DEFAULT 
+		PUSH_BUTTON "Ers„tt ~allt" AT (22, 11, 13, 1) TMC tmcChangeAll DISMISS_CAB
+		CANCEL_BUTTON AT (38, 11, 8, 1) DISMISS 
+		PUSH_BUTTON "~Hj„lp" AT (48, 11, 7, 1) TMC_IMPORT tmcHelp ACTION 
+		}
+
+	DIALOG dlgSearchFind AT (10, 7, 59, 11) 
+	CAB_NAME CABSearchFind 
+	HELP_ID hidSearchFind 
+	TMC_INIT tmcNull 
+		{
+		GROUP_BOX "" AT (12, 0, 44, 3) 
+		TEXT "~S”k efter:" AT (1, 1, 11, 1) 
+		EDIT AT (13, 1, 42, 1) ARG szFindWhat 
+
+		TEXT SZ_FROM_CAB szChangeTo AT (1, 2, 2, 1) 
+		CHECK_BOX "~Matcha gemener/VERSALER" AT (4, 5, 28, 1) ARG fMatchCase
+		CHECK_BOX "Hela ~ord" AT (37, 5, 16, 1) ARG fWholeWord 
+		OK_BUTTON AT (8, 8, 4, 1) DISMISS_CAB DEFAULT 
+		CANCEL_BUTTON AT (25, 8, 8, 1) DISMISS
+		PUSH_BUTTON "~Hj„lp" AT (42, 8, 7, 1) TMC_IMPORT tmcHelp ACTION
+		}
+
+	DIALOG dlgConfirm AT (13, 19, 53, 5) 
+	CAB_NAME CABConfirm 
+	HELP_ID hidConfirm 
+	TMC_INIT tmcNull 
+		{
+		PUSH_BUTTON "~Ers„tt" AT (1, 2, 8, 1) TMC tmcChange DISMISS DEFAULT 
+		PUSH_BUTTON "Ho~ppa ”ver" AT (11, 2, 12, 1) TMC tmcSkip DISMISS
+		CANCEL_BUTTON AT (33, 2, 8, 1) DISMISS 
+		PUSH_BUTTON "~Hj„lp" AT (43, 2, 7, 1) TMC_IMPORT tmcHelp ACTION 
+		}
+
+	}
+
+
+END_DESCRIPTION 

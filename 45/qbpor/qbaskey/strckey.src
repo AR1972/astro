@@ -1,0 +1,457 @@
+.comment ******************************************************************
+.comment *  Structure Family - QBasic                                     *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  6/16/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments                       *
+.comment ******************************************************************
+.comment *  6/13/90 stevesau                                              *
+.comment *  Incorporated RonS coments.                                    *
+.comment ******************************************************************
+.comment *  5/14/90 stevesau                                              *
+.comment *  Combined DATA/READ/RESTORE, DIM/REDIM, LBOUND/UBOUND,         *
+.comment *  SHARED/STATIC.                                                *
+.comment *  Incorporated review comments.                                 *
+.comment *  Second pass done, DONE, DUN!                                  *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Added action lines.                                           *
+.comment *  Combined $STATIC and $DYNAMIC and Metacommands Syntax info.   *
+.comment *  Moved info from Details to DIM, COMMON, ERASE, READ, SHARED,  *
+.comment *  STATIC.                                                       *
+.comment *  Added TYPE statement info from ISAM file.                     *
+.comment ******************************************************************
+.comment *  4/17/90 Bethpr                                                *
+.comment *  Removed $Include metacommand; in Data Type Keywords node,     *
+.comment *  removed currency; removed $Include from Metacommands Syntax   *
+.comment *  node; removed Preserve from Redim statement                   *
+.comment ******************************************************************
+.context $STATIC
+.context @$STATIC
+.context $DYNAMIC
+.context @$DYNAMIC
+:nMetacomandos $STATIC, $DYNAMIC
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Define o armazenamento padrao de matriz.
+
+\b{REM | '} $STATIC\p
+\b{REM | '} $DYNAMIC\p
+
+    ş \b{REM | '}\p    REM ou um caractere de coment rio (') deve preceder
+                   os metacomandos.
+    ş \b$STATIC\p      Especifica que as matrizes declaradas nas instru‡oes
+                   DIM subsequentes sao matrizes est ticas (a menos que
+                   elas sejam declaradas em um procedimento nao-est tico
+                   FUNCTION ou SUB). O armazenamento de matriz ‚ alocado
+                   quando vocˆ inicia o programa e permanece fixo.
+    ş \b$DYNAMIC\p     Especifica que as matrizes declaradas em instru‡oes DIM
+                   subsequentes sao matrizes dinƒmicas. O armazenamento de
+                   matriz ‚ alocado dinamicamente enquanto o programa ‚
+                   executado.
+
+    ş O DIM e o REDIM geralmente fornecem um meio melhor para especificar se
+      as matrizes sao dinƒmicas ou est ticas.
+
+Consulte tamb‚m  \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aREM\v@REM\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p
+.context COMMON
+.context @COMMON
+:nInstru‡ao COMMON
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Define as vari veis globais que podem ser compartilhadas pelo programa ou
+entre os programas encadeados.
+
+\bCOMMON [SHARED] lista-vari vel\p
+
+    ş \bSHARED\p          Indica que as vari veis sao compartilhadas por
+                      todos os procedimentos SUB ou FUNCTION.
+    ş \blista-vari vel\p  Uma ou mais vari veis a serem compartilhadas:
+
+                      \bvari vel[( )] [AS tipo] [, vari vel[( )] [AS tipo]]...\p
+
+                      \bvari vel\p    Um nome de vari vel Basic. Os nomes das
+                                  vari veis podem consistir de at‚ 40
+                                  caracteres e devem come‡ar com uma letra.
+                                  Os caracteres v lidos compreendem A-Z, 0-9
+                                  e ponto (.).
+                      \btipo\p        O tipo de dado da vari vel (INTEGER,
+                                  LONG, SINGLE, DOUBLE, STRING ou um
+                                  tipo de dado definido pelo usu rio).
+
+    ş A menos que esta tenha sido declarado como uma matriz est tica em uma
+      instru‡ao precedente DIM, uma vari vel de matriz em uma instru‡ao
+      COMMON ‚ uma matriz dinƒmica.
+      Sua dimensao deve ser definida em uma pr¢xima instru‡ao DIM ou REDIM.
+
+Consulte tamb‚m  \i\p\aCHAIN\v@CHAIN\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p
+		 \i\p\aSUB\v@SUB\v\i\p
+.context DATA
+.context @DATA
+.context READ
+.context @READ
+.context RESTORE
+.context @RESTORE
+:nInstru‡oes DATA, READ, RESTORE
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DATA especifica os valores a serem lidos pelas instru‡oes subsequentes READ.
+READ lˆ esses valores e os designa …s variaveis.
+RESTORE permite o READ a reler os valores em instru‡oes especificadas pelo
+DATA.
+
+\bDATA constante[,constante]...\p
+\bREAD lista-vari vel\p
+\bRESTORE [linha]\p
+
+    ş \bconstante\p        Uma ou mais constantes num‚ricas ou uma sequˆncia
+                       de caracteres especificando os dados a serem lidos. As
+                       constantes de sequˆncia de caracteres contendo
+                       v¡rgulas, dois pontos ou espa‡os … esquerda ou …
+                       direita entre aspas (" ").
+    ş \blista-vari vel\p   Uma ou mais vari veis, separadas por v¡rgulas,
+                       que recebem valores de dados. Os nomes de vari veis
+                       podem consistir de at‚ 40 caracteres e devem come‡ar
+                       com uma letra. Os caracteres v lidos sao A-Z, 0-9 e
+                       um ponto (.).
+    ş \blinha\p 	   O nome ou o n£mero da linha de uma instru‡ao DATA.
+		       Se a linha ‚ omitida, a pr¢xima instru‡ao READ lˆ os
+		       valores na primeira instru‡ao DATA no programa.
+
+    ş As instru‡oes DATA podem ser digitados apenas em n¡vel de m¢dulo e nao
+      podem ser usados em procedimentos.
+
+Exemplo:
+    FOR i% = 1 TO 3
+        READ a%, b$
+        PRINT a%, b$
+        RESTORE
+    NEXT i%
+    DATA 1, "Repetir"
+.context DEFINT
+.context @DEFINT
+.context DEFLNG
+.context @DEFLNG
+.context DEFSNG
+.context @DEFSNG
+.context DEFDBL
+.context @DEFDBL
+.context DEFSTR
+.context @DEFSTR
+:nInstru‡oes DEFtipo
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Define o tipo de dado padrao para as vari veis, fun‡oes DEF FN e
+procedimentos FUNCTION.
+
+\bDEFINT intervalo-letra [,intervalo-letra]...\p
+\bDEFLNG intervalo-letra [,intervalo-letra]...\p
+\bDEFSNG intervalo-letra [,intervalo-letra]...\p
+\bDEFDBL intervalo-letra [,intervalo-letra]...\p
+\bDEFSTR intervalo-letra [,intervalo-letra]...\p
+
+    ş \bintervalo-letra\p  Uma letra ou intervalo de letras (como por exemplo
+                       A-M). O QBasic define o tipo de dado padrao para
+                       vari veis, fun‡oes DEF FN e procedimentos FUNCTION,
+                       cujo nome comece com letra(s) especificada(s) como a
+                       seguir:
+
+                       Instru‡ao    Tipo de Dado Padrao
+                       ÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                       DEFINT       Inteiro
+                       DEFLNG       Inteiro Longo
+                       DEFSNG       Simples precisao
+                       DEFDBL       Dupla precisao
+                       DEFSTR       Sequˆncia de caracteres
+
+    ş Um sufixo de tipo de dados (%, &, !, #, ou $) sempre tem precedˆncia
+      sobre uma instru‡ao DEFtype.
+    ş Simples-precisao ‚ o tipo de dado padrao se vocˆ nao especifica uma
+      instru‡ao DEFtype.
+    ş Ap¢s a especifica‡ao da instru‡ao DEFtipo no seu programa, o QBasic
+      insere automaticamente uma instru‡ao correspondente … instru‡ao
+      DEFtipo em cada procedimento que foi criado.
+
+Exemplo:
+    DEFDBL A-Z
+    a = SQR(3)
+    PRINT "Ra¡z quadrada de 3 = "; a
+
+Consulte tamb‚m  \i\p\aDiferen‡as do BASICA\v@basica.diffs\v\i\p
+.context DIM
+.context @DIM
+.context REDIM
+.context @REDIM
+:nInstru‡oes DIM, REDIM
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DIM define uma matriz ou especifica um tipo de dado para uma vari vel
+nao-matriz.
+REDIM define ou redimensiona uma matriz dinƒmica, excluindo quaisquer valores
+anteriores.
+
+\bDIM [SHARED] vari vel[(¡ndices)] [AS tipo]\p
+             \b[,vari vel[(¡ndice)] [AS tipo]]...\p
+\bREDIM [SHARED] vari vel(¡ndice) [AS tipo]\p
+               \b[,vari vel(¡ndice) [AS tipo]]...\p
+
+    ş \bSHARED\p        Especifica que as vari veis sao compartilhadas com
+                    todos os procedimentos SUB ou FUNCTION no m¢dulo.
+    ş \bvari vel\p      O nome de uma matriz ou de uma vari vel.
+    ş \b¡ndice\p        Dimensoes da matriz, como demonstrado a seguir:
+
+                    \b[inferior TO] superior [,[inferior TO] superior]...\p
+
+                    \binferior\p  O limite inferior do ¡ndice da matriz. O
+                              limite inferior padrao ‚ zero.
+                    \bsuperior\p  O limite superior do ¡ndice da matriz.
+
+    ş \bAS tipo\p       Define o tipo de dado da matriz ou da vari vel
+                    (INTEGER, LONG, SINGLE, DOUBLE, STRING ou um
+                    tipo de dado definido pelo usu rio).
+
+    ş DIM define tanto matrizes dinƒmicas quanto est ticas. A menos que o
+      armazenamento da matriz tenha sido determinado por $STATIC, $DYNAMIC
+      ou COMMON, as matrizes dimensionadas com n£meros sao est ticas e as
+      matrizes dimensionadas com vari veis sao dinƒmicas. O REDIM sempre
+      define matrizes dinƒmicas.
+    ş A  rea de armazenamento de uma matriz est tica ‚ alocado quando vocˆ
+      inicia um programa e a mesma permanece fixa. O armazenamento de uma
+       matriz dinƒmica ‚ alocado enquanto o programa ‚ executado.
+
+Exemplo:
+    ' $DYNAMIC
+    DIM A(49, 49)
+    REDIM A(19, 14)
+
+Consulte tamb‚m  \i\p\aCOMMON\v@COMMON\v\i\p       \i\p\aDiferen‡as do BASICA\v@basica.diffs\v\i\p   \i\p\aERASE\v@ERASE\v\i\p
+                 \i\p\aOPTION BASE\v@BASE\v\i\p  \i\p\aSHARED, STATIC\v@SHARED\v\i\p         \i\p\a$STATIC, $DYNAMIC\v@$DYNAMIC\v\i\p
+.context ERASE
+.context @ERASE
+:nInstru‡ao ERASE
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Reinicializa os elementos da matriz ou libera espa‡o para o armazenamento de
+uma matriz dinƒmica.
+
+\bERASE nome-matriz [,nome-matriz]...\p
+
+    ş \bnome-matriz\p    O nome de uma matriz.
+
+    ş Para as matrizes est ticas, o ERASE define para cada elemento de uma
+      matriz num‚rica o valor zero e para cada elemento de uma matriz de
+      sequˆncia de caracteres um valor nulo.
+    ş Para matrizes dinƒmicas, o ERASE libera a mem¢ria usada pela matriz.
+      Devem ser redefinidas as dimensoes da matriz com o REDIM ou o DIM
+      antes de us -las.
+
+Exemplo:
+    DIM a%(0)
+    a%(0) = 6
+    PRINT "Antes: "; a%(0)
+    ERASE a%
+    PRINT "Depois: "; a%(0)
+
+Consulte tamb‚m  \i\p\aCLEAR\v@CLEAR\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context LBOUND
+.context @LBOUND
+.context UBOUND
+.context @UBOUND
+:nFun‡oes LBOUND, UBOUND
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retorna os limites inferior e superior (menor ou maior ¡ndice dispon¡vel)
+para as dimensoes do array especificado.
+
+\bLBOUND(matriz[,dimensao%])\p
+\bUBOUND(matriz[,dimensao%])\p
+
+    ş \bmatriz\p       O nome da matriz.
+    ş \bdimensao%\p    Indica a dimensao da matriz cujo limite inferior ou
+                   superior ‚ retornado. Use 1 para a primeira dimensao,
+                   2 para a segunda dimensao, etc. O padrao ‚ 1.
+
+Exemplo:
+    DIM a%(1 TO 3, 2 TO 7)
+    PRINT LBOUND(a%, 1), UBOUND(a%, 2)
+
+Consulte tamb‚m    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context LET
+.context @LET
+:nInstru‡ao LET
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Designa o valor de uma expressao … uma vari vel.
+
+\b[LET] vari vel=expressao\p
+
+    ş \bvari vel\p     Qualquer vari vel. Os nomes das vari veis podem
+                   consistir de at‚ 40 caracteres e devem come‡ar com
+                   uma letra. Os caracteres v lidos sao A-Z, 0-9 e um
+                   ponto (.).
+    ş \bexpressao\p    Qualquer expressao que atribua um valor a ser designado.
+
+    ş O uso da palavra-chave opcional LET nao ‚ recomendado. A instru‡ao de
+      designa‡ao vari vel=expressao realiza a mesma a‡ao com ou sem o LET.
+
+Consulte tamb‚m    \i\p\aLSET, RSET\v@LSET\v\i\p
+.context OPTION
+.context @OPTION
+.context BASE
+.context @BASE
+:nInstru‡ao OPTION BASE
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Define o limite inferior padrao para ¡ndices de matriz.
+
+\bOPTION BASE {0 | 1}\p
+
+    ş A cl usula TO da instru‡ao DIM fornece uma maneira melhor de definir o
+      limite inferior de um ¡ndice de matriz.
+
+Consulte tamb‚m  \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aLBOUND, UBOUND\v@UBOUND\v\i\p
+.context REM
+.context @REM
+:nInstru‡ao REM
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Permite que coment rios sejam inseridos em um programa.
+
+\bREM coment rio\p
+\b' coment rio\p
+
+    ş \bcoment rio\p    Qualquer texto.
+
+    ş Os coment rios sao ignorados quando o programa ‚ executado a menos que
+      eles contenham metacomandos.
+    ş Um coment rio pode ser inserido em uma linha ap¢s uma instru‡ao
+      execut vel se esta for precedida por uma forma de aspa simples (')
+      do REM ou se o REM for precedido por dois-pontos (:).
+
+Exemplo:
+    REM    Representa um coment rio.
+    '      Tamb‚m representa um coment rio.
+    PRINT "Teste1"       'Representa um coment rio ap¢s a instru‡ao PRINT.
+    PRINT "Teste2" :  REM Tamb‚m representa um coment rio ap¢s a instru‡ao
+                          PRINT.
+
+Consulte tamb‚m    \i\p\a$STATIC, $DYNAMIC\v@$STATIC\v\i\p
+.context SHARED
+.context @SHARED
+.context STATIC
+.context @STATIC
+:nInstru‡oes SHARED, STATIC
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SHARED permite que o procedimento acesse vari veis de n¡vel de m¢dulo.
+STATIC define uma vari vel como local para um procedimento ou fun‡ao e
+preserva o seu valor entre chamadas.
+
+\bSHARED vari vel[()] [AS tipo] [,vari vel[()] [AS tipo]]...\p
+\bSTATIC vari vel[()] [AS tipo] [,vari vel[()] [AS tipo]]...\p
+
+    ş \bvari vel\p   O nome da vari vel de n¡vel de m¢dulo a ser compartilhada
+                 ou definida como est tica. Nomes de vari veis podem conter
+                 at‚ 40 caracteres e devem comecar com uma letra. Os
+                 caracteres v lidos sao A-Z, 0-9 e ponto (.).
+    ş \bAS tipo\p    Define o tipo de dado da vari vel (INTEGER, LONG, SINGLE,
+                 DOUBLE, STRING ou um tipo de dado definido pelo usu rio).
+
+Exemplo:
+    O programa REMLINE.BAS mostra como usar as instru‡oes SHARED e STATIC.
+    Para visualizar ou executar esse programa, carregue o REMLINE.BAS usando
+    o comando Abrir no menu Arquivo.
+
+Consulte tamb‚m    \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context SWAP
+.context @SWAP
+:nInstru‡ao SWAP
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Troca os valores de duas vari veis.
+
+\bSWAP vari vel1, vari vel2\p
+
+    ş \bvari vel1\p e \bvari vel2\p    Duas vari veis do mesmo tipo de dado.
+
+Exemplo:
+    a% = 1: b% = 2
+    PRINT "Antes: "; a%, b%
+    SWAP a%, b%
+    PRINT "Depois: "; a%, b%
+.context TYPE
+.context @TYPE
+:nInstru‡ao TYPE
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Define um tipo de dado que cont‚m um ou mais elementos.
+
+\bTYPE tipo\p
+  \bnome-elemento AS nome-tipo\p
+  \b[nome-elemento AS nome-tipo]\p
+\b.\p
+\b.\p
+\b.\p
+\bEND TYPE\p
+
+    ş \btipo\p           O nome do tipo de dado sendo definido. O nome pode
+                     consistir de at‚ 40 caracteres e deve come‡ar com
+                     uma letra. Os caracteres v lidos sao A-Z, 0-9 e um
+                     ponto (.).
+    ş \bnome-elemento\p  Um elemento do tipo de dado definido pelo usu rio.
+    ş \bnome-tipo\p      O tipo de elemento (INTEGER, LONG, SINGLE, DOUBLE,
+                     STRING ou um tipo de dado definido pelo usu rio).
+
+    ş Use DIM, REDIM, COMMON, STATIC, ou SHARED para criar uma vari vel de
+      um tipo de dado definido pelo usu rio.
+
+Exemplo:
+    TYPE Carta
+        Naipe AS STRING * 9
+        Valor AS INTEGER
+    END TYPE
+    DIM Baralho(1 TO 52) AS Carta
+    Deck(1).Naipe = "Paus"
+    Deck(1).Valor = 2
+    PRINT Baralho(1).Naipe, Baralho(1).Valor
+
+Consulte tamb‚m   \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p
+.comment ******************************************************************
+.comment *  Data Type Keywords screen                                     *
+.comment ******************************************************************
+.context INTEGER
+.context @INTEGER
+.context LONG
+.context @LONG
+.context SINGLE
+.context @SINGLE
+.context DOUBLE
+.context @DOUBLE
+.context STRING
+.context @STRING
+:nPalavras-Chave de Tipo de Dado
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Especifica o tipo de dado para uma vari vel em uma instru‡ao de declara‡ao
+ou lista de parƒmetros:
+
+    ş \bINTEGER\p      Uma vari vel inteira de 16 bits.
+    ş \bLONG\p         Uma vari vel inteira de 32 bits.
+    ş \bSINGLE\p       Uma vari vel de ponto flutuante de 32 bits de simples
+                   precisao.
+    ş \bDOUBLE\p       Uma vari vel de ponto flutuante de 64 bits de dupla
+                   precisao.
+    ş \bSTRING * n%\p  Uma vari vel de sequˆncia de caracteres de comprimento
+                   fixo em n% bytes.
+    ş \bSTRING\p       Uma vari vel de sequˆncia de caracteres de comprimento
+                   vari vel.
+
+Consulte tamb‚m  \i\p\aAS\v@AS\v\i\p         \i\p\aBasic Character Set\v@fun.character.set\v\i\p     \i\p\aCOMMON\v@COMMON\v\i\p
+                 \i\p\aDECLARE\v@DECLARE\v\i\p    \i\p\aDEF FN\v@DEF\v\i\p                  \i\p\aDIM, REDIM\v@DIM\v\i\p
+                 \i\p\aFUNCTION\v@FUNCTION\v\i\p   \i\p\aSHARED, STATIC\v@SHARED\v\i\p          \i\p\aSUB\v@SUB\v\i\p
+                 \i\p\aTYPE\v@TYPE\v\i\p

@@ -1,0 +1,480 @@
+.comment ******************************************************************
+.comment *  Memory Family - QBasic                                        *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments                       *
+.comment ******************************************************************
+.comment *  6/12/90 stevesau                                              *
+.comment *  Incorporated RonS comments                                    *
+.comment ******************************************************************
+.comment *  5/13/90 stevesau                                              *
+.comment *  Combined MKn$/CVn, MKSMBF$/MKDMBF$/CVSMBF/CVDMBF, HEX$/OCT$,  *
+.comment *  LCASE$/UCASE$, LEFT$/RIGHT$, LTRIM$/RTRIM$,                   *
+.comment *  MID$ function/statement, PEEK/POKE, STR$/VAL.                 *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/12/90 stevesau                                              *
+.comment *  Reinserted VARTPR$ (need for PLAY and DRAW X command).        *
+.comment *  Deleted STACK function and statement.                         *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Reinserted VARPTR, VARSEG (need for CALL ABSOLUTE example).   *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Deleted SADD, SETMEM, SSEG, SSEGADD, VARPTR, VARSEG (moved    *
+.comment *  to Unsupported Keywords (Contents).                           *
+.comment *  Deleted CHR$ (combined with ASC in Math family).              *
+.comment *  Moved CVSMBF, etc., from Math family.                         *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Added action lines.						  *
+.comment ******************************************************************
+.comment *  4/17/90 BethPr                                                *
+.comment *  Removed StringAddress, StringAssign, StringLength and         *
+.comment *  StringRelease routines                                        *
+.comment ******************************************************************
+.context CLEAR
+.context @CLEAR
+:nHet statement CLEAR
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sluit alle bestanden, haalt bestandsbuffers uit het geheugen, maakt alle
+algemene variabelen leeg, stelt numerieke variabelen en arrays in op nul,
+maakt tekenreeksvariabelen leeg en initialiseert de 'stack' (het stapel-
+geheugen). Eventueel kan CLEAR ook de grootte van de 'stack' wijzigen.
+
+\bCLEAR [,,stack&]\p
+
+    ş \bstack&\p    Stelt de grootte (in bytes) van de 'stack' in
+                voor het programma.
+
+Voorbeeld:
+    CLEAR ,,2000
+
+Zie ook     \i\p\aERASE\v@ERASE\v\i\p
+.context SEG
+.context @SEG
+:nHet statement DEF SEG
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Stelt het huidige segmentadres in.
+
+\bDEF SEG [=adres]\p
+
+    ş \badres\p      Een segmentadres dat door BLOAD, BSAVE, CALL ABSOLUTE,
+                 PEEK of POKE wordt gebruikt. Dit is een waarde in het
+                 bereik van 0 t/m 65535. Als adres wordt weggelaten, stelt
+                 DEF SEG het huidige segmentadres in op het standaard-
+                 gegevenssegment.
+
+Voorbeeld:
+    DEF SEG = 0
+    Status% = PEEK(&H417)              'Leest toetsenbordstatus.
+    POKE &H417, (Status% XOR &H40)     'Wijzigt CapLock-status, bit 6.
+
+Zie ook     \i\p\aBSAVE, BLOAD\v@BLOAD\v\i\p    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aPEEK, POKE\v@PEEK\v\i\p
+.context FRE
+.context @FRE
+:nDe functie FRE
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert de hoeveelheid beschikbaar of ongebruikt geheugen (in bytes).
+
+\bFRE(num_uitdrukking)\p
+\bFRE(uitdrukking$)\p
+
+    ş \bnum_uitdrukking\p       Een waarde die het type geheugen aangeeft:
+
+                            Waarde              FRE retourneert
+                            ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                            -1                  De grootte van de grootste
+                                                array (niet-tekenreeks) die
+                                                u kunt maken
+                            -2                  Ongebruikte 'stack'-ruimte
+                            Ander getal         Beschikbare tekenreeksruimte
+
+    ş \buitdrukking$\p          Een tekenreeksuitdrukking. FRE comprimeert
+                            de beschikbare tekenreeksruimte in ‚‚n blok en
+                            retourneert vervolgens de beschikbare
+                            tekenreeksruimte.
+
+Voorbeeld:
+    PRINT "Tekenreeksruimte", FRE("")
+    PRINT "Ongebruikte 'stack'-ruimte", FRE(-2)
+    PRINT "Array-ruimte", FRE(-1)
+.context HEX$
+.context @HEX$
+.context OCT$
+.context @OCT$
+:nDe functies HEX$ en OCT$
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+HEX$ retourneert een hexadecimale tekenreeksequivalent van een getal.
+OCT$ retourneert een octale tekenreeksequivalent van een getal.
+
+\bHEX$(num_uitdrukking&)\p
+\bOCT$(num_uitdrukking&)\p
+
+    ş \bnum_uitdrukking&\p    Een numerieke uitdrukking. De uitdrukking
+                          wordt afgerond op een geheel getal of een
+                          'long integer' voordat deze wordt ge‰valueerd.
+
+Voorbeeld:
+    INPUT x
+    a$ = HEX$ (x)
+    b$ = OCT$ (x)
+    PRINT x; "decimaal is "; a$; " hexadecimaal en "; b$; " octaal."
+.context INSTR
+.context @INSTR
+:nDe functie INSTR
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert de positie van een tekenreeks binnen een tekenreeks.
+
+\bINSTR([begin%,]tekenreeks1$,tekenreeks2$)\p
+
+    ş \bbegin%\p           Bepaalt op welke positie de zoekactie begint.
+                       Als begin% wordt weggelaten, begint INSTR
+                       bij positie 1.
+    ş \btekenreeks1$\p     De tekenreeks die doorzocht moet worden.
+    ş \btekenreeks2$\p     De tekenreeks waarnaar gezocht moet worden.
+
+Voorbeeld:
+    a$ = "Microsoft QBasic"
+    PRINT "Positie ="; INSTR(1, a$, "QBasic")
+
+Zie ook     \i\p\aLEFT$, RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p    \i\p\aMID$\v@MID$\v\i\p
+.context LCASE$
+.context @LCASE$
+.context UCASE$
+.context @UCASE$
+:nDe functies LCASE$ en UCASE$
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Zetten tekenreeksen om in kleine letters of in hoofdletters.
+
+\bLCASE$(tekenreeks$)\p
+\bUCASE$(tekenreeks$)\p
+
+    ş \btekenreeks$\p    Een tekenreeksuitdrukking.
+
+Voorbeeld:
+    Test$ = "DE tekenreeks"
+    PRINT Test$
+    PRINT LCASE$(Test$); " in kleine letters"
+    PRINT UCASE$(Test$); " IN HOOFDLETTERS"
+.context LEFT$
+.context @LEFT$
+.context RIGHT$
+.context @RIGHT$
+:nDe functies LEFT$ en RIGHT$
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneren een aantal tekens vanaf het meest linkse of meest rechtse teken
+in de tekenreeks.
+
+\bLEFT$(tekenreeks$,n%)\p
+\bRIGHT$(tekenreeks$,n%)\p
+
+    ş \btekenreeks$\p    Een tekenreeksuitdrukking.
+    ş \bn%\p             Het aantal te retourneren tekens, te beginnen bij
+                     het meest linkse of meest rechtse teken in de reeks.
+
+Voorbeeld:
+    a$ = "Microsoft QBasic"
+    PRINT LEFT$(a$, 5)     'Resultaat:  Micro
+    PRINT RIGHT$(a$, 5)    'Resultaat:  Basic
+
+Zie ook     \i\p\aMID$\v@MID$\v\i\p
+.context LEN
+.context @LEN
+:nDe functie LEN
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert het aantal tekens in een tekenreeks of het aantal bytes dat
+nodig is om een variabele op te slaan.
+
+\bLEN(tekenreeks$)\p
+\bLEN(variabele)\p
+
+    ş \btekenreeks$\p    Een tekenreeksuitdrukking.
+    ş \bvariabele\p      Een niet-tekenreeks variabele.
+
+Voorbeeld:
+    a$ = "Microsoft QBasic"
+    PRINT LEN(a$)
+
+Zie ook     \i\p\aOPEN\v@OPEN\v\i\p
+.context LTRIM$
+.context @LTRIM$
+.context RTRIM$
+.context @RTRIM$
+:nDe functies LTRIM$ en RTRIM$
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Verwijderen spaties aan het begin of aan het eind van een tekenreeks.
+
+\bLTRIM$(tekenreeks$)\p
+\bRTRIM$(tekenreeks$)\p
+
+    ş \btekenreeks$\p    Een tekenreeksuitdrukking.
+
+Voorbeeld:
+    a$ = "    Basic    "
+    PRINT "*" + a$ + "*"            'Resultaat:  *    Basic    *
+    PRINT "*" + LTRIM$(a$) + "*"    'Resultaat:  *Basic    *
+    PRINT "*" + RTRIM$(a$) + "*"    'Resultaat:  *    Basic*
+.context MID$
+.context @MID$
+:nDe functie en het statement MID$
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+De functie MID$ retourneert een deel van een tekenreeks (een subtekenreeks).
+Het statement MID$ vervangt een deel van een tekenreeksvariabele door een
+tekenreeks.
+
+\bMID$(tekenreeks$,begin%[,lengte%])\p
+\bMID$(tekenreeksvar$,begin%[,lengte%])=tekenreeks$\p
+
+    ş \btekenreeks$\p          De tekenreeks waarvan de functie MID$ een
+                           subtekenreeks retourneert, of de vervangende
+                           tekenreeks die door het statement MID$ wordt
+                           gebruikt. Dit kan elke tekenreeks zijn.
+    ş \bbegin%\p               De positie van het eerste teken van de
+                           subtekenreeks die moet worden geretourneerd
+                           of vervangen.
+    ş \blengte%\p              Het aantal tekens is de subtekenreeks. Als de
+                           lengte wordt weggelaten, retourneert of vervangt
+                           MID$ alle tekens rechts van de beginpositie.
+    ş \btekenreeksvar$\p       De tekenreeksvariabele die door het statement
+                           MID$ wordt gewijzigd.
+
+Voorbeeld:
+    a$ = "Waar ligt Beek?"
+    PRINT MID$(a$, 11, 4)        'Resultaat:  Beek
+    Tekst$ = "Beek, Gelderland"
+    PRINT Tekst$                 'Resultaat:  Beek, Gelderland
+    MID$(Tekst$, 7) = "Limburg "
+    PRINT Tekst$                 'Resultaat:  Beek, Limburg
+
+Zie ook     \i\p\aLEFT$, RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p
+.context CVI
+.context @CVI
+.context CVS
+.context @CVS
+.context CVL
+.context @CVL
+.context CVD
+.context @CVD
+.context MKL$
+.context @MKL$
+.context MKI$
+.context @MKI$
+.context MKS$
+.context @MKS$
+.context MKD$
+.context @MKD$
+:nDe functies MKn$ en CVn
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MKI$, MKL$, MKS$ en MKD$ zetten getallen om in numerieke tekenreeksen die
+kunnen worden opgeslagen in de tekenreeksvariabelen van het statement FIELD.
+CVI, CVL, CVS en CVD zetten deze tekenreeksen weer om in getallen.
+
+\bMKI$(integer_uitdrukking%)\p
+\bMKL$(long-integer_uitdrukking&)\p
+\bMKS$(enkele-precisie_uitdrukking!)\p
+\bMKD$(dubbele-precisie_uitdrukking#)\p
+\bCVI(num_tekenreeks_2-bytes)\p
+\bCVL(num_tekenreeks_4-bytes)\p
+\bCVS(num_tekenreeks_4-bytes)\p
+\bCVD(num_tekenreeks_8-bytes)\p
+
+    Functie    Retourneert           Functie    Retourneert
+    ÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+    MKI$       2-bytes tekenreeks    CVI        Geheel getal
+    MKL$       4-bytes tekenreeks    CVL        Een 'long integer'
+    MKS$       4-bytes tekenreeks    CVS        Enkele-precisie-getal
+    MKD$       8-bytes tekenreeks    CVD        Dubbele-precisie-getal
+
+Zie ook     \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aMKSMBF$, MKDMBF$, CVSMBF, CVDMBF\v@CVSMBF\v\i\p
+.context MKDMBF$
+.context @MKDMBF$
+.context MKSMBF$
+.context @MKSMBF$
+.context CVDMBF
+.context @CVDMBF
+.context CVSMBF
+.context @CVSMBF
+:nDe functies MKSMBF$, MKDMBF$, CVSMBF en CVDMBF
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MKSMBF$ en MKDMBF$ zetten getallen van het IEEE-formaat om in numerieke
+tekenreeksen van het binaire Microsoft-formaat die kunnen worden opgeslagen
+in tekenreeksvariabelen van het statement FIELD.
+CVSMBF en CVDMBF zetten deze tekenreeksen weer om in getallen van het
+IEEE-formaat.
+
+\bMKSMBF$(enkele-precisie_uitdrukking!)\p
+\bMKDMBF$(dubbele-precisie_uitdrukking#)\p
+\bCVSMBF (num_tekenreeks_4-bytes)\p
+\bCVDMBF (num_tekenreeks_8-bytes)\p
+
+    Functie   Retourneert
+    ÍÍÍÍÍÍÍ   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+    MKSMBF$   4-bytes tekenreeks die getal omvat in binair Microsoft-formaat
+    MKDMBF$   8-bytes tekenreeks die getal omvat in binair Microsoft-formaat
+    CVSMBF    Enkele-precisie-getal in IEEE-formaat
+    CVDMBF    Dubbele-precisie-getal in IEEE-formaat
+
+    ş Deze functies zijn bij uitstek geschikt voor het bijhouden van
+      gegevensbestanden die met oudere versies van Basic zijn gemaakt.
+
+Voorbeeld:
+    TYPE Buffer
+        Enkel AS STRING * 4
+        Dubbel AS STRING * 8
+    END TYPE
+    DIM RecBuffer AS Buffer
+    OPEN "TESTDAT.DAT" FOR RANDOM AS #1 LEN = 12
+    Enkl = 98.9
+    Dbbl = 645.3235622#
+    RecBuffer.Enkel = MKSMBF$(Enkl)
+    RecBuffer.Dubbel = MKDMBF$(Dbbl)
+    PUT #1, 1, RecBuffer
+    GET #1, 1, RecBuffer
+    CLOSE #1
+    PRINT CVSMBF(RecBuffer.Enkel), CVDMBF(RecBuffer.Dubbel)
+
+Zie ook     \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aMKn$, CVn\v@CVS\v\i\p
+.context PEEK
+.context @PEEK
+.context POKE
+.context @POKE
+:nDe functie PEEK en het statement POKE
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PEEK retourneert een byte-waarde die is opgeslagen op een opgegeven
+geheugenlocatie. POKE schrijft een een byte-waarde naar een opgegeven
+geheugenlocatie.
+
+\bPEEK(adres)\p
+\bPOKE adres,byte%\p
+
+    ş \badres\p    Een byte-positie ten opzichte van het huidige segmentadres
+               dat werd ingesteld door DEF SEG. De waarde moet in het bereik
+               van 0 tot en met 65535 liggen.
+    ş \bbyte%\p    Een byte-waarde die naar de opgegeven geheugenlocatie
+               moet worden geschreven. De waarde moet in het bereik van
+               0 tot en met 255 liggen.
+
+Voorbeeld:
+    DEF SEG = 0
+    Status% = PEEK(&H417)              'Leest toetsenbordstatus.
+    POKE &H417, (Status% XOR &H40)     'Wijzigt CapsLock-status, bit 6.
+
+Zie ook     \i\p\aDEF SEG\v@SEG\v\i\p
+.context SPACE$
+.context @SPACE$
+:nDe functie SPACE$
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert een tekenreeks die bestaat uit spaties.
+
+\bSPACE$(n%)\p
+
+    ş \bn%\p    Het gewenste aantal spaties.
+
+Voorbeeld:
+    FOR i% = 1 TO 5
+        x$ = SPACE$ (i%)
+        PRINT x$; i%
+    NEXT i%
+
+Zie ook     \i\p\aSPC\v@SPC\v\i\p    \i\p\aSTRING$\v@STRING$\v\i\p
+.context STR$
+.context @STR$
+.context VAL
+.context @VAL
+:nDe functies STR$ en VAL
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+STR$ retourneert een tekenreeksequivalent voor een getal.
+VAL zet een tekenreeksequivalent voor een getal om in dat getal.
+
+\bSTR$(num_uitdrukking)\p
+\bVAL(tekenreeks$)\p
+
+    ş \bnum_uitdrukking\p    Een numerieke uitdrukking.
+    ş \btekenreeks$\p        Een tekenreeksequivalent voor een getal.
+
+Voorbeeld:
+    PRINT "De decimaal 65 wordt weergegeven in hexadecimalen als ";
+    PRINT "&H" + LTRIM$(STR$(41))
+    PRINT VAL(RIGHT$("Microsoft 1990", 4))
+.context STRING$
+.context @STRING$
+:nDe functie STRING$
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert een tekenreeks van een opgegeven lengte die bestaat uit een
+teken dat meerdere keren wordt weergegeven.
+
+\bSTRING$(lengte%,{ascii-code% | tekenreeks$})\p
+
+    ş \blengte%\p        De lengte van de tekenreeks.
+    ş \bascii-code%\p    De ASCII-code van het teken dat herhaald moet worden.
+    ş \btekenreeks$\p    Een tekenreeksuitdrukking. STRING$ vult de tekenreeks
+                     op met het eerste teken in tekenreeks$.
+
+Voorbeeld:
+    PRINT STRING$(5, "-");
+    PRINT "Hallo";
+    PRINT STRING$(5, "-")
+
+Zie ook     \i\p\aASCII-codes\v@ac\v\i\p
+.context VARSEG
+.context @VARSEG
+.context VARPTR
+.context @VARPTR
+:nDe functies VARPTR en VARSEG
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+VARPTR retourneert het offset-adres van een variabele.
+VARSEG retourneert het segment-adres van een variabele.
+
+\bVARPTR(variabelenaam)\p
+\bVARSEG(variabelenaam)\p
+
+    ş \bvariabelenaam\p    Een Basic-variabele.
+
+Zie ook     \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aDEF SEG\v@SEG\v\i\p    \i\p\aPEEK, POKE\v@PEEK\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p
+.context VARPTR$
+.context @VARPTR$
+:nDe functie VARPTR$
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert een tekenreeksequivalent van het adres van een variabele voor
+gebruik met de statements DRAW en PLAY.
+
+\bVARPTR$(opdrachtreeks$)\p
+
+    ş \bopdrachtreeks$\p    Een tekenreeksvariabele die DRAW- of
+                        PLAY-opdrachten bevat.
+
+Voorbeeld:
+    Schaal$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(Schaal$)
+    NEXT i%
+
+Zie ook    \i\p\aDRAW\v@DRAW\v\i\p   \i\p\aPLAY (muziek)\v@PLAY\v\i\p    \i\p\aVARPTR, VARSEG\v@VARPTR\v\i\p

@@ -1,0 +1,14 @@
+cleanup+
+extern+
+getchar+
+initial+
+memory+
+message+
+ncfind+
+utility+
+menu+
+window, deloldos.exe,, ..\lib\common.lib;
+
+
+
+

@@ -1,0 +1,110 @@
+The following is the smartdrv 4.x API.
+
+Please note register usage.  Most calls use all registers.  If you
+fail to restore SI,DI,BP in a C program, undesirable results will ensue.
+
+WARNING: input parameters are NOT range checked by smartdrv.  If you
+input invalid parameters (drive letters, etc) you could crash the machine
+and trash the hard drive.
+
+EXAMPLE: [detecting smartdrv]  
+	mov	ax,MULT_BAMBI
+	mov     bx,BAMBI_GET_STATS
+	int	2fh
+	cmp	ax,BAMBI_SIGNATURE
+	jne	smartdrv4x_not_installed
+smartdrv4x_installed:
+...
+;
+;       MULT_BAMBI(ax)                                  equ     4a10h
+;            BAMBI_GET_STATS(bx)                        equ        0
+;            BAMBI_COMMIT_ALL(bx)                       equ        1
+;            BAMBI_REINITIALIZE(bx)                     equ        2
+;            BAMBI_CACHE_DRIVE(bx)                      equ        3
+;                  CACHE_DRIVE_GET(dl)                  equ        0
+;                  CACHE_DRIVE_READ_ENABLE(dl)          equ        1
+;                  CACHE_DRIVE_READ_DISABLE(dl)         equ        2
+;                  CACHE_DRIVE_WRITE_ENABLE(dl)         equ        3
+;                  CACHE_DRIVE_WRITE_DISABLE(dl)        equ        4
+;            BAMBI_GET_INFO(bx)                         equ        4    
+;
+;       BAMBI_SIGNATURE                                 equ     BABEh
+;
+;BAMBI_GET_STATS:
+;FUNCTION:
+;       Gets cache hit/miss statistics as well as detects presence of cache.
+;
+;       INPUT:
+;               AX=MULT_BAMBI
+;               BX=BAMBI_GET_STATS
+;       OUTPUT:
+;               AX=BAMBI_SIGNATURE
+;               DI=cache misses (hiword)
+;               SI=cache misses (loword)
+;               DX=cache hits (hiword)
+;               BX=cache hits (loword)
+;               CX=number of uncommitted (dirty) blocks
+;               BP=version number in binary (win31=0400h,msdos6=401h)
+;       USED:
+;               All except DS,ES
+;
+;BAMBI_COMMIT_ALL:
+;FUNCTION:
+;       Commits all uncommitted blocks (dirty blocks) to disk.
+;
+;       INPUT:
+;               AX=MULT_BAMBI
+;               BX=BAMBI_COMMIT_ALL
+;       OUTPUT:
+;               NONE
+;       USED:   
+;               NONE
+;
+;BAMBI_REINITIALIZE:
+;FUNCTION:
+;       Commits all uncommitted blocks to disk and invalidates the cache.
+;Re-sizes the cache with input parameters.
+;       INPUT:
+;               AX=MULT_BAMBI
+;               BX=BAMBI_REINITIALIZE
+;               CX=number of cache elements
+;               DX=size of cache elments
+;       OUTPUT:
+;               carry set if procedure unable to complete via XMS errors
+;       USED:
+;               ALL except DS,ES
+;
+;BAMBI_CACHE_DRIVE:
+;FUNCTION:
+;       Enables and disables read or write caching for a particular drive unit.
+;Returns the cache state of the drive in DL. Get takes no action, but simply
+;returns cache state for drive unit in DL.
+;       INPUT:
+;               AX=MULT_BAMBI
+;               BX=BAMBI_CACHE_DRIVE
+;               DL=CACHE_DRIVE_<get,read|write enable|disable>
+;               BP=unit number of drive 
+;       OUTPUT:
+;               DL=cache state of unit:
+;                       Bit 8 set -> no caching enabled for this unit
+;                       Bit 8 not set -> read caching enabled for this unit
+;                       Bit 7 set -> write caching not enabled for this unit
+;                       Bit 7 not set -> write caching enabled for this unit
+;                       -1 -> not a cachable drive
+;       USES:
+;               ALL except DS,ES
+;
+;BAMBI_GET_INFO:
+;FUNCTION:
+;       Get the current size of the cache.
+;       INPUT:
+;               AX=MULT_BAMBI
+;               BX=BAMBI_GET_INFO
+;       OUTPUT:
+;               CX=size of cache block in bytes
+;               AX=number of cache blocks while in dos
+;               BX=number of cache blocks in cache
+;       USES:
+;               ALL except DS,ES
+;
+

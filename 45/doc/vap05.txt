@@ -1,0 +1,40 @@
+                         VAP Release 0.5 document
+
+                                Bryan Feir
+
+
+    This document lists the features of VAPs which have been implemented in
+the present version: 0.5 (Oct 7,'88).
+
+    At present, the application has all the commands in section 7 at its
+disposal except for FSaveVapInfo and FLoadVapInfo.  Communication with VAPs
+and installation of individual VAPs are supported.
+
+    Generally, as far as the Notification and Request messages are concerned,
+all messages are supported except those to do with menus, keys, or the Works
+messages near the end.  Supported messages are:
+
+	VN_			VR_
+
+	Initialize		Beep
+	Terminate		TmcDoDlg
+	Idle			MessageBox
+	Command			RePaint
+				TextOut
+
+	dialog Procs		TMC routines
+	control Procs		MemAlloc/MemRealloc/MemFree/MemLock/MemUnlock
+
+Command, at present, is only supported through direct application calls.
+
+    No menu hooks or hot keys are supported.
+
+    For edit Procs, there is one major limitation: only single word values can
+be handled.  This means that in any dialog, all CAB arguments must be words;
+no handles or fixed length allowed.  If more than a word is needed, the edit
+Proc must handle its own memory, and store a handle or a pointer in the word
+given.  The word can be accessed as normal, bArg offset into the block
+represented by hobj, as long as no assumptions are made about anything other
+than that word being valid.  Also, the tmmCwVal call should always return 1.
+Edit Procs also cannot cause any other edit Procs to be called; they cannot
+be recursive, since only a small buffer is allocated for edit Procs.

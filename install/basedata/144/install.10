@@ -1,0 +1,12 @@
+
+; Microsoft Confidential
+; Copyright (c) Microsoft Corporation 1991
+; All Rights Reserved.
+
+
+;Destination disk: SUPPORT.
+
+[disk-1]
+
+;..\disk-3.txt follows
+

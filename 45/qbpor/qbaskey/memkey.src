@@ -1,0 +1,477 @@
+.comment ******************************************************************
+.comment *  Memory Family - QBasic                                        *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments                       *
+.comment ******************************************************************
+.comment *  6/12/90 stevesau                                              *
+.comment *  Incorporated RonS comments                                    *
+.comment ******************************************************************
+.comment *  5/13/90 stevesau                                              *
+.comment *  Combined MKn$/CVn, MKSMBF$/MKDMBF$/CVSMBF/CVDMBF, HEX$/OCT$,  *
+.comment *  LCASE$/UCASE$, LEFT$/RIGHT$, LTRIM$/RTRIM$,                   *
+.comment *  MID$ function/statement, PEEK/POKE, STR$/VAL.                 *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/12/90 stevesau                                              *
+.comment *  Reinserted VARTPR$ (need for PLAY and DRAW X command).        *
+.comment *  Deleted STACK function and statement.                         *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Reinserted VARPTR, VARSEG (need for CALL ABSOLUTE example).   *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Deleted SADD, SETMEM, SSEG, SSEGADD, VARPTR, VARSEG (moved    *
+.comment *  to Unsupported Keywords (Contents).                           *
+.comment *  Deleted CHR$ (combined with ASC in Math family).              *
+.comment *  Moved CVSMBF, etc., from Math family.                         *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Added action lines.						  *
+.comment ******************************************************************
+.comment *  4/17/90 BethPr                                                *
+.comment *  Removed StringAddress, StringAssign, StringLength and         *
+.comment *  StringRelease routines                                        *
+.comment ******************************************************************
+.context CLEAR
+.context @CLEAR
+:nInstru‡ao CLEAR
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Fecha todos os arquivos, libera mem¢rias intermedi rias de arquivos, limpa
+todas as vari veis comuns, atribui o valor zero para as vari veis num‚ricas e
+matrizes, define o valor nulo para as vari veis de sequˆncia de caracteres e
+inicializa a pilha. Opcionalmente, CLEAR tamb‚m altera o tamanho da pilha.
+
+\bCLEAR [,,pilha&]\p
+
+   ş \bpilha&\p Define o tamanho em bytes de espa‡o de pilha para o programa.
+
+Exemplo:
+    CLEAR ,,2000
+
+Consulte tamb‚m    \i\p\aERASE\v@ERASE\v\i\p
+.context SEG
+.context @SEG
+:nInstru‡ao DEF SEG
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Define o endere‡o atual do segmento.
+
+\bDEF SEG [=endere‡o]\p
+
+    ş \bendere‡o\p   Um endere‡o de segmento usado pelo BLOAD, BSAVE,
+                 CALL ABSOLUTE, PEEK ou POKE; um valor no intervalo de
+                 0 a 65.535. Se o endere‡o for omitido, DEF SEG define
+                 o segmento atual com o valor do segmento de dados padrao.
+
+Exemplo:
+    DEF SEG = 0
+    Status% = PEEK(&H417)              'Status de leitura do teclado.
+    POKE &H417, (Status% XOR &H40)     'Altera estado de mai£scula, bit 6.
+
+Consulte tamb‚m  \i\p\aBSAVE, BLOAD\v@BLOAD\v\i\p    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aPEEK, POKE\v@PEEK\v\i\p
+.context FRE
+.context @FRE
+:nFun‡ao FRE
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retorna a quantidade em bytes de mem¢ria dispon¡vel ou nao utilizada.
+
+\bFRE(expressao-num‚rica)\p
+\bFRE(expressao-alfab‚tica$)\p
+
+    ş \bexpressao-num‚rica\p      Um valor que especifica o tipo de mem¢ria:
+
+                 Valor                    FRE retorna
+                 ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                 -1                       O tamanho da maior matriz
+                                          (nao sequˆncia de caracteres)
+                                          que pode ser criada
+                 -2                       O espa‡o de pilha nao utilizado
+                 Qualquer outro n£mero    O espa‡o de sequˆncia de
+                                          caracteres dispon¡vel
+
+    ş \bexpressao-alfab‚tica$\p   Qualquer expressao de sequˆncia de
+                              caracteres. FRE compacta o espa‡o de
+                              sequˆncia de caracteres livre em um simples
+                              bloco, retornando assim a quantidade de
+                              espa‡o de sequˆncia de caracteres dispon¡vel.
+
+Exemplo:
+    PRINT "Espa‡o do Texto", FRE("")
+    PRINT "Espa‡o da pilha nao utilizado", FRE(-2)
+    PRINT "Espa‡o da Matriz", FRE(-1)
+.context HEX$
+.context @HEX$
+.context OCT$
+.context @OCT$
+:nFun‡oes HEX$, OCT$
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+HEX$ retorna uma sequˆncia que representa o valor hexadecimal do argumento
+     num‚rico.
+OCT$ retorna um texto que representa o valor octal do argumento num‚rico.
+
+\bHEX$(expressao-num‚rica&)\p
+\bOCT$(expressao-num‚rica&)\p
+
+    ş \bexpressao-num‚rica&\p    Qualquer expressao num‚rica. A expressao ‚
+                             arredondada para um inteiro ou um inteiro
+                             longo antes de ser avaliada.
+
+Exemplo:
+    INPUT x
+    a$ = HEX$ (x)
+    b$ = OCT$ (x)
+    PRINT x; "decimal ‚ "; a$; " hexadecimal e "; b$; " em octal."
+.context INSTR
+.context @INSTR
+:nFun‡ao INSTR
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retorna a posi‡ao da primeira ocorrˆncia de uma sequˆncia em outra sequˆncia
+
+\bINSTR([in¡cio%,]texto1$,texto2$)\p
+
+    ş \bin¡cio%\p    Define a posi‡ao do caractere onde a pesquisa inicia.
+                 Se in¡cio% for omitido, INSTR inicia na posi‡ao 1.
+    ş \btexto1$\p    A sequˆncia de caracteres a pesquisar.
+    ş \btexto2$\p    A sequˆncia de caracteres a procurar.
+
+Exemplo:
+    a$ = "Microsoft QBasic"
+    PRINT "Posi‡ao do texto ="; INSTR(1, a$, "QBasic")
+
+Consulte tamb‚m    \i\p\aLEFT$, RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p    \i\p\aMID$\v@MID$\v\i\p
+.context LCASE$
+.context @LCASE$
+.context UCASE$
+.context @UCASE$
+:nFun‡oes LCASE$, UCASE$
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Converte toda a sequˆncia para letras mai£sculas ou min£sculas.
+
+\bLCASE$(texto$)\p
+\bUCASE$(texto$)\p
+
+    ş \btexto$\p    Qualquer texto.
+
+Exemplo:
+    Texto$ = "O TExto"
+    PRINT Texto$
+    PRINT LCASE$(Texto$); " em min£scula"
+    PRINT UCASE$(Texto$); " EM MAIUSCULA"
+.context LEFT$
+.context @LEFT$
+.context RIGHT$
+.context @RIGHT$
+:nFun‡oes LEFT$, RIGHT$
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retorna um n£mero especificado de caracteres mais … esquerda ou mais …
+direita em um texto.
+
+\bLEFT$(texto$,n%)\p
+\bRIGHT$(texto$,n%)\p
+
+    ş \btexto$\p   Qualquer expressao de sequˆncia de caracteres.
+    ş \bn%\p       O n£mero de caracteres a retornar, come‡ando com
+               os caracteres mais … esqueda ou mais … direita.
+
+Exemplo:
+    a$ = "Microsoft QBasic"
+    PRINT LEFT$(a$, 5)     'A Sa¡da ‚:  Micro
+    PRINT RIGHT$(a$, 5)    'A Sa¡da ‚:  Basic
+
+Consulte tamb‚m    \i\p\aMID$\v@MID$\v\i\p
+.context LEN
+.context @LEN
+:nFun‡ao LEN
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retorna o n£mero de caracteres em um texto ou o n£mero de bytes necess rios
+para armazenar uma vari vel.
+
+\bLEN(texto$)\p
+\bLEN(vari vel)\p
+
+    ş \btexto$\p      Qualquer texto.
+    ş \bvari vel\p    Qualquer vari vel que nao seja um texto.
+
+Exemplo:
+    a$ = "Microsoft QBasic"
+    PRINT LEN(a$)
+
+Consulte tamb‚m    \i\p\aOPEN\v@OPEN\v\i\p
+.context LTRIM$
+.context @LTRIM$
+.context RTRIM$
+.context @RTRIM$
+:nFun‡oes LTRIM$, RTRIM$
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Remove os espa‡os em branco … esquerda ou … direita.
+
+\bLTRIM$(texto$)\p
+\bRTRIM$(texto$)\p
+
+    ş \btexto$\p  Qualquer texto.
+
+Exemplo:
+    a$ = "    Basic    "
+    PRINT "*" + a$ + "*"            'A Sa¡da ‚:  *    Basic    *
+    PRINT "*" + LTRIM$(a$) + "*"    'A Sa¡da ‚:  *Basic    *
+    PRINT "*" + RTRIM$(a$) + "*"    'A Sa¡da ‚:  *    Basic*
+.context MID$
+.context @MID$
+:nFun‡ao e instru‡ao MID$
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+A fun‡ao MID$ retorna parte de um texto (um subtexto).
+A instru‡ao MID$ substitui uma parte de um texto por outra.
+
+\bMID$(texto$,in¡cio%[,comprimento%])\p
+\bMID$(texto$,in¡cio%[,comprimento%])=texto$\p
+
+    ş \btexto$\p           A sequˆncia a partir da qual a fun‡ao MID$
+                       retorna um subtexto ou o texto usado por MID$.
+                       Pode ser qualquer texto.
+    ş \bin¡cio%\p          A posi‡ao do primeiro caractere na subsequˆncia
+                       que est  sendo retornada ou substitu¡da.
+    ş \bcomprimento%\p     O n£mero de caracteres na subsequˆncia. Se o
+                       comprimento for omitido, MID$ retorna ou substitui
+                       todos os caracteres … direita da posi‡ao de in¡cio.
+    ş \bvari vel texto$\p  A vari vel texto que est  sendo modificada pela
+                       instru‡ao MID$.
+
+Exemplo:
+    a$ = "Onde ‚ Paris?"
+    PRINT MID$(a$, 8, 5)       'Sa¡da ‚:  Paris
+    Text$ = "Paris, Fran‡a"
+    PRINT Text$                'Sa¡da ‚:  Paris, Fran‡a
+    MID$(Text$, 8) = "Texas "
+    PRINT Text$                'Sa¡da ‚:  Paris, Texas
+
+Consulte tamb‚m    \i\p\aLEFT$, RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p
+.context CVI
+.context @CVI
+.context CVS
+.context @CVS
+.context CVL
+.context @CVL
+.context CVD
+.context @CVD
+.context MKL$
+.context @MKL$
+.context MKI$
+.context @MKI$
+.context MKS$
+.context @MKS$
+.context MKD$
+.context @MKD$
+:nFun‡oes MKn$, CVn
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MKI$, MKL$, MKS$ e MKD$ converte valores num‚ricos em expressoes alfab‚ticas
+que podem ser armazenadas em vari veis de sequˆncia de caracteres na instru‡ao
+FIELD. As instru‡oes CVI, CVL, CVS e CVD convertem estas sequˆncias de volta
+para valores num‚ricos.
+
+\bMKI$(expressao-inteira%)\p
+\bMKL$(expressao-inteira-longa&)\p
+\bMKS$(expressao-simples-precisao!)\p
+\bMKD$(expressao-dupla-precisao#)\p
+\bCVI(expressao-num‚rica-2-bytes)\p
+\bCVL(expressao-num‚rica-4-bytes)\p
+\bCVS(expressao-num‚rica-4-bytes)\p
+\bCVD(expressao-num‚rica-8-bytes)\p
+
+    Fun‡ao     Retorna                Fun‡ao    Retorna
+    ÍÍÍÍÍÍ     ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ   ÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+    MKI$       Sequˆncia de 2 bytes    CVI      Um inteiro
+    MKL$       Sequˆncia de 4 bytes    CVL      Um inteiro longo
+    MKS$       Sequˆncia de 4 bytes    CVS      Um n£mero de simples precisao
+    MKD$       Sequˆncia de 8 bytes    CVD      Um n£mero de dupla precisao
+
+Consulte tamb‚m    \i\p\aFIELD\v@FIELD\v\i\p   \i\p\aMKSMBF$, MKDMBF$, CVSMBF, CVDMBF\v@CVSMBF\v\i\p
+.context MKDMBF$
+.context @MKDMBF$
+.context MKSMBF$
+.context @MKSMBF$
+.context CVDMBF
+.context @CVDMBF
+.context CVSMBF
+.context @CVSMBF
+:nFun‡oes MKSMBF$, MKDMBF$, CVSMBF, CVDMBF
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+O MKSMBF$ e o MKDMBF$ convertem os n£meros de formato IEEE para expressoes
+num‚ricas de formato bin rio Microsoft que podem ser armazenados em
+vari veis de sequˆncias de caracteres na instru‡ao FIELD.
+O VSMBF e o CVDMBF convertem estes textos de volta em n£meros de formato IEEE.
+
+\bMKSMBF$(expressao-simples-precisao!)\p
+\bMKDMBF$(expressao-dupla-precisao#)\p
+\bCVSMBF (expressao-num‚rica-4-bytes)\p
+\bCVDMBF (expressao-num‚rica-8-bytes)\p
+
+    Fun‡ao      Retorna
+    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+    MKSMBF$     Sequˆncia de 4 bytes no formato num‚rico bin rio-Microsoft
+    MKDMBF$     Sequˆncia de 8 bytes no formato num‚rico bin rio-Microsoft
+    CVSMBF      Um n£mero de simples-precisao no formato IEEE
+    CVDMBF      Um n£mero de dupla-precisao no formato IEEE
+
+    ş Estas fun‡oes sao £teis para manter arquivos de dados criados com
+      versoes antigas do Basic.
+
+Exemplo:
+    TYPE Mem¢ria
+        NumSpl AS STRING * 4
+        NumDpl AS STRING * 8
+    END TYPE
+    DIM RegMem AS Mem¢ria
+    OPEN "TESTDAD.DAT" FOR RANDOM AS #1 LEN = 12
+    NumS = 98.9
+    NumD = 645.3235622#
+    RegMem.NumSpl = MKSMBF$(NumS)
+    RegMem.NumDpl = MKDMBF$(NumD)
+    PUT #1, 1, RegMem
+    GET #1, 1, RegMem
+    CLOSE #1
+    PRINT CVSMBF(RegMem.NumSpl), CVDMBF(RegMem.NumSpl)
+
+Consulte tamb‚m    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aMKn$, CVn\v@CVS\v\i\p
+.context PEEK
+.context @PEEK
+.context POKE
+.context @POKE
+:nFun‡ao PEEK, instru‡ao POKE
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PEEK retorna um valor do byte armazenado em um determinado local de mem¢ria.
+POKE grava um valor do byte em um determinado local de mem¢ria.
+
+\bPEEK(endere‡o)\p
+\bPOKE endere‡o,byte%\p
+
+    ş \bendere‡o\p  Uma posi‡ao do byte relativa ao endere‡o do segmento atual
+                definido pelo DEF SEG; um valor na faixa de 0 … 65.535.
+    ş \bbyte%\p     Um valor do byte a ser gravado em um determinado local de
+                mem¢ria; um valor na faixa de 0 … 255.
+
+Exemplo:
+    DEF SEG = 0
+    Status% = PEEK(&H417)              'Satus de leitura do teclado.
+    POKE &H417, (Status% XOR &H40)     'Altera estado de mai£scula, bit 6.
+
+Consulte tamb‚m    \i\p\aDEF SEG\v@SEG\v\i\p
+.context SPACE$
+.context @SPACE$
+:nFun‡ao SPACE$
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retorna uma sequˆncia de espa‡os.
+
+\bSPACE$(n%)\p
+
+    ş \bn%\p    O n£mero de espa‡os desejados na sequˆncia.
+
+Exemplo:
+    FOR i% = 1 TO 5
+        x$ = SPACE$ (i%)
+        PRINT x$; i%
+    NEXT i%
+
+Consulte tamb‚m    \i\p\aSPC\v@SPC\v\i\p    \i\p\aSTRING$\v@STRING$\v\i\p
+.context STR$
+.context @STR$
+.context VAL
+.context @VAL
+:nFun‡ao STR$, VAL
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+STR$ retorna representa‡ao em sequˆncia de caracteres de um valor num‚rico.
+VAL converte uma representa‡ao em sequˆncia de caracteres de um valor num‚rico
+para um n£mero.
+
+\bSTR$(expressao-num‚rica)\p
+\bVAL(expressao-sequˆncia$)\p
+
+    ş \bexpressao-num‚rica\p      Qualquer expressao num‚rica.
+    ş \bexpressao-sequˆncia$\p    Uma representa‡ao em expressao alfab‚tica de
+                              um valor num‚rico.
+
+Exemplo:
+    PRINT "Decimal 65 ‚ representado em hexadecimal como ";
+    PRINT "&H" + LTRIM$(STR$(41))
+    PRINT VAL(RIGHT$("Microsoft 1991", 4))
+.context STRING$
+.context @STRING$
+:nFun‡ao STRING$
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retorna um texto de tamanho determinado a partir da repeti‡ao de um caractere.
+
+\bSTRING$(comprimento%,{c¢digo-ascii% | expressao-sequˆncia$})\p
+
+    ş \bcomprimento%\p          O comprimento do texto.
+    ş \bc¢digo-ascii%\p         O c¢digo ASCII do caractere a ser repetido.
+    ş \bexpressao-sequˆncia$\p  Qualquer expressao de sequˆncia de caracteres.
+                            STRING$ preenche o texto com o primeiro
+                            caractere da expressao-sequˆncia$.
+
+
+Exemplo:
+    PRINT STRING$(3, "-");
+    PRINT "Alo";
+    PRINT STRING$(3, "-")
+
+Consulte tamb‚m    \i\p\aC¢digos de Caracteres ASCII\v@ac\v\i\p
+.context VARSEG
+.context @VARSEG
+.context VARPTR
+.context @VARPTR
+:nFun‡oes VARPTR, VARSEG
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+VARPTR retorna o endere‡o de deslocamento de uma vari vel.
+VARSEG retorna o endere‡o de segmento de uma vari vel.
+
+\bVARPTR(nome-vari vel)\p
+\bVARSEG(nome-vari vel)\p
+
+    ş \bnome-vari vel\p    Qualquer vari vel Basic.
+
+Consulte tamb‚m    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aDEF SEG\v@SEG\v\i\p    \i\p\aPEEK, POKE\v@PEEK\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p
+.context VARPTR$
+.context @VARPTR$
+:nFun‡ao VARPTR$
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retorna uma representa‡ao de sequˆncia de caracteres do endere‡o da vari vel
+para uso nas instru‡oes DRAW e PLAY.
+
+\bVARPTR$(sequˆncia-instru‡ao$)\p
+
+    ş \bsequˆncia-instru‡ao$\p    Uma vari vel de sequˆncia de caracteres
+                              contendo instru‡oes DRAW ou PLAY.
+
+Exemplo:
+    Escala$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(Escala$)
+    NEXT i%
+
+Consulte tamb‚m   \i\p\aDRAW\v@DRAW\v\i\p   \i\p\aPLAY (M£sica)\v@PLAY\v\i\p   \i\p\aVARPTR, VARSEG\v@VARPTR\v\i\p

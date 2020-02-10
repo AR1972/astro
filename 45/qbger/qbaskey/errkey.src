@@ -1,0 +1,142 @@
+.comment ******************************************************************
+.comment *  Error Trapping Family - QBasic                                *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/22/90 stevesau                                              *
+.comment *  Incorporated final edit/review comments                       *
+.comment ******************************************************************
+.comment *  6/11/90 stevesau                                              *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/9/90 stevesau                                               *
+.comment *  Deleted ERR.                                                  *
+.comment *  Reinserted RESUME NEXT.                                       *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  4/20/90 stevesau                                              *
+.comment *  Added action lines. 					  *
+.comment *  Deleted LOCAL, RESUME NEXT from ON ERROR and RESUME syntax.   *
+.comment ******************************************************************
+.comment *  4/17/90 bethpr                                                *
+.comment *  Deleted Local Keyword node					  *
+.comment ******************************************************************
+.context @ERL
+.context @ERR
+.context ERL
+.context ERR
+:nERR-, ERL-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ERR gibt den Laufzeit-Fehlercode des letzten Fehlers zurck.
+ERL gibt die Nummer der Zeile, in der der Fehler auftrat, zurck, oder die
+Nummer der letzten Zeile, die abgearbeitet wurde, bevor der Fehler auftrat.
+
+
+\bERR\p
+\bERL\p
+
+    ş ERL gibt keine Sprungmarken zurck. Wenn das Programm keine
+      Zeilennummern hat, wird 0 zurckgegeben.
+
+\i\p\aBeispiel\v@errhand.ex\v\i\p
+
+Siehe auch  \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+            \i\p\aLaufzeit-Fehlercodes\v@rtect\v\i\p
+.context ERROR
+.context @ERROR
+:nERROR-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Simuliert das Auftreten eines BASIC-Fehlers oder eines benutzerdefinierten
+Fehlers.
+
+\bERROR Ausdruck%\p
+
+    ş \bAusdruck%\p    Der Fehlercode eines BASIC-Fehlers oder eines
+                   benutzerdefinierten Fehlers; ein Wert zwischen 1 und
+                   255. Um einen benutzerdefinierten Fehler zu definieren,
+                   verwenden Sie einen Fehlercode, der nicht in der Tabelle
+                   der BASIC-\i\p\aLaufzeit-Fehlercodes\v@rtect\v\i\p aufgefhrt wird.
+
+\i\p\aBeispiel\v@errhand.ex\v\i\p
+
+Siehe auch    \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERR, ERL\v@ERR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context .onerr
+.context @onerr
+:nON ERROR-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Startet die Fehlerbehandlung und bewirkt entweder die Verzweigung zu einer
+Fehlerbehandlungsroutine oder die Wiederaufnahme der Abarbeitung, sobald ein
+Laufzeitfehler auftritt.
+
+\bON ERROR {GOTO Zeile | RESUME NEXT}\p
+
+    ş \bGOTO Zeile\p     Verzweigt zur ersten Zeile der Fehlerbehandlungs-
+                     routine, die entweder durch eine Sprungmarke oder eine
+                     Zeilennummer angegeben wird. Die Angabe von GOTO 0
+                     schaltet die Fehlerbehandlung aus.
+    ş \bRESUME NEXT\p    Setzt die Abarbeitung nach der Anweisung fort, die
+                     den Fehler verursacht hat. Verwenden Sie die
+                     ERR-Funktion, um den Fehlercode des Fehlers abzufragen.
+
+    ş Wenn ON ERROR nicht verwendet wird, beendet jeder Laufzeit-Fehler
+      das Programm.
+
+\i\p\aBeispiel\v@errhand.ex\v\i\p
+
+Siehe auch    \i\p\aERDEV, ERDEV$\v@ERDEV\v\i\p    \i\p\aERR, ERL\v@ERR\v\i\p    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aGOTO\v@GOTO\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context @RESUME
+.context RESUME
+:nRESUME-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Setzt die Programmabarbeitung nach dem Auftreten eines Laufzeitfehlers fort.
+
+\bRESUME [{Zeile | NEXT}]\p
+
+    ş \bZeile\p    Die Sprungmarke oder Nummer der Zeile, mit der die
+               Abarbeitung fortgesetzt wird. Wenn Zeile 0 ist oder
+               weggelassen wird, wird die Abarbeitung mit der Anweisung
+               fortgesetzt, die den Fehler verursacht hat.
+    ş \bNEXT\p    Setzt die Abarbeitung mit der Anweisung fort, die auf
+              die Anweisungf folgt, die den Fehler verursacht hat.
+
+\i\p\aBeispiel\v@errhand.ex\v\i\p
+
+Siehe auch    \i\p\aERROR\v@ERROR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p
+.context errhand.ex
+.context @errhand.ex
+:nBeispiel zur Fehlerbehandlung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+   'Veranschaulicht ERDEV, ERDEV$, ERL, ERR, ERROR, ON ERROR, und RESUME.
+
+   ON ERROR GOTO Fehlerbehandlung
+10 CHDIR "a:\\"                'Verursacht ERR 71 "Laufwerk nicht bereit"
+                              'wenn keine Diskette im Laufwerk A ist.
+20 y% = 0
+30 x% = 5 / y%                'ERR 11 "Division durch Null"
+40 PRINT "x% ="; x%
+50 ERROR 57                   'ERR 57 "Ger„te-E/A-Fehler."
+
+Fehlerbehandlung:
+   PRINT
+   PRINT "Fehler "; ERR; " in Zeile "; ERL
+   SELECT CASE ERR
+      CASE 71
+        PRINT "Ger„t "; ERDEV$; " verwendet, Ger„te-Fehlercode = "; ERDEV
+        RESUME NEXT
+      CASE 11
+        INPUT "Durch welche Zahl soll geteilt werden ?"; y%
+        RESUME           'Zeile 30 mit neuem Wert von y% erneut probieren.
+      CASE ELSE
+        PRINT "Unerwarteter Fehler, Programm wird beendet."
+      END
+   END SELECT

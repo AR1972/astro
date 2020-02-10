@@ -1,0 +1,437 @@
+[[UIFILE_1]]="Sans_nom"
+					 
+#length of " Set colors for the ",
+#      and " text editor window:"
+
+[[UIOPTNS_1]]=30
+
+# length of " Normal Text       ",      
+#           " Current Statement ",
+#           " Breakpoint Lines  "
+
+[[UIOPTNS_2]]=20
+						  
+
+# Width of File Pull Down Menu 
+[[UIRSRCC_1]]=20
+					
+[[UIRSRCC_2]]="Nouveau"
+[[UIRSRCC_3]]="Ouvrir..."
+[[UIRSRCC_4]]="Enregistrer"
+[[UIRSRCC_5]]="Enregistrer sous..."
+[[UIRSRCC_6]]="Imprimer..."
+[[UIRSRCC_7]]="Quitter"
+
+# Length of "open"
+[[UIRSRCC_8]]=6
+
+# Length of "Save"
+[[UIRSRCC_9]]=11
+
+#Length of "Save As"
+[[UIRSRCC_10]]=16
+
+#Length of "Print"
+[[UIRSRCC_11]]=8
+
+#       Width of Edit   Menu                                                             
+[[UIRSRCC_12]]=20
+
+[[UIRSRCC_13]]="Couper\tMAJ+SUPPR"
+[[UIRSRCC_14]]="Copier\tCTRL+INS"
+[[UIRSRCC_15]]="Coller\tMAJ+INS"
+[[UIRSRCC_16]]="Effacer\tSUPPR"
+[[UIRSRCC_17]]="Nouvelle SUB..."
+[[UIRSRCC_18]]="Nouvelle FUNCTION..."
+
+					  
+# Length of "New SUB"
+[[UIRSRCC_19]]=12
+
+# Length of "New FUNCTION"
+[[UIRSRCC_20]]=17
+							 
+# Width of View Menu
+[[UIRSRCC_21]]=20
+
+[[UIRSRCC_22]]="SUBs...\tF2"
+[[UIRSRCC_23]]="Diviser la fenˆtre"
+[[UIRSRCC_24]]="Ecran de sortie\tF4"
+
+# width of SUBs
+[[UIRSRCC_114]]=4
+
+# Width of Search Menu
+[[UIRSRCC_25]]=27
+							 
+
+[[UIRSRCC_26]]="Chercher..."
+[[UIRSRCC_27]]="Poursuivre la recherche\tF3"
+[[UIRSRCC_28]]="Remplacer..."
+					
+#       len of "Find"
+[[UIRSRCC_29]]=8
+
+# len of "Repeat Last Find"
+[[UIRSRCC_30]]=23
+
+# len of "Change"
+[[UIRSRCC_31]]=9
+				
+# Width of Run menu
+[[UIRSRCC_32]]=20
+
+
+[[UIRSRCC_33]]="D‚marrer\tMAJ+F5"
+[[UIRSRCC_34]]="Red‚marrer"
+[[UIRSRCC_35]]="Continuer\tF5"
+
+					  
+# width of Debug menu
+[[UIRSRCC_36]]=37
+
+
+[[UIRSRCC_37]]="Pas … pas\tF8"
+[[UIRSRCC_38]]="Trace raccourcie\tF10"
+[[UIRSRCC_39]]="Tracer"
+[[UIRSRCC_40]]="Point d'arrˆt\tF9"
+[[UIRSRCC_41]]="Supprimer tous les points d'arrˆt"
+[[UIRSRCC_42]]="D‚finir l'instruction suivante"
+
+
+# width of options menu
+[[UIRSRCC_43]]=20
+
+
+[[UIRSRCC_44]]="Affichage..."
+[[UIRSRCC_45]]="Chemin de l'aide..."
+[[UIRSRCC_46]]="V‚rifier la syntaxe"
+
+# len of "display"
+[[UIRSRCC_47]]=9
+
+# len of "help path"
+[[UIRSRCC_48]]=16
+
+
+[[UIRSRCC_49]]="Sujet :                F1"
+
+# width of help menu
+[[UIRSRCC_50]]=25
+
+
+[[UIRSRCC_51]]="Index";
+[[UIRSRCC_52]]="Table des matiŠres"
+[[UIRSRCC_53]]="Guide de l'aide\tMAJ+F1"
+[[UIRSRCC_54]]="A propos de..."
+
+
+# width of edit help menu
+[[UIRSRCC_55]]=15
+
+
+[[UIRSRCC_56]]="Mise en route"
+[[UIRSRCC_57]]="Clavier"
+
+
+[[UIRSRCC_58]]="Fichier"
+[[UIRSRCC_59]]="Edition"
+[[UIRSRCC_60]]="Affichage"
+[[UIRSRCC_61]]="Recherche"
+[[UIRSRCC_62]]="Ex‚cution"
+[[UIRSRCC_63]]="D‚bogage"
+[[UIRSRCC_64]]="Options"
+[[UIRSRCC_65]]="Aide"
+		
+
+# what follows are the begining pos of the menu item accross top strip
+# followed by the length of the text;
+
+# this first set are for when qbasic is run as the editor
+
+#-----------------------------------
+# File
+[[UIRSRCC_66]]=3
+[[UIRSRCC_67]]=7
+
+# Edit
+[[UIRSRCC_68]]=12
+[[UIRSRCC_69]]=7
+
+# Search
+[[UIRSRCC_70]]=21
+[[UIRSRCC_71]]=9
+
+# Optns
+[[UIRSRCC_72]]=32
+[[UIRSRCC_73]]=7
+
+# Help
+[[UIRSRCC_74]]=74
+[[UIRSRCC_75]]=4
+
+#-------------------------------
+# this set are for QBASIC proper
+
+# File
+[[UIRSRCC_76]]=3
+[[UIRSRCC_77]]=7
+
+# Edit
+[[UIRSRCC_78]]=12
+[[UIRSRCC_79]]=7
+
+# View
+[[UIRSRCC_80]]=21
+[[UIRSRCC_81]]=9
+
+# Search
+[[UIRSRCC_82]]=32
+[[UIRSRCC_83]]=9
+
+# Run
+[[UIRSRCC_84]]=43
+[[UIRSRCC_85]]=9
+
+# Debug
+[[UIRSRCC_86]]=54
+[[UIRSRCC_87]]=8
+
+# Optns
+[[UIRSRCC_88]]=64
+[[UIRSRCC_89]]=7
+
+# Help
+[[UIRSRCC_90]]=74
+[[UIRSRCC_91]]=4
+
+					
+#       key for window grow       
+[[UIRSRCC_92]]='+' | KK_ALT
+[[UIRSRCC_93]]='=' | KK_ALT | KK_SHIFT
+
+# key for window shrink
+[[UIRSRCC_94]]='-' | KK_ALT
+
+# key for edit clear2
+[[UIRSRCC_95]]='\x7f'
+
+# key for edit cut2
+[[UIRSRCC_96]]='\x7f' | KK_SHIFT
+
+# search next (ctrl+L)
+[[UIRSRCC_97]]='\x0c' | KK_CONTROL
+
+
+
+
+
+#-----------------------------------------
+# here are the positions of the characters
+# used for the hot-keys in the menus
+# remember to count from zero.  For Example
+# in the File menu for the US version the
+# following keys are used, N, O, S, A, P, x, from the following
+# words, New, Open, Save, Save As, Print, Exit, so the positions are
+# 0, 0, 0, 5, 0, 1
+#-----------------------------------------
+
+# File Menu : Put in pos of hotkey to use for the following
+# first the word "File" on the top pull down menu
+[[UIRSRCC_98]]=0
+
+# new
+[[UIRSRCC_99]]=0
+# open
+[[UIRSRCC_100]]=0
+# save
+[[UIRSRCC_101]]=0
+# save as
+[[UIRSRCC_102]]=2
+# print
+[[UIRSRCC_103]]=0
+# exit
+[[UIRSRCC_104]]=0
+
+
+
+# edit menu stuff
+# char in edit to highlight
+[[UIRSRCC_105]]=0
+# cut
+[[UIRSRCC_106]]=0
+# copy
+[[UIRSRCC_107]]=1
+# paste
+[[UIRSRCC_108]]=2
+# clear
+[[UIRSRCC_109]]=0
+# new Sub...
+[[UIRSRCC_110]]=9
+# new Function...
+[[UIRSRCC_111]]=9
+
+
+# view menu stuff
+# char in view to highlight
+[[UIRSRCC_112]]=3
+# Subs...
+[[UIRSRCC_113]]=0
+# sPlit
+[[UIRSRCC_115]]=0
+# Output Screen
+[[UIRSRCC_116]]=0
+
+
+# Search menu stuff
+# pos in search to hilite
+[[UIRSRCC_117]]=0                
+				 
+# find...
+[[UIRSRCC_118]]=0
+# Repeat Last Find
+[[UIRSRCC_119]]=0 
+# Change...
+[[UIRSRCC_120]]=0
+
+
+# run menu stuff
+# pos in run to hilite
+[[UIRSRCC_121]]=1
+# start
+[[UIRSRCC_122]]=0
+# restart
+[[UIRSRCC_123]]=0
+# continue
+[[UIRSRCC_124]]=0
+
+
+# debug menu stuff
+# pos in "debug" to hilite
+[[UIRSRCC_125]]=0
+# step
+[[UIRSRCC_126]]=0
+# procedure step
+[[UIRSRCC_127]]=0
+# trace on
+[[UIRSRCC_128]]=1
+# toggle Breakpoint
+[[UIRSRCC_129]]=8
+# Clear all breakpoints
+[[UIRSRCC_130]]=0         
+# set next statement
+[[UIRSRCC_131]]=0
+
+
+# options menus
+# pos in "options" to hilite
+[[UIRSRCC_132]]=0
+# Display
+[[UIRSRCC_133]]=3
+# help Path
+[[UIRSRCC_134]]=0
+# Syntax checking
+[[UIRSRCC_135]]=0
+
+
+# help menu
+# length of "topics:" + 1
+[[UIRSRCC_136]]=6
+# pos in "Help" to hilite
+[[UIRSRCC_137]]=0
+# Index
+[[UIRSRCC_138]]=0
+# Contents
+[[UIRSRCC_139]]=0
+# Topic:
+[[UIRSRCC_140]]=0
+# using Help
+[[UIRSRCC_141]]=0
+# About...
+[[UIRSRCC_142]]=0
+# Getting started
+[[UIRSRCC_143]]=0   
+# Keyboard
+[[UIRSRCC_144]]=0
+
+#                                      ADDED for MSDos 6
+#                         These TOKENS all relate to the QHelp help screens
+
+
+#                          PrintSetup string
+[[UIRSRCC_201]]="Configurer l'imprimante"
+
+#                          Qhelp FILE menu
+
+# Width                    Qhelp FILE menu
+[[UIRSRCC_202]]=13
+# Hot Key                  "Imprimer"
+[[UIRSRCC_203]]=0
+# Length                   "Imprimer"
+[[UIRSRCC_204]]=8
+# Hot Key                  "Quitter"
+[[UIRSRCC_205]]=0
+
+#                          Qhelp SEARCH menu
+
+# Hot Key                  "Chercher"
+[[UIRSRCC_206]]=0
+# Length                   "Chercher"
+[[UIRSRCC_207]]=8
+# Hot Key                  "Poursuivre la recherche\tF3"
+[[UIRSRCC_208]]=0
+# Length                   "Poursuivre la recherche"
+[[UIRSRCC_209]]=23
+
+#                          Qhelp HELP menu
+
+# Width                    Qhelp HELP menu
+[[UIRSRCC_210]]=30
+# String
+[[UIRSRCC_211]]="Comment utiliser l'Aide MS-DOS"
+# Hot Key                  "Comment utiliser l'Aide MS-DOS"
+[[UIRSRCC_212]]=0
+# Hot Key                  "A propos de"
+[[UIRSRCC_213]]=0
+
+# This data in this next section is for the menu bar on the top of the
+# Qhelp screen. The 3 sections represent "File", "Search" and "Help" and
+# depend on the localized names for these. The 3 parts for each are:
+# 1) Beginning position of the menu name across the top of the screen.
+# 2) Charactor to be Highlighted in Title.
+# 3) Length of menu title.
+# For Example;
+# If you want to put "File" 3 spaces from the right hand side of the screen,
+# and highlight the first char, and since "File" is 4 chars in length this
+# is how it would look:
+# [[example_001]]=3
+# [[example_002]]=0
+# [[example_003]]=4
+
+#                         MENUITEM qhelp FILE
+[[UIRSRCC_214]]=3
+[[UIRSRCC_215]]=0
+[[UIRSRCC_216]]=7
+
+#                         MENUITEM qhelp SEARCH
+[[UIRSRCC_217]]=13
+[[UIRSRCC_218]]=0
+[[UIRSRCC_219]]=9
+
+#                         MENUITEM qhelp HELP
+[[UIRSRCC_220]]=74
+[[UIRSRCC_221]]=0
+[[UIRSRCC_222]]=4
+
+# These next items are to select the accelerator character for
+# the HELP screens. These are the buttons located at
+# the bottom of the help screen. CONTENTS, NEXT and BACK.
+
+# CONTENT key
+[[UIRSRCC_223]]='C'
+# NEXT key
+[[UIRSRCC_224]]='S'
+# BACK key
+[[UIRSRCC_225]]='P'
+
+#good luck !!!!!!

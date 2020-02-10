@@ -1,0 +1,93 @@
+LITERAL
+
+ALL	: qbasic.hlp edit.hlp
+
+qbasic.qh : contents.qh \
+	     filekey.qh devkey.qh grfxkey.qh mathkey.qh prockey.qh \
+	     evntkey.qh strckey.qh contkey.qh memkey.qh \
+	     errkey.qh index.qh \
+	     environ.qh errmess.qh
+#	     contex.qh devex.qh errex.qh evntex.qh fileex.qh grfxex.qh
+#	     mathex.qh memex.qh procex.qh strcex.qh
+	copy contents.qh qbasic.qh
+	type filekey.qh >> qbasic.qh
+	type devkey.qh >> qbasic.qh
+	type grfxkey.qh >> qbasic.qh
+	type mathkey.qh >> qbasic.qh
+	type prockey.qh >> qbasic.qh
+	type evntkey.qh >> qbasic.qh
+	type strckey.qh >> qbasic.qh
+	type contkey.qh >> qbasic.qh
+	type memkey.qh >> qbasic.qh
+	type errkey.qh >> qbasic.qh
+	type index.qh >> qbasic.qh
+	type environ.qh >> qbasic.qh
+	type errmess.qh >> qbasic.qh
+#	type contex.qh >> qbasic.qh
+#	type devex.qh >> qbasic.qh
+#	type errex.qh >> qbasic.qh
+#	type evntex.qh >> qbasic.qh
+#	type fileex.qh >> qbasic.qh
+#	type grfxex.qh >> qbasic.qh
+#	type mathex.qh >> qbasic.qh
+#	type memex.qh >> qbasic.qh
+#	type procex.qh >> qbasic.qh
+#	type strcex.qh >> qbasic.qh
+
+
+qbasic.mrg : qbasic.qh qbimsgs.rpl uihelpid.rpl
+        replace qbimsgs.rpl uihelpid.rpl < qbasic.qh > qbasic.mrg 2>>bld.out
+
+edit.mrg : ..\files\edit.src qbimsgs.rpl uihelpid.rpl
+        replace qbimsgs.rpl uihelpid.rpl < ..\files\edit.src > edit.mrg 2>>bld.out
+
+qbasic.hlp : qbasic.mrg
+        helpmake /T /e /A: /o..\bld\qbasic.hlp /S2 /W78 qbasic.mrg >> bld.out 2>&1
+
+edit.hlp : edit.mrg
+        helpmake /T /e /A: /o..\bld\edit.hlp /S2 /W78 edit.mrg >> bld.out 2>&1
+
+
+ENDLIT
+#
+PRODUCT COMPILER
+#
+DIRECTORY	..\files
+#
+MASMSWITCH
+#
+environ.src	environ.qh
+errmess.src	errmess.qh
+#
+#DIRECTORY	..\files
+##
+#MASMSWITCH
+##
+#contex.src	contex.qh
+#devex.src	devex.qh
+#errex.src	errex.qh
+#evntex.src	evntex.qh
+#fileex.src	fileex.qh
+#grfxex.src	grfxex.qh
+#mathex.src	mathex.qh
+#memex.src	memex.qh
+#procex.src	procex.qh
+#strcex.src	strcex.qh
+#
+DIRECTORY	..\files
+#
+MASMSWITCH
+#
+contents.src	contents.qh
+contkey.src	contkey.qh
+devkey.src	devkey.qh
+errkey.src	errkey.qh
+evntkey.src	evntkey.qh
+filekey.src	filekey.qh
+grfxkey.src	grfxkey.qh
+index.src	index.qh
+mathkey.src	mathkey.qh
+memkey.src	memkey.qh
+prockey.src	prockey.qh
+strckey.src	strckey.qh
+

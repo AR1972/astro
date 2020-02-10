@@ -1,0 +1,53 @@
+SUMMARY mgetl
+
+#include <tools.h>
+
+char *mgetl(pbuf, len, pSrc);
+char *pbuf;
+int len;
+char *pSrc;
+
+DESCRIPTION
+
+mgetl gets the next line from the memory at pSrc.  CR and LF are removed
+and line is terminated with '\0'.  len is the max number of characters
+that may be stored into pbuf.  Returns NULL if *pSrc == NULL at entry else
+returns pointer to next char in pSrc to be processed.
+
+Tabs, \t, are replaced by appropriate number of blanks to reach the next
+tab stop.  Tabs tops are at n*8 for n greater than or equal to zero.
+
+
+RETURN VALUE
+
+See above.
+
+IMPLEMENTATION
+
+
+SEE ALSO  fgetl 
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+#define BUFLEN 256
+char *strSRC = "firt line\n\ttabbed line\n";
+char strLine[BUFLEN];
+
+char *mgetl(char *, int, char *);
+
+main(c, argv)
+int c;
+char *argv[];
+{
+
+    char *p = strSRC;
+
+    while ( ( p = mgetl ( strLine, BUFLEN, p ) ) )
+        printf("%s\n", strLine);
+}
+f

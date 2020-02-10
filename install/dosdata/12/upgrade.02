@@ -1,0 +1,17 @@
+;===================================================================
+;
+;	Copyright (c) 1991 - Microsoft Corp.
+;	All rights reserved.
+;	Microsoft Confidential
+;
+;===================================================================
+
+; =========================================================================
+; 1.2M or 1.44M DISTRIBUTION LAYOUT
+; This is the file layout on the distribution disks.
+
+[distr-0]
+
+;..\distr-0.txt follows
+;..\distr-1.txt follows
+;..\distr-2.txt follows

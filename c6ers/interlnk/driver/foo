@@ -1,0 +1,39 @@
+block.asm:; 1234H and 4321H on the top and bottom.  These are used in debugging to
+block.asm:                dw      4321H           ; End of stack always 4321H
+core.asm:crctab  DW 00000H, 01021H, 02042H, 03063H, 04084H, 050a5H, 060c6H, 070e7H
+core.asm:                int     21H
+drmain.asm:                int     21H
+drmain.asm:                int     21H
+drmain.asm:                int     21H
+drmain.asm:                int     21H
+drmain.asm:                int     21H
+init.asm:                int     21H
+init.asm:                int     21H             ; Return allocated block in UMB
+init.asm:                int     21H
+init.asm:                int     21H
+init.asm:                int     21H
+init.asm:                int     21H
+init.asm:                int     21H
+init.asm:                int     21H
+init.asm:                int     21H
+init.asm:                int     21H
+init.asm:                int     21H
+init.asm:                int     21H
+init.asm:                int     21H
+init.asm:                int     21H
+init.asm:                int     21H
+init.asm:                int     21H
+init.asm:                int     21H
+init.asm:                int     21H
+parallel.asm:                int     21H             ; Current timer vector -> par_timer_save
+parallel.asm:                int     21H             ; Set timer vector to timer handler
+parallel.asm:                int     21H
+printer.asm:                int     21H
+printer.asm:                int     21H
+serial.asm:PICSTAT2        EQU     21H
+serial.asm:mask_ints:      in      al, 21H         ; Get current interrupt mask
+serial.asm:                out     21H, al
+serial.asm:                out     21H, al
+serial.asm:                int     21H             ; Current timer vector -> timer_save
+serial.asm:                int     21H             ; Set timer vector to timer handler
+serial.asm:                int     21H

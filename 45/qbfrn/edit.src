@@ -1,0 +1,972 @@
+.comment ===================================================
+.comment MS-DOS Editor Help
+.comment ===================================================
+.comment 7/31/90 bethpr
+.comment Changed all occurrences of DOS Editor to the MS-DOS
+.comment Editor; checked that articles were correct or changed
+.comment appropriately; also checked line lengths and adjusted
+.comment as needed.
+.comment ===================================================
+.comment 7/30/90 bethpr
+.comment Changed Print Dialog box so that both dialog boxes
+.comment say "Selected Text Only" to reflect UI change due
+.comment in Rel.07.  Also, edited Cut and Copy command help
+.comment so that they don't scroll.  Removed the line "The
+.comment Clipboard can only contain one piece of text at a
+.comment time." as is redundant with line that follows, "Each
+.comment time you cut or copy a piece of text to the Clipboard
+.comment it replaces the existing text on the Clipboard."
+.comment 7/24/90 bethpr
+.comment References to QBASIC herein not changed to QBasic;
+.comment appropriate as is.  Used as directory name or filename.
+.comment ===================================================
+.comment 7/17/90 stevesau
+.comment Incorporated QA/copy edits (except error messages).
+.comment ===================================================
+.comment 6/25/90 stevesau
+.comment Incorporated final edit/review comments.
+.comment ===================================================
+.comment 6/15/90 stevesau
+.comment Changed EDIT references to DOS Editor.
+.comment Added File Save context.
+.comment ===================================================
+.comment 5/4 - Bethpr
+.comment Added EDIT error messages; corrected Print dialog
+.comment box errors; moved h.pg$ to last help topic.
+.comment ===================================================
+.comment 4/30 - 5/2 1st edit pass -- Jeffwe
+.comment Global stuff: Initial cap keynames
+.comment Bug fixes: removed duplicate contexts for h.default,
+.comment h.pg1, h.notfound; added h.pg$; fixed line-too-long.
+.comment Other: edited screens (1st pass), some rewording.
+.comment ===================================================
+.comment 4/22-4/24 edits for EDIT -- Bethpr
+.comment I've pooled information from QB45 and BC71 to make
+.comment the EDIT Help file. Error messages are currently
+.comment missing from this file.
+.comment ===================================================
+.comment ------------------------------------------------
+.comment   Help for Menu titles
+.comment ------------------------------------------------
+.context hidGreetingBox
+.context h.pg1
+:nBienvenue dans l'‚diteur MS-DOS
+  ş Appuyez sur ECHAP pour appeler l'environnement de
+    l'‚diteur MS-DOS.
+
+  ş Appuyez sur ENTREE pour examiner le Guide ‚l‚mentaire de
+    l'‚diteur MS-DOS. Ce guide vous indique comment commencer
+    … utiliser l'‚diteur MS-DOS et son systŠme d'aide.
+.comment ------------------------------------------------
+.comment     Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context hidFileOpen
+:nBoŒte de dialogue Ouvrir
+Utilis‚e pour ouvrir un fichier en vue de le modifier.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄ Ouvrir ÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                 ³  Tapez ici le nom du
+³ Nom du fichier: ±±±±±±±± ÄÄÄÄÄÄÄÄÄfichier s'il se trouve
+³                                 ³  dans le r‚pertoire en
+³ C:\\QBASIC ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ  cours (identifi‚) ou
+³                                 ³
+³     Fichiers        R‚p./Unit‚s ³
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  s‚lectionnez un fichier
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  un r‚pertoire ou une
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  unit‚ si le fichier se
+³                               ³  trouve ailleurs.
+³        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÀÄÄÄÄÄÄÄÄÄÄÄÙ
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Choisissez ensuite
+                                     <OK>.
+
+Vous pouvez ‚galement s‚lectionner une nouvelle unit‚ et un
+nouveau r‚pertoire en tapant leur nom dans la zone de texte
+Nom du fichier.
+
+Pour examiner le contenu des autres unit‚s et r‚pertoires,
+tapez une sp‚cification de fichier avec des caractŠres
+g‚n‚riques (telle que *.TXT) dans la zone de texte Nom du
+fichier et s‚lectionnez une nouvelle unit‚ ou un nouveau
+r‚pertoire.
+.context hidFileSave
+:nBoŒte de dialogue Enregistrer sous
+Utilis‚e pour enregistrer et nommer le fichier en cours.
+ÚÄÄÄÄÄÄÄÄ Enregistrer sous ÄÄÄÄÄÄÄ¿
+³                                 ³  Acceptez ce nom de
+³ Nom du fichier: ±±±±±±±± ÄÄÄÄÄÄÄÄ fichier ou tapez un
+³                                 ³  autre nom ici.
+³ C:\\QBASIC ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Le fichier sera enre-
+³                                 ³  gistr‚ dans ce r‚per-
+³            R‚p./Unit‚s          ³  toire.
+³            ±±±±±±±±±±±          ³  Utilisez R‚p./Unit‚s
+³            ±±±±±±±±±±± ÄÄÄÄÄÄÄÄÄÄ pour enregistrer le
+³            ±±±±±±±±±±±          ³  fichier sur une autre
+³                                 ³  unit‚ ou dans un autre
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  r‚pertoire.
+                                     Puis, choisissez <OK>.
+.context hidFilePrint
+:nBoŒte de dialogue Imprimer
+Utilis‚e pour imprimer tout ou partie du document en cours
+de modification.
+ÚÄÄÄÄÄÄÄ Imprimer ÄÄÄÄÄÄ¿
+³ ± Texte s‚lectionn‚  ÄÄ Imprime le texte s‚lectionn‚.
+³                       ³
+³ ± Document entier   ÄÄÄ Imprime le document en entier.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+Si le curseur se trouve dans la fenˆtre d'aide lorsque vous
+choisissez la commande Imprimer, vous pouvez choisir parmi
+les options d'impression suivantes.
+ÚÄÄÄÄÄÄÄ Imprimer ÄÄÄÄÄÄ¿
+³ ± Texte s‚lectionn‚  ÄÄ Imprime le texte d'aide
+³                       ³  s‚lectionn‚.
+³ ± Fenˆtre active ÄÄÄÄÄÄ Imprime tout le texte du sujet.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+L'‚diteur MS-DOS envoie les informations vers l'imprimante
+connect‚e au port LPT1 de l'ordinateur.
+
+Suggestion : S‚lectionnez du texte dans le document ou
+             dans la fenˆtre d'aide avant de choisir la
+             commande Imprimer. Placez le curseur au d‚but
+             du texte … imprimer, appuyez sur MAJ+touches
+             de DIRECTION jusqu'… ce que tout le texte soit
+             mis en surbrillance, puis choisissez la
+             commande Imprimer.
+.context hidSearchFind
+:nBoŒte de dialogue Chercher
+Utilis‚e pour trouver une chaŒne de texte.
+ÚÄÄÄÄÄÄÄÄÄÄ Chercher ÄÄÄÄÄÄÄÄÄÄ¿
+³                              ³   Tapez la chaŒne ou
+³ Texte … chercher: ±±±±±±±±±± ÄÄ utilisez celle qui se
+³                              ³   trouve ici.
+³ ± Diff. Maj/min ± Mot entier ÄÄ S‚lectionnez le type
+³                              ³   de recherche.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   Puis, choisissez <OK>.
+
+S‚lectionnez Diff‚rencier Majuscules/minuscules pour
+diff‚rencier les majuscules des minuscules ou Mot entier
+pour exclure les correspondances … l'int‚rieur de mots
+ou de chaŒnes. Les recherches de mots entiers ne signalent
+de correspondance que lorsque le texte trouv‚ est entour‚
+d'espaces, de signes de ponctuation ou d'autres caractŠres
+sp‚ciaux. La chaŒne … rechercher peut contenir un maximum
+de 127 caractŠres.
+.context hidSearchChange
+:nBoŒte de dialogue Remplacer
+Utilis‚e pour remplacer une chaŒne par une autre.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄ Remplacer ÄÄÄÄÄÄÄÄÄÄ¿
+³                                  ³  Tapez une chaŒne ou
+³ Texte … chercher: ±±±±±±±±±±±±±  Ä utilisez celle qui
+³                                  ³  se trouve ici.
+³ Remplacer par: ±±±±±±±±±±±±±±±   Ä Tapez la chaŒne de
+³                                  ³  remplacement
+³ ± Diff. Maj/min    ± Mot entier  Ä S‚lectionnez le type
+³                                  ³  de recherche.
+³<Chercher et v‚rif.><Tout rempl.> ÄÄ Choisissez si vous
+³                                  ³  voulez confirmer les
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  remplacements ou les
+                                      effectuer sans
+                                      confirmation.
+
+S‚lectionnez Diff‚rencier Majuscules/minuscules pour
+diff‚rencier les majuscules des minuscules ou Mot entier
+pour exclure les correspondances … l'int‚rieur de mots
+ou de chaŒnes. Les recherches de mots entiers ne signalent
+de correspondance que lorsque le texte trouv‚ est entour‚
+d'espaces, de signes de ponctuation ou d'autres caractŠres
+sp‚ciaux. La chaŒne de remplacement peut contenir un
+maximum de 127 caractŠres.
+.context hidConfirm
+:nBoŒte de dialogue Remplacer
+Une correspondance a ‚t‚ trouv‚e et est mise en surbrillance
+dans la fenˆtre en cours. Vous pouvez :
+  ş Choisir <Remplacer> pour effectuer le remplacement et
+    continuer la recherche.
+  ş Choisir <Passer> pour laisser le texte inchang‚ et
+    continuer la recherche.
+  ş Choisir <Annuler> ou appuyer sur ECHAP pour laisser
+    le texte inchang‚ et arrˆter la recherche.
+.context hidOptnsDisplay
+:nBoŒte de dialogue Affichage
+Utilis‚e pour personnaliser l'‚cran de l'‚diteur MS-DOS.
+                 ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄAffichage ÄÄÄÄÄÄÄÄÄÄÄÄ¿
+                 ³ ÚÄÄÄÄÄÄÄÄÄÄÄ Couleurs ÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+Les couleurs     ³                   Texte     Fond   ³
+choisies ici ... ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ±±±±±±±±  ±±±±±±±± ³
+                 ³ D‚finissez ...  ±±±±±±±±  ±±±±±±±± ³
+sont identi-     ³ ...  de texte   ±±±±±±±±  ±±±±±±±± ³
+fi‚es dans ce    ³                ±±±±±±±±  ±±±±±±±± ³
+bloc de texte. ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ±±±±±±±±  ±±±±±±±± ³
+                 ³                                    ³
+                 ³ ÚÄÄÄÄÄÄÄ Options d'affichage ÄÄÄÄÄ¿³
+                 ³   ± Barres de d‚fil.   Tab.: ±     ³
+                 ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+Masque ou affiche    ³                      ³
+les barres de        ³        Tapez le nombre d'espaces
+d‚filement dans      ³        correspondant … chaque
+les fenˆtres. ÄÄÄÄÄÄÄÙ        tabulation.
+
+Pour d‚finir les options :
+  1. Appuyez sur TAB pour placer le curseur dans la boŒte
+     Couleurs ou Options d'affichage.
+  2. Utilisez les touches de direction pour s‚lectionner
+     une couleur ou une option d'affichage.
+  3. Choisissez <OK> ou appuyez sur ENTREE pour enregistrer
+     les options s‚lectionn‚es.
+
+Les d‚finitions d'options sont enregistr‚es et restent
+actives jusqu'au lancement suivant de l'‚diteur MS-DOS.
+.context MSG_SearchPathEdit
+:nBoŒte de dialogue Chemin de l'aide
+L'‚diteur MS-DOS cherche le fichier d'aide EDIT.HLP dans
+les r‚pertoires sp‚cifi‚s dans cette boŒte de dialogue. Il
+n'est pas n‚cessaire de d‚finir le chemin de l'aide si vous
+l'avez d‚j… fait avec la variable d'environnement PATH de
+MS-DOS ou si EDIT.HLP se trouve dans le r‚pertoire en cours.
+ÚÄÄÄÄÄÄÄÄÄÄ Chemin de l'aide ÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                       ³
+³ Emplacement du fichier EDIT.HLP :     ³
+³                                       ³  Tapez l'unit‚ et
+³     ±±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄ le r‚pertoire
+³                                       ³  o— se trouve
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  EDIT.HLP.
+
+Suggestion : Si l'‚diteur MS-DOS ne trouve pas EDIT.HLP,
+             v‚rifiez que vous avez sp‚cifi‚ le nom de
+             r‚pertoire correct.
+.comment ------------------------------------------------
+.comment   End of Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context m.f
+.context m.e
+.context m.s
+.context m.o
+.context m.h
+:nBarre des menus de l'‚diteur MS-DOS
+Utilisation des menus et commandes de l'‚diteur MS-DOS :
+
+  ş Pour activer les menus et commandes, appuyez sur la
+    lettre en surbrillance ou cliquez sur le menu ou la
+    commande.
+  ş Pour vous d‚placer entre les menus et les commandes,
+    utilisez les touches de direction ou la souris.
+.comment ------------------------------------------------
+.comment   UI Help for Menu Commands and Dialog Support
+.comment ------------------------------------------------
+.context MSG_HelpFileNew
+:nCommande Nouveau
+Utilis‚e pour cr‚er un nouveau document. Une boŒte de
+dialogue apparaŒt si un document est d‚j… ouvert.
+Vous pouvez alors :
+  ş Choisir <Oui> pour enregistrer le document.
+  ş Choisir <Non> pour fermer le document sans
+    l'enregistrer.
+  ş Choisir <Annuler> pour annuler la commande Nouveau
+    document et retourner au document.
+
+Suggestion : Utilisez la commande Ouvrir pour charger un
+             document existant.
+.context MSG_HelpFileOpen
+:nCommande Ouvrir
+Utilis‚e pour ouvrir un document de maniŠre … pouvoir le
+modifier ou l'imprimer.
+
+Suggestion : Utilisez la commande Nouveau pour cr‚er
+             un nouveau document.
+.context MSG_HelpFileSave
+:nCommande Enregistrer
+Utilis‚e pour enregistrer un document.
+
+L'‚diteur MS-DOS vous demande un nom si vous n'avez jamais
+enregistr‚ le document. S'il existe d‚j… un document qui
+porte le nom sp‚cifi‚, il est remplac‚ par le nouveau
+document.
+.context MSG_HelpFileSaveAs
+:nCommande Enregistrer sous
+Utilis‚e pour enregistrer un document dans un fichier. Pour
+conserver la version pr‚c‚dente du document, changez le nom
+dans la zone de texte Nom du fichier.
+.context MSG_HelpFilePrint
+:nCommande Imprimer
+Utilis‚e pour imprimer un document entier ou une partie
+de ce dernier.
+
+Vous pouvez imprimer :
+  ş Le texte s‚lectionn‚.
+  ş Le contenu de la fenˆtre d'aide.
+  ş Le document entier.
+
+L'‚diteur MS-DOS envoie les donn‚es vers l'imprimante
+connect‚e au port LPT1 de l'ordinateur.
+
+Suggestion : S‚lectionnez du texte dans le document ou 
+             dans la fenˆtre d'aide avant de choisir la
+             commande Imprimer. Placez le curseur au d‚but
+             du texte … imprimer, appuyez sur MAJ+touches
+             de DIRECTION jusqu'… ce que tout le texte
+             soit mis en surbrillance, puis choisissez
+             la commande Imprimer.
+.context MSG_HelpFileExit
+:nCommande Quitter
+Utilis‚e pour quitter l'environnement de l'‚diteur MS-DOS.
+
+Si le document a ‚t‚ modifi‚ depuis son dernier enregis-
+trement, l'‚diteur MS-DOS affiche une boŒte de dialogue.
+  ş Choisissez <Oui> pour enregistrer le document,
+    y compris les modifications.
+  ş Choisissez <Non> pour ignorer les modifications.
+  ş Choisissez <Annuler> pour annuler la commande Quitter
+    et retourner au document.
+.context MSG_HelpEditCut
+:nCommande Couper
+Utilisez Couper (ou appuyez sur MAJ+SUPPR) pour supprimer
+le texte s‚lectionn‚ et le placer dans le tampon, qui
+est une zone d'enregistrement temporaire.
+
+Vous pouvez ensuite utiliser la commande Coller (MAJ+INSER)
+pour ins‚rer le contenu du tampon … un nouvel
+endroit. Vous pouvez ‚galement ouvrir ou cr‚er un document
+pour y ins‚rer le texte.
+
+Le texte reste dans le tampon et peut ˆtre coll‚ …
+nouveau. Chaque fois que vous copiez ou coupez un bloc de
+texte, ce bloc remplace le contenu pr‚c‚dent du tampon.
+
+Suggestion : Pour s‚lectionner du texte, placez le curseur
+             au d‚but du bloc et appuyez sur MAJ+touches
+             de DIRECTION. Pour supprimer le texte
+             s‚lectionn‚ sans le copier dans le tampon,
+             appuyez sur SUPPR.
+.context MSG_HelpEditCopy
+:nCommande Copier
+Utilisez Copier (ou appuyez sur CTRL+INSER) pour copier le
+texte s‚lectionn‚ dans le tampon. L'original reste
+inchang‚.
+
+Vous pouvez ensuite utiliser Coller (MAJ+INSER) pour
+ins‚rer le texte … un nouvel endroit. Vous pouvez
+‚galement ouvrir ou cr‚er un document pour y
+ins‚rer le texte.
+
+Suggestion : Pour s‚lectionner du texte, placez le curseur
+             au d‚but du bloc et appuyez sur MAJ+touches de
+             DIRECTION.
+
+Le texte reste dans le tampon et peut ˆtre coll‚ …
+nouveau. Chaque fois que vous copiez ou coupez un bloc de
+texte, ce bloc remplace le contenu pr‚c‚dent du tampon.
+.context MSG_HelpEditPaste
+:nCommande Coller
+Utilisez Coller (ou appuyez sur MAJ+INSER) pour ins‚rer un
+bloc de texte (le contenu du tampon) … un endroit
+quelconque d'un document.
+
+Pour ins‚rer du texte, placez le curseur … l'endroit d‚sir‚
+et choisissez Coller.
+
+Pour remplacer un bloc de texte par un autre, s‚lectionnez
+le texte … remplacer et choisissez Coller.
+
+Suggestion : Pour placer du texte dans le tampon,
+             utilisez la commande Couper ou Copier. AprŠs
+             l'insertion du texte avec Coller, le tampon
+             contient toujours le texte, et ce dernier
+             peut ˆtre … nouveau coll‚.
+.context MSG_HelpEditClear
+:nCommande Effacer
+Utilisez Effacer (ou appuyez sur SUPPR) pour supprimer
+le texte s‚lectionn‚ sans le copier dans le tampon.
+Le contenu du tampon reste inchang‚.
+.context MSG_HelpSearchFind
+:nCommande Chercher
+Utilis‚e pour rechercher une chaŒne de texte. Vous pouvez
+demander que la commande diff‚rencie les majuscules et les
+minuscules ou qu'elle ne signale que les correspondances
+de mots entiers.
+
+Pour remplacer une chaŒne, utilisez la commande Remplacer.
+.context MSG_HelpSearchChange
+:nCommande Remplacer
+Utilis‚e pour remplacer une chaŒne de texte par une autre.
+
+Vous pouvez :
+  ş Diff‚rencier les majuscules et les minuscules ou
+    restreindre la recherche aux correspondances de mots
+    entiers.
+  ş Confirmer chaque remplacement avant qu'il soit
+    effectu‚.
+  ş Effectuer tous les remplacements sans les confirmer.
+.context MSG_HelpSearchNext
+:nCommande Poursuivre la recherche
+Utilisez Poursuivre la recherche (ou appuyez sur F3) pour
+r‚p‚ter la recherche effectu‚e par la commande Chercher ou
+Remplacer la plus r‚cente.
+
+Si aucune commande Chercher ou Remplacer n'a ‚t‚ ex‚cut‚e
+depuis le lancement de l'‚diteur MS-DOS, la commande
+Poursuivre la recherche effectue la recherche suivante :
+  ş Occurrence suivante du mot sur lequel se trouve
+    le curseur.
+  ş Occurrence suivante du mot imm‚diatement … gauche
+    du curseur, si le curseur ne se trouve pas sur un mot.
+.context MSG_HelpOptionsDisplay
+:nCommande Affichage
+Utilis‚ pour contr“ler :
+  ş Les couleurs … l'affichage.
+  ş Les barres de d‚filement dans les fenˆtres.
+  ş Le nombre d'espaces de d‚placement du curseur … chaque
+    utilisation de la touche TAB.
+
+Les options d'affichage sont enregistr‚es et restent
+actives lors du lancement suivant de l'‚diteur MS-DOS.
+.context MSG_HelpOptionsPaths
+:nCommande Chemin de l'aide
+Utilis‚e pour changer les r‚pertoires dans lesquels
+l'‚diteur MS-DOS recherche le fichier d'aide, EDIT.HLP.
+.context MSG_HelpHelpStarted
+:nCommande Mise en route
+Utilis‚e pour obtenir des informations sur :
+  ş L'utilisation des menus, commandes et boŒtes de
+    dialogue de l'‚diteur MS-DOS.
+  ş L'obtention d'aide sur l'utilisation de l'‚diteur
+    MS-DOS.
+  ş L'utilisation d'options lors du lancement de l'‚diteur
+    MS-DOS.
+  ş Le copyright et les marques de l'‚diteur MS-DOS.
+.context MSG_HelpHelpKeyboard
+:nCommande Clavier
+Utilis‚e pour obtenir des informations sur :
+  ş Les s‚quences de touches utilis‚es pour effectuer
+    certaines tƒches dans l'‚diteur MS-DOS.
+  ş Les s‚quences de touches WordStar qui peuvent ˆtre
+    utilis‚es dans l'‚diteur MS-DOS.
+.context MSG_HelpHelpAbout
+:nCommande A propos de
+Utilis‚e pour afficher le num‚ro de version et le copyright
+de l'‚diteur MS-DOS.
+.context helpSurvivalId
+:nGuide ‚l‚mentaire
+
+ \bUtilisation de l'‚diteur MS-DOS :\p
+
+   ş Pour activer la barre de menus de l'‚diteur MS-DOS,
+     appuyez sur ALT.
+   ş Pour activer les menus et commandes, appuyez sur la
+     lettre en surbrillance.
+   ş Pour vous d‚placer parmi les menus et commandes,
+     utilisez les touches de DIRECTION.
+   ş Pour obtenir de l'aide sur un menu, une commande ou
+     une boŒte de dialogue s‚lectionn‚, appuyez sur F1.
+   ş Pour quitter l'aide, appuyez sur ECHAP.
+
+ \bFeuilletage du systŠme d'aide de l'‚diteur MS-DOS :\p
+
+   ş Pour s‚lectionner l'un des sujets suivants, appuyez
+     sur la touche TAB ou sur la premiŠre lettre du sujet.
+     Appuyez ensuite sur la touche ENTREE pour afficher des
+     informations sur :
+
+     \i\p\aMise en route\vhelpStartedId\v\i\p  Chargement et utilisation de l'‚diteur MS-DOS
+                      et de l'aide.
+     \i\p\aClavier\vhelpKeyboardId\v\i\p        Modification de texte et parcours de l'aide
+                      de l'‚diteur MS-DOS
+
+Suggestion : Ces sujets sont ‚galement disponibles dans le
+             menu d'aide.
+.context helpEditorHelp
+.context helpStartedId
+:nMise en route
+  \bMise en route\p  \i\p\aClavier\vhelpKeyboardId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Cette section indique comment lancer et utiliser l'‚diteur
+MS-DOS. Choisissez l'un des sujets suivants pour obtenir des
+informations sur :
+
+   \i\p\aUtilisation de l'aide de l'‚diteur MS-DOS\vhelpOnHelpId\v\i\p
+   \i\p\aUtilisation des menus et commandes\v@sg.men\v\i\p
+   \i\p\aUtilisation d'une boŒte de dialogue\v@sg.dia\v\i\p
+   \i\p\aOptions de l'‚diteur MS-DOS\v@sg.opt\v\i\p
+   \i\p\aCopyright et marques\v@cccp\v\i\p
+.context @sg.men
+:nUtilisation des menus et commandes
+  \i\p\aMise en route\vhelpStartedId\v\i\p  \i\p\aClavier\vhelpKeyboardId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Utilisez la barre de menus en haut de l'‚cran pour s‚lectionner les
+menus et commandes.
+
+ Action               avec une souris              avec un clavier...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Afficher un menu.    Placez le pointeur de la     Appuyez sur ALT pour
+                      souris sur le nom du menu,   mettre en surbrillance
+                      puis pressez et relƒchez     les lettres des menus, 
+                      (cliquez) le bouton.         puis appuyez sur la lettre
+                                                   du menu … afficher.
+
+ Choisir une          Cliquez sur le nom de la     Appuyez sur la touche qui
+ commande.            commande.                    correspond … la lettre 
+                                                   en surbrillance dans
+                                                   le nom de la commande.
+
+ Annuler une          Cliquez en dehors du menu.   Appuyez sur ECHAP.
+ commande.
+
+Suggestion : Consultez l'aide sur la tƒche en cours dans la barre
+             d'‚tat affich‚e en bas de l'‚cran. Choisissez un des
+             articles entre crochets en cliquant sur cet article.
+.context @sg.dia
+:nUtilisation d'une boŒte de dialogue
+  \i\p\aMise en route\vhelpStartedId\v\i\p  \i\p\aClavier\vhelpKeyboardId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+L'‚diteur MS-DOS affiche des boŒtes de dialogue lorsque vous
+choisissez des commandes qui possŠdent des options.
+
+ Action               avec une souris              avec le clavier...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ S‚lectionner une     Placez le pointeur de la     Appuyez sur TAB jusqu'…
+ zone de texte.       souris dans la zone de       ce que le curseur se
+                      texte, puis pressez et       trouve dans la zone de
+                      relƒchez (cliquez) sur le    texte.
+                      bouton de la souris.
+
+ Choisir un article   Cliquez deux fois sur        Mettez l'article en sur-
+ dans une zone de     l'article.                   brillance … l'aide des
+ liste.                                            touches de DIRECTION,
+                                                   puis appuyez sur ENTREE.
+
+ Choisir une option.  Cliquez sur l'option.        Allez … l'option avec les
+                                                   touches de DIRECTION.
+
+ Cocher ou effacer    Cliquez sur la case de       Utilisez TAB pour placer 
+ une case de          pointage.                    le curseur sur la case de
+ pointage.                                         pointage et appuyez sur
+                                                   ESPACE.
+
+ Choisir un bouton    Cliquez sur le bouton de     Utilisez TAB pour placer 
+ de commande.         commande.                    le curseur sur le bouton
+                                                   de commande et appuyez
+                                                   sur ENTREE.
+.context helpOnHelpId
+:nUtilisation de l'aide de l'‚diteur MS-DOS
+  \i\p\aMise en route\vhelpStartedId\v\i\p  \i\p\aClavier\vhelpKeyboardId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Utilisation de l'aide de l'‚diteur MS-DOS :
+
+   ş Pour obtenir de l'aide pour un menu, une commande ou une boŒte de
+     dialogue de l'‚diteur MS-DOS, placez le curseur sur l'article ou
+     sur le bouton <Aide> et appuyez sur F1.
+
+   ş Pour afficher les sujets d'aide de l'‚diteur MS-DOS, appuyez sur ALT+H,
+     puis appuyez sur la lettre en surbrillance appropri‚e pour choisir
+     la commande Mise en route ou Clavier.
+
+   ş Pour placer le curseur dans la fenˆtre d'aide, appuyez sur F6.
+
+   ş Pour faire d‚filer les informations, appuyez sur PG.SUIV ou PG.PREC.
+
+   ş Pour placer le curseur sur un sujet apparent‚, appuyez sur TAB ou sur
+     la premiŠre lettre du sujet d'aide. Les sujets apparent‚s sont d‚limit‚s
+     par les symboles suivants : \i \p.
+
+   ş Pour afficher un sujet apparent‚, placez le curseur n'importe o— sur le
+     nom du sujet et appuyez sur F1 ou cliquez le bouton droit de la souris.
+
+   ş Pour fermer la fenˆtre d'aide, appuyez sur ECHAP.
+
+L'‚diteur MS-DOS enregistre les 20 derniers sujets d'aide consult‚s.
+Pour y revenir, appuyez sur ALT+F1 ou cliquez plusieurs fois sur le
+bouton <Pr‚c‚dent>.
+.context EDIT.COM
+.context EDIT
+.context @sg.opt
+:nOptions de l'‚diteur MS-DOS
+  \i\p\aMise en route\vhelpStartedId\v\i\p  \i\p\aClavier\vhelpKeyboardId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+La commande EDIT ex‚cute le fichier QBASIC.EXE et le fichier
+d'environnement de l'‚diteur MS-DOS, EDIT.COM. Vous pouvez utiliser
+les options suivantes sur la ligne de commande EDIT pour charger un
+fichier ou modifier les caract‚ristiques de l'affichage.
+
+ \bEDIT [fichier] [B] [/G] [/H] [/NOHI]\p
+
+ Option      Description
+ ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ fichier     Nomme le fichier … charger lors du lancement de l'‚diteur MS-DOS.
+
+ /B          Permet d'utiliser un moniteur composite (monochrome) avec une
+             carte graphique couleur. L'option /B affiche l'‚diteur MS-DOS
+             en mode monochrome si vous avez un moniteur couleur.
+
+ /G          Indique … l'‚diteur MS-DOS de mettre … jour un ‚cran CGA aussi
+             rapidement que possible (ne fonctionne que sur les ordinateurs
+             ‚quip‚s de moniteurs CGA). Si de la neige (scintillement)
+             apparaŒt lorsque l'‚diteur MS-DOS met l'‚cran … jour, votre
+             ‚quipement ne permet pas l'utilisation de cette option.
+             Si vous pr‚f‚rez un ‚cran propre relancez l'‚diteur MS-DOS
+             sans l'option /G.
+
+ /H          Affiche le plus grand nombre possible de lignes en fonction
+             de l'‚quipement.
+
+ /NOHI       Permet d'utiliser un moniteur qui ne gŠre pas l'affichage
+             en haute intensit‚. N'utilisez pas cette option avec les
+             ordinateurs portables Compaq.
+.context @cccp
+.context .cccp
+:nCopyright et marques
+  \i\p\aMise en route\vhelpStartedId\v\i\p  \i\p\aClavier\vhelpKeyboardId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+Les informations pr‚sent‚es dans ce document peuvent ˆtre modifi‚es
+sans pr‚avis et ne repr‚sentent pas un engagement de la part de
+Microsoft Corporation. Le logiciel et/ou les fichiers d‚crits dans ce
+document sont fournis dans le cadre d'un accord de licence ou de non
+divulgation. Le logiciel et/ou les fichiers ne peuvent ˆtre utilis‚s
+ou copi‚s que conform‚ment aux termes de cet accord. L'acheteur peut
+effectuer une copie du logiciel comme sauvegarde. Aucune partie de ce
+systŠme d'aide en ligne ne peut ˆtre reproduite ou transmise sous toute
+forme ou part tout moyen que ce soit, ‚lectronique ou m‚canique, y
+compris par photocopie, enregistrement ou systŠme de stockage et
+rappel d'information, pour toute raison que ce soit, sans
+l'autorisation ‚crite de Microsoft Corporation.
+
+  (C) Copyright Microsoft Corporation, 1987-1991.
+      Tous droits r‚serv‚s.
+
+  Microsoft, MS et MS-DOS sont des marques d‚pos‚es.
+
+  La documentation de Microsoft utilise le terme ® DOS ¯ pour faire r‚f‚rence
+  aux systŠmes d'exploitation MS-DOS et IBM Personal Computer DOS. Le nom
+  sp‚cifique d'un systŠme d'exploitation est utilis‚ lorsqu'il est n‚cessaire
+  d'identifier des caract‚ristiques uniques … ce systŠme.
+
+  Compaq est une marque d‚pos‚e de Compaq Computer Corporation.
+
+  IBM est une marque d‚pos‚e de International Business Machines
+  Corporation.
+
+  WordStar est une marque d‚pos‚e de MicroPro International Corporation.
+.context helpKeyboardId
+:nClavier
+  \i\p\aMise en route\vhelpStartedId\v\i\p  \bClavier\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Cette section est con‡ue pour vous aider … vous d‚placer dans les
+documents et … modifier du texte avec l'‚diteur MS-DOS.
+
+Choisissez un sujet ci-dessous pour obtenir des informations sur :
+
+     \i\p\aTouches de raccourci\v@.sk\v\i\p    \i\p\aTouches de s‚lection de texte\v@sel.keys\v\i\p
+     \i\p\aTouches d'aide\v@.hk\v\i\p          \i\p\aTouches d'insertion et de copie\v@i.keys\v\i\p
+     \i\p\aTouches de d‚placement\v@m.keys\v\i\p  \i\p\aTouches de suppression\v@d.keys\v\i\p
+     \i\p\aTouches de d‚filement\v@s.keys\v\i\p   \i\p\aTouches de recherche et remplacement\v@fc.keys\v\i\p
+
+L'‚diteur MS-DOS reconnaŒt certaines s‚quences de touches connues des
+utilisateurs d'autres logiciels de Microsoft (tels que Microsoft Word)
+ainsi que certaines s‚quences de WordStar. Les s‚quences de touches de
+WordStar utilisables dans l'‚diteur MS-DOS sont list‚es dans la colonne
+de droite des tableaux … trois colonnes.
+
+.context @.sk
+:nTouches de raccourci
+  \i\p\aMise en route\vhelpStartedId\v\i\p  \i\p\aClavier\vhelpKeyboardId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  ÚÄInsertionÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÚÄCopieÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Insertion/remplacement     INSER ³ ³ Vers tampon           CTRL+INSER ³
+  ³ Ligne pr‚c‚dente  ORIGINE,CTRL+N ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ Ligne suivante        FIN+ENTREE ³ ÚÄRechercheÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Du tampon              MAJ+INSER ³ ³ Recherche de texte      CTRL+Q,F ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ R‚p‚tition de la recherche    F3 ³
+  ÚÄS‚lectionÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ CaractŠres/lignes    MAJ+FlŠches ³ ÚÄSuppressionÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Mots            MAJ+CTRL+FlŠches ³ ³ Ligne en cours            CTRL+Y ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ Jusqu'… fin de ligne    CTRL+Q,Y ³
+  ÚÄDemande d'aideÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³ Texte s‚lectionn‚      MAJ+SUPPR ³
+  ³ Pour menus et commandes       F1 ³ ³ Effacement de texte        SUPPR ³
+  ³ Mise en route             MAJ+F1 ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+.context @m.keys
+:nTouches de d‚placement
+  \i\p\aMise en route\vhelpStartedId\v\i\p  \i\p\aClavier\vhelpKeyboardId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ CaractŠre vers la gauche                   GAUCHE              CTRL+S
+ CaractŠre vers la droite                   DROITE              CTRL+D
+ Mot vers la gauche                         CTRL+GAUCHE         CTRL+A
+ Mot vers la droite                         CTRL+DROITE         CTRL+F
+ Ligne vers le haut                         HAUT                CTRL+E
+ Ligne vers le bas                          BAS                 CTRL+X
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ 1er niveau de retrait de la ligne en cours ORIGINE
+ D‚but de la ligne en cours                 CTRL+Q,S
+ D‚but de la ligne suivante                 CTRL+ENTREE         CTRL+J
+ Fin de la ligne                            FIN                 CTRL+Q,D
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Haut de la fenˆtre                                             CTRL+Q,E
+ Bas de la fenˆtre                                              CTRL+Q,X
+ Fenˆtre suivante                              F6
+ Augmenter la taille de la fenˆtre          ALT+PLUS
+ Diminuer la taille de la fenˆtre           ALT+MOINS
+.context @s.keys
+:nTouches de d‚filement
+  \i\p\aMise en route\vhelpStartedId\v\i\p  \i\p\aClavier\vhelpKeyboardId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Ligne vers le haut              CTRL+HAUT          CTRL+W
+ Ligne vers le bas               CTRL+BAS           CTRL+Z
+ Page vers le haut               PG.PREC            CTRL+R
+ Page vers le bas                PG.SUIV            CTRL+C
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Fenˆtre vers la gauche          CTRL+PG.PREC
+ Fenˆtre vers la droite          CTRL+PG.SUIV
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ D‚finir un signet (4 maximum)   CTRL+K,0-3
+ Aller … un signet               CTRL+Q,0-3
+.context @sel.keys
+:nTouches de s‚lection
+  \i\p\aMise en route\vhelpStartedId\v\i\p  \i\p\aClavier\vhelpKeyboardId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ CaractŠre vers la gauche      MAJ+GAUCHE
+ CaractŠre vers la droite      MAJ+DROITE
+ Mot vers la gauche            MAJ+CTRL+GAUCHE
+ Mot vers la droite            MAJ+CTRL+DROITE
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Ligne en cours                MAJ+BAS
+ Ligne pr‚c‚dente              MAJ+HAUT
+ Ecran vers le haut            MAJ+PG.PREC
+ Ecran vers le bas             MAJ+PG.SUIV
+ Au d‚but du fichier           MAJ+CTRL+ORIGINE
+ A la fin du fichier           MAJ+CTRL+FIN
+.context @i.keys
+:nTouches d'insertion et de copie
+  \i\p\aMise en route\vhelpStartedId\v\i\p  \i\p\aClavier\vhelpKeyboardId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Bascule entre modes insertion et remplacement  INSER          CTRL+V
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Copie du texte s‚lectionn‚ dans le tampon      CTRL+INSER
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Suppression du texte s‚lectionn‚
+ et copie dans le tampon                        MAJ+SUPPR
+ Suppression de la ligne en cours
+ et copie dans le tampon                        CTRL+Y
+ Suppression jusqu'… la fin de
+ la ligne et copie dans le tampon                              CTRL+Q,Y
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Collage du contenu du tampon                   MAJ+INSER
+ Insertion d'une ligne blanche en dessous
+ de la position du curseur                      FIN+ENTREE
+ Insertion d'une ligne blanche au dessus
+ de la position du curseur                                     ORIGINE,CTRL+N
+ Insertion d'un caractŠre sp‚cial               CTRL+P,CTRL+touche
+.context @d.keys
+:nTouches de suppression
+  \i\p\aMise en route\vhelpStartedId\v\i\p  \i\p\aClavier\vhelpKeyboardId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Suppression d'un caractŠre … gauche du curseur  RET.ARR      CTRL+H
+ Suppression d'un caractŠre … la position du
+ curseur                                         SUPPR        CTRL+G
+ Suppression du reste du mot … la position
+ du curseur                                                   CTRL+T
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Suppression du texte s‚lectionn‚                SUPPR        CTRL+G
+ Suppression des espaces au d‚but des lignes
+ s‚lectionn‚es                                   MAJ+TAB
+.context @fc.keys
+:nTouches de recherche et de remplacement
+  \i\p\aMise en route\vhelpStartedId\v\i\p  \i\p\aClavier\vhelpKeyboardId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ R‚p‚tition de la recherche avec le mˆme texte   CTRL+L ou F3
+ Recherche de texte                              CTRL+Q,F
+ Remplacement de texte                           CTRL+Q,A
+.context @.hk
+:nTouches d'aide
+  \i\p\aMise en route\vhelpStartedId\v\i\p  \i\p\aClavier\vhelpKeyboardId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Affichage d'aide sur l'environnement de         F1 (ou cliquez sur le
+ l'‚diteur MS-DOS                                bouton droit de la souris)
+ Quitter l'aide                                  ECHAP
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Affichage des informations de Mise en route     MAJ+F1
+ Affichage du menu d'aide                        ALT+H
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ D‚placement du curseur au sujet suivant         TAB
+ D‚placement du curseur au sujet pr‚c‚dent       MAJ+TAB
+ D‚placement du curseur au sujet suivant
+ commen‡ant par le caractŠre sp‚cifi‚            caractŠre
+ D‚placement du curseur au sujet pr‚c‚dent
+ commen‡ant par le caractŠre sp‚cifi‚            MAJ+caractŠre
+ Affichage des sujets d'aide d‚j… consult‚s      ALT+F1 (ou cliquez deux fois
+ (20 niveaux maximum)                            sur le bouton <Pr‚c‚dent>)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Affichage du sujet suivant dans le fichier      CTRL+F1
+ d'aide
+ Affichage du sujet pr‚c‚dent dans le fichier    MAJ+CTRL+F1
+ d'aide
+.context QB_ER_OM
+.context QB_ER_OS
+.context MSG_OutNearMem
+:nM‚moire insuffisante
+La m‚moire disponible est insuffisante. Pour corriger cette situation :
+  ş Quittez et r‚duisez le nombre de m‚moires tampon DOS (BUFFERS=)
+    dans le fichier CONFIG.SYS. Puis r‚amorcez l'ordinateur.
+  ş Quittez et r‚duisez le nombre de programmes r‚sidents.
+  ş Quittez et r‚duisez le nombre de gestionnaires de p‚riph‚rique charg‚s.
+    Puis r‚amorcez l'ordinateur.
+.context QB_ER_DF
+:nErreur p‚riph‚rique
+L'‚diteur MS-DOS a d‚tect‚ une erreur d'imprimante.
+V‚rifiez que :
+  ş L'imprimante est connect‚e au port LPT1.
+  ş Le t‚moin de liaison en ligne de l'imprimante est allum‚.
+  ş L'imprimante est sous tension.
+  ş Le cƒble de l'imprimante est correctement connect‚ …
+    l'imprimante et … l'ordinateur.
+.context QB_ER_DTO
+:nD‚lai d'attente du p‚riph‚rique ‚coul‚
+L'‚diteur MS-DOS n'a pas re‡u d'informations en provenance d'un
+p‚riph‚rique (tel que l'imprimante) dans le d‚lai imparti. Si vous
+essayez d'imprimer un document, v‚rifiez que l'imprimante est
+connect‚e au port LPT1.
+.context QB_ER_OP
+:nAttente papier
+L'imprimante ne contient pas de papier ou n'est pas sous tension.
+.context QB_ER_IER
+:nErreur interne
+Une erreur interne est apparue dans l'‚diteur MS-DOS. Veuillez
+notifier Microsoft.
+.context QB_ER_FNF
+:nFichier non trouv‚
+Vous avez sp‚cifi‚ un fichier inexistant dans la boŒte de dialogue de
+la commande Ouvrir. V‚rifiez que le nom du fichier est correctement
+orthographi‚ et que vous avez sp‚cifi‚ l'unit‚ et le r‚pertoire
+appropri‚s.
+.context QB_ER_IOE
+:nErreur E/S sur p‚riph‚rique
+Vous avez utilis‚ la commande Imprimer du menu Fichier et une erreur
+d'impression a eu lieu. V‚rifiez l'imprimante.
+.context QB_ER_DFL
+:nDisque satur‚
+Il n'y a pas suffisamment de place sur l'unit‚ sp‚cifi‚e pour
+enregistrer le fichier sp‚cifi‚. Changez de disque ou sp‚cifiez une
+autre unit‚ dans la boŒte de liste R‚p./Unit‚s.
+.context QB_ER_IFN
+.context QB_ER_BFN
+:nNom de fichier incorrect
+Le nom de fichier sp‚cifi‚ contient trop de caractŠres ou des
+caractŠres qui ne sont pas autoris‚s dans les noms de fichier.
+.context QB_ER_DNA
+:nP‚riph‚rique non disponible
+Le p‚riph‚rique auquel vous essayez d'acc‚der n'est pas en ligne
+ou n'existe pas. V‚rifiez que le p‚riph‚rique est en ligne et est
+correctement connect‚ … l'ordinateur.
+.context QB_ER_PRM
+:nAccŠs refus‚
+Vous avez essay‚ d'‚crire sur un disque prot‚g‚ contre l'‚criture
+ou dans un fichier lecture seule.
+
+Pour ‚viter ce problŠme avec un fichier lecture seule, utilisez un
+autre nom de fichier. Supprimez l'onglet de protection ou utilisez
+une autre disquette si la disquette est prot‚g‚e.
+.context QB_ER_DNR
+:nDisque non prˆt
+La porte du lecteur de disquette est ouverte ou il n'y a pas de
+disquette dans le lecteur.
+.context QB_ER_DME
+:nDisque d‚fectueux
+Un d‚faut physique a ‚t‚ d‚tect‚ sur le disque ou l'‚diteur MS-DOS
+ne reconnaŒt pas le format du disque utilis‚. Changez de disque ou
+quittez et reformatez le disque en cours.
+.context QB_ER_TMF
+:nTrop de fichiers
+Il y a trop de fichiers dans le r‚pertoire racine. Pour r‚soudre ce
+problŠme, quittez et cr‚er un sous-r‚pertoire puis placez-y les
+fichiers des documents.
+.context QB_ER_PNF
+:nChemin d'accŠs introuvable
+L'‚diteur MS-DOS n'a pas pu trouver le chemin sp‚cifi‚ dans la boŒte
+de dialogue de la commande Ouvrir ou Enregistrer sous. V‚rifiez que
+vous avez correctement tap‚ le nom du chemin.
+.context MSG_DocTooLarge
+:nDocument trop long
+L'‚diteur MS-DOS ne peut pas charger ou copier une partie de document
+de plus de 32 700 lignes.
+
+Utilisez un autre ‚diteur pour d‚couper le document en plusieurs
+fichiers plus petits. Si cette erreur apparaŒt lors de l'utilisation
+de la commande Copier, essayez de copier et de coller des sections de
+texte plus petites.
+.context MSG_NotBlock
+:nOp‚ration n‚cessitant disque
+Vous essayez de charger un fichier … partir d'un p‚riph‚rique qui
+n'est pas un disque (tel qu'une imprimante ou un clavier) ou d'y
+enregistrer un fichier.
+.context MSG_NoSearchString
+:nVous devez sp‚cifier une chaŒne … rechercher
+La zone de texte Texte … chercher ‚tait vide lorsque vous avez ex‚cut‚
+une commande Chercher ou Remplacer. Retournez … cette zone et tapez
+une chaŒne de texte avant de choisir <OK>.
+.context MSG_SwitchDisks
+:nIns‚rez la disquette dans l'unit‚
+Vous avez fait r‚f‚rence au lecteur de disquette avec la lettre A:
+alors qu'il se nomme B: ou inversement.
+
+V‚rifiez que le fichier que vous voulez manipuler avec cette commande
+se trouve sur la disquette pr‚sente dans le lecteur, puis choisissez
+<OK>. l'‚diteur MS-DOS affiche le nom de la nouvelle unit‚ pour vous.
+.context MSG_MatchNotFound
+:nConcordance non trouv‚e
+L'‚diteur MS-DOS n'a pas trouv‚ la chaŒne sp‚cifi‚e.
+
+Le curseur reste … la position qu'il occupait au d‚but de la
+recherche.
+.context MSG_ChangeComplete
+:nRemplacement termin‚
+L'op‚ration de recherche et remplacement est termin‚e. Le 
+curseur retourne … la position qu'il occupait au d‚but de
+l'op‚ration.
+.context MSG_CantSetTabs
+:nImpossible de changer les tabulations
+Lorsqu'un fichier ouvert contient une tabulation pr‚alable-
+ment d‚finie, cette derniŠre ne peut pas ˆtre modifi‚e avec
+l'option Tabulations de la commande Afficher. Enregistrez le
+fichier, puis utilisez la commande Nouveau document pour
+effacer la fenˆtre de l'‚diteur MS-DOS. Utilisez la commande
+Afficher pour d‚finir la nouvelle tabulation et ouvrez … 
+nouveau le fichier.
+.context MSG_NotSavedAll
+.context MSG_NotSaved
+:nEnregistrer maintenant ?
+Le document en cours n'a jamais ‚t‚ enregistr‚ ou ne l'a pas
+‚t‚ depuis la derniŠre modification. Vous pouvez :
+  ş Choisir <Oui> pour enregistrer le document, y compris
+    les modifications. Si le document ne possŠde pas de nom,
+    le systŠme vous demande de sp‚cifier un nom de fichier.
+  ş Choisir <Non> pour ignorer les modifications. S'il 
+    s'agit d'un nouveau document qui n'a pas ‚t‚ enregistr‚,
+    <Non> supprime le document entier.
+  ş Choisir <Annuler> pour annuler la commande et retourner
+    au document.
+.context QB_ER_PAE
+:nErreur de chemin d'accŠs / d'accŠs au fichier
+V‚rifiez que la sp‚cification de fichier que vous avez tap‚e
+dans la zone de texte est correctement format‚e. Tout nom
+de fichier peut contenir une lettre d'unit‚ et un chemin
+complet ou partiel.
+
+Cette erreur peut ‚galement apparaŒtre lorsque vous essayez
+d'enregistrer un fichier qui doit remplacer un fichier
+lecture seule existant.
+.context MSG_MustSpecifyName
+:nLe nom doit ˆtre sp‚cifi‚
+Vous avez choisi <OK> dans une boŒte de dialogue alors que
+la zone de texte est vide. Effacez cette boŒte de dialogue
+d'aide et tapez une sp‚cification de fichier ou une chaŒne
+dans la zone de texte.
+.context MSG_Overwrite
+.context h.pg$
+:nLe fichier existe d‚j…. R‚‚crire ?
+  ş Choisissez <Oui> uniquement si vous ˆtes s–r que le
+    remplacement du document sur le disque par celui pr‚sent
+    en m‚moire ne d‚truira pas d'informations importantes.
+  ş Choisissez <Non> pour afficher … nouveau la boŒte de
+    dialogue et taper un nom de fichier unique pour
+    l'enregistrement du document en cours.
+  ş Choisissez <Annuler> pour annuler la commande 
+    Enregistrer sous ou Quitter et retourner au document.
+

@@ -1,0 +1,8 @@
+SUBST.OBJ+
+_MSGRET.OBJ+
+_PARSE.OBJ
+SUBST
+NUL
+..\..\lib\master.lib+
+..\..\lib\comsubs.lib+
+..\..\lib\mapper.lib;

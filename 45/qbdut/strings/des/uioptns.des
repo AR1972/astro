@@ -1,0 +1,58 @@
+DESCRIPTION 
+GLOBAL_INFO 
+	{
+	CHARACTER 
+	NO_OVERLAP 
+	CC_COMPILED 
+	}
+
+MODULE uioptns 
+	{
+        DIALOG dlgOptnsDisplay AT (6, 1, 64, 22)
+	CAB_NAME CABOptnsDisplay 
+	HELP_ID hidOptnsDisplay 
+	DIALOG_PROC FDlgOptnsDisplay 
+	TMC_INIT tmcNull 
+	SUB_DIALOG sabOptnsQbas = fOptnsAll + fOptnsQbas 
+	SUB_DIALOG sabOptnsQedit = fOptnsAll + fOptnsQedit 
+		{
+                GROUP_BOX "Kleuren" AT (1, 0, 60, 14)
+		IF fOptnsQbas 
+			RADIO_GROUP 
+				TMC tmcColor  ARG  oColor 
+				{
+				RADIO_BUTTON "~1. " AT (3, 3, 7, 1) ACTION 
+				RADIO_BUTTON "~2. " AT (3, 5, 7, 1) ACTION 
+				RADIO_BUTTON "~3. " AT (3, 7, 7, 1) ACTION 
+				}
+			GENERAL_PICTURE AT (10, 3, 19, 1) TMC tmcNormalText 
+				RENDER_PROC  DisplayNormalTextWndProc 
+			GENERAL_PICTURE AT (10, 5, 19, 1) TMC tmcCurStmt 
+				RENDER_PROC  DisplayCurStmtTextWndProc 
+			GENERAL_PICTURE AT (10, 7, 19, 1) TMC tmcBreakpoint 
+				RENDER_PROC  DisplayBreakpointTextWndProc 
+		ENDIF 
+		IF fOptnsQedit 
+			GENERAL_PICTURE AT (6, 6, 20, 2) TMC tmcQeditText 
+				RENDER_PROC  DisplayQeditTextWndProc 
+		ENDIF 
+		TEXT "~Voorgrond" AT (31, 1, 11, 1) 
+		LIST_BOX AT (30, 2, 13, 10) TMC tmcCoFore ACTION ARG oCoFore
+			LIST_BOX_PROC  WListProcColor 
+		TEXT "~Achtergrond" AT (47, 1, 12, 1)
+		LIST_BOX AT (46, 2, 13, 10) TMC tmcCoBack ACTION ARG oCoBack
+			LIST_BOX_PROC  WListProcColor 
+                GROUP_BOX "Weergave-opties" AT (1, 15, 60, 3)
+		CHECK_BOX "~Schuifbalken" AT (5, 16, 17, 1) ARG fScrollBars 
+		TEXT "~Tabs:" AT (38, 16, 6, 1) 
+		EDIT AT (44, 16, 4, 1) ARG szTabStops 
+
+		OK_BUTTON AT (9, 19, 6, 1) DISMISS_CAB DEFAULT 
+                CANCEL_BUTTON AT (23, 19, 13, 1) DISMISS
+		PUSH_BUTTON "~Help" AT (43, 19, 8, 1) TMC_IMPORT tmcHelp ACTION
+		}
+
+	}
+
+
+END_DESCRIPTION 

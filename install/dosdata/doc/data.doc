@@ -1,0 +1,105 @@
+
+	Copyright (c) 1991 - Microsoft Corp.
+	All rights reserved.
+	Microsoft Confidential
+
+
+This document gives the format for data files required for the
+retail upgrade installation program.  
+
+Basically, the data for each DOS-version has a one line header, giving
+the Oem name and version number, followed by a number of classes of
+information. Each class consists of the class name, in brackets, on a
+single line, followed by a number of lines of textual information
+that depend on the particulars of each class.  Not all classes need
+be used for any given DOS.  The classes are:
+
+[lie-to]	Lists existing programs that require addition
+		to the lie version table.
+
+[rename]	Lists on pairs of lines DOS programs that should
+		be installed with new names.
+
+[delete]	Lists programs which should be deleted from the
+		target directory.  This includes existing utilities
+		with different extensions from the current version.
+
+[device]	Lists device drivers which need to be installed
+		in the target drive and added to CONFIG.SYS.
+
+[drivparm]	Lists drivparm commands which need to be added to
+		CONFIG.SYS.
+
+[rem-device]	Lists non-functional device drivers which need to
+		be removed from CONFIG.SYS.  (E.g. disk cache 
+		programs that no longer work properly.)
+
+[no-install]	Lists any DOS 4.0 utilities that should not be
+		installed on the new system.
+
+[diff-file]    Lists the name of a non-standard file to be installed
+		instead of the default file.
+
+Blank lines are ignored.  Comments are introduced by a ";" and
+terminated by the end of the line.  If more than one Oem-version of
+DOS is being described in a file, the data for the various DOS's
+needs to be separated by a line containing the end-of-data mark,
+"###".  A typical example file might look like:
+
+-----------------TOP-OF-FILE-------------------
+COMPAQ 3.31
+
+[lie-to]
+display.sys
+driver.sys
+mode.com
+basic.com
+basica.com
+basica.exe
+clock.sys
+enhdisk.sys
+setclock.com
+
+[rename]
+display.sys
+disply40.sys
+
+driver.sys
+driver40.sys
+
+mode.com
+mode40.com
+
+ansi.sys
+ansi40.sys
+
+fdisk.com
+fdisk40.com
+
+keyb.com
+keyb40.com
+
+keyboard.sys
+keybrd40.sys
+###
+
+ZENITH 3.30
+
+[bios]
+zenith.bio
+
+[lie-to]
+fdisk.exe
+
+[rename]
+fdisk.exe
+fdisk40.exe
+--------------------END-OF-FILE-----------------
+
+Needless to say, it is important to maintain consistency throughout
+the numerous data files.  The exact same string should always be used
+when refering to the same OEM.  Similarly, the file names listed
+should all be given in lower case.
+
+
+

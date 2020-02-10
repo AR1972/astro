@@ -1,0 +1,72 @@
+SUMMARY forfile
+
+#include <tools.h>
+
+int forfile(pstrPattern, attr, pProc, args)
+char *pstrPattern;      /* search pattern */
+int attr;               /* file attributes to match */
+void (*pProc)();        /* proc called for each file found */
+unsigned args;          /* extra args for call back proc */
+
+Proc(pstrName, pFindBuf, pArgs)  /* routine called for each enumerated file */
+char *pstrName;
+struct findType *pFindBuf;
+unsigned *pArgs;
+
+DESCRIPTION
+
+For all files matching with a file name matching pstrPattern and having
+a subset of the attributes attr, the routine pProc is called and passed
+the a completed pattern for the file, a pointer to the find buffer for
+the file and a pointer to args.
+
+RETURN VALUE
+
+Control is returned from forfile after all files, if any, have been
+enumerated and pProc called for each.  forfile returns FALSE if no files
+were enumerated and returns TRUE if one or more were enumerated.
+
+IMPLEMENTATION
+
+char *pstrBuf = alloc buffer size MAXPATHLEN;
+char *p;
+struct findType *pFindBuf;
+
+drive(pstrPattern, pstrBuf);        /* copy drive part of pattern */
+path(pstrPattern, strend(pstrBuf);  /* copy path  part of pattern */
+p = strend(pstrBuf);                /* remember end of current pattern */
+
+do {
+    strcpy(p, pFindBuf->name);  /* add on completed file name */
+    lower(p);
+    (*pProc)(pstrBuf, pFindBuf, pArgs);
+    } while (fnext(fFindBuf));
+
+
+SEE ALSO  ffirst fnext 
+
+
+NOTE
+
+Patterns and attributes are described separately.
+
+EXAMPLE
+
+#include <tools.h>
+
+DoPrint(pstrName, pFindBuf, pArgs)
+char *pstrName;
+struct findType *pFindBuf;
+unsigned *pArgs;
+{
+    printf("File found %s\n", pstrName);
+}
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    /* print names of C files in current directory w/ archive bit set */
+    if (!forfile("*.c", A_A, DoPrint))
+        printf("No files found\n");
+}

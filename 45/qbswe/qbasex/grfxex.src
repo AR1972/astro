@@ -1,0 +1,66 @@
+.context .huex
+.context @huex
+:nCOLOR, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\huex.bas
+
+
+.context .palx
+.context @palx
+:nPALETTE, PALETTE USING, satser - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\palx.bas
+
+
+.context .scrfx
+.context @scrfx
+:nSCREEN, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\scrfx.bas
+
+
+.context .drawx
+.context @drawx
+:nDRAW, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.comment  Evan - reviewers suggested NO changes to this programming example
+.include \bc71slm\examples\drawx.bas
+
+
+.context .pgfxx
+.context @pgfxx
+:nPUT, sats (grafik) - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.comment  Evan - NO changes to this example suggested by reviewers
+.include \bc71slm\examples\pgfxx.bas
+
+
+.context .circx
+.context @circx
+:nCIRCLE, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.comment  Evan - technical reviewers suggested NO changes to this example
+.include \bc71slm\examples\circx.bas
+
+
+.context .linex
+.context @linex
+:nLINE, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.comment  Evan - technical reviewers suggested NO changes to this example.
+.include \bc71slm\examples\linex.bas
+
+
+.context .paintx
+.context @paintx
+:nPAINT, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\paintx.bas

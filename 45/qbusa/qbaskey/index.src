@@ -1,0 +1,210 @@
+.comment ******************************************************************
+.comment *  Index file - QBasic                                           *
+.comment ******************************************************************
+.comment * 1/10/91 Cleaned up comments.
+.comment *   -- JeffWe
+.comment ******************************************************************
+.context @helpIndexId
+.context helpIndexId
+.context @a
+:nQBasic Online Help Index
+  \i\p\aContents\v@helpTableId\v\i\p  \bIndex\p  \i\p\aBack\v!B\v\i\p
+ฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
+To get help on a QBasic keyword in the list below:
+    1. Press the key of the first letter of the keyword.
+    2. Use the direction keys to move the cursor to the keyword.
+    3. Press F1 to display the help text in the Help window.
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน A บ
+                                                                  ศอออผ
+  \aABS Function\v@ABS\v                       \aAPPEND Keyword\v@APPEND\v
+  \aABSOLUTE Keyword\v@ABSOLUTE\v                   \aAS Keyword\v@AS\v
+  \aACCESS Keyword\v@ACCESS\v                     \aASC Function\v@ASC\v
+  \aAND Operator\v@AND\v                       \aATN Function\v@ATN\v
+  \aANY Keyword\v@ANY\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน B บ
+                                                                  ศอออผ
+  \aBASE Keyword\v@BASE\v                       \aBLOAD Statement\v@BLOAD\v
+  \aBasic Character Set\v@fun.character.set\v                \aBoolean Operators\v@AND\v
+  \aBEEP Statement\v@BEEP\v                     \aBSAVE Statement\v@BSAVE\v
+  \aBINARY Keyword\v@BINARY\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน C บ
+                                                                  ศอออผ
+  \aCALL Statement\v@CALL\v                     \aCOLOR Statement\v@COLOR\v
+  \aCALL ABSOLUTE Statement\v@ABSOLUTE\v            \aCOM Statement\v@COM\v
+  \aCASE Keyword\v@SELECT\v                       \aCOMMON Statement\v@COMMON\v
+  \aCDBL Function\v@CDBL\v                      \aCONST Statement\v@CONST\v
+  \aCHAIN Statement\v@CHAIN\v                    \aCOS Function\v@COS\v
+  \aCHDIR Statement\v@CHDIR\v                    \aCSNG Function\v@CSNG\v
+  \aCHR$ Function\v@CHR$\v                      \aCSRLIN Function\v@CSRLIN\v
+  \aCINT Function\v@CINT\v                      \aCVD Function\v@CVD\v
+  \aCIRCLE Statement\v@CIRCLE\v                   \aCVDMBF Function\v@CVDMBF\v
+  \aCLEAR Statement\v@CLEAR\v                    \aCVI Function\v@CVI\v
+  \aCLNG Function\v@CLNG\v                      \aCVL Function\v@CVL\v
+  \aCLOSE Statement\v@CLOSE\v                    \aCVS Function\v@CVS\v
+  \aCLS Statement\v@CLS\v                      \aCVSMBF Function\v@CVSMBF\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน D บ
+                                                                  ศอออผ
+  \aDATA Statement\v@DATA\v                     \aDEFLNG Statement\v@DEFLNG\v
+  \aData Type Keywords\v@INTEGER\v                 \aDEFSNG Statement\v@DEFSNG\v\p
+  \aDATE$ Function\v@datef\v                     \aDEFSTR Statement\v@DEFSTR\v
+  \aDATE$ Statement\v@DATE$\v                    \aDIM Statement\v@DIM\v
+  \aDECLARE Statement\v@DECLARE\v                  \aDO...LOOP Statement\v@DO\v\p
+  \aDEF FN Statement\v@DEF\v                   \aDOUBLE Keyword\v@DOUBLE\v
+  \aDEF SEG Statement\v@SEG\v                  \aDRAW Statement\v@DRAW\v
+  \aDEFDBL Statement\v@DEFDBL\v                   \a$DYNAMIC Metacommand\v@$DYNAMIC\v
+  \aDEFINT Statement\v@DEFINT\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน E บ
+                                                                  ศอออผ
+  \aELSE Keyword\v@IF\v                       \aERDEV Function\v@ERDEV\v
+  \aELSEIF Keyword\v@IF\v                     \aERDEV$ Function\v@ERDEV$\v\p
+  \aEND Statement\v@END\v                      \aERL Function\v@ERL\v\p
+  \aENVIRON Statement\v@ENVIRON\v                  \aERR Function\v@ERR\v
+  \aENVIRON$ Function\v@ENVIRON$\v                  \aERROR Statement\v@ERROR\v
+  \aEOF Function\v@EOF\v                       \aEXIT Statement\v@EXIT\v
+  \aEQV Operator\v@EQV\v                       \aEXP Function\v@EXP\v
+  \aERASE Statement\v@ERASE\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน F บ
+                                                                  ศอออผ
+  \aFIELD Statement\v@FIELD\v                    \aFOR...NEXT Statement\v@FOR\v
+  \aFILEATTR Function\v@FILEATTR\v                  \aFRE Function\v@FRE\v
+  \aFILES Statement\v@FILES\v                    \aFREEFILE Function\v@FREEFILE\v
+  \aFIX Function\v@FIX\v                       \aFUNCTION Statement\v@FUNCTION\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน G บ
+                                                                  ศอออผ
+  \aGET (File I/O) Statement\v@GET\v           \aGOSUB Statement\v@GOSUB\v
+  \aGET (Graphics) Statement\v@ggx\v           \aGOTO Statement\v@GOTO\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน H บ
+                                                                  ศอออผ
+  \aHEX$ Function\v@HEX$\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน I บ
+                                                                  ศอออผ
+  \aIF...THEN...ELSE Statement\v@IF\v         \aINSTR Function\v@INSTR\v
+  \aIMP Operator\v@IMP\v                       \aINT Function\v@INT\v
+  \aINKEY$ Function\v@INKEY$\v                    \aINTEGER Keyword\v@INTEGER\v
+  \aINP Function\v@INP\v                       \aIOCTL Statement\v@IOCTL\v
+  \aINPUT Statement\v@INPUT\v                    \aIOCTL$ Function\v@IOCTL$\v
+  \aINPUT$ Function\v@INPUT$\v                    \aIS Keyword\v@IS\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน K บ
+                                                                  ศอออผ
+  \aKEY (Assignment) Statement\v@KEY\v         \aKILL Statement\v@KILL\v
+  \aKEY (Event Trapping) Statement\v@ketv\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน L บ
+                                                                  ศอออผ
+  \aLBOUND Function\v@LBOUND\v                    \aLOCK...UNLOCK Statements\v@LOCK\v\p
+  \aLCASE$ Function\v@LCASE$\v                    \aLOF Function\v@LOF\v\p
+  \aLEFT$ Function\v@LEFT$\v                     \aLOG Function\v@LOG\v\p
+  \aLEN Function\v@LEN\v                       \aLONG Keyword\v@LONG\v\p
+  \aLET Statement\v@LET\v                      \aLOOP Keyword\v@LOOP\v\p
+  \aLINE (Graphics) Statement\v@LINE\v          \aLPOS Function\v@LPOS\v\p
+  \aLINE INPUT Statement\v@INPUT\v               \aLPRINT Statement\v@LPRINT\v\p
+  \aLIST Keyword\v@LIST\v                       \aLPRINT USING Statement\v@lprintu\v
+  \aLOC Function\v@LOC\v                       \aLSET Statement\v@LSET\v\p
+  \aLOCATE Statement\v@LOCATE\v                   \aLTRIM$ Function\v@LTRIM$\v\p
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน M บ
+                                                                  ศอออผ
+  \aMID$ Function\v@MID$\v                      \aMKI$ Function\v@MKI$\v
+  \aMID$ Statement\v@MID$\v                     \aMKL$ Function\v@MKL$\v
+  \aMKD$ Function\v@MKD$\v                      \aMKS$ Function\v@MKS$\v
+  \aMKDIR Statement\v@MKDIR\v                    \aMKSMBF$ Function\v@MKSMBF$\v
+  \aMKDMBF$ Function\v@MKDMBF$\v                   \aMOD Operator\v@MOD\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน N บ
+                                                                  ศอออผ
+  \aNAME Statement\v@NAME\v                     \aNOT Operator\v@NOT\v
+  \aNEXT Keyword\v@NEXT\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน O บ
+                                                                  ศอออผ
+  \aOCT$ Function\v@HEX$\v                      \aON TIMER Statement\v@TIMER\v
+  \aOFF Keyword\v@OFF\v                        \aON...GOSUB Statement\v@ongo\v\p
+  \aON COM Statement\v@COM\v                   \aON...GOTO Statement\v@ongo\v\p
+  \aON ERROR Statement\v@onerr\v                 \aOPEN Statement\v@OPEN\v\p
+  \aON Keyword\v@ON\v                         \aOPEN COM Statement\v@opcom\v
+  \aON KEY Statement\v@ketv\v                   \aOPTION BASE Statement\v@BASE\v\p
+  \aON PEN Statement\v@PEN\v                   \aOR Operator\v@OR\v
+  \aON PLAY Statement\v@playev\v                  \aOUT Statement\v@OUT\v
+  \aON STRIG Statement\v@STRIG\v                 \aOUTPUT Keyword\v@OUTPUT\v\p
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน P บ
+                                                                  ศอออผ
+  \aPAINT Statement\v@PAINT\v                    \aPOINT Function\v@POINT\v
+  \aPALETTE Statements\v@PALETTE\v                 \aPOKE Statement\v@POKE\v
+  \aPCOPY Statement\v@PCOPY\v                    \aPOS Function\v@POS\v
+  \aPEEK Function\v@PEEK\v                      \aPRESET Statement\v@PRESET\v
+  \aPEN Function\v@penf\v                       \aPRINT Statement\v@PRINT\v
+  \aPEN Statement\v@PEN\v                      \aPRINT USING Statement\v@zpu\v
+  \aPLAY Function\v@playf\v                      \aPSET Statement\v@PSET\v
+  \aPLAY (Music) Statement\v@PLAY\v             \aPUT (File I/O) Statement\v@PUT\v
+  \aPLAY (Event Trapping) Statements\v@playev\v   \aPUT (Graphics) Statement\v@pgfx\v
+  \aPMAP Function\v@PMAP\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน R บ
+                                                                  ศอออผ
+  \aRANDOM Keyword\v@RANDOM\v                     \aRETURN Statement\v@RETURN\v
+  \aRANDOMIZE Statement\v@RANDOMIZE\v                \aRIGHT$ Function\v@RIGHT$\v
+  \aREAD Statement\v@READ\v                     \aRMDIR Statement\v@RMDIR\v
+  \aREDIM Statement\v@REDIM\v                    \aRND Function\v@RND\v
+  \aREM Statement\v@REM\v                      \aRSET Statement\v@RSET\v
+  \aRESET Statement\v@RESET\v                    \aRTRIM$ Function\v@RTRIM$\v
+  \aRESTORE Statement\v@RESTORE\v                  \aRUN Statement\v@RUN\v
+  \aRESUME Statement\v@RESUME\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน S บ
+                                                                  ศอออผ
+  \aSCREEN Function\v@screenf\v                    \aSQR Function\v@SQR\v
+  \aSCREEN Statement\v@SCREEN\v                   \aSTATIC Statement\v@STATIC\v
+  \aSEEK Function\v@SEEK\v                      \a$STATIC Metacommand\v@$STATIC\v
+  \aSEEK Statement\v@SEEK\v                     \aSTEP Keyword\v@STEP\v
+  \aSELECT CASE Statement\v@SELECT\v              \aSTICK Function\v@STICK\v
+  \aSGN Function\v@SGN\v                       \aSTOP Statement\v@STOP\v
+  \aSHARED Statement\v@SHARED\v                   \aSTR$ Function\v@STR$\v
+  \aSHELL Statement\v@SHELL\v                    \aSTRIG Function\v@strigf\v
+  \aSIN Function\v@SIN\v                       \aSTRIG Statements\v@STRIG\v
+  \aSINGLE Keyword\v@SINGLE\v                     \aSTRING Keyword\v@STRING\v
+  \aSLEEP Statement\v@SLEEP\v                    \aSTRING$ Function\v@STRING$\v
+  \aSOUND Statement\v@SOUND\v                    \aSUB Statement\v@SUB\v
+  \aSPACE$ Function\v@SPACE$\v                    \aSWAP Statement\v@SWAP\v
+  \aSPC Function\v@SPC\v                       \aSYSTEM Statement\v@SYSTEM\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน T บ
+                                                                  ศอออผ
+  \aTAB Function\v@TAB\v                       \aTIMER Statements\v@TIMER\v
+  \aTAN Function\v@TAN\v                       \aTO Keyword\v@TO\v
+  \aTHEN Keyword\v@IF\v                       \aTROFF Statement\v@TROFF\v
+  \aTIME$ Function\v@tmf\v                     \aTRON Statement\v@TRON\v
+  \aTIME$ Statement\v@TIME$\v                    \aTYPE Statement\v@TYPE\v
+  \aTIMER Function\v@timerf\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน U บ
+                                                                  ศอออผ
+  \aUBOUND Function\v@UBOUND\v                    \aUNTIL Keyword\v@DO\v
+  \aUCASE$ Function\v@UCASE$\v                    \aUSING Keyword\v@USING\v
+  \aUNLOCK Statement\v@UNLOCK\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน V บ
+                                                                  ศอออผ
+  \aVAL Function\v@VAL\v                       \aVARSEG Function\v@VARSEG\v
+  \aVARPTR Function\v@VARPTR\v                    \aVIEW Statement\v@VIEW\v
+  \aVARPTR$ Function\v@VARPTR$\v                   \aVIEW PRINT Statement\v@vupri\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน W บ
+                                                                  ศอออผ
+  \aWAIT Statement\v@WAIT\v                     \aWIDTH Statements\v@WIDTH\v
+  \aWEND Keyword\v@WEND\v                       \aWINDOW Statement\v@WINDOW\v
+  \aWHILE...WEND Statement\v@WEND\v             \aWRITE Statement\v@WRITE\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน X บ
+                                                                  ศอออผ
+  \aXOR Operator\v@XOR\v

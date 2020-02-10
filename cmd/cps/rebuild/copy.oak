@@ -1,0 +1,11 @@
+diris = rebuild
+
+all:
+   del $(diris)\*.*                                < $(OAKDIR)\ycr.key
+   xcopy $(diris) $(OAKDIR)\cmd\cps\$(diris)       < $(OAKDIR)\d.key
+   del $(OAKDIR)\cmd\cps\$(diris)\copy.oak
+
+   del $(OAKDIR)\cmd\cps\$(diris)\makefile
+   ren $(OAKDIR)\cmd\cps\$(diris)\makefile.oak makefile
+
+

@@ -1,0 +1,696 @@
+.comment ******************************************************************
+.comment *  File I/O Family - QBasic                                      *
+.comment ******************************************************************
+.comment *  7/31/90 bethpr                                                *
+.comment *  Get/Put (File I/O) put See Alsos in alphabetic order          *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, to BASIC language and products. *
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/25/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments.                      *
+.comment ******************************************************************
+.comment *  6/11/90 stevesau                                              *
+.comment *  Combined FILES with CHDIR/MKDIR/RMDIR.                        *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/10/90 stevesau                                              *
+.comment *  Reinserted IOCTL/IOCTL$.                                      *
+.comment *  Deleted CHDRIVE.                                              *
+.comment *  Combined LSET/RSET.                                           *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Deleted INPUT #/LINE INPUT # (combined with INPUT/LINE INPUT  *
+.comment *  in Device family).                                            *
+.comment ******************************************************************
+.comment *  5/4/90 stevesau                                               *
+.comment *  Deleted keyword references from action lines.                 *
+.comment ******************************************************************
+.comment *  5/3/90 stevesau                                               *
+.comment *  Combined OPEN file mode keywords, LOCK/UNLOCK, BLOAD/BSAVE,   *
+.comment *  CHDIR/MKDIR/RMDIR, GET/PUT, WRITE/WRITE #, SEEK Func./State.  *
+.comment *  Deleted PRINT # (combined with PRINT in Device family).       *
+.comment ******************************************************************
+.comment *  4/25/90 bethpr                                                *
+.comment *  Deleted CURDIR$, DIR$                                         *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                              *
+.comment *  Added action lines.                                           *
+.comment *  Added PRINT USING link to PRINT #.                            *
+.comment *  Added CLOSE, EOF, FILEATTR, LOF, OPEN from BC71 ISAM file,    *
+.comment *  deleted ISAM references.                                      *
+.comment ******************************************************************
+.context BLOAD
+.context @BLOAD
+.context BSAVE
+.context @BSAVE
+:nBSAVE-, BLOAD-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+BSAVE kopiert den Inhalt eines Speicherbereichs in eine Datei.
+BLOAD l„dt eine mit BSAVE erstellte Datei in den Hauptspeicher.
+
+\bBSAVE Datei$, Offset%, L„nge&\p
+\bBLOAD Datei$ [,Offset%]\p
+
+    ş \bDatei$\p       Fr BSAVE: Eine Datei, in die ein Speicherbereich
+                     Byte-getreu kopiert wird.
+                   Fr BLOAD: Eine Speicherabbilddatei, die von einer
+                     vorangehenden Anweisung BSAVE erstellt wurde.
+    ş \bOffset%\p      Fr BSAVE: Das Offset der Startadresse eines Speicher-
+                   bereichs, der gespeichert werden soll.
+                   Fr BLOAD: Das Offset der Speicheradresse, bei der das
+                   Laden beginnt.
+    ş \bL„nge&\p       Die Anzahl der zu kopierenden Bytes (0 bis 65.535).
+
+    ş Die Startadresse des Speicherbereichs, der geladen oder gespeichert
+      werden soll, wird durch das Offset und die zuletzt verwandte Anweisung
+      DEF SEG bestimmt.
+
+Siehe auch    \i\p\aDEF SEG\v@SEG\v\i\p    \i\p\aVARPTR, VARSEG\v@VARSEG\v\i\p
+              \i\p\aUnterschiede zu BASICA\v@basica.diffs\v\i\p
+.context CHDIR
+.context @CHDIR
+.context MKDIR
+.context @MKDIR
+.context RMDIR
+.context @RMDIR
+.context FILES
+.context @FILES
+:nCHDIR-, MKDIR-, RMDIR-, FILES-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CHDIR wechselt das aktuelle Verzeichnis eines Laufwerks. MKDIR erstellt ein
+Unterverzeichnis. RMDIR entfernt ein Unterverzeichnis. FILES zeigt den Inhalt
+des aktuellen Verzeichnisses oder eines angegebenen Verzeichnisses an.
+
+\bCHDIR Pfadname$\p
+\bMKDIR Pfadname$\p
+\bRMDIR Pfadname$\p
+\bFILES [Datei]\p
+
+ ş \bPfadname$\p    Der Pfad des neuen aktuellen Verzeichnisses bzw. des Unter-
+                verzeichnisses, das erstellt oder entfernt werden soll.
+ ş \bDatei$\p       Ein Dateiname oder ein Pfad (kann MS-DOS-
+                Platzhalterzeichen und Laufwerksbezeichnung enthalten). Wenn
+                Sie Datei$ nicht angeben, zeigt FILES alle Dateien im
+                aktuellen Verzeichnis an.
+
+Beispiel:
+    MKDIR "C:\\TEMP\\TEST"
+    CHDIR "C:\\TEMP"
+    FILES
+    RMDIR "TEST"
+.context CLOSE
+.context @CLOSE
+:nCLOSE-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Schlieát eine oder mehrere offene Dateien oder Ger„te.
+
+\bCLOSE [[#]Dateinummer%[,[#]Dateinummer%]...]\p
+
+    ş \bDateinummer%\p    Die Nummer der offenen Datei oder des Ger„ts.
+
+    ş CLOSE ohne Argumente schlieát alle offenen Dateien und Ger„te.
+
+Beispiel:
+    CLS
+    INPUT "Dateiname eingeben: ", n$
+    OPEN n$ FOR OUTPUT AS #1
+    PRINT #1, "Dies ist in der Datei gespeichert."
+    CLOSE
+    OPEN n$ FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT "Lesen von der Datei: "; a$
+    CLOSE
+
+Siehe auch    \i\p\aEND\v@END\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aRESET\v@RESET\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context EOF
+.context @EOF
+:nEOF-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Prft, ob das Dateiende erreicht ist. EOF gibt Wahr (einen Wert ungleich
+Null) zurck, wenn das Ende einer Datei erreicht ist.
+
+\bEOF(Dateinummer%)\p
+
+    ş \bDateinummer%\p    Die Nummer einer ge”ffneten Datei.
+
+Beispiel:
+    CLS
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    FOR i% = 1 TO 10
+        WRITE #1, i%, 2 * i%, 5 * i%
+    NEXT i%
+    CLOSE #1
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    DO
+        LINE INPUT #1, a$
+        PRINT a$
+    LOOP UNTIL (EOF(1))
+
+Siehe auch    \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aLOC\v@LOC\v\i\p    \i\p\aLOF\v@LOF\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p
+.context ERDEV
+.context @ERDEV
+.context ERDEV$
+.context @ERDEV$
+:nERDEV-, ERDEV$-Funktionen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ERDEV gibt einen Fehlercode vom letzten Ger„t zurck, das einen kritischen
+Fehler verursacht hat. ERDEV$ gibt den Namen des Ger„ts, das den Fehler
+verursacht hat, zurck.
+
+\bERDEV\p
+\bERDEV$\p
+
+    ş Das niederwertige Byte des Werts, der von ERDEV zurckgegeben wird,
+      enth„lt den DOS-Fehlercode. Das h”herwertige Byte enth„lt Ger„te-
+      attribut-Informationen.
+
+\i\p\aBeispiel\v@errhand.ex\v\i\p
+
+Siehe auch    \i\p\aERR, ERL\v@ERR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p
+.context FIELD
+.context @FIELD
+:nFIELD-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Ordnet Speicherplatz fr Variablen in einem Direktzugriffspuffer zu.
+
+\bFIELD [#]Dateinummer%, Feldl„nge% AS Stringvariable$\p
+                     \b[,Feldl„nge% AS Stringvariable$] ...\p
+
+    ş \bDateinummer%\p       Die Nummer einer ge”ffneten Datei.
+    ş \bFeldl„nge%\p         Die Anzahl der Zeichen im Feld.
+    ş \bStringvariable$\p    Eine Variable, die das Feld kennzeichnet und
+                         Felddaten enth„lt.
+
+    ş Zur Handhabung von Datensatzinformationen sind in der Regel
+      Datensatzvariablen besser geeignet.
+
+Beispiel:
+    OPEN "ADRESSEN.DAT" FOR RANDOM AS #1 LEN = 80
+    FIELD #1, 30 AS name$, 50 AS addresse$
+
+Siehe auch    \i\p\aGET, PUT\v@GET\v\i\p   \i\p\aLSET, RSET\v@LSET\v\i\p   \i\p\aTYPE\v@TYPE\v\i\p
+              \i\p\aUnterschiede zu BASICA\v@basica.diffs\v\i\p
+.context FILEATTR
+.context @FILEATTR
+:nFILEATTR-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt Informationen ber eine ge”ffnete Datei zurck.
+
+\bFILEATTR(Dateinummer%,Attribute%)\p
+
+    ş \bDateinummer%\p   Die Nummer einer ge”ffneten Datei.
+    ş \bAttribute%\p     Gibt die Art von Information an, die zurckgegeben
+                     werden soll.
+                     Wenn attribute% gleich 1 ist, gibt FILEATTR einen
+                     Wert zurck, der den Zugriffsmodus der Datei anzeigt.\i\p
+
+                     Rckgabewert   Modus
+                     ÍÍÍÍÍÍÍÍÍÍÍÍ   ÍÍÍÍÍ
+                     1              Input
+                     2              Output
+                     4              Random
+                     8              Append
+                     32             Binary
+
+                     Wenn Attribute% gleich 2 ist, gibt FILEATTR die
+                     DOS-Dateizugriffsmarke zurck.
+
+Beispiel:
+    OPEN "TEST.DAT" FOR BINARY AS #1
+    PRINT FILEATTR(1, 1)
+    CLOSE
+
+Siehe auch    \i\p\aOPEN\v@OPEN\v\i\p
+.context FREEFILE
+.context @FREEFILE
+:nFREEFILE-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt die n„chste gltige Dateinummer zurck, die noch unbenutzt ist.
+
+\bFREEFILE\p
+
+Beispiel:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT "N„chste Dateinummer: "; FREEFILE
+    CLOSE
+
+Siehe auch    \i\p\aOPEN\v@OPEN\v\i\p
+.context GET
+.context @GET
+.context PUT
+.context @PUT
+:nGET-, PUT-Anweisungen (Datei E/A)
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+GET liest von einer Datei in einen Direktzugriffspuffer oder
+    in eine Variable.
+PUT schreibt eine Variable oder einen Direktzugriffspuffer in eine Datei.
+
+\bGET [#]Dateinummer%[,[Datensatznummer&][,Variable]]\p
+\bPUT [#]Dateinummer%[,[Datensatznummer&][,Variable]]\p
+
+    ş \bDateinummer%\p     Die Nummer einer ge”ffneten Datei.
+    ş \bDatensatznummer&\p Fr Direktzugriffsdateien:  Die Nummer des Daten-
+                       satzes, der gelesen oder geschrieben werden soll.
+                       Fr Bin„rdateien: Die Position des Byte, an dem der
+                       Lese- oder Schreibvorgang beginnen soll.
+    ş \bVariable\p         Fr GET: Eine Variable fr den Empfang von Informa-
+                       tionen von der Datei. Fr PUT: Eine Variable zum
+                       Schreiben von Informationen in die Datei. Die Variable
+                       hat normalerweise einen benutzerdefinierten Datentyp.
+
+Beispiel:
+    TYPE TestDatensatz
+        Student AS STRING * 20
+        Ergebnis AS SINGLE
+    END TYPE
+    DIM MeinKurs AS TestDatensatz
+    OPEN "ENDERGEBNIS.DAT" FOR RANDOM AS #1 LEN = LEN(MeinKurs)
+    MeinKurs.Student = "DavideSta"
+    MeinKurs.Ergebnis = 99
+    PUT #1, 1, MeinKurs
+    CLOSE #1
+    OPEN "ENDERGEBNIS.DAT" FOR RANDOM AS #1 LEN = LEN(MeinKurs)
+    GET #1, 1, MeinKurs
+    PRINT "STUDENT:", MeinKurs.Student
+    PRINT "SCORE:", MeinKurs.Ergebnis
+    CLOSE #1
+    KILL "ENDERGEBNIS.DAT"
+
+Siehe auch    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aLSET, RSET\v@LSET\v\i\p    \i\p\aTYPE\v@TYPE\v\i\p
+              \i\p\aMKn$, CVn Funktionen\v@MKI$\v\i\p     \i\p\aGET, PUT (Grafik)\v@ggx\v\i\p
+.context INPUT$
+.context @INPUT$
+:nINPUT$-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt eine Zeichenfolge zurck, die in einer bestimmten Datei gelesen wurde.
+
+\bINPUT$(n[,[#]Dateinummer%])\p
+
+    ş \bn\p              Die Anzahl der zu lesenden Zeichen (Byte).
+    ş \bDateinummer%\p   Die Nummer einer ge”ffneten Datei. Wenn Dateinummer%
+                     weggelassen wird, liest INPUT$ von der Tastatur.
+
+Beispiel:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT #1, "Der Text"
+    CLOSE
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    PRINT INPUT$(3, 1)        'Die ersten 3 Zeichen ausgeben.
+    CLOSE
+
+Siehe auch    \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p
+.context IOCTL
+.context @IOCTL
+.context IOCTL$
+.context @IOCTL$
+:nIOCTL-Anweisung, IOCTL$-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+IOCTL  bertr„gt eine Steuerzeichenfolge an einen Ger„tetreiber.
+IOCTL$ gibt die aktuelle Statusinformation von einem Ger„tetreiber zurck.
+
+\bIOCTL [#]Dateinummer%, String$\p
+\bIOCTL$([#]Dateinummer%)\p
+
+    ş \bDateinummer%\p   Die Nummer eines ge”ffneten Ger„ts.
+    ş \bString$\p        Die an das Ger„t gesandte Steuerzeichenfolge.
+
+    ş IOCTL-Steuerzeichenfolgen und die Informationen, die IOCTL$ zurckgibt,
+      h„ngen vom Ger„tetreiber ab. Weitere Informationen ber IOCTL-Steuer-
+      zeichenfolgen und IOCTL$-Rckgabewerte finden Sie in Ihrem
+      Ger„tetreiber-Handbuch.
+.context LOC
+.context @LOC
+:nLOC-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt die aktuelle Position in einer Datei zurck.
+
+\bLOC(Dateinummer%)\p
+
+    ş \bDateinummer%\p    Die Nummer einer ge”ffneten Datei oder eines Ger„ts.
+
+    ş Fr Bin„rdateien gibt LOC die Position des letzten Byte zurck, das
+      gelesen oder geschrieben wurde.
+    ş Fr Direktzugriffsdateien gibt LOC die Nummer des letzten Datensatzes
+      zurck, der von der Datei gelesen bzw. in die Datei geschrieben wurde.
+    ş Fr sequentielle Dateien dividiert LOC die aktuelle Position des Byte
+      in der Datei durch 128 und gibt das Ergebnis als Rckgabewert zurck.
+
+Beispiel:
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+       PUT #1, , i%
+    NEXT i%
+    SEEK #1, 2
+    GET #1, , i%
+    PRINT "Daten: "; i%; " Akt. Datensatz: "; LOC(1); " N„chster: "; SEEK(1)
+
+Siehe auch    \i\p\aEOF\v@EOF\v\i\p    \i\p\aSEEK\v@SEEK\v\i\p
+.context LOCK
+.context @LOCK
+.context UNLOCK
+.context @UNLOCK
+:nLOCK-, UNLOCK-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LOCK   beschr„nkt oder verhindert Zugriff auf eine Datei durch einen
+       Netzwerkprozess.
+UNLOCK hebt die Beschr„nkungen des letzten LOCK-Arguments auf.
+
+\bLOCK [#]Dateinummer% [,{Datensatz& | [Start&] TO Ende&}]\p
+\bUNLOCK [#]Dateinummer% [,{Datensatz& | [Start&] TO Ende&}]\p
+
+ ş \bDateinummer%\p       Die Nummer einer ge”ffneten Datei.
+ ş \bDatensatz&\p         Fr Direktzugriffsdateien: Die Nummer des Daten-
+                      satzes, dessen Zugriff beschr„nkt werden soll,
+                      relativ zum ersten Datensatz der Datei.
+                      Fr Bin„rdateien: Die Nummer des Byte, dessen Zugriff
+                      beschr„nkt werden soll, relativ zum ersten Byte
+                      in der Datei.
+ ş \bStart&\p und \bEnde&\p   Die Nummern des ersten und des letzten Daten-
+                      satzes oder Bytes in einem Bereich von Datens„tzen
+                      oder Bytes, deren Zugriff beschr„nkt werden soll, bzw.
+                      deren Zugriffsbeschr„nkung aufgehoben werden soll.
+
+ ş Bei sequentiellen Dateien beeinflussen LOCK und UNLOCK die gesamte Datei.
+
+Beispiel:
+    'Dieses Beispiel l„uft nur in einer Netzwerk-Umgebung.
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+        PUT #1, , i%
+    NEXT i%
+    LOCK #1, 2         'Sperrt Datensatz 2.
+    GET #1, 2, i%
+    UNLOCK #1, 2       'Hebt die Sperre fr Datensatz 2 wieder auf.
+.context LOF
+.context @LOF
+:nLOF-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt die L„nge (in Byte) einer Datei zurck.
+
+\bLOF(Dateinummer%)\p
+
+    ş \bDateinummer%\p    Die Nummer einer ge”ffneten Datei.
+
+Beispiel:
+    INPUT "Dateinamen eingeben: "; f$
+    OPEN f$ FOR BINARY AS #1
+    PRINT "Dateil„nge = "; LOF(1)
+    CLOSE
+.context LSET
+.context @LSET
+.context RSET
+.context @RSET
+:nLSET-, RSET-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LSET und RSET holen Daten in einen Direktzugriffsdatei-Puffer (als Vorberei-
+tung fr eine PUT-Anweisung) und richten den Wert einer Zeichenfolgenvariable
+links- oder rechtsbndig aus. LSET kopiert zus„tzlich den Inhalt einer Daten-
+satzvariable in eine andere.
+
+\bLSET Stringvariable$=Stringausdruck$\p
+\bRSET Stringvariable$=Stringausdruck$\p
+\bLSET Datensatzvariable1=Datensatzvariable2\p
+
+ ş \bStringvariable$\p      Eine beliebige Zeichenfolgenvariable oder ein
+                        Direktzugriffsdatei-Feld, die in einer FIELD-
+                        Anweisung definiert wurden.
+ ş \bStringausdruck$\p      Fr LSET: Die linksbndig ausgerichtete Version
+                        von Stringvariable$.  Fr RSET: Die rechtsbndig\p
+                        ausgerichtete Version von Stringvariable$.\p
+ ş \bDatensatzvariable1\p   Datensatzvariablen eines beliebigen benutzer-
+                        definierten Datentyps.
+   \bDatensatzvariable2\p   Verwenden Sie LSET, um eine Datensatzvariable eines
+                        Datentyps einem anderen, benutzerdefinierten Daten-
+                        typ zuzuweisen.
+
+Beispiel:
+    OPEN "DATEI.DAT" FOR RANDOM AS #1 LEN = 10
+    FIELD #1, 5 AS Ls1$, 5 AS Rs1$
+    LSET Ls1$ = "LSET"
+    RSET Rs1$ = "RSET"
+    PUT #1, 1
+    CLOSE #1
+    OPEN "DATEI.DAT" FOR RANDOM AS #1 LEN = 10
+    FIELD #1, 5 AS Ls2$, 5 AS Rs2$
+    GET #1, 1
+    PRINT "*" + Ls2$ + "*", "*" + Rs2$ + "*"
+    CLOSE #1
+
+Siehe auch    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aGET, PUT\v@PUT\v\i\p
+.context NAME
+.context @NAME
+:nNAME-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Benennt eine Datei oder ein Verzeichnis um.
+
+\bNAME alterName$ AS neuerName$\p
+
+    ş \balterName$\p und \bneuerName$\p    Der Name einer bestehenden Datei und der
+                                   neue Name der Datei. Beide Namen k”nnen
+                                   einen Pfad enthalten.
+
+Beispiel:
+    INPUT "Alter Name: "; AlterDN$
+    INPUT "Neuer Name: "; NeuerDN$
+    NAME AlterDN$ AS NeuerDN$
+
+Siehe auch    \i\p\aFILES\v@FILES\v\i\p
+.context OPEN
+.context @OPEN
+:nOPEN-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+™ffnet eine Datei oder ein Ger„t.
+
+\bOPEN Datei$ [FOR Modus] [ACCESS Zugriff] [Sperre] AS [#]Dateinummer%
+              [LEN=Datsatzl„nge%]\p
+
+    ş \bDatei$\p         Der Name der Datei oder des Ger„ts. Der Name der Datei
+                     kann Laufwerksbezeichnung und Pfadnamen enthalten.
+    ş \bModus\p          Einer der folgenden Dateimodi: APPEND, BINARY, INPUT,
+                     OUTPUT oder RANDOM. Siehe \i\p\aOPEN-Anweisung Dateimodus\v@APPEND\v\i\p.
+    ş \bZugriff\p        Gibt in einer Netzwerk-Umgebung an, ob das Zugriffsrecht
+                     auf eine Datei READ, WRITE oder READ WRITE ist.
+                     Siehe \i\p\aOPEN-Anweisung  ACCESS-Klausel\v@ACCESS\v\i\p.
+    ş \bSperre\p         Gibt die Zugriffsbeschr„nkung in einer Netzwerkumgebung
+                     an: SHARED, LOCK READ, LOCK WRITE oder LOCK READ WRITE.
+    ş \bDateinummer%\p   Eine Ganzzahl zwischen 1 und 255, die eine Datei kenn-
+                     zeichnet, w„hrend diese ge”ffnet ist.
+    ş \bDatsatzl„nge%\p  Fr Direktzugriffsdateien: Die L„nge des Datensatzes
+                     (Vorgabe ist 128 Byte).  Fr sequentielle Dateien: Die
+                     Anzahl der gepufferten Zeichend (Vorgabe ist 512 Byte).
+
+Beispiel:
+    INPUT "Dateinamen eingeben: "; n$
+    OPEN n$ FOR OUTPUT AS #1
+    PRINT #1, "Dies ist in der Datei gespeichert."
+    CLOSE
+    OPEN n$ FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT "Lesen von Datei: "; a$
+    CLOSE
+
+Siehe auch    \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aFREEFILE\v@FREEFILE\v\i\p    \i\p\aOPEN COM\v@opcom\v\i\p    \i\p\aTYPE\v@TYPE\v\i\p
+              \i\p\aOPEN-Anweisung  Alternative Syntax\v@openalt\v\i\p
+.context APPEND
+.context @APPEND
+.context BINARY
+.context @BINARY
+.context OUTPUT
+.context @OUTPUT
+.context RANDOM
+.context @RANDOM
+:nOPEN-Anweisung  Dateimodus
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Die Schlsselw”rter APPEND, BINARY, INPUT, OUTPUT und RANDOM werden in einer
+OPEN-Anweisung dafr verwendet, den Dateimodus anzugeben. INPUT, OUTPUT und
+RANDOM werden auch in der OPEN COM-Anweisung verwendet.
+
+    ş APPEND gibt an, daá die Datei fr sequentielle Ausgabe ge”ffnet werden
+      soll. Der Zeiger auf die Datei wird auf das Dateiende gesetzt. Die
+      Anweisungen PRINT # und WRITE # schreiben dann an das Dateiende.
+    ş BINARY gibt an, daá sich eine Datei im Bin„r-Modus befindet. Im Bin„r-
+      Modus k”nnen Daten mit den Anweisungen GET und PUT von bzw. an jeder
+      beliebigen Byte-Position in der Datei gelesen bzw. geschrieben werden.
+    ş INPUT gibt an, daá die Datei fr sequentielle Eingabe ge”ffnet ist.
+    ş OUTPUT gibt an, daá die Datei fr sequentielle Ausgabe ge”ffnet ist.
+    ş RANDOM gibt an, daá die Datei im Direktzugriffs-Modus ge”ffnet ist.
+      RANDOM ist der Standard-Dateimodus.
+
+Siehe auch    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aOPEN COM\v@opcom\v\i\p    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aWRITE\v@WRITE\v\i\p
+.context ACCESS
+.context @ACCESS
+:nOPEN-Anweisung  ACCESS-Klausel
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt die Art der Zugriffsberechtigung auf eine ge”ffnete Datei an.
+
+\bACCESS {READ | WRITE | READ WRITE}\p
+
+    ş \bREAD\p          ™ffnet eine Datei nur fr Ausgabe.
+    ş \bWRITE\p         ™ffnet eine Datei nur fr Eingabe.
+    ş \bREAD WRITE\p    ™ffnet eine Datei fr Ein- und Ausgabe. READ WRITE
+                    ist nur fr Direktzugriffs- und sequentielle Dateien,
+                    sowie fr Dateien, die fr APPEND (sequentieller Zugriff)
+                    ge”ffnet sind, gltig.
+
+Siehe auch    \i\p\aOPEN\v@OPEN\v\i\p
+.context @openalt
+.context .openalt
+:nOPEN-Anweisung  Alternative Syntax
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bOPEN Modus2$,[#]Dateinum%,Datei$[,Datsatzl„nge%]\p
+
+    ş \bModus2$\p        Ein Zeichenfolgenausdruck, der mit einem der folgenden
+                     Zeichen beginnt und und den Dateimodus angibt.
+                       O    Sequentieller Ausgabemodus
+                       I    Sequentieller Eingabemodus
+                       R    Direktzugriffsdatei-Modus fr Ein-/Ausgabe
+                       B    Bin„rdatei-Modus
+                       A    Sequentieller Ausgabemodus. Setzt den Zeiger auf
+                            die Datei ans Dateiende und die Datensatznummer
+                            auf den letzten Datensatz der Datei. Die An-
+                            weisungen PRINT # und WRITE # schreiben dann
+                            an das Dateiende.
+    ş \bDateinum%\p      Eine Ganzzahl zwischen 1 und 255, die eine Datei kenn-
+                     zeichnet, w„hrend diese ge”ffnet ist.
+    ş \bDatei$\p         Der Name der Datei (kann Laufwerk und Pfad enthalten).
+    ş \bDatsatzl„nge%\p  Fr Direktzugriffsdateien: Die L„nge des Datensatzes
+                     in Byte.  Fr sequentielle Dateien: Die Anzahl der
+                     gepufferten Zeichen.
+
+    ş QBasic untersttzt diese Syntax aus Grnden der Kompatibilit„t mit
+      Programmen, die mit frheren Versionen von BASIC geschrieben wurden.
+
+Siehe auch    \i\p\aOPEN\v@OPEN\v\i\p
+.context RESET
+.context @RESET
+:nRESET-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Schlieát alle ge”ffneten Dateien und Ger„te.
+
+\bRESET\p
+
+Siehe auch    \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aEND\v@END\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context SEEK
+.context @SEEK
+:nSEEK-Funktion und -Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Die Funktion SEEK gibt die aktuelle Position der Datei zurck.
+Die Anweisung SEEK setzt die Position der Datei fr den n„chsten Ein- oder
+Ausgabevorgang.
+
+\bSEEK(Dateinummer%)\p
+\bSEEK [#]Dateinummer%, Position&\p
+
+ ş \bDateinummer%\p   Die Nummer einer ge”ffneten Datei.
+ ş \bPosition&\p      Die Position, an der der n„chste Ein- oder Ausgabevorgang
+                  stattfindet. Fr Direktzugriffsdateien ist dies eine
+                  Datensatznummer, fr andere Dateien die Byte-Position
+                  relativ zum Dateianfang.
+                  Das erste Byte ist an Position 1.
+
+Beispiel:
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+        PUT #1, , i%
+    NEXT i%
+    SEEK #1, 2
+    GET #1, , i%
+    PRINT "Daten: "; i%; " Akt. Datensatz: "; LOC(1); " N„chster: "; SEEK(1)
+
+Siehe auch    \i\p\aGET, PUT\v@GET\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p
+.context WRITE
+.context @WRITE
+:nWRITE-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sendet Daten an den Bildschirm oder in eine sequentielle Datei.
+
+\bWRITE [[#]Dateinummer%,] Ausdruckliste\p
+
+    ş \bDateinummer%\p      Die Nummer einer ge”ffneten sequentiellen Datei. Wenn
+                        keine Nummer angegeben ist, erfolgt die Ausgabe an
+                        den Bildschirm.
+    ş \bAusdruckliste\p     Eine oder mehrere Variablen oder Ausdrcke, die mit
+                        Kommas getrennt sind und deren Werte an den Bild-
+                        schirm oder an eine Datei ausgegeben werden.
+
+    ş W„hrend des Schreibens von Elementen und Zeichenfolgen fgt WRITE
+      Kommas zwischen Elementen sowie Anfhrungszeichen vor und nach Zeichen-
+      folgen ein. WRITE sendet Werte an eine Datei in einer Form, die von der
+      INPUT-Anweisung gelesen werden kann.
+
+Beispiel:
+    CLS
+    OPEN "LISTE" FOR OUTPUT AS #1\p
+    DO
+        INPUT "   NAME:       ", Name$
+        INPUT "   ALTER:      ", Alter$\p
+        WRITE #1, Name$, Alter$\p
+        INPUT "Weiterer Eintrag ?"; R$\p
+    LOOP WHILE UCASE$(R$) = "J"\p
+    CLOSE #1
+    'Datei am Bildschirm ausgeben.\p
+    OPEN "LISTE" FOR INPUT AS #1\p
+    CLS
+    PRINT "Eintr„ge in der Datei:": PRINT\p
+    DO WHILE NOT EOF(1)
+        INPUT #1, Rec1$, Rec2$   'Eintr„ge aus Datei einlesen.\p
+        PRINT Rec1$, Rec2$       'Eintr„ge am Bildschirm ausgeben.
+    LOOP
+    CLOSE #1
+    KILL "LISTE"
+
+Siehe auch    \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p
+.comment *******************************************************************
+.comment *  AS Keyword
+.comment *******************************************************************
+.context AS
+.context @AS
+:nAS-Schlsselwort
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Fhrt als Bestandteil mehrerer verschiedener Anweisungen unterschiedliche
+Aktionen aus:
+
+    ş Bei Verwendung mit den Anweisungen COMMON, DECLARE, DEF FN, DIM,
+      FUNCTION, REDIM, SHARED, STATIC und SUB: Bezeichnet einen
+      Variablentyp.
+    ş Bei Verwendung mit der Anweisung TYPE: Bezeichnet den Typ eines
+      Elements in einem benutzerdefinierten Datentyp.
+    ş Bei Verwendung mit der Anweisung OPEN: Ordnet einer Datei oder einem
+      Ger„t eine Dateinummer zu.
+    ş Bei Verwendung mit der Anweisung FIELD: Bezeichnet einen Feldnamen.
+    ş Bei Verwendung mit der Anweisung NAME: Gibt den Namen einer neuen
+      Datei an.
+
+Siehe auch    \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p     \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+              \i\p\aFIELD\v@FIELD\v\i\p     \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aNAME\v@NAME\v\i\p      \i\p\aOPEN\v@OPEN\v\i\p
+              \i\p\aSHARED, STATIC\v@SHARED\v\i\p          \i\p\aSUB\v@SUB\v\i\p       \i\p\aTYPE\v@TYPE\v\i\p

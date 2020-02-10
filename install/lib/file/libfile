@@ -1,0 +1,8 @@
+file_io.lib
+y
++f_absdel.obj&
++f_exists.obj&
++f_isdir.obj&
++f_rdwr.obj&
++f_ren.obj&
++f_replac.obj;

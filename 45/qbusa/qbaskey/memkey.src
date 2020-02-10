@@ -1,0 +1,428 @@
+.comment ******************************************************************
+.comment *  Memory Family - QBasic                                        *
+.comment ******************************************************************
+.comment * 1/10/90 Cleaned comments.
+.comment *    -- JeffWe
+.comment ******************************************************************
+.context CLEAR
+.context @CLEAR
+:nCLEAR Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Closes all files, releases file buffers, clears all common variables, sets
+numeric variables and arrays to zero, sets string variables to null, and
+initializes the stack. Optionally, CLEAR also changes the size of the stack.
+
+\bCLEAR [,,stack&]\p
+
+    ş \bstack&\p    Sets the size (in bytes) of stack space for your program.
+
+Example:
+    CLEAR ,,2000
+
+See Also    \i\p\aERASE\v@ERASE\v\i\p
+.context SEG
+.context @SEG
+:nDEF SEG Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sets the current segment address.
+
+\bDEF SEG [=address]\p
+
+    ş \baddress\p    A segment address used by BLOAD, BSAVE, CALL ABSOLUTE,
+                 PEEK, or POKE; a value in the range 0 through 65,535. If
+                 address is omitted, DEF SEG resets the current segment
+                 address to the default data segment.
+
+Example:
+    DEF SEG = 0
+    Status% = PEEK(&H417)              'Read keyboard status.
+    POKE &H417, (Status% XOR &H40)     'Change Caps Lock state, bit 6.
+
+See Also    \i\p\aBSAVE, BLOAD\v@BLOAD\v\i\p    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aPEEK, POKE\v@PEEK\v\i\p
+.context FRE
+.context @FRE
+:nFRE Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns the amount (in bytes) of available or unused memory.
+
+\bFRE(numeric-expression)\p
+\bFRE(stringexpression$)\p
+
+    ş \bnumeric-expression\p    A value that specifies the type of memory:
+
+                            Value               FRE returns
+                            ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                            -1                  The size of the largest array
+                                                (nonstring) you can create
+                            -2                  The unused stack space
+                            Any other number    The available string space
+
+    ş \bstringexpression$\p     Any string expression. FRE compacts the free
+                            string space into a single block, then returns
+                            the amount of available string space.
+
+Example:
+    PRINT "String Space", FRE("")
+    PRINT "Unused Stack Space", FRE(-2)
+    PRINT "Array Space", FRE(-1)
+.context HEX$
+.context @HEX$
+.context OCT$
+.context @OCT$
+:nHEX$, OCT$ Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+HEX$ returns a hexadecimal string representation of a number.
+OCT$ returns an octal string representation of a number.
+
+\bHEX$(numeric-expression&)\p
+\bOCT$(numeric-expression&)\p
+
+    ş \bnumeric-expression&\p    Any numeric expression. The expression is
+                             rounded to an integer or long integer before it
+                             is evaluated.
+
+Example:
+    INPUT x
+    a$ = HEX$ (x)
+    b$ = OCT$ (x)
+    PRINT x; "decimal is "; a$; " hexadecimal and "; b$; " in octal."
+.context INSTR
+.context @INSTR
+:nINSTR Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns the position of the first occurrence of a string in another string.
+
+\bINSTR([start%,]stringexpression1$,stringexpression2$)\p
+
+    ş \bstart%\p                Sets the character position where the search
+                            begins. If start% is omitted, INSTR starts at
+                            position 1.
+    ş \bstringexpression1$\p    The string to search.
+    ş \bstringexpression2$\p    The string to look for.
+
+Example:
+    a$ = "Microsoft QBasic"
+    PRINT "String position ="; INSTR(1, a$, "QBasic")
+
+See Also    \i\p\aLEFT$, RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p    \i\p\aMID$\v@MID$\v\i\p
+.context LCASE$
+.context @LCASE$
+.context UCASE$
+.context @UCASE$
+:nLCASE$, UCASE$ Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Convert strings to all lowercase or all uppercase letters.
+
+\bLCASE$(stringexpression$)\p
+\bUCASE$(stringexpression$)\p
+
+    ş \bstringexpression$\p    Any string expression.
+
+Example:
+    Test$ = "THE string"
+    PRINT Test$
+    PRINT LCASE$(Test$); " in lowercase"
+    PRINT UCASE$(Test$); " IN UPPERCASE"
+.context LEFT$
+.context @LEFT$
+.context RIGHT$
+.context @RIGHT$
+:nLEFT$, RIGHT$ Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Return a specified number of leftmost or rightmost characters in a string.
+
+\bLEFT$(stringexpression$,n%)\p
+\bRIGHT$(stringexpression$,n%)\p
+
+    ş \bstringexpression$\p    Any string expression.
+    ş \bn%\p                   The number of characters to return, beginning
+                           with the leftmost or rightmost string character.
+
+Example:
+    a$ = "Microsoft QBasic"
+    PRINT LEFT$(a$, 5)     'Output is:  Micro
+    PRINT RIGHT$(a$, 5)    'Output is:  Basic
+
+See Also    \i\p\aMID$\v@MID$\v\i\p
+.context LEN
+.context @LEN
+:nLEN Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns the number of characters in a string or the number of bytes
+required to store a variable.
+
+\bLEN(stringexpression$)\p
+\bLEN(variable)\p
+
+    ş \bstringexpression$\p    Any string expression.
+    ş \bvariable\p             Any nonstring variable.
+
+Example:
+    a$ = "Microsoft QBasic"
+    PRINT LEN(a$)
+
+See Also    \i\p\aOPEN\v@OPEN\v\i\p
+.context LTRIM$
+.context @LTRIM$
+.context RTRIM$
+.context @RTRIM$
+:nLTRIM$, RTRIM$ Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Remove leading and trailing spaces from a string.
+
+\bLTRIM$(stringexpression$)\p
+\bRTRIM$(stringexpression$)\p
+
+    ş \bstringexpression$\p    Any string expression.
+
+Example:
+    a$ = "    Basic    "
+    PRINT "*" + a$ + "*"	    'Output is:  *    Basic    *
+    PRINT "*" + LTRIM$(a$) + "*"    'Output is:  *Basic    *
+    PRINT "*" + RTRIM$(a$) + "*"    'Output is:  *    Basic*
+.context MID$
+.context @MID$
+:nMID$ Function and Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+The MID$ function returns part of a string (a substring).
+The MID$ statement replaces part of a string variable with another string.
+
+\bMID$(stringexpression$,start%[,length%])\p
+\bMID$(stringvariable$,start%[,length%])=stringexpression$\p
+
+    ş \bstringexpression$\p    The string from which the MID$ function returns
+                           a substring, or the replacement string used by the
+                           MID$ statement. It can be any string expression.
+    ş \bstart%\p               The position of the first character in the
+                           substring being returned or replaced.
+    ş \blength%\p              The number of characters in the substring. If the
+                           length is omitted, MID$ returns or replaces all
+                           characters to the right of the start position.
+    ş \bstringvariable$\p      The string variable being modified by the MID$
+                           statement.
+
+Example:
+    a$ = "Where is Paris?"
+    PRINT MID$(a$, 10, 5)       'Output is:  Paris
+    Text$ = "Paris, France"
+    PRINT Text$                 'Output is:  Paris, France
+    MID$(Text$, 8) = "Texas "
+    PRINT Text$                 'Output is:  Paris, Texas
+
+See Also    \i\p\aLEFT$, RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p
+.context CVI
+.context @CVI
+.context CVS
+.context @CVS
+.context CVL
+.context @CVL
+.context CVD
+.context @CVD
+.context MKL$
+.context @MKL$
+.context MKI$
+.context @MKI$
+.context MKS$
+.context @MKS$
+.context MKD$
+.context @MKD$
+:nMKn$, CVn Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MKI$, MKL$, MKS$, and MKD$ convert numbers to numeric strings that can be
+stored in FIELD statement string variables. CVI, CVL, CVS, and CVD convert
+those strings back to numbers.
+
+\bMKI$(integer-expression%)\p
+\bMKL$(long-integer-expression&)\p
+\bMKS$(single-precision-expression!)\p
+\bMKD$(double-precision-expression#)\p
+\bCVI(2-byte-numeric-string)\p
+\bCVL(4-byte-numeric-string)\p
+\bCVS(4-byte-numeric-string)\p
+\bCVD(8-byte-numeric-string)\p
+
+    Function    Returns             Function    Returns
+    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+    MKI$        A 2-byte string     CVI         An integer
+    MKL$        A 4-byte string     CVL         A long integer
+    MKS$        A 4-byte string     CVS         A single-precision number
+    MKD$        An 8-byte string    CVD         A double-precision number
+
+See Also    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aMKSMBF$, MKDMBF$, CVSMBF, CVDMBF\v@CVSMBF\v\i\p
+.context MKDMBF$
+.context @MKDMBF$
+.context MKSMBF$
+.context @MKSMBF$
+.context CVDMBF
+.context @CVDMBF
+.context CVSMBF
+.context @CVSMBF
+:nMKSMBF$, MKDMBF$, CVSMBF, CVDMBF Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MKSMBF$ and MKDMBF$ convert IEEE-format numbers to Microsoft-Binary-format
+numeric strings that can be stored in FIELD statement string variables.
+CVSMBF and CVDMBF convert those strings back to IEEE-format numbers.
+
+\bMKSMBF$(single-precision-expression!)\p
+\bMKDMBF$(double-precision-expression#)\p
+\bCVSMBF (4-byte-numeric-string)\p
+\bCVDMBF (8-byte-numeric-string)\p
+
+    Function    Returns
+    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+    MKSMBF$     A 4-byte string containing a Microsoft-Binary-format number
+    MKDMBF$     An 8-byte string containing a Microsoft-Binary-format number
+    CVSMBF      A single-precision number in IEEE format
+    CVDMBF      A double-precision number in IEEE format
+
+    ş These functions are useful for maintaining data files created with
+      older versions of Basic.
+
+Example:
+    TYPE Buffer
+        SngNum AS STRING * 4
+        DblNum AS STRING * 8
+    END TYPE
+    DIM RecBuffer AS Buffer
+    OPEN "TESTDAT.DAT" FOR RANDOM AS #1 LEN = 12
+    SNum = 98.9
+    DNum = 645.3235622#
+    RecBuffer.SngNum = MKSMBF$(SNum)
+    RecBuffer.DblNum = MKDMBF$(DNum)
+    PUT #1, 1, RecBuffer
+    GET #1, 1, RecBuffer
+    CLOSE #1
+    PRINT CVSMBF(RecBuffer.SngNum), CVDMBF(RecBuffer.DblNum)
+
+See Also    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aMKn$, CVn\v@CVS\v\i\p
+.context PEEK
+.context @PEEK
+.context POKE
+.context @POKE
+:nPEEK Function, POKE Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PEEK returns a byte value stored at a specified memory location.
+POKE writes a byte value to a specified memory location.
+
+\bPEEK(address)\p
+\bPOKE address,byte%\p
+
+    ş \baddress\p    A byte position relative to the current segment address
+                 set by DEF SEG; a value in the range 0 through 65,535.
+    ş \bbyte%\p      A byte value to write to the specified memory location;
+                 a value in the range 0 through 255.
+
+Example:
+    DEF SEG = 0
+    Status% = PEEK(&H417)              'Read keyboard status.
+    POKE &H417, (Status% XOR &H40)     'Change Caps Lock state, bit 6.
+
+See Also    \i\p\aDEF SEG\v@SEG\v\i\p
+.context SPACE$
+.context @SPACE$
+:nSPACE$ Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns a string of spaces.
+
+\bSPACE$(n%)\p
+
+    ş \bn%\p    The number of spaces you want in the string.
+
+Example:
+    FOR i% = 1 TO 5
+        x$ = SPACE$ (i%)
+        PRINT x$; i%
+    NEXT i%
+
+See Also    \i\p\aSPC\v@SPC\v\i\p    \i\p\aSTRING$\v@STRING$\v\i\p
+.context STR$
+.context @STR$
+.context VAL
+.context @VAL
+:nSTR$, VAL Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+STR$ returns a string representation of a number.
+VAL converts a string representation of a number to a number.
+
+\bSTR$(numeric-expression)\p
+\bVAL(stringexpression$)\p
+
+    ş \bnumeric-expression\p    Any numeric expression.
+    ş \bstringexpression$\p     A string representation of a number.
+
+Example:
+    PRINT "Decimal 65 is represented in hexadecimal as ";
+    PRINT "&H" + LTRIM$(STR$(41))
+    PRINT VAL(RIGHT$("Microsoft 1990", 4))
+.context STRING$
+.context @STRING$
+:nSTRING$ Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns a string of a specified length made up of a repeating character.
+
+\bSTRING$(length%,{ascii-code% | stringexpression$})\p
+
+    ş \blength%\p              The length of the string.
+    ş \bascii-code%\p          The ASCII code of the repeating character.
+    ş \bstringexpression$\p    Any string expression. STRING$ fills the string
+                           with the first character in stringexpression$.
+
+Example:
+    PRINT STRING$(5, "-");
+    PRINT "Hello";
+    PRINT STRING$(5, "-")
+
+See Also    \i\p\aASCII Character Codes\v@ac\v\i\p
+.context VARSEG
+.context @VARSEG
+.context VARPTR
+.context @VARPTR
+:nVARPTR, VARSEG Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+VARPTR returns the offset address of a variable.
+VARSEG returns the segment address of a variable.
+
+\bVARPTR(variablename)\p
+\bVARSEG(variablename)\p
+
+    ş \bvariablename\p	  Any Basic variable.
+
+See Also    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aDEF SEG\v@SEG\v\i\p    \i\p\aPEEK, POKE\v@PEEK\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p
+.context VARPTR$
+.context @VARPTR$
+:nVARPTR$ Function
+  \i\p\aContents\v@helpTableId\v\i\p	\i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns a string representation of a variable's address for use in DRAW and
+PLAY statements.
+
+\bVARPTR$(commandstring$)\p
+
+    ş \bcommandstring$\p    A string variable containing DRAW or PLAY commands.
+
+Example:
+    Scale$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(Scale$)
+    NEXT i%
+
+See Also   \i\p\aDRAW\v@DRAW\v\i\p   \i\p\aPLAY (Music)\v@PLAY\v\i\p    \i\p\aVARPTR, VARSEG\v@VARPTR\v\i\p

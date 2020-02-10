@@ -1,0 +1,455 @@
+.comment ******************************************************************
+.comment *  Structure Family - QBasic                                     *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  6/16/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments                       *
+.comment ******************************************************************
+.comment *  6/13/90 stevesau                                              *
+.comment *  Incorporated RonS coments.                                    *
+.comment ******************************************************************
+.comment *  5/14/90 stevesau                                              *
+.comment *  Combined DATA/READ/RESTORE, DIM/REDIM, LBOUND/UBOUND,         *
+.comment *  SHARED/STATIC.                                                *
+.comment *  Incorporated review comments.                                 *
+.comment *  Second pass done, DONE, DUN!                                  *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Added action lines.                                           *
+.comment *  Combined $STATIC and $DYNAMIC and Metacommands Syntax info.   *
+.comment *  Moved info from Details to DIM, COMMON, ERASE, READ, SHARED,  *
+.comment *  STATIC.                                                       *
+.comment *  Added TYPE statement info from ISAM file.                     *
+.comment ******************************************************************
+.comment *  4/17/90 Bethpr                                                *
+.comment *  Removed $Include metacommand; in Data Type Keywords node,     *
+.comment *  removed currency; removed $Include from Metacommands Syntax   *
+.comment *  node; removed Preserve from Redim statement                   *
+.comment ******************************************************************
+.context $STATIC
+.context @$STATIC
+.context $DYNAMIC
+.context @$DYNAMIC
+:nDe meta-opdrachten $STATIC en $DYNAMIC
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Stellen de standaard array-ruimte in.
+
+\b{REM | '} $STATIC\p
+\b{REM | '} $DYNAMIC\p
+
+    ş \b{REM | '}\p    Meta-opdrachten moeten worden voorafgegaan door
+                   REM of een enkel aanhalingsteken (').
+    ş \b$STATIC\p      Geeft aan dat de arrays die in verdere
+                   DIM-statements worden gebruikt statische arrays zijn
+                   (tenzij ze zijn gedeclareerd in een niet-statische
+                   SUB- of FUNCTION-procedure). De array-ruimte wordt
+                   toegewezen wanneer u het programma start en blijft
+                   ongewijzigd.
+    ş \b$DYNAMIC\p     Geeft aan dat de arrays die in verdere
+                   DIM-statements worden gebruikt dynamische arrays zijn.
+                   De array-ruimte wordt 'dynamisch' toegewezen terwijl
+                   het programma wordt uitgevoerd.
+
+    ş DIM en REDIM vormen over het algemeen een betere manier om op te
+      geven of arrays dynamisch of statisch zijn.
+
+Zie ook     \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aREM\v@REM\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p
+.context COMMON
+.context @COMMON
+:nHet statement COMMON
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definieert globale variabelen die toegankelijk zijn voor procedures binnen
+een programma of tussen aan elkaar gekoppelde programma's.
+
+\bCOMMON [SHARED] variabelen\p
+
+    ş \bSHARED\p        Geeft aan dat de variabelen toegankelijk zijn voor
+                    SUB- of FUNCTION-procedures.
+    ş \bvariabelen\p    Een of meer variabelen die toegankelijk zijn voor
+                    procedures:
+
+                    \bvariabele[( )] [AS type] [, variabele[( )] [AS type]]...\p
+
+                    \bvariabele\p   Een Basic-variabele. Variabelen kunnen
+                                bestaan uit maximaal 40 tekens en moeten
+                                beginnen met een letter. Geldige tekens
+                                zijn A-Z, 0-9 en een punt (.).
+                    \btype\p        Het gegevenstype van de variabele
+                                (INTEGER, LONG, SINGLE, DOUBLE, STRING
+                                of een gebruikergedefinieerd type).
+
+    ş Een array-variabele in een COMMON-statement is een dynamische array
+      tenzij deze in een voorgaande DIM-statement als statisch is
+      gedeclareerd. De dimensies moeten in een latere DIM- of REDIM-
+      statement worden ingesteld.
+
+Zie ook     \i\p\aCHAIN\v@CHAIN\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p
+            \i\p\aSHARED, STATIC\v@SHARED\v\i\p           \i\p\aSUB\v@SUB\v\i\p
+.context DATA
+.context @DATA
+.context READ
+.context @READ
+.context RESTORE
+.context @RESTORE
+:nDe statements DATA, READ en RESTORE
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DATA specificeert waarden die door de volgende READ-statements moeten
+worden gelezen. READ leest deze waarden en wijst ze toe aan variabelen.
+RESTORE stelt READ in staat waarden in opgegeven DATA-statements opnieuw
+te lezen.
+
+\bDATA constante[,constante]...\p
+\bREAD variabelen\p
+\bRESTORE [regel]\p
+
+    ş \bconstante\p       Een of meer numerieke of tekenreeksconstanten
+                      die de te lezen gegevens aangeven.
+                      Tekenreeksconstanten met komma's, dubbelepunten of
+                      spaties ervoor of erna, worden omgeven door
+                      aanhalingstekens (" ").
+    ş \bvariabelen\p      Een of meer variabelen, gescheiden door komma's,
+                      die zijn toegewezen aan datawaarden. Variabelen
+                      kunnen maximaal bestaan uit 40 tekens en moeten
+                      beginnen met een letter. Geldige tekens zijn
+                      A-Z, 0-9 en een punt (.).
+    ş \bregel\p           Het label of regelnummer van een DATA-statement.
+                      Als regel wordt weggelaten, leest het volgende
+                      READ-statement waarden in het eerste DATA-statement
+                      in het programma.
+
+    ş DATA-statements kunnen alleen op het moduleniveau worden ingevoerd.
+      Ze kunnen niet worden gebruikt in procedures.
+
+Voorbeeld:
+    FOR i% = 1 TO 3
+        READ a%, b$
+        PRINT a%, b$
+        RESTORE
+    NEXT i%
+    DATA 1, "Herhaal"
+.context DEFINT
+.context @DEFINT
+.context DEFLNG
+.context @DEFLNG
+.context DEFSNG
+.context @DEFSNG
+.context DEFDBL
+.context @DEFDBL
+.context DEFSTR
+.context @DEFSTR
+:nDEF-type statements
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Stellen de standaard-gegevenstypen in voor variabelen, DEF FN-functies
+en FUNCTION-procedures.
+
+\bDEFINT letterbereik [,letterbereik]...\p
+\bDEFLNG letterbereik [,letterbereik]...\p
+\bDEFSNG letterbereik [,letterbereik]...\p
+\bDEFDBL letterbereik [,letterbereik]...\p
+\bDEFSTR letterbereik [,letterbereik]...\p
+
+    ş \bletterbereik\p   Een letter of reeks letters (zoals A-M). QBasic
+                     stelt het standaard-gegevenstype in voor variabelen,
+                     DEF FN-functies en voor FUNCTION-procedures waarvan
+                     de namen beginnen met de opgegeven letter(s), als
+                     volgt:
+
+                     Statement    Standaard-gegevenstype
+                     ÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                     DEFINT       INTEGER
+                     DEFLNG       LONG
+                     DEFSNG       SINGLE
+                     DEFDBL       DOUBLE
+                     DEFSTR       STRING
+
+    ş Een gegevenstype-achtervoegsel (%, &, !, # of $) doet een
+      DEF-type statement teniet.
+    ş Enkele-precisie is het standaard-gegevenstype als u geen
+      DEF-type statement opgeeft.
+    ş Nadat u een DEF-type statement in uw programma hebt opgenomen,
+      plaatst QBasic automatisch een hiermee overeenkomend DEF-type
+      statement in elke procedure die u maakt.
+
+Voorbeeld:
+    DEFDBL A-Z
+    a = SQR(3)
+    PRINT "De wortel van 3 = "; a
+
+Zie ook     \i\p\aVerschillen met BASICA\v@basica.diffs\v\i\p
+.context DIM
+.context @DIM
+.context REDIM
+.context @REDIM
+:nDe statements DIM en REDIM
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DIM declareert een array of spefificeert een gegevenstype voor een niet-array
+variabele. REDIM declareert een dynamische array of stelt de grootte ervan
+opnieuw in, waarbij de oude waarden worden gewist.
+
+\bDIM [SHARED] variabele[(subscripts)] [AS type]\p
+             \b[,variabele[(subscripts)] [AS type]]...\p
+\bREDIM [SHARED] variabele(subscripts) [AS type]\p
+               \b[,variabele(subscripts) [AS type]]...\p
+
+    ş \bSHARED\p        Geeft aan dat de variabelen toegankelijk zijn voor
+                    alle SUB- of FUNCTION-procedures in de module.
+    ş \bvariabele\p     De naam van een array of variabele.
+    ş \bsubscripts\p    Dimensies van de array, als volgt uitgedrukt:
+
+                    \b[laagste TO] hoogste [,[laagste TO] hoogste]...\p
+
+                    \blaagste\p    De laagste grens van de array-subscript.
+                               De standaardgrens is nul.
+                    \bhoogste\p    De hoogste grens.
+
+    ş \bAS type\p       Declareert het gegevenstype van de array of variabele
+                    (INTEGER, LONG, SINGLE, DOUBLE, STRING of een
+                    gebruikergedefinieerd gegevenstype).
+
+    ş DIM declareert zowel statische als dynamische arrays. Tenzij de
+      array-ruimte is bepaald met behulp van $STATIC, $DYNAMIC of COMMON,
+      zijn arrays met een dimensie aangegeven in cijfers statisch en
+      arrays met een dimensie aangegeven in variabelen dynamisch. REDIM
+      declareert altijd dynamische arrays.
+    ş Statische array-ruimte wordt toegewezen wanneer u een programma start
+      en blijft ongewijzigd. Dynamische array-ruimte wordt toegewezen
+      terwijl het programma wordt uitgevoerd.
+
+Voorbeeld:
+    ' $DYNAMIC
+    DIM A(49, 49)
+    REDIM A(19, 14)
+
+Zie ook     \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aERASE\v@ERASE\v\i\p    \i\p\aOPTION BASE\v@BASE\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p
+            \i\p\a$STATIC, $DYNAMIC\v@$DYNAMIC\v\i\p    \i\p\aVerschillen met BASICA\v@basica.diffs\v\i\p
+.context ERASE
+.context @ERASE
+:nHet statement ERASE
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Initialiseert array-elementen opnieuw of maakt dynamische array-ruimte leeg.
+
+\bERASE array [,array]...\p
+
+    ş \barray\p    De naam van een array.
+
+    ş Voor statische arrays stelt ERASE elk element van een numerieke array
+      in op nul en maakt elk element van een tekenreeks-array leeg.
+    ş Voor dynamische arrays verwijdert ERASE arrays uit het geheugen. U
+      moet de dimensies van de array dan opnieuw declareren met REDIM of DIM
+      als u deze wilt gebruiken.
+
+Voorbeeld:
+    DIM a%(0)
+    a%(0) = 6
+    PRINT "Ervoor: "; a%(0)
+    ERASE a%
+    PRINT "Erna: "; a%(0)
+
+Zie ook     \i\p\aCLEAR\v@CLEAR\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context LBOUND
+.context @LBOUND
+.context UBOUND
+.context @UBOUND
+:nDe functies LBOUND en UBOUND
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneren de laagste en hoogste grens (laagste en hoogste beschikbare
+subscript) voor de gespecificeerde array-dimensie.
+
+\bLBOUND(array[,dimensie%])\p
+\bUBOUND(array[,dimensie%])\p
+
+    ş \barray\p         De naam van de array.
+    ş \bdimensie%\p     Geeft de array-dimensie aan waarvan het laagste
+                    en hoogste element moet worden geretourneerd. Gebruik 1
+                    voor de eerste dimensie, 2 voor de tweede dimensie,
+                    enz. De standaardwaarde is 1.
+
+Voorbeeld:
+    DIM a%(1 TO 3, 2 TO 7)
+    PRINT LBOUND(a%, 1), UBOUND(a%, 2)
+
+Zie ook     \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context LET
+.context @LET
+:nHet statement LET
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Wijst de waarde van een uitdrukking toe aan een variabele.
+
+\b[LET] variabele=uitdrukking\p
+
+    ş \bvariabele\p     Een variabele. Namen van variabelen kunnen maximaal
+                    40 tekens omvatten en moeten beginnen met een letter.
+                    Geldige tekens zijn A-Z, 0-9 en een punt (.).
+    ş \buitdrukking\p   Een uitdrukking die een toe te wijzen waarde levert.
+
+    ş Het gebruik van het optionele trefwoord LET wordt niet aanbevolen.
+      Het toewijzingsstatement variabele=uitdrukking heeft zonder LET
+      hetzelfde resultaat als met LET.
+
+Zie ook     \i\p\aLSET, RSET\v@LSET\v\i\p
+.context OPTION
+.context @OPTION
+.context BASE
+.context @BASE
+:nHet statement OPTION BASE
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Stelt de laagste grens voor array-subscripts in.
+
+\bOPTION BASE {0 | 1}\p
+
+    ş De clausule TO van het statement DIM biedt een betere manier om de
+      laagste grens van een array-subscript in te stellen.
+
+Zie ook     \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aLBOUND, UBOUND\v@UBOUND\v\i\p
+.context REM
+.context @REM
+:nHet statement REM
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Biedt de mogelijkheid om opmerkingen in een programma op te nemen.
+
+\bREM opmerking\p
+\b' opmerking\p
+
+    ş \bopmerking\p    Een willekeurige tekst.
+
+    ş Opmerkingen worden door het programma buiten beschouwing gelaten
+      tijdens de uitvoering, tenzij ze meta-opdrachten bevatten.
+    ş Een opmerking kan worden toegevoegd na een uitvoerbaar statement
+      wanneer het wordt voorafgegaan door een enkel aanhalingsteken (').
+      U kunt in dit geval ook REM vooraf laten gaan door een dubbelepunt (:).
+
+Voorbeeld:
+    REM    Dit is een opmerking.
+    '      Dit is ook een opmerking.
+    PRINT "Test1"       'Dit is een opmerking na een PRINT-statement.
+    PRINT "Test2" :  REM Dit is ook een opmerking na een PRINT-statement.
+
+Zie ook     \i\p\a$STATIC, $DYNAMIC\v@$STATIC\v\i\p
+.context SHARED
+.context @SHARED
+.context STATIC
+.context @STATIC
+:nDe statements SHARED en STATIC
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SHARED geeft procedures toegang tot variabelen op moduleniveau.
+STATIC declareert variabelen als lokaal voor een functie of procedure zodat
+deze variabelen hun waarden tussen de diverse aanroepen behouden.
+
+\bSHARED variabele[()] [AS type] [,variabele[()] [AS type]]...\p
+\bSTATIC variabele[()] [AS type] [,variabele[()] [AS type]]...\p
+
+    ş \bvariabele\p   De naam van een variabele op moduleniveau die als
+                  toegankelijk of lokaal gedeclareerd moet worden. Namen
+                  van variabelen mogen maximaal 40 tekens omvatten en
+                  moeten beginnen met een letter. Geldige tekens zijn
+                  A-Z, 0-9 en een punt (.).
+    ş \bAS type\p     Declareert het gegevenstype van de variabele
+                  (INTEGER, LONG, SINGLE, DOUBLE, STRING of een
+                  gebruikergedefinieerd gegevenstype).
+Voorbeeld:
+    Het programma REMLINE.BAS illustreert het gebruik van de statements
+    SHARED en STATIC. U kunt dit programma bekijken of uitvoeren door
+    REMLINE.BAS te laden met behulp van de opdracht Openen in het menu
+    Bestand.
+
+Zie ook     \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context SWAP
+.context @SWAP
+:nHet statement SWAP
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Verwisselt de waarden van twee variabelen.
+
+\bSWAP variabele1, variabele2\p
+
+    ş \bvariabele1\p en \bvariabele2\p    Twee variabelen van hetzelfde
+                                  gegevenstype.
+
+Voorbeeld:
+    a% = 1: b% = 2
+    PRINT "Voor verwisseling: "; a%, b%
+    SWAP a%, b%
+    PRINT "Na verwisseling: "; a%, b%
+.context TYPE
+.context @TYPE
+:nHet statement TYPE
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definieert een gegevenstype dat een of meer elementen bevat.
+
+\bTYPE gebr_type\p
+  \belementnaam AS typenaam\p
+  \b[elementnaam AS typenaam]\p
+\b.\p
+\b.\p
+\b.\p
+\bEND TYPE\p
+
+    ş \bgebr_type\p      De naam van het te defini‰ren gegevenstype. De
+                     naam kan maximaal 40 tekens omvatten en moet beginnen
+                     met een letter. Geldige tekens zijn A-Z, 0-9 en een
+                     punt (.).
+    ş \belementnaam\p    Een element van een gebruikgedefinieerd type.
+    ş \btypenaam\p       Het type element (INTEGER, LONG, SINGLE, DOUBLE,
+                     STRING of een gebruikergedefinieerd gegevenstype).
+
+    ş Gebruik DIM, REDIM, COMMON, STATIC of SHARED om een variabele voor
+      een gebruikergedefinieerd gegevenstype te maken.
+
+Voorbeeld:
+    TYPE Kaart
+        Kleur AS STRING * 9
+        Waarde AS INTEGER
+    END TYPE
+    DIM Spel(1 TO 52) AS Kaart
+    Spel(1).Kleur = "Klaver"
+    Spel(1).Waarde = 2
+    PRINT Spel(1).Kleur, Spel(1).Waarde
+
+Zie ook     \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p
+.comment ******************************************************************
+.comment *  Data Type Keywords screen                                     *
+.comment ******************************************************************
+.context INTEGER
+.context @INTEGER
+.context LONG
+.context @LONG
+.context SINGLE
+.context @SINGLE
+.context DOUBLE
+.context @DOUBLE
+.context STRING
+.context @STRING
+:nGegevenstype-trefwoorden
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Specificeren het gegevenstype voor een variabele in een declarerend
+statement of een parameterlijst:
+
+    ş \bINTEGER\p      16-bits positief dan wel negatief geheel getal.
+    ş \bLONG\p         32-bits positief dan wel negatief geheel getal.
+    ş \bSINGLE\p       Enkele-precisie 32-bits 'floating-point' variabele.
+    ş \bDOUBLE\p       Dubbele-precisie 64-bits 'floating-point' variabele.
+    ş \bSTRING * n%\p  Tekenreeksvariabele met vaste lengte van n% bytes.
+    ş \bSTRING\p       Tekenreeksvariabele met vari‰rende lengte.
+
+Zie ook     \i\p\aAS\v@AS\v\i\p          \i\p\aBasic-tekenset\v@fun.character.set\v\i\p    \i\p\aCOMMON\v@COMMON\v\i\p
+            \i\p\aDECLARE\v@DECLARE\v\i\p     \i\p\aDEF FN\v@DEF\v\i\p            \i\p\aDIM, REDIM\v@DIM\v\i\p
+            \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+            \i\p\aTYPE\v@TYPE\v\i\p

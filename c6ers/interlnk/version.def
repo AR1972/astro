@@ -1,0 +1,8 @@
+# VERSION_NUM is the version number shown on the screen
+# MAJOR_VERSION is the internal major version number
+# MINOR_VERSION is the internal minor version number
+
+VERSION_NUM = 1.00
+MAJOR_VER   = 1
+MINOR_VER   = 00
+

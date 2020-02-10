@@ -1,0 +1,26 @@
+:util   FIND
+
+:class 1                                ;Extended errors ;AN005;
+
+:class 2                                ;Parser errors   ;AN005;
+
+:class  A                               ;Utility specific errors  ;AN005;
+:use 1 COMMON1                            ;AN005; ;"Incorrect DOS version"
+:use 2 EXTEND8                            ;AN005; ;"Insufficient memory"
+:def 4  "FIND: "                          ;AN005;
+
+; 300 - 399 reserved for options help messages
+:def 300  FIND /?
+:def 301  FIND /?
+:def 302  FIND /?
+:def 303  FIND /?
+:def 304  FIND /?
+:def 305  FIND /?
+:def 306  FIND /?
+:def 307  FIND /?
+:def 308  FIND /?
+:def 309  FIND /?
+:def 310  FIND /?
+
+:end
+

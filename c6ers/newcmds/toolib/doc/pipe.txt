@@ -1,0 +1,29 @@
+
+SUMMARY create a Xenix stile pipe
+
+#include <tools.h>
+
+pipe( pd )
+int pd[2];
+
+DESCRIPTION
+
+    pipe()
+  	Xenix pipe using 286DOS call.  Try to make a 16K pipe, then halve
+  	request until success.	Minimum pipe is 512 bytes.
+  	    If not enough core for pipe, set errno to ENOMEM.
+  	    If not enough file handles,  set errno to EMFILE.
+  
+  
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+

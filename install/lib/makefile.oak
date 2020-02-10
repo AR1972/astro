@@ -1,0 +1,43 @@
+# Runs through all of the library subdirectories and
+# builds each individual libraray and then uses LIBUILD
+# to build a combined library which can be linked with
+# the individual programs.
+
+# INTERNATIONAL MODIFICATION- Since command lines become too large if
+# we try to point to the LANG\directory for the correct language dependent
+# window.h file, the correct window.h is copied from the lib directory makefile.
+
+MSG_INC=$(LANG_SRC)\$(COUNTRY)\install\include
+
+BUILD_L=TRUE
+ModelType = BUILD_L=TRUE
+
+inc     = ..\include
+
+
+ALL:
+            del  $(inc)\window.h
+	    copy $(MSG_INC)\window.h $(inc)
+
+	cd BIOS
+	$(MAKE) $(ModelType)
+	cd ..\DISK
+	$(MAKE)	$(ModelType)
+	cd ..\STRLIB
+	$(MAKE)	$(ModelType)
+	cd ..\FILE
+	$(MAKE)	$(ModelType)
+	cd ..\WINDOW
+	$(MAKE)	$(ModelType)
+	cd ..\PROMPTS
+	$(MAKE)	$(ModelType)
+	cd ..\COPY
+	$(MAKE)	$(ModelType)
+	cd ..\HARDWARE
+	$(MAKE)	$(ModelType)
+	cd ..\HDISK
+	$(MAKE)	$(ModelType)
+	cd ..
+	$(MAKE) $(ModelType) -f LIBUILD
+
+

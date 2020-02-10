@@ -1,0 +1,220 @@
+.comment ******************************************************************
+.comment *  Index file - QBasic                                           *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/17/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Copied QBI Index.                                             *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Added Unsupported Keywords.                                   *
+.comment *  Made links local.                                             *
+.comment ******************************************************************
+.context @helpIndexId
+.context helpIndexId
+.context @a
+:nQBasic online Help-index
+  \i\p\aInhoud\v@helpTableId\v\i\p  \bHelp-index\p  \i\p\aTerug\v!B\v\i\p
+ฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
+Zo verkrijgt u Help voor een QBasic-trefwoord uit de onderstaande lijst:
+    1. Druk op de toets voor de eerste letter van het trefwoord.
+    2. Verplaats de cursor met de pijltoetsen naar het trefwoord.
+    3. Druk op F1 om de Help-tekst in het Help-venster weer te geven.
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน A บ
+                                                                  ศอออผ
+  \aABS (functie)\v@ABS\v                           \aAPPEND (trefwoord)\v@APPEND\v
+  \aABSOLUTE (trefwoord)\v@ABSOLUTE\v                    \aAS (trefwoord)\v@AS\v
+  \aACCESS (trefwoord)\v@ACCESS\v                      \aASC (functie)\v@ASC\v
+  \aAND (operator)\v@AND\v                          \aATN (functie)\v@ATN\v
+  \aANY (trefwoord)\v@ANY\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน B บ
+                                                                  ศอออผ
+  \aBASE (trefwoord)\v@BASE\v                        \aBLOAD (statement)\v@BLOAD\v
+  \aBasic-tekenset\v@fun.character.set\v                          \aBoole'se operatoren\v@AND\v
+  \aBEEP (statement)\v@BEEP\v                        \aBSAVE (statement)\v@BSAVE\v
+  \aBINARY (trefwoord)\v@BINARY\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน C บ
+                                                                  ศอออผ
+  \aCALL (statement)\v@CALL\v                        \aCOLOR (statement)\v@COLOR\v
+  \aCALL ABSOLUTE (statement)\v@ABSOLUTE\v               \aCOM (statement)\v@COM\v
+  \aCASE (trefwoord)\v@SELECT\v                        \aCOMMON (statement)\v@COMMON\v
+  \aCDBL (functie)\v@CDBL\v                          \aCONST (statement)\v@CONST\v
+  \aCHAIN (statement)\v@CHAIN\v                       \aCOS (functie)\v@COS\v
+  \aCHDIR (statement)\v@CHDIR\v                       \aCSNG (functie)\v@CSNG\v
+  \aCHR$ (functie)\v@CHR$\v                          \aCSRLIN (functie)\v@CSRLIN\v
+  \aCINT (functie)\v@CINT\v                          \aCVD (functie)\v@CVD\v
+  \aCIRCLE (statement)\v@CIRCLE\v                      \aCVDMBF (functie)\v@CVDMBF\v
+  \aCLEAR (statement)\v@CLEAR\v                       \aCVI (functie)\v@CVI\v
+  \aCLNG (functie)\v@CLNG\v                          \aCVL (functie)\v@CVL\v
+  \aCLOSE (statement)\v@CLOSE\v                       \aCVS (functie)\v@CVS\v
+  \aCLS (statement)\v@CLS\v                         \aCVSMBF (functie)\v@CVSMBF\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน D บ
+                                                                  ศอออผ
+  \aDATA (statement)\v@DATA\v                        \aDEFLNG (statement)\v@DEFLNG\v
+  \aDATE$ (functie)\v@datef\v                         \aDEFSNG (statement)\v@DEFSNG\v\p
+  \aDATE$ (statement)\v@DATE$\v                       \aDEFSTR (statement)\v@DEFSTR\v
+  \aDECLARE (statement)\v@DECLARE\v                     \aDIM (statement)\v@DIM\v
+  \aDEF FN (statement)\v@DEF\v                      \aDO...LOOP (statement)\v@DO\v\p
+  \aDEF SEG (statement)\v@SEG\v                     \aDOUBLE (trefwoord)\v@DOUBLE\v
+  \aDEFDBL (statement)\v@DEFDBL\v                      \aDRAW (statement)\v@DRAW\v
+  \aDEFINT (statement)\v@DEFINT\v                      \a$DYNAMIC (meta-opdracht)\v@$DYNAMIC\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน E บ
+                                                                  ศอออผ
+  \aELSE (trefwoord)\v@IF\v                        \aERDEV (functie)\v@ERDEV\v
+  \aELSEIF (trefwoord)\v@IF\v                      \aERDEV$ (functie)\v@ERDEV$\v\p
+  \aEND (statement)\v@END\v                         \aERL (functie)\v@ERL\v\p
+  \aENVIRON (statement)\v@ENVIRON\v                     \aERR (functie)\v@ERR\v
+  \aENVIRON$ (functie)\v@ENVIRON$\v                      \aERROR (statement)\v@ERROR\v
+  \aEOF (functie)\v@EOF\v                           \aEXIT (statement)\v@EXIT\v
+  \aEQV (operator)\v@EQV\v                          \aEXP (functie)\v@EXP\v
+  \aERASE (statement)\v@ERASE\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน F บ
+                                                                  ศอออผ
+  \aFIELD (statement)\v@FIELD\v                       \aFOR...NEXT (statement)\v@FOR\v
+  \aFILEATTR (functie)\v@FILEATTR\v                      \aFRE (functie)\v@FRE\v
+  \aFILES (statement)\v@FILES\v                       \aFREEFILE (functie)\v@FREEFILE\v
+  \aFIX (functie)\v@FIX\v                           \aFUNCTION (statement)\v@FUNCTION\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน G บ
+                                                                  ศอออผ
+  \aGegevenstype-trefwoorden\v@INTEGER\v                \aGOSUB (statement)\v@GOSUB\v
+  \aGET (bestands-I/O; statement)\v@GET\v           \aGOTO (statement)\v@GOTO\v
+  \aGET (grafisch; statement)\v@ggx\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน H บ
+                                                                  ศอออผ
+  \aHEX$ (functie)\v@HEX$\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน I บ
+                                                                  ศอออผ
+  \aIF...THEN...ELSE (statement)\v@IF\v            \aINSTR (functie)\v@INSTR\v
+  \aIMP (operator)\v@IMP\v                          \aINT (functie)\v@INT\v
+  \aINKEY$ (functie)\v@INKEY$\v                        \aINTEGER (trefwoord)\v@INTEGER\v
+  \aINP (functie)\v@INP\v                           \aIOCTL (statement)\v@IOCTL\v
+  \aINPUT (statement)\v@INPUT\v                       \aIOCTL$ (functie)\v@IOCTL$\v
+  \aINPUT$ (functie)\v@INPUT$\v                        \aIS (trefwoord)\v@IS\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน K บ
+                                                                  ศอออผ
+  \aKEY (toewijzing; statement)\v@KEY\v             \aKILL (statement)\v@KILL\v
+  \aKEY ('event trapping'; statement)\v@ketv\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน L บ
+                                                                  ศอออผ
+  \aLBOUND (functie)\v@LBOUND\v                        \aLOCK...UNLOCK (statement)\v@LOCK\v\p
+  \aLCASE$ (functie)\v@LCASE$\v                        \aLOF (functie)\v@LOF\v\p
+  \aLEFT$ (functie)\v@LEFT$\v                         \aLOG (functie)\v@LOG\v\p
+  \aLEN (functie)\v@LEN\v                           \aLONG (trefwoord)\v@LONG\v\p
+  \aLET (statement)\v@LET\v                         \aLOOP (trefwoord)\v@LOOP\v\p
+  \aLINE (grafisch; statement)\v@LINE\v              \aLPOS (functie)\v@LPOS\v\p
+  \aLINE INPUT (statement)\v@INPUT\v                  \aLPRINT (statement)\v@LPRINT\v\p
+  \aLIST (trefwoord)\v@LIST\v                        \aLPRINT USING (statement)\v@lprintu\v
+  \aLOC (functie)\v@LOC\v                           \aLSET (statement)\v@LSET\v\p
+  \aLOCATE (statement)\v@LOCATE\v                      \aLTRIM$ (functie)\v@LTRIM$\v\p
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน M บ
+                                                                  ศอออผ
+  \aMID$ (functie)\v@MID$\v                          \aMKI$ (functie)\v@MKI$\v
+  \aMID$ (statement)\v@MID$\v                        \aMKL$ (functie)\v@MKL$\v
+  \aMKD$ (functie)\v@MKD$\v                          \aMKS$ (functie)\v@MKS$\v
+  \aMKDIR (statement)\v@MKDIR\v                       \aMKSMBF$ (functie)\v@MKSMBF$\v
+  \aMKDMBF$ (functie)\v@MKDMBF$\v                       \aMOD (operator)\v@MOD\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน N บ
+                                                                  ศอออผ
+  \aNAME (statement)\v@NAME\v                        \aNOT (operator)\v@NOT\v
+  \aNEXT (trefwoord)\v@NEXT\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน O บ
+                                                                  ศอออผ
+  \aOCT$ (functie)\v@HEX$\v                          \aON TIMER (statement)\v@TIMER\v
+  \aOFF (trefwoord)\v@OFF\v                         \aON...GOSUB (statement)\v@ongo\v\p
+  \aON COM (statement)\v@COM\v                      \aON...GOTO (statement)\v@ongo\v\p
+  \aON ERROR (statement)\v@onerr\v                    \aOPEN (statement)\v@OPEN\v\p
+  \aON (trefwoord)\v@ON\v                          \aOPEN COM (statement)\v@opcom\v
+  \aON KEY (statement)\v@ketv\v                      \aOPTION BASE (statement)\v@BASE\v\p
+  \aON PEN (statement)\v@PEN\v                      \aOR (operator)\v@OR\v
+  \aON PLAY (statement)\v@playev\v                     \aOUT (statement)\v@OUT\v
+  \aON STRIG (statement)\v@STRIG\v                    \aOUTPUT (trefwoord)\v@OUTPUT\v\p
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน P บ
+                                                                  ศอออผ
+  \aPAINT (statement)\v@PAINT\v                       \aPOINT (functie)\v@POINT\v
+  \aPALETTE (statement)\v@PALETTE\v                     \aPOKE (statement)\v@POKE\v
+  \aPCOPY (statement)\v@PCOPY\v                       \aPOS (functie)\v@POS\v
+  \aPEEK (functie)\v@PEEK\v                          \aPRESET (statement)\v@PRESET\v
+  \aPEN (functie)\v@penf\v                           \aPRINT (statement)\v@PRINT\v
+  \aPEN (statement)\v@PEN\v                         \aPRINT USING (statement)\v@zpu\v
+  \aPLAY (functie)\v@playf\v                          \aPSET (statement)\v@PSET\v
+  \aPLAY (muziek; statement)\v@PLAY\v                \aPUT (bestands-I/O; statement)\v@PUT\v
+  \aPLAY ('event trapping'; statement)\v@playev\v      \aPUT (grafisch; statement)\v@pgfx\v
+  \aPMAP (functie)\v@PMAP\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน R บ
+                                                                  ศอออผ
+  \aRANDOM (trefwoord)\v@RANDOM\v                      \aRETURN (statement)\v@RETURN\v
+  \aRANDOMIZE (statement)\v@RANDOMIZE\v                   \aRIGHT$ (functie)\v@RIGHT$\v
+  \aREAD (statement)\v@READ\v                        \aRMDIR (statement)\v@RMDIR\v
+  \aREDIM (statement)\v@REDIM\v                       \aRND (functie)\v@RND\v
+  \aREM (statement)\v@REM\v                         \aRSET (statement)\v@RSET\v
+  \aRESET (statement)\v@RESET\v                       \aRTRIM$ (functie)\v@RTRIM$\v
+  \aRESTORE (statement)\v@RESTORE\v                     \aRUN (statement)\v@RUN\v
+  \aRESUME (statement)\v@RESUME\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน S บ
+                                                                  ศอออผ
+  \aSCREEN (functie)\v@screenf\v                        \aSQR (functie)\v@SQR\v
+  \aSCREEN (statement)\v@SCREEN\v                      \aSTATIC (statement)\v@STATIC\v
+  \aSEEK (functie)\v@SEEK\v                          \a$STATIC (meta-opdracht)\v@$STATIC\v
+  \aSEEK (statement)\v@SEEK\v                        \aSTEP (trefwoord)\v@STEP\v
+  \aSELECT CASE (statement)\v@SELECT\v                 \aSTICK (functie)\v@STICK\v
+  \aSGN (functie)\v@SGN\v                           \aSTOP (statement)\v@STOP\v
+  \aSHARED (statement)\v@SHARED\v                      \aSTR$ (functie)\v@STR$\v
+  \aSHELL (statement)\v@SHELL\v                       \aSTRIG (functie)\v@strigf\v
+  \aSIN (functie)\v@SIN\v                           \aSTRIG (statement)\v@STRIG\v
+  \aSINGLE (trefwoord)\v@SINGLE\v                      \aSTRING (trefwoord)\v@STRING\v
+  \aSLEEP (statement)\v@SLEEP\v                       \aSTRING$ (functie)\v@STRING$\v
+  \aSOUND (statement)\v@SOUND\v                       \aSUB (statement)\v@SUB\v
+  \aSPACE$ (functie)\v@SPACE$\v                        \aSWAP (statement)\v@SWAP\v
+  \aSPC (functie)\v@SPC\v                           \aSYSTEM (statement)\v@SYSTEM\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน T บ
+                                                                  ศอออผ
+  \aTAB (functie)\v@TAB\v                           \aTIMER (statement)\v@TIMER\v
+  \aTAN (functie)\v@TAN\v                           \aTO (trefwoord)\v@TO\v
+  \aTHEN (trefwoord)\v@IF\v                        \aTROFF (statement)\v@TROFF\v
+  \aTIME$ (functie)\v@tmf\v                         \aTRON (statement)\v@TRON\v
+  \aTIME$ (statement)\v@TIME$\v                       \aTYPE (statement)\v@TYPE\v
+  \aTIMER (functie)\v@timerf\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน U บ
+                                                                  ศอออผ
+  \aUBOUND (functie)\v@UBOUND\v                        \aUNTIL (trefwoord)\v@DO\v
+  \aUCASE$ (functie)\v@UCASE$\v                        \aUSING (trefwoord)\v@USING\v
+  \aUNLOCK (statement)\v@UNLOCK\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน V บ
+                                                                  ศอออผ
+  \aVAL (functie)\v@VAL\v                           \aVARSEG (functie)\v@VARSEG\v
+  \aVARPTR (functie)\v@VARPTR\v                        \aVIEW (statement)\v@VIEW\v
+  \aVARPTR$ (functie)\v@VARPTR$\v                       \aVIEW PRINT (statement)\v@vupri\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน W บ
+                                                                  ศอออผ
+  \aWAIT (statement)\v@WAIT\v                        \aWIDTH (statement)\v@WIDTH\v
+  \aWEND (trefwoord)\v@WEND\v                        \aWINDOW (statement)\v@WINDOW\v
+  \aWHILE...WEND (statement)\v@WEND\v                \aWRITE (statement)\v@WRITE\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน X บ
+                                                                  ศอออผ
+  \aXOR (operator)\v@XOR\v

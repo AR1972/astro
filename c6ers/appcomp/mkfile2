@@ -1,0 +1,241 @@
+XTRAFLAGS =
+!if "$(DECOMP)" != "SIMPLE"
+XTRAFLAGS = -DCOMPLEX -DDOLLAR_SUFFIX
+!endif
+
+
+CC      = cl -c -nologo -W3 -A$(MODEL) -D$(OS)_VER $(XTRAFLAGS)
+CC2     = cl -c -nologo -W3 -A$(MODEL) -Ox -Zpe
+
+!if "$(CVER)" == "C7"
+CC      = $(CC)  -DC700
+CC2     = $(CC2) -DC700
+!endif
+
+SEG0 =
+SEG1 =
+SEG2 =
+SEG3 =
+!if "$(MODEL)" == "L" || "$(MODEL)" == "M"
+SEG0 = -NT _COMPRESS
+!if "$(OS)" == "WIN"
+SEG1 = -NT DECOMP1_TEXT
+SEG2 = -NT DECOMP_LZSS_TEXT
+SEG3 = -NT DECOMP_JJ1_TEXT
+!else
+SEG1 = -NT _COMPRESS
+SEG2 = -NT _COMPRESS
+SEG3 = -NT _COMPRESS
+!endif
+!endif
+
+!if "$(OS)" == "DOS"
+#LIBLIST = $(MODEL)libcer /NOD
+LIBLIST = $(MODEL)libce /NOD
+!endif
+
+!if "$(DEBUG)" == "YES"
+!if "$(CVER)" == "C51"
+CFLAGS = -Od -Zpei -DCVER_C51
+!else
+CFLAGS = -Od -Zpei
+!endif
+LINK   = link /NOL /MAP /CO /STACK:8192
+!else
+
+#CFLAGS = -Ox -Zp		-Ox causes decomp hang with C 5.1
+#CFLAGS = -Gs -Oilt -Zp 	    so does this
+#CFLAGS = -Gs -Oit -Zp		    and this
+#CFLAGS = -Gs -Ot -Zp		    this too
+#CFLAGS = -Gs -Zp		    this too
+#CFLAGS = -Gs -Os -Zp		    don't forget this
+
+!if "$(CVER)" == "C51"
+CFLAGS = -Gs -Od -Zp
+!else
+CFLAGS = -Ox -Zp
+!endif
+
+LINK   = link /NOL /EX /STACK:8192
+!endif
+
+
+!if "$(MODEL)" == "S"
+ALL: compress.exe decomp.exe
+#ALL: compress.exe decomp.exe testfile.exe testbuff.exe
+!else
+ALL: comp.lib decomp.lib
+#ALL: comp.lib decomp.lib testfile.exe testbuff.exe
+!endif
+
+WINLIBS: comp.lib decomp.lib
+
+
+fmemset.obj: fmemset.asm
+	 masm /Mx fmemset;
+#
+###  Compression Utility
+#
+compress.exe: tools\compress.exe
+    copy tools\compress.exe compress.exe
+
+tools\compress.exe: comp.lib tools\comptool.obj tools\tlshare.obj
+    cd tools
+	 $(LINK) comptool tlshare, compress.exe, , ..\comp $(LIBLIST);
+    cd ..
+
+tools\comptool.obj: tools\comptool.c sutkcomp.h os2types.h tools\strings.h
+    cd tools
+    $(CC) $(SEG0) $(CFLAGS) -I.. -DZK1 -DJJJ1 comptool.c
+    cd ..
+
+tools\tlshare.obj: tools\tlshare.c sutkcomp.h os2types.h tools\strings.h
+    cd tools
+    $(CC) $(SEG0) $(CFLAGS) -I.. tlshare.c
+    cd ..
+
+#
+###  Decompression Utility
+#
+decomp.exe: tools\decomp.exe
+    copy tools\decomp.exe decomp.exe
+
+tools\decomp.exe: decomp.lib tools\decomptl.obj tools\tlshare.obj
+    cd tools
+	 $(LINK) decomptl tlshare, decomp.exe, , ..\decomp $(LIBLIST);
+    cd ..
+
+tools\decomptl.obj: tools\decomptl.c sutkcomp.h os2types.h tools\strings.h
+    cd tools
+    $(CC) $(SEG0) $(CFLAGS) -I.. decomptl.c
+    cd ..
+
+
+
+###  Toolkit Compression Libraries
+
+#  Compression lib for ZK1 and JJJ1 includes decompression code for splitting
+comp.lib: sutkshar.obj sutkcomp.obj sutkdeco.obj compress.obj fmemset.obj \
+           zk1\zk1comp.obj zk1\zk1deco.obj                        \
+           jjj1\jjj1shar.obj jjj1\jjj1comp.obj jjj1\jjj1deco.obj  \
+           lzss\lzshare.obj lzss\lzcomp.obj
+    -del comp.lib
+    lib comp.lib +sutkshar +sutkcomp +sutkdeco +compress +fmemset ;
+    lib comp.lib +zk1\zk1comp.obj +zk1\zk1deco.obj ;
+    lib comp.lib +jjj1\jjj1shar.obj +jjj1\jjj1comp.obj +jjj1\jjj1deco.obj ;
+    lib comp.lib +lzss\lzshare.obj +lzss\lzcomp.obj ;
+    copy comp.lib $(MODEL)comp$(OSLET).lib
+    -del comp.bak
+
+decomp.lib: sutkshar.obj sutkdeco.obj decomp.obj fmemset.obj \
+           lzss\lzshare.obj zk1\zk1deco.obj       \
+           jjj1\jjj1shar.obj jjj1\jjj1deco.obj
+    -del decomp.lib
+    lib decomp.lib +sutkshar +sutkdeco +decomp +fmemset ;
+    lib decomp.lib +zk1\zk1deco.obj ;
+    lib decomp.lib +jjj1\jjj1shar.obj +jjj1\jjj1deco.obj ;
+    lib decomp.lib +lzss\lzshare.obj ;
+    copy decomp.lib $(MODEL)decomp$(OSLET).lib
+    -del decomp.bak
+
+#
+###  Toolkit Compression API Files
+#
+sutkcomp.obj: sutkcomp.c sutkcomp.h os2types.h
+    $(CC) $(SEG0) $(CFLAGS) -I. -DZK1 -DJJJ1 sutkcomp.c
+
+sutkdeco.obj: sutkdeco.c sutkcomp.h os2types.h
+    $(CC) $(SEG1) $(CFLAGS) -I. -DZK1 -DJJJ1 sutkdeco.c
+
+sutkshar.obj: sutkshar.c sutkcomp.h os2types.h
+    $(CC) $(SEG1) $(CFLAGS) -I. -DZK1 -DJJJ1 sutkshar.c
+
+compress.obj: compress.c sutkcomp.h os2types.h
+    $(CC) $(SEG0) $(CFLAGS) -I. -DZK1 -DJJJ1 compress.c
+
+decomp.obj: decomp.c sutkcomp.h os2types.h
+    $(CC) $(SEG1) $(CFLAGS) -I. -DZK1 -DJJJ1 decomp.c
+
+#
+###  Common LZ routines
+#
+lzss\lzcomp.obj: lzss\lzcomp.c os2types.h lzss\lz.h
+    cd lzss
+    $(CC) $(SEG0) $(CFLAGS) -I.. lzcomp.c
+    cd ..
+
+lzss\lzshare.obj: lzss\lzshare.c os2types.h
+    cd lzss
+    $(CC) $(SEG2) $(CFLAGS) -I.. lzshare.c
+    cd ..
+
+#
+###  Steven Zeck Algorithm Files
+#
+zk1\zk1comp.obj: zk1\zk1comp.c os2types.h zk1\zk1.h
+    cd zk1
+    $(CC) $(SEG0) $(CFLAGS) -I.. zk1comp.c
+    cd ..
+
+zk1\zk1deco.obj: zk1\zk1deco.c os2types.h zk1\zk1.h
+    cd zk1
+    $(CC) $(SEG2) $(CFLAGS) -I.. zk1deco.c
+    cd ..
+
+#
+###  Jeff J. Johnson Algorithm Files
+#
+jjj1\jjj1comp.obj: jjj1\jjj1comp.c os2types.h jjj1\jjj1.h
+    cd jjj1
+    $(CC) $(SEG0) $(CFLAGS) -I.. jjj1comp.c
+    cd ..
+
+jjj1\jjj1deco.obj: jjj1\jjj1deco.c os2types.h jjj1\jjj1.h
+    cd jjj1
+!if "$(OS)" == "WIN"
+!if "$(DEBUG)" == "YES"
+    $(CC) $(SEG3) $(CFLAGS) jjj1deco.c
+!else
+    $(CC) $(SEG3) -Ocilgt -Gs -Zp jjj1deco.c
+!endif
+!else
+    $(CC) $(SEG3) $(CFLAGS) -I.. jjj1deco.c
+!endif
+    cd ..
+
+jjj1\jjj1shar.obj: jjj1\jjj1shar.c os2types.h
+    cd jjj1
+    $(CC) $(SEG2) $(CFLAGS) -I.. jjj1shar.c
+    cd ..
+
+
+
+testfile.exe: decomp.lib test\example1.obj
+	 link test\example1, testfile.exe, , decomp $(LIBLIST);
+	copy testfile.exe $(MODEL)file$(OSLET).exe
+
+testbuff.exe: decomp.lib test\example2.obj
+	 link test\example2, testbuff.exe, , decomp $(LIBLIST);
+	copy testbuff.exe $(MODEL)buff$(OSLET).exe
+
+test\example1.obj: test\example1.c
+    cd test
+	$(CC2) -I.. example1.c
+    cd ..
+
+test\example2.obj: test\example2.c
+    cd test
+	$(CC2) -I.. example2.c
+    cd ..
+
+
+clean:
+    -del *.obj
+    -del *.lib
+#   -del *.exe
+    -del tools\*.obj
+    -del tools\*.exe
+    -del zk1\*.obj
+    -del jjj1\*.obj
+    -del lzss\*.obj
+    -del test\*.obj

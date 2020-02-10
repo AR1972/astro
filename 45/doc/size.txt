@@ -1,0 +1,110 @@
+				TWIN		CW
+				====		====
+MOUSE				337		307
+EVENT				2586		1849
+WINDOW				4050		4526
+MENU				3662		3999
+DIALOG				7784		9633
+SDM				0		5331
+KEYBOARD			1485		1477
+MISC				674		832
+
+Total less Edit:		22063		27954
+				(including data CW 5.3K bigger)
+
+EDIT				8216		2631
+
+
+Total:				30189		30585
+
+Data+BSS:			2082		1510
+
+============================================================
+========================= CW ===============================
+
+---------- MISC ----------
+STARTUP : 48
+HELPSTUB : 60
+UTIL : 772
+
+---------- MOUSE ----------
+
+MOUSE : 307
+
+---------- EVENT ----------
+
+ALARM : 106
+EVENT : 1743
+
+---------- WINDOW ----------
+
+COLOR : 109
+WINDOW : 2005
+SCREEN : 1833
+BOX : 579
+
+---------- MENU ----------
+MENU : 3867
+MENU2 : 132
+
+---------- DIALOG ----------
+
+DIRLIST : 1337 (now in shell)
+DLGCORE : 1398
+DLGUTIL : 284
+MSGBOX : 616
+STATIC : 289
+LISTBOX : 2969
+GENERAL : 89
+BUTTON : 1543
+SCROLL : 1108
+
+---------- SDM ----------
+
+SDM : 4166 (with DIRLIST)
+SDMCAB : 451
+SDMTMC : 692
+SDMASM : 22
+
+---------- KEYBOARD ----------
+KEYBD3 : 546
+KEYPOLL : 931
+
+---------- EDIT ----------
+EDIT : 2631
+
+
+============================================================
+========================= TWIN ===============================
+
+---------- MISC ----------
+FSTRING : 142
+STRINGC : 224
+UTIL : 308
+---------- MOUSE ----------
+MOUSE : 337
+---------- EVENT ----------
+ALARMC : 166
+EVENTC : 2420
+---------- WINDOW ----------
+BOXC : 246
+SCREEN : 3000
+WINDOWC : 804
+---------- MENU ----------
+MENUC : 3622
+---------- DIALOG ----------
+DIALOGC : 2218
+BUTTONC : 1028
+DIR : 96
+LISTBOXC : 2382
+MDIALOG : 514
+MSGBOXC : 584
+SCROLLC : 962
+---------- KEYBOARD ----------
+KB : 457
+KBC : 1028
+---------- EDIT ----------
+EDIT : 80
+EDIT1 : 4744
+EDIT2 : 3393
+

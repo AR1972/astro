@@ -1,0 +1,8 @@
+fc.obj + error.obj       +
+syserr.obj               +
+fgetl.obj getl.obj       +
+itoupper.obj kstring.obj +
+maxmin.obj move.obj      +
+ntoi.obj string.obj      +
+update.obj xtab.obj      
+fc.exe

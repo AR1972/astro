@@ -1,0 +1,1029 @@
+.comment ===================================================
+.comment MS-DOS-Editor Help
+.comment ===================================================
+.comment 7/31/90 bethpr
+.comment Changed all occurrences of DOS Editor to the MS-DOS
+.comment Editor; checked that articles were correct or changed
+.comment appropriately; also checked line lengths and adjusted
+.comment as needed.
+.comment ===================================================
+.comment 7/30/90 bethpr
+.comment Changed Print Dialog box so that both dialog boxes
+.comment say "Selected Text Only" to reflect UI change due
+.comment in Rel.07.  Also, edited Cut and Copy command help
+.comment so that they don't scroll.  Removed the line "The
+.comment Clipboard can only contain one piece of text at a
+.comment time." as is redundant with line that follows, "Each
+.comment time you cut or copy a piece of text to the Clipboard
+.comment it replaces the existing text on the Clipboard."
+.comment 7/24/90 bethpr
+.comment References to QBASIC herein not changed to QBasic;
+.comment appropriate as is.  Used as directory name or filename.
+.comment ===================================================
+.comment 7/17/90 stevesau
+.comment Incorporated QA/copy edits (except error messages).
+.comment ===================================================
+.comment 6/25/90 stevesau
+.comment Incorporated final edit/review comments.
+.comment ===================================================
+.comment 6/15/90 stevesau
+.comment Changed EDIT references to DOS Editor.
+.comment Added File Save context.
+.comment ===================================================
+.comment 5/4 - Bethpr
+.comment Added EDIT error messages; corrected Print dialog
+.comment box errors; moved h.pg$ to last help topic.
+.comment ===================================================
+.comment 4/30 - 5/2 1st edit pass -- Jeffwe
+.comment Global stuff: Initial cap keynames
+.comment Bug fixes: removed duplicate contexts for h.default,
+.comment h.pg1, h.notfound; added h.pg$; fixed line-too-long.
+.comment Other: edited screens (1st pass), some rewording.
+.comment ===================================================
+.comment 4/22-4/24 edits for EDIT -- Bethpr
+.comment I've pooled information from QB45 and BC71 to make
+.comment the EDIT Help file. Error messages are currently
+.comment missing from this file.
+.comment ===================================================
+.comment ------------------------------------------------
+.comment   Help for Menu titles
+.comment ------------------------------------------------
+.context hidGreetingBox
+.context h.pg1
+:nWillkommen im MS-DOS-Editor
+ş Drcken Sie ESC, um mit dem MS-DOS-Editor zu arbeiten.
+
+ş Drcken Sie die EINGABETASTE, um eine Einfhrung zu
+  erhalten. Sie zeigt Ihnen in bersichtlicher Form, wie Sie
+  mit dem MS-DOS-Editor und dem Hilfesystem arbeiten k”nnen.
+.comment ------------------------------------------------
+.comment     Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context hidFileOpen
+:nDialogfeld ™ffnen
+Dadurch ”ffnen Sie eine bereits bestehende Datei, um sie zu
+ÚÄÄÄÄÄÄÄÄÄÄÄÄ  ™ffnen  ÄÄÄÄÄÄÄÄÄÄ¿  bearbeiten. Geben
+³                                ³  Sie hier den Namen
+³ Dateiname: ±±±±±±±±±±±±±±±±± ÄÄÄ der Datei ein, wenn sie
+³                                ³  sich in dem hier
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ angezeigten aktuellen
+³                                ³  Verzeichnis befindet,
+³      Dateien       Verz./Laufw.³  oder\p
+³ ±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  w„hlen Sie hier eine
+³ ±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  Datei aus oder w„hlen
+³ ±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  Sie ein Verzeichnis oder
+³                              ³  Laufwerk, falls sich die
+³        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄ Datei woanders befindet.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+                               W„hlen Sie anschlieáend <OK>.
+Sie k”nnen ein Laufwerk und Verzeichnis auch ausw„hlen,
+indem Sie den Namen in das Eingabefeld "Dateiname" eingeben.
+
+Um sich den Inhalt anderer Laufwerke und Verzeichnisse
+anzeigen zu lassen, verwenden Sie im Textfeld "Dateiname"
+einen Dateinamen mit Platzhalter (wie beispielsweise *.TXT)
+und w„hlen ein neues Laufwerk oder Verzeichnis aus.
+
+.context hidFileSave
+:nDialogfeld Speichern unter
+Hier speichern und benennen Sie die aktuelle Datei.
+
+ÚÄÄÄÄÄÄ Speichern unter ÄÄÄÄÄÄÄ¿  Akzeptieren Sie diesen
+³                              ³  Dateinamen, oder geben
+³ Dateiname: ±±±±±±±±±±±±±±± ÄÄÄ Sie hier einen neuen
+³                              ³  Namen ein.
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Die Datei wird in diesem
+³                              ³  Verzeichnis gespeichert.
+³            Verz./Laufw.      ³
+³            ±±±±±±±±±±±       ³  Verwenden Sie
+³            ±±±±±±±±±±± ÄÄÄÄÄÄÄ Verz./Laufw., um in einem
+³            ±±±±±±±±±±±       ³  anderen Verzeichnis oder
+³                              ³  Laufwerk zu speichern.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+W„hlen Sie anschlieáend <OK>.
+.context hidFilePrint
+:nDialogfeld Drucken
+Hier k”nnen Sie den bearbeiteten Text ganz oder teilweise
+ausdrucken.
+
+ÚÄÄÄÄÄÄÄ Drucken ÄÄÄÄÄÄÄ¿
+³ ± Markierter Text ÄÄÄÄÄÄ Druckt den markierten Text.
+³                       ³
+³ ± Ganzes Dokument ÄÄÄÄÄÄ Druckt das gesamte Dokument.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+Wenn sich der Cursor im Hilfe-Fenster befindet und Sie den
+Befehl Drucken w„hlen, stehen Ihnen folgende Optionen zur
+Verfgung:
+
+ÚÄÄÄÄÄÄÄ Drucken ÄÄÄÄÄÄÄ¿
+³ ± Markierter Text ÄÄÄÄÄÄ Druckt den markierten Hilfetext.
+³                       ³
+³ ± Aktuelles Fenster ÄÄÄÄ Druckt das gesamte Hilfethema.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+Der MS-DOS-Editor gibt den Text an den Drucker aus,
+der bei Ihrem Rechner an LPT1 angeschlossen ist.
+
+Tip: Bevor Sie den Befehl "Drucken" w„hlen, mssen Sie in
+     Ihrem Dokument oder in dem Hilfe-Fenster den
+     auszudruckenden Text markieren. Verschieben Sie den
+     Cursor an den Beginn des Textes, den Sie drucken
+     m”chten, drcken Sie UMSCHALT+RICHTUNGSTASTEN, bis
+     der gewnschte Textabschnitt markiert ist, und w„hlen
+     Sie anschlieáend den Befehl Drucken.
+.context hidSearchFind
+:nDialogfeld Befehl Suchen
+Hier suchen Sie nach einer bestimmten Zeichenfolge.
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Suchen ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  Geben Sie die
+³                                          ³  Zeichenfolge
+³  Suchen nach:   ±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄ ein oder ver-
+³                                          ³  wenden Sie die
+³ ± Groá-/Kleinschreibung  ± Ganzes Wort   ³  angezeigte
+³                                        ³  Zeichenfolge.
+ÀÄ³ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄ W„hlen Sie die Suchart aus.
+
+W„hlen Sie anschlieáend <OK>.
+
+W„hlen Sie "Groá-/Kleinschreibung", wenn die
+Groá-/Kleinschreibung bei der Suche beachtet werden soll.
+W„hlen Sie "Ganzes Wort", wenn nur nach ganzen W”rtern ge-
+sucht werden soll; bei einem solchen Suchvorgang wird eine
+bereinstimmende Zeichenfolge nur dann anerkannt, wenn sie
+von Leerzeichen, Interpunktions- oder anderen Sonderzeichen
+umgeben ist.
+Die gesuchte Zeichenfolge darf bis zu 127 Zeichen enthalten.
+.context hidSearchChange
+:nDialogfeld ndern
+Hier ersetzen Sie eine Zeichenfolge durch eine andere.
+                                 Geben Sie die Zeichenfolge
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ  ndern  ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ein, oder
+³                                          ³  verwenden Sie
+³ Suchen nach:     ±±±±±±±±±±±±±±±±±±±±  ÄÄÄ die angezeigte
+³                                          ³  Zeichenfolge.
+³ ndern in:       ±±±±±±±±±±±±±±±±±±±±  ÄÄÄ Geben Sie den
+³                                          ³  Ersatztext an.
+³ ± Groá-/Kleinschreibung  ± Ganzes Wort ÄÄÄ W„hlen Sie die
+³                                          ³  Suchart aus.
+³ <Suchen und best„tigen>  <Alles „ndern>  ³  Bestimmen Sie,
+³                                        ³  ob Sie die
+ÀÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÙ  nderungen
+einzeln berprfen m”chten oder ob alle sofort durchgefhrt
+werden sollen.
+
+W„hlen Sie "Groá-/Kleinschreibung", wenn die
+Groá-/Kleinschreibung bei der Suche beachtet werden soll.
+W„hlen Sie "Ganzes Wort", wenn nur nach ganzen W”rtern
+gesucht werden soll; bei einem solchen Suchvorgang wird eine
+bereinstimmende Zeichenfolge nur dann anerkannt, wenn sie
+von Leerzeichen, Interpunktions- oder anderen Sonderzeichen
+umgeben ist.
+Die gesuchte Zeichenfolge darf bis zu 127 Zeichen enthalten.
+.context hidConfirm
+:nDialogfeld ndern
+Eine bereinstimmende Zeichenfolge wurde gefunden; sie ist
+im aktuellen Fenster markiert.
+Sie haben folgende M”glichkeiten:
+  ş W„hlen Sie <ndern>, um den Text zu „ndern
+    und weiterzusuchen.
+  ş W„hlen Sie <šberspringen>, um den Text unver„ndert
+    zu lassen und weiterzusuchen.
+  ş W„hlen Sie <Abbrechen> oder drcken Sie die ESC-TASTE,
+    um den Text unver„ndert zu lassen und den Suchvorgang
+    abzubrechen.
+.context hidOptnsDisplay
+:nDialogfeld Bildschirmanzeige
+Hier passen Sie den Bildschirm des MS-DOS-Editors Ihren
+Wnschen an.
+               ÚÄÄÄÄÄÄÄÄÄÄÄÄ Bildschirmanzeige ÄÄÄÄÄÄÄÄÄÄÄÄ¿
+Die hier       ³ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Farben ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+ausgew„hlten   ³                   Vordergrund Hintergrund ³
+Farben...   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ  ±±±±±±±±   ±±±±±±±±   ³
+               ³ Farben einstellen   ±±±±±±±±   ±±±±±±±±   ³
+               ³                    ±±±±±±±±   ±±±±±±±±   ³
+...wirken sich ³        ³            ±±±±±±±±   ±±±±±±±±   ³
+auf diesen  ÄÄÄÄÄÄÄÄÄÄÄÄÙ            ±±±±±±±±   ±±±±±±±±   ³
+Textblock aus. ³                                           ³
+               ³ ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Optionen ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³
+       ÚÄÄÄÄÄÄÄÄÄÄ ± Bildlaufleisten        Tabstops: ±   ³
+       ³       ³                                          ³
+       ³       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÙ
+Die Bildlaufleisten     Geben Sie die Anzahl der       ³
+werden im Fenster       Leerzeichen ein, um die ÄÄÄÄÄÄÄÙ
+ein- oder               der Cursor durch die TABULATORTASTE
+ausgeblendet            vorgeschoben werden soll.
+
+So bestimmen Sie Optionen:
+  1. Drcken Sie die TABULATORTASTE, um den Cursor in das
+     Feld "Farben" oder "Anzeigeoptionen" zu verschieben.
+  2. Verwenden Sie die RICHTUNGSTASTEN, um eine Farbe oder
+     Anzeigeoption auszuw„hlen.
+  3. W„hlen Sie <OK> oder drcken Sie die EINGABETASTE, um
+     die ausgew„hlten Optionen zu speichern.
+
+Die Optionseinstellungen werden gespeichert und sind noch in
+Kraft, wenn Sie den MS-DOS-Editor das n„chste Mal starten.
+.context MSG_SearchPathEdit
+:nDialogfeld Hilfe-Pfad
+Der MS-DOS-Editor sucht die Hilfe-Datei EDIT.HLP in den von
+Ihnen in diesem Dialogfeld angegebenen Verzeichnissen. Sie
+mssen keinen Hilfe-Pfad bestimmen, wenn Sie dies bereits
+mit der Variable PATH in DOS getan haben, oder wenn sich
+EDIT.HLP im aktuellen Verzeichnis befindet.
+ÚÄÄÄÄÄÄÄÄÄÄÄ Hilfe-Pfad ÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                   ³
+³  Pfad der Datei EDIT.HLP:         ³  Geben Sie das
+³                                   ³  Laufwerk und
+³  ±±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄ Verzeichnis ein,
+³                                   ³  in dem sich
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  EDIT.HLP befindet.
+
+Hinweis: Wenn der MS-DOS-Editor EDIT.HLP nicht finden
+         kann, berprfen Sie, ob Sie den richtigen
+         Verzeichnisnamen eingegeben haben.
+.comment ------------------------------------------------
+.comment   End of Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context m.f
+.context m.e
+.context m.s
+.context m.o
+.context m.h
+:nMS-DOS-Editor Menleiste
+So verwenden Sie die Mens und Befehle des MS-DOS-Editors:
+
+ ş Um Mens und Befehle zu aktivieren, drcken Sie die
+   Taste, die dem hervorgehobenen Buchstaben entspricht,
+   oder klicken Sie mit der Maus auf ein Men oder auf
+   einen Befehl.
+ ş Fr das Bewegen zwischen Mens und Befehlen verwenden Sie
+   die RICHTUNGSTASTEN oder die Maus.
+.comment ------------------------------------------------
+.comment   UI Help for Menu Commands and Dialog Support
+.comment ------------------------------------------------
+.context MSG_HelpFileNew
+:nBefehl Neu
+Verwenden Sie diesen Befehl, um ein neues Dokument zu
+erstellen. Ist bereits ein Dokument ge”ffnet, erscheint
+ein Dialogfeld:
+ ş W„hlen Sie <Ja>, um das bestehende Dokument zu speichern.
+ ş W„hlen Sie <Nein>, um das Dokument zu schlieáen, ohne es
+   zu speichern.
+ ş W„hlen Sie <Abbrechen>, um den Befehl Neu abzubrechen und
+   zu dem bestehenden Dokument zurckzukehren.
+
+Hinweis: Verwenden Sie den Befehl ™ffnen, um ein bestehendes
+         Dokument zu ”ffnen.
+.context MSG_HelpFileOpen
+:nBefehl ™ffnen
+Verwenden Sie diesen Befehl, um ein bestehendes Dokument zu
+”ffnen, damit Sie es bearbeiten oder drucken k”nnen.
+
+Hinweis: Verwenden Sie den Befehl Neu, um ein
+         neues Dokument zu erstellen.
+.context MSG_HelpFileSave
+:nBefehl Speichern
+Verwenden Sie diesen Befehl, um die aktuelle Version
+Ihres Dokuments zu speichern.
+
+Ist das Dokument noch nie gespeichert worden, fordert Sie
+der MS-DOS-Editor auf, einen Namen einzugeben. Falls ein
+bestehendes Dokument den gleichen Namen hat wie das
+Dokument, das Sie gerade speichern, wird das bestehende
+Dokument berschrieben.
+.context MSG_HelpFileSaveAs
+:nBefehl Speichern unter
+Verwenden Sie diesen Befehl, um Ihr Dokument als Datei zu
+speichern. Wenn Sie die vorherige Version des Dokuments
+beibehalten m”chten, geben Sie in das Eingabefeld
+"Dateiname" einen neuen Namen ein.
+.context MSG_HelpFilePrint
+:nBefehl Drucken
+Mit diesem Befehl k”nnen Sie Ihr Dokument ganz oder
+teilweise ausdrucken.
+
+Sie k”nnen folgendes ausdrucken:
+  ş Einen markierten Textabschnitt
+  ş Den Inhalt des Hilfe-Fensters
+  ş Das gesamte aktuelle Dokument
+
+Der MS-DOS-Editor gibt den Text an den Drucker aus, der bei
+Ihrem Rechner an LPT1 angeschlossen ist.
+
+Hinweis: Markieren Sie in Ihrem Dokument oder Hilfe-Fenster
+         den Text, den Sie ausdrucken m”chten, bevor Sie den
+         Befehl Drucken w„hlen. Verschieben Sie den Cursor
+         an den Beginn des Textes, den Sie drucken m”chten,
+         drcken Sie UMSCHALT+RICHTUNGSTASTEN, bis der
+         gewnschte Textabschnitt markiert ist, und w„hlen
+         Sie anschlieáend den Befehl Drucken.
+.context MSG_HelpFileExit
+:nBefehl Beenden
+Verwenden Sie diesen Befehl, um den MS-DOS-Editor zu beenden
+
+Falls Ihr Dokument seit dem letzten Speichervorgang ge„ndert
+wurde, zeigt der MS-DOS-Editor ein Dialogfeld an.
+  ş W„hlen Sie <Ja>, um das Dokument einschlieálich
+    der nderungen zu speichern.
+  ş W„hlen Sie <Nein>, wenn die nderungen nicht
+    bercksichtigt werden sollen.
+  ş W„hlen Sie <Abbrechen>, um den Befehl Beenden
+    abzubrechen und zu Ihrem Dokument zurckzukehren.
+.context MSG_HelpEditCut
+:nBefehl Ausschneiden
+Verwenden Sie den Befehl Ausschneiden (oder UMSCHALT+ENTF),
+um den markierten Text zu l”schen und in der Zwischenablage
+abzulegen.
+
+Anschlieáend k”nnen Sie den Text mit dem Befehl Einfgen
+(oder UMSCHALT+EINFG) an einer anderen Stelle des gleichen
+Dokuments einfgen, oder Sie k”nnen ein neues oder
+bestehendes Dokument ”ffnen und den Text einfgen.
+
+Der Text wird durch das Einfgen nicht aus der Zwischen-
+ablage entfernt und kann wiederholt eingefgt werden. Der
+Inhalt der Zwischenablage wird jedoch ersetzt, sobald Sie
+einen neuen Textabschnitt ausschneiden oder kopieren.
+
+Hinweis: Um Text zu markieren, verschieben Sie den Cursor
+         an den Beginn des Textabschnitts und drcken die
+         UMSCHALT+RICHTUNGSTASTEN.  Um den markierten Text
+         zu l”schen, ohne ihn in der Zwischenablage
+         abzulegen, drcken Sie die ENTF-TASTE.
+.context MSG_HelpEditCopy
+:nBefehl Kopieren
+Verwenden Sie den Befehl Kopieren (oder STRG+EINFG), um den
+markierten Text in die Zwischenablage zu kopieren. Der
+Originaltext bleibt unver„ndert.
+
+Anschlieáend k”nnen Sie den Text mit dem Befehl Einfgen
+(UMSCHALT+EINFG) an einer anderen Stelle des gleichen
+Dokuments einfgen, oder Sie k”nnen ein neues oder
+bestehendes Dokument ”ffnen und den Text einfgen.
+
+Hinweis: Um Text zu markieren, verschieben Sie den Cursor
+         an den Beginn des Textabschnitts und drcken die
+         UMSCHALT+RICHTUNGSTASTEN.
+
+Der Text wird durch das Einfgen nicht aus der Zwischen-
+ablage entfernt und kann wiederholt eingefgt werden. Der
+Inhalt der Zwischenablage wird jedoch ersetzt, sobald Sie
+einen neuen Textabschnitt ausschneiden oder kopieren.
+.context MSG_HelpEditPaste
+:nBefehl Einfgen
+Verwenden Sie den Befehl Einfgen (oder UMSCHALT+EINFG), um
+einen Textabschnitt aus der Zwischenablage an einer
+beliebigen Stelle eines Dokuments einzufgen.
+
+Um Text einzufgen, verschieben Sie den Cursor an die
+gewnschte Position und w„hlen den Befehl Einfgen.
+
+Um einen Textabschnitt durch einen anderen Textabschnitt zu
+ersetzen, markieren Sie den zu ersetzenden Text und w„hlen
+Sie dann den Befehl Einfgen. Der neue Text muá sich zu
+diesem Zeitpunkt in der Zwischenablage befinden.
+
+Hinweis: Um einen Textabschnitt in der Zwischenablage
+         abzulegen, verwenden Sie den Befehl Ausschneiden
+         oder Kopieren. Nachdem Sie den Text mit dem Befehl
+         Einfgen eingefgt haben, ist er immer noch in der
+         Zwischenablage gespeichert und kann erneut
+         eingefgt werden.
+.context MSG_HelpEditClear
+:nBefehl L”schen
+Verwenden Sie den Befehl L”schen (oder die ENTF-TASTE), um
+den markierten Text zu l”schen, ohne ihn in der Zwischen-
+ablage abzulegen. Der Inhalt der Zwischenablage bleibt
+unver„ndert.
+.context MSG_HelpSearchFind
+:nBefehl: Suchen
+Verwenden Sie diesen Befehl, um eine Zeichenfolge zu suchen.
+Dabei k”nnen Sie bestimmen, ob nur ganze W”rter gesucht
+werden sollen oder ob die Groá-/Kleinschreibung
+bereinstimmen soll.
+
+Um eine Zeichenfolge zu „ndern, verwenden Sie den
+Befehl ndern.
+.context MSG_HelpSearchChange
+:nBefehl ndern
+Verwenden Sie diesen Befehl, um eine Zeichenfolge zu „ndern.
+
+Sie k”nnen:
+ ş Bestimmen, daá nur nach ganzen W”rtern gesucht und/oder
+   daá die Groá-/Kleinschreibung beachtet wird.
+ ş Jede einzelne nderung prfen, bevor sie durchgefhrt
+   wird.
+ ş Alle nderungen sofort durchfhren lassen, ohne sie zu
+   prfen.
+.context MSG_HelpSearchNext
+:nBefehl Weitersuchen
+Verwenden Sie diesen Befehl (oder die Taste F3), um den
+letzten Suchvorgang zu wiederholen, der mit dem Befehl
+Suchen oder ndern durchgefhrt wurde.
+
+Wurde der Befehl Suchen oder ndern seit dem Starten des
+MS-DOS-Editors nicht ausgefhrt, sucht "Letzten Suchvorgang
+wiederholen":
+ ş das Wort, auf dem sich der Cursor befindet oder
+ ş das Wort, das sich links von dem Cursor befindet, falls
+   sich der Cursor nicht auf einem Wort befindet.
+.context MSG_HelpOptionsDisplay
+:nBefehl Bildschirmanzeige
+Mit diesem Befehl steuern Sie:
+ ş die Bildschirmfarben
+ ş die Bildlaufleisten in den Fenstern
+ ş die Anzahl der Leerzeichen, um die der Cursor mit
+   der TABULATORTASTE vorgeschoben wird.
+
+Die Anzeigeeinstellungen werden gespeichert und sind noch in
+Kraft, wenn Sie den MS-DOS-Editor das n„chste Mal starten.
+.context MSG_HelpOptionsPaths
+:nBefehl Pfad fr Hilfe
+Mit diesem Befehl „ndern Sie die Verzeichnisse, in denen der
+MS-DOS-Editor nach der Hilfe-Datei des MS-DOS-Editors,
+EDIT.HLP, sucht.
+.context MSG_HelpHelpStarted
+:nBefehl šberblick
+Mit diesem Befehl k”nnen Sie sich informieren ber:
+  ş die Mens, Befehle und Dialogfelder des MS-DOS-Editors
+  ş das Aufrufen von Hilfe fr den MS-DOS-Editor
+  ş die Startoptionen fr den MS-DOS-Editor
+  ş MS-DOS-Editor-Copyright und -Warenzeichen.
+.context MSG_HelpHelpKeyboard
+:nBefehl: Tastatur
+Mit diesem Befehl k”nnen Sie sich informieren ber:
+  ş Tastenanschl„ge fr das Ausfhren verschiedener
+    Aufgaben im MS-DOS-Editor.
+  ş WordStar-Tastenanschl„ge, die im MS-DOS-Editor
+    verwendet werden k”nnen.
+.context MSG_HelpHelpAbout
+:nBefehl: Info ber
+Mit diesem Befehl k”nnen Sie die Versionsnummer und
+Copyright-Information des MS-DOS-Editors anzeigen lassen.
+.context helpSurvivalId
+:nKurzbersicht
+
+ \bVerwenden des MS-DOS-Editors:   \p
+
+   ş Um die Menleiste des MS-DOS-Editors zu aktivieren,
+     drcken Sie die ALT-TASTE.
+   ş Um Mens und Befehle zu aktivieren, drcken Sie die
+     hervorgehobene Buchstabentaste.
+   ş Fr das Bewegen zwischen Mens und Befehlen verwenden
+     Sie die RICHTUNGSTASTEN.
+   ş Um Hilfe zu einem ausgew„hlten Men, Befehl oder
+     Dialogfeld aufzurufen, drcken Sie F1.
+   ş Um Hilfe zu beenden, drcken Sie die ESC-TASTE.
+
+ \bBl„ttern im Hilfesystem des MS-DOS-Editors: \p
+
+   ş Um eines der nachfolgenden Themen auszuw„hlen, drcken
+     Sie die TABULATORTASTE oder den ersten Buchstaben des
+     Themas. Drcken Sie anschlieáend die EINGABETASTE, um
+     Informationen zu erhalten ber:
+
+     \i\p\ašberblick\vhelpStartedId\v\i\p  Laden und Verwenden des MS-DOS-Editors
+                  und des MS-DOS-Editor-Hilfesystems
+     \i\p\aTastatur\vhelpKeyboardId\v\i\p   Bearbeiten und Bewegen im Text und
+                  in der MS-DOS-Editor-Hilfe
+
+ Hinweis: Diese Themen k”nnen auch mit dem Hilfe-Men aufgerufen werden.
+.context helpEditorHelp
+.context helpStartedId
+:nHilfe verwenden
+  \bšberblick\p  \i\p\aTastatur\vhelpKeyboardId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Dieser Abschnitt soll Ihnen das Starten und Verwenden des
+ MS-DOS-Editors erleichtern.
+ W„hlen Sie eines der nachfolgenden Themen, um Informationen
+ zu erhalten ber:
+
+   \i\p\aVerwenden von Hilfe\vhelpOnHelpId\v\i\p
+   \i\p\aVerwenden von Mens und Befehlen\v@sg.men\v\i\p
+   \i\p\aVerwenden von Dialogfeldern\v@sg.dia\v\i\p
+   \i\p\aMS-DOS-Editor Optionen\v@sg.opt\v\i\p
+   \i\p\aCopyright und Warenzeichen\v@cccp\v\i\p
+.context @sg.men
+:nMens und Befehle verwenden
+  \i\p\ašberblick\vhelpStartedId\v\i\p   \i\p\aTastatur\vhelpKeyboardId\v\i\p   \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Verwenden Sie die Menleiste am oberen Bildschirmrand, um Mens und
+ Befehle auszuw„hlen.
+
+ Menaktion           Mit der Maus...              Mit der Tastatur...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Anzeige eines        Bewegen Sie den Mauszeiger   Drcken Sie die ALT-TASTE,
+ Mens                auf den Mennamen und        damit in den Mens
+                      klicken Sie die Maustaste    Buchstaben hervorgehoben
+                      (drcken und sofort wieder   werden, und drcken Sie
+                      loslassen).                  dann die Buchstabentaste
+                                                   fr das gewnschte Men.
+
+ W„hlen eines         Klicken Sie auf den          Drcken Sie die
+ Befehls              Befehlsnamen.                Buchstabentaste, die
+                                                   dem hervorgehobenen
+                                                   Buchstaben des Befehls
+                                                   entspricht.
+
+ Abbrechen eines      Klicken Sie auáerhalb        Drcken Sie die
+ Befehls              des Mens.                   ESC-TASTE.
+
+ Hinweis:  In der Verweisleiste am Bildschirmende finden Sie Hilfe zur
+           aktuellen Aufgabe. Die in Winkelklammern stehenden Elemente
+           werden ausgew„hlt, indem Sie auf das entsprechende Element
+           klicken.
+.context @sg.dia
+:nArbeiten mit Dialogfeldern
+  \i\p\ašberblick\vhelpStartedId\v\i\p   \i\p\aTastatur\vhelpKeyboardId\v\i\p   \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  Der MS-DOS-Editor zeigt ein Dialogfeld an, wenn Sie einen Befehl w„hlen,
+  fr den Optionen verfgbar sind.
+
+ Dialogfeldaktion     Mit der Maus...              Mit der Tastatur...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Ausw„hlen eines      Bewegen Sie den Mauszeiger   Drcken Sie die
+ Eingabefeldes        auf das Eingabefeld,         TABULATORTASTE, bis sich
+                      drcken Sie die Maustaste    der Cursor in dem
+                      und lassen Sie sie wieder    Eingabefeld befindet.
+                      los ("klicken").
+
+ W„hlen eines         Doppelklicken Sie            Markieren Sie das Element
+ Elements             auf das Element.             mit Hilfe der
+                                                   RICHTUNGSTASTEN;
+                                                   anschlieáend drcken Sie
+                                                   die EINGABETASTE.
+
+ W„hlen einer Option  Klicken Sie auf die          Verwenden Sie die
+                      Option.                      RICHTUNGSTASTEN, um zu
+                                                   der Option zu gelangen.
+
+ Ein- oder            Klicken Sie auf das          Verwenden Sie die
+ Ausschalten eines    Kontrollk„stchen.            TABULATORTASTE, um den
+ Kontrollk„stchens                                 Cursor zu dem
+                                                   Kontrollk„stchen zu
+                                                   verschieben, und drcken
+                                                   Sie anschlieáend die
+                                                   LEERTASTE.
+
+ W„hlen einer         Klicken Sie auf die          Verwenden Sie die
+ Schaltfl„che         Schaltfl„che.                TABULATORTASTE, um den
+                                                   Cursor zu der Schaltfl„che
+                                                   zu verschieben, und
+                                                   drcken Sie anschlieáend
+                                                   die EINGABETASTE.
+.context helpOnHelpId
+:nVerwenden der Hilfe
+  \i\p\ašberblick\vhelpStartedId\v\i\p   \i\p\aTastatur\vhelpKeyboardId\v\i\p   \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Verwenden der Hilfe fr den MS-DOS-Editor:
+
+   ş Um Hilfe zu einem ausgew„hlten Men, Befehl oder Dialogfeld
+     aufzurufen, verschieben Sie den Cursor auf das Menelement oder
+     auf die Schaltfl„che <Hilfe> und drcken F1.
+
+   ş Um MS-DOS-Editor-Hilfethemen einzusehen, drcken Sie zuerst ALT+H
+     und anschlieáend einen der hervorgehobenen Buchstaben, um den Befehl
+     šberblick oder Tastatur zu w„hlen.
+
+   ş Um den Cursor in das Hilfe-Fenster zu verschieben, drcken Sie F6.
+
+   ş Um in den Hilfe-Informationen einen Bildlauf durchzufhren, drcken
+     Sie BILD-NACH-OBEN oder BILD-NACH-UNTEN.
+
+   ş Um den Cursor zu einem verwandten Thema zu verschieben, drcken Sie
+     die TABULATORTASTE oder den ersten Buchstaben des gewnschten
+     Hilfethemas. Verwandte Themen sind in hervorgehobenen
+     Pfeilen eingeschlossen.  (\i \p).
+
+   ş Um ein verwandtes Thema anzeigen zu lassen, verschieben Sie den
+     Cursor auf das gewnschte Thema und drcken F1, oder klicken Sie
+     die rechte Maustaste.
+
+   ş Um das Hilfe-Fenster zu schlieáen, drcken Sie die ESC-TASTE.
+
+ Der MS-DOS-Editor speichert die letzten 20 Hilfethemen, die Sie
+ eingesehen haben. Wenn Sie sie nochmals durchgehen m”chten,
+ drcken Sie ALT+F1, oder klicken Sie wiederholt auf die
+ Schaltfl„che <Zurck>.
+.context EDIT.COM
+.context EDIT
+.context @sg.opt
+:nMS-DOS-Editor Optionen
+  \i\p\ašberblick\vhelpStartedId\v\i\p  \i\p\aTastatur\vhelpKeyboardId\v\i\p   \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Der Befehl Bearbeiten fhrt die Datei QBASIC.EXE und die
+ Datei fr die MS-DOS-Editor-Umgebung, EDIT.COM, aus.
+ Wenn Sie eine Datei ”ffnen oder die Hardware fr die Bildschirmanzeige
+ modifizieren m”chten, k”nnen Sie nach dem Befehl EDIT folgende
+ Befehlszeilenoptionen eingeben:
+
+ \bEDIT [Dateiname] [/B] [/G] [/H] [/NOHI]\p
+
+ Option      Beschreibung
+ ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Dateiname   Nennt die Datei, die ge”ffnet werden soll, wenn der
+             MS-DOS-Editor startet.
+
+ /B          Erm”glicht den Einsatz eines Monochrom-Bildschirms mit
+             einer Farbgrafikkarte. Wenn Sie einen Farbbildschirm haben,
+             wird der MS-DOS-Editor mit der Option /B monochrom angezeigt.
+
+ /G          Veranlaát den MS-DOS-Editor, einen CGA-Bildschirm so schnell wie
+             m”glich zu aktualisieren (funktioniert nur mit CGA-Bildschirmen).
+             Falls Sie Grieá sehen, wenn der MS-DOS-Editor den Bildschirm
+             aktualisiert, bedeutet das, daá Ihre Hardware diese Option
+             nicht vollst„ndig untersttzen kann. Wenn Sie mit einem klaren
+             Bildschirm arbeiten m”chten, starten Sie den MS-DOS-Editor
+             nochmals, aber ohne die Option /G.
+
+ /H          Zeigt die maximale Anzahl Zeilen an, die mit Ihrer Hardware
+             m”glich sind.
+
+ /NOHI       Erlaubt die Verwendung eines Bildschirms, der keine hohe
+             Intensit„t untersttzt. Kann nicht fr Compaq Laptops
+             verwendet werden.
+.context @cccp
+.context .cccp
+:nCopyright und eingetragene Warenzeichen
+  \i\p\ašberblick\vhelpStartedId\v\i\p  \i\p\aTastatur\vhelpKeyboardId\v\i\p   \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  Die Angaben in diesem Schriftstck k”nnen ohne gesonderte Mitteilung
+  ge„ndert werden. Die Microsoft Corporation geht mit diesem Dokument keine
+  Verpflichtung ein. Die darin dargestellte Software und/oder die Dateien
+  werden auf der Basis eines allgemeinen Lizenzvertrages oder in
+  Einmallizenz geliefert. Die Software und/oder die Dateien drfen nur in
+  šbereinkunft mit den vertraglichen Abmachungen verwendet oder kopiert
+  werden. Der K„ufer darf eine Sicherungskopie der Software erstellen.
+  Ohne die ausdrckliche schriftliche Genehmigung der Microsoft Corporation
+  darf kein Teil des Online-Hilfesystems fr irgendeinen Zweck kopiert
+  oder bermittelt werden, weder auf elektronischem noch auf mechanischem
+  Wege, einschlieálich Fotokopieren, Aufzeichnen oder Informations-
+  speicherungs- und Retrievalsystemen.
+
+  EINGESCHRNKTE RECHTE. Die Verwendung durch die U.S.-Regierung unterliegt
+  den Regelungen von (c) (1) (ii) von DFARS 252.227-7013.
+
+  (C) Copyright Microsoft Corporation, 1987-1991.
+      Alle Rechte vorbehalten.
+
+  Microsoft, MS und MS-DOS sind eingetragene Warenzeichen.
+
+  In der Microsoft-Dokumentation wird die Bezeichnung "DOS" sowohl fr
+  das Betriebssystem MS-DOS als auch fr das DOS-Betriebssystem der
+  IBM Personal Computer verwendet. Der Name eines bestimmten
+  Betriebssystems wird nur dann erw„hnt, wenn besondere Funktionen
+  dieses Systems beschrieben werden.
+
+  Compaq ist ein eingetragenes Warenzeichen der Compaq Computer Corporation.
+
+  IBM ist ein eingetragenes Warenzeichen der International Business
+  Machines Corporation.
+
+  WordStar ist ein eingetragenes Warenzeichen der MicroPro International
+  Corporation.
+.context helpKeyboardId
+:nTastatur
+  \i\p\ašberblick\vhelpStartedId\v\i\p  \bTastatur\p   \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Dieser Abschnitt soll Ihnen helfen, Ihren Text zu verwalten und zu
+ bearbeiten, w„hrend Sie mit dem MS-DOS-Editor arbeiten.
+
+ W„hlen Sie das gewnschte Thema aus, um Informationen zu erhalten ber:
+
+     \i\p\aTastenkurzkombinationen\v@.sk\v\i\p           \i\p\aMarkieren von Text\v@sel.keys\v\i\p
+     \i\p\aHilfetasten\v@.hk\v\i\p                       \i\p\aEinfgen und Kopieren\v@i.keys\v\i\p
+     \i\p\aBewegen des Cursors\v@m.keys\v\i\p               \i\p\aL”schen\v@d.keys\v\i\p
+     \i\p\aAnzeigen von Text\v@s.keys\v\i\p                 \i\p\aSuchen und ndern\v@fc.keys\v\i\p
+
+ Der MS-DOS-Editor erkennt Tastenkombinationen, die in anderen
+ Microsoft-Programmen (wie beispielsweise Microsoft Word) sowie in
+ WordStar verwendet werden. WordStar-Tastenkombinationen, die im MS-DOS-
+ Editor verwendet werden k”nnen, sind in der rechten Spalte der folgenden
+ dreispaltigen Tabellen aufgelistet.
+.context @.sk
+:nTastenkurzkombinationen
+  \i\p\ašberblick\vhelpStartedId\v\i\p  \i\p\aTastatur\vhelpKeyboardId\v\i\p   \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  ÚÄEinfgenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÚÄKopierenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Einfgen/šberschreiben      EINF ³ ³ In die Zwischenablage  STRG+EINF ³
+  ³ Vorige Zeile         POS1,STRG+N ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ Nachfolgende Zeile  ENDE+EINGABE ³ ÚÄSuchenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Aus Zwischenablage UMSCHALT+EINF ³ ³ Nach Text               STRG+Q,F ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ Weitersuchen                  F3 ³
+  ÚÄAusw„hlenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ Zeichen/Zeil      UMSCHALT+PFEIL ³ ÚÄHilfe AufrufenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ W”rter       UMSCHALT+STRG+PFEIL ³ ³ Zu Mens und Befehlen         F1 ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ šberblick            UMSCHALT+F1 ³
+                                       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ÚÄL”schenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Aktuelle Zeile ausschneiden           STRG+Y ³
+  ³ Bis Zeilenende ausschneiden         STRG+Q,Y ³
+  ³ Markierten Text ausschneiden   UMSCHALT+ENTF ³
+  ³ Markierten Text l”schen                 ENTF ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+.context @m.keys
+:nBewegen des Cursors
+  \i\p\ašberblick\vhelpStartedId\v\i\p  \i\p\aTastatur\vhelpKeyboardId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Zeichen links                           NACH-LINKS-TASTE          STRG+S
+ Zeichen rechts                          NACH-RECHTS-TASTE         STRG+D
+ Wort links                              STRG+NACH-LINKS-TASTE     STRG+A
+ Wort rechts                             STRG+NACH-RECHTS-TASTE    STRG+F
+ Vorige Zeile                            NACH-OBEN-TASTE           STRG+E
+ Nachfolgende Zeile                      NACH-UNTEN-TASTE          STRG+X
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Erste Einzugsebene der aktuellen Zeile  POS1-TASTE
+ Beginn der aktuellen Zeile                                        STRG+Q,S
+ Beginn der n„chsten Zeile               STRG+EINGABETASTE         STRG+J
+ Zeilenende                              ENDE-TASTE                STRG+Q,D
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Oberer Fensterrand                                                STRG+Q,E
+ Unterer Fensterrand                                               STRG+Q,X
+ Bewegen zum n„chsten Fenster            F6
+ Aktuelles Fenster vergr”áern            ALT+PLUS-TASTE
+ Aktuelles Fenster verkleinern           ALT+MINUS-TASTE
+.context @s.keys
+:nAnzeigen von Text
+  \i\p\aEinfhrug\vhelpStartedId\v\i\p  \i\p\aTastatur\vhelpKeyboardId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Zeile nach oben                         STRG+NACH-OBEN            STRG+W
+ Zeile nach unten                        STRG+NACH-UNTEN           STRG+Z
+ Seite nach oben                         BILD-NACH-OBEN            STRG+R
+ Seite nach unten                        BILD-NACH-UNTEN           STRG+C
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Ein Fenster nach links                  STRG+BILD-NACH-OBEN
+ Ein Fenster nach rechts                 STRG+BILD-NACH-UNTEN
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Lesezeichen bestimmen (max. 4)          STRG+K, 0-3
+ Gehe zu Lesezeichen                     STRG+Q, 0-3
+.context @sel.keys
+:nMarkieren von Text
+  \i\p\ašberblick\vhelpStartedId\v\i\p  \i\p\aTastatur\vhelpKeyboardId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Zeichen links                           UMSCHALT+NACH-LINKS-TASTE
+ Zeichen rechts                          UMSCHALT+NACH-RECHTS-TASTE
+ Wort links                              UMSCHALT+STRG+NACH-LINKS
+ Wort rechts                             UMSCHALT+STRG+NACH-RECHTS
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Aktuelle Zeile                          UMSCHALT+NACH-UNTEN-TASTE
+ Zeile oben                              UMSCHALT+NACH-OBEN-TASTE
+ Bildschirmseite oben                    UMSCHALT+BILD-NACH-OBEN
+ Bildschirmseite unten                   UMSCHALT+BILD-NACH-UNTEN
+ Zum Beginn der Datei                    UMSCHALT+STRG+POS1
+ Zum Ende der Datei                      UMSCHALT+STRG+ENDE-TASTE
+.context @i.keys
+:nEinfgen und Kopieren
+  \i\p\ašberblick\vhelpStartedId\v\i\p  \i\p\aTastatur\vhelpKeyboardId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Umschalten zwischen Einfgen/šberschreiben-Modus        EINFG-TASTE   STRG+V
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Markierten Text in Zwischenablage kopieren              STRG+EINFG-TASTE
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Markierten Text l”schen und in Zwischenablage kopieren  UMSCHALT+ENTF-TASTE
+ Aktuelle Zeile l”schen und in Zwischenablage kopieren   STRG+Y
+ Bis Zeilenende l”schen und in Zwischenablage kopieren   STRG+Q,Y
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Inhalt der Zwischenablage einfgen                      UMSCHALT+EINFG-TASTE
+ Unterhalb Cursorposition Leerzeile einfgen             ENDE+EINGABETASTE
+ Oberhalb Cursorposition Leerzeile einfgen              POS1,STRG+N
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Sonderzeichen einfgen                                  STRG+P, STRG+Taste
+.context @d.keys
+:nL”schen
+  \i\p\ašberblick\vhelpStartedId\v\i\p  \i\p\aTastatur\vhelpKeyboardId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Ein Zeichen links vom Cursor l”schen          RšCKTASTE             STRG+H
+ Ein Zeichen an Cursorposition l”schen         ENTF-TASTE            STRG+G
+ Wort ab Cursorposition l”schen                                      STRG+T
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Markierten Text l”schen                       ENTF-TASTE            STRG+G
+ Fllzeichen aus markierten Zeilen l”schen     UMSCHALT+TABULATORTASTE
+.context @fc.keys
+:nSuchen und ndern
+  \i\p\ašberblick\vhelpStartedId\v\i\p  \i\p\aTastatur\vhelpKeyboardId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Vorgang mit gleichem Suchtext wiederholen              STRG+L oder F3
+ Suchtext                                               STRG+Q,F
+ Ersatztext                                             STRG+Q,A
+.context @.hk
+:nHilfetasten
+  \i\p\ašberblick\vhelpStartedId\v\i\p  \i\p\aTastatur\vhelpKeyboardId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Hilfe anzeigen zu der MS-DOS-Editor-Umgebung        F1 (oder rechte
+                                                     Maustaste klicken)
+ Hilfe Beenden                                       ESC-TASTE
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ šberblick anzeigen                                  UMSCHALTTASTE+F1
+ Hilfe-Men anzeigen                                 ALT+H
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Cursor zum n„chsten Hilfethema verschieben          TABULATORTASTE
+ Cursor zum vorherigen Hilfethema verschieben        UMSCHALT+TABULATORTASTE
+ Cursor zum n„chsten Hilfethema mit diesem           BUCHSTABENTASTE
+ Anfangsbuchstaben
+ Cursor zum vorherigen Hilfethema mit diesem         UMSCHALT+BUCHSTABENTASTE
+ Anfangsbuchstaben
+ Vorheriges Hilfethema anzeigen                      ALT+F1 (oder
+ (bis zu 20-malige Wiederholung)                     doppelklicken auf
+                                                     Schaltfl„che <Zurck>)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ N„chstes Thema der Hilfe-Datei anzeigen             STRG+F1
+ Vorheriges Thema der Hilfe-Datei anzeigen           UMSCHALT+STRG+F1
+.context QB_ER_OM
+.context QB_ER_OS
+.context MSG_OutNearMem
+:nSpeicherplatz ersch”pft
+Ungengender Speicherplatz verfgbar. Korrigieren Sie dies
+folgendermaáen:
+ ş Beenden Sie das Programm und reduzieren Sie in der Datei
+   CONFIG.SYS die Anzahl der DOS-Puffer (BUFFERS=). Starten
+   Sie anschlieáend Ihren Rechner erneut.
+ ş Beenden Sie das Programm und reduzieren Sie die Anzahl
+   der speicherresidenten Programme.
+ ş Beenden Sie das Programm und reduzieren Sie die Anzahl
+   der geladenen Ger„tetreiber.
+
+   Starten Sie anschlieáend Ihren Rechner erneut.
+.context QB_ER_DF
+:nGer„tefehler
+Der MS-DOS-Editor hat bei dem Drucker einen Fehler entdeckt.
+Vergewissern Sie sich, daá folgendes in Ordnung ist:
+ ş Der Drucker ist an LPT1 angeschlossen.
+ ş Die Online-Signallampe des Druckers ist immer noch an.
+ ş Der Drucker ist an das Stromnetz angeschlossen.
+ ş Das Druckerkabel ist fest an den Drucker und an den
+   Rechner angeschlossen.
+.context QB_ER_DTO
+:nGer„te-Timeout
+Der MS-DOS-Editor hat innerhalb eines festgelegten Zeit-
+raums keine Informationen von einem Ger„t (beispielsweise
+einem Drucker) empfangen. Wenn Sie ein Dokument drucken
+m”chten, stellen Sie sicher, daá der Drucker an LPT1
+angeschlossen ist.
+.context QB_ER_OP
+:nPapiervorrat ersch”pft
+Der Papiervorrat des Drucker ist ersch”pft, oder der Drucker
+ist nicht eingeschaltet.
+.context QB_ER_IER
+:nInterner Fehler
+Im MS-DOS-Editor ist ein interner Fehler vorgekommen. Bitte
+setzen Sie sich mit Microsoft in Verbindung.
+.context QB_ER_FNF
+:nDatei nicht gefunden
+Im Dialogfeld des Befehls ™ffnen haben Sie eine Datei
+angegeben, die nicht exisitiert. Prfen Sie, ob der Datei-
+name korrekt geschrieben und das richtige Laufwerk und
+Verzeichnis ausgew„hlt wurde.
+.context QB_ER_IOE
+:nGer„te-Ein-/Ausgabe-Fehler
+Bei der Verwendung eines Ein- oder Ausgabeger„t ist ein
+Fehler aufgetreten. Bitte berprfen Sie das entsprechende
+Ger„t (z.B. den Drucker oder das Diskettenlaufwerk; viel-
+leicht wurde auch eine unformatierte Diskette verwendet).
+.context QB_ER_DFL
+:nDiskette voll
+Auf der angegebenen Diskette ist nicht gengend Speicher-
+platz vorhanden, um die Datei zu speichern. Wechseln Sie die
+Diskette oder geben Sie im Listenfeld Verz./Laufwerk eine
+andere Diskette an.
+.context QB_ER_IFN
+.context QB_ER_BFN
+:nUngltiger Dateiname
+Der angegebene Dateiname enth„lt zu viele Zeichen oder
+Zeichen, die in Dateinamen nicht zul„ssig sind.
+.context QB_ER_DNA
+:nGer„t nicht verfgbar
+Die Verbindung zu dem angesprochenen Ger„t ist unterbrochen
+oder existiert nicht. Prfen Sie, ob das Ger„t eingeschaltet
+und an Ihren Rechner angeschlossen ist.
+.context QB_ER_PRM
+:nZugriff verweigert
+Sie haben versucht, eine mit Schreibschutz versehene
+Diskette oder eine schreibgeschtzte Datei zu berschreiben.
+
+Verwenden Sie einen anderen Dateinamen, wenn die Datei
+schreibgeschtzt ist. Entfernen Sie den Schreibschutz,
+falls ein solcher vorhanden ist, oder verwenden Sie eine
+andere Diskette.
+.context QB_ER_DNR
+:nDiskette nicht bereit
+Die Laufwerkklappe ist offen oder es ist keine Diskette
+eingelegt.
+.context QB_ER_DME
+:nDatentr„ger-Fehler
+Die Diskette hat einen Materialfehler oder der MS-DOS-Editor
+kann das Format der Diskette nicht erkennen. Verwenden Sie
+eine andere Diskette, oder beenden Sie das Programm und
+formatieren Sie die aktuelle Diskette nochmals.
+.context QB_ER_TMF
+:nZuviele Dateien
+Ihr Stammverzeichnis enth„lt zu viele Dateien. Um das
+Problem zu beheben, beenden Sie das Programm. Erstellen Sie
+ein Unterverzeichnis und speichern Sie Ihre Textdateien in
+diesem Unterverzeichnis.
+.context QB_ER_PNF
+:nPfad nicht gefunden
+Der MS-DOS-Editor konnte den Pfad nicht finden, den Sie im
+Dialogfeld des Befehls '™ffnen' oder des Befehls 'Speichern
+unter' angegeben haben.
+Prfen Sie, ob Sie den Pfadnamen richtig eingegeben haben.
+.context MSG_DocTooLarge
+:nDatei zu groá
+Der MS-DOS-Editor kann Teile eines Dokuments, dessen L„nge
+32.700 Zeilen berschreitet, nicht ”ffnen oder kopieren.
+
+Verwenden Sie einen anderen Editor, oder unterteilen Sie Ihr
+Dokument in mehrere kleinere Dateien. Falls dieser Fehler
+vorkommt, wenn Sie den Befehl Kopieren verwenden, versuchen
+Sie, kleinere Textabschnitte zu kopieren und einzufgen.
+.context MSG_NotBlock
+:nFestplatte/Diskette erforderlich
+Sie versuchen, fr das ™ffnen oder Speichern ein Ger„t zu
+verwenden, das kein Datentr„ger ist (z.B. Drucker oder
+Tastatur).
+.context MSG_NoSearchString
+:nKein Suchtext vorhanden
+Das Eingabefeld "Suchtext" war leer, als Sie den Befehl
+Suchen oder ndern ausfhrten. Gehen Sie zu dem Eingabefeld
+"Suchtext" zurck und geben Sie eine Zeichenfolge ein, bevor
+Sie die Schaltfl„che <OK> w„hlen.
+.context MSG_SwitchDisks
+:nAufforderung "Diskette einlegen"
+Sie haben Ihr Diskettenlaufwerk mit A: bezeichnet, obwohl
+es sich in Wirklichkeit um Laufwerk B: handelt, oder
+umgekehrt.
+
+Vergewissern Sie sich, daá die Diskette mit der Datei, auf
+die sich der Befehl auswirken soll, im Laufwerk eingelegt
+ist, und w„hlen Sie <OK>. Der MS-DOS-Editor zeigt die neue
+Laufwerkbezeichnung an.
+.context MSG_MatchNotFound
+:nKeine šbereinstimmung gefunden
+Der MS-DOS-Editor konnte die angegebene Zeichenfolge nicht
+finden.
+
+Der Cursor befindet sich immer noch an der gleichen Stelle
+wie zu Beginn des Suchvorgangs.
+.context MSG_ChangeComplete
+:nnderung abgeschlossen
+Das Suchen und ndern ist abgeschlossen.
+Der Cursor befindet sich wieder an der gleichen Stelle wie
+zu Beginn des Suchvorgangs.
+.context MSG_CantSetTabs
+:nTabstops k”nnen nicht gesetzt werden
+Wenn Sie eine Datei ge”ffnet haben, die einen bereits
+gesetzten Tabstop enth„lt, kann dieser nicht mit der Option
+"Tabstops" des Befehls Bildschirmanzeige ge„ndert werden.
+Speichern Sie Ihre Datei und w„hlen Sie anschlieáend den
+Befehl Neu, um den Inhalt des MS-DOS-Editor-Fensters zu
+l”schen. Verwenden Sie den Befehl Bildschirmanzeige, um den
+Tabstop zu setzen und ”ffnen Sie Ihre Datei nochmals.
+.context MSG_NotSavedAll
+.context MSG_NotSaved
+:nGe”ffnete Datei speichern?
+Ihr aktuelles Dokument ist entweder noch nie gespeichert
+worden oder enth„lt ungespeicherte nderungen. Sie haben
+folgende M”glichkeiten:
+ ş W„hlen Sie <Ja>, um das Dokument einschlieálich der
+   nderungen zu speichern. Wurde das Dokument noch nicht
+   benannt, werden Sie zur Eingabe eines Dateinamens
+   aufgefordert.
+ ş W„hlen Sie <Nein>, wenn die nderungen nicht berck-
+   sichtigt werden sollen. Handelt es sich um ein neues
+   Dokument, das noch nie gespeichert wurde, wird das
+   gesamte Dokument gel”scht, wenn Sie <Nein> w„hlen.
+ ş W„hlen Sie <Abbrechen>, um den Befehl abzubrechen und zu
+   Ihrem Dokument zurckzukehren.
+.context QB_ER_PAE
+:nFehler beim Zugriff auf Pfad/Datei
+Vergewissern Sie sich, daá die Datei im Eingabefeld in der
+richtigen Form angegeben wurde. Zusammen mit dem Dateinamen
+kann eine Laufwerkbezeichnung und ein vollst„ndiger oder
+relativer Pfad eingegeben werden.
+
+Dieser Fehler kann auch dann vorkommen, wenn Sie versuchen,
+eine Datei zu speichern, die eine bestehende schreib-
+geschtzte Datei ersetzen wrde.
+.context MSG_MustSpecifyName
+:nBitte Namen eingeben
+Sie haben im Dialogfeld <OK> gew„hlt, obowhl das
+Eingabefeld leer war. L”schen Sie dieses Hilfe-Dialogfeld
+und geben Sie in das Eingabefeld eine Dateibezeichnung oder
+eine Zeichenfolge ein.
+.context MSG_Overwrite
+.context h.pg$
+:nBestehende Datei berschreiben?
+ ş W„hlen Sie <Ja> nur dann, wenn Sie sicher sind, daá keine
+   wichtigen Daten verloren gehen, wenn Sie den Inhalt der
+   auf der Platte/Diskette gespeicherten Datei mit dem
+   Inhalt des Dokuments, das sich im Arbeitsspeicher
+   befindet, berschreiben.
+ ş W„hlen Sie <Nein>, um das Dialogfeld neu anzuzeigen und
+   das aktuelle Dokument unter einem noch nicht bestehenden
+   Dateinamen zu speichern.
+ ş W„hlen Sie <Abbrechen>, um den Befehl "Speichern unter"
+   oder "Beenden" abzubrechen und zu Ihrem Dokument zurck-
+   zukehren.

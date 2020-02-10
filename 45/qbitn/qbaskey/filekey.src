@@ -1,0 +1,646 @@
+.context BLOAD
+.context @BLOAD
+.context BSAVE
+.context @BSAVE
+:nIstruzioni BSAVE e BLOAD
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+BSAVE copia il contenuto di un'area di memoria in un file.
+BLOAD carica in memoria un file creato con BSAVE.
+
+\bBSAVE specfile$, offset%, lunghezza&\p
+\bBLOAD specfile$[,offset%]\p
+
+    ş \bspecfile$\p    Usato con BSAVE, un file nel quale viene copiata la
+                   immagine di una parte di memoria byte per byte.
+                   Usato con BLOAD, un file d'immagine della memoria creato
+                   in precedenza con BSAVE.
+    ş \boffset%\p      Usato con BSAVE, l'offset dell'indirizzo iniziale della
+                   area di memoria che viene memorizzata. Usato con BLOAD,
+                   l'offset dell'indirizzo da cui si inizia a caricare.
+    ş \blunghezza&\p   Il numero di byte, compreso tra 0 e 65.535, che si
+                   desidera copiare.
+
+    ş L'indirizzo iniziale dell'area di memoria memorizzata o caricata Š
+      determinato dall'offset e dall'istruzione DEF SEG pi— recente.
+
+Si vedano inoltre    \i\p\aDEF SEG\v@SEG\v\i\p    \i\p\aVARPTR e VARSEG\v@VARSEG\v\i\p    \i\p\aDifferenze da BASICA\v@basica.diffs\v\i\p
+.context CHDIR
+.context @CHDIR
+.context MKDIR
+.context @MKDIR
+.context RMDIR
+.context @RMDIR
+.context FILES
+.context @FILES
+:nIstruzioni CHDIR, MKDIR, RMDIR e FILES
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CHDIR cambia la directory predefinita di un'unit….
+MKDIR crea una subdirectory.
+RMDIR elimina una subdirectory.
+FILES visualizza il contenuto della directory corrente o della directory
+specificata.
+
+\bCHDIR nomepercorso$\p
+\bMKDIR nomepercorso$\p
+\bRMDIR nomepercorso$\p
+\bFILES [specfile$]\p
+
+    ş \bnomepercorso$\p   Il percorso della nuova directory predefinita, di
+                      una subdirectory nuova o da eliminare.\p
+    ş \bspecfile$\p       Un nome di file o un percorso. E' possibile 
+                      includere l'indicazione di un'unit… ed i caratteri 
+                      jolly di DOS. Qualora non venga specificato 
+                      specfile$, FILES visualizza tutti i file contenuti 
+                      nella directory corrente.
+
+Esempio:
+    MKDIR "C:\\TEMP\\TEST"
+    CHDIR "C:\\TEMP"
+    FILES
+    RMDIR "TEST"
+.context CLOSE
+.context @CLOSE
+:nIstruzione CLOSE
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Chiude uno o pi— file o periferiche aperti.
+
+\bCLOSE [[#]numerofile%[,[#]numerofile%]...]\p
+
+    ş \bnumerofile%\p    Il numero di un file o di una periferica aperti.
+
+    ş CLOSE usato senza argomenti chiude tutti i file e le periferiche aperti.
+
+Esempio:
+    CLS
+    INPUT "Immettere il nome del file: ", n$
+    OPEN n$ FOR OUTPUT AS #1
+    PRINT #1, "Questa frase viene salvata nel file."
+    CLOSE
+    OPEN n$ FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT "Lettura del file: "; a$
+    CLOSE
+
+Si vedano inoltre    \i\p\aEND\v@END\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aRESET\v@RESET\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context EOF
+.context @EOF
+:nFunzione EOF
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Controlla la fine di un file. EOF restituisce vero (diverso da zero) quando
+Š stata raggiunta la fine di un file.
+
+\bEOF(numerofile%)\p
+
+    ş \bnumerofile%\p    Il numero di un file aperto.
+
+Esempio:
+    CLS
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    FOR i% = 1 TO 10
+        WRITE #1, i%, 2 * i%, 5 * i%
+    NEXT i%
+    CLOSE #1
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    DO
+        LINE INPUT #1, a$
+        PRINT a$
+    LOOP UNTIL (EOF(1))
+
+Si vedano inoltre    \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aLOC\v@LOC\v\i\p    \i\p\aLOF\v@LOF\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p
+.context ERDEV
+.context @ERDEV
+.context ERDEV$
+.context @ERDEV$
+:nFunzioni ERDEV e ERDEV$
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ERDEV restituisce un codice di errore per l'ultima periferica che ha causato
+un errore critico.
+ERDEV$ restituisce il nome della periferica che ha causato l'errore.
+
+\bERDEV\p
+\bERDEV$\p
+
+    ş Il byte basso del valore restituito da ERDEV contiene il codice di
+      errore DOS. Il byte alto contiene informazioni sugli attributi di
+      periferica.
+
+\i\p\aEsempio\v@errhand.ex\v\i\p
+
+Si vedano inoltre    \i\p\aERR e ERL\v@ERR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p
+.context FIELD
+.context @FIELD
+:nIstruzione FIELD
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Alloca spazio per delle variabili in un buffer di file ad accesso casuale.
+
+\bFIELD [#]numerofile%, largcampo% AS variabilestringa$\p
+                    \b[,largcampo% AS variabilestringa$] ...\p
+
+    ş \bnumerofile%\p         Il numero di un file aperto.
+    ş \blargcampo%\p          Il numero dei caratteri contenuti nel campo.
+    ş \bvariabilestringa$\p   Una variabile che identifica il campo e che
+                          contiene i dati del campo.
+
+    ş Le variabili di record costituiscono il modo migliore per gestire i
+      dati di record.
+
+Esempio:
+    OPEN "FILEDAT.DAT" FOR RANDOM AS #1 LEN = 80
+    FIELD #1, 30 AS nome$, 50 AS indirizzo$
+
+Si vedano inoltre    \i\p\aGET e PUT\v@GET\v\i\p    \i\p\aLSET e RSET\v@LSET\v\i\p    \i\p\aTYPE\v@TYPE\v\i\p
+                     \i\p\aDifferenze da BASICA\v@basica.diffs\v\i\p
+.context FILEATTR
+.context @FILEATTR
+:nFunzione FILEATTR
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Restituisce delle informazioni su un file aperto.
+
+\bFILEATTR(numerofile%,attributo%)\p
+
+    ş \bnumerofile%\p    Il numero di un file aperto.
+    ş \battributo%\p     Specifica il tipo di informazioni che si desidera
+                     vengano restituite. Se attributo% Š 1, FILEATTR
+                     restituisce un valore che indica la modalit… di accesso
+                     del file:
+
+                     Valore   Modalit…
+                     ÍÍÍÍÍÍ   ÍÍÍÍÍÍÍÍ
+                     1        Input
+                     2        Output
+                     4        Random
+                     8        Append
+                     32       Binary
+
+                     Se attributo% Š uguale a 2, FILEATTR restituisce la
+                     handle di file DOS.
+
+Esempio:
+    OPEN "TEST.DAT" FOR BINARY AS #1
+    PRINT FILEATTR(1, 1)
+    CLOSE
+
+Si veda inoltre    \i\p\aOPEN\v@OPEN\v\i\p
+.context FREEFILE
+.context @FREEFILE
+:nFunzione FREEFILE
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Restituisce il primo numero valido non usato che viene incontrato di un file.
+
+\bFREEFILE\p
+
+Esempio:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT "Numero di file successivo: "; FREEFILE
+    CLOSE
+
+Si veda inoltre    \i\p\aOPEN\v@OPEN\v\i\p
+.context GET
+.context @GET
+.context PUT
+.context @PUT
+:nIstruzioni GET e PUT (I/O di file)
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+GET legge i dati da un file e li memorizza in un buffer ad accesso casuale
+o li assegna ad una variabile.
+PUT scrive il contenuto di una variabile o di un buffer ad accesso casuale
+in un file.
+
+\bGET [#]numerofile%[,[numerorecord&][,variabile]]\p
+\bPUT [#]numerofile%[,[numerorecord&][,variabile]]\p
+
+    ş \bnumerofile%\p      Il numero di un file aperto.
+    ş \bnumerorecord&\p    Nei file ad accesso casuale, il numero del record di
+                       scrittura o di lettura. Nei file in formato binario,
+                       la posizione del byte in cui comincia la lettura o la
+                       scrittura.
+    ş \bvariabile\p        Nell'istruzione GET, una variabile usata per ricevere
+                       l'input da un file. Nell'istruzione PUT, una variabile
+                       contenente l'output da scrivere su un file.
+                       La variabile si riferisce di solito al tipo di dati
+                       definito dall'utente.
+
+Esempio:
+    TYPE RecordEsame
+        Studente AS STRING * 20
+        Punteggio AS SINGLE
+    END TYPE
+    DIM Corso AS RecordEsame
+    OPEN "FINAL.DAT" FOR RANDOM AS #1 LEN = LEN(Corso)
+    Corso.Studente = "MariaSa"
+    Corso.Punteggio = 99
+    PUT #1, 1, Corso
+    CLOSE #1
+    OPEN "FINAL.DAT" FOR RANDOM AS #1 LEN = LEN(Corso)
+    GET #1, 1, Corso
+    PRINT "STUDENTE:", Corso.Studente
+    PRINT "PUNTEGGIO:", Corso.Punteggio
+    CLOSE #1
+    KILL "FINAL.DAT"
+
+Si vedano inoltre    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aGET e PUT (Grafica)\v@ggx\v\i\p    \i\p\aLSET e RSET\v@LSET\v\i\p
+                     \i\p\aFunzioni MKn$ e CVn\v@MKI$\v\i\p               \i\p\aTYPE\v@TYPE\v\i\p
+.context INPUT$
+.context @INPUT$
+:nFunzione INPUT$
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Restituisce una stringa di caratteri letta da un file specificato.
+
+\bINPUT$(n[,[#]numerofile%])\p
+
+    ş \bn\p              Il numero di caratteri (ovvero byte) da leggere.
+    ş \bnumerofile%\p    Il numero di un file aperto. Se numerofile% viene omesso,
+                     INPUT$ legge i dati dalla tastiera.
+
+Esempio:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT #1, "Questo testo"
+    CLOSE
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    PRINT INPUT$(3, 1)        'Scrivi i primi 3 caratteri.
+    CLOSE
+
+Si veda inoltre    \i\p\aINPUT e LINE INPUT\v@INPUT\v\i\p
+.context IOCTL
+.context @IOCTL
+.context IOCTL$
+.context @IOCTL$
+:nIstruzione IOCTL e funzione IOCTL$
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+IOCTL trasmette una stringa di controllo ad un driver di periferica.
+IOCTL$ restituisce informazioni sullo stato corrente da un driver di
+periferica.
+
+\bIOCTL [#]numerofile%, stringa$\p
+\bIOCTL$([#]numerofile%)\p
+
+    ş \bnumerofile%\p    Il numero di una periferica aperta.
+    ş \bstringa$\p       La stringa di controllo inviata alla periferica.
+
+    ş Le stringhe di controllo IOCTL e le informazioni restituite da IOCTL$
+      dipendono dal driver di periferica. Per informazioni sulle stringhe di
+      controllo e sui dati restituiti da IOCTL$, si veda la documentazione
+      del driver di periferica del sistema.
+.context LOC
+.context @LOC
+:nFunzione LOC
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Restituisce la posizione corrente all'interno di un file.
+
+\bLOC(numerofile%)\p
+
+    ş \bnumerofile%\p    Il numero di un file o di una periferica aperti.
+
+    ş Per i file binari, LOC restituisce la posizione dell'ultimo byte che
+      Š stato letto o scritto.
+    ş Per i file ad accesso casuale, LOC restituisce il numero dell'ultimo
+      record letto da o scritto in un file.
+    ş Per i file sequenziali, LOC restituisce il numero della posizione
+      del byte all'interno del file diviso per 128.
+
+Esempio:
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+       PUT #1, , i%
+    NEXT i%
+    SEEK #1, 2
+    GET #1, , i%
+    PRINT "Dati: "; i%; " Record corrente: "; LOC(1); " Successivo: "; SEEK(1)
+
+Si vedano inoltre    \i\p\aEOF\v@EOF\v\i\p    \i\p\aSEEK\v@SEEK\v\i\p
+.context LOCK
+.context @LOCK
+.context UNLOCK
+.context @UNLOCK
+:nIstruzioni LOCK e UNLOCK
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LOCK limita o impedisce l'accesso ad un file condiviso in una rete.
+UNLOCK rimuove le restrizioni imposte con l'istruzione LOCK pi— recente.
+
+\bLOCK [#]numerofile% [,{record& | [inizio&] TO fine&}]\p
+\bUNLOCK [#]numerofile% [,{record& | [inizio&] TO fine&}]\p
+
+    ş \bnumerofile%\p        Il numero di un file aperto.
+    ş \brecord&\p            Per i file ad accesso casuale, il numero di un record
+                         da bloccare in base al primo record nel file.
+                         Per i file binari, il numero di un byte da bloccare
+                         in base al primo byte nel file.
+    ş \binizio&\p e \bfine&\p    I numeri del primo e dell'ultimo record o byte
+                         all'interno di un intervallo di record o byte da
+                         bloccare o da sbloccare.
+
+    ş Per i file sequenziali, LOCK e UNLOCK hanno effetto su tutto il file.
+
+Esempio:
+    'Questo esempio funziona solo in un ambiente di rete.
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+        PUT #1, , i%
+    NEXT i%
+    LOCK #1, 2         'Blocca record 2.
+    GET #1, 2, i%
+    UNLOCK #1, 2       'Sblocca record 2.
+.context LOF
+.context @LOF
+:nFunzione LOF
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Restituisce la lunghezza di un file in byte.
+
+\bLOF(numerofile%)\p
+
+    ş \bnumerofile%\p    Il numero di un file aperto.
+
+Esempio:
+    INPUT "Nome del file: "; f$
+    OPEN f$ FOR BINARY AS #1
+    PRINT "Lunghezza del file = "; LOF(1)
+    CLOSE
+.context LSET
+.context @LSET
+.context RSET
+.context @RSET
+:nIstruzioni LSET e RSET
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LSET e RSET trasferiscono i dati nel buffer di un file ad accesso casuale
+in preparazione ad un'istruzione PUT e allineano a destra o a sinistra il
+valore di una variabile stringa. LSET copia inoltre il contenuto di una
+variabile di record in un'altra.
+
+\bLSET variabilestringa$=espressioneastringa$\p
+\bRSET variabilestringa$=espressioneastringa$\p
+\bLSET variabilerecord1=variabilerecord2\p
+
+    ş \bvariabilestringa$\p     Una variabile stringa o un campo di un file ad
+                            accesso casule definiti in un'istruzione FIELD.
+    ş \bespressioneastringa$\p  Per LSET, la versione giustificata a sinistra
+                            di variabilestringa$. Per RSET, la versione
+                            giustificata a destra di variabilestringa$.
+    ş \bvariabilerecord1\p      Variabili di record di qualsiasi tipo di dati
+                            definito dall'utente.
+      \bvariabilerecord2\p      Usare LSET per assegnare una variabile di record
+                            di un tipo di dati ad un diverso tipo di dati
+                            definito dall'utente.
+
+Esempio:
+    OPEN "FILEDAT.DAT" FOR RANDOM AS #1 LEN = 10
+    FIELD #1, 5 AS Ls1$, 5 AS Rs1$
+    LSET Ls1$ = "LSET"
+    RSET Rs1$ = "RSET"
+    PUT #1, 1
+    CLOSE #1
+    OPEN "FILEDAT.DAT" FOR RANDOM AS #1 LEN = 10
+    FIELD #1, 5 AS Ls2$, 5 AS Rs2$
+    GET #1, 1
+    PRINT "*" + Ls2$ + "*", "*" + Rs2$ + "*"
+    CLOSE #1
+
+Si vedano inoltre    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aGET e PUT\v@PUT\v\i\p
+.context NAME
+.context @NAME
+:nIstruzione NAME
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Rinomina un file o una directory.
+
+\bNAME specprec$ AS specnuove$\p
+
+    ş \bspecprec$\p e \bspecnuove$\p   Il nome di un file esistente ed il nuovo nome
+                               che si desidera assegnare al file.
+                               Il nome pu• includere un percorso.
+
+Esempio:
+    INPUT "Nome precedente: "; FNprec$
+    INPUT "Nome nuovo: "; FNnuovo$
+    NAME FNprec$ AS FNprec$
+
+Si veda inoltre    \i\p\aFILES\v@FILES\v\i\p
+.context OPEN
+.context @OPEN
+:nIstruzione OPEN
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Apre un file o una periferica.
+
+\bOPEN file$ [FOR mod.] [ACCESS accesso] [blocco] AS [#]numfile% [LEN=lungrec%]\p
+
+    ş \bfile$\p          Il nome del file o della periferica. Il nome del file pu•
+                     includere l'indicazione di un'unit… e di un percorso.
+    ş \bmod.\p           Una tra le seguenti modalit… di apertura file: APPEND,
+                     BINARY, INPUT, OUTPUT o RANDOM.
+                     Si veda \i\p\aModalit… di apertura file dell'istruzione OPEN\v@APPEND\v\i\p.
+    ş \baccesso\p        In un ambiente di rete, specifica se il file viene
+                     aperto per un accesso di tipo READ, WRITE o READ WRITE.
+                     Si veda \i\p\aClausola ACCESS dell'istruzione OPEN\v@ACCESS\v\i\p.
+    ş \bblocco\p         Indica il tipo di blocco del file in un ambiente di rete:
+                     SHARED, LOCK READ, LOCK WRITE, LOCK READ WRITE.
+    ş \bnumfile%\p       Un numero compreso tra 1 e 255 che identifica un file
+                     aperto.
+    ş \blungrec%\p       Per i file ad accesso casuale, la lunghezza di record
+                     (lunghezza predefinita 128 byte). Per i file sequenziali,
+                     il numero dei caratteri contenuti nel buffer (il valore
+                     predefinito Š 512 byte).
+
+Esempio:
+    INPUT "Nome del file: "; n$
+    OPEN n$ FOR OUTPUT AS #1
+    PRINT #1, "Questa frase viene salvata su file."
+    CLOSE
+    OPEN n$ FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT "Lettura dal file: "; a$
+    CLOSE
+
+Si vedano inoltre    \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aFREEFILE\v@FREEFILE\v\i\p    \i\p\aOPEN COM\v@opcom\v\i\p    \i\p\aTYPE\v@TYPE\v\i\p
+                     \i\p\aSintassi alternativa dell'istruzione OPEN\v@openalt\v\i\p
+.context APPEND
+.context @APPEND
+.context BINARY
+.context @BINARY
+.context OUTPUT
+.context @OUTPUT
+.context RANDOM
+.context @RANDOM
+:nModalit… di apertura file dell'istruzione OPEN
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Le parole chiave APPEND, BINARY, INPUT, OUTPUT e RANDOM vengono usate con
+l'istruzione OPEN per specificare la modalit… di apertura file. INPUT, OUTPUT
+e RANDOM vengono usati anche nell'istruzione OPEN COM.
+
+    ş APPEND specifica che il file viene aperto per un output in formato
+      sequenziale e imposta il puntatore di file alla fine del file.
+      Successivamente, un'istruzione PRINT # o WRITE # aggiunge dei dati al
+      file.
+    ş BINARY specifica la modalit… binaria. In modalit… binaria Š possibile
+      leggere o scrivere dei dati da/in una posizione espressa in byte
+      all'interno del file tramite le istruzioni GET o PUT.
+    ş INPUT specifica che il file viene aperto per la lettura di un output in
+      formato sequenziale.
+    ş OUTPUT specifica che il file viene aperto per la scrittura di un output
+      in formato sequenziale.
+    ş RANDOM specifica che il file viene aperto in modalit… ad accesso
+      casuale. RANDOM Š la modalit… predefinita.
+
+Si vedano inoltre    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aOPEN COM\v@opcom\v\i\p    \i\p\aPRINT e LPRINT\v@PRINT\v\i\p    \i\p\aWRITE\v@WRITE\v\i\p
+.context ACCESS
+.context @ACCESS
+:nClausola ACCESS dell'istruzione OPEN
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Specifica il tipo di accesso consentito agli utenti ad un file aperto.
+
+\bACCESS {READ | WRITE | READ WRITE}\p
+
+    ş \bREAD\p          Apre un file di sola lettura.
+    ş \bWRITE\p         Apre un file di sola scrittura.
+    ş \bREAD WRITE\p    Apre un file di lettura e scrittura.
+                    La modalit… READ WRITE Š valida solo per i file ad
+                    accesso casuale e in formato binario e per i file aperti
+                    con l'istruzione APPEND ad accesso sequenziale.
+
+Si veda inoltre    \i\p\aOPEN\v@OPEN\v\i\p
+.context @openalt
+.context .openalt
+:nSintassi alternativa dell'istruzione OPEN
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bOPEN modalit…2$,[#]numerofile%,file$[,lungrec%]\p
+
+    ş \bmodalit…2$\p    Una espressione a stringa che inizia con uno dei caratteri
+                    seguenti e specifica la modalit… di apertura del file:
+                      O    Modalit… di output sequenziale.
+                      I    Modalit… di input sequenziale.
+                      R    Modalit… input/output di file ad accesso casuale.
+                      B    Modalit… file binari.
+                      A    Modalit… di output sequenziale. Posiziona il
+                           puntatore di file alla fine del file e il numero
+                           di record come ultimo record del file. Un'istru-
+                           zione PRINT # o WRITE # aggiunge dei dati al file.
+    ş \bnumerofile%\p   Un numero compreso tra 1 e 255 che indica un file aperto.
+    ş \bfile$\p         Il nome del file, che pu• comprendere un'unit… e un
+                    percorso.
+    ş \blungrec%\p      Per i file ad accesso casuale, la lunghezza del record in
+                    byte. Per i file sequenziali, il numero dei caratteri
+                    contenuti nel buffer.
+
+    ş QBASIC riconosce questa sintassi ed Š quindi compatibile con
+      programmi scritti con versioni BASIC precedenti.
+
+Si veda inoltre    \i\p\aOPEN\v@OPEN\v\i\p
+.context RESET
+.context @RESET
+:nIstruzione RESET
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Chiude tutte le periferiche e tutti i file aperti.
+
+\bRESET\p
+
+Si vedano inoltre    \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aEND\v@END\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context SEEK
+.context @SEEK
+:nFunzione e istruzione SEEK
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+La funzione SEEK restituisce la posizione corrente del file.
+L'istruzione SEEK imposta la posizione all'interno del file per l'operazione
+di scrittura o di lettura successiva.
+
+\bSEEK(numerofile%)\p
+\bSEEK [#]numerofile%, posizione&\p
+
+    ş \bnumerofile%\p    Il numero di un file aperto.
+    ş \bposizione&\p     La posizione da dove inizia l'operazione di 
+                     lettura o di scrittura successiva. Per i file  
+                     ad accesso casuale, un numero di record. Per gli  
+                     altri tipi di file, la posizione del byte relativa 
+                     all'inizio del file. Il primo byte ha posizione 1.
+
+Esempio:
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+        PUT #1, , i%
+    NEXT i%
+    SEEK #1, 2
+    GET #1, , i%
+    PRINT "Dati: "; i%; " Record corrente: "; LOC(1); " Successivo: "; SEEK(1)
+
+Si vedano inoltre    \i\p\aGET e PUT\v@GET\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p
+.context WRITE
+.context @WRITE
+:nIstruzione WRITE
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Visualizza i dati o li scrive su un file sequenziale.
+
+\bWRITE [[#]numerofile%,] elencoespressioni\p
+
+    ş \bnumerofile%\p       Il numero di un file sequenziale aperto. Se il numero
+                        non viene specificato, WRITE visualizza i dati sullo
+                        schermo.
+    ş \belencoespressioni\p Una o pi— variabili o espressioni, separate da una
+                        virgola, i cui valori vengono visualizzati sullo
+                        schermo o scritti su un file.
+
+    ş WRITE provvede ad inserire delle virgole tra pi— voci e delle virgolette
+      per racchiudere delle stringhe mano a mano che queste vengono scritte.
+      WRITE scrive dei valori su un file in formato leggibile dall'istruzione
+      INPUT.
+
+Esempio:
+    CLS
+    OPEN "ELENCO" FOR OUTPUT AS #1
+    DO
+        INPUT "   NOME:       ", Nome$
+        INPUT "   ETA':        ", Et…$
+        WRITE #1, Nome$, Et…$
+        INPUT "Altra voce"; R$
+    LOOP WHILE UCASE$(R$) = "S"
+    CLOSE #1
+    'Visualizza il file.
+    OPEN "ELENCO" FOR INPUT AS #1
+    CLS
+    PRINT "Voci nel file:": PRINT
+    DO WHILE NOT EOF(1)
+        INPUT #1, Rec1$, Rec2$   'lettura delle voci dal file.
+        PRINT Rec1$, Rec2$       'Visualizzazione delle voci.
+    LOOP
+    CLOSE #1
+    KILL "LIST"
+
+Si vedano inoltre    \i\p\aINPUT e LINE INPUT\v@INPUT\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aPRINT e LPRINT\v@PRINT\v\i\p
+.context AS
+.context @AS
+:nParola chiave AS
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Esegue pi— operazioni a seconda delle istruzioni con cui viene usata:
+
+    ş Indica un tipo di variabile nelle istruzioni COMMON, DECLARE, DEF FN,
+      DIM, FUNCTION, REDIM, SHARED, STATIC e SUB.
+    ş Nell'istruzione TYPE, indica un tipo di elemento in un tipo di dati
+      definito dall'utente.
+    ş Nell'istruzione OPEN, assegna un numero ad un file o ad una periferica.
+    ş Nell'istruzione FIELD, indica un nome di campo.
+    ş Nell'istruzione NAME, indica un nuovo nome di file.
+
+Si vedano inoltre    \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p     \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aDIM e REDIM\v@DIM\v\i\p
+                     \i\p\aFIELD\v@FIELD\v\i\p     \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aNAME\v@NAME\v\i\p      \i\p\aOPEN\v@OPEN\v\i\p
+                     \i\p\aSHARED e STATIC\v@SHARED\v\i\p         \i\p\aSUB\v@SUB\v\i\p       \i\p\aTYPE\v@TYPE\v\i\p
+
+

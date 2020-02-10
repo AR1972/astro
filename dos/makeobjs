@@ -1,0 +1,1100 @@
+#
+#	Microsoft Confidential
+#	Copyright (C) Microsoft Corporation 1991
+#	All Rights Reserved.
+#
+
+#*************************** Makefile for DOS ***************************
+
+
+!IF	"$(DEBUG)" == "soft_ice" || "$(debug)" == "soft_ice" || \
+	"$(DEBUG)" == "SOFT_ICE" || "$(debug)" == "SOFT_ICE"
+
+debug_flags = -Zd
+link_opts = /MAP /LI 
+
+!ELSE
+
+link_opts = /MAP
+
+!ENDIF
+
+!IFNDEF		ROMDOS
+dest    =msdos.sys
+cpr     =msdos.sy_
+here    =diskobjs
+!ELSE
+dest    =romdos.sys
+cpr     =romdos.sy_
+here    =romobjs
+!ENDIF
+
+msg	=..\..\messages
+inc     =..\..\inc
+bins    =..\..\binaries
+cprs    =..\..\compress
+source  =..
+
+extasw  =-I$(inc) $(debug_flags)
+
+#
+###################### Dependencies begin here ##########################
+#
+
+
+!IFNDEF       BUILDER
+
+all:                    Build.IO                \
+                        $(dest)
+
+!ELSE
+
+all:                    Build.IO                \
+                        $(dest)                 \
+                        $(bins)\$(dest)         \
+                        $(cprs)\$(dest)         \
+                        $(cprs)\$(cpr)
+
+$(bins)\$(dest):        $(dest)
+                        copy $(dest) $(bins)
+
+$(cprs)\$(dest):        $(dest)
+                        copy $(dest) $(cprs)
+
+$(cprs)\$(cpr):         $(cpr)
+                        copy $(cpr) $(cprs)
+
+$(cpr):                 $(dest)
+                        $(compress) $(dest) $(cpr)
+
+!ENDIF
+          
+Build.IO:
+                        cd ..\..\bios
+                        $(MAKE)
+                        cd ..\dos\$(here)
+
+msdos.cl1:              $(source)\msdos.skl     \
+                        $(source)\makeobjs      \
+	                $(msg)\$(COUNTRY).msg 
+
+msdos.cl2:              $(source)\msdos.skl     \
+                        $(source)\makeobjs      \
+                	$(msg)\$(COUNTRY).msg 
+
+
+msdata.obj:             $(source)\msdata.asm    \
+                        $(source)\makeobjs      \
+                        $(source)\mssw.asm      \
+                        $(inc)\ARENA.INC        \
+                        $(inc)\CURDIR.INC       \
+                        $(inc)\DEVSYM.INC       \
+                        $(inc)\DPB.INC          \
+                        $(inc)\FIND.INC         \
+                        $(inc)\MI.INC           \
+                        $(inc)\PDB.INC          \
+                        $(inc)\SF.INC           \
+                        $(inc)\VECTOR.INC       \
+                        $(inc)\VERSIONA.INC     \
+                        $(inc)\buffer.INC       \
+                        $(inc)\dbcs.sw          \
+                        $(inc)\dirent.INC       \
+                        $(inc)\doscntry.inc     \
+                        $(inc)\dosmac.INC       \
+                        $(inc)\dosseg.inc       \
+                        $(inc)\dossym.inc       \
+                        $(inc)\error.INC        \
+                        $(inc)\fastopen.inc     \
+                        $(inc)\ms_data.asm      \
+                        $(inc)\lmstub.asm       \
+                        $(inc)\version.inc      \
+                        $(inc)\xmm.inc          \
+                        $(source)\dostab.asm    \
+                        $(inc)\const2.asm       \
+                        $(source)\msconst.asm   \
+                        $(inc)\mshead.asm       \
+                        $(inc)\BUGTYP.INC       \
+                        $(inc)\ORIGIN.INC       \
+	                $(inc)\bdsize.inc       \
+	                $(inc)\wpatch.inc       \
+	                $(inc)\msbdata.inc	\
+                        msdos.cl2
+
+msdosme.obj:            $(source)\msdosme.asm   \
+                        $(source)\makeobjs      \
+                        $(source)\dosmes.inc    \
+                        msdos.cl1               \
+                        $(source)\mssw.asm      \
+                        $(inc)\VERSIONA.INC     \
+                        $(inc)\buffer.INC       \
+                        $(inc)\dbcs.sw          \
+                        $(inc)\dirent.INC       \
+                        $(source)\divmes.inc    \
+                        $(inc)\doscntry.inc     \
+                        $(inc)\dosmac.INC       \
+                        $(inc)\dosmac.inc       \
+                        $(inc)\dosseg.inc       \
+                        $(inc)\dossym.inc       \
+                        $(inc)\error.INC        \
+                        $(inc)\version.inc      \
+                        $(inc)\yesno.asm
+
+abort.obj abort.lst:    $(source)\abort.asm     \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/mult.inc         \
+                        $(inc)/pdb.inc          \
+                        $(inc)/sf.inc
+
+alloc.obj alloc.lst:    $(source)\alloc.asm     \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/arena.inc        \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC
+
+buf.obj buf.lst:        $(source)\buf.asm       \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/dpb.inc          \
+	                $(inc)/error.INC        \
+                        $(inc)/version.inc
+
+close.obj close.lst:    $(source)\close.asm     \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/bugtyp.inc       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/mult.inc         \
+                        $(inc)/sf.inc
+
+cpmio.obj cpmio.lst:    $(source)\cpmio.asm     \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/doscntry.inc     \
+                        $(inc)/dosmac.INC       \
+	                $(inc)/dosseg.inc       \
+                        $(inc)/error.INC        \
+                        $(inc)/sf.inc           \
+                        $(inc)/vector.inc       \
+	                $(source)\kstrin.asm
+
+cpmio2.obj cpmio2.lst:  $(source)\cpmio2.asm    \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/sf.inc
+
+create.obj create.lst:  $(source)\create.asm    \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/curdir.inc       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/filemode.inc     \
+                        $(inc)/mult.inc         \
+                        $(inc)/sf.inc           \
+	                $(inc)/version.inc
+
+crit.obj crit.lst:      $(source)\crit.asm      \
+                        $(source)\makeobjs      \
+                        $(inc)/DOSSYM.INC       \
+                        $(inc)/VERSIONA.INC     \
+	                $(inc)/buffer.INC       \
+                        $(inc)/bugtyp.inc       \
+                        $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+	                $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/error.INC        \
+                        $(inc)/int2a.inc        \
+	                $(inc)/vector.inc
+
+delete.obj delete.lst:  $(source)\delete.asm    \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+                        $(inc)/FASTOPEN.INC     \
+                        $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/dpb.inc          \
+                        $(inc)/error.INC        \
+                        $(inc)/fastxxxx.inc     \
+	                $(inc)/filemode.inc     \
+                        $(inc)/mult.inc         \
+                        $(inc)/sf.inc
+
+dev.obj dev.lst:        $(source)\dev.asm       \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/dpb.inc          \
+	                $(inc)/error.INC        \
+                        $(inc)/sf.inc           \
+                        $(inc)/version.inc
+
+dinfo.obj dinfo.lst:    $(source)\dinfo.asm     \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/bugtyp.inc       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/dpb.inc          \
+                        $(inc)/error.INC        \
+                        $(inc)/mult.inc
+
+dir.obj dir.lst:        $(source)\dir.asm       \
+                        $(source)\makeobjs      \
+                        $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/dossym.inc       \
+                        $(inc)/dpb.inc          \
+                        $(inc)/error.INC        \
+                        $(inc)/fastopen.inc
+
+dir2.obj dir2.lst:      $(source)\dir2.asm      \
+                        $(source)\makeobjs      \
+                        $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+	                $(inc)/curdir.inc       \
+                        $(inc)/dbcs.sw          \
+                        $(inc)/devsym.inc       \
+                        $(inc)/dirent.INC       \
+	                $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/dossym.inc       \
+                        $(inc)/dpb.inc          \
+	                $(inc)/error.INC        \
+                        $(inc)/fastopen.inc
+
+dircall.obj dircall.lst: $(source)\dircall.asm  \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/FASTOPEN.INC     \
+                        $(inc)/FASTXXXX.INC     \
+                        $(inc)/VERSIONA.INC     \
+	                $(inc)/buffer.INC       \
+                        $(inc)/curdir.inc       \
+                        $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+	                $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/dpb.inc          \
+                        $(inc)/error.INC        \
+	                $(inc)/mult.inc         \
+                        $(inc)/sf.inc
+
+disk.obj disk.lst:      $(source)\disk.asm      \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/dpb.inc          \
+	                $(inc)/error.INC        \
+                        $(inc)/fastxxxx.inc     \
+                        $(inc)/filemode.inc     \
+	                $(inc)/mult.inc         \
+                        $(inc)/sf.inc           \
+                        $(inc)/version.inc
+
+disk2.obj disk2.lst:    $(source)\disk2.asm     \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/dpb.inc          \
+	                $(inc)/error.INC        \
+                        $(inc)/filemode.inc     \
+                        $(inc)/sf.inc           \
+                        $(inc)/version.inc
+
+disk3.obj disk3.lst:    $(source)\disk3.asm     \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \                        
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/dpb.inc          \
+	                $(inc)/error.INC        \
+                        $(inc)/sf.inc           \
+                        $(inc)/version.inc
+
+dosprint.obj dosprint.lst: $(source)\dosprint.asm \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/version.inc
+
+dup.obj dup.lst:        $(source)\dup.asm       \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/sf.inc           \
+                        $(inc)/version.inc
+
+fat.obj fat.lst:        $(source)\fat.asm       \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/curdir.inc       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/dpb.inc          \
+                        $(inc)/error.INC        \
+                        $(inc)/sf.inc
+
+fcb.obj fcb.lst:        $(source)\fcb.asm       \
+                        $(source)\makeobjs      \
+                        $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/devsym.inc       \
+                        $(inc)/dirent.INC       \
+	                $(inc)/doscntry.inc     \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/dossym.inc       \
+                        $(inc)/error.INC
+
+fcbio.obj fcbio.lst:    $(source)\fcbio.asm     \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/bugtyp.inc       \
+	                $(inc)/cpmfcb.inc       \
+                        $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+	                $(inc)/dosseg.inc       \
+                        $(inc)/dpb.inc          \
+                        $(inc)/error.INC        \
+                        $(inc)/filemode.inc     \
+	                $(inc)/mult.inc         \
+                        $(inc)/sf.inc           \
+                        $(inc)/syscall.inc      \
+                        $(inc)/version.inc
+
+fcbio2.obj fcbio2.lst:  $(source)\fcbio2.asm    \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/bugtyp.inc       \
+	                $(inc)/cpmfcb.inc       \
+                        $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+	                $(inc)/dosseg.inc       \
+                        $(inc)/error.INC        \
+                        $(inc)/filemode.inc     \
+                        $(inc)/sf.inc           \
+	                $(inc)/version.inc
+
+file.obj file.lst:      $(source)\file.asm      \
+                        $(source)\makeobjs      \
+                        $(inc)/EA.inc           \
+                        $(inc)/VERSIONA.INC     \
+	                $(inc)/buffer.INC       \
+                        $(inc)/bugtyp.inc       \
+                        $(inc)/dbcs.sw          \
+                        $(inc)/devsym.inc       \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/dossym.inc       \
+                        $(inc)/error.INC        \
+                        $(inc)/filemode.inc     \
+                        $(inc)/sf.inc           \
+	                $(inc)/version.inc
+
+finfo.obj finfo.lst:    $(source)\finfo.asm     \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/fastopen.inc     \
+                        $(inc)/fastxxxx.inc     \
+	                $(inc)/mult.inc
+
+getset.obj getset.lst:  $(source)\getset.asm    \
+                        $(source)\makeobjs      \
+                        $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/devsym.inc       \
+                        $(inc)/dirent.INC       \
+	                $(inc)/doscntry.inc     \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/dossym.inc       \
+                        $(inc)/error.INC        \
+                        $(inc)/mult.inc         \
+                        $(inc)/version.inc
+
+handle.obj handle.lst:  $(source)\handle.asm    \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/EA.inc           \
+                        $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/bugtyp.inc       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/filemode.inc     \
+                        $(inc)/mult.inc         \
+                        $(inc)/pdb.inc          \
+	                $(inc)/sf.inc           \
+                        $(inc)/syscall.inc      \
+                        $(inc)/version.inc
+
+ioctl.obj ioctl.lst:    $(source)\ioctl.asm     \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/bpb.inc          \
+                        $(inc)/buffer.INC       \
+	                $(inc)/curdir.inc       \
+                        $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+	                $(inc)/dosseg.inc       \
+                        $(inc)/dpb.inc          \
+                        $(inc)/error.INC        \
+	                $(inc)/ioctl.inc        \
+                        $(inc)/mult.inc         \
+                        $(inc)/sf.inc           \
+                        $(inc)/vector.inc
+
+isearch.obj isearch.lst: $(source)\isearch.asm  \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/curdir.inc       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/dpb.inc          \
+                        $(inc)/error.INC        \
+                        $(inc)/fastopen.inc     \
+	                $(inc)/fastxxxx.inc     \
+                        $(inc)/mult.inc
+
+lock.obj lock.lst:      $(source)\lock.asm      \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/dpb.inc          \
+	                $(inc)/error.INC        \
+                        $(inc)/lock.inc         \
+                        $(inc)/mult.inc         \
+                        $(inc)/sf.inc           \
+	                $(inc)/version.inc
+
+macro.obj macro.lst:    $(source)\macro.asm     \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/curdir.inc       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/dpb.inc          \
+                        $(inc)/error.INC        \
+                        $(inc)/mult.inc
+
+macro2.obj macro2.lst:  $(source)\macro2.asm    \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/curdir.inc       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/mult.inc
+
+misc.obj misc.lst:      $(source)\misc.asm      \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/bpb.inc          \
+                        $(inc)/buffer.INC       \
+	                $(inc)/bugtyp.inc       \
+                        $(inc)/curdir.inc       \
+                        $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+	                $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/dpb.inc          \
+                        $(inc)/error.INC        \
+	                $(inc)/filemode.inc     \
+                        $(inc)/mi.inc           \
+                        $(inc)/mult.inc         \
+                        $(inc)/pdb.inc          \
+	                $(inc)/sf.inc           \
+                        $(inc)/vector.inc       \
+                        $(inc)/version.inc
+
+misc2.obj misc2.lst:    $(source)\misc2.asm     \
+                        $(source)\makeobjs      \
+                        $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+	                $(inc)/bugtyp.inc       \
+                        $(inc)/curdir.inc       \
+                        $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+	                $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/dossym.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/fastxxxx.inc     \
+                        $(inc)/sf.inc           \
+                        $(inc)/sysvar.inc       \
+	                $(inc)/version.inc
+
+mknode.obj mknode.lst:  $(source)\mknode.asm    \
+                        $(source)\makeobjs      \
+                        $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/devsym.inc       \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+	                $(inc)/dosseg.inc       \
+                        $(inc)/dossym.inc       \
+                        $(inc)/dpb.inc          \
+                        $(inc)/error.INC        \
+	                $(inc)/fastopen.inc     \
+                        $(inc)/filemode.inc     \
+                        $(inc)/sf.inc
+
+mscode.obj mscode.lst:  $(source)\mscode.asm    \
+                        $(source)\makeobjs      \
+                        $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+	                $(inc)/curdir.inc       \
+                        $(inc)/dbcs.sw          \
+                        $(inc)/devsym.inc       \
+                        $(inc)/dirent.INC       \
+	                $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/dossym.inc       \
+                        $(inc)/dpb.inc          \
+	                $(inc)/error.INC        \
+                        $(inc)/fastopen.inc     \
+                        $(inc)/fastxxxx.inc     \
+	                $(inc)/mi.inc           \
+                        $(inc)/msbdata.inc      \
+                        $(inc)/mult.inc         \
+	                $(inc)/vector.inc       \
+                        $(inc)/version.inc      \
+                        $(source)\mssw.asm      \
+                        $(inc)\win386.inc
+
+msctrlc.obj msctrlc.lst: $(source)\msctrlc.asm  \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/bugtyp.inc       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/dpb.inc          \
+                        $(inc)/error.INC        \
+                        $(inc)/exe.inc          \
+                        $(inc)/filemode.inc     \
+	                $(inc)/mi.inc           \
+                        $(inc)/mult.inc         \
+                        $(inc)/pdb.inc          \
+                        $(inc)/sf.inc           \
+	                $(inc)/syscall.inc      \
+                        $(inc)/vector.inc       \
+                        $(inc)/version.inc      \
+                        $(source)\mssw.asm
+
+msdisp.obj msdisp.lst:  $(source)\msdisp.asm    \
+                        $(source)\makeobjs      \
+                        $(inc)/DOSSYM.INC       \
+                        $(inc)/VERSIONA.INC     \
+	                $(inc)/buffer.INC       \
+                        $(inc)/bugtyp.inc       \
+                        $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+	                $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/error.INC        \
+                        $(inc)/mi.inc           \
+	                $(inc)/pdb.inc          \
+                        $(inc)/syscall.inc      \
+                        $(inc)/vector.inc       \
+	                $(inc)/version.inc      \
+                        $(source)\mssw.asm      \
+                        $(source)\scnam.inc
+
+msinit.obj msinit.lst:  $(source)\msinit.asm    \
+                        $(source)\makeobjs      \
+                        $(inc)/arena.inc        \
+                        $(inc)/buffer.inc       \
+	                $(inc)/curdir.inc       \
+                        $(inc)/devsym.inc       \
+                        $(inc)/dirent.inc       \
+	                $(inc)/doscntry.inc     \
+                        $(inc)/dosmac.inc       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/dpb.inc          \
+                        $(inc)/fastopen.inc     \
+                        $(inc)/find.inc         \
+                        $(inc)/mi.inc           \
+	                $(inc)/pdb.inc          \
+                        $(inc)/sf.inc           \
+                        $(inc)/sysvar.inc       \
+                        $(inc)/vector.inc       \
+	                $(inc)/version.inc      \
+                        $(inc)/xmm.inc          \
+                        $(source)\mssw.asm      \
+                        $(inc)/dossym.inc       \
+	                $(inc)/bugtyp.inc       \
+                        $(inc)\win386.inc
+
+open.obj open.lst:      $(source)\open.asm      \
+                        $(source)\makeobjs      \
+                        $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+	                $(inc)/curdir.inc       \
+                        $(inc)/dbcs.sw          \
+                        $(inc)/devsym.inc       \
+                        $(inc)/dirent.INC       \
+	                $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/dossym.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/fastopen.inc     \
+                        $(inc)/fastxxxx.inc     \
+	                $(inc)/filemode.inc     \
+                        $(inc)/mult.inc         \
+                        $(inc)/sf.inc
+
+origin.obj origin.lst:  $(source)\origin.asm    \
+                        $(source)\makeobjs      \
+                        $(inc)/DOSSEG.INC       \
+                        $(inc)/ORIGIN.INC       \
+	                $(inc)/dossym.inc       \
+                        $(inc)/bdsize.inc       \
+                        $(inc)/version.inc
+
+parse.obj parse.lst:    $(source)\parse.asm     \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC
+
+path.obj path.lst:      $(source)\path.asm      \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/curdir.inc       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/dpb.inc          \
+                        $(inc)/error.INC        \
+                        $(inc)/filemode.inc     \
+                        $(inc)/mult.inc         \
+	                $(inc)/version.inc
+
+msproc.obj proc.lst:    $(source)\msproc.asm    \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/EA.INC           \
+                        $(inc)/VERSIONA.INC     \
+                        $(inc)/arena.inc        \
+                        $(inc)/buffer.INC       \
+	                $(inc)/curdir.inc       \
+                        $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+	                $(inc)/dosseg.inc       \
+                        $(inc)/error.INC        \
+                        $(inc)/exe.inc          \
+                        $(inc)/pdb.inc          \
+	                $(inc)/sf.inc           \
+                        $(inc)/syscall.inc      \
+                        $(inc)/vector.inc       \
+                        $(inc)/version.inc
+
+exepatch.obj exepatch.lst:$(source)\exepatch.asm \
+                        $(source)\makeobjs      \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/exe.inc          \
+	                $(inc)/version.inc
+
+
+rename.obj rename.lst:  $(source)\rename.asm    \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/filemode.inc     \
+                        $(inc)/find.inc         \
+                        $(inc)/mult.inc         \
+	                $(inc)/sf.inc
+
+rom.obj rom.lst:        $(source)\rom.asm       \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+                        $(inc)/EA.inc           \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/dpb.inc          \
+	                $(inc)/error.INC        \
+                        $(inc)/fastxxxx.inc     \
+                        $(inc)/sf.inc           \
+                        $(inc)/version.inc
+
+romfind.obj romfind.lst:$(source)\romfind.asm   \
+                        $(source)\makeobjs      \
+                        $(inc)/version.inc	\
+                        $(inc)/dossym.inc       \
+	                $(inc)/dosmac.inc       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/mi.inc 
+	
+
+search.obj search.lst:  $(source)\search.asm    \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/fastopen.inc     \
+                        $(inc)/fastxxxx.inc
+
+segcheck.obj segcheck.lst:$(source)\segcheck.asm \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/dpb.inc          \
+                        $(inc)/version.inc      \
+                        $(inc)/sf.inc           \
+	                $(inc)/int2a.inc
+
+share.obj share.lst:    $(source)\share.asm     \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/dpb.inc          \
+	                $(inc)/error.INC        \
+                        $(inc)/sf.inc
+
+srvcall.obj srvcall.lst:$(source)\srvcall.asm   \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \        
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+                        $(inc)/dpl.asm          \
+	                $(inc)/error.INC        \
+                        $(inc)/mult.inc         \
+                        $(inc)/sf.inc
+
+time.obj time.lst:      $(source)\time.asm      \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/dbcs.sw          \
+	                $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/version.inc
+
+util.obj util.lst:      $(source)\util.asm      \
+                        $(source)\makeobjs      \
+                        $(inc)/DEVSYM.INC       \
+                        $(inc)/DOSSYM.INC       \
+	                $(inc)/VERSIONA.INC     \
+                        $(inc)/buffer.INC       \
+                        $(inc)/bugtyp.inc       \
+	                $(inc)/dbcs.sw          \
+                        $(inc)/dirent.INC       \
+                        $(inc)/dosmac.INC       \
+                        $(inc)/dosseg.inc       \
+	                $(inc)/error.INC        \
+                        $(inc)/pdb.inc          \
+                        $(inc)/sf.inc           \
+                        $(inc)/version.inc
+
+	
+mstable.obj mstable.lst:$(source)\mstable.asm   \
+                        $(source)\makeobjs      \
+                        $(source)\mssw.asm      \
+	                $(inc)\EA.inc           \
+                        $(inc)\VERSIONA.INC     \
+                        $(inc)\buffer.INC       \
+	                $(inc)\copyrigh.inc     \
+                        $(inc)\dbcs.sw          \
+                        $(inc)\dirent.INC       \
+	                $(inc)\dosmac.INC       \
+                        $(inc)\dosseg.inc       \
+                        $(inc)\dossym.inc       \
+	                $(inc)\error.INC        \
+                        $(inc)\fastopen.inc     \
+                        $(inc)\syscall.inc      \
+	                $(inc)\version.inc
+
+msdos.bin:              msdos.cl1               \
+                        msdos.cl2               \
+                        dosprint.obj            \
+                        exepatch.obj            \
+                        msdata.obj              \
+                        mscode.obj              \
+                        msdosme.obj             \
+                        time.obj                \
+                        getset.obj              \
+                        parse.obj               \
+                        misc.obj                \
+                        misc2.obj               \
+                        crit.obj                \
+                        cpmio.obj               \
+                        cpmio2.obj              \
+                        mstable.obj             \
+                        msdisp.obj              \
+                        fcbio.obj               \
+                        fcbio2.obj              \
+                        segcheck.obj            \
+                        search.obj              \
+                        path.obj                \
+                        ioctl.obj               \
+                        delete.obj              \
+                        rename.obj              \
+                        finfo.obj               \
+                        dup.obj                 \
+                        create.obj              \
+                        open.obj                \
+                        dinfo.obj               \
+                        isearch.obj             \
+                        buf.obj                 \
+                        abort.obj               \
+                        close.obj               \
+                        dircall.obj             \
+                        disk.obj                \
+                        disk2.obj               \
+                        disk3.obj               \
+                        dir.obj                 \
+                        dir2.obj                \
+                        dev.obj                 \
+                        mknode.obj              \
+                        rom.obj                 \
+                        fcb.obj                 \
+                        msctrlc.obj             \
+                        fat.obj                 \
+                        msproc.obj              \
+                        alloc.obj               \
+                        srvcall.obj             \
+                        util.obj                \
+                        macro.obj               \
+                        macro2.obj              \
+                        handle.obj              \
+                        file.obj                \
+                        lock.obj                \
+                        romfind.obj             \
+                        share.obj               \
+                        msinit.obj              \
+                        origin.obj              \
+                        $(source)\makeobjs      \
+                        $(source)\msdos.lnk
+	                link $(link_opts) @$(source)\msdos.lnk
+                        reloc msdos.exe msdos.bin
+
+!IFNDEF         ROMDOS
+
+$(dest):                msdos.bin
+                        stripz msdos.bin $(dest)
+
+!ELSE
+
+$(dest):                msdos.bin
+                        split msdos.bin msdos.map DOSINITSEG resdos.sys $(dest)
+                        copy resdos.sys resdos.16
+
+!ENDIF
+
+

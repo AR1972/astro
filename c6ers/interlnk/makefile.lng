@@ -1,0 +1,47 @@
+VERSION_NUM = 0.87
+
+CODEVIEW   = OFF
+MASM_FLAGS =
+C_FLAGS    = -Osleazrg -Gs
+LINK_FLAGS = /exepack/f/packcode
+
+.c.obj:
+    cl -c -Gr -nologo -W3 -Zp $(C_FLAGS) $<
+         
+ASMOBJ1   = bell.obj calldvr.obj crctab.obj ctype.obj getprog.obj
+ASMOBJ2   = int2f.obj longtoa.obj percent.obj setcerr.obj switcher.obj
+
+COBJ1     = main.obj handler.obj clone.obj criterr.obj 
+COBJ2     = str.obj print.obj devinfo.obj
+COBJ3     = version.obj drivinfo.obj
+
+OBJ       = $(ASMOBJ1) $(ASMOBJ2) $(COBJ1) $(COBJ2) $(COBJ3)
+
+LIB       = plibs.lib fastlynx.lib
+
+LINKFLAGS = /stack:20000/noe$(LINK_FLAGS)
+
+intersvr.exe : $(OBJ) $(LIB)
+    echo $(ASMOBJ1)+ > intersvr.rsp
+    echo $(ASMOBJ2)+ >> intersvr.rsp
+    echo $(COBJ1)+ >> intersvr.rsp
+    echo $(COBJ2)+ >> intersvr.rsp
+    echo $(COBJ3) >> intersvr.rsp
+    echo intersvr.exe >> intersvr.rsp
+    echo NUL >> intersvr.rsp
+    echo $(LIB)$(LINKFLAGS) >> intersvr.rsp
+    echo NUL >> intersvr.rsp
+    link @intersvr.rsp
+
+LNKOBJ = core.obj block.obj serial.obj printer.obj init.obj drmain.obj msg.obj
+
+interlnk.exe: interdos.exe vild.obj
+    \vdk\tools\link386 @vild.lnk
+    \vdk\tools\addhdr interlnk.exe
+
+interdos.exe: $(LNKOBJ) parallel.obj
+    link /nologo $(LNKOBJ) parallel,interdos/noi;
+
+msg.obj: msg.asm
+    masm /W2 /t /ML $(MASM_FLAGS) /DVERSION_NUM="$(VERSION_NUM)" msg;
+

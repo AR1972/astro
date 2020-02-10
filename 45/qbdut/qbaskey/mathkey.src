@@ -1,0 +1,315 @@
+.comment ******************************************************************
+.comment *  Math Family - QBasic                                          *
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review comments/edits.                     *
+.comment ******************************************************************
+.comment *  6/12/90 stevesau                                              *
+.comment *  Incorporated RonS comments                                    *
+.comment ******************************************************************
+.comment *  5/12/90 stevesau                                              *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Combined ABS/SGN, ASC/CHR$, ATN/COS/SIN/TAN, CDBL/CSNG,       *
+.comment *  CINT/CLNG, DATE$ function/statement, TIME$ function/statement,*
+.comment *  LOG/EXP, FIX/INT, RANDOMIZE/RND.                              *
+.comment *  Deleted CCUR.                                                 *
+.comment *  Moved CVSMBF, etc., to Memory family.                         *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                              *
+.comment *  Added action lines. 					  *
+.comment *  Added info from Details to RND.                               *
+.comment ******************************************************************
+.comment *  4/11/90 BethPr                                                *
+.comment *  Removed nodes for DateSerial# Function, DateValue# Function,  *
+.comment *  Day& Function, DDB# Function, FV# Function, Hour& Function,   *
+.comment *  IPmt# Function, IRR# Function, Minute& Function, MIRR# Funct. *
+.comment *  Month& Function, Now# Function, NPer# Function, NPV# Function,*
+.comment *  Pmt# Function, PPmt# Function, PV# Function, Rate# Function,  *
+.comment *  Second& Function, Serial Numbers, SLN# Function, SYD# Funct., *
+.comment *  TimeSerial# Function, TimeValue# Function, Weekday& Function, *
+.comment *  Year& Function.                                               *
+.comment *  Financial and Date/Time Functions all removed for QBasic.     *
+.comment ******************************************************************
+.context ABS
+.context @ABS
+.context SGN
+.context @SGN
+:nDe functies ABS en SGN
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ABS retourneert de absolute waarde van een getal.
+SGN retourneert een waarde die het teken van een numerieke uitdrukking
+aangeeft (1 als de uitdrukking positief is, 0 als deze nul is, of -1
+als de uitdrukking negatief is).
+
+\bABS(num_uitdrukking)\p
+\bSGN(num_uitdrukking)\p
+
+    ş \bnum_uitdrukking\p    Een numerieke uitdrukking.
+
+Voorbeeld:
+    PRINT ABS(45.5 - 100!)           'Resultaat:  54.5
+    PRINT SGN(1), SGN(-1), SGN(0)    'Resultaat:  1  -1  0
+.context ASC
+.context @ASC
+.context CHR$
+.context @CHR$
+:nDe functies ASC en CHR$
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ASC retourneert de ASCII-code voor het eerste teken in een uitdrukking.
+CHR$ retourneert het teken dat bij de opgegeven ASCII-code hoort.
+
+\bASC(uitdrukking$)\p
+\bCHR$(ascii-code%)\p
+
+    ş \buitdrukking$\p         Een tekenreeksuitdrukking.
+    ş \bascii-code%\p          De ASCII-code van het gewenste teken.
+
+Voorbeeld:
+    PRINT ASC("Q")    'Resultaat:  81
+    PRINT CHR$(65)    'Resultaat:  A
+
+Zie ook     \i\p\aASCII-codes\v@ac\v\i\p
+.context ATN
+.context @ATN
+.context COS
+.context @COS
+.context SIN
+.context @SIN
+.context TAN
+.context @TAN
+:nDe functies ATN, COS, SIN en TAN
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ATN retourneert de arctangens van een opgegeven numerieke uitdrukking.
+COS, SIN en TAN retourneren respectievelijk de cosinus, sinus en tangens
+van een opgegeven hoek.
+
+\bATN(num_uitdrukking)\p
+\bCOS(hoek)\p
+\bSIN(hoek)\p
+\bTAN(hoek)\p
+
+    ş \bnum_uitdrukking\p    De verhouding tussen de zijden van een
+                         rechthoekige driehoek.
+    ş \bhoek\p               Een hoek in radialen.
+
+    ş De functie ATN retourneert de hoek in radialen.
+    ş Voor de conversie van graden naar radialen moet u het aantal
+      graden vermenigvuldigen met (PI / 180).
+
+Voorbeeld:
+    CONST PI=3.141592654
+    PRINT ATN(TAN(PI/4.0)), PI/4.0    'Resultaat:  .7853981635  .7853981635
+    PRINT (COS(180 * (PI / 180)))     'Resultaat:  -1
+    PRINT (SIN(90 * (PI / 180)))      'Resultaat:  1
+    PRINT (TAN(45 * (PI / 180)))      'Resultaat:  1.000000000205103
+.context CDBL
+.context @CDBL
+.context CSNG
+.context @CSNG
+:nDe functies CDBL en CSNG
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CDBL zet een numerieke uitdrukking om in een dubbele-precisie-waarde.
+CSNG zet een numerieke uitdrukking om in een enkele-precisie-waarde.
+
+\bCDBL(num_uitdrukking)\p
+\bCSNG(num_uitdrukking)\p
+
+    ş \bnum_uitdrukking\p    Een numerieke uitdrukking.
+
+Voorbeeld:
+    PRINT 1 / 3, CDBL(1 / 3)    'Resultaat:  .3333333  .3333333333333333
+    PRINT CSNG(975.3421515#)    'Resultaat:  975.3422
+
+Zie ook     \i\p\aCINT, CLNG\v@CINT\v\i\p
+.context CINT
+.context @CINT
+.context CLNG
+.context @CLNG
+:nDe functie CINT en CLNG
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CINT rondt een numerieke uitdrukking af tot het dichtstbijzijnde gehele getal.
+CLNG rondt een numerieke uitdrukking af tot een geheel getal van 4 bytes
+('long integer').
+
+\bCINT(num_uitdrukking)\p
+\bCLNG(num_uitdrukking)\p
+
+    ş \bnum_uitdrukking\p    Voor CINT is dit een numerieke uitdrukking
+                         in het bereik van -32768 t/m 32767.
+                         Voor CLNG is dit een numerieke uitdrukking in
+                         het bereik van -2,147,483,648 t/m 2,147,483,647.
+
+Voorbeeld:
+    PRINT CINT(12.49), CINT(12.51)    'Resultaat:  12  13
+    PRINT CLNG(338457.8)              'Resultaat:  338458
+
+Zie ook     \i\p\aCDBL, CSNG\v@CDBL\v\i\p    \i\p\aFIX, INT\v@FIX\v\i\p
+.context .datef
+.context @datef
+.context DATE$
+.context @DATE$
+:nDe functie en het statement DATE$
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+De functie DATE$ retourneert de huidige systeemdatum van uw computer.
+Het statement DATE$ stelt de huidige systeemdatum van uw computer in.
+
+\bDATE$\p
+\bDATE$ = uitdrukking$\p
+
+    ş \buitdrukking$\p    De datum volgens een van de volgende notaties:
+                      mm-dd-jj, mm-dd-jjjj, mm/dd/jj, mm/dd/jjjj.
+
+    ş De functie DATE$ retourneert een datum volgens de notatie mm-dd-jjjj.
+
+Voorbeeld:
+    PRINT DATE$
+    DATE$ = "01-01-90"    'Opmerking: De nieuwe systeemdatum blijft van
+                          '           kracht totdat u deze weer wijzigt.
+    PRINT "De datum is ingesteld op "; DATE$
+
+Zie ook     \i\p\aTIME$\v@TIME$\v\i\p
+.context EXP
+.context @EXP
+.context LOG
+.context @LOG
+:nDe functies EXP en LOG
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+EXP retourneert e tot een bepaalde exponent, waarbij e het grondtal van
+de natuurlijke logaritme is. LOG retourneert de natuurlijke logaritme van
+een numerieke uitdrukking.
+
+\bEXP(num_uitdrukking)\p
+\bLOG(num_uitdrukking)\p
+
+    ş \bnum_uitdrukking\p       Voor EXP is dit een getal kleiner dan
+                            of gelijk aan 88.02969. Voor LOG is dit
+                            een positieve numerieke uitdrukking.
+
+Voorbeeld:
+    PRINT EXP(0), EXP(1)         'Resultaat:  1  2.718282
+    PRINT LOG(1), LOG(EXP(1))    'Resultaat:  0  1
+.context FIX
+.context @FIX
+.context INT
+.context @INT
+:nDe functies FIX en INT
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+FIX levert het gehele gedeelte van een 'floating-point'-uitdrukking.
+INT retourneert het dichtstbijzijnde getal dat kleiner is dan of gelijk
+aan een opgegeven numerieke uitdrukking.
+
+\bFIX(num_uitdrukking)\p
+\bINT(num_uitdrukking)\p
+
+    ş \bnum_uitdrukking\p    Een numerieke uitdrukking.
+
+Voorbeeld:
+    PRINT FIX(12.49), FIX(12.54)    'Resultaat:  12  12
+    PRINT INT(12.54), INT(-99.4)    'Resultaat:  12  -100
+
+Zie ook     \i\p\aCINT, CLNG\v@CINT\v\i\p
+.context RANDOMIZE
+.context @RANDOMIZE
+.context RND
+.context @RND
+:nHet statement RANDOMIZE en de functie RND
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+RANDOMIZE initialiseert de toevalsgenerator.
+RND retourneert een willekeurig enkele-precisie-getal tussen 0 en 1.
+
+\bRANDOMIZE [getal%]\p
+\bRND[(n#)]\p
+
+    ş \bgetal%\p   Een getal dat wordt gebruikt om de toevalsgenerator
+               te initialiseren. Indien dit getal wordt weggelaten, vraagt
+               RANDOMIZE een getal in te voeren.
+    ş \bn#\p       Een waarde die bepaalt hoe RND het volgende random-getal
+               genereert:
+
+               n#                             RND retourneert
+               ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+               Kleiner dan 0                  Hetzelfde getal voor elke n#
+               Groter dan 0 (of weggelaten)   Het volgende random-getal
+               0                              Het laatst gegenereerde getal
+
+Voorbeeld:
+    RANDOMIZE TIMER
+    x% = INT(RND * 6) + 1
+    y% = INT(RND * 6) + 1
+    PRINT "Gooi met twee dobbelstenen: steen 1 ="; x%; "en steen 2 ="; y%
+.context SQR
+.context @SQR
+:nDe functie SQR
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert de vierkantswortel van een numerieke uitdrukking.
+
+\bSQR(num_uitdrukking)\p
+
+    ş \bnum_uitdrukking\p    Een waarde groter dan of gelijk aan nul.
+
+Voorbeeld:
+    PRINT SQR(25), SQR(2)    'Resultaat:  5  1.414214
+.context .tmf
+.context @tmf
+.context TIME$
+.context @TIME$
+:nDe functie en het statement TIME$
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+De functie TIME$ retourneert de huidige systeemtijd van uw computer.
+Het statement TIME$ stelt de huidige systeemtijd voor uw computer in.
+
+\bTIME$\p
+\bTIME$ = tijd$\p
+
+    ş \btijd$\p     De tijd volgens een van de volgende notaties:
+                       uu          Stelt de uren in. Minuten en seconden
+                                   worden standaard ingesteld op 00.
+                       uu:mm       Stelt de uren en minuten in. Seconden
+                                   worden standaard ingesteld op 00.
+                       uu:mm:ss    Stelt de uren, minuten en seconden in.
+
+    ş De functie TIME$ retourneert de tijd volgens de notatie uu:mm:ss.
+
+Voorbeeld:
+    PRINT TIME$
+    TIME$ = "08:00:58"    'Opmerking: De nieuwe systeemtijd blijft van
+                          '           kracht totdat u deze wijzigt.
+    PRINT "De tijd is ingesteld op "; TIME$
+
+Zie ook     \i\p\aDATE$\v@DATE$\v\i\p
+.comment ******************************************************************
+.comment *  One arithmetic operator                                       *
+.comment ******************************************************************
+.context MOD
+.context @MOD
+:nDe rekenkundige operator MOD
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Deelt een getal door een ander getal en retourneert de restwaarde.
+
+\bnum_uitdrukking1 MOD num_uitdrukking2\p
+
+    ş \bnum_uitdrukking1\p    Numerieke waarden. Re‰le getallen worden
+      \bnum_uitdrukking2\p    afgerond tot gehele getallen.
+
+Voorbeeld:
+    PRINT 19 MOD 6.7    'QBasic rondt 6.7 af tot 7 en voert dan de
+                        'deling uit.
+                        'Resultaat:  5

@@ -1,0 +1,94 @@
+/**************************************************************************/
+/*** WAMBI  SmartDrive 4.0 Monitor for Windows 3.10			***/
+/*** (c)1989 Microsoft Corporation.  All Rights Reserved.               ***/
+/***                                                                    ***/
+/**************************************************************************/
+
+#include <windows.h>
+#include "smartmon.h"
+
+#include "smartmon.rcv"
+
+1L ICON PRELOAD smartdrg.ico
+2L BITMAP PRELOAD idledrv.bmp
+3L BITMAP PRELOAD busydrv.bmp
+
+IDS_DRVBMP  BITMAP  IMPURE drives.bmp
+
+MAIN DIALOG PRELOAD MOVEABLE DISCARDABLE 75, 65, 232, 132
+STYLE WS_MINIMIZEBOX | WS_POPUP | WS_CLIPSIBLINGS | WS_CAPTION | WS_SYSMENU | WS_EX_TOPMOST
+CAPTION "SmartDrive Monitor"
+FONT 8 "Helv"
+CLASS "Wambi"
+BEGIN
+    PUSHBUTTON "&Options...",	  IDD_OPTION,	  142,	 9,  40, 14
+    DEFPUSHBUTTON "&Help",	  IDD_HELP,	  188,	 9,  40, 14
+    PUSHBUTTON "Start Log",	  IDD_STARTLOG,   142,	26,  40, 14
+    PUSHBUTTON "Stop Log",	  IDD_STOPLOG,	  188,	26,  40, 14
+    GROUPBOX "Drive Controls"	  -1,		    4,	47,  97, 66
+    CONTROL "", 		  IDD_DRIVEID,
+	    "combobox",
+            CBS_SORT | CBS_HASSTRINGS | CBS_OWNERDRAWFIXED | CBS_DROPDOWNLIST 
+            | WS_CHILD | CBS_AUTOHSCROLL | WS_BORDER | WS_VSCROLL 
+            | WS_TABSTOP,
+	    9, 60, 87, 68
+    RADIOBUTTON "Cache Read Only",	IDD_READONLY,	  9,  78,  74, 10
+    RADIOBUTTON "Cache Read and Write", IDD_READWRITE,	  9,  89,  88, 10
+    RADIOBUTTON "No Caching",	  IDD_NOCACHING,    9, 100,  59, 10
+    GROUPBOX "Cache Hit Rate",	  IDD_HITRATEBOX, 105,	47, 123, 66
+      LTEXT "", 		    IDD_CHARTBOX, 111,	60,  94, 39
+      LTEXT "Sampling Frequecy:",	-1,	  111, 101,  64,  8
+      LTEXT "", 		  IDD_SAMPFREQ,   176, 101,  40,  8
+      RTEXT "100%",			-1,	  207,	60,  17,  8
+      RTEXT "0%",			-1,	  207,	93,  17,  8
+    GROUPBOX "Cache Memory",	  -1,		    4,	 1, 134, 44
+    RTEXT "",			  IDD_DOSSIZE,	    9,	14,  31,  8
+    LTEXT "Basic Size", 	  -1,		   45,	14,  35,  8
+    RTEXT "",			  IDD_WINSIZE,	    9,	27,  31,  8
+    LTEXT "Windows Size",	  -1,		   45,	27,  47,  8
+    PUSHBUTTON "&Commit",	  IDD_FLUSH,	   94,	 9,  40, 14
+    PUSHBUTTON "&Reset",	  IDD_RESET,	   94,	26,  40, 14
+END
+
+OPTIONS DIALOG PRELOAD MOVEABLE DISCARDABLE 42, 17, 154, 150
+CAPTION "SmartDrive Monitor Options"
+STYLE WS_BORDER | WS_CAPTION | DS_MODALFRAME | WS_POPUP | WS_SYSMENU
+FONT 8 "Helv"
+BEGIN
+    GROUPBOX "Cache Hit Rate",	  -1,		    4,	 0, 146, 39
+    LTEXT "Sampling Frequency (in msec)", -1,	    8,	13, 105,  8
+    EDITTEXT			  IDD_MSEC,	  111,	10,  33, 12
+    LTEXT "Histogram Display Intervals",    -1,     8,	26, 105,  8
+    EDITTEXT			  IDD_INTERVAL,   111,	24,  33, 12
+    GROUPBOX "Log File",	  -1,		    4,	40, 146, 42
+    LTEXT "File Name",		  -1,		    8,	54,  38,  8
+    EDITTEXT			  IDD_LOGFILE,	   44,	51, 100, 12, ES_AUTOHSCROLL
+    CHECKBOX "Automatic Stop (in minutes)", IDD_AUTOSTOP,    9,  66, 100, 10
+    EDITTEXT			  IDD_STOPTIME,   111,	66,  33, 12
+    GROUPBOX "Drive Control",	  -1,		    4,	83, 146, 42
+    CHECKBOX "Save Setting in DOS Batch File", IDD_SAVESET, 9, 95, 121, 10
+    LTEXT "File Name",		  -1,		    8, 111,  36,  8
+    EDITTEXT			  IDD_BATCHFILE,   44, 108, 100, 12, ES_AUTOHSCROLL
+    DEFPUSHBUTTON "OK", 	  IDOK, 	    4, 131,  40, 14
+    PUSHBUTTON "Cancel",	  IDCANCEL,	   58, 131,  40, 14
+    PUSHBUTTON "&Help", 	  IDD_HELP,	  110, 131,  40, 14
+END
+
+STRINGTABLE
+BEGIN
+    IDS_TITLE	    "SmartDrv Monitor"
+    IDS_HELPFILE    "smartmon.hlp"
+    IDS_LOGFILE     "smartmon.log"
+    IDS_STARTLOG    "Start Log"
+    IDS_STOPLOG     "Stop Log"
+
+    IDS_LOGGING     "Logging to file..."
+    IDS_LOGSTARTED  "Logging is started"
+    IDS_LOGSTOPPED  "Logging is stopped"
+    IDS_CACHEACTIVE	"Disk cache is active"
+    IDS_CACHEIDLE   "Disk cache is idle"
+    IDS_FLUSHED     "Disk cache is flushed"
+    IDS_RESET	    "Disk cache is reset"
+    IDS_SAVEAUTO    "SmartMon is unable to save the new cache settings in the specified batch file."
+    IDS_STATUS	    "Drive cache mode is updated"
+END

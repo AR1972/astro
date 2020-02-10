@@ -1,0 +1,181 @@
+
+              An EXEC function with memory swap
+              =================================
+
+        Thomas Wagner
+        Ferrari electronic GmbH
+        Beusselstrasse 27
+        D-1000 Berlin 21
+        West Germany
+
+Version 2.2, released 90-08-16.
+
+This archive contains the sources for an 'EXEC' function that
+optionally swaps out the memory image of the calling program to a
+temporary file or to EMS, and shrinks down to a minimal core before
+executing the program.
+
+This allows chaining or spawning to memory-hungry programs, and it
+eases building of DOS menu-systems. The memory used when swapping is
+less than 1k, plus the memory needed for a copy of the environment. If
+you pass a new environment to the spawned program, space for two
+copies of the environment are needed.
+
+EMS (LIM 3.0 or above) is used automatically if there is enough space
+left, otherwise a temporary file is created. If the "TEMP=" or "TMP="
+environment variable is present, the temporary file is created in the
+directory specified by this variable, otherwise it is created in the
+current directory.
+
+
+                        CHANGES
+                        =======
+
+Changes from version 1.0 to 2.0:
+
+1) Problem fixes
+
+- Problems with EMS drivers that return handles above 255 have been
+  fixed.
+
+- Bug that prevented deletion of temporary file has been fixed.
+
+- The Division by Zero interrupt vector is patched to an IRET and
+  restored when swapping back in.
+
+
+2) Enhancements
+
+- The TMP/TEMP environment string is checked for validity, and
+  is ignored if it points to a non-existent directory.
+
+- For DOS versions 3.0 and above, the temporary file is created using
+  the special DOS function. This eliminates the extra overhead for
+  generating a unique filename.
+
+- Now compatible with Microsoft C 5.x.
+
+- Non-contiguous memory blocks can be swapped.
+
+- The 'spwn' parameter to the do_exec function has been changed to
+  allow EMS usage to be controlled. It can now have the values -1, 0,
+  and 1. The internal assembler routine takes an additional method
+  parameter, it no longer uses the first byte of the swap-filename
+  to determine swapping method.
+
+
+Changes from version 2.0 to 2.2:
+
+  Several bugs in spawn.asm were fixed, no other changes.
+
+
+                        INTERFACE
+                        =========
+
+        extern int do_exec (char *xfn, char *pars, int spwn,
+                            unsigned needed, char **envp);
+
+
+Parameters:
+            xfn         is a string containing the name of the file
+                        to be executed. If the string is empty,
+                        the COMSPEC environment variable is used to
+                        load a copy of COMMAND.COM or its equivalent.
+                        If the filename does not include a path, the
+                        current PATH is searched after the default.
+                        If the filename does not include an extension,
+                        the path is scanned for a COM or EXE file in
+                        that order.
+
+            pars        The program parameters.
+
+            spwn        If 1, the function will return, if necessary
+                        after swapping the memory image.
+                        If -1, EMS will not be used when swapping.
+                        If 0, the function will terminate after the
+                        EXECed program returns.
+                        NOTE: If the program file is not found,
+                        the function will always return
+                        with the appropriate error code, even if
+                        'spwn' is 0.
+
+            needed      The memory needed for the program in
+                        paragraphs. If not enough memory is free, the
+                        program will be swapped out. Use 0 to never
+                        swap, $ffff to always swap. If 'spwn' is false,
+                        this parameter is irrelevant.
+
+            envp        The environment to be passed to the spawned
+                        program. If this parameter is NULL, a copy
+                        of the parent's environment is used (i.e.
+                        'putenv' calls have no effect). If non-NULL,
+                        envp must point to an array of pointers to
+                        strings, terminated by a NULL pointer (the
+                        standard variable 'environ' may be used).
+
+
+Return value:
+
+            0000..00FF: The EXECed Program's return code
+            (0..255 decimal)
+            0100:       Error writing swap file
+            (256 decimal)
+            0200:       Program file not found
+            (512 decimal)
+            03xx:       DOS-error-code xx calling EXEC
+            (768..1023 decimal)
+            0400:       Error allocating environment buffer
+            (1024 decimal)
+
+
+
+                        RESTRICTIONS
+                        ============
+
+The calling program may not have interrupt handlers installed when
+calling the do_exec function. This includes handlers for Control C
+and critical errors.
+
+All open files will stay open during the EXEC call. This reduces the
+number of handles available to the child process. The "C_FILE_INFO"
+environment variable created by the standard C spawn is not supported.
+
+BAT-files and internal commands are not automatically processed. You
+can execute those by calling the do_exec function twice, for example:
+
+     retcode = do_exec ("dir", "*.*", 1, 0xffff, environ);
+     if (retcode == 0x200)
+        retcode = do_exec ("", "/c dir *.*", 1, 0xffff, environ);
+
+
+                        CAUTIONS
+                        ========
+
+The functions should be compatible with DOS versions down to DOS
+2.21, but they have been tested under DOS 3.3 and DOS 4.0 only.
+
+Spawning a command that exits and stays resident (TSR), like PRINT or
+Sidekick, will fragment memory and prevent a return to the calling
+program. This should, however, not crash the system. Allocated EMS
+pages are released, but a swap file is not deleted.
+
+The memory image of the calling program should be contiguous. This
+is always guaranteed if you use the standard Turbo C allocation
+routines only. The swapper is able to swap non-contiguous blocks such
+as those created by the Microsoft far allocation routines. However,
+to do this, the swapper has to use undocumented fields in the memory
+control blocks, and modify DOS memory control blocks directly. This
+may lead to incompatibilities in later versions of DOS, or in DOS
+substitutes or emulators.
+
+When debugging the assembler module, take care not to set breakpoints
+in the code while it is being swapped out. Those breakpoints (INT 3
+instructions) will be swapped back in later without the debugger
+knowing about it, and cause quite strange results when you run through
+the code for the second time.
+
+                           ACKNOWLEDGEMENTS
+                           ================
+
+Thanks to H. Qualls, H. Gubler, J. Clinton, and M. Adler for pointing
+out bugs and suggesting enhancements.

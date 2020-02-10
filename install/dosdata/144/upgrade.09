@@ -1,0 +1,14 @@
+;===================================================================
+;
+;	Copyright (c) 1991 - Microsoft Corp.
+;	All rights reserved.
+;	Microsoft Confidential
+;
+;===================================================================
+
+
+;Destination disk: Hard Drive
+
+[disk-5]
+
+;..\disk-8.txt follows

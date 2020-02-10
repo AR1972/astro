@@ -1,0 +1,15 @@
+#
+#	 Created 20-2-91 by Terry Farrell 
+#
+#
+#	 tokenised qedit.asm from qb5\ir
+#
+#	 This program runs QBASIC with the /editor option BUT if things go
+#	 wrong it will display the following messages
+#
+#	 NB: the $ character is IMPORTANT it signifies the end of string.
+
+[[QEDIT_1]]='Mem¢ria insuficiente$'
+[[QEDIT_2]]='Arquivo QBASIC.EXE nao encontrado$'
+[[QEDIT_3]]='Erro na  rea de mem¢ria do DOS$'
+[[QEDIT_4]]='Linha de Comando muito extensa$'

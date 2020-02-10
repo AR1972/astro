@@ -1,0 +1,80 @@
+SUMMARY strbscan strbskip strcmpis strcmps strend strpre
+
+#include <tools.h>
+
+char *strbscan(pstr, pstrSet)
+char *pstr;
+char *pstrSet;
+
+char *strbskip(pstr, pstrSet)
+char *pstr;
+char *pstrSet;
+
+int strcmps(pstr1, pstr2)
+char *pstr1;
+char *pstr2;
+
+int strcmpis(pstr1, pstr2)
+char *pstr1;
+char *pstr2;
+
+char *strend(pstr)
+char *pstr;
+
+int strpre(pstr1, pstr2)
+char *pstr1;
+char *pstr2;
+
+DESCRIPTION
+
+strbscan returns a pointer to first character in string matching a character
+in the set else pointer to end of string.
+
+strbskip returns a pointer to first character in string NOT matching a
+character in the set else pointer to end of string.
+
+strcmps compares two strings, ignoring white space, case is significant,
+returns 0 if identical else non-zero.
+
+strcmpis compares two strings, ignoring white space, case is NOT significant,
+returns 0 if identical else non-zero.
+
+strend returns char pointer to end of string.
+
+strpre returns -1 if string1 is a prefix of string 2 else returns zero.
+Ignores case.
+
+RETURN VALUE
+
+
+IMPLEMENTATION
+
+
+SEE ALSO
+
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    printf("%s\n", strbscan("abcdefg", "cd"));
+    printf("%s\n", strbskip("abcdefg", "ba"));
+    printf("%d\n", strcmps ("  hello  ", "Hello"));
+    printf("%d\n", strcmpis("  hello  ", "Hello"));
+    printf("%d\n", strpre("pre", "prefix"));
+    printf("%d\n", strpre("fix", "prefix"));
+}
+
+cdefg
+cdefg
+32
+0
+-1
+0

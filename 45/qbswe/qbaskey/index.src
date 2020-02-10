@@ -1,0 +1,220 @@
+.comment ******************************************************************
+.comment *  Index file - QBasic                                           *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/17/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Copied QBI Index.                                             *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Added Unsupported Keywords.                                   *
+.comment *  Made links local.                                             *
+.comment ******************************************************************
+.context @helpIndexId
+.context helpIndexId
+.context @a
+:nIndex till QBasic Hjlp
+  \i\p\aInnehll\v@helpTableId\v\i\p  \bIndex\p  \i\p\aBakt\v!B\v\i\p
+ฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
+G”r s hr f”r att f hjlp om nyckelord i QBasic i nedanstende lista:
+    1. Tryck p tangenten som motsvarar f”rsta bokstaven i nyckelordet.
+    2. Anvnd mark”rtangenterna f”r att flytta mark”ren till nyckelordet.
+    3. Tryck p F1 f”r att se hjlptexten i f”nstret Hjlp.
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน A บ
+                                                                  ศอออผ
+  \aABS, funktion\v@ABS\v                       \aAPPEND, nyckelord\v@APPEND\v
+  \aABSOLUTE, nyckelord\v@ABSOLUTE\v                 \aAS, nyckelord\v@AS\v
+  \aACCESS, nyckelord\v@ACCESS\v                   \aASC, funktion\v@ASC\v
+  \aAND, operator\v@AND\v                       \aATN, funktion\v@ATN\v
+  \aANY, nyckelord\v@ANY\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน B บ
+                                                                  ศอออผ
+  \aBASE, nyckelord\v@BASE\v                     \aBLOAD, sats\v@BLOAD\v
+  \aBasic, teckenuppsttning i\v@fun.character.set\v          \aBooleska operatorer\v@AND\v
+  \aBEEP, sats\v@BEEP\v                          \aBSAVE, sats\v@BSAVE\v\p
+  \aBINARY, nyckelord\v@BINARY\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน C บ
+                                                                  ศอออผ
+  \aCALL, sats\v@CALL\v                          \aCOLOR, sats\v@COLOR\v\p
+  \aCALL ABSOLUTE, sats\v@ABSOLUTE\v                 \aCOM, sats\v@COM\v
+  \aCASE, nyckelord\v@SELECT\v                     \aCOMMON, sats\v@COMMON\v
+  \aCDBL, funktion\v@CDBL\v                      \aCONST, sats\v@CONST\v
+  \aCHAIN, sats\v@CHAIN\v                         \aCOS, funktion\v@COS\v
+  \aCHDIR, sats\v@CHDIR\v                         \aCSNG, funktion\v@CSNG\v
+  \aCHR$, funktion\v@CHR$\v                      \aCSRLIN, funktion\v@CSRLIN\v
+  \aCINT, funktion\v@CINT\v                      \aCVD, funktion\v@CVD\v
+  \aCIRCLE, sats\v@CIRCLE\v                        \aCVDMBF, funktion\v@CVDMBF\v
+  \aCLEAR, sats\v@CLEAR\v                         \aCVI, funktion\v@CVI\v
+  \aCLNG, funktion\v@CLNG\v                      \aCVL, funktion\v@CVL\v
+  \aCLOSE, sats\v@CLOSE\v                         \aCVS, funktion\v@CVS\v
+  \aCLS, sats\v@CLS\v                           \aCVSMBF, funktion\v@CVSMBF\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน D บ
+                                                                  ศอออผ
+  \aDATA, sats\v@DATA\v                          \aDEFLNG, sats\v@DEFLNG\v
+  \aDatatypsnyckelord\v@INTEGER\v                   \aDEFSNG, sats\v@DEFSNG\v\p
+  \aDATE$, funktion\v@datef\v                     \aDEFSTR, sats\v@DEFSTR\v
+  \aDATE$, sats\v@DATE$\v                         \aDIM, sats\v@DIM\v
+  \aDECLARE, sats\v@DECLARE\v                       \aDO...LOOP, sats\v@DO\v\p
+  \aDEF FN, sats\v@DEF\v                        \aDOUBLE, nyckelord\v@DOUBLE\v
+  \aDEF SEG, sats\v@SEG\v                       \aDRAW, sats\v@DRAW\v
+  \aDEFDBL, sats\v@DEFDBL\v                        \a$DYNAMIC, metakommando\v@$DYNAMIC\v
+  \aDEFINT, sats\v@DEFINT\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน E บ
+                                                                  ศอออผ
+  \aELSE, nyckelord\v@IF\v                     \aERDEV, funktion\v@ERDEV\v
+  \aELSEIF, nyckelord\v@IF\v                   \aERDEV$, funktion\v@ERDEV$\v\p
+  \aEND, sats\v@END\v                           \aERL, funktion\v@ERL\v\p
+  \aENVIRON, sats\v@ENVIRON\v                       \aERR, funktion\v@ERR\v
+  \aENVIRON$, funktion\v@ENVIRON$\v                  \aERROR, sats\v@ERROR\v
+  \aEOF, funktion\v@EOF\v                       \aEXIT, sats\v@EXIT\v
+  \aEQV, operator\v@EQV\v                       \aEXP, funktion\v@EXP\v
+  \aERASE, sats\v@ERASE\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน F บ
+                                                                  ศอออผ
+  \aFIELD, sats\v@FIELD\v                         \aFOR...NEXT, sats\v@FOR\v
+  \aFILEATTR, funktion\v@FILEATTR\v                  \aFRE, funktion\v@FRE\v
+  \aFILES, sats\v@FILES\v                         \aFREEFILE, funktion\v@FREEFILE\v
+  \aFIX, funktion\v@FIX\v                       \aFUNCTION, sats\v@FUNCTION\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน G บ
+                                                                  ศอออผ
+  \aGET, sats (filer)\v@GET\v                   \aGOSUB, sats\v@GOSUB\v
+  \aGET, sats (grafik)\v@ggx\v                  \aGOTO, sats\v@GOTO\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน H บ
+                                                                  ศอออผ
+  \aHEX$, funktion\v@HEX$\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน I บ
+                                                                  ศอออผ
+  \aIF...THEN...ELSE, sats\v@IF\v              \aINSTR, funktion\v@INSTR\v
+  \aIMP, operator\v@IMP\v                       \aINT, funktion\v@INT\v
+  \aINKEY$, funktion\v@INKEY$\v                    \aINTEGER, nyckelord\v@INTEGER\v
+  \aINP, funktion\v@INP\v                       \aIOCTL, sats\v@IOCTL\v
+  \aINPUT, sats\v@INPUT\v                         \aIOCTL$, funktion\v@IOCTL$\v
+  \aINPUT$, funktion\v@INPUT$\v                    \aIS, nyckelord\v@IS\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน K บ
+                                                                  ศอออผ
+  \aKEY, sats (tilldelning)\v@KEY\v             \aKILL, sats\v@KILL\v
+  \aKEY, sats (hndelsinfngning)\v@ketv\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน L บ
+                                                                  ศอออผ
+  \aLBOUND, funktion\v@LBOUND\v                    \aLOCK...UNLOCK, satser\v@LOCK\v\p
+  \aLCASE$, funktion\v@LCASE$\v                    \aLOF, funktion\v@LOF\v\p
+  \aLEFT$, funktion\v@LEFT$\v                     \aLOG, funktion\v@LOG\v\p
+  \aLEN, funktion\v@LEN\v                       \aLONG, nyckelord\v@LONG\v\p
+  \aLET, sats\v@LET\v                           \aLOOP, nyckelord\v@LOOP\v\p
+  \aLINE, sats (grafik)\v@LINE\v                 \aLPOS, funktion\v@LPOS\v\p
+  \aLINE INPUT, sats\v@INPUT\v                    \aLPRINT, sats\v@LPRINT\v\p
+  \aLIST, nyckelord\v@LIST\v                     \aLPRINT USING, sats\v@lprintu\v
+  \aLOC, funktion\v@LOC\v                       \aLSET, sats\v@LSET\v\p
+  \aLOCATE, sats\v@LOCATE\v                        \aLTRIM$, funktion\v@LTRIM$\v\p
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน M บ
+                                                                  ศอออผ
+  \aMID$, funktion\v@MID$\v                      \aMKI$, funktion\v@MKI$\v
+  \aMID$, sats\v@MID$\v                          \aMKL$, funktion\v@MKL$\v
+  \aMKD$, funktion\v@MKD$\v                      \aMKS$, funktion\v@MKS$\v
+  \aMKDIR, sats\v@MKDIR\v                         \aMKSMBF$, funktion\v@MKSMBF$\v
+  \aMKDMBF$, funktion\v@MKDMBF$\v                   \aMOD, operator\v@MOD\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน N บ
+                                                                  ศอออผ
+  \aNAME, sats\v@NAME\v                          \aNOT, operator\v@NOT\v
+  \aNEXT, nyckelord\v@NEXT\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน O บ
+                                                                  ศอออผ
+  \aOCT$, funktion\v@HEX$\v                      \aON TIMER, sats\v@TIMER\v
+  \aOFF, nyckelord\v@OFF\v                      \aON...GOSUB, sats\v@ongo\v\p
+  \aON COM, sats\v@COM\v                        \aON...GOTO, sats\v@ongo\v\p
+  \aON ERROR, sats\v@onerr\v                      \aOPEN, sats\v@OPEN\v\p
+  \aON, nyckelord\v@ON\v                       \aOPEN COM, sats\v@opcom\v
+  \aON KEY, sats\v@ketv\v                        \aOPTION BASE, sats\v@BASE\v\p
+  \aON PEN, sats\v@PEN\v                        \aOR, operator\v@OR\v
+  \aON PLAY, sats\v@playev\v                       \aOUT, sats\v@OUT\v
+  \aON STRIG, sats\v@STRIG\v                      \aOUTPUT, nyckelord\v@OUTPUT\v\p
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน P บ
+                                                                  ศอออผ
+  \aPAINT, sats\v@PAINT\v                         \aPOINT, funktion\v@POINT\v
+  \aPALETTE satser\v@PALETTE\v                      \aPOKE, sats\v@POKE\v
+  \aPCOPY, sats\v@PCOPY\v                         \aPOS, funktion\v@POS\v
+  \aPEEK, funktion\v@PEEK\v                      \aPRESET, sats\v@PRESET\v
+  \aPEN, funktion\v@penf\v                       \aPRINT, sats\v@PRINT\v
+  \aPEN, sats\v@PEN\v                           \aPRINT USING, sats\v@zpu\v
+  \aPLAY, funktion\v@playf\v                      \aPSET, sats\v@PSET\v
+  \aPLAY, sats (musik)\v@PLAY\v                  \aPUT, sats (filer)\v@PUT\v
+  \aPLAY, satser (hndelseinfngning)\v@playev\v   \aPUT, sats (grafik)\v@pgfx\v
+  \aPMAP, funktion\v@PMAP\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน R บ
+                                                                  ศอออผ
+  \aRANDOM, nyckelord\v@RANDOM\v                   \aRETURN, sats\v@RETURN\v
+  \aRANDOMIZE, sats\v@RANDOMIZE\v                     \aRIGHT$, funktion\v@RIGHT$\v
+  \aREAD, sats\v@READ\v                          \aRMDIR, sats\v@RMDIR\v
+  \aREDIM, sats\v@REDIM\v                         \aRND, funktion\v@RND\v
+  \aREM, sats\v@REM\v                           \aRSET, sats\v@RSET\v
+  \aRESET, sats\v@RESET\v                         \aRTRIM$, funktion\v@RTRIM$\v
+  \aRESTORE, sats\v@RESTORE\v                       \aRUN, sats\v@RUN\v
+  \aRESUME, sats\v@RESUME\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน S บ
+                                                                  ศอออผ
+  \aSCREEN, funktion\v@screenf\v                    \aSQR, funktion\v@SQR\v
+  \aSCREEN, sats\v@SCREEN\v                        \aSTATIC, sats\v@STATIC\v
+  \aSEEK, funktion\v@SEEK\v                      \a$STATIC metakommando\v@$STATIC\v
+  \aSEEK, sats\v@SEEK\v                          \aSTEP, nyckelord\v@STEP\v
+  \aSELECT CASE, sats\v@SELECT\v                   \aSTICK, funktion\v@STICK\v
+  \aSGN, funktion\v@SGN\v                       \aSTOP, sats\v@STOP\v
+  \aSHARED, sats\v@SHARED\v                        \aSTR$, funktion\v@STR$\v
+  \aSHELL, sats\v@SHELL\v                         \aSTRIG, funktion\v@strigf\v
+  \aSIN, funktion\v@SIN\v                       \aSTRIG Statements\v@STRIG\v
+  \aSINGLE, nyckelord\v@SINGLE\v                   \aSTRING, nyckelord\v@STRING\v
+  \aSLEEP, sats\v@SLEEP\v                         \aSTRING$, funktion\v@STRING$\v
+  \aSOUND, sats\v@SOUND\v                         \aSUB, sats\v@SUB\v
+  \aSPACE$, funktion\v@SPACE$\v                    \aSWAP, sats\v@SWAP\v
+  \aSPC, funktion\v@SPC\v                       \aSYSTEM, sats\v@SYSTEM\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน T บ
+                                                                  ศอออผ
+  \aTAB, funktion\v@TAB\v                       \aTIMER, satser\v@TIMER\v
+  \aTAN, funktion\v@TAN\v                       \aTO, nyckelord\v@TO\v
+  \aTHEN, nyckelord\v@IF\v                     \aTROFF, sats\v@TROFF\v
+  \aTIME$, funktion\v@tmf\v                     \aTRON, sats\v@TRON\v
+  \aTIME$, sats\v@TIME$\v                         \aTYPE, sats\v@TYPE\v
+  \aTIMER, funktion\v@timerf\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน U บ
+                                                                  ศอออผ
+  \aUBOUND, funktion\v@UBOUND\v                    \aUNTIL, nyckelord\v@DO\v
+  \aUCASE$, funktion\v@UCASE$\v                    \aUSING, nyckelord\v@USING\v
+  \aUNLOCK, sats\v@UNLOCK\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน V บ
+                                                                  ศอออผ
+  \aVAL, funktion\v@VAL\v                       \aVARSEG, funktion\v@VARSEG\v
+  \aVARPTR, funktion\v@VARPTR\v                    \aVIEW, sats\v@VIEW\v
+  \aVARPTR$, funktion\v@VARPTR$\v                   \aVIEW PRINT, sats\v@vupri\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน W บ
+                                                                  ศอออผ
+  \aWAIT, sats\v@WAIT\v                          \aWIDTH satser\v@WIDTH\v
+  \aWEND, nyckelord\v@WEND\v                     \aWINDOW, sats\v@WINDOW\v
+  \aWHILE...WEND, sats\v@WEND\v                  \aWRITE, sats\v@WRITE\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน X บ
+                                                                  ศอออผ
+  \aXOR, operator\v@XOR\v

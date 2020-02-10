@@ -1,0 +1,4 @@
+all:
+   xcopy h\*.*      $(OAKDIR)\h\*.*                < $(OAKDIR)\d.key
+   del $(OAKDIR)\h\copy.oak
+

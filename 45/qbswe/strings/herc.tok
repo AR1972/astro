@@ -1,0 +1,11 @@
+[[1]]='Hercules minnesresidenta videost”dsrutiner. Version 1.12'
+[[2]]='Hercules videost”dsrutiner „r redan installerade.'
+[[3]]='Hercules videokort finns inte.',0DH,0AH
+[[4]]='Hercules videost”dsrutiner installerades inte.'
+
+
+
+[[5]]='Installerar MSHERC.COM innan program med grafik som kr„ver ett', 0DH, 0AH
+[[6]]='Hercules-grafikkort k”rs.', 0DH, 0AH, 0DH,0AH
+[[7]]='MSHERC [/HALF]', 0DH, 0AH
+[[8]]='  /HALF kr„vs n„r en f„rgadapter ocks† „r installerad.', 0DH, 0AH

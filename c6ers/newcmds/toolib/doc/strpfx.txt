@@ -1,0 +1,40 @@
+SUMMARY Determine if one string is a prefix of another.
+
+KEYWORDS strprefix striprefix
+
+USAGE
+
+#include <strpfx.h>
+
+char* strprefix (
+    char* szTest,
+    char* szFull
+    );
+
+char* striprefix (
+    char* szTest,
+    char* szFull
+    );
+
+DESCRIPTION
+
+strprefix and striprefix determine if the szTest argument is
+a prefix of the szFull argument.  Strprefix is case sensitive,
+while striprefix is case insensitive.
+
+RETURN VALUE
+
+Both routines return NULL if szTest is not a prefix of szFull.
+
+If szTest is a prefix of szFull, the returned pointer identifies
+the first character of szFull beyond the match.	 Thus, if the
+return is a pointer to a zero byte ('\0'), the szTest is an exact
+match of szFull, not just a prefix.
+
+EXAMPLE
+
+strprefix ( "a", "arg" );	// pointer to "rg" returned
+strprefix ( "a", "ARG" );	// NULL returned
+
+striprefix ( "a", "ARG" );	// pointer to "RG" returned
+striprefix ( "Arg", "ARG" );	// pointer to "" returned

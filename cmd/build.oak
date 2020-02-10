@@ -1,0 +1,18 @@
+#************************** CMD Root level Makefile ***********************
+#
+
+all:
+        xcopy makefile.oak $(OAKDIR)\cmd\makefile        < $(OAKDIR)\f.key
+        cd cps
+        $(MAKE) -f build.oak
+        cd ..
+        $(MAKE) -f doskey\copy.oak
+        $(MAKE) -f fdisk\copy.oak
+        $(MAKE) -f format\copy.oak
+        $(MAKE) -f keyb\copy.oak
+        $(MAKE) -f mode\copy.oak
+        $(MAKE) -f setver\copy.oak
+        $(MAKE) -f sort\copy.oak
+        $(MAKE) -f sys\copy.oak
+
+

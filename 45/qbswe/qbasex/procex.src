@@ -1,0 +1,70 @@
+.context .cdeclnbx
+.context @cdeclnbx
+:nDECLARE, satser - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\cdeclnbx.bas
+
+
+.context .envirx
+.context @envirx
+:nENVIRON och ENVIRON$ - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\envirx.bas
+
+
+.context .shellx
+.context @shellx
+:nSHELL, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\shellx.bas
+
+
+.context .shellfx
+.context @shellfx
+:nSHELL Function - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\shellfx.bas
+
+
+.context .constx
+.context @constx
+:nCONST, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\constx.bas
+
+
+.context .funx
+.context @funx
+:nFUNCTION, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\funx.bas
+
+
+.context .cdeclbx
+.context @cdeclbx
+:nDECLARE, sats (BASIC-procedurer) - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\cdeclbx.bas
+
+
+.context .deffnx
+.context @deffnx
+:nDEF FN, sats - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\deffnx.bas
+
+
+.context .c$x
+.context @c$x
+:nCOMMAND$, funktion - programmeringsexempel
+                       \bExempel\p                 \i\p\aInneh냡l\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aTillbaka\v!B\v\i\p
+컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴
+.include \bc71slm\examples\csfx.bas

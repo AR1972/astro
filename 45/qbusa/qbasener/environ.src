@@ -1,0 +1,554 @@
+.comment ==============================================================
+.comment QBasic Environment Help
+.comment  This file contains Environment Help (for menus,
+.comment  dialog boxes, etc.). These are not error messages
+.comment ==============================================================
+.comment  01/10/90 Cleaned comments.
+.comment    -- JeffWe
+.comment ==============================================================
+.context hidGreetingBox
+:nWelcome to QBasic
+  ş Press Esc to enter the QBasic programming
+    environment.
+
+  ş Press Enter to display the QBasic Survival Guide.
+    The Survival Guide shows you how to start using the
+    QBasic environment and the QBasic Help system.
+.comment ------------------------------------------------
+.comment     Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context hidFileOpen
+:nOpen Dialog
+Use to open an existing program file.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Open ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                 ³  Type the name of the
+³ File Name: ±±±±±±±± ÄÄÄÄÄÄÄÄÄÄÄÄÄ file here if it is in
+³                                 ³  the current directory
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ (shown here), or
+³                                 ³
+³      Files          Dirs/Drives ³
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  Select a file here,
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  or a directory or
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  drive if the file
+³                               ³  is located elsewhere.
+³        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÀÄÄÄÄÄÄÄÄÄÄÄÙ
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Then choose <OK>.
+
+You can also select a new drive and directory by typing
+them in the File Name text box.
+
+To browse the contents of other drives and directories,
+type a wildcard filename (such as *.BAS) in the File
+Name text box, and select a new drive or directory.
+
+Note: To open a file created with GW-BASIC or BASICA, the
+      file must be saved from GW-BASIC or BASICA with the
+      ,A option.
+.context hidFileSave
+:nSave As Dialog
+Use to save and name the current file.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄ Save As ÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                ³  Accept this filename or
+³ File Name: ±±±±±±±±±±±±±±± ÄÄÄÄÄ type a new name here.
+³                                ³
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ File will be saved in
+³                                ³  this directory.
+³           Dirs/Drives          ³
+³           ±±±±±±±±±±±  ÄÄÄÄÄÄÄÄÄ Use Dirs/Drives to
+³           ±±±±±±±±±±±          ³  save to a different
+³           ±±±±±±±±±±±          ³  directory or drive.
+³                                ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Then choose <OK>.
+.context hidFilePrint
+:nPrint Dialog
+Use to print all or part of a program or Help topic.
+Make sure the printer attached to the LPT1 device
+on your computer is on and ready to print. Then choose
+one of the following options and press Enter:
+ÚÄÄÄÄÄÄÄÄ Print ÄÄÄÄÄÄÄÄ¿
+³ ± Selected Text Only ÄÄ Prints selected text.
+³                       ³
+³ ± Current Window ÄÄÄÄÄÄ Prints a procedure or text from
+³                       ³  the current window.
+³ ± Entire Program ÄÄÄÄÄÄ Prints all of the current
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  program.
+
+The Entire Program option is not available if you select
+Print while the cursor is in the Help window.
+
+Tip: Select text in your program or the Help window
+     before you choose the Print command. Place the
+     cursor at the beginning of the text you want to
+     print, press Shift+direction keys until all the text
+     is highlighted, then choose the Print command.
+.context hidNewProc
+:nNew SUB or FUNCTION Dialog
+Use to create a new SUB or FUNCTION procedure.
+Enter the name of the new procedure (up to 40 characters)
+in the text box, then choose <OK>.
+
+Descriptive procedure names help you remember the
+procedure's use and minimize the chances of duplicating
+the name of another procedure or a variable.
+.context hidViewSubs
+:nSUBs Command Dialog
+Use to edit or delete SUB and FUNCTION procedures.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ SUBs ÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³ Choose program item to edit:   ³  Select an item here.
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄ Module level is first
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±  ³  and in uppercase;
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±  ³  procedures indented.
+³                                ³
+³ XXX is xxxxxxxxxxxxxxxx ÄÄÄÄÄÄÄÄ Describes selected item.
+³                                ³
+³  <Edit in Active>    <Delete> ÄÄ Choose whether to edit
+³                                ³  or delete selected item.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+If you choose <Edit in Active>, QBasic displays the
+procedure in the active window.
+.context hidSearchFind
+:nFind Command Dialog
+Use to find a specific string of text.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Find ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                   ³  Enter string or use
+³ Find What: ±±±±±±±±±±±±±±±±±±±± ÄÄÄ string already here.
+³                                   ³
+³ ± Upper/Lowercase ± Whole Word ÄÄÄÄ Select search type.
+³                                   ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Then choose <OK>.
+
+Select Upper/Lowercase for a case-sensitive match, or
+Whole Word to exclude matches within words or strings.
+Whole-word searches recognize a match only when the target
+text is surrounded by blanks, punctuation, or other special
+characters. The search string can be 127 characters long.
+.context hidSearchChange
+:nChange Dialog
+Use to replace one string of text with another.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Change ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                   ³  Enter string or use
+³ Find What: ±±±±±±±±±±±±±±±±±±±± ÄÄÄ string already here.
+³                                   ³
+³ Change To: ±±±±±±±±±±±±±±±±±±±± ÄÄÄ Enter replacement.
+³                                   ³
+³ ± Upper/Lowercase ± Whole Word ÄÄÄÄ Select search type.
+³                                   ³
+³ <Find and Verify>   <Change All> ÄÄ Choose whether to
+³                                   ³  review changes or
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  make all changes.
+
+Select Upper/Lowercase for a case-sensitive match, or
+Whole Word to exclude matches within words or strings.
+Whole-word searches recognize a match only when the target
+text is surrounded by blanks, punctuation, or other special
+characters. Replacement text can be 127 characters long.
+.context hidConfirm
+:nChange Dialog
+A match has been found and is highlighted in the active
+window. You can:
+  ş Choose <Change> to make the replacement and continue
+    searching.
+  ş Choose <Skip> to leave the text unchanged and continue
+    searching.
+  ş Choose <Cancel> to leave the text unchanged and stop
+    searching.
+.context hidOptnsDisplay
+:nDisplay Dialog
+Use to customize the QBasic screen.
+                 ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄDisplayÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+                 ³ ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Colors ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+                 ³                     Foregrnd  Backgrnd ³
+                 ³ ± Normal Text       ±±±±±±±±  ±±±±±±±± ³
+                 ³                     ±±±±±±±±  ±±±±±±±± ³
+Colors you pick ÄÄ± Current Statement ±±±±±±±±  ±±±±±±±± ³
+here will        ³                                        ³
+highlight text ÄÄÄ± Breakpoint Lines                     ³
+during debugging.³                                        ³
+                 ³ ÚÄÄÄÄÄÄÄÄÄÄDisplay OptionsÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+                 ³   ± Scroll Bars          Tab Stops: ±  ³
+                 ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+Hides or displays    ³     Enter number of spaces you  ³
+scroll bars on       ³     want Tab to advance cursor.ÄÙ
+window display.ÄÄÄÄÄÄÙ
+
+To set options:
+  1. Press Tab to move the cursor to the Colors or Display
+     Options box.
+  2. Use the direction keys to select a color or display
+     option.
+  3. Choose <OK> or press Enter to save the options you
+     selected.
+
+Options settings are saved and remain in effect the next
+time you start QBasic.
+.context MSG_SearchPathInterp
+:nHelp Path Dialog
+QBasic searches for the help file QBASIC.HLP in the
+directories you indicate in this dialog box. You don't need
+to set the Help path if you have done so with the PATH
+environment variable in DOS or if QBASIC.HLP is in the
+current directory.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Help Path ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                       ³
+³  Location (path) of QBASIC.HLP file:  ³
+³                                       ³  Enter the drive
+³      ±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄ and directory
+³                                       ³  where QBASIC.HLP
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  is located.
+
+Tip: If QBasic cannot find QBASIC.HLP, check to make
+     sure that you entered the correct directory name.
+.comment ------------------------------------------------
+.comment   End of Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context m.f
+.context m.e
+.context m.v
+.context m.s
+.context m.r
+.context m.d
+.context m.o
+.context m.h
+:nQBasic Menu Bar
+Using the QBasic menus and commands:
+
+  ş To activate menus and commands, press the highlighted
+    letter or click a menu or command with the mouse.
+  ş To move between menus and commands, use the direction
+    keys or the mouse.
+.comment ------------------------------------------------
+.comment   UI Help for Menu Commands and Dialog Support
+.comment ------------------------------------------------
+.context MSG_HelpFileNew
+:nNew Command
+Use to create a new program. A dialog box will appear if
+you already have an existing program open. Then:
+  ş Choose <Yes> to save the existing program.
+  ş Choose <No> to close the program without saving it.
+  ş Choose <Cancel> to cancel the New command and return
+    to the existing program.
+
+Tip: Use the Open command to load an existing program.
+.context MSG_HelpFileOpen
+:nOpen Command
+Use to load an existing program so you can run it
+or make changes to it.
+
+Use the New command to create a new program.
+
+ Note: To open a file created with GW-BASIC or BASICA, the
+       file must be saved from GW-BASIC or BASICA with the
+       ,A option.
+.context MSG_HelpFileSave
+:nSave Command
+Use to save the current version of your program.
+
+QBasic asks you for a name if you haven't saved the program
+previously. If an existing program has the same name as the
+program being saved, the existing program is overwritten.
+.context MSG_HelpFileSaveAs
+:nSave As Command
+Use to save your program as a file. To preserve the
+previous version of your program, rename it in the
+File Name text box.
+.context MSG_HelpFilePrint
+:nPrint Command
+Use to print all or part of a program or Help topic.
+
+You can print:
+  ş Selected text.
+  ş The contents of the active window.
+  ş The entire current program (including procedures).
+
+QBasic prints to the printer connected to the LPT1 device
+on your computer.
+
+Tip: Select text in your program or the Help window
+     before you choose the Print command. Place the
+     cursor at the beginning of the text you want to
+     print, press Shift+direction keys until all the text
+     is highlighted, then choose the Print command.
+.context MSG_HelpFileExit
+:nExit Command
+Use to leave the QBasic environment.
+
+If your program file has changed since you last saved it,
+QBasic displays a dialog box.
+  ş Choose <Yes> to save your program, including changes.
+  ş Choose <No> to discard your changes.
+  ş Choose <Cancel> to cancel the Exit command and return
+    to your program.
+.context MSG_HelpEditCut
+:nCut Command
+Use Cut (or press Shift+Del) to remove selected text and
+put it on the Clipboard, a temporary holding area.
+
+You can then use Paste (Shift+Ins) to insert the text at
+a new position in the active window. You can also open a
+new or existing program file and insert the text.
+
+The text is still on the Clipboard and can be pasted again.
+Each time you cut or copy a piece of text, the new text
+replaces any text on the Clipboard.
+
+Tip: To select text, place the cursor at the beginning
+     of the text and press the Shift+direction keys.
+     To remove selected text without copying it to the
+     Clipboard, press Del.
+.context MSG_HelpEditCopy
+:nCopy Command
+Use Copy (or press Ctrl+Ins) to copy selected text to the
+Clipboard. The original text is unchanged.
+
+You can then use Paste (Shift+Ins) to insert the text
+into the active window. You can also open a new or
+existing program file and insert the text.
+
+Tip: To select text, place the cursor at the beginning
+     of the text and press the Shift+direction keys.
+
+The text is still on the Clipboard and can be pasted again.
+Each time you cut or copy a piece of text, the new text
+replaces any text on the Clipboard.
+.context MSG_HelpEditPaste
+:nPaste Command
+Use Paste (or press Shift+Ins) to insert a block of text
+from the Clipboard at any point in the active window.
+
+To insert text, place the cursor where you want the text
+to be inserted and choose Paste.
+
+To replace one piece of text with another, select the text
+to replace and choose Paste.
+
+Tip: To put text on the Clipboard, use Cut or Copy. After
+     you insert text using Paste, the Clipboard still
+     contains the text, and it can be pasted again.
+.context MSG_HelpEditClear
+:nClear Command
+Use Clear (or press Del) to delete selected text without
+copying it to the Clipboard. The Clipboard's contents are
+unchanged.
+.context MSG_HelpEditNewSub
+:nNew SUB Command
+Use to create a SUB procedure.
+
+Enter a name for the procedure in the New SUB dialog box.
+QBasic inserts SUB and END SUB statements for the
+procedure and displays it in the View window.
+
+If you want to view or edit other parts of the program,
+use the SUBs command from the View menu (or press F2).
+
+Tip: You can also create a SUB procedure by using the
+     QBasic keyword SUB.
+.context MSG_HelpEditNewFunc
+:nNew FUNCTION Command
+Use to create a FUNCTION procedure.
+
+Enter a name for the procedure in the New FUNCTION dialog
+box. QBasic inserts FUNCTION and END FUNCTION statements
+for the procedure and displays it in the View window.
+
+If you want to view or edit other parts of the program,
+use the SUBs command from the View menu (or press F2).
+
+Tip: You can also create a FUNCTION procedure by using
+     the QBasic keyword FUNCTION.
+.context MSG_HelpViewSubs
+:nSUBs Command
+Use to view or edit a SUB or FUNCTION procedure, or
+to delete a procedure.
+
+Tip: To view or edit two different SUB or FUNCTION
+     procedures at the same time, choose Split from the
+     View menu, then use the SUBs command to display the
+     procedures in each of the windows.
+.context MSG_HelpViewSplit
+:nSplit Command
+Use to divide the View window horizontally and work on two
+parts of a program at the same time.
+
+Use F6 and Shift+F6 to move between the windows:
+  ş F6 moves the cursor down through the windows.
+  ş Shift+F6 moves the cursor up.
+
+To close a second View window, place your cursor in the
+window that you want to keep active, and choose Split again.
+
+To size the active window with a mouse, drag the window
+boundary up or down.
+
+To size the active window from the keyboard, use:
+  ş Alt+Plus(+)  to expand it one line.
+  ş Alt+Minus(-) to shrink it one line.
+  ş Ctrl+F10     to expand it to fill the screen, or return
+                 it to its former size.
+.context MSG_HelpViewOutputScreen
+:nOutput Screen Command
+Use Output Screen (or press F4) to view the program
+output screen. The output screen displays the results
+of a program run in the QBasic environment.
+
+Press any key to return to QBasic after viewing the
+output screen.
+.context MSG_HelpSearchFind
+:nFind Command
+Use to search for a text string. You can request a
+case-sensitive match or a whole-word match.
+
+To change a string, use the Change command.
+.context MSG_HelpSearchChange
+:nChange Command
+Use to replace one text string with another.
+
+You can:
+  ş Use a case-sensitive or whole-word search.
+  ş Check each replacement before the change is made.
+  ş Make all replacements without checking them.
+.context MSG_HelpSearchNext
+:nRepeat Last Find Command
+Use Repeat Last Find (or press F3) to repeat the search
+performed by the most recent Find or Change command.
+
+If no Find or Change command has been executed since you
+started QBasic, Repeat Last Find searches for the next
+occurrence of:
+  ş The word the cursor is on.
+  ş The word to the cursor's left, if the cursor isn't
+    on a word.
+.context MSG_HelpRunStart
+:nStart Command
+Use Start (or press Shift+F5) to start running a program
+beginning with the first executable statement in the main
+module.
+
+If you stop a program while it is running, Start clears any
+data you entered and starts the program from its beginning.
+.context MSG_HelpRunRestart
+:nRestart Command
+Use to prepare a program to start over from the beginning.
+Restart clears any data entered while the program was
+running and highlights the first executable statement.
+.context MSG_HelpRunContinue
+:nContinue Command
+Use Continue (or press F5) to resume running a program
+after it has stopped. Continue does not clear data you
+entered while the program was running and begins the
+program from the last statement executed, rather than
+from the beginning.
+
+Continue is often used to resume program execution after
+a breakpoint.
+.context MSG_HelpDebugStep
+:nStep Command
+Use Step (or press F8) to run a single statement in your
+program. Step allows you to move through the execution
+of a program, including procedures, one step at a time.
+.context MSG_HelpDebugPStep
+:nProcedure Step Command
+Use Procedure Step (or press F10) to run a single statement
+in your program and to run a procedure call and the
+procedure it calls as a single statement.
+
+Procedure Step, like the Step command, allows you to move
+through the execution of a program one step at a time, but
+it saves you from stepping through procedures that you
+know work correctly.
+.context MSG_HelpDebugTraceOn
+:nTrace On Command
+Use to highlight each statement in your program as it
+executes. This lets you observe the general flow of your
+program. Press Ctrl+Break to suspend program execution.
+.context MSG_HelpDebugToggleBp
+:nToggle Breakpoint Command
+Use Toggle Breakpoint (or press F9) to turn breakpoints
+on and off. Breakpoints are markers placed on statements
+in your program. If you run your program and it encounters
+a breakpoint, the program stops on that statement. QBasic
+highlights the breakpoint line.
+
+To turn a breakpoint on and off:
+  1. Move the cursor to the line you want the breakpoint
+     on, or to a highlighted breakpoint line.
+  2. Choose Toggle Breakpoint (or press F9).
+
+Use a breakpoint to pause your program at a point where
+you suspect problems, then:
+  ş Print the values of variables in the Immediate window.
+  ş Single step your program from the breakpoint forward.
+.context MSG_HelpDebugClearAllBp
+:nClear All Breakpoints Command
+Use to remove all breakpoints from your program.
+
+Use Toggle Breakpoint (or press F9) to turn individual
+breakpoints off.
+.context MSG_HelpDebugSetNextStmt
+:nSet Next Statement Command
+Use to change the program execution sequence so the next
+statement executed is the one the cursor is on.
+.context MSG_HelpOptionsDisplay
+:nDisplay Command
+Use to control:
+  ş Screen colors.
+  ş Scroll bars in windows.
+  ş The number of spaces the Tab key advances the cursor.
+
+Display settings are saved and remain in effect the next
+time you start QBasic.
+.context MSG_HelpOptionsPaths
+:nHelp Path Command
+Use to change the directories QBasic searches to find
+the QBasic Help file, QBASIC.HLP.
+.context MSG_HelpOptionsSyntax
+:nSyntax Checking Command
+Use to turn Syntax Checking on and off. When Syntax
+Checking is on, QBasic does the following as you enter
+each line of code:
+  1. Checks the line for syntax errors.
+  2. Formats the line.
+  3. Translates the line to executable form if the syntax
+     is correct.
+.context MSG_HelpHelpIndex
+:nIndex Command
+Use to display the Help index. The Help index is an
+alphabetical list of Help topics, including Basic
+language keywords. Each term in the index is linked
+to additional information.
+
+To get help:
+  1. Choose the Index command from the Help menu.
+  2. Press the key corresponding to the item's first
+     letter.
+  3. Move the cursor to the item you want help on, then
+     press F1.
+.context MSG_HelpHelpContents
+:nContents Command
+Use to display the Help table of contents. The Help table
+of contents provides a topical guide to the information in
+QBasic Help.
+
+To get help on any item in the table of contents:
+  1. Choose the Contents command from the Help menu.
+  2. Press the letter key corresponding to the first letter
+     of the item. Repeat until the cursor is on the topic
+     you want help on.
+  3. Press F1.
+.context MSG_HelpHelpSyntax
+:nTopic Command
+Use to display information on a topic determined by the
+current location of the cursor. The topic the cursor is
+on appears as part of the command.
+
+You can also display topic Help by pressing F1 or clicking
+the right mouse button.
+.context MSG_HelpHelpHelp
+:nUsing Help Command
+Use to display the Using Help topic. Using Help describes
+how to use the mouse or keyboard to get help on an item
+displayed on the QBasic screen.
+.context MSG_HelpHelpAbout
+:nAbout Command
+Use to display the version number and copyright information
+for QBasic.

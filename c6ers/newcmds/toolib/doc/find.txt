@@ -1,0 +1,74 @@
+SUMMARY ffirst fnext
+
+#include <tools.h>
+
+int ffirst(pstrPattern, attr, pFindBuf)
+char *pstrPattern;
+int attr;
+struct findType *pFindBuf;
+
+int fnext(pFindBuf)
+struct findType *pFindBuf;
+
+DESCRIPTION
+
+Uses the DOS functions 4E, ffirst, and 4F, fnext, to enumerate files
+matching the pattern pstrPattern and having the attributes attr.  The find
+buffer is filled in.
+
+Call ffirst to find the first file.  Call fnext for each subsequent file.
+
+	int ffirst(pstrPattern, attr, pFindBuf)
+
+	file	char pointer to name string with pattern in last component.
+	attr	inclusive attributes for search
+	fbuf	pointer to buffer for find stuff
+
+	int fnext(pFindBuf)
+
+	fbuf	pointer to find buffer
+
+RETURN VALUE
+
+Returns zero if no error, i.e. file found returns zero.  Returns non-zero
+on error, i.e. file NOT found returns non-zero.
+
+	returns	(DOS) TRUE if error, FALSE if success
+	(OS2) error code or NO_ERROR
+
+
+IMPLEMENTATION
+
+ffirst:
+    pass address of find buffer to dos using function 1a
+    call function 4e with pattern and attribute
+
+fnext:
+    pass address of find buffer to dos using function 1a
+    call function 4f
+
+SEE ALSO  forfile 
+
+NOTE
+
+Patterns and attributes are described separately.
+
+EXAMPLE
+
+#include <tools.h>
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    struct findType findBuf;
+    char str[MAXPATHLEN];
+
+    if (ffirst ("*.c", A_A, &findBuf))
+	printf("No files found\n");
+    else {
+	printf("File found %s\n", findBuf.name);
+	while (!fnext(&findBuf))
+	    printf("File found %s\n", findBuf.name);
+	}
+}

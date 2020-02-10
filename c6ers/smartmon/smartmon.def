@@ -1,0 +1,17 @@
+NAME	    SmartMon
+
+DESCRIPTION 'SmartDrive 4.0 Monitor application'
+
+EXETYPE     WINDOWS
+
+STUB	    'WINSTUB.EXE'
+
+CODE	    PRELOAD MOVEABLE
+DATA	    PRELOAD MOVEABLE SINGLE
+
+HEAPSIZE    4096
+STACKSIZE   5110
+
+EXPORTS     WambiWndProc    @1
+	    RBSubclass	    @2
+	    OptionsDlgProc  @3

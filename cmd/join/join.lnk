@@ -1,0 +1,8 @@
+JOIN.OBJ+
+_MSGRET.OBJ+
+_PARSE.OBJ
+JOIN
+NUL
+..\..\lib\master.lib+
+..\..\lib\comsubs.lib+
+..\..\lib\mapper.lib;

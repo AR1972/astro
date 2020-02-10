@@ -1,0 +1,36 @@
+#
+# tokens for messages.src - used for qbasic exe files in DOS 5.
+#
+# Created 4th October 1990 by Terry Farrell (TerryF)
+#  [1] 06-11-90 - Updated to new messages.inc
+#
+#
+# Note: Only the messages with R60??? in the files messages.inc are
+#       relevant for DOS 5 (thats why they are the only ones tokenised).
+#
+# To reproduce messages.inc from messages.src using messages.tok type the
+# following:
+#
+# TOK -f messages.tok messages.src > messages.inc
+#
+
+
+
+	  [[QBMESS_1]]='- stack”verskridning'
+	  [[QBMESS_2]]='- flyttal inte laddat'
+	  [[QBMESS_3]]='- heltal dividerat med 0'
+	  [[QBMESS_4]]='k”rtidsfel R6005'
+	  [[QBMESS_5]]='- inte tillr„ckligt med minne p† exec'
+	  [[QBMESS_6]]='k”rtidfel R6006'
+	  [[QBMESS_7]]='- felaktigt format p† exec'
+	  [[QBMESS_8]]='k”rtidfel R6007'
+	  [[QBMESS_9]]='- felaktig milj” p† exec'
+	  [[QBMESS_10]]='- inte tillr„ckligt med utrymme f”r argument'
+	  [[QBMESS_11]]='- inte tillr„ckligt med utrymme f”r milj”'
+	  [[QBMESS_12]]='- ej till†ten anv„ndning av n„rpekare'
+	  [[QBMESS_13]]='- ej till†ten anv„ndning av fj„rrpekare'
+	  [[QBMESS_14]]='- p†tr„ffade control-BREAK'
+	  [[QBMESS_15]]='- ov„ntad avbrott'
+
+# The space should be left at the end of the following string.
+	  [[QBMESS_16]]='k”rtidfel '

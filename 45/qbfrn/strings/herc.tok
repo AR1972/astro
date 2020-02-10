@@ -1,0 +1,10 @@
+[[1]]='Routines de gestion d''adaptateur d''‚cran Hercules. Version 1.12'
+[[2]]='Routines de gestion d''‚cran Hercules d‚j… install‚es.
+
+[[3]]='Adaptateur d''‚cran Hercules non pr‚sent.',0DH,0AH
+[[4]]='Routines de gestion d''adaptateur d''‚cran Hercules non install‚es.'
+
+[[5]]='Installe MSHERC.COM avant de lancer les programmes avec les graphiques demand‚s.'
+[[6]]='La carte graphique Hercules.'
+[[7]]='MSHERC [/HALF]', 0DH, 0AH
+[[8]]='  /HALF requis si un adaptateur couleur est aussi install‚.', 0DH, 0AH

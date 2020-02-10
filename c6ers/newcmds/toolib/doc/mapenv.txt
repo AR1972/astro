@@ -1,0 +1,41 @@
+SUMMARY mapenv
+
+#include <tools.h>
+
+void mapenv(pstrSrc, pstrDest)
+char *pstrSrc;
+char *pstrDest;
+
+DESCRIPTION
+
+mapenv will scan the source string for $(name) and attempt to replace it
+with text from the environment.
+
+RETURN VALUE
+
+none
+
+IMPLEMENTATION
+
+
+SEE ALSO
+
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+char strSrc[] = "Me:$(user) and my $(shadow)";
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    char strDest[256];
+
+    mapenv(strSrc, strDest);
+    printf("%s\n%s\n", strSrc, strDest);
+}

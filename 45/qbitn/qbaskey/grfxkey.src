@@ -1,0 +1,623 @@
+.context CIRCLE
+.context @CIRCLE
+:nIstruzione CIRCLE
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Disegna un cerchio od un'ellisse sullo schermo.
+
+\bCIRCLE [STEP] (x!,y!),raggio![,[colore%] [,[inizio!] [,[fine!] [,aspetto!]]]]\p
+
+    ş \bSTEP\p       Indica che le coordinate sono relative alla posizione corren-
+                 te del cursore grafico.
+    ş \b(x!,y!)\p    Le coordinate del centro dell'ellisse o del cerchio.
+    ş \braggio!\p    Il raggio del cerchio o dell'ellisse espresso nell'unit… del
+                 sistema di coordinate corrente determinato dalle istruzioni
+                 SCREEN, VIEW e WINDOW pi— recenti.
+    ş \bcolore%\p    Un attributo di colore che imposta il colore del cerchio.
+                 Gli attributi di colore disponibili dipendono dall'adattatore
+                 grafico del sistema e dalla modalit… schermo impostata dalla
+                 istruzione SCREEN pi— recente.
+    ş \binizio!\p    L'angolo di inizio dell'arco espresso in radianti.
+    ş \bfine!\p      L'angolo di fine dell'arco espresso in radianti.
+    ş \baspetto!\p   Il rapporto tra tra l'asse y e l'asse x che viene usato per
+                 tracciare un'ellisse.
+
+    ş Per la conversione da gradi in radianti, moltiplicare il valore in
+      gradi per (PI / 180).
+
+Esempio:
+    'Questo esempio richiede l'uso di un adattatore grafico.
+    SCREEN 2
+    CIRCLE (320, 100), 200
+    CIRCLE STEP (0,0), 100
+
+Si vedano inoltre    \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p
+                     \i\p\aWINDOW\v@WINDOW\v\i\p   \i\p\aAttributi e valori di colore\v@color.table\v\i\p
+                     \i\p\aModalit… schermo\v@screen.modes\v\i\p
+.context COLOR
+.context @COLOR
+:nIstruzione COLOR
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Imposta i colori per la visualizzazione.
+
+\bCOLOR [primo piano%] [,[fondo%] [,bordo%]]\p    Modalit… schermo 0 (solo testo)
+\bCOLOR [fondo%] [,palette%]\p                    Modalit… schermo 1
+\bCOLOR [primo piano%]\p                          Modalit… schermo 4, 12, 13
+\bCOLOR [primo piano%] [,fondo&]\p                Modalit… schermo 7-10
+
+    ş \bprimo piano%\p   Un numero che imposta il colore di primo piano dello
+                     schermo.
+      \bprimo piano&\p   Nella modalit… schermo 0, primopiano% Š un attributo
+                     di colore che imposta il colore del testo. Nelle altre
+                     modalit… schermo, primopiano% Š un attributo di colore o
+                     un valore di colore di 4 bit (solo nella modalit… 4)
+                     che imposta il colore del testo e della linea di trac-
+                     ciamento.
+    ş \bfondo%\p         Un numero che imposta il colore di fondo dello schermo.
+      \bfondo&\p         Nella modalit… schermo 0, fondo% Š un attributo di
+                     colore. Nella modalit…  schermo 1, fondo% Š un valore
+                     di colore di 4 bit. Nelle modalit… schermo dalla 7 alla
+                     10, fondo& Š un valore di colore.
+    ş \bbordo%\p         Un attributo di colore che imposta il colore del bordo
+                     dello schermo.
+    ş \bpalette%\p       Un numero (0 o 1) che specifica quale dei due insiemi
+                     di attributi di colore deve essere usato:
+
+                     palette%    Attributo 1    Attributo 2    Attributo 3
+                     ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ
+                     0           Verde          Rosso          Marrone
+                     1           Blu chiaro     Magenta        Bianco
+
+    ş Gli attributi e i valori di colore disponibili dipendono dall'adattatore
+      grafico del sistema e dalla modalit… schermo impostata dall'istruzione
+      SCREEN pi— recente.
+    ş Se il sistema comprende un'adattatore grafico EGA, VGA o MCGA, usare
+      l'istruzione PALETTE per cambiare le assegnazioni di colore degli
+      attributi di colore.
+
+Esempio:
+    'Questo esempio richiede l'uso di un adattatore grafico a colori.
+    SCREEN 7
+    FOR i% = 0 TO 15
+        COLOR i%
+        PRINT i%
+    NEXT i%
+
+Si vedano inoltre   \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aPAINT\v@PAINT\v\i\p    \i\p\aPALETTE e PALETTE USING\v@PALETTE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+                    \i\p\aAttributi e valori di colore\v@color.table\v\i\p     \i\p\aModalit… schermo\v@screen.modes\v\i\p
+.context @color.table
+:nAttributi e valori di colore
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+           \bSchermo a colori                  Schermo monocromatico\p
+           ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ    ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bAttributo  Valore di colore  Colore          Valore di colore  Colore\p
+\bdi colore  predefinito \p(a)\b   visualizzato    predefinito       visualizzato\p
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+\bModalit… SCREEN 0, 7, 8, 9\p(b)\b, 12 e 13\p
+0          0                 Nero            0(c)              Spento
+1          1                 Blu                               sottolineato(d)
+2          2                 Verde           1(c)              Acceso(d)
+3          3                 Azzurro         1(c)              Acceso(d)
+4          4                 Rosso           1(c)              Acceso(d)
+5          5                 Magenta         1(c)              Acceso(d)
+6          6                 Bianco          1(c)              Acceso(d)
+8          8                 Grigio          0(c)              Spento
+9          9                 Blu chiaro                        Alta densit…
+                                                               sottolineato
+10         10                Verde chiaro    2(c)              Alta densit…
+11         11                Azzurro chiaro  2(c)              Alta densit…
+12         12                Rosso chiaro    2(c)              Alta densit…
+13         13                Magenta chiaro  2(c)              Alta densit…
+14         14                Giallo          2(c)              Alta densit…
+15         15                Bianco intenso  0(c)              Spento
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bModalit… SCREEN 1 e 9\p(e)
+
+0          0                 Nero            0                 Spento
+1          11                Azzurro chiaro  2                 Alta intensit…
+2          13                Magenta chiaro  2                 Alta intensit…
+3          15                Bianco ad alta  0                 Bianco spento
+                             intensit…
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bModalit… SCREEN 2 e 11\p
+0          0                 Nero            0                 Spento
+1          15                Bianco ad alta  0                 Bianco spento
+                             intensit…
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  (a)  Numeri di colore EGA. Gli adattatori video VGA e MCGA utilizzano
+       valori per la visualizzazione dei colori che danno colori visivamente
+       equivalenti.
+  (b)  Con gli adattatori VGA o EGA con memoria video superiore a 64 Kb.
+  (c)  Solo nella modalit… 0.
+  (d)  Off se Š usato per lo sfondo.
+  (e)  EGA con memoria video inferiore o uguale a 64 Kb.
+
+Si vedano inoltre    \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aPALETTE e PALETTE USING\v@PALETTE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+                     \i\p\aModalit… schermo\v@screen.modes\v\i\p
+.context DRAW
+.context @DRAW
+:nIstruzione DRAW
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Disegna un oggetto.
+
+\bDRAW stringacomandi$\p
+
+    ş \bstringacomandi$\p    Un'espressione a stringa contenente uno o pi— dei
+                         comandi DRAW seguenti.
+
+      Comandi per tracciare righe e muovere il cursore:
+        D[n%]            Sposta in gi— il cursore di n% unit….
+        E[n%]            Sposta il cursore in su e a destra di n% unit….
+        F[n%]            Sposta il cursore in gi— e a destra di n% unit….
+        G[n%]            Sposta il cursore in gi— e a sinistra di n% unit….
+        H[n%]            Sposta il cursore in su e a sinistra di n% unit….
+        L[n%]            Sposta il cursore a sinistra di n% unit….
+        M[{+|-}]x%,y%    Sposta il cursore sul punto x%,y%. Se x% Š preceduto
+                         da + o -, lo spostamento avviene relativamente al
+                         punto corrente.
+        R[n%]            Sposta il cursore a destra di n% unit….
+        U[n%]            Sposta il cursore in su di n% unit….
+        [B]              Prefisso facoltativo che sposta il cursore senza
+                         disegnare.
+        [N]              Prefisso facoltativo che disegna e riporta il cursore
+                         alla posizione di partenza.
+
+      Comandi di colore, rotazione e riduzione in scala:
+        An%              Ruota un oggetto di n% * 90 gradi, dove n% pu• essere
+                         uguale a 0, 1, 2 o 3.
+        Cn%              Imposta il colore della riga tracciata, dove
+                         n% Š un attributo di colore.
+        Pn1%,n2%         Imposta il colore di riempimento e il colore del
+                         bordo di un oggetto, dove n1% Š l'attributo del
+                         colore di riempimento e n2% Š l'attributo del colore
+                         del bordo.
+        Sn%              Determina la scala di grandezza del disegno impostan-
+                         do la lunghezza di un movimento unitario del cursore.
+                         Il valore n% preimpostato Š uguale a 4, equivalente
+                         ad un pixel.
+        TAn%             Ruota un angolo di n% gradi (da -360 fino a 360).
+
+    ş Se n% non viene incluso nei comandi utilizzati per tracciare le righe
+      e muovere il cursore, il cursore si muover… di una unit….
+    ş Per eseguire una sottostringa del comando DRAW contenuta all'interno di
+      una stringa del comando DRAW, usare il comando "X":
+
+      DRAW "X"+ VARPTR$(stringacomandi$)
+
+Esempio:
+    'Questo esempio richiede l'uso di un adattatore grafico a colori.
+    SCREEN 1
+    Triangolo$ = "F60 L120 E60"
+    DRAW "C2 X" + VARPTR$(Triangolo$)
+    DRAW "BD30 P1,2 C3 M-30,-30"
+
+Si vedano inoltre    \i\p\aPALETTE e PALETTE USING\v@PALETTE\v\i\p         \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p
+                     \i\p\aAttributi e valori di colore\v@color.table\v\i\p    \i\p\aDifferenze da BASICA\v@basica.diffs\v\i\p
+.context .ggx
+.context @ggx
+.context .pgfx
+.context @pgfx
+:nIstruzioni GET e PUT (Grafica)
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+GET cattura un'immagine in uno schermo grafico.
+PUT visualizza un'immagine catturata con GET.
+
+\bGET [STEP](x1!,y1!)-[STEP](x2!,y2!), nomematrice[(indice%)]\p
+\bPUT [STEP] (x1!,y1!), nomematrice[(indice%)] [,azione]\p
+
+    ş \bSTEP\p          Indica che le coordinate sono relative alla posizione del
+                    cursore grafico corrente.
+    ş \b(x1!,y1!)\p     Le coordinate dell'angolo superiore sinistro dell'immagine
+                    catturata con GET o della posizione sullo schermo dove PUT
+                    visualizza l'immagine.
+    ş \b(x2!,y2!)\p     Le coordinate dell'angolo inferiore destro dell'immagine
+                    catturata.
+    ş \bnomematrice\p   Il nome della matrice in cui Š memorizzata l'immagine.
+                    Si veda \i\p\aMatrici e compatibilit… delle immagini schermo\v@ggx.arrays\v\i\p
+                    per determinare le dimensioni della matrice desiderate.
+    ş \bindice\p        L'indice della matrice dal quale inizia la memorizzazione
+                    dell'immagine.
+    ş \bazione\p        Una parola chiave che indica come deve essere visualizzata
+                    l'immagine:
+
+        Parola chiave    Azione
+        ÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+        AND              Unisce l'immagine memorizzata con una precedente.
+        OR               Sovrappone un'immagine memorizzata ad un'immagine
+                         esistente.
+        PSET             Disegna un'immagine memorizzata cancellando una
+                         immagine esistente.
+        PRESET           Disegna un'immagine memorizzata con inversione dei
+                         colori cancellando l'immagine esistente.
+        XOR              Disegna un'immagine memorizzata o cancella una
+                         immagine disegnata in precedenza conservando allo
+                         stesso tempo lo sfondo. Ci• produce degli effetti di
+                         animazione.
+
+    ş Un istruzione PUT deve sempre essere eseguita con la stessa modalit…
+      schermo dell'istruzione GET usata per catturare l'immagine o con una
+      modalit… compatibile.
+      Si veda \i\p\aMatrici e compatibilit… delle immagini schermo\v@ggx.arrays\v\i\p.
+
+Esempio:
+    'Questo esempio richiede l'uso di un adattatore grafico a colori.
+    SCREEN 1
+    DIM Casella%(1 TO 200)
+    x1% = 0: x2% = 10: y1% = 0: y2% = 10
+    LINE (x1%, y1%)-(x2%, y2%), 2, BF
+    GET (x1%, y1%)-(x2%, y2%), Casella%
+    DO
+        PUT (x1%, y1%), Casella%, XOR
+        x1% = RND * 300
+        y1% = RND * 180
+        PUT (x1%, y1%), Casella%
+    LOOP WHILE INKEY$ = ""
+
+Si vedano inotre    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aModalit… schermo\v@screen.modes\v\i\p
+.context @ggx.arrays
+:nMatrici e compatibilit… delle immagini schermo
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Usare valori bit-per-pixel-per-piano e valori di piano per specificare le
+dimensioni desiderate della matrice contenente un'immagine schermo grafica.
+I valori bit-per-pixel-per-piano e i valori di piano, assieme alla risoluzione
+orizzontale, indicano le modalit… schermo compatibili:
+
+                                                                 Risoluzione
+                                    Bits-per-pixel-              orizzontale
+   Modalit… schermo                 per-piano          Piani     (in pixel)
+   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ     ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ
+   1                                2                  1         320
+   2, 4, 11                         1                  1         640
+   3                                1                  1         720
+   7                                1                  4         320
+   8, 9 (memoria video>64 Kb), 12   1                  4         640
+   9 (memoria video di 64 Kb), 10   1                  2         640
+   13                               8                  1         320
+
+L'equazione seguente restituisce le dimensioni di una matrice, espresse in
+byte, richieste per contenere un'immagine catturata:
+
+dimensioni% = 4 + INT(((PMAP (x2!, 0) - PMAP (x1!, 0) + 1) *
+        (bits-per-pixel-per-piano%) + 7) / 8) * piani% *
+        (PMAP (y2!, 1) - PMAP (y1!, 1) + 1)
+
+Le operazioni GET e PUT sono compatibili con modalit… schermo  che abbiano la
+stessa risoluzione orizzontale e gli stessi valori bits-per-pixel-per-piano e
+gli stessi valori di piano. Ad esempio, le modalit… schermo 2, 4 e 11 e le
+modalit… 8 e 12 sono compatibili.
+
+Si vedano inoltre    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aModalit… schermo\v@screen.modes\v\i\p
+.context LINE
+.context @LINE
+:nIstruzione LINE
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Traccia una riga o un rettangolo sullo schermo.
+
+\bLINE [[STEP](x1!,y1!)]-[STEP](x2!,y2!) [,[colore%] [,[B | BF] [,stile%]]]\p
+
+    ş \bSTEP\p          Indica che le coordinate sono relative alla posizione
+                    corrente del cursore grafico.
+    ş \b(x1!,y1!)\p,    Le coordinate schermo dell'inizio e della fine della riga.
+      \b(x2!,y2!)\p
+    ş \bcolore%\p       Un attributo di colore che imposta il colore della riga
+                    o del rettangolo. Gli attributi di colore disponibili
+                    dipendono dal tipo di adattatore grafico del sistema e
+                    dalla modalit… schermo impostata dall'ultima istruzione
+                    SCREEN.
+    ş \bB\p             Traccia un rettangolo invece di una riga.
+    ş \bBF\p            Traccia una superficie rettangolare colorata.
+    ş \bstile%\p        Un valore a 16 bit i cui bit stabiliscono se alcuni pixel
+                    debbano essere tracciati o meno, qualora si vogliano
+                    tracciare delle righe intermittenti o punteggiate.
+
+Esempio:
+    'Questo esempio richiede l'uso di un adattatore grafico a colori.
+    SCREEN 1
+    LINE (110, 70)-(190, 120), , B
+    LINE (0, 0)-(320, 200), 3, , &HFF00
+
+Si vedano inoltre    \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aINPUT e LINE INPUT\v@INPUT\v\i\p    \i\p\aPRESET e PSET\v@PSET\v\i\p
+                     \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aAttributi e valori di colore\v@color.table\v\i\p
+                     \i\p\aModalit… schermo\v@screen.modes\v\i\p
+.context PAINT
+.context @PAINT
+:nIstruzione PAINT
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Riempie un'area grafica con un colore o con un motivo specificati.
+
+\bPAINT [STEP] (x!,y!)[,[{colore% | casella$}] [,[colorebordo%] [,sfondo$]]]\p
+
+    ş \bSTEP\p            Indica che le coordinate sono relative alla posizione
+                      corrente del cursore grafico.
+    ş \b(x!,y!)\p         Le coordinate dello schermo dove inizia il disegno.
+    ş \bcolore%\p         Un attributo di colore che stabilisce il colore di
+                      una superficie.
+    ş \btile$\p           Un motivo di riempimento largo 8 bit e lungo fino a
+                      64 byte che viene specificato come segue:
+
+                        casella$ = CHR$(arg1) + CHR$(arg2) + ... + CHR$(argn%)
+
+                      Gli argomenti usati con CHR$ sono numeri compresi tra 0
+                      e 255. Ciascuna funzione CHR$(argn%) definisce una
+                      striscia da 1 byte di 8 pixel del disegno in base alla
+                      forma binaria del numero.
+    ş \bcolorebordo%\p    Un attributo di colore che specifica il colore del bordo
+                      dell'area da riempire. PAINT interrompe il riempimento
+                      di un'area quando incontra un bordo del colore indicato.
+    ş \bsfondo$\p         Una striscia di caselle di sfondo da 1 byte di 8 pixel.
+                      Specificando una striscia di caselle di sfondo, Š
+                      possibile riempire un'area che era stata riempita in
+                      precedenza.
+
+    ş Gli attributi di colore disponibili dipendono dal tipo di adattatore
+      grafico del sistema e dalla modalit… schermo impostata dall'ultima
+      istruzione SCREEN.
+
+Esempio:
+    'Questo esempio richiede l'uso di un adattatore grafico a colori.
+    SCREEN 1
+    CIRCLE (106, 100), 75, 1
+    LINE (138, 35)-(288, 165), 1, B
+    PAINT (160, 100), 2, 1
+
+Si vedano inoltre    \i\p\aASC e CHR$\v@CHR$\v\i\p    \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+                     \i\p\aAttributi e valori di colore\v@color.table\v\i\p        \i\p\aModalit… schermo\v@screen.modes\v\i\p
+.context PALETTE
+.context @PALETTE
+:nIstruzioni PALETTE e PALETTE USING
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Cambia le assegnazioni di colore degli attributi di colore nella modalit…
+schermo corrente. PALETTE e PALETTE USING funzionano solo sui sistemi forniti
+di adattatori grafici EGA, VGA o MCGA.
+
+\bPALETTE [attributo%,colore&]\p
+\bPALETTE USING nomematrice#[(indice%)]\p
+
+    ş \battributo%\p    L'attributo di colore da cambiare.
+    ş \bcolore&\p       Un valore di colore da assegnare ad un attributo.
+    ş \bnomematrice#\p  Una matrice di valori di colore da assegnare all'insieme
+                    di attributi della modalit… schermo corrente. La matrice
+                    deve avere dimensioni sufficienti per assegnare un colore
+                    a tutti gli attributi.
+    ş \bindice%\p       L'indice del primo elemento della matrice da assegnare
+                    ad un attributo.
+
+    ş Gli attributi e i valori di colore disponibili dipendono dall'adattatore
+      grafico del sistema e dalla modalit… schermo impostata dall'ultima
+      istruzione SCREEN.
+
+Esempio:
+    'Questo esempio richiede l'uso di un adattatore grafico a colori.
+    PALETTE 0, 1
+    SCREEN 1
+    FOR i% = 0 TO 3: a%(i%) = i%: NEXT i%
+    LINE (138, 35)-(288, 165), 3, BF
+    LINE (20, 10)-(160, 100), 2, BF
+    DO
+        FOR i% = 0 TO 3
+            a%(i%) = (a%(i%) + 1) MOD 16
+        NEXT i%
+        PALETTE USING a%(0)
+    LOOP WHILE INKEY$ = ""
+
+Si vedano inoltre    \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+                     \i\p\aAttributi e valori di colore\v@color.table\v\i\p    \i\p\aModalit… schermo\v@screen.modes\v\i\p
+.context PCOPY
+.context @PCOPY
+:nIstruzione PCOPY
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Copia una pagina di memoria video in un'altra.
+
+\bPCOPY paginaorigine%,paginadestinazione%\p
+
+    ş \bpaginaorigine%\p         Il numero di una pagina di memoria video da
+                             copiare.
+    ş \bpaginadestinazione%\p    Il numero di una pagina di memoria video in
+                             cui copiare.
+
+    ş Il valore che indica la pagina video viene determinato dalle dimensioni
+      della memoria video e dalla modalit… schermo corrente.
+
+Esempio:
+    PCOPY 1, 3
+
+Si vedano inoltre    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aModalit… schermo\v@screen.modes\v\i\p
+.context SCREEN
+.context @SCREEN
+:nIstruzione SCREEN
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Imposta la modalit… schermo ed altre caratteristiche del video.
+
+\bSCREEN modalit…% [,[switchcolore%] [,[paginaattiva%] [,paginavisualizzata%]]]\p
+
+    ş \bmodalit…%\p       Imposta la modalit… schermo. Si veda \i\p\aModalit… schermo\v@screen.modes\v\i\p.
+    ş \bswitchcolore%\p   Un valore, 0 o 1, che determina il passaggio tra le
+                      visualizzazioni a colori e monocromatica (solo nelle
+                      modalit… 0 e 1):
+
+                      Modalit…    Valore      Azione
+                      ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍ     ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                      0           0           Disattiva il colore
+                      0           Nonzero     Attiva il colore
+                      1           0           Attiva il colore
+                      1           Nonzero     Disattiva il colore
+
+    ş \bpaginaattiva%\p           La pagina di schermo nella quale vengono scritti
+                              un testo o un grafico.
+    ş \bpaginavisualizzata%\p     La pagina di schermo attualmente visualizzata.
+
+Esempio:
+    'Questo esempio richiede l'uso di un adattatore grafico a colori.
+    SCREEN 1        'risoluzione grafica 320 x 200
+    LINE (110, 70)-(190, 120), , B
+    LINE (0, 0)-(320, 200), 3, , &HFF00
+
+Si vedano inoltre   \i\p\aCIRCLE\v@CIRCLE\v\i\p   \i\p\aCOLOR\v@COLOR\v\i\p   \i\p\aDRAW\v@DRAW\v\i\p   \i\p\aLINE\v@LINE\v\i\p    \i\p\aPAINT\v@PAINT\v\i\p
+                    \i\p\aFunzione SCREEN\v@screenf\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p   \i\p\aWINDOW\v@WINDOW\v\i\p  \i\p\aModalit… schermo\v@screen.modes\v\i\p
+.context @screen.modes
+:nModalit… schermo
+  \i\p\aSommario\vhelpTableId\v\i\p  \i\p\aIndice\vhelpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+La tabella seguente riporta le principali caratteristiche delle diverse
+modalit… schermo:
+
+ÄÄÄÄÄÄÄÄÄÄAdattatori MDPA, CGA, Hercules, Olivetti, EGA, VGA o MCGAÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 0: solo modalit… testo
+    ş formato testo 40 x 25, 40 x 43, 40 x 50, 80 x 25, 80 x 43 o 80 x 50,
+      casella carattere con risoluzione 8 x 8 (8 x 14, 9 x 14 o 9 x 16 con
+      EGA o VGA)
+    ş 16 colori assegnati ad uno qualsiasi dei 16 attributi (con CGA o EGA)
+    ş 64 colori assegnati ad uno qualsiasi dei 16 attributi (con EGA o VGA)
+    ş 8 pagine di memoria video (0-7), 4 pagine (0-3), 2 pagine (0-1) o
+      1 pagina (0), a seconda della risoluzione testo e dell'adattatore
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄAdattatori CGA, EGA, VGA o MCGAÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 1: risoluzione grafica 320 x 200
+    ş formato testo 40 x 25, casella carattere con risoluzione 8 x 8
+    ş 16 colori di fondo ed uno dei due set di colori di fondo assegnati con
+      l'istruzione COLOR (con CGA)
+    ş 16 colori assegnati a 4 attributi (con EGA o VGA)
+    ş 1 pagina di memoria video (0)
+SCREEN 2: risoluzione grafica 640 x 200
+    ş formato testo 80 x 25, casella carattere con risoluzione 8 x 8
+    ş 16 colori assegnati a 2 attributi (con EGA o VGA)
+    ş 1 pagina di memoria video (0)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄAdattatori Hercules, Olivetti o AT&TÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 3: richiede l'adattatore Hercules e l'uso di uno schermo monocromatico
+    ş risoluzione grafica 720 x 348
+    ş formato testo 80 x 25, casella carattere con risoluzione 9 x 14
+    ş di norma, 2 pagine di memoria video (0-1); 1 pagina (0) qualora il
+      sistema comprenda un secondo adattatore video a colori
+    ş l'istruzione PALETTE non Š supportata
+    ş Š necessario richiamare il driver Hercules MSHERC.COM prima di poter
+      usare la modalit… schermo 3
+SCREEN 4:
+    ş supporta i sistemi Olivetti M24, M240, M28, M280, M380, M380/C, M380/T
+      e i sistemi AT&T della serie 6300
+    ş risoluzione grafica 640 x 400
+    ş formato testo 80 x 25, casella carattere con risoluzione 8 x 16
+    ş 1 di 16 colori assegnato come colore di primo piano, selezionato dalla
+      istruzione COLOR; il colore di fondo Š impostato come nero
+    ş 1 pagina di memoria video (0)
+    ş l'istruzione PALETTE non Š supportata
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄAdattatori EGA o VGAÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 7: risoluzione grafica 320 x 200
+    ş formato testo 40 x 25, casella carattere con risoluzione 8 x 8
+    ş assegnazione di 16 colori ad uno qualsiasi dei 16 attributi
+    ş con adattatore EGA con 64 Kb di memoria, 2 pagine di memoria video
+      (0-1); negli altri casi, 8 pagine (0-7)
+SCREEN 8: risoluzione grafica 640 x 200
+    ş formato testo 80 x 25, casella carattere con risoluzione 8 x 8
+    ş assegnazione di 16 colori ad uno qualsiasi dei 16 attributi
+    ş con adattatore EGA con 64 Kb di memoria, 1 pagina di memoria video (0);
+      negli altri casi, 4 pagine (0-3)
+SCREEN 9: risoluzione grafica 640 x 350
+    ş formato testo 80 x 25 o 80 x 43, casella carattere con risoluzione
+      8 x 14 o 8 x 8
+    ş con un adattatore con 64 Kb di memoria, 16 colori assegnati a 4
+      attributi; con un adattatore con pi— di 64 Kb di memoria, 64 colori
+      assegnati a 16 attributi
+    ş con un adattatore EGA con 64 Kb di memoria, 1 una pagina di memoria
+      video (0); negli altri casi, 2 pagine (0-1)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄAdattatori EGA o VGA, solo con monitor monocromaticiÄÄÄÄÄÄÄÄÄ
+SCREEN 10: risoluzione grafica 640 x 350, solo con monitor monocromatici
+    ş formato testo 80 x 25 o 80 x 43, casella carattere con risoluzione
+      8 x 14 o 8 x 8
+    ş fino a 9 pseudocolori assegnati a 4 attributi
+    ş 2 pagine di memoria video (0-1), richiede un adattatore video con
+      256 Kb di memoria
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄAdattatori VGA o MCGAÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Screen 11 (VGA o MCGA)
+    ş risoluzione grafica 640 x 480
+    ş formato testo 80 x 30 o 80 x 60, casella carattere con risoluzione
+      8 x 16 o 8 x 8
+    ş assegnazione di 256 x 1024 colori a 2 attributi
+    ş 1 pagina di memoria video (0)
+Screen 12 (VGA)
+    ş risoluzione grafica 640 x 480
+    ş formato testo 80 x 30 o 80 x 60, casella carattere con risoluzione
+      8 x 16 o 8 x 8
+    ş assegnazione di 256 x 1024 colori a 16 attributi
+    ş 1 pagina di memoria video (0)
+Screen 13 (VGA o MCGA)
+    ş risoluzione grafica 320 x 200
+    ş formato testo 40 x 25, casella carattere con risoluzione 8 x 8
+    ş assegnazione di 256 x 1024 colori a 256 attributi
+    ş 1 pagina di memoria video (0)
+
+Si veda inoltre    \i\p\aIstruzione SCREEN\v@SCREEN\v\i\p
+.context @screenf
+:nFunzione SCREEN
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Restituisce il valore ASCII o l'attributo di colore di un carattere contenuto
+in una posizione sullo schermo specificata.
+
+\bSCREEN (riga%,colonna% [,flagcolore%])\p
+
+    ş \briga%\p         La coordinata della riga del carattere.
+    ş \bcolonna%\p      La coordinata della colonna del carattere.
+    ş \bflagcolore%\p   Un valore, 0 o 1, che indica ci• che viene
+                    restituito.
+
+                 Valore              Restituisce
+                 ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                 0 (oppure nulla)    il codice ASCII del carattere
+                 1                   l'attributo di colore del carattere.
+
+Esempio:
+    CLS
+    PRINT "Salve"
+    PRINT "Il valore ASCII del carattere nella posizione 1,1 Š"; SCREEN(1, 1)
+
+Si vedano inoltre    \i\p\aPOINT\v@POINT\v\i\p                  \i\p\aCodici di carattere ASCII\v@ac\v\i\p
+                     \i\p\aIstruzione SCREEN\v@SCREEN\v\i\p      \i\p\aAttributi e valori di colore\v@color.table\v\i\p
+.context VIEW
+.context @VIEW
+:nIstruzione VIEW
+  \i\p\aSommario\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aPrecedente\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definisce le dimensioni e la posizione del viewport dove devono essere
+visualizzati i grafici.
+
+\bVIEW [[SCREEN] (x1!,y1!)-(x2!,y2!) [,[colore%] [,bordo%]]]\p
+
+    ş \bSCREEN\p                 Indica che le coordinate sono relative allo
+                             schermo e non al viewport.
+    ş \b(x1!,y1!)-(x2!,y2!)\p    Le coordinate degli angoli opposti del viewport.
+    ş \bcolore%\p                Un attributo che imposta il colore di riempimento
+                             del viewport.
+    ş \bbordo%\p                 Un attributo che imposta il colore del bordo del
+                             viewport.
+
+    ş Se vengono omessi tutti gli argomenti, il viewport coincider… con lo
+      schermo intero.
+    ş Gli attributi di colore disponibili dipendono dall'adattatore grafico
+      del sistema e dalla modalit… impostata dall'ultima istruzione SCREEN.
+
+Esempio:
+    'Questo esempio richiede l'uso di un adattatore grafico a colori.
+    SCREEN 1
+    VIEW (10, 10)-(300, 180), , 1
+    LOCATE 1, 11: PRINT "Questo Š un viewport grafico di grandi dimensioni."
+    VIEW SCREEN (80, 80)-(200, 125), , 1
+    LOCATE 11, 11: PRINT "Questo Š un viewport grafico di piccole dimensioni."
+
+Si vedano inoltre    \i\p\aCLS\v@CLS\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+                     \i\p\aAttributi e valori di colore\v@color.table\v\i\p       \i\p\aModalit… schermo\v@screen.modes\v\i\p
+
+

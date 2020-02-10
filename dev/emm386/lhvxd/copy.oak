@@ -1,0 +1,17 @@
+diris = emm386\lhvxd
+
+all:
+   xcopy $(diris)\makefile.oak $(OAKDIR)\dev\$(diris)\makefile < $(OAKDIR)\f.key
+   xcopy $(diris)\makeflag.mk  $(OAKDIR)\dev\$(diris)
+   xcopy $(diris)\loadhi.def   $(OAKDIR)\dev\$(diris)
+   xcopy $(diris)\instinit.obj $(OAKDIR)\dev\$(diris)
+   xcopy $(diris)\instswap.obj $(OAKDIR)\dev\$(diris)
+   xcopy $(diris)\loadhi.obj   $(OAKDIR)\dev\$(diris)
+   xcopy $(diris)\umb.obj      $(OAKDIR)\dev\$(diris)
+
+#   xcopy $(diris)\instinit.obj $(OAKDIR)\lang\$(COUNTRY)\dev\$(diris) < $(OAKDIR)\d.key
+#   xcopy $(diris)\instswap.obj $(OAKDIR)\lang\$(COUNTRY)\dev\$(diris)
+#   xcopy $(diris)\loadhi.obj   $(OAKDIR)\lang\$(COUNTRY)\dev\$(diris)
+#   xcopy $(diris)\umb.obj      $(OAKDIR)\lang\$(COUNTRY)\dev\$(diris)
+
+

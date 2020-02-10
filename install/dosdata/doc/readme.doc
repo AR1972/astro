@@ -1,0 +1,20 @@
+
+	Copyright (c) 1991 - Microsoft Corp.
+	All rights reserved.
+	Microsoft Confidential
+
+
+The program DOSDATA.EXE is used to compact the source data files for
+the retail upgrade into DOSDATA.DAT, the master data file.
+There are currently two source files:
+
+	list.330: contains data for various OEM DOS 3.30's
+	upgrade.401: contains data for the retail upgrade DOS
+	
+To build the master data file, type these commands:
+
+	dosdata list.330
+	dosdata upgrade.401
+
+
+

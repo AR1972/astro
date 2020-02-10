@@ -1,0 +1,211 @@
+.comment ******************************************************************
+.comment *  Procedure Family - QBasic                                     *
+.comment ******************************************************************
+.comment * 1/10/90 Cleaned comments.
+.comment *    -- JeffWe
+.comment ******************************************************************
+.context CONST
+.context @CONST
+:nCONST Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Declares one or more symbolic constants.
+
+\bCONST constantname = expression [,constantname = expression]...\p
+
+    ş \bconstantname\p    The name of the constant. This name can consist of up
+                      to 40 characters and must begin with a letter. Valid
+                      characters are A-Z, 0-9, and period (.).
+    ş \bexpression\p      An expression that is assigned to the constant. The
+                      expression can consist of literals (such as 1.0), other
+                      constants, any arithmetic or logical operators except
+                      exponentiation (^), or a single literal string.
+
+Example:
+    CONST PI = 3.141593
+    INPUT "Radius of Circle: "; r
+    PRINT "Area = "; PI * r ^ 2
+.context DECLARE
+.context @DECLARE
+.context ANY
+.context @ANY
+:nDECLARE Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Declares a FUNCTION or SUB procedure and invokes argument data type checking.
+
+\bDECLARE {FUNCTION | SUB} name [([parameterlist])]\p
+
+    ş \bname\p             The name of the procedure.
+    ş \bparameterlist\p    One or more variables that specify parameters to be
+                       passed to the procedure when it is called:
+
+                       \bvariable[( )] [AS type] [, variable[( )] [AS type]]...\p
+
+		       \bvariable\p    A Basic variable name.
+                       \btype\p        The data type of the variable (INTEGER,
+                                   LONG, SINGLE, DOUBLE, STRING, or a
+                                   user-defined data type). ANY allows any
+                                   data type.
+
+    ş DECLARE is required if you call SUB procedures without CALL. QBasic
+      automatically generates DECLARE statements when you save your program.
+
+Example:
+    The program REMLINE.BAS illustrates declaring FUNCTION and SUB
+    procedures. To view or run this program, load REMLINE.BAS using the Open
+    command from the File menu.
+
+See Also    \i\p\aCALL\v@CALL\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context DEF
+.context @DEF
+:nDEF FN Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Defines a function.
+
+\bDEF FNname[(parameterlist)] = expression\p
+\bDEF FNname[(parameterlist)]\p
+    \b[statementblock]\p
+  \bFNname = expression\p
+    \b[statementblock]\p
+  \bEXIT DEF]\p
+    \b[statementblock]\p
+  \bEND DEF\p
+
+    ş \bparameterlist\p    One or more arguments in the following form:
+
+                       \bvariable[( )] [AS type] [, variable[( )] [AS type]]...\p
+
+		       \bvariable\p    A Basic variable name.
+                       \btype\p        The data type of the variable (INTEGER,
+                                   LONG, SINGLE, DOUBLE, STRING, or a
+                                   user-defined data type).
+
+    ş \bexpression\p       The return value of the function.
+
+    ş The FUNCTION statement provides a better way to define a function.
+
+See Also    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p
+.context ENVIRON
+.context @ENVIRON
+.context ENVIRON$
+.context @ENVIRON$
+:nENVIRON$ Function, ENVIRON Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ENVIRON$ returns a DOS environment string.
+ENVIRON changes or adds an environment string in the DOS environment table.
+
+\bENVIRON$ (env-variable$)\p
+\bENVIRON$ (n%)\p
+\bENVIRON stringexpression$\p
+
+    ş \benv-variable$\p        The name of a DOS environment variable.
+    ş \bn%\p                   Specifies that ENVIRON$ returns the nth string
+                           from the environment string table.
+    ş \bstringexpression$\p    The name and setting of a DOS environment
+                           variable (such as PATH or PROMPT) in one of the
+                           following forms:
+
+                           \benv-variable$=env-string$\p
+                           \benv-variable$ env-string$\p
+
+    ş Changes made by the ENVIRON statement are erased when the program ends.
+
+Example:
+    ENVIRON "PATH=TEST"
+    PRINT ENVIRON$("PATH")
+.context FUNCTION
+.context @FUNCTION
+:nFUNCTION Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Defines a FUNCTION procedure.
+
+\bFUNCTION name [(parameterlist)] [STATIC]\p
+    \b[statementblock]\p
+  \bname = expression\p
+    \b[statementblock]\p
+\bEND FUNCTION\p
+
+    ş \bname\p             The name of the function and the data type it returns,
+                       specified by a data-type suffix (%, &, !, #, or $).
+    ş \bparameterlist\p    One or more variables that specify parameters to be
+                       passed to the function when it is called:
+
+                       \bvariable[( )] [AS type] [, variable[( )] [AS type]]...\p
+
+		       \bvariable\p    A Basic variable name.
+                       \btype\p        The data type of the variable (INTEGER,
+                                   LONG, SINGLE, DOUBLE, STRING, or a
+                                   user-defined data type).
+
+    ş \bSTATIC\p           Specifies that the values of the function's local
+                       variables are saved between function calls.
+    ş \bexpression\p       The return value of the function.
+
+    ş When you call the function, you can specify that an argument's value
+      will not be changed by the function by enclosing the argument in
+      parentheses.
+
+
+Example:
+    The program REMLINE.BAS illustrates calling FUNCTION procedures. To view
+    or run this program, load REMLINE.BAS using the Open command from the
+    File menu.
+
+See Also    \i\p\aDECLARE\v@DECLARE\v\i\p    \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context SHELL
+.context @SHELL
+:nSHELL Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Suspends execution of a Basic program to run a DOS command or batch file.
+
+\bSHELL [commandstring$]\p
+
+    ş \bcommandstring$\p    The name of a DOS command or batch file.
+
+    ş Your program resumes when the DOS command or batch file completes.
+    ş If you omit the command string, SHELL invokes a DOS shell and displays
+      the DOS prompt. Use the EXIT command to resume your program.
+
+Example:
+    SHELL "DIR"
+.context SUB
+.context @SUB
+:nSUB Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Defines a SUB procedure.
+
+\bSUB name[(parameterlist)] [STATIC]\p
+  \b[statementblock]\p
+\bEND SUB\p
+
+    ş \bname\p             The name of the SUB procedure, up to 40 characters
+                       long, with no data type suffix.
+    ş \bparameterlist\p    One or more variables that specify parameters to be
+                       passed to the SUB procedure when it is called:
+
+                       \bvariable[( )] [AS type] [, variable[( )] [AS type]]...\p
+
+		       \bvariable\p    A Basic variable name.
+                       \btype\p        The data type of the variable (INTEGER,
+                                   LONG, SINGLE, DOUBLE, STRING, or a
+                                   user-defined data type).
+
+    ş \bSTATIC\p           Specifies that the values of the SUB procedure's
+                       local variables are saved between function calls.
+
+    ş When you call the SUB procedure, you can specify that an argument's
+      value will not be changed by the procedure by enclosing the argument
+      in parentheses.
+
+Example:
+    The program REMLINE.BAS illustrates calling SUB procedures. To view or
+    run this program, load REMLINE.BAS using the Open command from the File
+    menu.
+
+See Also    \i\p\aCALL\v@CALL\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p

@@ -1,0 +1,183 @@
+#	Sizes for bottom strip / status line used in QBASIC/EDIT for DOS5
+#	Created by Terry Farrell. (terryf)
+#	January 1990.	These tokens are for the file uinhelp.src and they
+#	produce the file uinhelp.asm.
+#
+#
+# PLA's -------
+# don't panic about the size of this file, there is very little
+# calculating to be done, just follow the comments and you will
+# see what the numbers mean for the American version of the program.
+# The strings shown in the comments below can be found in the file
+# qbasmsgs.txt.
+#
+
+
+
+
+#----------------------------------------------------------------------
+# line is as follows for MSG_StatusShiftF1
+#
+#------------------1---------2---------3---------4---------5---------------
+#--------012345678901234567890123456789012345678901234567890123456789
+#--------<Shift+F1=Help> < 												 >
+#--------^---------------^-----------
+# when you have translated please put in the numbers for the equivalent
+# positions in your strings.
+# i.e. if the user clicks on any position from 1 to 16 f1 is selected
+[[uinhelp_01]]=1
+[[uinhelp_02]]=16
+
+#----------------------------------------------------------------------
+# line is as follows for MSG_StatusShiftF1 and the MSG_StatusEdit
+# both stuck together
+#
+#--------0---------1---------2---------3---------4---------5---------
+#--------012345678901234567890123456789012345678901234567890123456789
+#--------<Shift+F1=Help> <F6=Window> <F2=Subs> <F5=Run> <F8=Step>
+#-------------------------^----------^^--------^^-------^^--------^
+# when you have translated please put in the numbers for the equivalent
+# positions in your strings.
+# i.e. if the user clicks on any position from 17 to 28 f6 is selected
+#		 if the user clicks on any position from 29 to 38 f2 is selected
+#		 if the user clicks on any position from 39 to 47 f5 is selected
+#		 if the user clicks on any position from 48 to 57 f8 is selected
+#----------------------------------------------------------------------
+[[uinhelp_03]]=17
+[[uinhelp_04]]=28
+[[uinhelp_05]]=29
+[[uinhelp_06]]=38
+[[uinhelp_07]]=39
+[[uinhelp_08]]=47
+[[uinhelp_09]]=48
+[[uinhelp_10]]=57
+
+#----------------------------------------------------------------------
+# line is as follows for MSG_StatusShiftF1 and the MSG_StatusRunning
+# both stuck together
+#
+#------------------1---------2---------3---------4---------5---------------
+#--------012345678901234567890123456789012345678901234567890123456789
+#--------<Shift+F1=Help> <F5=Continue> <F9=Toggle Bkpt> <F8=Step>
+#-------------------------^------------^^---------------^^--------^---
+# when you have translated please put in the numbers for the equivalent
+# positions in your strings.
+# i.e. if the user clicks on any position from 17 to 30 f5 is selected
+#		 if the user clicks on any position from 31 to 47 f9 is selected
+#		 if the user clicks on any position from 48 to 57 f8 is selected
+#----------------------------------------------------------------------
+[[uinhelp_11]]=17
+[[uinhelp_12]]=30
+[[uinhelp_13]]=31
+[[uinhelp_14]]=47
+[[uinhelp_15]]=48
+[[uinhelp_16]]=57
+
+#----------------------------------------------------------------------
+# line is as follows for MSG_StatusShiftF1 and the MSG_StatusImmediate
+# both stuck together
+#
+#------------------1---------2---------3---------4---------5---------------
+#--------012345678901234567890123456789012345678901234567890123456789
+#--------<Shift+F1=Help> <F6=Window> <Enter=Execute Line>
+#-------------------------^----------^^-------------------^
+# when you have translated please put in the numbers for the equivalent
+# positions in your strings.
+# i.e. if the user clicks on any position from 17 to 28 f6 is selected
+#		 if the user clicks on any position from 29 to 49 enter is selected
+#----------------------------------------------------------------------
+[[uinhelp_17]]=17
+[[uinhelp_18]]=28
+[[uinhelp_19]]=29
+[[uinhelp_20]]=49
+
+#----------------------------------------------------------------------
+# line is as follows for MSG_StatusShiftF1 and the MSG_StatusHelp
+# both stuck together
+#
+#------------------1---------2---------3---------4---------5---------------
+#--------012345678901234567890123456789012345678901234567890123456789
+#--------<Shift+F1=Help> <F6=Window> <Esc=Cancel> <Ctrl+F1=Next> <Alt+F1=Back>
+#-------------------------^----------^^-----------^^-------------^^------------^
+# when you have translated please put in the numbers for the equivalent
+# positions in your strings.
+# i.e. if the user clicks on any position from 17 to 28 f6 is selected
+#		 if the user clicks on any position from 29 to 41 esc is selected
+#		 if the user clicks on any position from 42 to 56 ctrl+f1 is selected
+#		 if the user clicks on any position from 57 to 70 alt+f1 is selected
+#----------------------------------------------------------------------
+[[uinhelp_21]]=17
+[[uinhelp_22]]=28
+[[uinhelp_23]]=29
+[[uinhelp_24]]=41
+[[uinhelp_25]]=42
+[[uinhelp_26]]=56
+[[uinhelp_27]]=57
+[[uinhelp_28]]=70
+
+#----------------------------------------------------------------------
+# line is as follows for MSG_StatusShiftF1 and the MSG_StatusQEdit
+# both stuck together
+#
+#------------------1---------2---------3---------4---------5---------------
+#--------012345678901234567890123456789012345678901234567890123456789
+#--------MS-DOS Editor	 <F1=Help> Press ALT to activate menus
+#-------------------------^-------^
+# when you have translated please put in the numbers for the equivalent
+# positions in your strings.
+# i.e. if the user clicks on any position from 16 to 25 f1 is selected
+#----------------------------------------------------------------------
+[[uinhelp_29]]=16
+[[uinhelp_30]]=25
+
+#----------------------------------------------------------------------
+# line is as follows for MSG_StatusShiftF1 and the MSG_StatusQHelp
+# both stuck together
+#
+#------------------1---------2---------3---------4---------5---------------
+#--------012345678901234567890123456789012345678901234567890123456789
+#---------<F1=Help> <F6=Window> <Esc=Cancel> <Ctrl+F1=Next> <Alt+F1=Back>
+#---------^-------^-^----------^^-----------^^-------------^^------------^ 
+# when you have translated please put in the numbers for the equivalent
+# positions in your strings.
+# i.e. if the user clicks on any position from	1 to	9 f1 is selected
+#		 if the user clicks on any position from 11 to 22 f6 is selected
+#		 if the user clicks on any position from 23 to 35 esc is selected
+#		 if the user clicks on any position from 36 to 50 ctrl+f1 is selected
+#		 if the user clicks on any position from 51 to 64 alt+f1 is selected
+#----------------------------------------------------------------------
+[[uinhelp_31]]=01
+[[uinhelp_32]]=09
+[[uinhelp_33]]=11
+[[uinhelp_34]]=22
+[[uinhelp_35]]=23
+[[uinhelp_36]]=35
+[[uinhelp_37]]=36
+[[uinhelp_38]]=50
+[[uinhelp_39]]=51
+[[uinhelp_40]]=64
+
+#
+# ADDED for MsDos60
+
+# QHELP help viewer start-up status: MSG_StatusQHStart
+#        000000000011111111112222222222333333333344444444445555555555
+#        012345678901234567890123456789012345678901234567890123456789
+#         MS-DOS Help Viewer  <F1=Help> Press ALT to activate menus
+#                             ^       ^
+#                             |       |
+[[uinhelp_41]]=21
+[[uinhelp_42]]=29
+
+
+# QHELP help window active: MSG_StatusQHHelp
+#        00000000001111111111222222222233333333334444444444555555555566666666667
+#        01234567890123456789012345678901234567890123456789012345678901234567890
+#         <Alt+C=Contents> <Alt+N=Next> <Alt+B=Back>
+#         ^               ^^           ^^           ^
+[[uinhelp_43]]=01
+[[uinhelp_44]]=17
+[[uinhelp_45]]=18
+[[uinhelp_46]]=30
+[[uinhelp_47]]=31
+[[uinhelp_48]]=43

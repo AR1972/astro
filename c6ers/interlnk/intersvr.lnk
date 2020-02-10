@@ -1,0 +1,21 @@
+bell.obj           +
+calldvr.obj        +
+crctab.obj         +
+ctype.obj          +
+getprog.obj        +
+int2f.obj          +
+longtoa.obj        +
+percent.obj        +
+setcerr.obj        +
+switcher.obj       +
+main.obj           +
+handler.obj        +
+clone.obj          +
+criterr.obj        +
+str.obj            +
+print.obj          +
+devinfo.obj        +
+version.obj        +
+drivinfo.obj       
+intersvr.exe,,
+paragon\lib\plibs.lib fxlib\fastlynx.lib;

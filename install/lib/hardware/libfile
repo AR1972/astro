@@ -1,0 +1,14 @@
+hardware.lib
+y
++cmos.obj&
++getcpu.obj&
++getext.obj&
++getemm.obj&
++getmem.obj&
++getmodel.obj&
++himem.obj&
++ms_mice.obj&
++ramdrv.obj&
++smartdrv.obj&
++vfeat.obj&
++syquest.obj;

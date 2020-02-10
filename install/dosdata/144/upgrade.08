@@ -1,0 +1,14 @@
+;===================================================================
+;
+;	Copyright (c) 1991 - Microsoft Corp.
+;	All rights reserved.
+;	Microsoft Confidential
+;
+;===================================================================
+
+
+;Old device drivers whose paths are to be changed
+
+[upd-device]
+
+;..\upd-dev.txt follows

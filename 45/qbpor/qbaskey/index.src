@@ -1,0 +1,220 @@
+.comment ******************************************************************
+.comment *  Index file - QBasic                                           *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/17/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Copied QBI Index.                                             *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Added Unsupported Keywords.                                   *
+.comment *  Made links local.                                             *
+.comment ******************************************************************
+.context @helpIndexId
+.context helpIndexId
+.context @a
+:nIndice de Socorro do QBasic on-line
+  \i\p\aConteฃdo\v@helpTableId\v\i\p  \bIndice\p  \i\p\aVoltar\v!B\v\i\p
+ฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
+Para obter o socorro de uma palavra-chave do QBasic na lista abaixo:
+    1. Pressione a tecla da primeira letra da palavra-chave.
+    2. Use as teclas de direao para deslocar o cursor para a palavra-chave.
+    3. Pressione F1 para exibir o texto de socorro na janela do Socorro.
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน A บ
+                                                                  ศอออผ
+  \aABS Funao\v@ABS\v                         \aAPPEND Palavra-chave\v@APPEND\v
+  \aABSOLUTE Palavra-chave\v@ABSOLUTE\v             \aAS Palavra-chave\v@AS\v
+  \aACCESS Palavra-chave\v@ACCESS\v               \aASC Funao\v@ASC\v
+  \aAND Operador\v@AND\v                       \aATN Funao\v@ATN\v
+  \aANY Palavra-chave\v@ANY\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน B บ
+                                                                  ศอออผ
+  \aBASE Palavra-chave\v@BASE\v                 \aBLOAD Instruao\v@BLOAD\v
+  \aConjunto de Caracteres do Basic\v@fun.character.set\v    \aOperadores Booleanos\v@AND\v
+  \aBEEP Instruao\v@BEEP\v                     \aBSAVE Instruao\v@BSAVE\v
+  \aBINARY Palavra-chave\v@BINARY\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน C บ
+                                                                  ศอออผ
+  \aCALL Instruao\v@CALL\v                     \aCOLOR Instruao\v@COLOR\v
+  \aCALL ABSOLUTE Instruao\v@ABSOLUTE\v            \aCOM Instruao\v@COM\v
+  \aCASE Palavra-chave\v@SELECT\v                 \aCOMMON Instruao\v@COMMON\v
+  \aCDBL Funao\v@CDBL\v                        \aCONST Instruao\v@CONST\v
+  \aCHAIN Instruao\v@CHAIN\v                    \aCOS Funao\v@COS\v
+  \aCHDIR Instruao\v@CHDIR\v                    \aCSNG Funao\v@CSNG\v
+  \aCHR$ Funao\v@CHR$\v                        \aCSRLIN Funao\v@CSRLIN\v
+  \aCINT Funao\v@CINT\v                        \aCVD Funao\v@CVD\v
+  \aCIRCLE Instruao\v@CIRCLE\v                   \aCVDMBF Funao\v@CVDMBF\v
+  \aCLEAR Instruao\v@CLEAR\v                    \aCVI Funao\v@CVI\v
+  \aCLNG Funao\v@CLNG\v                        \aCVL Funao\v@CVL\v
+  \aCLOSE Instruao\v@CLOSE\v                    \aCVS Funao\v@CVS\v
+  \aCLS Instruao\v@CLS\v                      \aCVSMBF Funao\v@CVSMBF\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน D บ
+                                                                  ศอออผ
+  \aDATA Instruao\v@DATA\v                     \aDEFLNG Instruao\v@DEFLNG\v
+  \aPalavras-chave de tipo de dados\v@INTEGER\v    \aDEFSNG Instruao\v@DEFSNG\v\p
+  \aDATE$ Funao\v@datef\v                       \aDEFSTR Instruao\v@DEFSTR\v
+  \aDATE$ Instruao\v@DATE$\v                    \aDIM Instruao\v@DIM\v
+  \aDECLARE Instruao\v@DECLARE\v                  \aDO...LOOP Instruao\v@DO\v\p
+  \aDEF FN Instruao\v@DEF\v                   \aDOUBLE Palavra-chave\v@DOUBLE\v
+  \aDEF SEG Instruao\v@SEG\v                  \aDRAW Instruao\v@DRAW\v
+  \aDEFDBL Instruao\v@DEFDBL\v                   \a$DYNAMIC Metacomando\v@$DYNAMIC\v
+  \aDEFINT Instruao\v@DEFINT\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน E บ
+                                                                  ศอออผ
+  \aELSE Palavra-chave\v@IF\v                 \aERDEV Funao\v@ERDEV\v
+  \aELSEIF Palavra-chave\v@IF\v               \aERDEV$ Funao\v@ERDEV$\v\p
+  \aEND Instruao\v@END\v                      \aERL Funao\v@ERL\v\p
+  \aENVIRON Instruao\v@ENVIRON\v                  \aERR Funao\v@ERR\v
+  \aENVIRON$ Funao\v@ENVIRON$\v                    \aERROR Instruao\v@ERROR\v
+  \aEOF Funao\v@EOF\v                         \aEXIT Instruao\v@EXIT\v
+  \aEQV Operador\v@EQV\v                       \aEXP Funao\v@EXP\v
+  \aERASE Instruao\v@ERASE\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน F บ
+                                                                  ศอออผ
+  \aFIELD Instruao\v@FIELD\v                    \aFOR...NEXT Instruao\v@FOR\v
+  \aFILEATTR Funao\v@FILEATTR\v                    \aFRE Funao\v@FRE\v
+  \aFILES Instruao\v@FILES\v                    \aFREEFILE Funao\v@FREEFILE\v
+  \aFIX Funao\v@FIX\v                         \aFUNCTION Instruao\v@FUNCTION\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน G บ
+                                                                  ศอออผ
+  \aGET (File I/O) Instruao\v@GET\v           \aGOSUB Instruao\v@GOSUB\v
+  \aGET Instruao (Gr ficos)\v@ggx\v           \aGOTO Instruao\v@GOTO\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน H บ
+                                                                  ศอออผ
+  \aHEX$ Funao\v@HEX$\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน I บ
+                                                                  ศอออผ
+  \aIF...THEN...ELSE Instruao\v@IF\v         \aINSTR Funao\v@INSTR\v
+  \aIMP Operador\v@IMP\v                       \aINT Funao\v@INT\v
+  \aINKEY$ Funao\v@INKEY$\v                      \aINTEGER Palavra-chave\v@INTEGER\v
+  \aINP Funao\v@INP\v                         \aIOCTL Instruao\v@IOCTL\v
+  \aINPUT Instruao\v@INPUT\v                    \aIOCTL$ Funao\v@IOCTL$\v
+  \aINPUT$ Funao\v@INPUT$\v                      \aIS Palavra-chave\v@IS\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน K บ
+                                                                  ศอออผ
+  \aKEY Instruao (Designaao)\v@KEY\v         \aKILL Instruao\v@KILL\v
+  \aKEY Instruao (An lise de Evento)\v@ketv\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน L บ
+                                                                  ศอออผ
+  \aLBOUND Funao\v@LBOUND\v                      \aLOCK...UNLOCK Instruoes\v@LOCK\v\p
+  \aLCASE$ Funao\v@LCASE$\v                      \aLOF Funao\v@LOF\v\p
+  \aLEFT$ Funao\v@LEFT$\v                       \aLOG Funao\v@LOG\v\p
+  \aLEN Funao\v@LEN\v                         \aLONG Palavra-chave\v@LONG\v\p
+  \aLET Instruao\v@LET\v                      \aLOOP Palavra-chave\v@LOOP\v\p
+  \aLINE Instruao (Gr ficos)\v@LINE\v          \aLPOS Funao\v@LPOS\v\p
+  \aLINE INPUT Instruao\v@INPUT\v               \aLPRINT Instruao\v@LPRINT\v\p
+  \aLIST Palavra-chave\v@LIST\v                 \aLPRINT USING Instruao\v@lprintu\v
+  \aLOC Funao\v@LOC\v                         \aLSET Instruao\v@LSET\v\p
+  \aLOCATE Instruao\v@LOCATE\v                   \aLTRIM$ Funao\v@LTRIM$\v\p
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน M บ
+                                                                  ศอออผ
+  \aMID$ Funao\v@MID$\v                        \aMKI$ Funao\v@MKI$\v
+  \aMID$ Instruao\v@MID$\v                     \aMKL$ Funao\v@MKL$\v
+  \aMKD$ Funao\v@MKD$\v                        \aMKS$ Funao\v@MKS$\v
+  \aMKDIR Instruao\v@MKDIR\v                    \aMKSMBF$ Funao\v@MKSMBF$\v
+  \aMKDMBF$ Funao\v@MKDMBF$\v                     \aMOD Operador\v@MOD\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน N บ
+                                                                  ศอออผ
+  \aNAME Instruao\v@NAME\v                     \aNOT Operador\v@NOT\v
+  \aNEXT Palavra-chave\v@NEXT\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน O บ
+                                                                  ศอออผ
+  \aOCT$ Funao\v@HEX$\v                        \aON TIMER Instruao\v@TIMER\v
+  \aOFF Palavra-chave\v@OFF\v                  \aON...GOSUB Instruao\v@ongo\v\p
+  \aON COM Instruao\v@COM\v                   \aON...GOTO Instruao\v@ongo\v\p
+  \aON ERROR Instruao\v@onerr\v                 \aOPEN Instruao\v@OPEN\v\p
+  \aON Palavra-chave\v@ON\v                   \aOPEN COM Instruao\v@opcom\v
+  \aON KEY Instruao\v@ketv\v                   \aOPTION BASE Instruao\v@BASE\v\p
+  \aON PEN Instruao\v@PEN\v                   \aOR Operador\v@OR\v
+  \aON PLAY Instruao\v@playev\v                  \aOUT Instruao\v@OUT\v
+  \aON STRIG Instruao\v@STRIG\v                 \aOUTPUT Palavra-chave\v@OUTPUT\v\p
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน P บ
+								  ศอออผ
+  \aPAINT Instruao\v@PAINT\v                    \aPOINT Funao\v@POINT\v
+  \aPALETTE Instruoes\v@PALETTE\v                 \aPOKE Instruao\v@POKE\v
+  \aPCOPY Instruao\v@PCOPY\v                    \aPOS Funao\v@POS\v
+  \aPEEK Funao\v@PEEK\v                        \aPRESET Instruao\v@PRESET\v
+  \aPEN Funao\v@penf\v                         \aPRINT Instruao\v@PRINT\v
+  \aPEN Instruao\v@PEN\v                      \aPRINT USING Instruao\v@zpu\v
+  \aPLAY Funao\v@playf\v                        \aPSET Instruao\v@PSET\v
+  \aPLAY (Mฃsica) Instruao\v@PLAY\v            \aPUT (File I/O) Instruao\v@PUT\v
+  \aPLAY (An lise eventos) Instruoes\v@playev\v  \aPUT (Gr ficos) Instruao\v@pgfx\v
+  \aPMAP Funao\v@PMAP\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน R บ
+                                                                  ศอออผ
+  \aRANDOM Palavra-chave\v@RANDOM\v               \aRETURN Instruao\v@RETURN\v
+  \aRANDOMIZE Instruao\v@RANDOMIZE\v                \aRIGHT$ Funao\v@RIGHT$\v
+  \aREAD Instruao\v@READ\v                     \aRMDIR Instruao\v@RMDIR\v
+  \aREDIM Instruao\v@REDIM\v                    \aRND Funao\v@RND\v
+  \aREM Instruao\v@REM\v                      \aRSET Instruao\v@RSET\v
+  \aRESET Instruao\v@RESET\v                    \aRTRIM$ Funao\v@RTRIM$\v
+  \aRESTORE Instruao\v@RESTORE\v                  \aRUN Instruao\v@RUN\v
+  \aRESUME Instruao\v@RESUME\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน S บ
+                                                                  ศอออผ
+  \aSCREEN Funao\v@screenf\v                      \aSQR Funao\v@SQR\v
+  \aSCREEN Instruao\v@SCREEN\v                   \aSTATIC Instruao\v@STATIC\v
+  \aSEEK Funao\v@SEEK\v                        \a$STATIC Metacomando\v@$STATIC\v
+  \aSEEK Instruao\v@SEEK\v                     \aSTEP Palavra-chave\v@STEP\v
+  \aSELECT CASE Instruao\v@SELECT\v              \aSTICK Funao\v@STICK\v
+  \aSGN Funao\v@SGN\v                         \aSTOP Instruao\v@STOP\v
+  \aSHARED Instruao\v@SHARED\v                   \aSTR$ Funao\v@STR$\v
+  \aSHELL Instruao\v@SHELL\v                    \aSTRIG Funao\v@strigf\v
+  \aSIN Funao\v@SIN\v                         \aSTRIG Instruoes\v@STRIG\v
+  \aSINGLE Palavra-chave\v@SINGLE\v               \aSTRING Palavra-chave\v@STRING\v
+  \aSLEEP Instruao\v@SLEEP\v                    \aSTRING$ Funao\v@STRING$\v
+  \aSOUND Instruao\v@SOUND\v                    \aSUB Instruao\v@SUB\v
+  \aSPACE$ Funao\v@SPACE$\v                      \aSWAP Instruao\v@SWAP\v
+  \aSPC Funao\v@SPC\v                         \aSYSTEM Instruao\v@SYSTEM\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน T บ
+                                                                  ศอออผ
+  \aTAB Funao\v@TAB\v                         \aTIMER Instruoes\v@TIMER\v
+  \aTAN Funao\v@TAN\v                         \aTO Palavra-chave\v@TO\v
+  \aTHEN Palavra-chave\v@IF\v                 \aTROFF Instruao\v@TROFF\v
+  \aTIME$ Funao\v@tmf\v                       \aTRON Instruao\v@TRON\v
+  \aTIME$ Instruao\v@TIME$\v                    \aTYPE Instruao\v@TYPE\v
+  \aTIMER Funao\v@timerf\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน U บ
+                                                                  ศอออผ
+  \aUBOUND Funao\v@UBOUND\v                      \aUNTIL Palavra-chave\v@DO\v
+  \aUCASE$ Funao\v@UCASE$\v                      \aUSING Palavra-chave\v@USING\v
+  \aUNLOCK Instruao\v@UNLOCK\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน V บ
+                                                                  ศอออผ
+  \aVAL Funao\v@VAL\v                         \aVARSEG Funao\v@VARSEG\v
+  \aVARPTR Funao\v@VARPTR\v                      \aVIEW Instruao\v@VIEW\v
+  \aVARPTR$ Funao\v@VARPTR$\v                     \aVIEW PRINT Instruao\v@vupri\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน W บ
+                                                                  ศอออผ
+  \aWAIT Instruao\v@WAIT\v                     \aWIDTH Instruoes\v@WIDTH\v
+  \aWEND Palavra-chave\v@WEND\v                 \aWINDOW Instruao\v@WINDOW\v
+  \aWHILE...WEND Instruao\v@WEND\v             \aWRITE Instruao\v@WRITE\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน X บ
+                                                                  ศอออผ
+  \aXOR Operador\v@XOR\v

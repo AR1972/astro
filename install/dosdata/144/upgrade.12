@@ -1,0 +1,16 @@
+;===================================================================
+;
+;	Copyright (c) 1991 - Microsoft Corp.
+;	All rights reserved.
+;	Microsoft Confidential
+;
+;===================================================================
+
+[distr-6]
+
+dummy.6		;At least 1 entry required -- dummy filename OK.
+
+[distr-7]
+
+dummy.7		;At least 1 entry required -- dummy filename OK.
+

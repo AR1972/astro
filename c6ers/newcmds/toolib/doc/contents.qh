@@ -1,0 +1,77 @@
+.context Tools API
+.context Tools API Contents
+.context Internal Tools API
+.context h.default
+.context h.contents
+.topic Internal Tools Library API 
+.freeze 3
+
+		\iTools Application Programming Interface\p
+
+.list
+ARGS			    access runtime options as names and values
+CONNECT  	DOS only    connect and disconnect from network drives
+CTIME2L  		    convert time/date strings to binary values
+CURDIR   		    retrieve text of current directory
+DELNODE  		    remove a directory node and its descendants
+ENFILE   		    provide file enumeration routines
+ENVORINI 		    get text value from enironment or tools.ini
+ERROR    		    retrieve text of errno
+EXETYPE  		    return type of EXE file by looking at header
+FAPPEND  		    fast append of one file to another
+FASTCOPY 	OS2 only    use multiple threads to copy files
+FCOPY    		    copy one file to another
+FDELETE  		    perform delete with recovery option
+FEXPUNGE 		    remove all deleted objects from the index
+FGETL    		    expand tabs and return lines w/o separators
+FIND     		    find first and next matching files
+FMOVE    		    fast move between two file specs
+FORFILE  		    step through file names calling funciton()
+FORSEMI  		    walk a semicolon separated sstring */
+FPUTL    		    write a CRLF line to a file 
+FREESPAC 		    return amount of freespace on a drive
+FTW	     OS2 1.2 only   Walk a file tree, call fn() for each object
+GETATTR  		    return attribute for a directory entry
+HEAPCHK  		    heap consistency check routines
+HEAPDUMP 		    dump  heap info to file
+INIT     		    tools.ini management routines
+MAPENV			    search ENVIRONMENT for given values
+MAPSTR			    translate abbrieviated strings to integers
+MATCH    		    pattern match against DOS wild card chars
+MGETL    		    expand tabs and return lines w/o separators
+NTOI     		    convert an arbitrary based number to an integer 
+OPENDIR	     OS2 1.2 only   opendir() closedir() readdir() rewinddir()
+PATHCAT  		    concatenate a string onto another, handing path seps
+PATHCHR  		    return configuration dependent info on MSDOS
+PATHOPEN 		    parse and locate various logical file names
+PGETL    	OS2 only    do fgetl() from a pipe without blocking
+PIPE     	OS2 only    Xenix type pipe using 286DOS call
+PNAME    		    form a "pretty" version of a user file name
+ROOT     		    generate a path to a file from the root
+RSPAWN   		    start a child task with stdin/stdout redirected
+SETATTR  		    set attribute for a directory entry 
+STRCMPS 		    compare strings and ignore spaces
+STRPFX			    determine if one string is a prefix of another
+SWCHNG   		    change line entries in file /tools.ini format
+UPDATE   		    fill out filename definition string
+VECTOR   		    simple vector management
+ZALLOC   		    hoookable tools space allocator
+
+		\iFast 286 assembly routines\p
+
+GETL     		    fast file access routines
+INT      	DOS only    perform MSDOS absolute disk read/write
+KBHIT    		    check for character waiting from keyboard
+MAXMIN   		    maximum and minimum routines.
+MOVE     		    memory move and fill routines
+STRING   		    string functions for lattice C
+STRPRE   		    strpre functions for lattice C
+UNTAB    		    expand all tabs to spaces
+XTAB     		    translate tables for string case conversion
+BLANK    		    blank a region of the screen
+CURSOR   		    cursor location routine
+SCROLLDN 		    scroll a region of the screen down
+SCROLLUP 		    scroll a region of the screen up
+.context List Categories
+:i
+\aInternal Tools API\vInternal Tools API\v

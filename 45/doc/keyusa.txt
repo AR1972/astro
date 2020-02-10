@@ -1,0 +1,81 @@
+VK -> ASCII Translation for USA keyboard driver :
+=================================================
+labelB	AsciiTable		;base,shift,control
+VK			norm	shift	control
+----------		----	-----	-------
+VK_CANCEL		3	3	3
+VK_BACK 		8	8	127
+VK_TAB			9	9	--
+VK_RETURN		13	13	10
+VK_ESCAPE		27	27	27
+VK_SPACE		' '	' '	' '
+VK_EXECUTE		13	13	10
+VK_0			'0'	')'	--
+VK_1			'1'	'!'	--
+VK_2			'2'	'@'	0 **
+VK_3			'3'	'#'	--
+VK_4			'4'	'$'	--
+VK_5			'5'	'%'	--
+VK_6			'6'	'^'	30 **
+VK_7			'7'	'&'	--
+VK_8			'8'	'*'	--
+VK_9			'9'	'('	--
+VK_A			'a'	'A'	1
+VK_B			'b'	'B'	2
+VK_C			'c'	'C'	3
+VK_D			'd'	'D'	4
+VK_E			'e'	'E'	5
+VK_F			'f'	'F'	6
+VK_G			'g'	'G'	7
+VK_H			'h'	'H'	8
+VK_I			'i'	'I'	9
+VK_J			'j'	'J'	10
+VK_K			'k'	'K'	11
+VK_L			'l'	'L'	12
+VK_M			'm'	'M'	13
+VK_N			'n'	'N'	14
+VK_O			'o'	'O'	15
+VK_P			'p'	'P'	16
+VK_Q			'q'	'Q'	17
+VK_R			'r'	'R'	18
+VK_S			's'	'S'	19
+VK_T			't'	'T'	20
+VK_U			'u'	'U'	21
+VK_V			'v'	'V'	22
+VK_W			'w'	'W'	23
+VK_X			'x'	'X'	24
+VK_Y			'y'	'Y'	25
+VK_Z			'z'	'Z'	26
+VK_NUMPAD0		'0'	'0'	--
+VK_NUMPAD1		'1'	'1'	--
+VK_NUMPAD2		'2'	'2'	--
+VK_NUMPAD3		'3'	'3'	--
+VK_NUMPAD4		'4'	'4'	--
+VK_NUMPAD5		'5'	'5'	--
+VK_NUMPAD6		'6'	'6'	--
+VK_NUMPAD7		'7'	'7'	--
+VK_NUMPAD8		'8'	'8'	--
+VK_NUMPAD9		'9'	'9'	--
+VK_DECIMAL		'.'	'.'	--
+VK_OEM_PLUS		'='	'+'	--
+VK_OEM_COMMA		','	'<'	--
+VK_OEM_MINUS		'-'	'_'	31 **
+VK_OEM_PERIOD		'.'	'>'	--
+VK_OEM_1		';'	':'	--
+VK_OEM_2		'/'	'?'	--
+VK_OEM_3		'`'	'~'	--
+VK_OEM_4		'['	'{'	27
+VK_OEM_5		'\'	'|'	28
+VK_OEM_6		']'	'}'	29
+VK_OEM_7		"'"	'"'	--
+VK_MULTIPLY		'*'	'*'	--
+VK_SUBTRACT		'-'	'-'	--
+VK_ADD			'+'	'+'	--
+VK_DIVIDE		'/'	'/'	-- 
+VK_DELETE		7fh	7fh	--
+
+
+NOTES : -- => no character
+	** => must be SHIFT + CTRL
+
+

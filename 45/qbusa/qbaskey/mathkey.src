@@ -1,0 +1,272 @@
+.comment ******************************************************************
+.comment *  Math Family - QBasic                                          *
+.comment ******************************************************************
+.comment * 1/10/90 Cleaned comments.
+.comment *    -- JeffWe
+.comment ******************************************************************
+.context ABS
+.context @ABS
+.context SGN
+.context @SGN
+:nABS, SGN Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ABS returns the absolute value of a number.
+SGN returns a value indicating the sign of a numeric expression (1 if the
+expression is positive, 0 if it is zero, or -1 if it is negative).
+
+\bABS(numeric-expression)\p
+\bSGN(numeric-expression)\p
+
+    ş \bnumeric-expression\p    Any numeric expression.
+
+Example:
+    PRINT ABS(45.5 - 100!)           'Output is:  54.5
+    PRINT SGN(1), SGN(-1), SGN(0)    'Output is:  1  -1  0
+.context ASC
+.context @ASC
+.context CHR$
+.context @CHR$
+:nASC, CHR$ Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ASC returns the ASCII code for the first character in a string expression.
+CHR$ returns the character corresponding to a specified ASCII code.
+
+\bASC(stringexpression$)\p
+\bCHR$(ascii-code%)\p
+
+    ş \bstringexpression$\p    Any string expression.
+    ş \bascii-code%\p          The ASCII code of the desired character.
+
+Example:
+    PRINT ASC("Q")    'Output is:  81
+    PRINT CHR$(65)    'Output is:  A
+
+See Also    \i\p\aASCII Character Codes\v@ac\v\i\p
+.context ATN
+.context @ATN
+.context COS
+.context @COS
+.context SIN
+.context @SIN
+.context TAN
+.context @TAN
+:nATN, COS, SIN, TAN Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ATN returns the arctangent of a specified numeric expression.
+COS, SIN, and TAN return the cosine, sine, and tangent of a specified angle.
+
+\bATN(numeric-expression)\p
+\bCOS(angle)\p
+\bSIN(angle)\p
+\bTAN(angle)\p
+
+    ş \bnumeric-expression\p    The ratio between the sides of a right triangle.
+    ş \bangle\p                 An angle expressed in radians.
+
+    ş The ATN function returns an angle in radians.
+    ş To convert from degrees to radians, multiply degrees by (PI / 180).
+
+Example:
+    CONST PI=3.141592654
+    PRINT ATN(TAN(PI/4.0)), PI/4.0    'Output is:  .7853981635  .7853981635
+    PRINT (COS(180 * (PI / 180)))     'Output is:  -1
+    PRINT (SIN(90 * (PI / 180)))      'Output is:  1
+    PRINT (TAN(45 * (PI / 180)))      'Output is:  1.000000000205103
+.context CDBL
+.context @CDBL
+.context CSNG
+.context @CSNG
+:nCDBL, CSNG Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CDBL converts a numeric expression to a double-precision value.
+CSNG converts a numeric expression to a single-precision value.
+
+\bCDBL(numeric-expression)\p
+\bCSNG(numeric-expression)\p
+
+    ş \bnumeric-expression\p    Any numeric expression.
+
+Example:
+    PRINT 1 / 3, CDBL(1 / 3)    'Output is:  .3333333  .3333333333333333
+    PRINT CSNG(975.3421515#)    'Output is:  975.3422
+
+See Also    \i\p\aCINT, CLNG\v@CINT\v\i\p
+.context CINT
+.context @CINT
+.context CLNG
+.context @CLNG
+:nCINT, CLNG Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CINT rounds a numeric expression to an integer.
+CLNG rounds a numeric expression to a long (4-byte) integer.
+
+\bCINT(numeric-expression)\p
+\bCLNG(numeric-expression)\p
+
+    ş \bnumeric-expression\p    For CINT, any numeric expression in the range
+                            -32,768 through 32,767.
+                            For CLNG, any numeric expression in the range
+                            -2,147,483,648 through 2,147,483,647.
+
+Example:
+    PRINT CINT(12.49), CINT(12.51)    'Output is:  12  13
+    PRINT CLNG(338457.8)              'Output is:  338458
+
+See Also    \i\p\aCDBL, CSNG\v@CDBL\v\i\p    \i\p\aFIX, INT\v@FIX\v\i\p
+.context .datef
+.context @datef
+.context DATE$
+.context @DATE$
+:nDATE$ Function and Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+The DATE$ function returns the computer's current system date.
+The DATE$ statement sets the current system date on your computer.
+
+\bDATE$\p
+\bDATE$ = stringexpression$\p
+
+    ş \bstringexpression$\p    The date in one of the following forms:
+                           mm-dd-yy, mm-dd-yyyy, mm/dd/yy, mm/dd/yyyy.
+
+    ş The DATE$ function returns a string in the form mm-dd-yyyy.
+
+Example:
+    PRINT DATE$
+    DATE$ = "01-01-90"    'Note: The new system date remains in effect until
+                          '      you change it again.
+    PRINT "Date set to "; DATE$
+
+See Also    \i\p\aTIME$\v@TIME$\v\i\p
+.context EXP
+.context @EXP
+.context LOG
+.context @LOG
+:nEXP, LOG Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+EXP returns e raised to a specified power, where e is the base of natural
+logarithms. LOG returns the natural logarithm of a numeric expression.
+
+\bEXP(numeric-expression)\p
+\bLOG(numeric-expression)\p
+
+    ş \bnumeric-expression\p    For EXP, a number less than or equal to 88.02969.
+                            For LOG, any positive numeric expression.
+
+Example:
+    PRINT EXP(0), EXP(1)         'Output is:  1  2.718282
+    PRINT LOG(1), LOG(EXP(1))    'Output is:  0  1
+.context FIX
+.context @FIX
+.context INT
+.context @INT
+:nFIX, INT Functions
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+FIX truncates a floating-point expression to its integer portion.
+INT returns the largest integer less than or equal to a numeric expression.
+
+\bFIX(numeric-expression)\p
+\bINT(numeric-expression)\p
+
+    ş \bnumeric-expression\p    Any numeric expression.
+
+Example:
+    PRINT FIX(12.49), FIX(12.54)    'Output is:  12  12
+    PRINT INT(12.54), INT(-99.4)    'Output is:  12  -100
+
+See Also    \i\p\aCINT, CLNG\v@CINT\v\i\p
+.context RANDOMIZE
+.context @RANDOMIZE
+.context RND
+.context @RND
+:nRANDOMIZE Statement, RND Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+RANDOMIZE initializes the random-number generator.
+RND returns a single-precision random number between 0 and 1.
+
+\bRANDOMIZE [seed%]\p
+\bRND[(n#)]\p
+
+    ş \bseed%\p    A number used to initialize the random-number generator.
+               If omitted, RANDOMIZE prompts for it.
+    ş \bn#\p       A value that sets how RND generates the next random number:
+
+               n#                             RND returns
+               ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+               Less than 0                    The same number for any n#
+               Greater than 0 (or omitted)    The next random number
+               0                              The last number generated
+
+Example:
+    RANDOMIZE TIMER
+    x% = INT(RND * 6) + 1
+    y% = INT(RND * 6) + 1
+    PRINT "Roll of two dice: die 1 ="; x%; "and die 2 ="; y%
+.context SQR
+.context @SQR
+:nSQR Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns the square root of a numeric expression.
+
+\bSQR(numeric-expression)\p
+
+    ş \bnumeric-expression\p    A value greater than or equal to zero.
+
+Example:
+    PRINT SQR(25), SQR(2)    'Output is:  5  1.414214
+.context .tmf
+.context @tmf
+.context TIME$
+.context @TIME$
+:nTIME$ Function and Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+The TIME$ function returns the computer's current system time.
+The TIME$ statement sets the current system time on your computer.
+
+\bTIME$\p
+\bTIME$ = stringexpression$\p
+
+    ş \bstringexpression$\p    The time in one of the following forms:
+                             hh          Sets the hour; minutes and seconds
+                                         default to 00.
+                             hh:mm       Sets the hour and minutes; seconds
+                                         default to 00.
+                             hh:mm:ss    Sets the hour, minutes, and seconds.
+
+    ş The TIME$ function returns a string in the form hh:mm:ss.
+
+Example:
+    PRINT TIME$
+    TIME$ = "08:00:58"    'Note: The new system time remains in effect until
+                          '      you change it again.
+    PRINT "Time set to "; TIME$
+
+See Also    \i\p\aDATE$\v@DATE$\v\i\p
+.comment ******************************************************************
+.comment *  One arithmetic operator                                       *
+.comment ******************************************************************
+.context MOD
+.context @MOD
+:nMOD Arithmetic Operator
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Divides one number by another and returns the remainder.
+
+\bnumeric-expression1 MOD numeric-expression2\p
+
+    ş \bnumeric-expression1\p    Any numeric expressions. Real numbers are
+      \bnumeric-expression2\p    rounded to integers.
+
+Example:
+    PRINT 19 MOD 6.7    'QBasic rounds 6.7 to 7, then divides.
+                        'Output is:  5

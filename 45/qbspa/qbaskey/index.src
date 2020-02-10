@@ -1,0 +1,224 @@
+.comment ******************************************************************
+.comment *  Index file - QBasic                                           *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/17/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Copied QBI Index.                                             *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Added Unsupported Keywords.                                   *
+.comment *  Made links local.                                             *
+.comment ******************************************************************
+.context @helpIndexId
+.context helpIndexId
+.context @a
+:nIndice de Ayuda de QBasic
+  \i\p\aContenido\v@helpTableId\v\i\p  \bIndice\p  \i\p\aRegresar\v!B\v\i\p
+ฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
+Para obtener Ayuda sobre una palabra clave de QBasic que aparece
+en la lista a continuaciขn:
+    1. Presione la tecla que corresponde a la primera letra de la
+       palabra clave.
+    2. Utilice las teclas de direcciขn llevar el cursor sobre la
+       palabra clave.
+    3. Presione F1 para presentar el texto de Ayuda en la ventana
+       de Ayuda.
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน A บ
+                                                                  ศอออผ
+  \aABS, funciขn\v@ABS\v                       \aAPPEND, palabra clave\v@APPEND\v
+  \aABSOLUTE, palabra clave\v@ABSOLUTE\v            \aAS, palabra clave\v@AS\v
+  \aACCESS, palabra clave\v@ACCESS\v              \aASC, funciขn\v@ASC\v
+  \aAND, operador\v@AND\v                      \aATN, funciขn\v@ATN\v
+  \aANY, palabra clave\v@ANY\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน B บ
+                                                                  ศอออผ
+  \aBASE, palabra clave\v@BASE\v                \aBLOAD, instrucciขn\v@BLOAD\v
+  \aJuego de caracteres Basic\v@fun.character.set\v          \aOperadores booleanos\v@AND\v
+  \aBEEP, instrucciขn\v@BEEP\v                  \aBSAVE, instrucciขn\v@BSAVE\v
+  \aBINARY, palabra clave\v@BINARY\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน C บ
+                                                                  ศอออผ
+  \aCALL, instrucciขn\v@CALL\v                  \aCOLOR, instrucciขn\v@COLOR\v
+  \aCALL ABSOLUTE, instrucciขn\v@ABSOLUTE\v         \aCOM, instrucciขn\v@COM\v
+  \aCASE, palabra clave\v@SELECT\v                \aCOMMON, instrucciขn\v@COMMON\v
+  \aCDBL, funciขn\v@CDBL\v                      \aCONST, instrucciขn\v@CONST\v
+  \aCHAIN, instrucciขn\v@CHAIN\v                 \aCOS, funciขn\v@COS\v
+  \aCHDIR, instrucciขn\v@CHDIR\v                 \aCSNG, funciขn\v@CSNG\v
+  \aCHR$, funciขn\v@CHR$\v                      \aCSRLIN, funciขn\v@CSRLIN\v
+  \aCINT, funciขn\v@CINT\v                      \aCVD, funciขn\v@CVD\v
+  \aCIRCLE, instrucciขn\v@CIRCLE\v                \aCVDMBF, funciขn\v@CVDMBF\v
+  \aCLEAR, instrucciขn\v@CLEAR\v                 \aCVI, funciขn\v@CVI\v
+  \aCLNG, funciขn\v@CLNG\v                      \aCVL, funciขn\v@CVL\v
+  \aCLOSE, instrucciขn\v@CLOSE\v                 \aCVS, funciขn\v@CVS\v
+  \aCLS, instrucciขn\v@CLS\v                   \aCVSMBF, funciขn\v@CVSMBF\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน D บ
+                                                                  ศอออผ
+  \aDATA, instrucciขn\v@DATA\v                  \aDEFLNG, instrucciขn\v@DEFLNG\v
+  \aTipo de datos, palabras clave\v@INTEGER\v      \aDEFSNG, instrucciขn\v@DEFSNG\v\p
+  \aDATE$, funciขn\v@datef\v                     \aDEFSTR, instrucciขn\v@DEFSTR\v
+  \aDATE$, instrucciขn\v@DATE$\v                 \aDIM, instrucciขn\v@DIM\v
+  \aDECLARE, instrucciขn\v@DECLARE\v               \aDO...LOOP, instrucciขn\v@DO\v\p
+  \aDEF FN, instrucciขn\v@DEF\v                \aDOUBLE, palabra clave\v@DOUBLE\v
+  \aDEF SEG, instrucciขn\v@SEG\v               \aDRAW, instrucciขn\v@DRAW\v
+  \aDEFDBL, instrucciขn\v@DEFDBL\v                \a$DYNAMIC, metacomando\v@$DYNAMIC\v
+  \aDEFINT, instrucciขn\v@DEFINT\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน E บ
+                                                                  ศอออผ
+  \aELSE, palabra clave\v@IF\v                \aERDEV, funciขn\v@ERDEV\v
+  \aELSEIF, palabra clave\v@IF\v              \aERDEV$, funciขn\v@ERDEV$\v\p
+  \aEND, instrucciขn\v@END\v                   \aERL, funciขn\v@ERL\v\p
+  \aENVIRON, instrucciขn\v@ENVIRON\v               \aERR, funciขn\v@ERR\v
+  \aENVIRON$, funciขn\v@ENVIRON$\v                  \aERROR, instrucciขn\v@ERROR\v
+  \aEOF, funciขn\v@EOF\v                       \aEXIT, instrucciขn\v@EXIT\v
+  \aEQV, operador\v@EQV\v                      \aEXP, funciขn\v@EXP\v
+  \aERASE, instrucciขn\v@ERASE\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน F บ
+                                                                  ศอออผ
+  \aFIELD, instrucciขn\v@FIELD\v                 \aFOR...NEXT, instrucciขn\v@FOR\v
+  \aFILEATTR, funciขn\v@FILEATTR\v                  \aFRE, funciขn\v@FRE\v
+  \aFILES, instrucciขn\v@FILES\v                 \aFREEFILE, funciขn\v@FREEFILE\v
+  \aFIX, funciขn\v@FIX\v                       \aFUNCTION, instrucciขn\v@FUNCTION\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน G บ
+                                                                  ศอออผ
+  \aGET (Archivos E/S), instrucciขn\v@GET\v     \aGOSUB, instrucciขn\v@GOSUB\v
+  \aGET (Gr ficos), instrucciขn\v@ggx\v         \aGOTO, instrucciขn\v@GOTO\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน H บ
+                                                                  ศอออผ
+  \aHEX$, funciขn\v@HEX$\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน I บ
+                                                                  ศอออผ
+  \aIF...THEN...ELSE, instrucciขn\v@IF\v      \aINSTR, funciขn\v@INSTR\v
+  \aIMP, operador\v@IMP\v                      \aINT, funciขn\v@INT\v
+  \aINKEY$, funciขn\v@INKEY$\v                    \aINTEGER, palabra clave\v@INTEGER\v
+  \aINP, funciขn\v@INP\v                       \aIOCTL, instrucciขn\v@IOCTL\v
+  \aINPUT, instrucciขn\v@INPUT\v                 \aIOCTL$, funciขn\v@IOCTL$\v
+  \aINPUT$, funciขn\v@INPUT$\v                    \aIS, palabra clave\v@IS\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน K บ
+                                                                  ศอออผ
+  \aKEY (Asignaciขn), instrucciขn\v@KEY\v      \aKILL, instrucciขn\v@KILL\v
+  \aKEY (Intercepciขn de eventos), instrucciขn\v@ketv\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน L บ
+                                                                  ศอออผ
+  \aLBOUND, funciขn\v@LBOUND\v                    \aLOCK...UNLOCK, instrucciones\v@LOCK\v\p
+  \aLCASE$, funciขn\v@LCASE$\v                    \aLOF, funciขn\v@LOF\v\p
+  \aLEFT$, funciขn\v@LEFT$\v                     \aLOG, funciขn\v@LOG\v\p
+  \aLEN, funciขn\v@LEN\v                       \aLONG, palabra clave\v@LONG\v\p
+  \aLET, instrucciขn\v@LET\v                   \aLOOP, palabra clave\v@LOOP\v\p
+  \aLINE (Gr ficos), instrucciขn\v@LINE\v       \aLPOS, funciขn\v@LPOS\v\p
+  \aLINE INPUT, instrucciขn\v@INPUT\v            \aLPRINT, instrucciขn\v@LPRINT\v\p
+  \aLIST, palabra clave\v@LIST\v                \aLPRINT USING, instrucciขn\v@lprintu\v
+  \aLOC, funciขn\v@LOC\v                       \aLSET, instrucciขn\v@LSET\v\p
+  \aLOCATE, instrucciขn\v@LOCATE\v                \aLTRIM$, funciขn\v@LTRIM$\v\p
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน M บ
+                                                                  ศอออผ
+  \aMID$, funciขn\v@MID$\v                      \aMKI$, funciขn\v@MKI$\v
+  \aMID$, instrucciขn\v@MID$\v                  \aMKL$, funciขn\v@MKL$\v
+  \aMKD$, funciขn\v@MKD$\v                      \aMKS$, funciขn\v@MKS$\v
+  \aMKDIR, instrucciขn\v@MKDIR\v                 \aMKSMBF$, funciขn\v@MKSMBF$\v
+  \aMKDMBF$, funciขn\v@MKDMBF$\v                   \aMOD, operador\v@MOD\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน N บ
+                                                                  ศอออผ
+  \aNAME, instrucciขn\v@NAME\v                  \aNOT, operador\v@NOT\v
+  \aNEXT, palabra clave\v@NEXT\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน O บ
+                                                                  ศอออผ
+  \aOCT$, funciขn\v@HEX$\v                      \aON TIMER, instrucciขn\v@TIMER\v
+  \aOFF, palabra clave\v@OFF\v                 \aON...GOSUB, instrucciขn\v@ongo\v\p
+  \aON COM, instrucciขn\v@COM\v                \aON...GOTO, instrucciขn\v@ongo\v\p
+  \aON ERROR, instrucciขn\v@onerr\v              \aOPEN, instrucciขn\v@OPEN\v\p
+  \aON, palabra clave\v@ON\v                  \aOPEN COM, instrucciขn\v@opcom\v
+  \aON KEY, instrucciขn\v@ketv\v                \aOPTION BASE, instrucciขn\v@BASE\v\p
+  \aON PEN, instrucciขn\v@PEN\v                \aOR, operador\v@OR\v
+  \aON PLAY, instrucciขn\v@playev\v               \aOUT, instrucciขn\v@OUT\v
+  \aON STRIG, instrucciขn\v@STRIG\v              \aOUTPUT, palabra clave\v@OUTPUT\v\p
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน P บ
+                                                                  ศอออผ
+  \aPAINT, instrucciขn\v@PAINT\v                 \aPOINT, funciขn\v@POINT\v
+  \aPALETTE, instrucciones\v@PALETTE\v             \aPOKE, instrucciขn\v@POKE\v
+  \aPCOPY, instrucciขn\v@PCOPY\v                 \aPOS, funciขn\v@POS\v
+  \aPEEK, funciขn\v@PEEK\v                      \aPRESET, instrucciขn\v@PRESET\v
+  \aPEN, funciขn\v@penf\v                       \aPRINT, instrucciขn\v@PRINT\v
+  \aPEN, instrucciขn\v@PEN\v                   \aPRINT USING, instrucciขn\v@zpu\v
+  \aPLAY, funciขn\v@playf\v                      \aPSET, instrucciขn\v@PSET\v
+  \aPLAY (Mฃsica), instrucciขn\v@PLAY\v         \aPUT (Archivos E/S), instrucciขn\v@PUT\v
+  \aPLAY (Intercepciขn de eventos)\v@playev\v     \aPUT (Gr ficos), instrucciขn\v@pgfx\v
+  \aPMAP, funciขn\v@PMAP\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน R บ
+                                                                  ศอออผ
+  \aRANDOM, palabra clave\v@RANDOM\v              \aRETURN, instrucciขn\v@RETURN\v
+  \aRANDOMIZE, instrucciขn\v@RANDOMIZE\v             \aRIGHT$, funciขn\v@RIGHT$\v
+  \aREAD, instrucciขn\v@READ\v                  \aRMDIR, instrucciขn\v@RMDIR\v
+  \aREDIM, instrucciขn\v@REDIM\v                 \aRND, funciขn\v@RND\v
+  \aREM, instrucciขn\v@REM\v                   \aRSET, instrucciขn\v@RSET\v
+  \aRESET, instrucciขn\v@RESET\v                 \aRTRIM$, funciขn\v@RTRIM$\v
+  \aRESTORE, instrucciขn\v@RESTORE\v               \aRUN, instrucciขn\v@RUN\v
+  \aRESUME, instrucciขn\v@RESUME\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน S บ
+                                                                  ศอออผ
+  \aSCREEN, funciขn\v@screenf\v                    \aSQR, funciขn\v@SQR\v
+  \aSCREEN, instrucciขn\v@SCREEN\v                \aSTATIC, instrucciขn\v@STATIC\v
+  \aSEEK, funciขn\v@SEEK\v                      \a$STATIC, metacomando\v@$STATIC\v
+  \aSEEK, instrucciขn\v@SEEK\v                  \aSTEP, palabra clave\v@STEP\v
+  \aSELECT CASE, instrucciขn\v@SELECT\v           \aSTICK, funciขn\v@STICK\v
+  \aSGN, funciขn\v@SGN\v                       \aSTOP, instrucciขn\v@STOP\v
+  \aSHARED, instrucciขn\v@SHARED\v                \aSTR$, funciขn\v@STR$\v
+  \aSHELL, instrucciขn\v@SHELL\v                 \aSTRIG, funciขn\v@strigf\v
+  \aSIN, funciขn\v@SIN\v                       \aSTRIG, instrucciones\v@STRIG\v
+  \aSINGLE, palabra clave\v@SINGLE\v              \aSTRING, palabra clave\v@STRING\v
+  \aSLEEP, instrucciขn\v@SLEEP\v                 \aSTRING$, funciขn\v@STRING$\v
+  \aSOUND, instrucciขn\v@SOUND\v                 \aSUB, instrucciขn\v@SUB\v
+  \aSPACE$, funciขn\v@SPACE$\v                    \aSWAP, instrucciขn\v@SWAP\v
+  \aSPC, funciขn\v@SPC\v                       \aSYSTEM, instrucciขn\v@SYSTEM\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน T บ
+                                                                  ศอออผ
+  \aTAB, funciขn\v@TAB\v                       \aTIMER, instrucciขn\v@TIMER\v
+  \aTAN, funciขn\v@TAN\v                       \aTO, palabra clave\v@TO\v
+  \aTHEN, palabra clave\v@IF\v                \aTROFF, instrucciขn\v@TROFF\v
+  \aTIME$, funciขn\v@tmf\v                     \aTRON, instrucciขn\v@TRON\v
+  \aTIME$, instrucciขn\v@TIME$\v                 \aTYPE, instrucciขn\v@TYPE\v
+  \aTIMER, funciขn\v@timerf\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน U บ
+                                                                  ศอออผ
+  \aUBOUND, funciขn\v@UBOUND\v                    \aUNTIL, palabra clave\v@DO\v
+  \aUCASE$, funciขn\v@UCASE$\v                    \aUSING, palabra clave\v@USING\v
+  \aUNLOCK, instrucciขn\v@UNLOCK\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน V บ
+                                                                  ศอออผ
+  \aVAL, funciขn\v@VAL\v                       \aVARSEG, funciขn\v@VARSEG\v
+  \aVARPTR, funciขn\v@VARPTR\v                    \aVIEW, instrucciขn\v@VIEW\v
+  \aVARPTR$, funciขn\v@VARPTR$\v                   \aVIEW PRINT, instrucciขn\v@vupri\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน W บ
+                                                                  ศอออผ
+  \aWAIT, instrucciขn\v@WAIT\v                  \aWIDTH, instrucciขn\v@WIDTH\v
+  \aWEND, palabra clave\v@WEND\v                \aWINDOW, instrucciขn\v@WINDOW\v
+  \aWHILE...WEND, instrucciขn\v@WEND\v          \aWRITE, instrucciขn\v@WRITE\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน X บ
+                                                                  ศอออผ
+  \aXOR, operador\v@XOR\v

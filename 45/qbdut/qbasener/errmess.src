@@ -1,0 +1,1201 @@
+.comment ****************************************************************
+.comment Error Message Help - QBasic                                    *
+.comment  This file contains all the error message help. Help on menu   *
+.comment  dialogs and related messages can be found in environ.src.     *
+.comment ****************************************************************
+.comment 8/1/90 bethpr                                                  *
+.comment Changed references to DOS Editor to MS-DOS Editor              *
+.comment ****************************************************************
+.comment 7/29/90 bethpr                                                 *
+.comment Changed text, as appropriate, for BASIC language and products. *
+.comment ****************************************************************
+.comment 6/29/90 stevesau                                               *
+.comment Incorporated final review comments                             *
+.comment ****************************************************************
+.comment 6/20/90 stevesau                                               *
+.comment Incorporated final review edits.                               *
+.comment ****************************************************************
+.comment 5/4/90 -- Bethpr                                               *
+.comment Changed $Metacommand Error context string back to MSG_BadMeta  *
+.comment ****************************************************************
+.comment 4/17/90 QBasic Edits -- Bethpr
+.comment Removed Add watchpoint, Binary file contained an unknown
+.comment statement, Binary file contained an unknown statement or
+.comment data type, Common in Quick library too small, Duplicate
+.comment module base names loaded.  Can't compile., Edit Include file,
+.comment Feature removed, File previously loaded, Include file too large,
+.comment All 8 ISAM error messages, Key already in use, Key file bad or
+.comment missing.  Using default., Make .Lib, Missing menu text or path,
+.comment Modified Include file, Module exists, Module not found.  Unload
+.comment module from program?, Must be between 2 and 10, Procedure
+.comment already defined in Quick library, Program contains unsupported
+.comment statements, Save Include file, Statement cannot occur within
+.comment include file, Symbol help not found, Too many applications,
+.comment Turn off include lines toggle command, Type not valid for ISAM.
+.comment ****************************************************************
+.context -9999
+:nVertaling tijdelijk onderbroken
+QBasic heeft het item-voor-item vertalen van de
+programmaregel onderbroken bij het geselecteerde item.
+De fout bevindt zich normaalgesproken links van het
+item. U hebt nu de volgende opties:
+  þ Het in het dialoogvenster gesuggereerde item vervangen.
+  þ Eventueel verkeerd gespelde trefwoorden corrigeren.
+  þ De cursor bij een trefwoord in het statement plaatsen
+    en op F1 drukken voor de juiste syntaxis voor dat
+    trefwoord.
+.context QB_ER_NF
+.context ER_NF
+:nNEXT zonder FOR
+Elk NEXT-statement moet gevolgd worden door een bijpassend
+FOR-statement.
+
+ERR-code: 1
+.context QB_ER_SN
+.context ER_SN
+:nSyntaxisfout
+De oorzaak van deze foutmelding is veelal een onjuist
+getypt Basic-trefwoord of -argument. Controleer of de
+programmaregel juist is.
+
+ERR-code: 2
+.context QB_ER_RG
+.context ER_RG
+:nRETURN zonder GOSUB
+Het programma heeft een RETURN-statement uitgevoerd
+zonder een bijpassend GOSUB-statement.
+
+ERR-code: 3
+.context QB_ER_OD
+.context ER_OD
+:nGeen verdere DATA
+Er is een READ-statement uitgevoerd, maar het programma
+bevat geen verdere DATA-statements met ongelezen gegevens.
+
+ERR-code: 4
+.context QB_ER_FC
+.context ER_FC
+:nOngeldige functie-aanroep
+U probeert een onjuist argument te geven aan een
+Basic-statement of een argument dat buiten het toegestane
+bereik ligt. Voorbeelden van dergelijke fouten zijn:
+  þ Een negatief getal dat wordt verheven tot een macht
+    die geen geheel getal is.
+  þ Er is een negatief record-nummer opgegeven voor GET of
+    PUT.
+  þ Er is een I/O-functie of -statement (bijvoorbeeld LOC
+    of LOF) uitgevoerd op een apparaat dat een dergelijke
+    actie niet ondersteunt.
+  þ Door het aaneen rijgen van tekenreeksen is een
+    tekenreeks onstaan die langer is dan 32767 tekens.
+  þ Er is een BLOAD- of BSAVE-bewerking doorgestuurd naar
+    een apparaat zonder schijf.
+
+ERR-code: 5
+.context QB_ER_OV
+.context ER_OV
+:nOverloop
+Het resultaat van een berekening of conversie van
+gegevenstypen is te groot voor het gegeven gegevenstype.
+
+ERR-code: 6
+.context QB_ER_OM
+.context ER_OM
+:nOnvoldoende geheugen
+Er is meer geheugen nodig dan beschikbaar is.
+Corrigeer dit door:
+  þ QBasic af te sluiten en het aantal DOS-buffers,
+    geheugenresidente programma's of geladen
+    stuurprogramma's te reduceren. Tot slot dient u
+    dan uw computer opnieuw op te starten.
+  þ Uw programma kleiner te maken.
+  þ Het aantal arrays of de grootte ervan te reduceren.
+  þ De stack-grootte te reduceren met het statement CLEAR.
+  þ Het aantal variabelen te reduceren.
+
+ERR-code: 7
+.context QB_ER_UL
+.context ER_UL
+:nLabel niet gedefinieerd
+Er wordt verwezen naar een label voor een regel (bijv. in
+een GOTO-statement), maar het label komt niet in het
+programma voor.
+
+ERR-code:  8
+.context QB_ER_SOR
+.context ER_SOR
+:nSubscript buiten bereik
+Er werd naar een array-element verwezen met een subscript
+dat buiten de dimensies voor de array lag. Het is ook
+mogelijk dat een element werd benaderd van een dynamische
+array zonder dimensies. Controleer of de dimensies voor de
+array zijn opgegeven en controleer het de grenzen van de
+array.
+
+U kunt deze foutmelding ook krijgen als de array groter is
+dan 64 kB. Reduceer in dat geval de grootte van de array.
+
+ERR-code: 9
+.context ER_DD
+:nDubbele definitie
+Deze fout treedt op wanneer u tijdens de uitvoering van het
+programma de dimensies van een statische array probeert te
+wijzigen. U kunt dit corrigeren door de array als dynamisch
+te declareren met behulp van het statement REDIM.
+
+Deze fout kan ook optreden als u probeert de dimensies van
+een dynamische array te wijzigen met het statement DIM
+zonder de array te hebben vrijgegeven. Corrigeer dit door
+een ERASE-statement op te nemen voor het DIM-statement.
+
+ERR-code: 10
+.context QB_ER_DD
+:nDubbele definitie
+U probeert een nieuw element in uw programma op te nemen,
+maar u hebt hiervoor een naam genomen die reeds is gebruikt.
+
+Bijvoorbeeld:
+  þ Er is in een CONST-statement een naam gebruikt die al
+    aan een bestaande variabele is toegewezen.
+  þ De nieuwe variabele of procedure heeft dezelfde naam
+    als een reeds bestaande procedure.
+
+Deze fout kan ook worden gegenereerd wanneer u een
+variabelenaam laat beginnen met de letters "FN", aangezien
+FN uitsluitend gebruikt wordt in combinatie met DEF FN.
+.context QB_ER_DV0
+.context ER_DV0
+:nDelen door nul
+Deze fout kan worden veroorzaakt doordat er in een
+uitdrukking wordt gedeeld door nul.
+
+ERR-code: 11
+.context QB_ER_ID
+.context ER_ID
+:nOngeldig in directe modus
+Het geselecteerde statement is alleen geldig binnen een
+programma en kan niet worden gebruikt in het venster
+Direct. In het algemeen kunnen de volgende statements en
+meta-opdrachten niet worden gebruikt in het venster Direct:
+  þ COMMON, CONST, DATA, DECLARE, DIM, OPTION, SHARED,
+    STATIC en TYPE
+  þ De meta-opdrachten $DYNAMIC en $STATIC
+  þ DEF FN...END DEF, ELSE IF, END IF, END TYPE
+    FUNCTION...END FUNCTION, REDIM en SUB...END SUB
+
+ERR-code: 12
+.context QB_ER_TM
+.context ER_TM
+:nTypen komen niet overeen
+De variabele is niet van het vereiste type. U hebt
+bijvoorbeeld het statement SWAP gebruikt met een
+tekenreeksvariabele en een numerieke variabele, of u
+hebt twee verschillende numerieke variabelen gebruikt.
+
+ERR-code: 13
+.context QB_ER_OS
+.context ER_OS
+:nOnvoldoende tekenreeksruimte
+De benodigde tekenreeksruimte overschreidt de beschikbare
+hoeveelheid ruimte. Maak meer ruimte vrij door:
+  þ Het aantal variabelen te reduceren.
+  þ Het aantal of de grootte van de arrays te reduceren.
+  þ De stack-grootte te reduceren. U kunt dit doen met
+    het statement CLEAR.
+
+ERR-code: 14
+.comment -------------
+.comment   15 unused
+.comment -------------
+.context QB_ER_BS
+.context ER_BS
+:nTekenreeks te lang
+Of de tekenreeks is te lang of u hebt meer dan 15
+tekenreeksvariabelen opgegeven in een INPUT-statement.
+Splits de tekenreeks of het INPUT-statement in kleinere
+gedeelten op.
+
+ERR-code: 16
+.context QB_ER_CN
+:nDoorgaan niet mogelijk
+'Doorgaan niet mogelijk' kan optreden tijdens het uitvoeren
+van een debug-taak. Terwijl uw programma tijdelijk was
+onderbroken (bij een breekpunt bijvoorbeeld) hebt u een
+wijziging aangebracht in het programma die gevolgen heeft
+voor de rest van het programma. Het is mogelijk dat u de
+dimensies van een array hebt gewijzigd, procudure-argumenten
+hebt gewijzigd, of een ander declarerend statement hebt
+bewerkt. Kies in het dialoogvenster:
+   þ <OK> om de wijziging te behouden en het programma
+     opnieuw te starten.
+   þ <Annuleren> om de wijziging in uw programma ongedaan
+     te maken. (U kunt dit doen wanneer opnieuw starten
+     gevolgen zou hebben voor uw debug-strategie.)
+.context ER_UF
+.context ER_CN
+.context ER_US
+.context QB_ER_UE
+.context ER_UE
+.context QB_ER_CaseElse
+.context ER_CaseElse
+:nDoor gebruiker gegenereerde fout
+U hebt een ERROR-statement gebruikt om deze fout te
+genereren.
+
+ERR-codes: 17, 18, 35, 39
+.context QB_ER_UF
+:nQBasic-melding Functie niet gedefinieerd
+De door DEF FN gedefinieerde functie bestaat niet, hetgeen
+het volgende kan betekenen:
+   þ De DEF FN-functie is niet gedefinieerd.
+   þ De DEF FN-functie probeert zichzelf aan te roepen.
+.context QB_ER_NR
+.context ER_NR
+:nGeen RESUME
+Het einde van het programma werd bereikt tijdens het
+uitvoeren van een foutafhandelingsroutine. Voeg een
+RESUME-statement toe aan de foutafhandelingsroutine.
+
+ERR-code: 19
+.context QB_ER_RE
+.context ER_RE
+:nRESUME zonder fout
+Er werd een RESUME-statement uitgevoerd, terwijl er geen
+foutafhandelingsroutine plaatsvond.
+
+ERR-code: 20
+.comment -------------
+.comment  21-23 unused
+.comment -------------
+.context ER_DTO
+:n'time-out' van apparaat
+Het programma ontving geen informatie van een apparaat,
+zoals een printer, binnen de 'time-out'-periode.
+
+ERR-code: 24
+.context QB_ER_DTO
+:n'time-out' van apparaat
+QBasic ontving geen informatie van een apparaat,
+zoals een printer, binnen de 'time-out'-periode:
+  þ Als u probeert af te drukken, doet u er goed aan te
+    controleren of de printer verbonden is met LPT1.
+.context ER_DF
+:nApparaatfout
+Het apparaat heeft een hardware-fout geretourneerd, hetgeen
+op het volgende kan duiden:
+   þ Als u bezig bent met het afdrukken van een bestand, is
+     het mogelijk dat de printer niet verbonden is met LPT1.
+   þ Als u bezig bent met het overdragen van gegevens naar
+     een communicatiebestand, is het mogelijk dat de
+     signalen die met het statement OPEN COM worden getest
+     niet werden ontvangen binnen de 'time-out'-periode.
+
+ERR-code: 25
+.context QB_ER_DF
+:nQBasic-melding Apparaatfout
+QBasic is op een printerfout gestuit. Zorg ervoor dat:
+   þ Het online-lichtje van de printer brandt.
+   þ Er spanning staat op de printer.
+   þ De printerkabel juist bevestigd is aan de printer en
+     de computer.
+.context ER_FN
+.context QB_ER_FN
+:nFOR zonder NEXT
+Elk FOR-statement moet worden gevolgd door een bijpassend
+NEXT-statement.
+
+ERR-code: 26
+.context QB_ER_OP
+.context ER_OP
+:nGeen papier in printer
+Er zit geen papier in de printer of de printer staat niet aan.
+
+ERR-code: 27
+.comment -------------
+.comment   28 unused
+.comment -------------
+.context QB_ER_WH
+.context ER_WH
+:nWHILE zonder WEND
+Elk WHILE-statement moet worden gebruikt in combinatie
+met een bijpassend WEND-statement.
+
+ERR-code: 29
+.context QB_ER_WE
+.context ER_WE
+:nWEND zonder WHILE
+Elk WEND-statement moet worden gebruikt in combinatie
+met een bijpassend WHILE-statement.
+
+Controleer tevens of overige besturingsstructuren binnen
+de WHILE...WEND-structuur correct zijn. Een IF zonder ENDIF
+binnen de WHILE...WEND-structuur bijvoorbeeld, kan tot deze
+foutmelding leiden.
+
+ERR-code: 30
+.comment -------------
+.comment  31-32 unused
+.comment -------------
+.context QB_ER_DL
+.context ER_DL
+:nDubbel label
+Aan twee programmaregels werd hetzelfde regelnummer of label
+toegekend. Elk regelnummer of label moet uniek zijn.
+
+Wijzig het geselecteerde regelnummer of label, of gebruik de
+opdracht Zoeken naar in het menu Zoeken om het dubbele
+regelnummer of label te vinden en wijzig dit vervolgens
+zodat het uniek is.
+ 
+ERR-code: 33
+.comment -------------
+.comment   34 unused
+.comment -------------
+.context QB_ER_US
+:nQBasic-melding Subprogramma niet gedefinieerd
+U probeert een SUB-procedure aan te roepen die niet kan
+worden gevonden door QBasic.
+
+Druk op F2 om de beschikbare SUB- en FUNCTION-procedures
+te bekijken.
+.context QB_ER_AC
+.context ER_AC
+:nOnjuist aantal argumenten
+Er werd een onjuist aantal argumenten gebruikt in een
+SUB- of FUNCTION-procedure-aanroep.
+
+Vergelijk het DECLARE-statement voor de SUB- of FUNCTION-
+procedure met het CALL-statement om te controleren of het
+aantal argumenten in beide statements gelijk is.
+
+ERR-code: 37
+.context QB_ER_UA
+.context ER_UA
+:nArray niet gedefinieerd
+Uw programma probeert een array te gebruiken die momenteel
+niet is gedefinieerd.
+
+Controleer of de array-naam juist is en definieer de array
+met een DIM- of REDIM-statement.
+
+ERR-code: 38
+.comment ----------
+.comment 39 unused
+.comment ----------
+.context QB_ER_VarReq
+.context ER_VarReq
+:nVariabele vereist
+QBasic is op een INPUT-, LET-, READ- of SHARED-statement
+gestuit zonder variabel argument. Het is ook mogelijk dat
+QBasic op een GET- of PUT-statement stuitte dat geen
+variabele specificeerde tijdens de uitvoering van een
+bestand dat in binaire modus werd geopend.
+
+ERR-code: 40
+.comment -------------
+.comment  41-49 unused
+.comment -------------
+.context QB_ER_FOV
+.context ER_FOV
+:nFIELD-overloop
+Een FIELD-statement probeerde meer bytes toe te wijzen dan
+werd opgegeven voor de record-lengte van een random-bestand.
+Controleer de record-lengte in het OPEN-statement voor dat
+bestand.
+
+ERR-code: 50
+.context QB_ER_IER
+.context ER_IER
+:nInterne fout
+Er is een interne fout opgetreden in QBasic die aan
+Microsoft zou moeten worden gerapporteerd.
+
+ERR-code: 51
+.context QB_ER_BFN
+.context ER_BFN
+:nOnjuiste bestandsnaam/nummer
+Deze fout kan optreden omdat een statement of opdracht naar
+een bestand verwijst waarvan het bestandsnummer of de
+bestandsnaam niet zijn gedefinieerd in het OPEN-statement,
+of wanneer het nummer buiten het toegestane bereik van
+bestandsnummers valt (1-255) dat eerder in het programma
+werd gespecificeerd.
+
+ERR-code: 52
+.context ER_FNF
+:nBestand niet gevonden
+Er wordt in een OPEN-, RUN- of ander Basic-statement
+verwezen naar een niet bestaand bestand.
+
+ERR code 53
+.context QB_ER_FNF
+:nQBasic-melding Bestand niet gevonden
+U hebt in het dialoogvenster van de opdracht Openen een
+bestand opgegeven dat niet bestaat. Controleer of de
+bestandsnaam juist gespeld is en of u het juiste station
+en de juiste directory hebt opgegeven.
+
+ERR code 53
+.context QB_ER_BFM
+.context ER_BFM
+:nVerkeerde bestandsmodus
+Deze fout kan optreden wanneer:
+   þ Er in een PUT- of GET-statement een sequentieel bestand
+     is opgegeven.
+   þ Er in een FIELD-statement een niet-random bestand is
+     opgegeven.
+   þ Er in een PRINT #-statement een sequentieel bestand is
+     opgegeven dat is geopend voor de invoer.
+   þ Er in een INPUT #-statement een bestand is opgegeven
+     dat is geopend voor uitvoer of toevoegen van gegevens.
+   þ U een bestand in QuickBasic binair formaat probeerde
+     te openen.
+
+ERR-code: 54
+.context QB_ER_FAO
+.context ER_FAO
+:nBestand reeds geopend
+Deze foutmelding kan op het volgende duiden:
+   þ Er is een reeds geopend bestand uitgevoerd door een
+     OPEN-statement in sequenti‰le-uitvoermodus.
+   þ Er wordt in een KILL-statement verwezen naar een open
+     bestand.
+
+ERR-code: 55
+.context QB_ER_FSA
+.context ER_FSA
+:nFIELD-statement actief
+Er werd een record-variabele opgegeven in een GET- of
+PUT-statement voor een bestand waaop reeds FIELD-statements
+werden uitgevoerd.
+
+GET of PUT met een record-variabele kunnen alleen worden
+uitgevoerd op bestanden waarop geen FIELD-statements zijn
+uitgevoerd.
+
+ERR-code: 56
+.context ER_IOE
+:nI/O-fout voor apparaat
+Er is een invoer- of uitvoerfout opgetreden terwijl uw
+programma een apparaat gebruikte, zoals een printer of
+station.
+
+ERR-code: 57
+.context QB_ER_IOE
+:nQBasic-melding I/O-fout voor apparaat
+Na gebruik van de opdracht Afdrukken in het menu Bestand
+gaf de printer problemen. Controleer de printer.
+.context QB_ER_FAE
+.context ER_FAE
+:nBestand bestaat reeds
+De bestandsnaam die in het statement NAME werd opgegeven is
+gelijk aan de naam van een reeds bestaand bestand. Geef een
+andere naam op in het statement NAME, wijzig de directory's,
+wijzig de naam van het bestaande bestand of verwijder dit.
+
+ERR-code: 58
+.context QB_ER_BRL
+.context ER_BRL
+:nOnjuiste record-lengte
+De lengte van een record-variabele in een GET- of
+PUT-statement kwam niet overeen met de record-lengte
+die is opgegeven in het bijbehorende OPEN-statement.
+
+ERR-code: 59
+.comment -------------
+.comment   60 unused
+.comment -------------
+.context ER_DFL
+:nSchijf is vol
+Er was niet voldoende ruimte op de schijf om de bewerking
+PRINT #, PRINT USING #, WRITE #, CLOSE of PUT te voltooien.
+
+ERR-code: 61
+.context QB_ER_DFL
+:nQBasic-melding Schijf is vol
+Er is onvoldoende ruimte op de opgegeven schijf om het
+bestand op te slaan. Sla het bestand op een andere schijf
+op.
+
+.context QB_ER_RPE
+.context ER_RPE
+:nInvoer na bestandseinde
+Een INPUT #-statement probeerde van een leeg bestand te
+lezen of van een bestand waarvan alle gegevens reeds werden
+gelezen.
+
+Vermijd deze fout door de functie EOF te gebruiken om het
+bestandseinde te bepalen.
+
+ERR-code: 62
+.context QB_ER_BRN
+.context ER_BRN
+:nOnjuist record-nummer
+Het record-nummer in een PUT- of GET-statement was kleiner
+dan of gelijk aan nul.
+
+ERR-code: 63
+.context ER_IFN
+:nOnjuiste bestandsnaam
+De bestandsnaam voldoet niet aan de juiste
+benamingsconventie voor BLOAD, BSAVE, KILL of OPEN (de
+bestandsnaam omvat bijvoorbeeld te veel tekens).
+
+ERR-code: 64
+.context QB_ER_IFN
+:nOnjuiste bestandsnaam
+De door u opgegeven bestandsnaam bevat of te veel tekens of
+tekens die niet zijn toegestaan in bestandsnamen.
+.comment -------------
+.comment  65-66 unused
+.comment -------------
+.context ER_TMF
+:nTe veel bestanden
+U hebt het maximum aantal bestandsbewerkingen overschreden
+dat door DOS wordt toegestaan in de hoofddirectory. Als uw
+programma bezig is met het openen, sluiten en/of opslaan
+van bestand in de hoofddirectory, moet u uw programma
+zodanig wijzigen dat het hiervoor een subdirectory gebruikt.
+
+ERR-code: 67
+.context QB_ER_TMF
+:nQBasic-melding Te veel bestanden
+Uw programma heeft meer bestanden geopend dan QBasic kan
+verwerken. U moet een of meer van de open bestanden sluiten
+voordat u QBasic-opdrachten kunt gebruiken.
+
+U doet dit het eenvoudigste met het Basic-statement CLOSE:
+   1. Verplaats de cursor naar het venster Direct.
+   2. Voer CLOSE in op de eerstvolgende beschikbare
+      tekstregel.
+   3. Druk op Enter om het statement uit te voeren.
+
+U kunt vervolgens QBasic-opdrachten uitvoeren. Als uw
+programma werd uitgevoerd, moet u het opnieuw starten.
+.context ER_DNA
+:nApparaat niet beschikbaar
+Het apparaat dat u probeert te benaderen is offline of
+bestaat niet.
+
+ERR-code: 68
+.context QB_ER_DNA
+:nQBasic-melding Apparaat niet beschikbaar
+U probeert een bestand of apparaat te openen dat niet
+bestaat in uw systeem. Controleer de lijst met beschikbare
+apparaatnamen in de keuzelijst Dir's/stations in het
+dialoogvenster Openen en gebruik een van de beschikbare
+namen.
+.context QB_ER_CBO
+.context ER_CBO
+:nOverloop communicatiebuffer
+Tijdens de communicaties op afstand ontstond er een
+ontvangstbuffer-overloop.
+
+De grootte van de ontvangstbuffer wordt bepaald door de
+optie RB in het statement OPEN COM. Ter voorkoming van
+deze fout kunt u:
+  þ De buffer frequenter controleren met de functie LOC.
+  þ De buffer frequenter leegmaken met de functie INPUT$.
+
+ERR-code: 69
+.context ER_PRM
+:nPermissie geweigerd
+U hebt geprobeerd naar een tegen schrijven beveiligde schijf
+te schrijven of een vergrendeld bestand te openen.
+
+ERR-code: 70
+.context QB_ER_PRM
+:nQBasic-melding Permissie geweigerd
+U probeert een alleen-lezen bestand te overschrijven of de
+schijf waarnaar u probeert te schrijven is tegen schrijven
+beveiligd.
+
+Gebruik een andere bestandsnaam om het alleen-lezen conflict
+te vermijden. In het geval van een tegen schrijven
+beveiligde schijf kunt u de schrijfbeveiliging verwijderen
+of een andere schijf gebruiken.
+.context ER_DNR
+.context QB_ER_DNR
+:nSchijf niet gereed
+Het station is niet vergrendeld of er zit geen diskette in
+het opgegeven station. Plaats een diskette in het station,
+vergrendel het station en probeer de bewerking opnieuw.
+
+ERR-code: 71
+.context ER_DME
+:nFout bij schijf-media
+Het schijfstation heeft een fysieke fout ontdekt op de
+schijf.
+
+ERR-code: 72
+.context QB_ER_DME
+:nQBasic-melding Fout bij schijf-media
+QBasic kan de formattering van de schijf die gebruikt wordt
+niet herkennen. Gebruik een andere schijf of sluit QBasic af
+en formatteer de huidige schijf opnieuw.
+.context QB_ER_ADF
+.context ER_ADF
+:nVoorziening niet beschikbaar
+Het is mogelijk dat u een voorziening probeert te gebruiken
+uit een andere versie van Basic die niet beschikbaar is voor
+Microsoft QBasic.
+
+ERR-code: 73
+.context QB_ER_RAD
+.context ER_RAD
+:nHernoemen op meerdere schijven
+U probeerde de naam van een bestand te wijzigen met een
+nieuwe stationsaanduiding. Dit is niet mogelijk in QBasic.
+
+ERR-code: 74
+.context ER_PAE
+.context QB_ER_PAE
+:nFout bij toegang pad/bestand
+Het besturingssysteem was niet in staat de juiste verbinding
+tot stand te brengen tussen een pad en bestandsnaam tijdens
+een OPEN-, MKDIR-, CHDIR- of RMDIR-bewerking.
+
+Zorg er in de QBasic-omgeving voor dat de bestandsaanduiding
+volgens de juiste notatie in het tekstvak is ingevoerd. Elke
+bestandsnaam kan een stationsnaanduiding en een geheel of
+gedeeltelijk pad omvatten.
+
+Deze foutmelding kan ook verschijnen wanneer u een bestand
+probeert op te slaan dat een bestaand alleen-lezen bestand
+overschrijft.
+
+ERR-code: 75
+.context ER_PNF
+:nPad niet gevonden
+Het besturingssysteem kon het opgegeven pad niet vinden
+tijdens een OPEN-, MKDIR-, CHDIR- of RMDIR-bewerking.
+
+ERR-code: 76
+.context QB_ER_PNF
+:nQBasic-melding Pad niet gevonden
+DOS kon het pad niet vinden dat in het dialoogvenster van
+de opdracht Openen, Opslaan of Opslaan als werd opgegeven.
+Controleer of u het pad juist hebt ingetypt.
+.comment -------------------------------------------
+.comment  Last of runtime errors - found at top of
+.comment  p. 5 in printout of BIGPIC.ERR
+.comment -------------------------------------------
+.context MSG_OutOfStack
+:nOnvoldoende stack-ruimte
+Deze fout kan optreden wanneer er te veel subroutine-,
+FUNCTION- en SUB-aanroepen zijn, of wanneer een recursieve
+FUNCTION-procedure te diep genest is.
+
+Wijzig de structuur van uw programma of gebruik het
+statement CLEAR om de stack-ruimte die aan het programma is
+toegewezen te vergroten.
+.comment -----------------------------------------------
+.comment  User Interface Related Messages that could be
+.comment  described in user's guide error message
+.comment  appendix.
+.comment -----------------------------------------------
+.context MSG_CantCont
+:nDoorgaan niet mogelijk
+Terwijl het programma tijdens de debug-taak tijdelijk
+werd onderbroken (bij een breekpunt bijvoorbeeld) hebt u
+een wijziging aangebracht die tot gevolg heeft dat het
+programma de uitvoering net kan voortzetten. U hebt de
+dimensies van een array gewijzigd, procedure-argumenten
+gewijzigd of een andere declarerend statement bewerkt.
+Kies in het dialoogvenster:
+   þ <OK> om de wijziging te behouden en het programma
+     opnieuw te starten.
+   þ <Annuleren> om de wijziging in uw programma ongedaan
+     te maken. (U kunt dit doen wanneer opnieuw starten
+     gevolgen zou hebben voor uw debug-strategie.)
+.comment -----------------------------------------------
+.comment  Following are non-runtime errors.
+.comment -----------------------------------------------
+.context MSG_DupPrs
+:nDubbele procedurenamen in bestand
+Het bestand dat u probeert te openen bevat twee SUB- of
+FUNCTION-procedures met dezelfde naam. Wijzig een van de
+namen met een editor en open het bestand vervolgens in
+QBasic.
+.comment -----------------------------------------------
+.comment  General User Interface messages
+.comment -----------------------------------------------
+.context MSG_Overwrite
+:nBestaand bestand overschrijven
+Kies alleen <Ja> als u zeker weet dat er geen waardevolle
+informatie verloren gaat wanneer u het bestand op de schijf
+vervangt door het bestand in het geheugen.
+Kies anders:
+  þ <Nee> om het dialoogvenster opnieuw weer te geven zodat
+    u een nieuwe, unieke bestandsnaam kunt opgeven waaronder
+    het bestand moet worden opgeslagen.
+  þ <Annuleren> om de opdracht te annuleren zodat alles
+    ongewijzigd blijft.
+.context MSG_DelProc
+:nVerwijderen procedure bevestigen
+Voordat u een procedure verwijdert, verifieerd de opdracht
+SUB's of u de procedure daadwerkelijk uit de module wilt
+verwijderen. Kies:
+  þ <OK> om de procedure te verwijderen.
+  þ <Annuleren> om de verwijdering te annuleren zodat alles
+    ongewijzigd blijft.
+.context MSG_MakeRem
+:nGeen witregels toegestaan
+Normaalgesproken is een SUB- of FUNCTION-statement waarmee
+een procedure begint de eerste regel van een invoervenster.
+Wanneer u probeert een witregel in te voeren voor een
+SUB- of FUNCTION-statement, maakt QBasic van deze witregel
+een opmerkingsregel.
+.context MSG_NotSaved
+.context MSG_NotSavedAll
+:nBestand niet opgeslagen
+Uw bestand is of nooit opgeslagen of niet opgeslagen sinds
+de laatste keer dat het werd gewijzigd. Kies:
+  þ <Ja> om het bestand met alle wijzigingen op te slaan.
+  þ <Nee> om de wijzigingen ongedaan te maken.
+  þ <Annuleren> om de opdracht te annuleren zodat alles
+    ongewijzigd blijft.
+.context MSG_BadNextStmt
+:nProceduregrens kan niet worden overschreden
+Tijdens de debug-procedure gebruikte u de opdracht Volgend
+statement instellen om een statement op te geven in een
+andere procedure dan de procedure waarvan de uitvoering
+werd onderbroken. In dit geval wordt de opdracht Volgend
+statement instellen door QBasic genegeerd.
+
+Plaats de onderbroken procedure naar het invoervenster om
+verder te gaan met de debug-taak. U kunt vervolgens de
+opdracht Volgend statement instellen om bij een willekeurig
+statement in die procedure de uitvoering voort te zetten.
+.context MSG_MustSpecifyName
+:nNaam opgegeven
+U hebt <OK> gekozen in het dialoogvenster terwijl het
+tekstvak leeg was. Typ een module- of procedurenaam in het
+tekstvak en kies vervolgens <OK>.
+.context MSG_DataMoved
+:nDATA-statements verplaatst
+QBasic vereist dat alle DATA-statements in een programma
+zich in de moduleniveau-code bevinden. QBasic verplaatst
+DATA-statements automatisch naar het moduleniveau.
+.context MSG_NoSearchString
+:nGeen zoektekst
+Het tekstvak Zoektekst was leeg toen u de opdracht Zoeken
+naar of Wijzigen uitvoerde. Kies de opdracht opnieuw en
+voer een zoektekst in voordat u <OK> kiest.
+.context MSG_MatchNotFound
+:nZoektekst niet gevonden
+QBasic kon de opgegeven zoektekst niet vinden.
+
+De cursor blijft op de locatie staan waar u met zoeken
+bent begonnen.
+.context MSG_ChangeComplete
+:nWijzigen voltooid
+De opdracht Wijzigen is voltooid. De cursor is terug op
+de plaats waar met zoeken werd begonnen.
+.context MSG_ReqSub
+:nSUB of FUNCTION vereist
+U hebt een modulenaam geselecteerd in het dialoogvenster
+van de opdracht SUB's. Selecteer in plaats daarvan een SUB-
+of FUNCTION-procedure.
+.context MSG_SwitchDisks
+:nPlaats diskette
+U hebt verwezen naar uw diskettestation als zijnde A:
+terwijl het B: is, of als B: terwijl het A: is.
+
+Zorg ervoor dat het bestand waarop deze opdracht moet
+worden uitgevoerd zich op een diskette in het station
+bevindt en kies vervolgens <OK>.
+.context MSG_CantSetTabs
+:nTabs kunnen niet worden ingesteld
+Wanneer u een bestand geopend hebt met eerder ingestelde
+tabs, kunt u deze niet wijzigen met de optie Tabs van
+de opdracht Weergave. Sla uw bestand op en kies de opdracht
+Nieuw om het QBasic-invoervenster leeg te maken. Stel de
+tabs in met de opdracht Weergave en open het bestand
+opnieuw.
+.context MSG_OutNearMem
+:nOnvoldoende gegevensruimte
+QBasic heeft onvoldoende geheugen beschikbaar voor gegevens,
+variabelen en andere informatie. Probeer de benodigde
+gegevensruimte als volgt te wijzigen:
+  þ  Gebruik een kleine bestandsbuffer in de LEN-clausule
+     van het statement OPEN.
+  þ  Gebruik de meta-opdracht $DYNAMIC om dynamische arrays
+     te maken. Gegevens voor dynamische arrays kunnen over
+     het algemeen groter zijn dan die voor statische arrays.
+  þ  Gebruik tekenreeks-arrays met vaste lengte in plaats
+     van met vari‰rende lengte.
+  þ  Gebruik het kleinste gegevenstype dat voor het
+     uitvoeren van uw taak mogelijk is. Gebruik waar
+     mogelijk gehele getallen.
+  þ  Gebruik CLEAR om de stack-grootte te wijzigen.
+  þ  Gebruik geen bronregels die langer zijn dan 256 tekens.
+     Dergelijk regels hebben extra tekstbufferruimte nodig.
+.context MSG_ModTooLarge
+:nModuleniveau-code te groot
+De grootte van uw moduleniveau-code overschreidt de interne
+limiet van QBasic. Probeer een deel van de code naar SUB- of
+FUNCTION-procedures te verplaatsen.
+.context MSG_ProcTooLarge
+:nProcedure te lang
+De grootte van de huidige procedure overschreidt de interne
+limiet van QBasic. Verklein de procedure of splits deze in
+verschillende kleinere procedures.
+.comment -----------------------------------------------
+.comment     Section 2: QBI Parser Related Messages
+.comment -----------------------------------------------
+.context MSG_IdTooLong
+:nAanduider te lang
+De aangegeven aanduider langer dan toegestaan in QBasic.
+Aanduiders, zoals variabelenamen, mogen niet langer zijn
+dan 40 tekens.
+.context MSG_BadId
+:nOngeldige aanduider
+U hebt een teken gebruikt dat niet geldig is in een
+aanduider. Zorg ervoor dat:
+  þ DEF FN-procedurenamen alleen letters en cijfers
+    bevatten.
+  þ FUNCTION- en SUB-procedurenamen beginnen met een
+    letter en geen van de volgende speciale tekens bevatten:
+    ., %, &, !, # of $.
+.context MSG_IdImp
+:nAanduider kan niet eindigen op %, &, !, # of $
+Aanduiders kunnen niet eindigen op %, &, !, # of $.
+
+Bovenstaande achtervoegsels zijn niet toegestaan in type-
+aanduiders of SUB-procedurenamen.
+.context MSG_BadElemRef
+:nAanduider kan geen punt bevatten
+Een punt kan niet worden gebruikt in:
+  þ De naam van een gebruikergedefinieerd gegevenstype.
+  þ De naam van een element in een gebruikergedefinieerd
+    gegevenstype.
+  þ De naam van een variabele die de dimensies van een
+    gebruikergedefinieerd gegevenstype heeft.
+
+Hoewel variabelenamen punten mogen bevatten, het aanbevolen
+om een punt alleen te gebruiken als scheidingsteken voor
+record-variabelen. Als u over programma's beschikt die
+punten gebruiken in variabelenamen, kunt u deze wijzigen
+door hoofd- en kleine letters door elkaar te gebruiken.
+De variabele ALFA.BETA kan bijvoorbeeld worden vervangen
+door AlfaBeta.
+.context MSG_ExpTooComplex
+:nUitdrukking te lang
+Bepaalde interne beperkingen van QBasic werden
+overschreden.
+
+Tijdens de evaluatie van de uitdrukking bijvoorbeeld werden
+tekenreeksen die niet aan variabelen waren gekoppeld aan
+tijdelijke locaties toegewezen. Een groot aantal van
+dergelijke tekenreeksen kan tot deze foutmelding leiden.
+Ook een numerieke uitdrukking die bestaat uit meerdere
+ingewikkelde subuitdrukkingen kan deze melding tot gevolg
+hebben.
+
+Probeer de uitdrukking te vereenvoudigen en tekenreeksen
+toe te wijzen aan variabelen.
+.context MSG_IllegalNumber
+:nOngeldig getal
+U hebt een getal gebruikt dat niet juist is voor de context
+waarin het gebruikt werd. In QBasic kunt u bijvoorbeeld geen
+tekenreeks met vaste-lengte declareren met een lengte nul,
+zodat DIM X AS STRING * 0 ongeldig is. Deze melding treedt
+ook op als u tegenstrijdige waarden declareert. Als u
+bijvoorbeeld een gegevenstype-achtervoegsel voor een geheel
+getal opgeeft met een drijvende-punt-getal heeft dit deze
+foutmelding tot gevolg.
+.context MSG_InvConst
+:nOngeldige constante
+Er is een ongeldige uitdrukking gebruikt om een waarde aan
+een symbolische constante toe te kennen.
+
+Numerieke uitdrukkingen die worden toegwezen aan symbolische
+constanten kunnen:
+   þ Numerieke letterlijke tekenreeksen bevatten.
+   þ Eerde gedefinieerde symbolische constanten bevatten.
+   þ Rekenkundige of logische operatoren bevatten met
+     uitzondering van exponenti‰le bewerkingen.
+
+Tekenreeksuitdrukkingen die worden toegwezen aan symbolische
+constanten mogen slechts ‚‚n letterlijke tekenreeks bevatten
+tussen aanhalingstekens.
+.comment ------------------------------------------------
+.comment       Section 3: TextMgr/ReParse errors
+.comment ------------------------------------------------
+.context MSG_InvModLev
+:nOngeldige waarde buiten SUB, FUNCTION of DEF FN
+QBasic is op een statement gestuit dat niet is toegestaan
+in de moduleniveau-code. De statements EXIT SUB, EXIT
+FUNCTION of EXIT DEF zijn bijvoorbeeld niet toegestaan in
+de moduleniveau-code.
+.context MSG_InvMain
+:nOngeldige waarde buiten SUB/FUNCTION
+QBasic is op een statement gestuit dat niet is toegestaan
+in de moduleniveau-code of in DEF FN-functies.
+.context MSG_InvProc
+:nOngeldige waarde in SUB, FUNCTION of DEF FN
+Het statement is neit toegestaan binnen een SUB- of
+FUNCTION-procedure of een DEF FN-functie.
+.context MSG_InvBeforeProcDef
+:nStatement kan niet voorafgaan aan SUB/FUNC.-def.
+Alleen commentaat en DEFtype-statements zijn toegestaan
+voor een procedure-definitie.
+.context MSG_ProcNoEnd
+:nSUB/FUNCTION zonder END SUB/FUNCTION
+Het be‰indigingsstatement ontbreekt in de procedure.
+.context MSG_EndNoDef
+:nEND DEF zonder DEF
+Er is een END DEF-statement gevonden zonder bijbehorend
+DEF-statement.
+.context MSG_UndElem
+:nElement niet gedefinieerd
+U hebt geprobeerd een element te gebruiken dat nog niet
+eerder werd gedefinieerd als onderdeel van een
+gebruikergedefinieerd gegevenstype.
+
+Als u bijvoorbeeld zou hebben gedefinieerd dat MIJNTYPE de
+elementen A, B en C bevat, en u vervolgens D zou proberen te
+gebruiken als element van MIJNTYPE zou deze melding
+verschijnen.
+.context MSG_UndType
+:nType niet gedefinieerd
+Er werd een variabele of parameter gedeclareerd met een
+ongedefinieerd gegevenstype.
+
+Definieer het gegevenstype met het statement TYPE.
+.context MSG_1stStmt
+:nMoet eerste statement op regel zijn
+In IF...THEN...ELSE-blokconstructies, kunnen IF, ELSE,
+ELSEIF en END IF alleen worden voorafgegaan door een
+regelnummer of label.
+
+In SELECT...END SELECT-constructies, kunnen CASE en
+END SELECT alleen worden voorafgegaan door een regelnummer
+of label.
+.context MSG_EndProc
+:nEND SUB of END FUNCTION moet laatste regel zijn
+U probeert een code toe te voegen na de laatste regel in
+een procedure. U moet ofwel terugkeren naar de hoofdmodule
+of een nieuwe SUB of FUNCTION openen om meer coderegels
+toe te voegen.
+.context MSG_NoEndType
+:nTYPE zonder END TYPE
+Er is geen END TYPE-statement gekoppeld aan het TYPE-
+statement.
+.context MSG_NoType
+:nEND TYPE zonder TYPE
+Er is geen TYPE-statement gekoppeld aan het END TYPE-
+statement.
+.context MSG_InvInTypeBlk
+:nStatement ongeldig in TYPE-blok
+Alleen commentaarregels en AS-clausules mogen voorkomen
+tussen de statements TYPE en END TYPE.
+.context MSG_FNstart
+:nKan niet beginnen met 'FN'
+U hebt "FN" gebruikt als de eerste twee letters voor een
+SUB- of FUNCTION-procedure of variabelenaam.
+
+"FN" kan alleen worden gebruikt als eerste twee letters bij
+het aanroepen van een DEF FN-functie.
+.context MSG_NotBlock
+:nBewerking vereist schijf
+U probeert van een apparaat zonder schijf (bijvoorbeeld een
+printer of toetsenbord) te laden of hier naartoe op te
+slaan.
+.context MSG_BadMeta
+:n$Meta-opdrachtfout
+De syntaxis voor de meta-opdracht is onjuist.
+Meta-opdrachten moeten worden voorafgegaan door REM of een
+commentaarteken (enkel aanhalingsteken). De volgende
+voorbeelden voor de meta-opdracht $DYNAMIC zijn beide
+correct:
+
+REM  $DYNAMIC
+'  $DYNAMIC
+.context MSG_NoBpCase
+:nBreekpunten niet toegestaan bij CASE-clausule
+Er zijn een aantal beperking voor het gebruik van
+breekpunten bij debug-verwerking van SELECT...END SELECT-
+statements. U kunt geen breekpunten plaatsen bij het
+eerste statement in het CASE-blok of na het statement
+END SELECT.
+
+Om een debug-bewerking op een SELECT...END SELECT-statement
+uit te voeren met behulp van breekpunten, moet u het
+breekpunt instellen op de SELECT CASE-regel in uw programma.
+Vervolgens kunt u stapgewijs door de rest van de statement-
+structuur wandelen.
+.comment -----------------------------------
+.comment    Section 4:  Scan-time errors
+.comment -----------------------------------
+.context MSG_OBA
+:nDimensies van array al opgegeven
+Deze fout kan de volgende oorzaken hebben:
+  þ Er is meer dan ‚‚n DIM-statement opgegeven voor
+    dezelfde statische array.
+  þ U hebt geprobeert de dimensies van een dynamische array
+    te wijzigen met een DIM-statement zonder de array eerst
+    vrij te geven met een ERASE-statement.
+  þ Het statement OPTION BASE dat na de array volgt, heeft
+    geen dimensies.
+.context MSG_COM
+:nMoet voorafgaan aan uitvoerbare statements
+Er is een COMMON-statement of DECLARE-statement gevonden
+na eeen uitvoerbaar statement. COMMON- en DECLARE-statements
+moeten voorafgaan aan uitvoerbare statements. Alle Basic-
+statements zijn uitvoerbaar behalve de volgende:
+
+    COMMON                       OPTION BASE
+    CONST                        REM
+    DATA                         SHARED
+    DECLARE                      STATIC
+    DEFtype                      TYPE
+    DIM (voor statische arrays)  $STATIC en $DYNAMIC
+.context MSG_EWI
+:nEND IF zonder IF-blok
+Het trefwoord IF dat aan het begin van een IF...ENDIF-blok
+hoort te staan, ontbreekt.
+
+Controleer tevens of de overige besturingsstructuren
+binnen het IF...ENDIF-blok correct zijn. Een genest
+IF-blok zonder ENDIF binnen een IF...ENDIF-blok kan
+deze melding bijvoorbeeld genereren.
+.context MSG_IWE
+:nIF-blok zonder END IF
+Het bijbehorende END IF ontbreekt in het blokstatement
+IF...THEN.
+.context MSG_ElseWI
+:nELSE zonder IF
+Er is een ELSE-clausule gevonden zonder een bijpassend IF.
+Deze foutmelding kan soms ook worden gegenereerd door
+onjuist geneste IF-statements.
+
+Controleer tevens of de overige besturingsstructuren
+binnen het IF...ENDIF-blok correct zijn. Een genest
+IF-blok zonder ENDIF binnen een IF...ENDIF-blok kan
+deze melding bijvoorbeeld genereren.
+.context MSG_ExitScope
+:nEXIT FOR niet binnen FOR...NEXT
+Er is een EXIT FOR-statement gebruikt buiten een
+FOR...NEXT-statement.
+.context MSG_ExitDo
+:nEXIT DO niet binnen DO...LOOP
+Er is een EXIT DO-statement gebruikt buiten een
+DO...LOOP-statement.
+.context MSG_Do
+:nDO zonder LOOP
+Het be‰indigingstrefwoord LOOP ontbreekt in het statement
+DO...LOOP.
+.context MSG_Loop
+:nLOOP zonder DO
+Het trefwoord DO dat normaalgesproken aan het begin van een
+DO...LOOP-statement hoort te staan, ontbreekt of is verkeerd
+gespeld.
+
+Controleer tevens of de overige besturingsstructuren
+binnen de DO...LOOP-structuur  correct zijn.
+structure and verify that they are correctly matched. Een
+genest IF-blok zonder ENDIF binnen een DO...LOOP-structuur
+kan deze melding bijvoorbeeld genereren.
+.context MSG_Select
+:nSELECT zonder END SELECT
+De be‰indigingstrefwoorden END SELECT ontbreken in het
+SELECT CASE-statement.
+.context MSG_Case
+:nCASE zonder SELECT
+De trefwoorden SELECT CASE die aan het begin van een
+SELECT CASE-statement horen te staan, ontbreken of zijn
+verkeerd gespeld.
+
+Controleer tevens of de overige structuren binnen de
+SELECT...END SELECT structuur correct zijn. Een genest
+IF-blok zonder ENDIF binnen een SELECT...END SELECT-
+structuur kan deze melding bijvoorbeeld genereren.
+.context MSG_EndSelect
+:nEND SELECT zonder SELECT
+De trefwoorden SELECT CASE die aan het begin van een
+SELECT CASE-statement horen te staan, ontbreken of zijn
+verkeerd gespeld.
+
+Controleer tevens of de overige structuren binnen de
+SELECT...END SELECT structuur correct zijn. Een genest
+IF-blok zonder ENDIF binnen een SELECT...END SELECT-
+structuur kan deze melding bijvoorbeeld genereren.
+.context MSG_InvFixStr
+:nTekensreeks met vaste lengte ongeldig
+U kunt geen tekenreeks met vaste lengte gebruiken als
+formele parameter voor een SUB- of FUNCTION-procedure.
+.context MSG_InvTypedVar
+:nOpgegeven variabele niet toegestaan in uitdrukking
+Variabelen van een gebruikergedefinieerd gegevenstype
+mogen niet worden doorgegeven aan argumenten. De volgende
+uitdrukking bijvoorbeeld, waarbij X het
+gebruikergedefinieerde gegevenstype voorstelt, is niet
+toegestaan:
+
+CALL ALPHA(X)
+
+U kunt echter wel elementen van een gebruikergedefinieerd
+gegevenstype als argumenten doorgeven, bijvoorbeeld:
+
+CALL Alpha(X.EersteEl)
+.context MSG_DefNoEnd
+:nDEF zonder END DEF
+Bijbehorende END DEF ontbreekt in uit meerdere regels
+bestaande functiedefinitie.
+.context MSG_ParmTM
+:nParametertypen komen niet overeen
+Het parametertype van een SUB- of FUNCTION-procedure komt
+niet overeen met dat van het argument van het DECLARE-
+statement of het aanroepende argument.
+.context MSG_ASRqd1st
+:nAS-clausule vereist bij eerste declaratie
+Er wordt met een AS-clausule verwezen naar een variabele die
+zonder AS-clausule is gedeclareerd .
+.context MSG_ASRqd
+:nAS-clausule vereist
+Er wordt zonder AS-clausule verwezen naar een variabele die
+met een AS-clausule is gedeclareerd.
+
+Als de eerste declaratie van een variabele een AS-clausule
+heeft, moet elk verder statement DIM, REDIM, SHARED of
+COMMON dat naar die variabele verwijst ook een AS-clausule
+hebben.
+.context MSG_ExpectedCase
+:nOngeldige plaats van statements
+Statements en regellabels zijn niet toegestaan tussen
+SELECT CASE en het eerste CASE-statement.
+
+Alleen commentaar en het scheidingsteken voor statements (:)
+zijn toegestaan.
+.context MSG_NoNumArr
+:nNumerieke array ongeldig
+Elementen van numerieke arrays zijn niet toegestaan als
+argumenten voor VARPTR$.
+
+Alleen enkelvoudige variabelen en elementen van
+tekenreeks-arrays met vari‰rende lengte zijn toegestaan.
+.context MSG_InType
+:nOngeldige waarde buiten TYPE-blok
+De clausule "element AS type" is alleen toegestaan binnen
+een TYPE...END TYPE-blok.
+.context MSG_SubCnt
+:nVerkeerd aantal dimensies
+Een array-verwijzing bevat het verkeerde aantal dimensies.
+.context MSG_DefFnCtrl
+:nDEF FN niet toegestaan in besturingsstatements
+DEF FN-functiedefinities worden niet toegestaan binnen
+besturingstatements zoals IF...THEN...ELSE en SELECT CASE.
+.context MSG_ForIndexInUse
+:nFOR-indexvariabele reeds in gebruik
+Deze fout treedt op wanneer dezelfde variabele wordt
+gebruikt als het tegenargument in een FOR...NEXT-statement
+en in een genest FOR...NEXT-statement binnen dezelfde lus.
+De variabelen in geneste FOR...NEXT-statements moeten
+verschillen van hun tegenargumenten.
+.context MSG_TypeTooLarge
+.context h.pg$
+:nType groter dan 65535 bytes
+Een gebruikergedefinieerd gegevenstype mag niet groter zijn
+dan 64 kB.

@@ -1,0 +1,449 @@
+.comment ******************************************************************
+.comment *  Structure Family - QBasic                                     *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  6/16/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments                       *
+.comment ******************************************************************
+.comment *  6/13/90 stevesau                                              *
+.comment *  Incorporated RonS coments.                                    *
+.comment ******************************************************************
+.comment *  5/14/90 stevesau                                              *
+.comment *  Combined DATA/READ/RESTORE, DIM/REDIM, LBOUND/UBOUND,         *
+.comment *  SHARED/STATIC.                                                *
+.comment *  Incorporated review comments.                                 *
+.comment *  Second pass done, DONE, DUN!                                  *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Added action lines.                                           *
+.comment *  Combined $STATIC and $DYNAMIC and Metacommands Syntax info.   *
+.comment *  Moved info from Details to DIM, COMMON, ERASE, READ, SHARED,  *
+.comment *  STATIC.                                                       *
+.comment *  Added TYPE statement info from ISAM file.                     *
+.comment ******************************************************************
+.comment *  4/17/90 Bethpr                                                *
+.comment *  Removed $Include metacommand; in Data Type Keywords node,     *
+.comment *  removed currency; removed $Include from Metacommands Syntax   *
+.comment *  node; removed Preserve from Redim statement                   *
+.comment ******************************************************************
+.context $STATIC
+.context @$STATIC
+.context $DYNAMIC
+.context @$DYNAMIC
+:nDirectives $STATIC, $DYNAMIC
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+$STATIC et $DYNAMIC contr“lent l'allocation des tableaux dimensionn‚s.
+
+\b{REM | '} $STATIC\p
+\b{REM | '} $DYNAMIC\p
+
+    ş \b{REM | '}\p    Les directives doivent ˆtre incluses dans un commentaire.
+    ş \b$STATIC\p      Indique que les tableaux d‚finis par les instructions
+                   DIM ult‚rieures sont statiques (sauf s'ils sont d‚clar‚s
+                   dans une proc‚dure SUB ou FUNCTION). L'espace est allou‚
+                   au lancement du programme et demeure fixe.
+    ş \b$DYNAMIC\p     Indique que les tableaux d‚finis par les instructions
+                   DIM ult‚rieures sont dynamiques. L'espace est allou‚
+                   dynamiquement pendant l'ex‚cution du programme.
+
+    ş DIM et REDIM fournissent une meilleure fa‡on d'indiquer si des tableaux
+      sont statiques ou dynamiques.
+
+Voir aussi    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aREM\v@REM\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p
+.context COMMON
+.context @COMMON
+:nInstruction COMMON
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+COMMON permet de d‚clarer des variables globales communes … plusieurs modules
+ou pour l'enchaŒnement de programmes.
+
+\bCOMMON [SHARED][/nomBloc/] listeVar\p
+
+    ş \bSHARED\p        Indique que des variables sont partag‚es par toutes
+                    les proc‚dures SUB et FUNCTION.
+    ş \bnomBloc\p       Identifie un groupe de variables.
+    ş \blisteVar\p      Liste de variables … partager :
+
+                    \bvariable[( )] [AS type] [, variable[( )] [AS type]]...\p
+
+                    \bvariable\p    Nom de variable BASIC. Les noms de variables
+                                peuvent compter jusqu'… 40 caractŠres et
+                                doivent commencer par une lettre.
+                                Les caractŠres valides sont A-Z, 0-9
+                                et le point (.).
+                    \btype\p        Type de la variable (INTEGER,
+                                LONG, SINGLE, DOUBLE, STRING ou un
+                                type d‚fini par l'utilisateur).
+
+    ş Sauf si elle a ‚t‚ d‚clar‚e statique par une instruction DIM,
+      une variable tableau dans une instruction COMMON est un tableau
+      dynamique. Ses dimensions doivent ˆtre d‚finies par une
+      instruction DIM ou REDIM.
+
+Voir aussi    \i\p\aCHAIN\v@CHAIN\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p
+              \i\p\aSHARED, STATIC\v@SHARED\v\i\p           \i\p\aSUB\v@SUB\v\i\p
+.context DATA
+.context @DATA
+.context READ
+.context @READ
+.context RESTORE
+.context @RESTORE
+:nInstructions DATA, READ, RESTORE
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DATA sp‚cifie les valeurs lues par une instruction READ ult‚rieure.
+READ lit ces valeurs et les assigne … des variables.
+RESTORE permet … READ de relire des valeurs sp‚cifi‚es par DATA.
+
+\bDATA constante[,constante]...\p
+\bREAD listeVar\p
+\bRESTORE [ligne]\p
+
+    ş \bconstante\p       Liste de constantes num‚riques ou de chaŒne
+                      sp‚cifiant les valeurs … lire. Les constantes de
+                      chaŒne contenant des virgules, des deux-points ou
+                      des espaces de tˆte ou de queue sont plac‚es
+                      entre guillemets.
+    ş \blisteVar\p        Liste de variables, s‚par‚es par des virgules,
+                      auxquelles sont assign‚es les valeurs lues.
+                      Les noms de variables peuvent compter jusqu'… 40
+                      caractŠres et doivent commencer par une lettre.
+                      Les caractŠres valides sont A-Z, 0-9 et le point (.).
+    ş \bligne\p           Etiquette ou num‚ro de ligne d'une instruction DATA.
+                      Si omis, la prochaine instruction READ lit les valeurs
+                      dans la premiŠre instruction DATA du programme.
+
+    ş Les instructions DATA ne peuvent ˆtre utilis‚es qu'au niveau d'un
+      modules. Elles ne peuvent pas apparaŒtre dans une proc‚dure.
+
+Exemple :
+    FOR i% = 1 TO 3
+        READ a%, b$
+        PRINT a%, b$
+        RESTORE
+    NEXT i%
+    DATA 1, "R‚p‚ter"
+.context DEFINT
+.context @DEFINT
+.context DEFLNG
+.context @DEFLNG
+.context DEFSNG
+.context @DEFSNG
+.context DEFDBL
+.context @DEFDBL
+.context DEFSTR
+.context @DEFSTR
+:nInstructions DEFtype
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DEFtype d‚finit le type par d‚faut des variables, des fonctions DEF FN et
+des proc‚dures FUNCTION.
+
+\bDEFINT plageLetr [,plageLetr]...\p
+\bDEFLNG plageLetr [,plageLetr]...\p
+\bDEFSNG plageLetr [,plageLetr]...\p
+\bDEFDBL plageLetr [,plageLetr]...\p
+\bDEFSTR plageLetr [,plageLetr]...\p
+
+    ş \bplageLetr\p      Lettre ou plage de lettres (par exemple, A-M).
+                     QBasic d‚finit le type par d‚faut pour les variables,
+                     les fonctions DEF Fn et les proc‚dures FUNCTION dont
+                     le nom commence par la ou les lettres sp‚cifi‚es
+                     comme suit :
+
+                     Instruction  Type par d‚faut
+                     ÍÍÍÍÍÍÍÍÍÍÍ  ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                     DEFINT       Entier
+                     DEFLNG       Entier long
+                     DEFSNG       Simple pr‚cision
+                     DEFDBL       Double pr‚cision
+                     DEFSTR       ChaŒne
+
+    ş Un suffixe de d‚claration de type (%, &, !, #, ou $) est toujours
+      prioritaire sur une instruction DEFtype.
+    ş Le type par d‚faut est simple pr‚cision si vous n'employez pas
+      l'instruction DEFtype.
+    ş Lorsque vous employez DEFtype dans un programme, QBasic
+      insŠre automatiquement l'instruction DEFtype correspondante
+      dans chaque proc‚dure.
+
+Exemple :
+    DEFDBL A-Z
+    a = SQR(3)
+    PRINT "Racine carr‚e de 3 = "; a
+
+Voir aussi    \i\p\aComparaison avec BASICA\v@basica.diffs\v\i\p
+.context DIM
+.context @DIM
+.context REDIM
+.context @REDIM
+:nInstructions DIM, REDIM
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DIM d‚clare un tableau ou sp‚cifie un type pour une variable non-tableau.
+REDIM d‚clare ou redimensionne un tableau dynamique, en effa‡ant
+sa valeur pr‚c‚dente.
+
+\bDIM [SHARED] variable[(indices)] [AS type]\p
+             \b[,variable[(indices)] [AS type]]...\p
+\bREDIM [SHARED] variable(indices) [AS type]\p
+               \b[,variable(indices) [AS type]]...\p
+
+    ş \bSHARED\p        Indique que les variables sont partag‚es par toutes
+                    les proc‚dures SUB ou FUNCTION du module.
+    ş \bvariable\p      Nom du tableau ou de la variable.
+    ş \bindices\p       Dimensions du tableau, exprim‚es commes suit :
+
+                    \b[inf TO] sup [,[inf TO] sup]...\p
+
+                    \binf\p    Limite inf‚rieure des indices du tableau.
+                           La valeur par d‚faut est z‚ro.
+                    \bsup\p    Limite sup‚rieure.
+
+    ş \bAS type\p       D‚clare le type de donn‚e du tableau ou de la
+                    variable (INTEGER, LONG, SINGLE, DOUBLE, STRING
+                    ou un type d‚fini par l'utilisateur).
+
+    ş DIM d‚clare un tableau statique ou dynamique. Les tableaux dimensionn‚s
+      avec des constantes sont statiques et ceux dimensionn‚s avec des
+      variables sont dynamiques, sauf si le mode de stockage des tableaux
+      est d‚termin‚ par $STATIC, $DYNAMIC ou COMMON. REDIM d‚clare toujours
+      des tableaux dynamiques.
+    ş L'espace pour les tableaux statiques est allou‚ lors du lancement
+      du programme et demeure fixe. L'espace pour les tableaux dynamiques
+      est allou‚ pendant l'ex‚cution du programme.
+
+Exemple :
+    ' $DYNAMIC
+    DIM A(49, 49)
+    REDIM A(19, 14)
+
+Voir aussi  \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aERASE\v@ERASE\v\i\p    \i\p\aOPTION BASE\v@BASE\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p
+            \i\p\a$STATIC, $DYNAMIC\v@$DYNAMIC\v\i\p    \i\p\aComparaison avec BASICA\v@basica.diffs\v\i\p
+.context ERASE
+.context @ERASE
+:nInstruction ERASE
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ERASE r‚initialise les ‚l‚ments des tableaux statiques et libŠre l'espace
+allou‚ aux tableaux dynamiques.
+
+\bERASE nomTab [,nomTab]...\p
+
+    ş \bnomTab\p    Nom d'un tableau.
+
+    ş Pour les tableaux statiques, ERASE initialise chaque ‚l‚ment d'un
+      tableau num‚rique … z‚ro et chaque ‚l‚ment d'un tableau de type
+      chaŒne … la chaŒne nulle.
+    ş Pour les tableaux dynamiques, ERASE libŠre la m‚moire utilis‚e par
+      le tableau. Vous devez red‚clarer les dimensions du tableau avec
+      REDIM ou DIM avant de pouvoir l'utiliser.
+
+Exemple :
+    DIM a%(0)
+    a%(0) = 6
+    PRINT "Avant : "; a%(0)
+    ERASE a%
+    PRINT "AprŠs : "; a%(0)
+
+Voir aussi    \i\p\aCLEAR\v@CLEAR\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context LBOUND
+.context @LBOUND
+.context UBOUND
+.context @UBOUND
+:nFonctions LBOUND, UBOUND
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LBOUND et UBOUND retournent les bornes inf‚rieures et sup‚rieures (le plus
+petit et le plus grand indice) d'une dimension d'un tableau.
+
+\bLBOUND(tabl[,dimension%])\p
+\bUBOUND(tabl[,dimension%])\p
+
+    ş \btabl\p          Nom du tableau.
+    ş \bdimension%\p    Indique la dimension dont les bornes sont retourn‚es.
+                    Utilisez 1 pour la premiŠre dimension, 2 pour la seconde,
+                    etc. La valeur par d‚faut est 1.
+
+Exemple :
+    DIM a%(1 TO 3, 2 TO 7)
+    PRINT LBOUND(a%, 1), UBOUND(a%, 2)
+
+Voir aussi    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context LET
+.context @LET
+:nInstruction LET
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LET affecte la valeur d'une expression … une variable.
+
+\b[LET] variable=expression\p
+
+    ş \bvariable\p      Nom de variable. Les noms de variables peuvent compter
+                    jusqu'… 40 caractŠres et doivent commencer par une lettre.
+                    Les caractŠres valides sont A-Z, 0-9 et le point (.).
+    ş \bexpression\p    Une expression qui fournit une valeur … assigner.
+
+    ş L'utilisation du mot-cl‚ optionnel LET n'est pas recommand‚e.
+      L'instruction d'affectation variable=expression a le mˆme effet
+      avec ou sans LET.
+
+Voir aussi    \i\p\aLSET, RSET\v@LSET\v\i\p
+.context OPTION
+.context @OPTION
+.context BASE
+.context @BASE
+:nInstruction OPTION BASE
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+OPTION BASE d‚finit la borne par d‚faut pour les indices de tableau.
+
+\bOPTION BASE {0 | 1}\p
+
+    ş La clause TO de l'instruction DIM fournit un moyen plus souple de
+      fixer la borne inf‚rieure des indices d'un tableau.
+
+Voir aussi    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aLBOUND, UBOUND\v@UBOUND\v\i\p
+.context REM
+.context @REM
+:nInstruction REM
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+REM permet d'ins‚rer des commentaires explicatifs … l'int‚rieur
+d'un programme.
+
+\bREM remark\p
+\b' remark\p
+
+    ş \bremark\p    Texte.
+
+    ş Les commentaires sont ignor‚s lors de l'ex‚cution du programme
+      sauf s'ils contiennent des directives.
+    ş Un commentaire peut ˆtre ins‚r‚ sur une ligne aprŠs une instruction
+      ex‚cutable si il est pr‚c‚d‚ d'une simple apostrophe ou si le mot-cl‚
+      REM est pr‚c‚d‚ par un caractŠre deux-points (:).
+
+Exemple :
+    REM    Ceci est un commentaire.
+    '      Ceci est aussi un commentaire.
+    PRINT "Test1"       'Commentaire aprŠs instruction PRINT.
+    PRINT "Test2" :  REM Commentaire aprŠs instruction PRINT.
+
+Voir aussi    \i\p\a$STATIC, $DYNAMIC\v@$STATIC\v\i\p
+.context SHARED
+.context @SHARED
+.context STATIC
+.context @STATIC
+:nInstructions SHARED, STATIC
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SHARED donne … une proc‚dure l'accŠs aux variables d‚clar‚es dans l'en-tˆte
+du module.
+STATIC rend une variable locale … une fonction ou … une proc‚dure et conserve
+sa valeur entre les appels.
+
+\bSHARED variable[()] [AS type] [,variable[()] [AS type]]...\p
+\bSTATIC variable[()] [AS type] [,variable[()] [AS type]]...\p
+
+    ş \bvariable\p    Nom de la variable … partager ou … rendre statique.
+                  Les noms de variables peuvent compter jusqu'… 40 caractŠres
+                  et doivent commencer par une lettre. Les caractŠres valides
+                  sont A-Z, 0-9 e le point (.).
+    ş \bAS type\p     D‚clare le type de la variable (INTEGER, LONG, SINGLE,
+                  DOUBLE, STRING ou un type d‚fini par l'utilisateur).
+
+Exemple :
+    Le programme REMLINE.BAS illustre l'utilisation des instructions
+    SHARED et STATIC. Pour visualiser ou ex‚cuter ce programme, chargez
+    REMLINE.BAS en utilisant la commande Ouvrir du menu Fichier.
+
+Voir aussi    \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context SWAP
+.context @SWAP
+:nInstruction SWAP
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SWAP ‚change les valeurs de deux variables.
+
+\bSWAP variable1, variable2\p
+
+    ş \bvariable1\p et \bvariable2\p    Deux variables de mˆme type.
+
+Exemple :
+    a% = 1: b% = 2
+    PRINT "Avant : "; a%, b%
+    SWAP a%, b%
+    PRINT "AprŠs : "; a%, b%
+.context TYPE
+.context @TYPE
+:nInstruction TYPE
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+TYPE d‚finit un type de donn‚es contenant un ou plusieurs ‚l‚ments.
+
+\bTYPE typeUtil\p
+  \bNomElem AS nomType\p
+  \b[nomElem AS nomType]\p
+\b.\p
+\b.\p
+\b.\p
+\bEND TYPE\p
+
+    ş \btypeUtil\p       Nom du type de donn‚e d‚fini. Le nom peut compter
+                     jusqu'… 40 caractŠres et doit commencer par une lettre.
+                     Les caractŠres valides sont A-Z, 0-9 et le point (.).
+    ş \bnomElem\p        El‚ment du type d‚fini par l'utilsateur.
+    ş \bnomType\p        Type de l'‚l‚ment (INTEGER, LONG, SINGLE, DOUBLE,
+                     STRING ou un type d‚fini par l'utilisateur).
+
+    ş Utilisez DIM, REDIM, COMMON, STATIC ou SHARED pour cr‚er une variable
+      d'un type d‚fini par l'utilisateur.
+
+Exemple :
+    TYPE Carte
+        Nom AS STRING * 9
+        Valeur AS INTEGER
+    END TYPE
+    DIM Jeu(1 TO 52) AS Card
+    Jeu(1).Nom = "As"
+    Jeu(1).Valeur = 2
+    PRINT Jeu(1).Nom, Jeu(1).Valeur
+
+Voir aussi    \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p
+.comment ******************************************************************
+.comment *  Data Type Keywords screen                                     *
+.comment ******************************************************************
+.context INTEGER
+.context @INTEGER
+.context LONG
+.context @LONG
+.context SINGLE
+.context @SINGLE
+.context DOUBLE
+.context @DOUBLE
+.context STRING
+.context @STRING
+:nMots-cl‚ relatifs aux types de donn‚es
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Les mots-cl‚ suivants d‚finissent le type d'une variable dans une d‚claration
+ou dans une liste de paramŠtres :
+
+    ş \bINTEGER\p      Entier sign‚ cod‚ sur 16 bits.
+    ş \bLONG\p         Entier sign‚ cod‚ sur 32 bits.
+    ş \bSINGLE\p       Variable point flottant simple pr‚cision (32 bits).
+    ş \bDOUBLE\p       Variable point flottant double pr‚cision (64 bits).
+    ş \bSTRING * n%\p  ChaŒne de longueur fixe (n% octets).
+    ş \bSTRING\p       ChaŒne de longueur variable.
+
+Voir aussi  \i\p\aAS\v@AS\v\i\p          \i\p\aJeu de caractŠres\v@fun.character.set\v\i\p          \i\p\aCOMMON\v@COMMON\v\i\p
+            \i\p\aDECLARE\v@DECLARE\v\i\p     \i\p\aDEF FN\v@DEF\v\i\p                     \i\p\aDIM, REDIM\v@DIM\v\i\p
+            \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p             \i\p\aSUB\v@SUB\v\i\p
+            \i\p\aTYPE\v@TYPE\v\i\p

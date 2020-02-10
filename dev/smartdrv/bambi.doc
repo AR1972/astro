@@ -1,0 +1,118 @@
+	Being a document on the workings of WinCache.
+
+
+
+The following is a brief summary of what can be found in various modules.
+
+umbload.asm 	-- code which automagically loads the TSR into a UMB
+bambinit.asm 	-- initialization code which initialized data stuctures/hooks
+bambi.asm	-- device driver hooks main entry points. core of program
+hooks.asm	-- contains interrupt hooks for 8,9,10,13,15,19,28, also write
+		   behind entry point
+hooksini.asm	-- initialization code for hooks.asm
+dirtywrt.asm	-- core code for write_behind
+queueman.asm	-- code which maintains the lru and cache structure
+queueini.asm    -- initialization code for queueman.asm
+cacheman.asm	-- code which manages queueman's interface to xms
+cacheini.asm	-- initialization code for cacheman.asm
+xms.asm		-- xms interface code
+xmsini.asm	-- initialization code for xms.asm
+int2f.asm	-- int 2f communication multiplex, used for cache control
+int2fini.asm	-- initialization code for int2f.asm
+reboot.asm	-- contains code for a software reboot
+dev.asm		-- contains dummy device driver header
+devini.asm	-- entry points for dev.asm's device--only displays error message
+get_dpb.asm	-- code to get a drive's DPB without causing disk access
+drvtype.asm	-- code which detects drive type sets up default drives to cache
+indosbox.asm	-- code which detects if the program is launched in a VM
+cmdline.asm	-- code which handles command line parseing,initialization
+text.asm	-- all text messages which are not resident
+rtest.asm	-- all text messages which are resident
+rdata.asm	-- global resident data
+tdata.asm 	-- global transient data
+dec_out.asm	-- nifty routine to pretty-display numbers
+popup.asm	-- pop-up dialog for error messages
+devsym.inc	-- definition of device driver headers,packets,constants (DOS)
+dpb.inc		-- definition of device parameter block (DOS)
+version.inc	-- just the version number text
+mseuq.inc	-- standard offsets for DOS
+bambi.inc	-- constants used by bambi internally, interface constants
+xms.inc		-- constants used by XMS standard
+
+
+	 
+	WinCache works by latching into the device driver chain.  It does
+this by first duplicating a device driver header for each block device driver
+in the DOS device driver chain and inserting the duplicate at the head of the
+device chain.  Next, the duplicated headers are modified to have the strategy
+and interrupt entry points point to WinCache's entry point.  Finally, the
+DPB's are all updated to point to the modified device driver headers.
+---
+---	see	bambinit.asm
+---
+	The WinCache strategy and interrupt entry point replacement in its
+most base form (when caching is disabled) simply chains the strategy and
+interrupt calls to the correct device drivers.  However, when caching
+is enabled, the WinCache entry point code takes additional action before
+and after chaining to the correct device drivers.  
+---
+---	see	bambi.asm
+---
+	The first type of caching done by WinCache is read and read-ahead
+caching.  When the WinCache entry point is called with a read packet 
+(as passed via a packet from DOS auspiciously to the device driver), and the
+data required to satisfy the request is determined to not be in the cache
+(via algorithms described below), WinCache
+interprets the packet and re-issues read commands to the device driver
+accordingly: if the read does not align on a cache block boundary, WinCache
+instructs the device driver to read the one block that contains the beginning
+of DOS's requested read.  Then the body of the data is read in by instructing
+the device driver to read the central body of data into the user's (as passed
+in the packet by DOS) buffer.  Finally, if the last portion of the read does
+not align on a cache block boundary, WinCache instructs the device driver to
+read the final cache block into the WinCache local buffer.  The beginning
+portion and final portion of the read data is updated in the user's buffer
+as appropriate. Once the data read in, WinCache copies the newly read data
+into the cache ram (using algorithms described below) and returns to DOS.
+	A special case arises when WinCache detects that sequential reads
+are being performed: if a second read is requested which is logically
+contiguous to the previous read request, WinCache will instruct the device
+driver to read more data than requested (according to the size of the
+read-ahead buffer which is typically equal to the cache block size).  The
+data that was read-ahead is placed into the cache in expectation of further
+sequential read requests.
+	The second type of caching done by WinCache is write and write-behind
+caching.  When the Wincache entry point is called with a write packet (from
+DOS), instead of allowing the data to be written to the disk, Wincache copies
+the data into the ram cache and marks them as "dirty".  No data is committed
+to disk at this time.
+	Data is committed to disk asynchronously via interrupt 08 (the hardware
+timer interrupt) and on interrupt 28 (the DOS idle interrupt).  Due to the
+non-re-entrant nature of DOS, the ROM BIOS and DOS device drivers, and due
+to timing issues for video and keyboard input and output the 
+disk cannot be accessed at all times.   The cases when device driver/disk
+access is not allowed are: during a video BIOS interrupt (int 10h),during
+a hardware keyboard interrupt (int 09), during BIOS disk intterrupts
+(int 13) and while the WinCache code is already entered (WinCache is not
+re-entrant since it makes calls to non-rentrant device drivers). If a
+timer or idle interrupt occurs and any of these cases are true, WinCache
+will skip the write-behind since it would bring about a system crash. If
+WinCache determines that write-behind is ok, it selects the first-in 
+dirty block and commits it to disk by copying the block from XMS ram to
+local (conventional) ram and instructing the appropriate device driver
+to perform a write operation.
+---
+---	see	hooks.asm
+---
+	On all read requests, WinCache first checks to see if the request
+can be satisfied by data in the ram cache.  Wincache keeps a queued list
+of recently used blocks of the disks (block granularity is user configurable,
+default is 8k). Each list entry corresponds to data cached in XMS ram.
+Currently, WinCache uses a FIFO (first in first out) priority queue structure
+for data organization.  This allows the data structures to be small (one
+array of disk addresses) and quickly scanned for membership in the queue.
+---
+---	see 	queueman.asm
+---
+
+

@@ -1,0 +1,17 @@
+[shared-]
+	pmark=
+	version=2
+[debug-]
+	target="d:\il\driver\interdos.exe"
+	genericbp='E 0xF80:0x41EB
+	genericbp='E 0xF80:0x41ED
+	genericbp='E 0xF80:0x41FC
+[cv]
+	wndstate=0 1 0 2 0 0 0 1 0 1 254
+	tilestate=1 49 0 80 0 0 0 67 0 8 0 0 0 0 39 0 0 254
+	command=use auto
+	command=n10
+	command=s1
+	command=oc+
+	command=of+
+	command=o3-

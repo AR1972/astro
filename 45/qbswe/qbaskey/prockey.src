@@ -1,0 +1,241 @@
+.comment ******************************************************************
+.comment *  Procedure Family - QBasic                                     *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/16/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments.                      *
+.comment ******************************************************************
+.comment *  6/13/90 stevesau                                              *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/13/90 stevesau                                              *
+.comment *  Combined ENVIRON/ENVIRON$.                                    *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Added action lines.                                           *
+.comment *  Deleted SHELL Function (OS/2 only).                           *
+.comment *  Added parameter info from Details for DECLARE, FUNCTION, SUB. *
+.comment ******************************************************************
+.comment *  4/17/90 BethPr                                                *
+.comment *  Removed Command$ function, Declare Statement (Non-BASIC       *
+.comment *  procedures), Alias clause in the Declare statement,           *
+.comment *  Byval clause, Cdecl keyword.                                  *
+.comment ******************************************************************
+.context CONST
+.context @CONST
+:nCONST, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Deklarerar en eller fler symboliska konstanter.
+
+\bCONST konstantnamn = uttryck [,konstantnamn = uttryck]...\p
+
+    ş \bkonstantnamn\p    Namnet p† konstanten. Namnet kan best† av upp till
+                      40 tecken, och m†ste b”rja med en bokstav. Giltiga
+                      tecken „r A-Z, 0-9, och punkt (.).
+    ş \buttryck\p         Ett uttryck som tilldelas konstanten. Uttrycket
+                      kan best† av literaler (som t ex 1.0), andra konstanter,
+                      en aritmetisk eller logisk operator utom exponentiering
+                      (^) eller en ensam literal str„ng.
+
+Exempel:
+    CONST PI = 3.141593
+    INPUT "Cirkelns radie: "; r
+    PRINT "Area = "; PI * r ^ 2
+.context DECLARE
+.context @DECLARE
+.context ANY
+.context @ANY
+:nDECLARE, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Deklarerar en funktion (FUNCTION) eller ett delprogram (SUB), och startar
+typkontroll av dess argument.
+
+\bDECLARE {FUNCTION | SUB} namn [([parameterlista])]\p
+
+    ş \bnamn\p             Namnet p† funktionen eller delprogrammet.
+    ş \bparameterlista\p   En eller fler variabler som anger vilka
+                       parametrar som ska skickas till funktionen
+                       eller delprogrammet n„r det anropas:
+
+                       \bvariabel[( )] [AS typ] [, variabel[( )] [AS typ]]...\p
+
+                       \bvariabel\p   Ett variabelnamn i Basic.
+                       \btyp\p        Variabelns datatyp (INTEGER, LONG, SINGLE,
+                                  DOUBLE, STRING eller en anv„ndardefinierad
+                                  datatyp). Om nyckelordet ANY anv„nds kan det
+                                  vara vilken datatyp som helst.
+
+    ş DECLARE kr„vs om du anropar delprogram (SUB) utan CALL. QBasic
+      genererar automatiskt DECLARE-satser n„r du sparar programmet.
+
+Exempel:
+    Programmet REMLINE.BAS illustrerar hur man deklarerar funktioner
+    (FUNCTION) och delprogram (SUB). Om du vill se eller k”ra
+    programmet, kan du ladda REMLINE.BAS genom att anv„nda kommandot
+    ™ppna i Arkiv-menyn.
+
+Se „ven     \i\p\aCALL\v@CALL\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context DEF
+.context @DEF
+:nDEF FN, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definierar en funktion.
+
+\bDEF FNnamn[(parameterlista)] = uttryck\p
+\bDEF FNnamn[(parameterlista)]\p
+    \b[satsblock]\p
+  \bFNnamn = uttryck\p
+    \b[satsblock]\p
+  \bEXIT DEF]\p
+    \b[satsblock]\p
+  \bEND DEF\p
+
+    ş \bparameterlista\p   Ett eller fler argument p† f”ljande form:
+
+                       \bvariabel[( )] [AS typ] [, variabel[( )] [AS typ]]...\p
+
+                       \bvariabel\p    Ett variabelnamn i Basic.
+                       \btyp\p         Variabelns datatyp (INTEGER,
+                                   LONG, SINGLE, DOUBLE, STRING eller en
+                                   anv„ndardefinierad datatyp).
+
+    ş \buttryck\p          Funktionens returv„rde.
+
+    ş Satsen FUNCTION „r ett b„ttre s„tt att definiera en funktion.
+
+Se „ven     \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p
+.context ENVIRON
+.context @ENVIRON
+.context ENVIRON$
+.context @ENVIRON$
+:nENVIRON$, funktion; ENVIRON, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ENVIRON$ returnerar en DOS milj”str„ng.
+ENVIRON „ndrar eller l„gger till en milj”str„mg, eller l„gger till en
+milj”str„ng i DOS milj”tabell.
+
+\bENVIRON$ (milj”variabel$)\p
+\bENVIRON$ (n%)\p
+\bENVIRON str„nguttryck$\p
+
+    ş \bmilj”variabel$\p       Namnet p† en milj”variabel i DOS.
+    ş \bn%\p                   Anger att ENVIRON$ returnerar str„ng nummer n
+                           fr†n milj”str„ngtabellen.
+    ş \bstr„nguttryck$\p       Namnet och inst„llningen av en milj”variabel
+                           i DOS (t ex PATH eller PROMPT) p† en av f”ljande
+                           former:
+
+                           \bmilj”variabel$=milj”str„ng$\p
+                           \bmilj”variabel$ milj”str„ng$\p
+
+    ş ndringar som g”rs med satsen ENVIRON raderas n„r programmet slutar.
+
+Exempel:
+    ENVIRON "PATH=TEST"
+    PRINT ENVIRON$("PATH")
+.context FUNCTION
+.context @FUNCTION
+:nFUNCTION, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definierar en funktion.
+
+\bFUNCTION namn [(parameterlista)] [STATIC]\p
+    \b[satsblock]\p
+  \bnamn = uttryck\p
+    \b[satsblock]\p
+\bEND FUNCTION\p
+
+    ş \bnamn\p             Namnet p† funktionen och den datatyp som den
+		       returnerar, vilken anges med ett datatypssuffix
+                       (%, &, !, # eller $).
+    ş \bparameterlista\p   En eller fler variabler som anger parametrarna
+                       som ska ges till funktionen n„r den anropas:
+
+                       \bvariabel[( )] [AS typ] [, variabel[( )] [AS typ]]...\p
+
+                       \bvariabel\p    Ett variabelnamn i Basic.
+                       \btyp\p         Variabelns datatyp (INTEGER,
+                                   LONG, SINGLE, DOUBLE, STRING eller en
+                                   anv„ndardefinierad datatyp).
+
+    ş \bSTATIC\p           Anger att v„rdet p† funktionens lokala variabler
+                       ska sparas mellan anropen.
+    ş \buttryck\p          Det v„rde som funktionen returnerar.
+
+    ş N„r du anropar en funktion kan du ange att ett arguments v„rde inte
+      ska „ndras av funktionen, genom att omge argumenten med parenteser.
+
+
+Exempel:
+    Programmet REMLINE.BAS illustrerar hur man anropar funktioner (FUNCTION).
+    Om du vill se eller k”ra programmet, kan du ladda REMLINE.BAS genom
+    att anv„nda kommandot ™ppna i Arkiv-menyn.
+
+Se „ven     \i\p\aDECLARE\v@DECLARE\v\i\p    \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context SHELL
+.context @SHELL
+:nSHELL, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+G”r ett uppeh†ll i exekveringen av ett Basicprogram, s† att ett DOS-kommando
+eller en kommandofil kan k”ras.
+
+\bSHELL [kommandostr„ng$]\p
+
+    ş \bkommandostr„ng$\p   Namnet p† ett DOS-kommando eller en kommandofil.
+
+    ş Programmet forts„tter exekveringen n„r DOS-kommandot „r utf”rt eller
+      kommandofilen k”rd.
+    ş Om du inte har med kommandostr„ngen startar SHELL ett DOS-skal, och
+      visar DOS-prompten. Om du vill †terg† till programmet, ska du anv„nda
+      kommandot EXIT.
+
+Exempel:
+    SHELL "DIR"
+.context SUB
+.context @SUB
+:nSUB, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definierar ett delprogram.
+
+\bSUB namn[(parameterlista)] [STATIC]\p
+  \b[satsblock]\p
+\bEND SUB\p
+
+    ş \bnamn\p             Namnet p† delprogrammet, upp till 40 tecken
+                       l†ngt, utan datatypssuffix.
+    ş \bparameterlista\p   En eller fler variabler som anger parametrar som
+                       ska ges til delprogrammet n„r det anropas:
+
+                       \bvariabel[( )] [AS typ] [, variabel[( )] [AS typ]]...\p
+
+                       \bvariabel\p    Ett variabelnamn i Basic.
+                       \btyp\p         Variabelns datatyp (INTEGER,
+                                   LONG, SINGLE, DOUBLE, STRING eller en
+                                   anv„ndardefinierad datatyp).
+
+    ş \bSTATIC\p           Anger att v„rdet p† funktionens lokala variabler
+                       ska sparas mellan anropen.
+
+    ş N„r du anropar ett delprogram kan du ange att ett arguments v„rde inte
+      ska „ndras av funktionen, genom att omge argumenten med parenteser.
+
+Exempel:
+    Programmet REMLINE.BAS illustrerar hur man anropar delprogram (SUB). Om
+    du vill se eller k”ra det programmet, kan du ladda REMLINE.BAS genom att
+    anv„nda kommandot ™ppna i Arkiv-menyn.
+
+Se „ven     \i\p\aCALL\v@CALL\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p

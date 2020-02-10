@@ -1,0 +1,221 @@
+.comment ******************************************************************
+.comment *  Index file - QBasic                                           *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/17/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Copied QBI Index.                                             *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Added Unsupported Keywords.                                   *
+.comment *  Made links local.                                             *
+.comment ******************************************************************
+.context @helpIndexId
+.context helpIndexId
+.context @a
+:nQBasic Online-Hilfe Index
+  \i\p\aInhalt\v@helpTableId\v\i\p  \bIndex\p  \i\p\aZur…k\v!B\v\i\p
+ﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄﾄ
+Um Hilfe zu einem QBasic-Schl《selwort in der folgenden Liste zu bekommen:
+    1. Dr…ken Sie die Taste mit dem Anfangsbuchstaben des Schl《selworts.
+    2. Benutzen Sie die Richtungstasten, um den Cursor zu dem Schl《selwort
+       zu bewegen.
+    3. Dr…ken Sie F1.
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ A ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aABS-Funktion\v@ABS\v                       \aAPPEND-Schl《selwort\v@APPEND\v
+  \aABSOLUTE-Schl《selwort\v@ABSOLUTE\v             \aAS-Schl《selwort\v@AS\v
+  \aACCESS-Schl《selwort\v@ACCESS\v               \aASC-Funktion\v@ASC\v
+  \aAND-Operator\v@AND\v                       \aATN-Funktion\v@ATN\v
+  \aANY-Schl《selwort\v@ANY\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ B ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aBASE-Schl《selwort\v@BASE\v                 \aBLOAD-Anweisung\v@BLOAD\v
+  \aBASIC-Zeichensatz\v@fun.character.set\v                  \aBoole'sche Operatoren\v@AND\v
+  \aBEEP-Anweisung\v@BEEP\v                     \aBSAVE-Anweisung\v@BSAVE\v
+  \aBINARY-Schl《selwort\v@BINARY\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ C ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aCALL-Anweisung\v@CALL\v                     \aCOLOR-Anweisung\v@COLOR\v
+  \aCALL ABSOLUTE-Anweisung\v@ABSOLUTE\v            \aCOM-Anweisung\v@COM\v
+  \aCASE-Schl《selwort\v@SELECT\v                 \aCOMMON-Anweisung\v@COMMON\v
+  \aCDBL-Funktion\v@CDBL\v                      \aCONST-Anweisung\v@CONST\v
+  \aCHAIN-Anweisung\v@CHAIN\v                    \aCOS-Funktion\v@COS\v
+  \aCHDIR-Anweisung\v@CHDIR\v                    \aCSNG-Funktion\v@CSNG\v
+  \aCHR$-Funktion\v@CHR$\v                      \aCSRLIN-Funktion\v@CSRLIN\v
+  \aCINT-Funktion\v@CINT\v                      \aCVD-Funktion\v@CVD\v
+  \aCIRCLE-Anweisung\v@CIRCLE\v                   \aCVDMBF-Funktion\v@CVDMBF\v
+  \aCLEAR-Anweisung\v@CLEAR\v                    \aCVI-Funktion\v@CVI\v
+  \aCLNG-Funktion\v@CLNG\v                      \aCVL-Funktion\v@CVL\v
+  \aCLOSE-Anweisung\v@CLOSE\v                    \aCVS-Funktion\v@CVS\v
+  \aCLS-Anweisung\v@CLS\v                      \aCVSMBF-Funktion\v@CVSMBF\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ D ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aDATA-Anweisung\v@DATA\v                     \aDEFLNG-Anweisung\v@DEFLNG\v
+  \aDatentyp-Schl《selwort\v@INTEGER\v             \aDEFSNG-Anweisung\v@DEFSNG\v
+  \aDATE$-Funktion\v@datef\v                     \aDEFSTR-Anweisung\v@DEFSTR\v
+  \aDATE$-Anweisung\v@DATE$\v                    \aDIM-Anweisung\v@DIM\v
+  \aDECLARE-Anweisung\v@DECLARE\v                  \aDO...LOOP-Anweisung\v@DO\v
+  \aDEF FN-Anweisung\v@DEF\v                   \aDOUBLE-Schl《selwort\v@DOUBLE\v
+  \aDEF SEG-Anweisung\v@SEG\v                  \aDRAW-Anweisung\v@DRAW\v
+  \aDEFDBL-Anweisung\v@DEFDBL\v                   \a$DYNAMIC-Metabefehl\v@$DYNAMIC\v
+  \aDEFINT-Anweisung\v@DEFINT\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ E ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aELSE-Schl《selwort\v@IF\v                 \aERDEV-Funktion\v@ERDEV\v
+  \aELSEIF-Schl《selwort\v@IF\v               \aERDEV$-Funktion\v@ERDEV$\v
+  \aEND-Anweisung\v@END\v                      \aERL-Funktion\v@ERL\v
+  \aENVIRON-Anweisung\v@ENVIRON\v                  \aERR-Funktion\v@ERR\v
+  \aENVIRON$-Funktion\v@ENVIRON$\v                  \aERROR-Anweisung\v@ERROR\v
+  \aEOF-Funktion\v@EOF\v                       \aEXIT-Anweisung\v@EXIT\v
+  \aEQV-Operator\v@EQV\v                       \aEXP-Funktion\v@EXP\v
+  \aERASE-Anweisung\v@ERASE\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ F ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aFIELD-Anweisung\v@FIELD\v                    \aFOR...NEXT-Anweisung\v@FOR\v
+  \aFILEATTR-Funktion\v@FILEATTR\v                  \aFRE-Funktion\v@FRE\v
+  \aFILES-Anweisung\v@FILES\v                    \aFREEFILE-Funktion\v@FREEFILE\v
+  \aFIX-Funktion\v@FIX\v                       \aFUNCTION-Anweisung\v@FUNCTION\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ G ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aGET-Anweisung (Datei E/A)\v@GET\v          \aGOSUB-Anweisung\v@GOSUB\v
+  \aGET-Anweisung (Grafik)\v@ggx\v             \aGOTO-Anweisung\v@GOTO\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ H ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aHEX$-Funktion\v@HEX$\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ I ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aIF...THEN...ELSE-Anweisung\v@IF\v         \aINSTR-Funktion\v@INSTR\v
+  \aIMP-Operator\v@IMP\v                       \aINT-Funktion\v@INT\v
+  \aINKEY$-Funktion\v@INKEY$\v                    \aINTEGER-Schl《selwort\v@INTEGER\v
+  \aINP-Funktion\v@INP\v                       \aIOCTL-Anweisung\v@IOCTL\v
+  \aINPUT-Anweisung\v@INPUT\v                    \aIOCTL$-Funktion\v@IOCTL$\v
+  \aINPUT$-Funktion\v@INPUT$\v                    \aIS-Schl《selwort\v@IS\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ K ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aKEY-Anweisung (Tastenzuweisung)\v@KEY\v    \aKILL-Anweisung\v@KILL\v
+  \aKEY-Anweisung (Ereignisverfolgung)\v@ketv\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ L ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aLBOUND-Funktion\v@LBOUND\v                    \aLOCK...UNLOCK-Anweisungs\v@LOCK\v
+  \aLCASE$-Funktion\v@LCASE$\v                    \aLOF-Funktion\v@LOF\v
+  \aLEFT$-Funktion\v@LEFT$\v                     \aLOG-Funktion\v@LOG\v
+  \aLEN-Funktion\v@LEN\v                       \aLONG-Schl《selwort\v@LONG\v
+  \aLET-Anweisung\v@LET\v                      \aLOOP-Schl《selwort\v@LOOP\v
+  \aLINE-Anweisung (Grafik)\v@LINE\v            \aLPOS-Funktion\v@LPOS\v
+  \aLINE INPUT-Anweisung\v@INPUT\v               \aLPRINT-Anweisung\v@LPRINT\v
+  \aLIST-Schl《selwort\v@LIST\v                 \aLPRINT USING-Anweisung\v@lprintu\v
+  \aLOC-Funktion\v@LOC\v                       \aLSET-Anweisung\v@LSET\v
+  \aLOCATE-Anweisung\v@LOCATE\v                   \aLTRIM$-Funktion\v@LTRIM$\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ M ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aMID$-Funktion\v@MID$\v                      \aMKI$-Funktion\v@MKI$\v
+  \aMID$-Anweisung\v@MID$\v                     \aMKL$-Funktion\v@MKL$\v
+  \aMKD$-Funktion\v@MKD$\v                      \aMKS$-Funktion\v@MKS$\v
+  \aMKDIR-Anweisung\v@MKDIR\v                    \aMKSMBF$-Funktion\v@MKSMBF$\v
+  \aMKDMBF$-Funktion\v@MKDMBF$\v                   \aMOD-Operator\v@MOD\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ N ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aNAME-Anweisung\v@NAME\v                     \aNOT-Operator\v@NOT\v
+  \aNEXT-Schl《selwort\v@NEXT\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ O ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aOCT$-Funktion\v@HEX$\v                      \aON TIMER-Anweisung\v@TIMER\v
+  \aOFF-Schl《selwort\v@OFF\v                  \aON...GOSUB-Anweisung\v@ongo\v
+  \aON COM-Anweisung\v@COM\v                   \aON...GOTO-Anweisung\v@ongo\v
+  \aON ERROR-Anweisung\v@onerr\v                 \aOPEN-Anweisung\v@OPEN\v
+  \aON-Schl《selwort\v@ON\v                   \aOPEN COM-Anweisung\v@opcom\v
+  \aON KEY-Anweisung\v@ketv\v                   \aOPTION BASE-Anweisung\v@BASE\v
+  \aON PEN-Anweisung\v@PEN\v                   \aOR-Operator\v@OR\v
+  \aON PLAY-Anweisung\v@playev\v                  \aOUT-Anweisung\v@OUT\v
+  \aON STRIG-Anweisung\v@STRIG\v                 \aOUTPUT-Schl《selwort\v@OUTPUT\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ P ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aPAINT-Anweisung\v@PAINT\v                    \aPOINT-Funktion\v@POINT\v
+  \aPALETTE-Anweisungs\v@PALETTE\v                 \aPOKE-Anweisung\v@POKE\v
+  \aPCOPY-Anweisung\v@PCOPY\v                    \aPOS-Funktion\v@POS\v
+  \aPEEK-Funktion\v@PEEK\v                      \aPRESET-Anweisung\v@PRESET\v
+  \aPEN-Funktion\v@penf\v                       \aPRINT-Anweisung\v@PRINT\v
+  \aPEN-Anweisung\v@PEN\v                      \aPRINT USING-Anweisung\v@zpu\v
+  \aPLAY-Funktion\v@playf\v                      \aPSET-Anweisung\v@PSET\v
+  \aPLAY-Anweisung (Musik)\v@PLAY\v             \aPUT-Anweisung (Datei E/A)\v@PUT\v
+  \aPLAY-Anweisung (Ereignisverfolg.)\v@playev\v  \aPUT-Anweisung (Grafik)\v@pgfx\v
+  \aPMAP-Funktion\v@PMAP\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ R ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aRANDOM-Schl《selwort\v@RANDOM\v               \aRETURN-Anweisung\v@RETURN\v
+  \aRANDOMIZE-Anweisung\v@RANDOMIZE\v                \aRIGHT$-Funktion\v@RIGHT$\v
+  \aREAD-Anweisung\v@READ\v                     \aRMDIR-Anweisung\v@RMDIR\v
+  \aREDIM-Anweisung\v@REDIM\v                    \aRND-Funktion\v@RND\v
+  \aREM-Anweisung\v@REM\v                      \aRSET-Anweisung\v@RSET\v
+  \aRESET-Anweisung\v@RESET\v                    \aRTRIM$-Funktion\v@RTRIM$\v
+  \aRESTORE-Anweisung\v@RESTORE\v                  \aRUN-Anweisung\v@RUN\v
+  \aRESUME-Anweisung\v@RESUME\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ S ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aSCREEN-Funktion\v@screenf\v                    \aSQR-Funktion\v@SQR\v
+  \aSCREEN-Anweisung\v@SCREEN\v                   \aSTATIC-Anweisung\v@STATIC\v
+  \aSEEK-Funktion\v@SEEK\v                      \a$STATIC-Metabefehl\v@$STATIC\v
+  \aSEEK-Anweisung\v@SEEK\v                     \aSTEP-Schl《selwort\v@STEP\v
+  \aSELECT CASE-Anweisung\v@SELECT\v              \aSTICK-Funktion\v@STICK\v
+  \aSGN-Funktion\v@SGN\v                       \aSTOP-Anweisung\v@STOP\v
+  \aSHARED-Anweisung\v@SHARED\v                   \aSTR$-Funktion\v@STR$\v
+  \aSHELL-Anweisung\v@SHELL\v                    \aSTRIG-Funktion\v@strigf\v
+  \aSIN-Funktion\v@SIN\v                       \aSTRIG-Anweisungs\v@STRIG\v
+  \aSINGLE-Schl《selwort\v@SINGLE\v               \aSTRING-Schl《selwort\v@STRING\v
+  \aSLEEP-Anweisung\v@SLEEP\v                    \aSTRING$-Funktion\v@STRING$\v
+  \aSOUND-Anweisung\v@SOUND\v                    \aSUB-Anweisung\v@SUB\v
+  \aSPACE$-Funktion\v@SPACE$\v                    \aSWAP-Anweisung\v@SWAP\v
+  \aSPC-Funktion\v@SPC\v                       \aSYSTEM-Anweisung\v@SYSTEM\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ T ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aTAB-Funktion\v@TAB\v                       \aTIMER-Anweisungs\v@TIMER\v
+  \aTAN-Funktion\v@TAN\v                       \aTO-Schl《selwort\v@TO\v
+  \aTHEN-Schl《selwort\v@IF\v                 \aTROFF-Anweisung\v@TROFF\v
+  \aTIME$-Funktion\v@tmf\v                     \aTRON-Anweisung\v@TRON\v
+  \aTIME$-Anweisung\v@TIME$\v                    \aTYPE-Anweisung\v@TYPE\v
+  \aTIMER-Funktion\v@timerf\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ U ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aUBOUND-Funktion\v@UBOUND\v                    \aUNTIL-Schl《selwort\v@DO\v
+  \aUCASE$-Funktion\v@UCASE$\v                    \aUSING-Schl《selwort\v@USING\v
+  \aUNLOCK-Anweisung\v@UNLOCK\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ V ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aVAL-Funktion\v@VAL\v                       \aVARSEG-Funktion\v@VARSEG\v
+  \aVARPTR-Funktion\v@VARPTR\v                    \aVIEW-Anweisung\v@VIEW\v
+  \aVARPTR$-Funktion\v@VARPTR$\v                   \aVIEW PRINT-Anweisung\v@vupri\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ W ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aWAIT-Anweisung\v@WAIT\v                     \aWIDTH-Anweisungs\v@WIDTH\v
+  \aWEND-Schl《selwort\v@WEND\v                 \aWINDOW-Anweisung\v@WINDOW\v
+  \aWHILE...WEND-Anweisung\v@WEND\v             \aWRITE-Anweisung\v@WRITE\v
+                                                                  ﾉﾍﾍﾍｻ
+ﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍﾍｹ X ｺ
+                                                                  ﾈﾍﾍﾍｼ
+  \aXOR-Operator\v@XOR\v

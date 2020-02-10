@@ -1,0 +1,13 @@
+ushort WND_GetpExtra ();
+ushort WND_Getpef ();
+ushort WND_GetcLines ();
+ushort WND_GetcColumns ();
+ushort WND_GetStyle ();
+ushort WND_GetrcCur_obleft ();
+ushort WND_GetrcCur_olntop ();
+void WND_SetStyle (ushort);
+PWND WND_GetpParent ();
+ushort WND_GetattrCur ();
+void WND_SetattrCur (ushort);
+ushort WND_GetfEnabled ();
+PWND GetFocus ();

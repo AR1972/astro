@@ -1,0 +1,224 @@
+.comment ******************************************************************
+.comment *  Index file - QBasic                                           *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/17/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Copied QBI Index.                                             *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Added Unsupported Keywords.                                   *
+.comment *  Made links local.                                             *
+.comment ******************************************************************
+.context @helpIndexId
+.context helpIndexId
+.context @a
+:nIndex de l'aide en ligne de QBasic
+  \i\p\aTable des matires\v@helpTableId\v\i\p  \bIndex\p  \i\p\aPrcdent\v!B\v\i\p
+ฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
+Pour obtenir de l'aide sur un des mots-cl QBasic lists ci-dessous :
+  1. Appuyez sur la touche correspondant … la premire lettre du mot-cl.
+  2. Utilisez les touches de DIRECTION pour placer le curseur sur le mot-cl.
+  3. Appuyez sur F1 pour afficher le texte d'aide dans la fentre d'aide.
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน A บ
+                                                                  ศอออผ
+  \aABS (fonction)\v@ABS\v                       \aAPPEND (mot-cl)\v@APPEND\v
+  \aABSOLUTE (mot-cl)\v@ABSOLUTE\v                   \aAS (mot-cl)\v@AS\v
+  \aACCESS (mot-cl)\v@ACCESS\v                     \aASC (fonction)\v@ASC\v
+  \aAND (oprateur)\v@AND\v                      \aATN (fonction)\v@ATN\v
+  \aANY (mot-cl)\v@ANY\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน B บ
+                                                                  ศอออผ
+  \aBASE (mot-cl)\v@BASE\v                       \aBLOAD (instruction)\v@BLOAD\v
+  \aBEEP (instruction)\v@BEEP\v                   \aBoolens (oprateurs)\v@AND\v
+  \aBINARY (mot-cl)\v@BINARY\v                     \aBSAVE (instruction)\v@BSAVE\v
+
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน C บ
+                                                                  ศอออผ
+  \aCALL (instruction)\v@CALL\v                   \aCOLOR (instruction)\v@COLOR\v
+  \aCALL ABSOLUTE (instruction)\v@ABSOLUTE\v          \aCOM (instruction)\v@COM\v
+  \aCASE (mot-cl)\v@SELECT\v                       \aCOMMON (instruction)\v@COMMON\v
+  \aCDBL (fonction)\v@CDBL\v                      \aCONST (instruction)\v@CONST\v
+  \aCHAIN (instruction)\v@CHAIN\v                  \aCOS (fonction)\v@COS\v
+  \aCHDIR (instruction)\v@CHDIR\v                  \aCSNG (fonction)\v@CSNG\v
+  \aCHR$ (fonction)\v@CHR$\v                      \aCSRLIN (fonction)\v@CSRLIN\v
+  \aCINT (fonction)\v@CINT\v                      \aCVD (fonction)\v@CVD\v
+  \aCIRCLE (instruction)\v@CIRCLE\v                 \aCVDMBF (fonction)\v@CVDMBF\v
+  \aCLEAR (instruction)\v@CLEAR\v                  \aCVI (fonction)\v@CVI\v
+  \aCLNG (fonction)\v@CLNG\v                      \aCVL (fonction)\v@CVL\v
+  \aCLOSE (instruction)\v@CLOSE\v                  \aCVS (fonction)\v@CVS\v
+  \aCLS (instruction)\v@CLS\v                    \aCVSMBF (fonction)\v@CVSMBF\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน D บ
+                                                                  ศอออผ
+  \aDATA (instruction)\v@DATA\v                   \aDEFLNG (instruction)\v@DEFLNG\v
+  \aDATE$ (fonction)\v@datef\v                     \aDEFSNG (instruction)\v@DEFSNG\v\p
+  \aDATE$ (instruction)\v@DATE$\v                  \aDEFSTR (instruction)\v@DEFSTR\v
+  \aDECLARE (instruction)\v@DECLARE\v                \aDIM (instruction)\v@DIM\v
+  \aDEF FN (instruction)\v@DEF\v                 \aDO...LOOP (instruction)\v@DO\v\p
+  \aDEF SEG (instruction)\v@SEG\v                \aDOUBLE (mot-cl)\v@DOUBLE\v
+  \aDEFDBL (instruction)\v@DEFDBL\v                 \aDRAW (instruction)\v@DRAW\v
+  \aDEFINT (instruction)\v@DEFINT\v                 \a$DYNAMIC (directive)\v@$DYNAMIC\v
+
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน E บ
+                                                                  ศอออผ
+  \aELSE (mot-cl)\v@IF\v                       \aERDEV (fonction)\v@ERDEV\v
+  \aELSEIF (mot-cl)\v@IF\v                     \aERDEV$ (fonction)\v@ERDEV$\v\p
+  \aEND (instruction)\v@END\v                    \aERL (fonction)\v@ERL\v\p
+  \aENVIRON (instruction)\v@ENVIRON\v                \aERR (fonction)\v@ERR\v
+  \aENVIRON$ (fonction)\v@ENVIRON$\v                  \aERROR (instruction)\v@ERROR\v
+  \aEOF (fonction)\v@EOF\v                       \aEXIT (instruction)\v@EXIT\v
+  \aEQV (oprateur)\v@EQV\v                      \aEXP (fonction)\v@EXP\v
+  \aERASE (instruction)\v@ERASE\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน F บ
+                                                                  ศอออผ
+  \aFIELD (instruction)\v@FIELD\v                  \aFOR...NEXT (instruction)\v@FOR\v
+  \aFILEATTR (fonction)\v@FILEATTR\v                  \aFRE (fonction)\v@FRE\v
+  \aFILES (instruction)\v@FILES\v                  \aFREEFILE (fonction)\v@FREEFILE\v
+  \aFIX (fonction)\v@FIX\v			 \aFUNCTION (instruction)\v@FUNCTION\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน G บ
+                                                                  ศอออผ
+  \aGET (E/S fichier) (instruction)\v@GET\v      \aGOSUB (instruction)\v@GOSUB\v
+  \aGET (Graphique) (instruction)\v@ggx\v        \aGOTO (instruction)\v@GOTO\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน H บ
+                                                                  ศอออผ
+  \aHEX$ (fonction)\v@HEX$\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน I บ
+                                                                  ศอออผ
+  \aIF...THEN...ELSE (instruction)\v@IF\v       \aINSTR (fonction)\v@INSTR\v
+  \aIMP (oprateur)\v@IMP\v                      \aINT (fonction)\v@INT\v
+  \aINKEY$ (fonction)\v@INKEY$\v                    \aINTEGER (mot-cl)\v@INTEGER\v
+  \aINP (fonction)\v@INP\v                       \aIOCTL (instruction)\v@IOCTL\v
+  \aINPUT (instruction)\v@INPUT\v                  \aIOCTL$ (fonction)\v@IOCTL$\v
+  \aINPUT$ (fonction)\v@INPUT$\v                    \aIS (mot-cl)\v@IS\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน J บ
+                                                                  ศอออผ
+  \aJeu de caractres\v@fun.character.set\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน K บ
+                                                                  ศอออผ
+  \aKEY (Affectation) (instruction)\v@KEY\v      \aKILL (instruction)\v@KILL\v
+  \aKEY (Inter. vn.) (instruction)\v@ketv\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน L บ
+                                                                  ศอออผ
+  \aLBOUND (fonction)\v@LBOUND\v                    \aLOCK...UNLOCK (instructions)\v@LOCK\v\p
+  \aLCASE$ (fonction)\v@LCASE$\v                    \aLOF (fonction)\v@LOF\v\p
+  \aLEFT$ (fonction)\v@LEFT$\v                     \aLOG (fonction)\v@LOG\v\p
+  \aLEN (fonction)\v@LEN\v                       \aLONG (mot-cl)\v@LONG\v\p
+  \aLET (instruction)\v@LET\v                    \aLOOP (mot-cl)\v@LOOP\v\p
+  \aLINE (Graphique) (instruction)\v@LINE\v       \aLPOS (fonction)\v@LPOS\v\p
+  \aLINE INPUT (instruction)\v@INPUT\v             \aLPRINT (instruction)\v@LPRINT\v\p
+  \aLIST (mot-cl)\v@LIST\v                       \aLPRINT USING (instruction)\v@lprintu\v
+  \aLOC (fonction)\v@LOC\v                       \aLSET (instruction)\v@LSET\v\p
+  \aLOCATE (instruction)\v@LOCATE\v                 \aLTRIM$ (fonction)\v@LTRIM$\v\p
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน M บ
+                                                                  ศอออผ
+  \aMID$ (fonction)\v@MID$\v                      \aMKI$ (fonction)\v@MKI$\v
+  \aMID$ (instruction)\v@MID$\v                   \aMKL$ (fonction)\v@MKL$\v
+  \aMKD$ (fonction)\v@MKD$\v                      \aMKS$ (fonction)\v@MKS$\v
+  \aMKDIR (instruction)\v@MKDIR\v                  \aMKSMBF$ (fonction)\v@MKSMBF$\v
+  \aMKDMBF$ (fonction)\v@MKDMBF$\v                   \aMOD (oprateur)\v@MOD\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน N บ
+                                                                  ศอออผ
+  \aNAME (instruction)\v@NAME\v                   \aNOT (oprateur)\v@NOT\v
+  \aNEXT (mot-cl)\v@NEXT\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน O บ
+                                                                  ศอออผ
+  \aOCT$ (fonction)\v@HEX$\v                      \aON TIMER (instruction)\v@TIMER\v
+  \aOFF (mot-cl)\v@OFF\v                        \aON...GOSUB (instruction)\v@ongo\v\p
+  \aON COM (instruction)\v@COM\v                 \aON...GOTO (instruction)\v@ongo\v\p
+  \aON ERROR (instruction)\v@onerr\v               \aOPEN (instruction)\v@OPEN\v\p
+  \aON (mot-cl)\v@ON\v                         \aOPEN COM (instruction)\v@opcom\v
+  \aON KEY (instruction)\v@ketv\v                 \aOPTION BASE (instruction)\v@BASE\v\p
+  \aON PEN (instruction)\v@PEN\v                 \aOR (oprateur)\v@OR\v
+  \aON PLAY (instruction)\v@playev\v                \aOUT (instruction)\v@OUT\v
+  \aON STRIG (instruction)\v@STRIG\v               \aOUTPUT (mot-cl)\v@OUTPUT\v\p
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน P บ
+                                                                  ศอออผ
+  \aPAINT (instruction)\v@PAINT\v                  \aPOINT (fonction)\v@POINT\v
+  \aPALETTE (instruction)\v@PALETTE\v                \aPOKE (instruction)\v@POKE\v
+  \aPCOPY (instruction)\v@PCOPY\v                  \aPOS (fonction)\v@POS\v
+  \aPEEK (fonction)\v@PEEK\v                      \aPRESET (instruction)\v@PRESET\v
+  \aPEN (fonction)\v@penf\v                       \aPRINT (instruction)\v@PRINT\v
+  \aPEN (instruction)\v@PEN\v                    \aPRINT USING (instruction)\v@zpu\v
+  \aPLAY (fonction)\v@playf\v                      \aPSET (instruction)\v@PSET\v
+  \aPLAY (Musique) (instruction)\v@PLAY\v         \aPUT (E/S fichier) (instruction)\v@PUT\v
+  \aPLAY (Inter. vn.) (instruction)\v@playev\v    \aPUT (Graphique) (instruction)\v@pgfx\v
+  \aPMAP (fonction)\v@PMAP\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน R บ
+                                                                  ศอออผ
+  \aRANDOM (mot-cl)\v@RANDOM\v                     \aRETURN (instruction)\v@RETURN\v
+  \aRANDOMIZE (instruction)\v@RANDOMIZE\v              \aRIGHT$ (fonction)\v@RIGHT$\v
+  \aREAD (instruction)\v@READ\v                   \aRMDIR (instruction)\v@RMDIR\v
+  \aREDIM (instruction)\v@REDIM\v                  \aRND (fonction)\v@RND\v
+  \aREM (instruction)\v@REM\v                    \aRSET (instruction)\v@RSET\v
+  \aRESET (instruction)\v@RESET\v                  \aRTRIM$ (fonction)\v@RTRIM$\v
+  \aRESTORE (instruction)\v@RESTORE\v                \aRUN (instruction)\v@RUN\v
+  \aRESUME (instruction)\v@RESUME\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน S บ
+                                                                  ศอออผ
+  \aSCREEN (fonction)\v@screenf\v                    \aSQR (fonction)\v@SQR\v
+  \aSCREEN (instruction)\v@SCREEN\v                 \aSTATIC (instruction)\v@STATIC\v
+  \aSEEK (fonction)\v@SEEK\v                      \a$STATIC (directive)\v@$STATIC\v
+  \aSEEK (instruction)\v@SEEK\v                   \aSTEP (mot-cl)\v@STEP\v
+  \aSELECT CASE (instruction)\v@SELECT\v            \aSTICK (fonction)\v@STICK\v
+  \aSGN (fonction)\v@SGN\v                       \aSTOP (instruction)\v@STOP\v
+  \aSHARED (instruction)\v@SHARED\v                 \aSTR$ (fonction)\v@STR$\v
+  \aSHELL (instruction)\v@SHELL\v                  \aSTRIG (fonction)\v@strigf\v
+  \aSIN (fonction)\v@SIN\v                       \aSTRIG (instruction)\v@STRIG\v
+  \aSINGLE (mot-cl)\v@SINGLE\v                     \aSTRING (mot-cl)\v@STRING\v
+  \aSLEEP (instruction)\v@SLEEP\v                  \aSTRING$ (fonction)\v@STRING$\v
+  \aSOUND (instruction)\v@SOUND\v                  \aSUB (instruction)\v@SUB\v
+  \aSPACE$ (fonction)\v@SPACE$\v                    \aSWAP (instruction)\v@SWAP\v
+  \aSPC (fonction)\v@SPC\v                       \aSYSTEM (instruction)\v@SYSTEM\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน T บ
+                                                                  ศอออผ
+  \aTAB (fonction)\v@TAB\v                       \aTIMER (instruction)\v@TIMER\v
+  \aTAN (fonction)\v@TAN\v                       \aTO (mot-cl)\v@TO\v
+  \aTHEN (mot-cl)\v@IF\v                       \aTROFF (instruction)\v@TROFF\v
+  \aTIME$ (fonction)\v@tmf\v                     \aTRON (instruction)\v@TRON\v
+  \aTIME$ (instruction)\v@TIME$\v                  \aTYPE (instruction)\v@TYPE\v
+  \aTIMER (fonction)\v@timerf\v                     \aTypes de donnes (mots-cl)\v@INTEGER\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน U บ
+                                                                  ศอออผ
+  \aUBOUND (fonction)\v@UBOUND\v                    \aUNTIL (mot-cl)\v@DO\v
+  \aUCASE$ (fonction)\v@UCASE$\v                    \aUSING (mot-cl)\v@USING\v
+  \aUNLOCK (instruction)\v@UNLOCK\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน V บ
+                                                                  ศอออผ
+  \aVAL (fonction)\v@VAL\v                       \aVARSEG (fonction)\v@VARSEG\v
+  \aVARPTR (fonction)\v@VARPTR\v                    \aVIEW (instruction)\v@VIEW\v
+  \aVARPTR$ (fonction)\v@VARPTR$\v                   \aVIEW PRINT (instruction)\v@vupri\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน W บ
+                                                                  ศอออผ
+  \aWAIT (instruction)\v@WAIT\v                   \aWIDTH (instruction)\v@WIDTH\v
+  \aWEND (mot-cl)\v@WEND\v                       \aWINDOW (instruction)\v@WINDOW\v
+  \aWHILE...WEND (instruction)\v@WEND\v           \aWRITE (instruction)\v@WRITE\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน X บ
+                                                                  ศอออผ
+  \aXOR (oprateur)\v@XOR\v

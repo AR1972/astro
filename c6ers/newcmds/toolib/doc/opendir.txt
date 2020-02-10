@@ -1,0 +1,62 @@
+
+SUMMARY   methods to gain access to file system directories (OS2 1.2 only)
+
+#include <dirent.h>
+
+DIR *opendir(char *szDirName)
+
+struct dirent *readdir(DIR *pd)
+
+int closedir(DIR *pd)
+
+void rewinddir(DIR *pd)
+
+DESCRIPTION
+
+  The type DIR which is defined in the header file <dirent.h> represents a 
+directory stream, which is an ordered sequence of all the directory entries
+in a particular directory.  Directory entries represent files; files may be 
+removed from a directory or added to a directory asynchronously to the 
+operations described in this section.
+
+The opendir() function opens a directory stream corresponding to the 
+directory named by the dirname argumnet.  The directory stream is positioned
+at the first entry.
+
+The readdir() function returns a pointer to a structure representing the 
+directory entry at the current position in the directory stream to which dirp
+refers and positions the irectory stream at the next entry.  It returns a
+NULL pointer upon reaching the end of the directory stream.  The dot and
+dot-dot directory entries are included in the search and returned to the 
+caller.
+
+The rewinddir() function resets the position of the directory stream to
+which dirp refers to the begining of the directory.  
+
+The closedir() function closes the directory stream referred to by dirp.
+
+RETURN VALUE
+
+  Upon successful completion, the readdir() function returns a pointer 
+to an object of type struct dirent that includes the member: 
+char[] d_name (a null terminated filename).  Otherwise, a value of NULL
+is returned and errno is set to indicate the error.
+
+  The readdir() function returns a pointer to an object of type struct dirent.
+When an error is encountered, a value of NULL is returned and errno is set
+to indicate the error.  When the end of the directory is encountered,
+a value of NULL is returned and errno is not changed by this function call.
+
+  Upon successfull completion, closedir() returns a value of zero.  
+Otherwise a value of -1 is returned and errno is set to indicate the error.
+
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+

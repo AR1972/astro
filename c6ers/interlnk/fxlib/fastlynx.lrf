@@ -1,0 +1,13 @@
+fastlynx.lib
+y
++parallel.obj&
++clonesub.obj&
++listen.obj&
++crctab.obj&
++querybio.obj&
++sendrecv.obj&
++saveport.obj&
++loader.obj&  
++serial.obj&  
++clone.obj&
++init.obj;

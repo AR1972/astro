@@ -1,0 +1,320 @@
+:nFonctions ABS, SGN 
+.comment ******************************************************************
+.comment *  Math Family - QBasic                                          *
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review comments/edits.                     *
+.comment ******************************************************************
+.comment *  6/12/90 stevesau                                              *
+.comment *  Incorporated RonS comments                                    *
+.comment ******************************************************************
+.comment *  5/12/90 stevesau                                              *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Combined ABS/SGN, ASC/CHR$, ATN/COS/SIN/TAN, CDBL/CSNG,       *
+.comment *  CINT/CLNG, DATE$ function/statement, TIME$ function/statement,*
+.comment *  LOG/EXP, FIX/INT, RANDOMIZE/RND.                              *
+.comment *  Deleted CCUR.                                                 *
+.comment *  Moved CVSMBF, etc., to Memory family.                         *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                              *
+.comment *  Added action lines. 					  *
+.comment *  Added info from Details to RND.                               *
+.comment ******************************************************************
+.comment *  4/11/90 BethPr                                                *
+.comment *  Removed nodes for DateSerial# Function, DateValue# Function,  *
+.comment *  Day& Function, DDB# Function, FV# Function, Hour& Function,   *
+.comment *  IPmt# Function, IRR# Function, Minute& Function, MIRR# Funct. *
+.comment *  Month& Function, Now# Function, NPer# Function, NPV# Function,*
+.comment *  Pmt# Function, PPmt# Function, PV# Function, Rate# Function,  *
+.comment *  Second& Function, Serial Numbers, SLN# Function, SYD# Funct., *
+.comment *  TimeSerial# Function, TimeValue# Function, Weekday& Function, *
+.comment *  Year& Function.                                               *
+.comment *  Financial and Date/Time Functions all removed for QBasic.     *
+.comment ******************************************************************
+.context ABS
+.context @ABS
+.context SGN
+.context @SGN
+:nFonctions ABS, SGN
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ABS retourne la valeur absolue d'une expression num‚rique.
+SGN retourne une valeur indiquant le signe d'une expression num‚rique
+    (1 si l'expression est positive, 0 si elle est nulle, ou -1 si elle
+    est n‚gative).
+
+\bABS(exprNum)\p
+\bSGN(exprNum)\p
+
+    ş \bexprNum\p    Expression num‚rique.
+
+Exemple:
+    PRINT ABS(45.5 - 100!)           'Sortie:  54.5
+    PRINT SGN(1), SGN(-1), SGN(0)    'Sortie:  1  -1  0
+.context ASC
+.context @ASC
+.context CHR$
+.context @CHR$
+:nFonctions ASC, CHR$
+\i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ASC  retourne la valeur du code ASCII du premier caractŠre
+     de l'expression de chaŒne.
+CHR$ retourne une chaŒne contenant le caractŠre correspondant
+     au code ASCII pass‚ en argument.
+
+\bASC(exprChaine$)\p
+\bCHR$(codeAscii%)\p
+
+    ş \bexprChaine$\p    Expression de chaŒne.
+    ş \bcodeAscii%\p     Le code ASCII du caractŠre d‚sir‚.
+
+Exemple:
+    PRINT ASC("Q")    'Sortie:  81
+    PRINT CHR$(65)    'Sortie:  A
+
+Voir aussi    \i\p\aCodes de caractŠres ASCII\v@ac\v\i\p
+.context ATN
+.context @ATN
+.context COS
+.context @COS
+.context SIN
+.context @SIN
+.context TAN
+.context @TAN
+:nFonctions ATN, COS, SIN, TAN
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+COS, SIN et TAN retournent respectivement le cosinus, le sinus et
+                la tangente de l'angle sp‚cifi‚.
+ATN retourne la cotangente de la valeur sp‚cifi‚e.
+
+\bATN(valeur)\p
+\bCOS(angle)\p
+\bSIN(angle)\p
+\bTAN(angle)\p
+
+    ş \bvaleur\p   Expression num‚rique.
+    ş \bangle\p    Angle exprim‚ en radians. Pour convertir de degr‚s en
+               radians, multipliez les degr‚s par (PI / 180).
+
+Exemple:
+    CONST PI=3.141592654
+    PRINT ATN(TAN(PI/4.0)), PI/4.0    'Sortie :  .7853981635  .7853981635
+    PRINT (COS(180 * (PI / 180)))     'Sortie :  -1
+    PRINT (SIN(90 * (PI / 180)))      'Sortie :  1
+    PRINT (TAN(45 * (PI / 180)))      'Sortie :  1.000000000205103
+.context CDBL
+.context @CDBL
+.context CSNG
+.context @CSNG
+:nFonctions CDBL, CSNG
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CDBL convertit une expression num‚rique en un nombre en double pr‚cision.
+CSNG convertit une expression num‚rique en un nombre en simple pr‚cision.
+
+\bCDBL(exprNum)\p
+\bCSNG(exprNum)\p
+
+    ş \bexprNum\p    Expression num‚rique.
+
+Exemple:
+    PRINT 1 / 3, CDBL(1 / 3)    'Sortie   .3333333  .3333333333333333
+    PRINT CSNG(975.3421515#)    'Sortie :  975.3422
+
+Voir aussi    \i\p\aCINT, CLNG\v@CINT\v\i\p
+.context CINT
+.context @CINT
+.context CLNG
+.context @CLNG
+:nFonctions CINT, CLNG 
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CINT arrondit une expression num‚rique … l'entier le plus proche.
+CLNG arrondit une expression num‚rique … l'entier long (4 octets)
+     le plus proche.
+
+\bCINT(exprNum)\p
+\bCLNG(exprNum)\p
+
+    ş \bexprNum\p   Pour CINT, une expression num‚rique
+                entre -32 768 et 32 767.
+
+                Pour CLNG, une expression num‚rique
+                entre -2 147 483 648 et 2 147 483 647.
+
+Exemple:
+    PRINT CINT(12.49), CINT(12.51)    'Sortie :  12  13
+    PRINT CLNG(338457.8)              'Sortie :  338458
+
+Voir aussi    \i\p\aCDBL, CSNG\v@CDBL\v\i\p    \i\p\aFIX, INT\v@FIX\v\i\p
+.context .datef
+.context @datef
+.context DATE$
+.context @DATE$
+:nFonction et Instruction DATE$
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+La fonction DATE$ retourne une chaŒne contenant la date du systŠme.
+L'instruction DATE$ ‚tablit la date du systŠme.
+
+\bDATE$\p
+\bDATE$ = exprChaine$\p
+
+    ş \bexprChaine$\p    La date sous une des formes suivantes :
+                     mm-jj-aa, mm-jj-aaaa, mm/jj/aa, mm/jj/aaaa.
+
+    ş La fonction DATE$ retourne une chaŒne de la forme mm-jj-aaaa.
+
+Exemple:
+    PRINT DATE$
+    DATE$ = "01-01-90"  'Remarque : La date courante du systŠme reste
+                        'd'application jusqu'… la prochaine modification.
+    PRINT "Date ‚tablie … "; DATE$
+
+Voir aussi    \i\p\aTIME$\v@TIME$\v\i\p
+.context EXP
+.context @EXP
+.context LOG
+.context @LOG
+:nFonctions EXP, LOG 
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+EXP retourne e ‚lev‚ … une puissance sp‚cifi‚e, e ‚tant la base des
+    logarithmes n‚p‚riens.
+LOG retourne le logarithme n‚p‚rien d'une expression num‚rique.
+
+\bEXP(exprNum)\p
+\bLOG(exprNum)\p
+
+    ş \bexprNum\p    Pour EXP, une valeur inf‚rieure ou
+                 ‚gale … 88.02969.
+
+                 Pour LOG une valeur strictement positive.
+
+Exemple:
+    PRINT EXP(0), EXP(1)         'Sortie :  1  2.718282
+    PRINT LOG(1), LOG(EXP(1))    'Sortie :  0  1
+.context FIX
+.context @FIX
+.context INT
+.context @INT
+:nFonctions FIX, INT 
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+FIX retourne la partie entiŠre tronqu‚e d'une expression num‚rique.
+INT retourne le plus grand entier inf‚rieur ou ‚gal … une
+expression num‚rique.
+
+\bFIX(exprNum)\p
+\bINT(exprNum)\p
+
+    ş \bexprNum\p    Expression num‚rique.
+
+Exemple:
+    PRINT FIX(12.49), FIX(12.54)    'Sortie :  12  12
+    PRINT INT(12.54), INT(-99.4)    'Sortie :  12  -100
+
+Voir aussi    \i\p\aCINT, CLNG\v@CINT\v\i\p
+.context RANDOMIZE
+.context @RANDOMIZE
+.context RND
+.context @RND
+:nInstruction RANDOMIZE, Fonction RND 
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+RANDOMIZE initialise le g‚n‚rateur de nombres al‚atoires.
+RND retourne un nombre al‚atoire en simple pr‚cision compris entre 0 et 1.
+
+\bRANDOMIZE [valInit%]\p
+\bRND[(n#)]\p
+
+    ş \bvalInit%\p    Valeur utilis‚e pour initialiser le g‚n‚rateur de nombres
+                  al‚atoires. Si omise, BASIC sollicite cette valeur.
+    ş \bn#\p          Valeur d‚terminant la maniŠre dont RND g‚nŠre le prochain
+                  nombre al‚atoire :
+
+               n#                 RND retourne
+               ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+               < 0                retourne toujours le mˆme nombre
+               > 0 (ou omis)      retourne le prochain nombre al‚atoire
+                                  dans la s‚quence
+               0                  retourne le dernier nombre al‚atoire g‚n‚r‚
+
+Exemple:
+    REM Simulation du jet de 2 d‚s
+    RANDOMIZE TIMER
+    x% = INT(RND * 6) + 1
+    y% = INT(RND * 6) + 1
+    PRINT "Vous avez obtenu un "; x%; "et un "; y%
+.context SQR
+.context @SQR
+:nFonction SQR 
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SQR retourne la racine carr‚e d'une expression num‚rique.
+
+\bSQR(exprNum)\p
+
+    ş \bexprNum\p    Valeur sup‚rieure ou ‚gale … z‚ro.
+
+Exemple:
+    PRINT SQR(25), SQR(2)    'Sortie :  5  1.414214
+.context .tmf
+.context @tmf
+.context TIME$
+.context @TIME$
+:nFonction et Instruction TIME$ 
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+La fonction TIME$ retourne l'heure du systŠme.
+L'instruction TIME$ initialise l'heure du systŠme.
+
+\bTIME$\p
+\bTIME$ = exprChaine$\p
+
+    ş \bexprChaine$\p    L'heure sous l'une des formes suivantes :
+
+         hh          Initialise l'heure; les minutes et les secondes
+                     sont fix‚es … 00 par d‚faut.
+         hh:mm       Initialise l'heure et les minutes;
+                     les secondes sont fix‚es … 00 par d‚faut.
+         hh:mm:ss    Initialise l'heure, les minutes et les secondes.
+
+    ş La fonction TIME$ retourne une chaŒne de la forme hh:mm:ss.
+
+Exemple:
+    PRINT TIME$
+    TIME$ = "08:00:58"    'Remarque : l'heure du systŠme reste
+                          'd'application jusqu'… la prochaine modification.\p
+    PRINT "Heure initialis‚e … "; TIME$
+
+Voir aussi    \i\p\aDATE$\v@DATE$\v\i\p
+.comment ******************************************************************
+.comment *  One arithmetic operator                                       *
+.comment ******************************************************************
+.context MOD
+.context @MOD
+:nOp‚rateur arithm‚tique MOD
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Divise un nombre par un autre et retourne le reste de la division.
+
+\bexprNum1 MOD expression num‚rique2\p
+
+    ş \bexprNum1\p    Expressions num‚riques.
+      \bexprNum2\p    Les nombres r‚els sont arrondis.
+
+Exemple:
+    PRINT 19 MOD 6.7    'QBasic arrondit 6.7 … 7, puis divise.
+                        'Sortie :  5
+
+
+

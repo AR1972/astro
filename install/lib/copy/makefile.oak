@@ -1,0 +1,24 @@
+.asm.obj:
+	$(asm) -DMODEL_LARGE $(ainc) $(aflags) $*.asm,$*.obj;
+
+.c.obj:
+	$(cc) -AL $(cflags) -Fo$*.obj $*.c
+
+
+include	= ..\..\include
+extasw	= -I.. -I..\..
+extcsw	= -Os -Gs -I. -I$(include) -I..\..\..\h -c
+
+
+filecopy.lib:	FILECOPY.OBJ	\
+		UNPACK.OBJ
+	del FILECOPY.lib
+	lib @libfile
+
+
+FILECOPY.OBJ:	FILECOPY.C $(include)\ALIAS.H $(include)\DISK_IO.H \
+		$(include)\STRLIB.H $(include)\COPY.H $(include)\WINDOW.H \
+		..\..\..\h\decomp.h
+
+#UNPACK.OBJ:	 UNPACK.ASM
+

@@ -1,0 +1,17 @@
+all:
+        xcopy makefile.oak $(OAKDIR)\dev\makefile        < $(OAKDIR)\f.key
+        $(MAKE) /f ansi\copy.oak
+        $(MAKE) /f display\copy.oak
+        $(MAKE) /f display\ega\copy.oak
+        $(MAKE) /f display\lcd\copy.oak
+        $(MAKE) /f emm386\copy.oak
+        $(MAKE) /f emm386\lhvxd\copy.oak
+        $(MAKE) /f himem\copy.oak
+        $(MAKE) /f keyboard\copy.oak
+        $(MAKE) /f printer\copy.oak
+        $(MAKE) /f printer\4201\copy.oak
+        $(MAKE) /f printer\4208\copy.oak
+        $(MAKE) /f printer\5202\copy.oak
+        $(MAKE) /f power\copy.oak
+
+

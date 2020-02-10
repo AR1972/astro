@@ -1,0 +1,464 @@
+; QBasic Standard Error Messages.
+; This file is read by the tool makemsgs, which produces the files:
+;      qbimsgs.asm, qbimsgs.inc, and qbimsgs.h
+;
+; Entries in this file have the form:
+;  [<symbol's name>,[<msg index/error code>],"<ASCII msg>"] [;<comment>]
+;
+; If <msg index/error code> is not specified, the next available one
+;    is assigned.
+;
+;Section 1:  Runtime Errors - symbol names are kept small to decrease
+;            the size of the runtime library.
+;            Names begin with ER_ to distinguish them from non-runtime
+;            errors, which begin with MSG_.
+;
+ER_NF,1,"NEXT zonder FOR"
+ER_SN,2,"Syntaxisfout"
+ER_RG,3,"RETURN zonder GOSUB"
+ER_OD,4,"Geen verdere DATA"
+ER_FC,5,"Ongeldige functie-aanroep"
+ER_OV,6,"Overloop"
+ER_OM,7,"Onvoldoende geheugen"
+ER_UL,8,"Label niet gedefinieerd"
+ER_SOR,9,"Subscript buiten bereik"
+ER_DD,10,"Dubbele definitie"
+ER_DV0,11,"Delen door nul"
+ER_ID,12,"Ongeldig in directe modus"
+ER_TM,13,"Typen komen niet overeen"
+ER_OS,14,"Onvoldoende tekenreeksruimte"
+;15 is unused
+ER_BS,16,"Tekenreeks te lang"
+ER_CN,17,"Doorgaan niet mogelijk"
+ER_UF,18,"Functie niet gedefinieerd"
+ER_NR,19,"Geen RESUME"
+ER_RE,20,"RESUME zonder fout"
+;21 is unused
+;22 is unused
+;23 is unused
+ER_DTO,24,"'time-out' van apparaat"
+ER_DF,25,"Apparaatfout"
+ER_FN,26,"FOR zonder NEXT"
+ER_OP,27,"Geen papier in printer"
+;28 is unused
+ER_WH,29,"WHILE zonder WEND"
+ER_WE,30,"WEND zonder WHILE"
+;31 is unused
+;32 is unused
+ER_DL,33,"Dubbel label"
+;34 is unused
+ER_US,35,"Subprogramma niet gedefinieerd"
+;; ER_SIU,36,"Subprogramma reeds in gebruik"    ;dead after recursion added
+ER_AC,37,"Onjuist aantal argumenten"
+ER_UA,38,"Array niet gedefinieerd"
+ER_CaseElse,39,"CASE ELSE verwacht"
+ER_VarReq,40,"Variabele vereist"
+;41 is unused
+;42 is unused
+;43 is unused
+;44 is unused
+;45 is unused
+;46 is unused
+;47 is unused
+;48 is unused
+;49 is unused
+ER_FOV,50,"FIELD-overloop"
+ER_IER,51,"Interne fout"
+ER_BFN,52,"Onjuiste bestandsnaam/nummer"
+ER_FNF,53,"Bestand niet gevonden"
+ER_BFM,54,"Verkeerde bestandsmodus"
+ER_FAO,55,"Bestand reeds geopend"
+ER_FSA,56,"FIELD-statement actief"
+ER_IOE,57,"I/O-fout voor apparaat"
+ER_FAE,58,"Bestand bestaat reeds"
+ER_BRL,59,"Onjuiste record-lengte"
+;60 is unused
+ER_DFL,61,"Schijf is vol"
+ER_RPE,62,"Invoer na bestandseinde"
+ER_BRN,63,"Onjuist record-nummer"
+ER_IFN,64,"Onjuiste bestandsnaam"
+;65 is unused
+;66 is unused   - used to be ER_FDR - Direct statement in file
+ER_TMF,67,"Te veel bestanden"
+ER_DNA,68,"Apparaat niet beschikbaar"
+ER_CBO,69,"Overloop communicatiebuffer"
+ER_PRM,70,"Permissie geweigerd"
+ER_DNR,71,"Schijf niet gereed"
+ER_DME,72,"Fout bij schijfmedia"
+ER_ADF,73,"Voorziening niet beschikbaar"
+ER_RAD,74,"Hernoemen op meerdere schijven"
+ER_PAE,75,"Fout bij toegang pad/bestand"
+ER_PNF,76,"Pad niet gevonden"
+;;;ER_DLK,77,"Deadlock" ;not needed until OS/2 version
+;
+; The following ER_UE marks the last trappable Runtime Error Code
+;
+ER_UE,,"Niet-afdrukbare fout"
+;
+;=========================================================================
+; Subsequent ER_ messages are special, and are intimately tied in with
+; the runtime message file, messages.inc.
+; Some of these errors are considered "very fatal", and cause termination;
+; others are not errors at all - - we just supply the text for some runtime
+; messages here.
+; These messages must remain contiguous and in the same order, unless
+; a matching change is made in messages.inc.
+;
+; UNDONE: validate that these are all still matching messages.inc strings
+; UNDONE: prior to release
+;
+; First group of internal errors - - these are actually runtime messages,
+; not errors
+; Any message that begins ER_UL is used in constructing a message
+; as follows:
+;  Error in loading (file) - Internal error
+;
+ER_RFS,,"Herhalen vanaf begin"
+ER_BFC,,"Bytes vrij",CR         ;'CR' means terminate with a Carriage Return
+ER_ULP,,"Bestand onvindbaar ("  ;preamble for user file path prompt
+ER_ULT,,"). Invoerpad: "        ;postamble for user file path prompt
+ER_ULE,,"Fout bij laden bestand (" ;preamble for loader errors
+ER_ULG,,") - "                  ;postamble for loader errors
+ER_RNS,,"Random-begingetal (-32768 tot en met 32767)"
+ER_HRS,,"Druk op een toets om verder te gaan" ;Displayed when errors occurr in QBC exec.
+;
+; Second group of internal errors - these are "very fatal"
+ER_SSC,,"Tekenreeksruimte corrupt"  ;string space or local heap trashed somehow
+ER_ULD,,"Schijf I/O-fout"        ;problem in loading U.L. from disk
+ER_ULI,,"Ongeldige formattering"        ;attempt to load a U.L. with incorrect format
+ER_ULF,,"Bestand niet gevonden"      ;redirected IO and cannot find file in path
+;
+; Third group of internal errors - these are also "very fatal"
+ER_D21,,"DOS 2.10 of later vereist"
+ER_INI,,"Fout tijdens initialisering QBasic" ;error in initializing runtime
+ER_ULO,,"Onvoldoende geheugen"          ;out of memory loading U.L.
+ER_DMA,,"DOS-geheugenfout" ;someone walked on DOS-owned memory
+ER_FHC,,"'Far heap' corrupt"      ;similar to string space corrupt
+ER_ULM,,"Interne fout"  ;U.L. loading found a bad segment address
+;
+; QB-specific internal errors - these are "very fatal"
+; NOTE: These must come after other internal errors (no equivalent in
+;       messages.inc)
+;
+;Both groups of the command line help message must remain contiguous.
+;They must start with the label ER_ISWEDIT/ER_ISWINTERP and end
+;with the label ER_ISWEDITEND/ERISWINTERPEND.  The labels of the
+;intermediate lines does not matter.
+;
+ER_ISWEDIT,,"Start de MS-DOS Editor."
+ER_ISWEDIT1,," "
+ER_ISWEDIT2,,"EDIT [[station:][pad]bestandsnaam] [/B] [/G] [/H] [/NOHI]"
+ER_ISWEDIT3,,"  [station:][pad]bestandsnaam  Specificeert het te bewerken ASCII-bestand."
+ER_ISWEDIT4,,"  /B            Maakt gebruik van monochrome monitor met CGA-kaart mogelijk."
+ER_ISWEDIT5,,"  /G            Specificeert de maximale beeldschermresolutie."
+ER_ISWEDIT6,,"  /H            Gebruikt maximum aantal regels dat uw apparatuur kan weergeven."
+ER_ISWEDITEND,,"  /NOHI         Voor monitor die geen hoge intensiteit ondersteunt."
+;
+ER_ISWINTERP,,"Start de QBasic-programmeeromgeving."
+ER_ISWINTERP1,," "
+ER_ISWINTERP2,,"QBASIC [/B] [/EDITOR] [/G] [/H] [/MBF] [/NOHI] [[/RUN] bronbestand]"
+ER_ISWINTERP3,," /B           Maakt gebruik monochrome monitor met CGA-kaart mogelijk."
+ER_ISWINTERP4,," /EDITOR      Roept de MS-DOS Editor aan."
+ER_ISWINTERP5,," /G           Specificeert een snellere CGA-beeldschermuitvoer."
+ER_ISWINTERP6,," /H           Specificeert de maximale beeldschermresolutie."
+ER_ISWINTERP7,," /MBF         Converteert de intrinsieke functies MKS$, MKD$, CVS en CVD"
+ER_ISWINTERP8,,"              naar respectievelijk MKSMBF$, MKDMBF$, CVSMBF en CVDMBF."
+ER_ISWINTERP9,," /NOHI        Voor monitor die geen hoge intensiteit ondersteunt."
+ER_ISWINTERPA,," /RUN         Voert een programma in QBasic uit alvorens het weer te geven."
+ER_ISWINTERPEND,," [[station:][pad]bestandsnaam  Het uit te voeren of te laden programmabestand."
+;
+;=========================================================================
+;
+;-------------------------------------------------------------------------
+;MSG_GoDirect is non-trappable interpreter-specific
+; error which allow us to back out of what we're doing and escape back
+; to direct mode.
+;
+MSG_GoDirect,,""
+MSG_OutOfStack,,"Onvoldoende stack-ruimte"
+MSG_DocTooLarge,,"Document te groot"
+MSG_InclTooLarge,,"Op te nemen bestand te groot"
+;
+;-------------------------------------------------------------------------
+; End of runtime errors.  Messages beyond this point can be re-arranged
+; in any order.
+;-------------------------------------------------------------------------
+;
+;Section 2: QBI Parser Related Messages
+;
+MSG_IdTooLong,,"Aanduider te lang"
+MSG_BadId,,"Ongeldige aanduider"
+MSG_IdImp,,"Aanduider kan niet eindigen op %, &, !, # of $"
+MSG_BadElemRef,,"Aanduider kan geen punt bevatten"
+MSG_ExpTooComplex,,"Uitdrukking te lang"
+MSG_IllegalNumber,,"Ongeldig getal"
+MSG_InvConst,,"Ongeldige constante"
+MSG_expected,,"Verwacht: "
+MSG_or,," of "
+;
+; Parser errors which are preceded by "Expected: "
+;
+MSG_ExpAssignment,,"variabele=uitdrukking"
+MSG_ExpExp,,"uitdrukking"
+MSG_ExpVar,,"variabele"
+MSG_ExpId,,"aanduider"
+MSG_ExpStatement,,"statement"
+MSG_ExpLabel,,"label"
+MSG_ExpLn,,"regelnummer"
+MSG_Letter,,"letter"
+MSG_eos,,"statement-einde"
+MSG_RightParen,,")"
+MSG_ExpIdCallArg,,"uitdrukking"
+MSG_ExpIdParm,,"variabele"
+MSG_ExpFNId,,"aanduider die begint met FN"
+MSG_ExpIfClause,,"label of statement"
+MSG_ExpLabLn,,"label of regelnummer"
+MSG_ExpLitString,,"tekenreeksconstante"
+MSG_ExpLit0,,"0"
+MSG_ExpLit1,,"1"
+MSG_ExpNArgs,,"[uitdrukking],..."
+MSG_ExpRwB,,"B"
+MSG_ExpRwF,,"F"
+MSG_ExpRwBF,,"BF"
+MSG_ExpRel,,"<, <=, >, >=, =, or <>"
+;
+;Section 3:  TextMgr/ReParse errors
+;
+MSG_InvModLev,,"Ongeldige waarde buiten SUB, FUNCTION of DEF FN"
+MSG_InvMain,,"Ongeldige waarde buiten SUB/FUNCTION"
+MSG_InvProc,,"Ongeldige waarde in procedure of DEF FN"
+MSG_InvBeforeProcDef,,"Statement kan niet voorafgaan aan SUB/FUNC.-def."
+MSG_ProcNoEnd,,"SUB/FUNCTION zonder END SUB/FUNCTION"
+MSG_EndNoProc,,"END SUB/FUNCTION zonder SUB/FUNCTION"
+MSG_EndNoDef,,"END DEF zonder DEF"
+MSG_UndElem,,"Element niet gedefinieerd"
+MSG_UndType,,"Type niet gedefinieerd"
+MSG_1stStmt,,"Moet eerste statement op de regel zijn"
+MSG_EndProc,,"END SUB of END FUNCTION moet laatste regel zijn in venster"
+MSG_NoEndType,,"TYPE zonder END TYPE"
+MSG_NoType,,"END TYPE zonder TYPE"
+MSG_InvInTypeBlk,,"Statement ongeldig in TYPE-blok"
+MSG_InvIncl,,"Statement mag niet voorkomen in INCLUDE-bestand"
+MSG_InvDecl,,"Ongeldige DECLARE voor Basic-procedure"
+MSG_FNstart,,"Kan niet beginnen met 'FN'"
+MSG_NotBlock,,"Bewerking vereist schijf"
+MSG_BadMeta,,"$Meta-opdrachtfout"
+MSG_NoBpCase,,"Breekpunten niet toegestaan bij CASE-clausules of END SELECT"
+;
+;Section 4:  Scan-time errors
+;
+MSG_OBA,,"Dimensies van array al opgegeven"
+MSG_COM,,"COMMON en DECLARE moeten voorafgaan aan uitvoerbare statements"
+MSG_EWI,,"END IF zonder IF-blok"
+MSG_IWE,,"IF-blok zonder END IF"
+MSG_ElseWI,,"ELSE zonder IF"
+MSG_ExitScope,,"EXIT niet binnen FOR...NEXT"
+MSG_ExitDo,,"EXIT DO niet binnen DO...LOOP"
+MSG_Do,,"DO zonder LOOP"
+MSG_Loop,,"LOOP zonder DO"
+MSG_Select,,"SELECT zonder END SELECT"
+MSG_Case,,"CASE zonder SELECT"
+MSG_EndSelect,,"END SELECT zonder SELECT"
+MSG_InvFixStr,,"Tekenreeks met vaste lengte ongeldig"
+MSG_InvTypedVar,,"Opgegeven variabele niet toegestaan in uitdrukking"
+MSG_DefNoEnd,,"DEF zonder END DEF"
+MSG_ParmTM,,"Parametertypen komen niet overeen"
+MSG_DupLibPrs,,"Procedure reeds gedefinieerd in Quick-bibliotheek"
+MSG_ASRqd1st,,"AS-clausule vereist bij eerste declaratie"
+MSG_ASRqd,,"AS-clausule vereist"
+MSG_ExpectedCase,,"Statements/labels ongeldig tussen SELECT CASE en CASE"
+MSG_NoNumArr,,"Numerieke array ongeldig"
+MSG_InType,,"Ongeldige waarde buiten TYPE-blok"
+MSG_ULCom,,"COMMON in Quick-bibliotheek te klein"
+MSG_SubCnt,,"Verkeerd aantal dimensies"
+MSG_DefFnCtrl,,"DEF FN niet toegestaan in besturingsstatements"
+MSG_Unsupported,,"Deze functie is niet beschikbaar"
+;
+;Section 5.1: User Interface Related Messages that could be described in
+;             user guide's error message appendix
+;
+MSG_CantCont,,"U moet uw programma opnieuw starten na deze bewerking. Toch verder gaan?"
+MSG_NoMainProg,,"No main module. Choose Set Main Module from Run menu to select one"
+MSG_HelpOOM,,"Onvoldoende geheugen voor weergeven Help"
+;
+;Section 5.2: Messages that require special handling in ReportError()
+;
+;Note: The next 2 messages must have numbers < 256 for because they can be
+;      passed to RtError_Ini by exStRunFile during command-line load.
+;
+MSG_DupMrs,,"Bestand eerder geladen"
+MSG_DupPrs,,"Poging tot laden bestand met dubbele proceduredefinitie"
+MSG_MrsNotFound,,"Module niet gevonden. Module uit programma verwijderen?"
+;
+;Section 5.3: General User Interface messages
+;
+MSG_Overwrite,,"Bestand bestaat reeds. Overschrijven?"
+MSG_DelProc,,"Procedure uit module verwijderen?"
+MSG_MakeRem,,"Geen witregels toegestaan voor SUB/FUNCTION-regel. Opmerking OK?"
+MSG_NotSaved,,"Bestand is gewijzigd en nog niet opgeslagen. Nu opslaan?"
+MSG_NotSavedAll,,"Geladen bestand is niet opgeslagen. Nu opslaan?"
+MSG_NotSavedInc,,"U moet gewijzigde INCLUDE-bestanden opslaan voor uitvoering. Nu opslaan?"
+MSG_NotSavedIncSav,,"Gewijzigde INCLUDE-bestanden eerst opslaan?"
+MSG_BadNextStmt,,"Procedure/module-grens kan niet worden overschreden"
+MSG_Prt1,,"Aan het wachten op de printer"
+MSG_Prt2,,"Bezig met afdrukken - Druk op Esc voor annuleren"
+MSG_Immediate,,"Direct"
+MSG_Untitled,,"Geennaam"
+MSG_FALSE,,"<NIET WAAR>"
+MSG_TRUE,,"<WAAR>"
+MSG_Black,,"Zwart"
+MSG_Blue,,"Blauw"
+MSG_Green,,"Groen"
+MSG_Cyan,,"Cyaan"
+MSG_Red,,"Rood"
+MSG_Magenta,,"Magenta"
+MSG_Brown,,"Bruin"
+MSG_White,,"Wit"
+MSG_Gray,,"Grijs"
+MSG_BrBlue,,"Helblauw"
+MSG_BrGreen,,"Helgroen"
+MSG_BrCyan,,"Helcyaan"
+MSG_BrRed,,"Helrood"
+MSG_Pink,,"Roze"
+MSG_Yellow,,"Geel"
+MSG_BrWhite,,"Helwit"
+MSG_MustSpecifyName,,"Naam moet worden opgegeven"
+MSG_DataMoved,,"DATA-statements verplaatst van SUB naar moduleniveau"
+MSG_ModuleExists,,"Module met die naam al geladen"
+MSG_NoHelp,,"Bestand "
+MSG_NoHelp1,," niet gevonden."
+MSG_NoHelp2,,"Plaats diskette met dit bestand in het station en"
+MSG_NoHelp3,,"herhaal opdracht, of wijzig het Help-pad in Opties+Help-pad."
+MSG_NoSearchString,,"Zoektekst moet worden opgegeven"
+MSG_MatchNotFound,,"Zoektekst niet gevonden"
+MSG_ChangeComplete,,"Wijzigen voltooid"
+MSG_Is,," is "
+MSG_MainModule,,"de hoofdmodule"
+MSG_Module,,"een module"
+MSG_IncludeFile,,"een INCLUDE-bestand"
+MSG_Document,,"een document"
+MSG_Sub,,"een SUB in "
+MSG_Function,,"een FUNCTION in "
+MSG_ReqSub,,"Bewerking vereist een keuze uit een SUB of FUNCTION"
+;If text of MSG_SwitchDisks changes, ref code in uifile.c must change as well.
+MSG_SwitchDisks,,"Plaats diskette voor station A:"
+MSG_Loading,,"Bezig met laden en 'parsing'"
+MSG_Saving,,"Bezig met opslaan"
+MSG_Compiling,,"Bezig met compileren"
+MSG_Searching,,"Bezig met zoeken - Druk op Esc voor annuleren"
+MSG_CantSetTabs,,"Tabs kunnen niet worden gewijzigd terwijl bestand is geladen"
+MSG_OutNearMem,,"Onvoldoende gegevensruimte"
+MSG_ModTooLarge,,"Moduleniveau-code te groot"
+MSG_ProcTooLarge,,"Procedure te lang"
+MSG_ExitToRet,,CR,"Typ EXIT om terug te keren naar QBasic"
+MSG_QeditText1,," Kleuren instellen "
+MSG_QeditText2,," voor editor-venster:"
+MSG_NormalText,," Gewone tekst      "
+MSG_Breakpoint,," Breekpuntregels   "
+MSG_CurStmt,," Huidig statement  "
+MSG_HelpTitle,,"HELP: "
+MSG_FirstContextStr,,"h.pg1"
+MSG_HelpAboutEditor,,"MS-DOS Editor"
+MSG_HelpAboutInterp,,"MS-DOS QBasic"
+MSG_HelpAbout2,,"Versie 1.0"
+MSG_HelpAbout3,,"Copyright (C) Microsoft Corporation, 1987-1991."
+;
+;Section 5.4: HELP messages for menu items <THESE MUST REMAIN CONTIGUOUS>
+;
+MSG_HelpFileNew,,"Verwijdert geladen bestand uit geheugen"
+MSG_HelpFileOpen,,"Laadt nieuw bestand in geheugen"
+MSG_HelpFileMerge,,""
+MSG_HelpFileSave,,"Slaat huidig bestand op"
+MSG_HelpFileSaveAs,,"Slaat bestand op onder opgegeven naam"
+MSG_HelpFileSaveAll,,""
+MSG_HelpFileCreate,,""
+MSG_HelpFileLoad,,""
+MSG_HelpFileUnload,,""
+MSG_HelpFilePrint,,"Drukt opgegeven tekst af"
+MSG_HelpFileShell,,""
+MSG_HelpFileExit,,"Sluit programma af en keert terug naar DOS"
+MSG_HelpEditUndo,,""
+MSG_HelpEditCut,,"Verwijdert selectie en kopieert deze naar buffer"
+MSG_HelpEditCopy,,"Kopieert selectie naar buffer"
+MSG_HelpEditClear,,"Verwijdert selectie maar kopieert niet naar buffer"
+MSG_HelpEditPaste,,"Voegt inhoud buffer in op huidige locatie"
+MSG_HelpEditNewSub,,"Opent venster voor nieuw subprogramma"
+MSG_HelpEditNewFunc,,"Opent venster voor nieuwe FUNCTION-procedure"
+MSG_HelpViewSubs,,"Geeft geladen SUB of FUNCTION weer"
+MSG_HelpViewNextProc,,""
+MSG_HelpViewSplit,,"Verdeelt scherm in twee vensters"
+MSG_HelpViewNextStatement,,""
+MSG_HelpViewOutputScreen,,"Geeft uitvoerscherm weer"
+MSG_HelpViewIncludes,,""
+MSG_HelpViewEditIncl,,""
+MSG_HelpSearchFind,,"Zoekt opgegeven tekst"
+MSG_HelpSearchSelected,,""
+MSG_HelpSearchNext,,"Herhaalt zoekactie naar opgegeven tekst"
+MSG_HelpSearchChange,,"Zoekt en wijzigt opgegeven tekst"
+MSG_HelpSearchLabel,,""
+MSG_HelpRunStart,,"Voert huidig programma uit"
+MSG_HelpRunRestart,,"Wist variabelen v¢¢r opnieuw stapsgewijs testen"
+MSG_HelpRunContinue,,"Zet uitvoering voort na onderbreking"
+MSG_HelpRunSetCommand,,""
+MSG_HelpRunMakeExe,,""
+MSG_HelpRunMakeLib,,""
+MSG_HelpRunSetMain,,""
+MSG_HelpDebugStep,,"Voert volgend programma-statement uit"
+MSG_HelpDebugPStep,,"Spoort procedure-aanroepen in volgend statement op"
+MSG_HelpDebugAddWatch,,""
+MSG_HelpDebugInstantWatch,,""
+MSG_HelpDebugWatchPoint,,""
+MSG_HelpDebugDelWatch,,""
+MSG_HelpDebugDelAllWatch,,""
+MSG_HelpDebugTraceOn,,"Markeert statement dat wordt uitgevoerd"
+MSG_HelpDebugHistoryOn,,""
+MSG_HelpDebugToggleBp,,"Schakelt breekpunt bij cursorpositie in of uit"
+MSG_HelpDebugClearAllBp,,"Verwijdert alle breekpunten"
+MSG_HelpDebugBreakOnErr,,""
+MSG_HelpDebugSetNextStmt,,"Maakt statement bij cursor tot volgend statement"
+MSG_HelpOptionsDisplay,,"Wijzigt schermweergave"
+MSG_HelpOptionsPaths,,"Stelt zoekpad voor Help-bestanden in"
+MSG_HelpOptionsMouse,,""
+MSG_HelpOptionsSyntax,,"Schakelt syntaxiscontrole in of uit"
+MSG_HelpOptionsFullMenu,,""
+MSG_HelpHelpIndex,,"Geeft Help-index weer"
+MSG_HelpHelpContents,,"Geeft inhoudsopgave Help weer"
+MSG_HelpHelpSyntax,,"Geeft informatie over Basic-trefwoord bij cursor"
+MSG_HelpHelpHelp,,"Geeft informatie over gebruik van online Help"
+MSG_HelpHelpStarted,,"Geeft informatie over laden/gebruik MS-DOS Editor"
+MSG_HelpHelpKeyboard,,"Geeft toetsencombinaties voor bewerken/verplaatsen"
+MSG_HelpHelpAbout,,"Geeft informatie over copyright en versienummer"
+;
+;Section 5.5: Status line HELP messages <THESE MUST REMAIN CONTIGUOUS>
+;
+; IMPORTANT:  If the text of ANY of the following messages changes, the
+; IMPORTANT:  constants used by DoStatusButton() in UINHELP.ASM must be updated!
+; IMPORTANT:  See UINHELP.ASM for a description of how to change the text of
+; IMPORTANT:  MSG_Status[Edit, Running, Immediate, Help, ShiftF1].
+;
+MSG_StatusMenu,,"Enter=Menu tonen  Esc=Annuleren  Pijl=Volgend item"
+MSG_StatusDialog,,"Enter=Uitvoeren  Esc=Annuleren  Tab=Volgend veld  Pijl=Volgend item"
+MSG_StatusEdit,,"<F6=Venster> <F2=Sub's> <F5=Uitvoeren> <F8=Stap>"
+MSG_StatusRunning,,"<F5=Doorgaan> <F9=Breekpunt a/u> <F8=Stap>"
+MSG_StatusImmediate,,"<F6=Venster> <Enter=Regel uitvoeren>"
+MSG_StatusHelp,,"<F6=Venster> <Esc=Annul.> <Ctrl+F1=Volgend> <Alt+F1=Vorig>"
+MSG_StatusQEdit,,"MS-DOS Editor  <F1=Help> Druk op Alt om menu's te activeren"
+MSG_StatusQHelp,,"<F1=Help> <F6=Venster> <Esc=Annuleren> <Ctrl+F1=Volgend> <Alt+F1=Vorig>"
+MSG_StatusF1Help,,"F1=Help   "
+MSG_StatusShiftF1,,"<Shift+F1=?> "
+;
+; IMPORTANT:  If the text of ANY of the previous messages changes, the
+; IMPORTANT:  constants used by DoStatusButton() in UINHELP.ASM must be updated!
+;
+;Section 5.6: Variable HELP messages <Some of these must remain contiguous>
+;Ripped these out for LQB
+;
+;Section 5.7: misc messages
+;
+MSG_SearchPathEdit,,"Locatie (pad) van bestand EDIT.HLP:"
+MSG_SearchPathInterp,,"Locatie (pad) van bestand QBASIC.HLP:"
+;
+;Section touch: Messages can be added to the bottom of the file
+; and all objects except uiutil.obj and qbimsgs.obj can be touched.
+; Also touch qbimsgs.rpl, then *.hlp!
+; Later, these messages should be moved into their appropriate sections.

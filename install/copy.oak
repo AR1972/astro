@@ -1,0 +1,17 @@
+diris = install
+
+all:
+   xcopy $(diris)\makefile.oak $(OAKDIR)\$(diris)\makefile  < $(OAKDIR)\f.key
+   xcopy $(diris)\common       $(OAKDIR)\$(diris)\common    < $(OAKDIR)\d.key
+   xcopy $(diris)\include      $(OAKDIR)\$(diris)\include   < $(OAKDIR)\d.key
+   del   $(diris)\oem\*.*                                   < $(OAKDIR)\ycr.key
+   xcopy $(diris)\oem          $(OAKDIR)\$(diris)\oem       < $(OAKDIR)\d.key
+   echo
+   echo *************************************************************
+   echo You must edit the install source (in \OEM, \COMMON, \INCLUDE) to
+   echo remove Upgrade and BuSetup #ifdef'ed source.  IFSTRIP will not work
+   echo correctly here, due to compound #ifdef's, unfortunately.
+   echo *************************************************************
+   pause
+
+

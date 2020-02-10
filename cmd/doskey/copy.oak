@@ -1,0 +1,8 @@
+diris = doskey
+
+all:
+   del $(diris)\*.*                                < $(OAKDIR)\ycr.key
+   xcopy $(diris) $(OAKDIR)\cmd\$(diris)           < $(OAKDIR)\d.key
+   del $(OAKDIR)\cmd\$(diris)\copy.oak
+
+

@@ -1,0 +1,36 @@
+:util ADDDRV               ;utility name                               ;AN000;
+
+:class 1                                                               ;AN000;
+
+:class 2                                                               ;AN000;
+
+:class A                   ;system messages                            ;AN000;
+:use 1 COMMON1             ;"Incorrect DOS version"                    ;AN000;
+
+:class B                                                               ;AN000;
+:def 11 ""
+:def 12 ""
+:def 13 ""
+:def 14 ""
+:def 15 ""
+:def 16 ""
+:def 17 ""
+:def 18 ""
+:def 19 ""
+:def 20 ""
+:def 21 ""
+:def 22 ""
+:def 23 ""
+:def 24 ""
+:def 25 ""
+:def 26 ""
+:def 27 ""
+:def 28 ""
+
+:def 29 ""
+:def 30 ""
+:def 31 ""
+:def 32 ""
+
+:end                                                                   ;AN000;
+

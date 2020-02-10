@@ -1,0 +1,44 @@
+SUMMARY fexpunge
+
+#include <tools.h>
+
+long fexpunge(pstrDir, pfileList)
+char *pstrDir;
+FILE *pfileList;
+
+DESCRIPTION
+
+fexpunge opens the index file in the indicated directory's deleted directory,
+releases all the deleted files present, removes the index file and then
+removes the directory.	If pfileList is not NULL, then a log of the files
+deleted is written using the C library fprintf(pfileList, ...).
+
+pstrDir is the name of the directory that has DELETED as a subdirectory.
+
+RETURN VALUE
+
+Returns the number of bytes freed.
+
+IMPLEMENTATION
+
+
+SEE ALSO  Commands: exp undel rm
+
+Library routine: fdelete
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    char strCurDir[MAXPATHLEN];
+
+    rootpath (".", strCurDir);
+    printf("Bytes freed: %ld\n", (long)fexpunge(strCurDir, stdout));
+}

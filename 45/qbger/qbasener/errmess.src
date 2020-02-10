@@ -1,0 +1,1222 @@
+.comment ****************************************************************
+.comment Error Message Help - QBasic                                    *
+.comment  This file contains all the error message help. Help on menu   *
+.comment  dialogs and related messages can be found in environ.src.     *
+.comment ****************************************************************
+.comment 8/1/90 bethpr                                                  *
+.comment Changed references to DOS Editor to MS-DOS Editor              *
+.comment ****************************************************************
+.comment 7/29/90 bethpr                                                 *
+.comment Changed text, as appropriate, for BASIC language and products. *
+.comment ****************************************************************
+.comment 6/29/90 stevesau                                               *
+.comment Incorporated final review comments                             *
+.comment ****************************************************************
+.comment 6/20/90 stevesau                                               *
+.comment Incorporated final review edits.                               *
+.comment ****************************************************************
+.comment 5/4/90 -- Bethpr                                               *
+.comment Changed $Metacommand Error context string back to MSG_BadMeta  *
+.comment ****************************************************************
+.comment 4/17/90 QBasic Edits -- Bethpr
+.comment Removed Add watchpoint, Binary file contained an unknown
+.comment statement, Binary file contained an unknown statement or
+.comment data type, Common in Quick library too small, Duplicate
+.comment module base names loaded.  Can't compile., Edit Include file,
+.comment Feature removed, File previously loaded, Include file too large,
+.comment All 8 ISAM error messages, Key already in use, Key file bad or
+.comment missing.  Using default., Make .Lib, Missing menu text or path,
+.comment Modified Include file, Module exists, Module not found.  Unload
+.comment module from program?, Must be between 2 and 10, Procedure
+.comment already defined in Quick library, Program contains unsupported
+.comment statements, Save Include file, Statement cannot occur within
+.comment include file, Symbol help not found, Too many applications,
+.comment Turn off include lines toggle command, Type not valid for ISAM.
+.comment ****************************************************************
+.context -9999
+:nšbersetzung vorbergehend angehalten
+QBasic hat die schrittweise Abarbeitung der Programmzeile
+an der hervorgehobenen Stelle vorbergehend angehalten.
+Gew”hnlich ist der Fehler links von der hervorgehobenen
+Stelle. Sie k”nnen
+  ş einen Vorschlag aus dem Dialogfeld einsetzen.
+  ş falsch geschriebene Schlsselworte verbessern.
+  ş den Cursor zu einem Schlsselwort in der Anweisung
+    bewegen und F1 drcken, um die richtige Syntax fr das
+    Schlsselwort angezeigt zu bekommen.
+.context QB_ER_NF
+.context ER_NF
+:nNEXT ohne FOR
+Jede NEXT-Anweisung muá eine passende FOR-Anweisung haben.
+
+ERR-Code: 1
+.context QB_ER_SN
+.context ER_SN
+:nSyntaxfehler
+Der h„ufigste Grund fr diesen Fehler ist ein falsch
+geschriebenes BASIC-Schlsselwort oder -Argument.
+šberprfen Sie die Programmzeile auf ihre Richtigkeit.
+
+ERR-Code: 2
+.context QB_ER_RG
+.context ER_RG
+:nRETURN ohne GOSUB
+Es wurde eine RETURN-Anweisung erreicht, fr die es keine
+passende GOSUB-Anweisung gab.
+
+ERR-Code: 3
+.context QB_ER_OD
+.context ER_OD
+:nREAD jenseits von DATA
+Eine READ-Anweisung wurde erreicht, aber es sind im Programm
+keine DATA-Anweisungen mit ungelesenen Daten mehr brig.
+
+ERR-Code: 4
+.context QB_ER_FC
+.context ER_FC
+:nUnzul„ssiger Funktionsaufruf
+Es wurde versucht, einer BASIC-Anweisung ein falsches oder
+ein bereichsberschreitendes Argument zu bergeben.
+Beispiele solcher Fehler sind:
+  ş Eine negative Zahl wird mit einer Zahl, die Nachkomma-
+    stellen hat, potenziert.
+  ş Bei GET oder PUT wird eine negative Datensatznummer
+    angegeben.
+  ş Eine E/A-Funktion oder -Anweisung (z.B. LOC or LOF)
+    wird von einem Ger„t verlangt, obwohl dieses sie nicht
+    untersttzt.
+  ş Eine Zeichenkette mit mehr als 32.767 Zeichen L„nge
+    wird erzeugt.
+  ş Eine BLOAD- oder eine BSAVE-Operation ist auf ein Ger„t
+    gerichtet, das keine Diskette oder Festplatte ist.
+
+ERR-Code: 5
+.context QB_ER_OV
+.context ER_OV
+:nšberlauf
+Das Ergebnis einer Berechnung oder einer Datentypumwandlung
+ist zu groá fr den gegebenen Datentyp.
+
+ERR-Code: 6
+.context QB_ER_OM
+.context ER_OM
+:nZu wenig Speicher
+Es wurde mehr Speicherkapazit„t ben”tigt als vorhanden ist.
+
+  Abhilfe:
+  ş Verlassen Sie QBasic und verringern Sie die Anzahl der
+    DOS-Puffer, der speicherresidenten Programme oder der
+    geladenen Ger„tetreiber. Starten Sie den Computer neu.
+  ş Verkleinern Sie Ihr Programm.
+  ş Verringern Sie die Anzahl und Gr”áe Ihrer Datenfelder.
+  ş Verringern Sie die Gr”áe des Stapels mit der
+    CLEAR-Anweisung.
+  ş Verringern Sie die Anzahl der Variablen.
+
+ERR-Code: 7
+.context QB_ER_UL
+.context ER_UL
+:nMarke nicht definiert
+Es wird auf eine Zeilenmarke Bezug genommen (z.B. in einer
+GOTO-Anweisung), die im Programm nicht vorkommt.
+
+ERR-Code:  8
+.context QB_ER_SOR
+.context ER_SOR
+:nIndex auáerhalb des zul„ssigen Bereichs
+Es wurde versucht, auf ein Feldelement mit einem Index
+zuzugreifen, der auáerhalb der Dimensionen des Feldes liegt,
+oder ein Element eines undimensionierten, dynamischen Feldes
+wurde angesprochen. šberprfen Sie die Dimensionierung und
+die Gr”áe des Feldes.
+
+Dieser Fehler kann auch auftreten, wenn die Feldgr”áe 64
+KByte berschreitet. Verringern Sie in diesem Fall die Gr”áe
+des Feldes.
+
+ERR-Code: 9
+.context ER_DD
+:nDoppelte Definition
+Sie versuchen, die Dimensionen eines statischen Feldes zu
+„ndern, w„hrend das Programm l„uft. Verwenden Sie die
+REDIM-Anweisung, um das Feld als dynamisch zu deklarieren.
+
+Dieser Fehler tritt auch auf, wenn Sie versuchen, die
+Dimensionen eines dynamischen Feldes mittels der
+DIM-Anweisung zu „ndern, ohne das Feld vorher freizugeben.
+In diesem Fall muá vor der Dimensionierung eine
+ERASE-Anweisung eingefgt werden.
+
+ERR-Code: 10
+.context QB_ER_DD
+:nDoppelte Definition
+Sie versuchen, einem neuen Objekt in Ihrem Programm den
+Namen eines bereits bestehenden Objekts zu geben.
+
+Zum Beispiel:
+  ş Eine CONST-Anweisung verwendet den Namen einer bereits
+    existierenden Variablen.
+  ş Eine neue Variable oder eine Prozedur hat den gleichen
+    Namen wie eine bereits existierende Prozedur.
+
+Die Verwendung der Zeichen "FN" am Anfang eines
+Variablennamens erzeugt ebenfalls diesen Fehler, da FN
+ausschlieálich mit DEF FN verwendet wird.
+.context QB_ER_DV0
+.context ER_DV0
+:nDivision durch Null
+Die Division mit Null in einem Ausdruck kann zu diesem
+Fehler fhren.
+
+ERR-Code: 11
+.context QB_ER_ID
+.context ER_ID
+:nUnzul„ssig im Direkt-Modus
+Die hervorgehobene Anweisung kann nur innerhalb eines
+Programms verwendet werden und ist im Direkt-Fenster
+unzul„ssig. Im allgemeinen k”nnen folgende Anweisungen und
+Meta-Anweisungen im Direkt-Fenster nicht verwendet werden:
+
+  ş COMMON, CONST, DATA, DECLARE, DIM, OPTION, SHARED,
+    STATIC, und TYPE
+  ş $DYNAMIC-, $STATIC-Meta-Anweisungen
+  ş DEF FN...END DEF, ELSE IF, END IF, END TYPE
+    FUNCTION...END FUNCTION, REDIM, und SUB...END SUB
+
+ERR-Code: 12
+.context QB_ER_TM
+.context ER_TM
+:nFalscher Datentyp
+Eine Variable hat nicht den richtigen Datentyp. Z.B. k”nnte
+versucht worden sein, die SWAP-Anweisung auf eine
+Zeichenkettenvariable und eine numerische Variable
+anzuwenden, oder auf zwei numerische Variablen
+unterschiedlichen Datentyps.
+
+ERR-Code: 13
+.context QB_ER_OS
+.context ER_OS
+:nZu wenig Zeichenketten-Speicherplatz
+Es ist nicht genug Speicherplatz zur Speicherung von
+Zeichenketten brig. Um mehr Platz zu schaffen, k”nnen Sie
+
+  ş die Anzahl der Variablen verringern.
+  ş die Anzahl/Gr”áe von Zeichenketten-Feldern verringern.
+  ş die Gr”áe des Stapels verringern. Verwenden Sie die
+    CLEAR-Anweisung, um die Gr”áe des Stapels zu „ndern.
+
+ERR-Code: 14
+.comment -------------
+.comment   15 unused
+.comment -------------
+.context QB_ER_BS
+.context ER_BS
+:nZeichenketten-Formel zu umfangreich
+Entweder ist eine Zeichenketten-Formel zu lang oder eine
+INPUT-Anweisung hat mehr als 15 Zeichenketten-Variablen.
+Teilen Sie die Formel bzw. INPUT-Anweisung in kleinere
+Teile.
+
+ERR-Code: 16
+.context QB_ER_CN
+:nQBasic kann nicht fortsetzen
+Diese Meldung kann w„hrend des Debuggens auftreten. W„hrend
+einer Programmunterbrechung (z.B. an einem Haltepunkt) haben
+Sie am Programm nderungen vorgenommen, die sich auf das
+ganze Programm auswirken. Beispiele: nderung einer
+Felddimensionierung, von Prozedurargumenten oder einer
+deklarativen Anweisung. W„hlen Sie in dem Dialogfeld
+   ş <OK>, um die nderungen zu bernehmen und einen
+     Neustart durchzufhren.
+   ş <Abbrechen>, um die nderungen rckg„ngig zu machen.
+     (W„hlen Sie diese Option, wenn Sie wegen Ihrer Debug-
+     Strategie keinen Neustart wnschen.)
+.context ER_UF
+.context ER_CN
+.context ER_US
+.context QB_ER_UE
+.context ER_UE
+.context QB_ER_CaseElse
+.context ER_CaseElse
+:nBenutzerdefinierter Fehler
+Die Verwendung einer ERROR-Anweisung hat diesen Fehler
+erzeugt.
+
+ERR-Codes: 17, 18, 35, 39
+.context QB_ER_UF
+:nQBasic-Funktion nicht definiert
+Die durch DEF FN definierte Funktion existiert nicht. Dies
+kann folgende Grnde haben:
+   ş Die DEF FN-Funktion ist undefiniert.
+   ş Die DEF FN-Funktion versucht, sich selbst (rekursiv)
+     aufzurufen.
+.context QB_ER_NR
+.context ER_NR
+:nRESUME fehlt
+W„hrend der Ausfhrung einer Fehlerbehandlungsroutine wurde
+das Ende des Programms erreicht. Fgen Sie Ihrer
+Fehlerbehandlungsroutine eine RESUME-Anweisung hinzu.
+
+ERR-Code: 19
+.context QB_ER_RE
+.context ER_RE
+:nRESUME ohne Fehler
+Eine RESUME-Anweisung wurde erreicht, ohne daá im Programm
+eine Fehlerbehandlungsroutine abgearbeitet wurde.
+
+ERR-Code: 20
+.comment -------------
+.comment  21-23 unused
+.comment -------------
+.context ER_DTO
+:nZeitberschreitung am Ger„t
+Das Programm hat innerhalb der festgelegten Fehlerwartezeit
+keine Informationen von einem Ger„t (z.B. Drucker) bekommen.
+
+ERR-Code: 24
+.context QB_ER_DTO
+:nZeitberschreitung am Ger„t
+QBasic hat innerhalb der festgelegten Fehlerwartezeit keine
+Informationen von einem Ger„t (z.B. Drucker) bekommen:
+  ş Wenn Sie drucken m”chten, muá der Drucker am Ger„t LPT1
+    angeschlossen sein.
+.context ER_DF
+:nGer„tefehler
+Ein Ger„t meldet einen Hardware-Fehler, der folgende
+Ursachen haben kann:
+   ş Beim Versuch, eine Datei zu drucken: Der Drucker ist
+     nicht am Ger„t LPT1 angeschlossen.
+   ş Beim Versuch, die serielle Schnittstelle anzusprechen:
+     Von der OPEN COM-Anweisung getestete Signale sind nicht
+     innerhalb der Fehlerwartezeit empfangen worden.
+
+ERR-Code: 25
+.context QB_ER_DF
+:nQBasic-Ger„tefehler
+QBasic hat einen Fehler am Drucker festgestellt. Stellen Sie
+sicher, daá
+   ş der Drucker betriebsbereit (online) ist.
+   ş der Drucker mit Strom versorgt und angeschaltet ist.
+   ş das Druckerkabel korrekt mit dem Drucker und dem
+     Computer verbunden ist.
+.context ER_FN
+.context QB_ER_FN
+:nFOR ohne NEXT
+Jede FOR-Anweisung muá eine passende NEXT-Anweisung haben.
+
+ERR-Code: 26
+.context QB_ER_OP
+.context ER_OP
+:nPapier zu Ende
+Am Drucker ist das Papier ausgegangen, oder der Drucker ist
+nicht eingeschaltet.
+
+ERR-Code: 27
+.comment -------------
+.comment   28 unused
+.comment -------------
+.context QB_ER_WH
+.context ER_WH
+:nWHILE ohne WEND
+Jede WHILE-Anweisung muá eine passende WEND-Anweisung haben.
+
+ERR-Code: 29
+.context QB_ER_WE
+.context ER_WE
+:nWEND ohne WHILE
+Jede WEND-Anweisung muá eine passende WHILE-Anweisung haben.
+
+šberprfen Sie, daá die anderen Kontrollstrukturen innerhalb
+der WHILE...WEND-Struktur zusammenpassen. Z.B. tritt dieser
+Fehler auch auf, wenn innerhalb einer WHILE...WEND-Struktur
+ein IF ohne ein passendes ENDIF vorkommt.
+
+ERR-Code: 30
+.comment -------------
+.comment  31-32 unused
+.comment -------------
+.context QB_ER_DL
+.context ER_DL
+:nDoppelt definierte Marke
+Zwei Programmzeilen haben die gleiche Zeilennummer oder
+Marke. Jede Zeilennummer oder Marke muá eindeutig sein.
+
+ndern Sie die hervorgehobene Zeilennummer oder Marke, oder
+verwenden Sie den Befehl Suchen im Men Suchen, um die
+mehrfach definierte Nummer oder Marke zu finden; „ndern Sie
+die Nummer oder Marke so, daá sie eindeutig ist.
+ 
+ERR-Code: 33
+.comment -------------
+.comment   34 unused
+.comment -------------
+.context QB_ER_US
+:nQBasic-Unterprogramm nicht definiert
+QBasic kann die angegebene SUB-Prozedur nicht finden.
+
+Drcken Sie F2, um die verfgbaren SUB- und FUNCTION-
+Prozeduren angezeigt zu bekommen.
+.context QB_ER_AC
+.context ER_AC
+:nFalsche Anzahl von Argumenten
+In einem SUB- oder FUNCTION-Prozeduraufruf wurde eine
+falsche Anzahl von Argumenten angegeben.
+
+Vergleichen Sie die DECLARE-Anweisung der SUB- oder
+FUNCTION-Prozedur mit der CALL-Anweisung, um sicher-
+zustellen, daá die Argumentliste in beiden F„llen die
+gleiche Anzahl Parameter hat.
+
+ERR-Code: 37
+.context QB_ER_UA
+.context ER_UA
+:nFeld nicht definiert
+Im Programm wird ein Feld angesprochen, das dort nicht
+definiert ist.
+
+šberprfen Sie die Korrektheit des Feldnamens und definieren
+Sie das Feld mit der DIM- oder der REDIM-Anweisung.
+
+ERR-Code: 38
+.comment ----------
+.comment 39 unused
+.comment ----------
+.context QB_ER_VarReq
+.context ER_VarReq
+:nVariable erforderlich
+Eventuell wurde eine INPUT-, LET-, READ-, oder eine SHARED-
+Anweisung ohne eine Variable als Argument angetroffen.
+M”glicherweise wurde auch eine GET- oder PUT-Anweisung ohne
+Variable fr eine Operation auf eine im Bin„rmodus ge”ffnete
+Datei verwendet.
+
+ERR-Code: 40
+.comment -------------
+.comment  41-49 unused
+.comment -------------
+.context QB_ER_FOV
+.context ER_FOV
+:nFIELD-šberlauf
+Eine FIELD-Anweisung versuchte, mehr Byte zu reservieren als
+fr die Datensatzl„nge einer Direktzugriffsdatei angegeben
+wurde. šberprfen Sie die OPEN-Anweisung auf korrekte
+Datensatzl„nge.
+
+ERR-Code: 50
+.context QB_ER_IER
+.context ER_IER
+:nInterner Fehler
+In QBasic ist ein interner Fehler aufgetreten. Bitte
+melden Sie diesen Fehler der Firma Microsoft.
+
+ERR-Code: 51
+.context QB_ER_BFN
+.context ER_BFN
+:nDateiname oder -nummer unzul„ssig
+Dieser Fehler kann auftreten, wenn sich eine Anweisung oder
+ein Befehl auf eine Datei bezieht, deren Dateinummer oder
+-name nicht in der OPEN-Anweisung vorkommt oder auáerhalb
+des gltigen Bereichs fr Dateinummern (1 bis 255) liegt,
+der vorher im Programm angegeben wurde.
+
+ERR-Code: 52
+.context ER_FNF
+:nDatei nicht gefunden
+Eine OPEN-, RUN- oder eine andere BASIC-Anweisung bezieht
+sich auf eine nicht existierende Datei.
+
+ERR-Code 53
+.context QB_ER_FNF
+:nQBasic-Datei nicht gefunden
+In dem Dialogfeld fr den Befehl Suchen wurde eine nicht
+existierende Datei angegeben. šberprfen Sie den Dateinamen
+und stellen Sie sicher, daá Laufwerk und Verzeichnis
+korrekt gew„hlt sind.
+
+ERR-Code 53
+.context QB_ER_BFM
+.context ER_BFM
+:nUngltiger Dateimodus
+Dieser Fehler kann aufgetreten sein, weil
+   ş eine PUT- oder GET-Anweisung eine sequentielle Datei
+     anspricht.
+   ş eine FIELD-Anweisung fr eine Datei verwendet wird, die
+     nicht fr Direktzugriff ge”ffnet wurde.
+   ş eine PRINT #-Anweisung eine sequentielle Datei
+     anspricht, die fr Eingabe ge”ffnet ist.
+   ş eine INPUT #-Anweisung eine Datei anspricht, die fr
+     Ausgabe oder Erweiterung ge”ffnet ist.
+   ş versucht wurde, eine QuickBASIC-Bin„rdatei zu ”ffnen.
+
+ERR-Code: 54
+.context QB_ER_FAO
+.context ER_FAO
+:nDatei bereits ge”ffnet
+Dieser Fehler kann aufgetreten sein, weil
+   ş eine bereits ge”ffnete Datei nochmals fr serielle
+     Ausgabe ge”ffnet werden soll.
+   ş eine KILL-Anweisung eine ge”ffnete Datei anspricht.
+
+ERR-Code: 55
+.context QB_ER_FSA
+.context ER_FSA
+:nFIELD-Anweisung aktiv
+Eine GET- oder PUT-Anweisung bezieht sich mit einer
+Verbundvariablen auf eine Datei, fr die bereits FIELD-
+Anweisungen ausgefhrt wurden.
+
+GET oder PUT k”nnen nur mit einer Verbundvariablen verwendet
+werden, wenn noch keine FIELD-Anweisungen fr diese Datei
+ausgefhrt wurden.
+
+ERR-Code: 56
+.context ER_IOE
+:nGer„tefehler bei Ein/Ausgabe
+Ein Ein- oder Ausgabefehler ist aufgetreten, w„hrend Ihr
+Programm ein Ger„t (z.B einen Drucker oder ein Laufwerk)
+angesprochen hat.
+
+ERR-Code: 57
+.context QB_ER_IOE
+:nGer„tefehler bei QBasic-Ein-/Ausgabe
+Bei der Verwendung eines Ein- oder Ausgabeger„tes ist ein
+Fehler aufgetreten. Bitte berprfen Sie das entsprechende
+Ger„t (z.B. den Drucker oder das Diskettenlaufwerk; viel-
+leicht ist eine unformatierte Diskette verwendet worden).
+.context QB_ER_FAE
+.context ER_FAE
+:nDatei existiert bereits
+Es gibt bereits eine Datei mit dem Dateinamen in der
+NAME-Anweisung. Verwenden Sie einen anderen Dateinamen,
+wechseln Sie das Verzeichnis, benennen Sie die existierende
+Datei um oder l”schen Sie sie.
+
+ERR-Code: 58
+.context QB_ER_BRL
+.context ER_BRL
+:nUngltige Datensatzl„nge
+Die Gr”áe der Verbundvariablen (Record) in der GET- oder
+PUT-Anweisung stimmt nicht mit der angegebenen Datensatz-
+l„nge in der OPEN-Anweisung berein.
+
+ERR-Code: 59
+.comment -------------
+.comment   60 unused
+.comment -------------
+.context ER_DFL
+:nFestplatte/Diskette voll
+Es ist nicht genug Speicherplatz auf dem Laufwerk, um die
+PRINT #-, PRINT USING #-, WRITE #-, CLOSE-, oder
+PUT-Anweisung zu vollenden.
+
+ERR-Code: 61
+.context QB_ER_DFL
+:nQBasic: Festplatte/Diskette voll
+Es ist nicht genug Speicherplatz auf dem angegebenen
+Laufwerk, um die Datei zu speichern. Speichern Sie die Datei
+auf ein anderes Laufwerk.
+.context QB_ER_RPE
+.context ER_RPE
+:nEingabe nach Dateiende
+Eine Anweisung INPUT # versucht aus einer leeren oder einer
+bereits vollst„ndig gelesenen Datei zu lesen.
+
+Um diesen Fehler zu vermeiden, verwenden Sie die
+EOF-Funktion, um das Dateiende zu erkennen.
+
+ERR-Code: 62
+.context QB_ER_BRN
+.context ER_BRN
+:nUnzul„ssige Datensatznummer
+Die Datensatznummer in einer PUT- oder GET-Anweisung war
+kleiner oder gleich Null.
+
+ERR-Code: 63
+.context ER_IFN
+:nUnzul„ssiger Dateiname
+Ein Dateiname entspricht nicht den entsprechenden
+Namensregeln fr BLOAD, BSAVE, KILL, oder OPEN
+(z.B. besteht er aus zu vielen Zeichen).
+
+ERR-Code: 64
+.context QB_ER_IFN
+:nUnzul„ssiger Dateiname
+Der angegebene Dateiname enth„lt entweder zu viele oder in
+Dateinamen unzul„ssige Zeichen.
+.comment -------------
+.comment  65-66 unused
+.comment -------------
+.context ER_TMF
+:nZu viele Dateien
+Ihr Programm hat die Anzahl der Dateioperationen ber-
+schritten, die DOS im Stammverzeichnis erlaubt. Wenn Ihr
+Programm Dateien im Stammverzeichnis ”ffnet, schlieát
+und/oder speichert, sollten Sie Ihr Programm so „ndern,
+daá es ein Unterverzeichnis verwendet.
+
+ERR-Code: 67
+.context QB_ER_TMF
+:nQBasic: Zu viele Dateien ge”ffnet
+Ihr Programm hat mehr Dateien auf der Diskette/Festplatte
+ge”ffnet, als QBasic verwalten kann. Sie mssen eine oder
+mehrere der offenen Dateien schlieáen, bevor Sie weitere
+QBasic Befehle verwenden k”nnen.
+
+Der einfachste Weg, dies zu tun, ist mit der Anweisung
+BASIC CLOSE:
+   1. Bringen Sie den Cursor in das Direktfenster.
+   2. Geben Sie CLOSE auf der ersten verfgbaren Textzeile
+      ein.
+   3. Drcken Sie die EINGABETASTE, um die Anweisung
+      auszufhren.
+
+Danach k”nnen Sie die QBasic Befehle ausfhren. Haben Sie
+diese Meldung w„hrend der Programmausfhrung erhalten,
+mssen Sie Ihr Programm neu starten.
+.context ER_DNA
+:nGer„t nicht verfgbar
+Das angesprochene Ger„t ist nicht auf Online geschaltet
+oder existiert nicht.
+
+ERR-Code: 68
+.context QB_ER_DNA
+:nQBasic: Ger„t nicht verfgbar
+Sie haben versucht, eine Datei auf einem Ger„t zu ”ffnen,
+das nicht in Ihrem System existiert. In dem Listenfeld
+Verz./Laufw. in der Dialogbox des Befehls ™ffnen im Men
+Datei finden Sie alle verfgbaren Ger„te. W„hlen Sie eines
+der in diesem Listenfeld befindlichen Ger„te aus.
+.context QB_ER_CBO
+.context ER_CBO
+:nKommunikationspuffer-šberlauf
+W„hrend der Datenfern-šbertragung ist im Empfangspuffer
+ein šberlauf aufgetreten.
+
+Die Gr”áe des Empfangspuffers wird durch die Option RB
+in der Anweisung OPEN COM bestimmt. Um diese Fehler
+zu vermeiden, sollten Sie
+  ş mit der Funktion LOC den Puffer h„ufiger berprfen.
+  ş mit der Funtkion INPUT$ den Puffer h„ufiger leeren.
+
+ERR-Code: 69
+.context ER_PRM
+:nZugriff verweigert
+Es wurde versucht, auf eine schreibgeschtzte Diskette/
+Festplatte zu schreiben oder auf eine gesperrte Datei
+zuzugreifen.
+
+ERR-Code: 70
+.context QB_ER_PRM
+:nQBasic: Zugriff verweigert
+Sie haben versucht, eine schreibgeschtzte Datei zu ber-
+schreiben oder auf eine Diskette zu schreiben, die mit
+einem Schreibschutz versehen ist.
+
+Verwenden Sie einen anderen Dateinamen, um diesen Konflikt
+zu vermeiden. Entfernen Sie den Schreibschutz, oder
+verwenden Sie eine andere Diskette.
+.context ER_DNR
+.context QB_ER_DNR
+:nFestplatte/Diskette nicht bereit
+Der Laufwerkseinschub ist nicht verriegelt, oder es befindet
+sich keine Diskette in dem Laufwerk. Legen Sie eine Diskette
+in das Laufwerk und verriegeln Sie es. Danach versuchen Sie
+erneut die Ausfhrung dieser Operation.
+
+ERR-Code: 71
+.context ER_DME
+:nDatentr„gerfehler (Diskette/Festplatte)
+Die Hardware des Disketten/Festplattenlaufwerks entdeckte
+einen physikalischen Fehler auf der Diskette/Festplatte.
+
+ERR-Code: 72
+.context QB_ER_DME
+:nQBasic Datentr„gerfehler
+QBasic ist nicht in der Lage, das Format des Datentr„gers
+zu erkennen, auf den es versucht zuzugreifen. Verwenden
+Sie einen anderen Datentr„ger oder verlassen Sie QBasic
+und formatieren Sie den aktuellen Datentr„ger erneut.
+.context QB_ER_ADF
+.context ER_ADF
+:nErweiterte Funktionen nicht verfgbar
+Es kann sein, daá Sie versuchen, Funktionen einer
+anderen Version von BASIC zu verwenden, die in
+Microsoft QBasic nicht verfgbar ist.
+
+ERR-Code: 73
+.context QB_ER_RAD
+.context ER_RAD
+:nUmbenennen zwischen Datentr„gern
+Sie haben versucht, eine Datei mit einer neuen Laufwerks-
+kennung umzubenennen. Sie k”nnen in QBasic keine Datei
+mit einer neuen Laufwerkskennung umbenennen.
+
+ERR-Code: 74
+.context ER_PAE
+.context QB_ER_PAE
+:nPfad/Datei-Zugriffsfehler
+W„hrend der Ausfhrung einer OPEN-, MKDIR-, CHDIR- oder
+RMDIR-Anweisung konnte das Betriebssystem keine korrekte
+Verbindung zwischen dem Pfadnamen und dem Dateinamen
+herstellen.
+
+Falls Sie sich in der QBasic-Umgebung befinden, sollten Sie
+sicherstellen, daá die von Ihnen in dem Textfeld angegebene
+Spezifikation der Datei korrekt formatiert ist. Jeder Datei-
+name kann eine Laufwerksbezeichnung sowie eine vollst„ndige
+oder teilweise Pfadangabe haben.
+
+Dieser Fehler kann auch auftreten, falls Sie versuchen,
+eine schreibgeschtzte Datei zu ersetzen.
+
+ERR-Code: 75
+.context ER_PNF
+:nPfad nicht gefunden
+W„hrend der Ausfhrung einer OPEN-, MKDIR-, CHDIR- oder
+RMDIR-Anweisung konnte das Betriebssystem keine korrekte
+Pfadangabe finden.
+
+ERR-Code: 76
+.context QB_ER_PNF
+:nQBasic Pfad nicht gefunden
+DOS konnte den von Ihnen angegebenen Pfad in dem Dialogfeld
+des Befehls ™ffnen, Speichern oder Speichern unter im Men
+Datei nicht finden. šberprfen Sie die Pfadangabe
+und geben Sie einen korrekten Pfad ein.
+.comment -------------------------------------------
+.comment  Last of runtime errors - found at top of
+.comment  p. 5 in printout of BIGPIC.ERR
+.comment -------------------------------------------
+.context MSG_OutOfStack
+:nStapelspeicher reicht nicht
+Dieser Fehler kann auftreten, wenn zu viele aktive
+Unterprogramm-, FUNCTION- und SUB-Aufrufe ausgefhrt
+wurden, oder wenn eine rekursive FUNCTION-Prozedur zu
+oft verschachtelt wurde.
+
+ndern Sie die Struktur Ihres Programmes oder verwenden
+Sie die Anweisung CLEAR, um den zugewiesenen Stapel-
+speicher Ihres Programmes zu erh”hen.
+.comment -----------------------------------------------
+.comment  User Interface Related Messages that could be
+.comment  described in user's guide error message
+.comment  appendix.
+.comment -----------------------------------------------
+.context MSG_CantCont
+:nKann nicht fortfahren
+W„hrend einer Unterbrechung des Debuggens (bei einem
+Haltepunkt, etc.) haben Sie eine nderung durchgefhrt,
+die eine weitere Ausfhrung des Programms unm”glich
+macht. Unter Umst„nden haben Sie die Dimension eines
+Datenfeldes, die Argumente einer Prozedur oder einige
+andere deklarierende Anweisungen ver„ndert.
+Sie haben nun folgende M”glichkeiten:
+  ş W„hlen Sie <OK>, um die nderung zu best„tigen, und
+    starten Sie dann das Programm erneut.
+  ş W„hlen Sie <Abbrechen>, um die nderung im Programm
+    rckg„ngig zu machen. (Dies ist zu empfehlen, wenn
+    ein erneuter Programmstart mit Ihrer Debugging-
+    Strategie kollidiert.)
+.comment  Following are non-runtime errors.
+.comment -----------------------------------------------
+.context MSG_DupPrs
+:nDoppelter Prozedurname in der Datei
+Die Datei, die Sie ”ffnen wollten, enth„lt zwei namens-
+gleiche SUB- oder FUNCTION-Prozeduren. Benutzen Sie einen
+Texteditor, um eine davon umzubenennen, und ”ffnen Sie
+anschlieáend die Datei in QBasic.
+.comment -----------------------------------------------
+.comment  General User Interface messages
+.comment -----------------------------------------------
+.context MSG_Overwrite
+:nšberschreiben einer bereits existierenden Datei
+W„hlen Sie <Ja>, wenn Sie sich sicher sind, daá Sie durch
+das šberschreiben einer bereits existierenden Datei mit
+dem Dateiinhalt im Speicher keine wertvollen Daten
+verlieren.
+Ansonsten:
+  ş W„hlen Sie <Nein>, um das Dialogfeld erneut anzuzeigen
+    und dann einen neuen, nicht existierenden Dateinamen
+    einzugeben, unter dem der Speicherinhalt gespeichert
+    werden soll.
+  ş W„hlen Sie <Abbrechen>, um den Befehl abzubrechen und
+    alles so zu lassen, wie es vor der Wahl dieses Befehls
+    war.
+.context MSG_DelProc
+:nBest„tigung fr Prozedur L”schen
+Bevor eine Prozedur gel”scht wird, ben”tigt der Befehl SUBs
+eine Best„tigung von Ihnen zum L”schen der Prozedur aus dem
+Modul.
+  ş W„hlen Sie <OK>, um die Prozedur zu l”schen.
+  ş W„hlen Sie <Abbrechen>, um den Befehl abzubrechen und
+    das Modul unver„ndert zu lassen.
+.context MSG_MakeRem
+:nLeerzeilen nicht erlaubt
+Im allgemeinen bilden die Anweisungen SUB oder FUNCTION, die
+eine Prozedur beginnen, die erste Zeile im Arbeitsfenster.
+Falls Sie vesuchen, oberhalb einer SUB- oder FUNCTION-
+Anweisung eine Leerzeile einzufgen, wandelt QBasic diese
+Leerzeile in eine Kommentarzeile um.
+.context MSG_NotSaved
+.context MSG_NotSavedAll
+:nDatei nicht gespeichert
+Ihre Datei wurde entweder noch nie gespeichert oder sie
+wurde seit der letzten nderungen nicht mehr gespeichert.
+  ş W„hlen Sie <Ja>, um die Datei zu speichern und die
+    nderungen zu bewahren.
+  ş W„hlen Sie <Nein>, um die nderungen zu rckg„ngig
+    zu machen.
+  ş W„hlen Sie <Abbrechen>, um den Befehl abzubrechen
+    und alles so zu lassen, wie es vor der Wahl dieses
+    Befehls war.
+.context MSG_BadNextStmt
+:nšberschreiten der Prozedurgrenze nicht m”glich
+W„hrend des Debuggens haben Sie den Befehl N„chste Anweisung
+verwendet, um eine Anweisung anzugeben, die in einer anderen
+Prozedur als in der momentan unterbrochenen ist. In diesem
+Fall bergeht QBasic den Befehl N„chste Anweisung.
+
+Um das Debuggen fortzusetzen, verschieben Sie die unter-
+brochene Prozedur in das Fenster Ansicht. Sie k”nnen dann
+den Befehl N„chste Anweisung verwenden, um das Programm von
+jeder beliebigen Anweisung in dieser Prozedur zu starten.
+.context MSG_MustSpecifyName
+:nName muá angegeben werden
+Sie w„hlten <OK> in dem Dialogfeld, als der Inhalt des
+Textfeldes leer war. Geben Sie einen Modul- oder
+Prozedurnamen in das Textfeld ein und w„hlen Sie
+nochmals <OK>.
+.context MSG_DataMoved
+:nDATA-Anweisungen wurden verschoben
+In QBasic ist es erforderlich, daá sich alle DATA-
+Anweisungen eines Programmes auf Modul-Ebene befinden.
+QBasic verschiebt automatisch DATA-Anweisungen in die
+Modul-Ebene.
+.context MSG_NoSearchString
+:nKein Suchbegriff wurde angegeben
+Das Textfeld "Suchen nach" war leer, als Sie einen Suchen-
+oder ndern-Befehl ausfhrten. W„hlen Sie den Befehl
+nochmals, und geben Sie eine Zeichenkette ein, bevor Sie
+<OK> w„hlen.
+.context MSG_MatchNotFound
+:nSuchbegriff nicht gefunden
+QBasic konnte die angegebene Zeichenkette nicht finden.
+
+Der Cursor verbleibt an der Stelle, an der Sie mit der Suche
+begonnen haben.
+.context MSG_ChangeComplete
+:nndern beendet
+Das Suchen und Ersetzen ist vollst„ndig ausgefhrt worden.
+Der Cursor ist wieder an der Stelle, an der Sie die Suche
+begonnen haben.
+.context MSG_ReqSub
+:nSUB oder FUNCTION erforderlich
+Sie haben den Modulnamen in dem Dialogfeld des Befehls
+SUBs gew„hlt. W„hlen Sie stattdessen eine SUB- oder
+FUNCTION-Prozedur.
+.context MSG_SwitchDisks
+:nDiskette in Laufwerk einlegen
+Sie haben sich auf Ihr Diskettenlaufwerk mit dem Namen
+A: bezogen, obwohl es B: heiát, oder auf B:, obwohl
+es A: heiát.
+
+Vergewissern Sie sich, daá sich die gewnschte Datei, auf
+die sich dieser Befehl beziehen soll, in dem Disketten-
+laufwerk befindet, und w„hlen Sie dann <OK>.
+.context MSG_CantSetTabs
+:nTabulator-Stopps k”nnen nicht gesetzt werden
+Wenn Sie eine Datei ge”ffnet haben, in der schon Tab-
+Stopps gesetzt sind, k”nnen Sie diese mit der Option
+Tab-Abstand des Befehls Bildschirm nicht „ndern.
+Speichern Sie Ihre Datei, w„hlen Sie dann den Befehl
+Neu, um das QBasic Ansicht-Fenster zu l”schen, und
+”ffen Sie Ihre Datei erneut.
+.context MSG_OutNearMem
+:nUngengender Datenspeicher
+QBasic reichte der Speicherplatz fr Daten, Variablen und
+einige andere Informationen nicht mehr aus. Versuchen
+Sie die Speicherplatzanforderungen Ihrer Daten zu „ndern:
+   ş Verwenden Sie einen kleineren Dateipuffer in der
+     LEN-Klausel der OPEN-Anweisung.
+   ş Verwenden Sie den Metabefehl $DYNAMIC, um dynamische
+     Datenfelder zu erzeugen. Daten dynamischer Datenfelder
+     k”nnen normalerweise sehr viel gr”áer sein als die
+     Daten statischer Datenfelder.
+   ş Verwenden Sie Datenfelder mit Zeichenketten fester
+     L„nge anstatt Datenfelder mit Zeichenketten variabler
+     L„nge.
+   ş Verwenden Sie den kleinstm”glichen Datentyp, der die
+     geforderte Aufgabe erfllen kann. Verwenden Sie so
+     oft wie m”glich Ganzzahlen.
+   ş Verwenden Sie CLEAR, um die Gr”áe des Stapels zu
+     „ndern.
+   ş Verwenden Sie keine Quellzeilen, die l„nger als 256
+     Zeichen sind. Solche Zeilen erfordern zus„tzlichen
+     Platz des Textpufferspeichers.
+.context MSG_ModTooLarge
+:nModul-Level-Code zu groá
+Ihr Modul-Ebenen-Code berschreitet die internen Grenzen von
+QBasic. Versuchen Sie, einen Teil des Codes in SUB- oder
+FUNCTION-Prozeduren unterzubringen.
+.context MSG_ProcTooLarge
+:nProzedur zu groá
+Die Gr”áe der aktuellen Prozedur hat die internen Grenzen
+von QBasic berschritten. Verkleinern Sie die Prozedur durch
+das Aufteilen in mehrere Prozeduren.
+.comment     Section 2: QBI Parser Related Messages
+.comment -----------------------------------------------
+.context MSG_IdTooLong
+:nIdentifikator zu lang
+Der angezeigte Identifikator (Bezeichner) ist l„nger, als
+es QBasic erlaubt. Identifikatoren, wie z.B. Variablen-
+Namen, drfen nicht l„nger als 40 Zeichen sein.
+.context MSG_BadId
+:nUnzul„ssiger Identifikator
+Sie haben ein Zeichen verwendet, das in einem Identifikator
+nicht zul„ssig ist. Stellen Sie sicher, daá:
+  ş DEF FN-Prozedurnamen nur Buchstaben und Ziffern
+    enthalten (jedoch keine erweiterte Zeichen, wie
+    Umlaute oder á).
+  ş FUNCTION- und SUB-Prozedurnamen mit einem Buchstaben
+    beginnen und keine Sonderzeichen enthalten:
+    ., %, &, !, #, oder $.
+.context MSG_IdImp
+:nIdentifikator darf nicht mit %, &, !, # oder $ enden
+Identifikatoren drfen nicht mit %, &, !, # oder $ enden.
+
+Die oben aufgefhrten Zeichen sind in Typbezeichnern
+oder SUB-Prozedurnamen nicht erlaubt.
+.context MSG_BadElemRef
+:nIdentifikator darf keinen Punkt enthalten
+Ein Punkt darf nicht benutzt werden in:
+  ş Dem Namen eines benutzerdefinierten Datentyps.
+  ş Dem Namen eines Elementes eines benutzerdefinierten
+    Datentyps.
+  ş Dem Namen einer Variablen, die als benutzer-
+    definierter Datentyp angelegt wurde.
+
+Obwohl Variablennamen Punkte enthalten drfen, sollten
+Punkte nur als Trennzeichen fr Datensatzvariablen
+verwendet werden. Falls Sie Programme haben, die Punkte in
+Variablennamen verwenden, sollten Sie diese so „ndern,
+daá die Variablennamen durch Groá-/Kleinschreibung
+unterschieden werden.
+Beispiel: ALPHA.BETA in AlphaBeta „ndern.
+.context MSG_ExpTooComplex
+:nAusdruck ist zu komplex
+Bestimmte interne Grenzen von QBasic wurden berschritten.
+
+Zum Beispiel werden w„hrend der Auswertung eines Ausdrucks
+Zeichenketten, die nicht mit Variablen verknpft sind,
+tempor„re Adressen zugewiesen. Eine groáe Anzahl solcher
+Ausdrcke kann das Auftreten eines solchen Fehlers
+verursachen. Ebenso kann ein numerischer Ausdruck mit vielen
+komplizierten Teilausdrcken diesen Fehler verursachen.
+
+Versuchen Sie, Ausdrcke zu vereinfachen oder die Zeichen-
+ketten Variablen zuzuweisen.
+.context MSG_IllegalNumber
+:nUnzul„ssige Zahl
+Sie haben eine Zahl verwendet, die in diesem Zusammenhang
+unzul„ssig ist. In QBasic ist es nicht erlaubt eine Zeichen-
+kette der L„nge Null zu definieren; deshalb ist z.B.
+DIM X AS STRING * 0 ungltig. Eine unzul„ssige Zahl tritt
+auch auf, wenn sich widersprechende Werte definiert werden.
+Wenn Sie beispielsweise den Suffix fr eine Integer-
+Datentypdeklaration mit einer Gleitkommazahl (z.B. 10.20%)
+verwenden, tritt dieser Fehler auf.
+.context MSG_InvConst
+:nUngltige Konstante
+Ein ungltiger Ausdruck wurde verwendet, um einer
+symbolischen Konstanten einen Wert zuzuweisen.
+
+Numerische Ausdrcke, die symbolischen Konstanten
+zugewiesen werden, drfen enthalten:
+   ş Numerische Literals.
+   ş Vorher definierte symbolische Konstanten.
+   ş Jeden arithmetischen und logischen Operator
+     auáer Potenzen.
+
+Zeichenkettenausdrcke, die einer symbolischen Konstanten
+zugewiesen werden, drfen nur aus einer einzelnen in
+Anfhrungszeichen eingeschlossenen literalen Zeichenkette
+bestehen.
+.comment ------------------------------------------------
+.comment       Section 3: TextMgr/ReParse errors
+.comment ------------------------------------------------
+.context MSG_InvModLev
+:nUnzul„ssig auáerhalb von SUB, FUNCTION oder DEF FN
+QBasic hat eine Anweisung gefunden, die innerhalb des
+Modul-Ebenen-Codes unzul„ssig ist. Die Anweisungen
+EXIT SUB, EXIT, FUNCTION oder EXIT DEf sind beispiels-
+weise innerhalb des Modul-Ebenen-Codes nicht erlaubt.
+.context MSG_InvMain
+:nUnzul„ssig auáerhalb von SUB/FUNCTION
+QBasic hat eine Anweisung gefunden, die im Modul-Ebenen-Code
+oder in DEF FN-Funktionen nicht zul„ssig ist.
+.context MSG_InvProc
+:nUnzul„ssig in Prozedur oder DEF FN
+Die Anweisung ist in SUB- oder FUNCTION-Prozeduren oder
+DEF FN-Funktionen nicht erlaubt.
+.context MSG_InvBeforeProcDef
+:nKeine Anweisung vor SUB/FUNCTION-Definition
+Es sind nur Kommentare und DEFtype-Anweisungen vor der
+Definition der Prozedur erlaubt.
+.context MSG_ProcNoEnd
+:nSUB/FUNCTION ohne END SUB/FUNCTION
+Einer Prozedur fehlt die abschlieáende Anweisung.
+.context MSG_EndNoDef
+:nEND DEF ohne DEF
+Eine END DEF-Anweisung hat keine zugeh”rige DEF-Anweisung.
+.context MSG_UndElem
+:nElement nicht definiert
+Sie haben versucht, ein Element zu verwenden, das zuvor
+nicht als Teil eines benutzerdefinierten Datentyps
+definiert wurde.
+
+Wenn Sie beispielsweise MEINTYP mit den Elementen A, B
+und C definieren und versuchen, die Variable D als Element
+von MEINTYP zu verwenden, wrde diese Meldung erscheinen.
+.context MSG_UndType
+:nTyp nicht definiert
+Eine Variable oder ein Parameter wurde mit einem nicht
+definierten Datentyp deklariert.
+
+Verwenden Sie die TYPE-Anweisung, um einen Datentyp zu
+deklarieren.
+.context MSG_1stStmt
+:nAnweisung muá am Zeilenanfang stehen
+In Block IF...THEN...ELSE Konstruktionen kann vor IF, ELSE
+ELSEIF und END IF nur eine Zeilennummer oder eine
+Zeilenmarke stehen.
+
+IN SLEECT...END SELECT Konstruktionen kann vor IF, ELSE,
+ELSEIF und END IF nur eine Zeilennummer oder eine Zeilen-
+marke stehen.
+.context MSG_EndProc
+:nEND SUB oder END FUNCTION muá letzte Zeile sein
+Sie haben versucht, Code nach der letzten Zeile der Prozedur
+hinzuzufgen. Sie mssen entweder zum Hauptmodul zurck-
+kehren oder ein anderes SUB oder FUNCTION ”ffnen, um Code
+hinzuzufgen.
+.context MSG_NoEndType
+:nTYPE ohne END TYPE
+Es ist keine zugeh”rige END TYPE-Anweisung zur TYPE-
+Anweisung vorhanden.
+.context MSG_NoType
+:nEND TYPE ohne TYPE
+Es ist keine zugeh”rige TYPE-Anweisung zur END TYPE-
+Anweisung vorhanden.
+.context MSG_InvInTypeBlk
+:nUngltige Anweisung im TYPE-Block
+Zwischen der TYPE- und END TYPE-Anweisung drfen nur
+Kommentare und AS-Datentyp-Klauseln stehen.
+.context MSG_FNstart
+:n'FN' am Beginn nicht m”glich
+Sie haben 'FN' als die ersten zwei Buchstaben von einem
+Unterprogramm- oder einem Variablennamen verwendet.
+
+'FN' kann nur fr die ersten zwei Buchstaben verwendet
+werden, wenn Sie eine DEF FN-Funktion aufrufen.
+.context MSG_NotBlock
+:nOperation erfordert Festplatte/Diskette
+Sie haben versucht, von einem nicht Nicht-Diskettenger„t,
+wie einem Drucker oder einer Tastatur, zu laden oder
+zu speichern.
+.context MSG_BadMeta
+:nMetabefehl-Fehler
+Die Syntax eines Metabefehls ist nicht korrekt.
+Vor Metabefehlen muá ein Kommentar stehen. Die
+beiden nachfolgenden $DYNAMIC Metabefehle sind
+beispielsweise korrekt:
+
+REM  $DYNAMIC
+'  $DYNAMIC
+.context MSG_NoBpCase
+:nHaltepunkt unzul„ssig in CASE-Klausel
+Es gibt einige Einschr„nkungen bei der Verwendung
+von Haltepunkten w„hrend des Debuggens von SELECT...
+END SELECT-Anweisungen. Sie drfen keinen Haltepunkt
+auf die erste Zeile eines CASE-Blocks oder nach der
+END SELECT-Anweisung setzen.
+
+Um eine SELECT...END SELECT-Anweisung mit der Hilfe eines
+Haltepunktes zu debuggen, setzen Sie den Haltepunkt in der
+SELECT CASE-Zeile in Ihrem Programm. Fhren Sie dann den
+Rest der Anweisungsstruktur im Einzelschrittmodus aus.
+.comment -----------------------------------
+.comment    Section 4:  Scan-time errors
+.comment -----------------------------------
+.context MSG_OBA
+:nDatenfeld bereits dimensioniert
+Dieser Fehler kann durch Folgendes verursacht werden:
+  ş Mehr als eine DIM-Anweisung ist fr das gleiche
+    statische Datenfeld vorhanden.
+  ş Es wurde versucht, ein dynamisches Datenfeld mit
+    einer DIM-Anweisung neu zu dimensionieren, ohne
+    dabei die ERASE-Anweisung zu verwenden, um die
+    vorherige Zuordnung des Datenfeldes aufzuheben.
+  ş Eine OPTION BASE-Anweisung erscheint nach der
+    Dimensionierung des Datenfeldes.
+.context MSG_COM
+:nMuá vor ausfhrbarer Answeisung stehen
+Eine COMMON- oder eine DECLARE-Anweisung wurde nach einer
+ausfhrbaren Anweisung gefunden. COMMON- und DECLARE-Anwei-
+sungen mssen vor den ausfhrbaren Anweisungen stehen. Alle
+BASIC-Anweisungen, bis auf die folgenden, sind ausfhrbar:
+
+    COMMON                     OPTION BASE
+    CONST                      REM
+    DATA                       SHARED
+    DECLARE                    STATIC
+    DEFtype                    TYPE
+    DIM (fr statische         $STATIC und $DYNAMIC
+         Datenfelder)
+.context MSG_EWI
+:nEND IF ohne Block IF
+Das Schlsselwort IF eines IF...ENDIF-Blocks fehlt.
+
+šberprfen Sie auch andere Kontroll-Strukturen innerhalb
+des IF...ENDIF-Blocks, und stellen Sie sicher, daá diese
+korrekt sind. Zum Beispiel generiert ein verschachtelter
+IF-Block ohne ein dazugeh”riges ENDIF innerhalb des
+„uáeren IF...ENDIF-Blocks diesen Fehler.
+.context MSG_IWE
+:nBlock IF ohne END IF
+Das Schlsselwort END IF einer IF...THEN-Anweisung fehlt.
+.context MSG_ElseWI
+:nELSE ohne IF
+Eine ELSE-Klausel erscheint ohne ein dazugeh”riges IF.
+Manchmal entsteht dieser Fehler durch falsches Verschachteln
+von IF-Anweisungen.
+
+šberprfen Sie auch andere Kontroll-Strukturen innerhalb
+des IF...ENDIF-Blocks, und stellen Sie sicher, daá diese
+korrekt sind. Zum Beispiel generiert ein verschachtelter
+IF-Block ohne ein dazugeh”riges ENDIF innerhalb des
+„uáeren IF...END IF-Blocks diesen Fehler.
+.context MSG_ExitScope
+:nEXIT FOR nicht in FOR...NEXT
+Eine EXIT FOR-Anweisung wurde auáerhalb einer FOR...NEXT-
+Anweisung verwendet.
+.context MSG_ExitDo
+:nEXIT DO nicht in DO...LOOP
+Eine EXIT DO-Anweisung wurde auáerhalb einer DO...LOOP-
+Anweisung verwendet.
+.context MSG_Do
+:nDO ohne LOOP
+Es fehlt das abschlieáende LOOP-Schlsselwort einer
+DO...LOOP-Anweisung.
+.context MSG_Loop
+:nLOOP ohne DO
+Das eine DO...LOOP-Anweisung einleitende DO fehlt oder
+ist falsch geschrieben.
+
+šberprfen Sie auch andere Kontroll-Strukturen innerhalb
+der DO...LOOP-Struktur, und stellen Sie sicher, daá diese
+korrekt sind. Zum Beispiel generiert ein IF-Block ohne ein
+dazugeh”riges ENDIF innerhalb einer DO...LOOP-Struktur
+diesen Fehler.
+.context MSG_Select
+:nSELECT ohne END SELECT
+Die abschlieáenden END SELECT-Schlsselw”rter einer
+SELECT CASE-Anweisung fehlen oder sind falsch
+geschrieben.
+.context MSG_Case
+:nCASE ohne SELECT
+Die eine SELECT CASE-Anweisung einleitenden Schlsselw”rter
+SELECT CASE fehlen oder sind falsch geschrieben.
+
+šberprfen Sie auch andere Kontroll-Strukturen innerhalb
+der SELECT...END SELECT-Struktur, und stellen Sie sicher,
+daá diese korrekt sind. Zum Beispiel generiert ein
+IF-Block ohne ein dazugeh”riges ENDIF innerhalb der
+SELECT...END SELECT-Struktur diesen Fehler.
+.context MSG_EndSelect
+:nEND SELECT ohne SELECT
+Das einleitende SELECT CASE-Schlsselwort einer SELECT CASE-
+Anweisung fehlt oder ist falsch geschrieben.
+
+šberprfen Sie auch andere Kontroll-Strukturen innerhalb
+der SELECT...END SELECT-Struktur, und stellen Sie sicher,
+daá diese korrekt sind. Zum Beispiel generiert ein
+IF-Block ohne ein dazugeh”riges ENDIF innerhalb der
+SELECT...END SELECT-Struktur diesen Fehler.
+.context MSG_InvFixStr
+:nFestl„ngen-String unzul„ssig
+Sie k”nnen eine Zeichenkette fester L„nge nicht als formalen
+Parameter zu einer SUB oder einer Funktion verwenden.
+.context MSG_InvTypedVar
+:nAngegebene Variable in Ausdruck unzul„ssig
+Variablen eines benutzerdefinierten Datentyps drfen nicht
+als Argument bergeben werden. Beispielsweise ist der
+folgene Ausdruck, wobei X ein benutzerdefinierter Datentyp
+ist, nicht erlaubt:
+
+CALL ALPHA(X)
+
+Sie k”nnen jedoch die Elemente eines benutzerdefinierten
+Datentyps als Argument bergeben:
+
+CALL Alpha(X.FirstEl)
+.context MSG_DefNoEnd
+:nDEF ohne END DEF
+In einer mehrzeiligen Funktionsdefinition existiert kein
+zugeh”riges END DEF.
+.context MSG_ParmTM
+:nParametertypen paát nicht
+Der Parameterdatentyp einer SUB oder FUNCTION-Prozedur
+stimmt nicht mit dem Datentyp des Arguments der DECLARE-
+Anweisung oder dem aufrufenden Argument berein.
+.context MSG_ASRqd1st
+:nAS-Klausel bei erster Deklaration erforderlich
+Auf eine Variable, die nicht unter Verwendung einer AS-
+Klausel deklariert ist, wird in einer AS-Klausel Bezug
+genommen.
+.context MSG_ASRqd
+:nAS-Klausel erforderlich
+Es wird auf eine Variable, die mit einer AS-Klausel
+deklariert ist, ohne diese Klausel Bezug genommen.
+
+Falls die erste Deklaration einer Variablen eine AS-Klausel
+hat, muá jede folgende DIM-, REDIM-, SHARED- und COMMON-
+Anweisung, die Bezug auf diese Variable nimmt, eine AS-
+Klausel enthalten.
+.context MSG_ExpectedCase
+:nUnzul„ssige Anordnung von Anweisungen
+Anweisungen und Zeilenmarken sind zwischen SELECT CASE
+und der ersten CASE-Anweisung nicht zul„ssig.
+
+Kommentare und das Anweisungstrennzeichen (:) sind erlaubt.
+.context MSG_NoNumArr
+:nNumerisches Datenfeld unzul„ssig
+Elemente von numerischen Datenfeldern sind nicht als
+Argumente zu VARPTR$ erlaubt.
+
+Nur einfache Variablen und Zeichenkettendatenfelder mit
+variabler L„nge sind erlaubt.
+.context MSG_InType
+:nUnzul„ssig auáerhalb eines TYPE-Blocks
+Die Klausel "Element AS Typ" ist nur innerhalb eines
+TYPE...END TYPE-Blockes erlaubt.
+.context MSG_SubCnt
+:nFalsche Dimensionsanzahl
+Der Bezug auf ein Datenfeld enth„lt die falsche Anzahl
+von Dimensionen.
+.context MSG_DefFnCtrl
+:nDEF FN nicht erlaubt in Kontrollanweisungen
+Definitionen von DEF FN-Funktionen sind innerhalb von
+Steuerungsstrukturen wie IF...THEN...ELSE und SELECT CASE
+nicht erlaubt.
+.context MSG_ForIndexInUse
+:nFOR Index-Variable bereits verwendet
+Dieser Fehler tritt auf, wenn die gleiche Variable
+in einer FOR...NEXT-Anweisung und in einer in dieser
+verschachtelten FOR...NEXT-Anweisung verwendet wird.
+Verschachtelte FOR...NEXT-Anweisungen mssen verschiedene
+Variablen fr die entsprechenden Argumente verwenden.
+.context MSG_TypeTooLarge
+.context h.pg$
+:nDatentyp gr”áer als 65535 Byte
+Ein benutzerdefinierter Datentyp darf 64 KB nicht ber-
+schreiten.

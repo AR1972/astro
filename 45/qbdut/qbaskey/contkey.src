@@ -1,0 +1,623 @@
+.comment ******************************************************************
+.comment *  Control Family - QBasic                                       *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, to BASIC language and products. *
+.comment ******************************************************************
+.comment *  7/10/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/22/90 stevesau                                              *
+.comment *  Incorporated final edit/review comments.                      *
+.comment ******************************************************************
+.comment *  6/6/90 stevesau                                               *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Combined GOSUB...RETURN/RETURN.                               *
+.comment *  Deleted STOP example (not recommended).                       *
+.comment *  Incorporated review comments and edits.                       *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/6/90 stevesau                                               *
+.comment *  Incorporated review comments.                                 *
+.comment ******************************************************************
+.comment *  4/30/90 stevesau                                              *
+.comment *  Combined logical operators.                                   *
+.comment *  Changed Absolute to CALL ABSOLUTE                             *
+.comment ******************************************************************
+.comment *  4/18/90 stevesau                                              *
+.comment *  Deleted CALL (NON-BASIC), Interrupt.			  *
+.comment *  Added action lines.						  *
+.comment ******************************************************************
+.comment *                                                                *
+.context @CALL
+.context CALL
+:nHet statement CALL
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Draagt de besturing over aan een SUB-procedure.
+
+\b[CALL] naam [([argumenten])]\p
+
+    ş \bnaam\p            De naam van de aan te roepen SUB-procedure.
+    ş \bargumenten\p      De variabelen of constanten die aan de SUB-
+                      procedure moeten worden doorgegeven. Argumenten
+                      worden gescheiden door komma's. Specificeer
+                      array-argumenten met de array-naam gevolgd door
+                      lege haakjes.
+
+    ş Als u het trefwoord CALL weglaat, moet u ook de haakjes om de
+      argumenten weglaten. U kunt de procedure ofwel in een DECLARE-statement
+      declareren voordat deze wordt aangeroepen, of het programma opslaan
+      waarop QBasic automatisch een DECLARE-statement genereert.
+    ş Als u een argument specificeert waarvan de waarde niet wordt gewijzigd
+      door de procedure, moet u het argument tussen haakjes plaatsen.
+
+Voorbeeld:
+    Het programma REMLINE.BAS illustreert het aanroepen van SUB-procedures.
+    Laad REMLINE.BAS met behulp van de opdracht Openen in het menu Bestand
+    om dit programma te bekijken of uit te voeren.
+
+Zie ook     \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context ABSOLUTE
+.context @ABSOLUTE
+:nHet statement CALL ABSOLUTE
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Draagt de besturing over aan een machinetaal-procedure.
+
+\bCALL ABSOLUTE ([argumenten,] offset%)\p
+
+    ş \bargumenten\p      Argumenten die aan de machinetaal-procedure worden
+                      doorgegeven als offsets van het huidige
+                      gegevenssegment.
+    ş \boffset%\p         De offset van het huidige codesegment, ingesteld
+                      door DEF SEG, naar de beginlocatie van de procedure.
+
+Voorbeeld:
+    'Roept routine aan voor het afdrukken van het scherm naar een printer.
+    DIM a%(2)
+    DEF SEG = VARSEG(a%(0))
+    FOR i% = 0 TO 2
+       READ d%
+       POKE VARPTR(a%(0)) + i%, d%
+    NEXT i%
+    DATA 205, 5, 203  : ' int 5  retf  'Machinetaal-code voor het
+                                       'afdrukken van een scherm.
+    CALL ABSOLUTE(VARPTR(a%(0)))
+    DEF SEG
+
+Zie ook     \i\p\aCALL\v@CALL\v\i\p    \i\p\aVARPTR, VARSEG\v@VARPTR\v\i\p    \i\p\aVerschillen met BASICA\v@basica.diffs\v\i\p
+.context CHAIN
+.context @CHAIN
+:nHet statement CHAIN
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Draagt de besturing over van het huidige programma naar een ander
+Basic-programma.
+
+\bCHAIN bestandsnaam$\p
+
+    ş \bbestandsnaam$\p    De naam van het programma waaraan de besturing
+                       moet worden overgedragen.
+
+Voorbeeld:
+    'Er wordt aangenomen dat het programma TEST.BAS zich in een
+    'directory \\DOS bevindt.
+    CHAIN "C:\\DOS\\TEST.BAS"
+
+Zie ook     \i\p\aCALL\v@CALL\v\i\p    \i\p\aCOMMON\vCOMMON\v\i\p    \i\p\aRUN\vRUN\v\i\p    \i\p\aVerschillen met BASICA\v@basica.diffs\v\i\p
+.context DO
+.context @DO
+.context LOOP
+.context @LOOP
+.context UNTIL
+.context @UNTIL
+:nHet statement DO...LOOP
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Herhaalt een blok statements terwijl aan een voorwaarde voldaan wordt of
+totdat aan een voorwaarde voldaan wordt.
+
+\bDO [{WHILE | UNTIL} voorwaarde]\p
+    \b[statementblok]\p
+\bLOOP\p
+
+\bDO\p
+    \b[statementblok]\p
+\bLOOP [{WHILE | UNTIL} voorwaarde]\p
+
+    ş \bvoorwaarde\p    Een numerieke waarde die door Basic wordt
+                    ge‹nterpreteerd als waar (niet-nul) of niet waar (nul).
+
+Voorbeeld:
+    i% = 0
+    PRINT "Waarde van i% aan begin van de lus is  "; i%
+    DO WHILE i% < 10
+        i% = i% + 1
+    LOOP
+    PRINT "Waarde van i% aan eind van de lus is  "; i%
+
+Zie ook     \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aWHILE...WEND\v@WHILE\v\i\p
+.context END
+.context @END
+:nHet statement END
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Be‰indigt een programma, procedure, blok of gebruikergedefinieerd
+gegevenstype.
+
+\bEND [{DEF | FUNCTION | IF | SELECT | SUB | TYPE}]\p
+
+    ş \bDEF\p         Be‰indigt een uit meerdere regels bestaande
+                  DEF FN-functiedefinitie.
+    ş \bFUNCTION\p    Be‰indigt een FUNCTION-proceduredefinitie.
+    ş \bIF\p          Be‰indigt een IF...THEN...ELSE statementblok.
+    ş \bSELECT\p      Be‰indigt een SELECT CASE-blok.
+    ş \bSUB\p         Be‰indigt een SUB-procedure.
+    ş \bTYPE\p        Be‰indigt de definitie van een gebruikergedefinieerd
+                  gegevenstype.
+
+    ş Als er geen argument wordt opgegeven, be‰indigt END het programma
+      en sluit alle bestanden.
+
+Voorbeeld:
+    PRINT "Het spel is afgelopen."
+    END
+
+Zie ook     \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aIF...THEN...ELSE\v@IF\v\i\p    \i\p\aSELECT CASE\v@IS\v\i\p
+            \i\p\aSTOP\v@STOP\v\i\p      \i\p\aSUB\v@SUB\v\i\p         \i\p\aSYSTEM\v@SYSTEM\v\i\p              \i\p\aTYPE\v@TYPE\v\i\p
+.context EXIT
+.context @EXIT
+:nHet statement EXIT
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sluit een DO- of FOR-lus, een FUNCTION- of SUB-procedure of een
+DEF FN-functie af.
+
+\bEXIT {DEF | DO | FOR | FUNCTION | SUB}\p
+
+    ş \bDEF\p         Sluit een DEF FN-functie af.
+    ş \bDO\p          Sluit een DO-lus af.
+    ş \bFOR\p         Sluit een FOR-lus af.
+    ş \bFUNCTION\p    Sluit een FUNCTION-procedure af.
+    ş \bSUB\p         Sluit een SUB-procedure af.
+
+Voorbeeld:
+    i% = 0
+    DO
+        i% = i% + 1
+        IF i% = 500 THEN EXIT DO
+    LOOP
+    PRINT "EXIT bij"; i%
+
+Zie ook     \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context FOR
+.context @FOR
+:nHet statement FOR...NEXT
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Herhaalt een statementblok een opgegeven aantal keren.
+
+\bFOR telvariabele = begin TO eind [STEP stapgrootte]\p
+    \b[statementblok]\p
+\bNEXT [telvariabele [,telvariabele]...]\p
+
+    ş \btelvariabele\p       Een numerieke variabele die als telvariabele
+                         voor de lus wordt gebruikt.
+    ş \bbegin\p en \beind\p      De aanvangs- en eindwaarde voor de telvariabele.
+    ş \bstapgrootte\p        De waarde waarmee de telvariabele elke keer
+                         wordt verhoogd door de lus.
+
+Voorbeeld:
+    FOR i% = 1 TO 15
+        PRINT i%
+    NEXT i%
+    FOR i% = 7 to -6 STEP -3
+        PRINT i%
+    NEXT i%
+
+Zie ook     \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aWHILE...WEND\v@WHILE\v\i\p
+.context GOSUB
+.context @GOSUB
+.context RETURN
+.context @RETURN
+:nHet statement GOSUB...RETURN
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gaat naar een subroutine en keert daarna weer terug.
+
+\bGOSUB regel1\p
+\b.\p
+\b.\p
+\b.\p
+\bRETURN [regel2]\p
+
+    ş \bregel1\p    Het label of regelnummer van de eerste regel van de
+                subroutine.
+    ş \bregel2\p    Het label of regelnummer waar de subroutine terugkeert.
+
+    ş Als u geen label of regelnummer opgeeft voor RETURN, wordt de
+      programma-uitvoering voortgezet bij het statement dat volgt op GOSUB
+      (bij subroutine-aanroepen) of op het punt waar een event plaatsvond
+      (bij event-afhandeling).
+      Informatie over event-afhandelingsstatements vindt u bij het
+      trefwoord \i\p\aON\v@ON\v\i\p.
+    ş SUB- en CALL-statements vormen een beter alternatief voor
+      GOSUB-subroutines.
+
+Voorbeeld:
+    FOR i% = 1 TO 20
+        GOSUB Vierkant
+    NEXT i%
+    END
+
+    Vierkant:
+    PRINT i%, i% * i%
+    RETURN
+
+Zie ook     \i\p\aCALL\v@CALL\v\i\p    \i\p\aHet trefwoord ON\v@ON\v\i\p    \i\p\aON...GOSUB\v@ONGO\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context GOTO
+.context @GOTO
+:nHet statement GOTO
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Stuurt de programma-uitvoering naar een opgegeven regel.
+
+\bGOTO regel\p
+
+    ş \bregel\p    Het label of regelnummer van de regel die moet worden
+               uitgevoerd.
+
+    ş DO...LOOP, SELECT CASE, IF...THEN...ELSE, SUB en FUNCTION vormen
+      betere manieren om het verloop van uw programma te besturen.
+    ş GOTO wordt tevens gebruikt als trefwoord in het statement ON ERROR.
+
+\i\p\aVoorbeeld\v@errhand.ex\v\i\p
+
+Zie ook     \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p     \i\p\aIF...THEN...ELSE\v@IF\v\i\p
+            \i\p\aON ERROR\v@onerr\v\i\p     \i\p\aON...GOTO\v@ongo\v\i\p    \i\p\aSELECT CASE\v@SELECT\v\i\p      \i\p\aSUB\v@SUB\v\i\p
+.context THEN
+.context @THEN
+.context ELSE
+.context @ELSE
+.context ELSEIF
+.context @ELSEIF
+.context ENDIF
+.context @ENDIF
+.context IF
+.context @IF
+:nHet statement IF...THEN...ELSE
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Voert afhankelijk van opgegeven voorwaarden een statement of statementblok
+uit.
+
+\bIF voorwaarde1 THEN\p
+    \b[statementblok-1]\p
+\b[ELSEIF voorwaarde2 THEN\p
+    \b[statementblok-2]]...\p
+\b[ELSE\p
+    \b[statementblok-n]]\p
+\bEND IF\p
+
+\bIF voorwaarde THEN statements [ELSE statements]\p
+
+    ş \bvoorwaarde1\p        Een uitdrukking die kan worden ge‹nterpreteerd
+      \bvoorwaarde2\p        als waar (niet-nul) of niet waar (nul).
+    ş \bstatementblok-1\p    Een of meer statements op een of meer regels.
+      \bstatementblok-2\p
+      \bstatementblok-n\p
+    ş \bstatements\p         Een of meer statements, gescheiden door
+                         dubbelepunten.
+
+Voorbeeld:
+    INPUT "1 of 2? ", i%
+    IF i% = 1 OR i% = 2 THEN
+        PRINT "OK"
+    ELSE
+        PRINT "Buiten bereik"
+    END IF
+
+Zie ook     \i\p\aON...GOSUB\v@ongo\v\i\p    \i\p\aON...GOTO\v@ongo\v\i\p    \i\p\aSELECT CASE\v@IS\v\i\p
+.context @ongo
+.context .ongo
+:nDe statements ON...GOSUB en ON...GOTO
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gaan naar een van meerdere locaties, afhankelijk van de waarde van de
+uitdrukking.
+
+\bON uitdrukking% GOSUB regels\p
+\bON uitdrukking% GOTO regels\p
+
+    ş \buitdrukking%\p   Een uitdrukking in het bereik van 0 t/m 255.
+    ş \bregels\p         Een aantal labels of regelnummers. Als de waarde
+                     van de uitdrukking 1 is, gaat het programma naar de
+                     eerste regel in de lijst. Is de waarde 2 dan gaat
+                     het programma naar de tweede regel in de lijst enz.
+
+    ş SELECT CASE vormt een betere manier voor het aftakken naar meerdere
+      locaties.
+
+Voorbeeld:
+    FOR i% = 1 TO 2
+        ON i% GOSUB Een, Twee
+    NEXT i%
+    END
+
+    Een: PRINT "Een"
+    RETURN
+    Twee: PRINT "Twee"
+    RETURN
+
+Zie ook     \i\p\aHet trefwoord ON\v@ON\v\i\p    \i\p\aSELECT CASE\v@SELECT\v\i\p
+.context RUN
+.context @RUN
+:nHet statement RUN
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Voert het huidige programma of een opgegeven programma uit.
+
+\bRUN [{regelnummer | bestand$}]\p
+
+    ş \bregelnummer\p   Het regelnummer in het huidige programma waar met
+                    de uitvoering moet worden begonnen. Als er geen
+                    regelnummer wordt opgegeven, begint de uitvoering bij
+                    de eerstvolgende uitvoerbare regel.
+    ş \bbestand$\p      De naam van een Basic-bronbestand. QBasic verwacht
+                    de toevoeging .BAS.
+
+    ş RUN sluit alle bestanden en maakt het programmageheugen leeg voordat
+      een programma wordt geladen. Gebruik het statement CHAIN om een
+      programma uit te voeren zonder geopende bestanden te sluiten.
+
+Voorbeeld:
+    'Er wordt aangenomen dat het programma TEST.BAS zich in een
+    'directory \\DOS bevindt.
+    RUN "C:\\DOS\\TEST.BAS"
+
+Zie ook     \i\p\aCHAIN\v@CHAIN\v\i\p
+.context SELECT
+.context @SELECT
+.context CASE
+.context @CASE
+.context IS
+.context @IS
+:nHet statement SELECT CASE
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Voert een statementblok uit afhankelijk van de waarde van een uitdrukking.
+
+\bSELECT CASE testuitdrukking\p
+\bCASE uitdrukking1\p
+  \b[statementblok-1]\p
+\b[CASE uitdrukking2\p
+  \b[statementblok-2]]...\p
+\b[CASE ELSE\p
+  \b[statementblok-n]]\p
+\bEND SELECT\p
+
+    ş \btestuitdrukking\p    Een numerieke of tekenreeksuitdrukking.
+    ş \buitdrukking1\p       Een of meer uitdrukkingen die overeen moeten
+                         komen met de testuitdrukking.
+      \buitdrukking2\p       Het trefwoord IS moet voorafgaan aan eventuele
+                         relationele operatoren in deze uitdrukking.
+    ş \bstatementblok-1\p    Een of meer statements op een of meer regels.
+      \bstatementblok-2\p
+      \bstatementblok-n\p
+
+    ş De argumenten voor uitdrukking1 en uitdrukking2 kunnen de volgende
+      vorm hebben of een combinatie hiervan, gescheiden door komma's:
+
+      \buitdrukking[,uitdrukking]...\p
+      \buitdrukking TO uitdrukking\p
+      \bIS relationele_operator uitdrukking\p
+
+          \buitdrukking\p            Een numerieke of tekenreeksuitdrukking
+                                 die compatibel is met de testuitdrukking.
+          \brelationele_operator\p   Een of meer van de volgende relationele
+                                 operatoren:
+                                 <, <=, >, >=, <> of =.
+
+Voorbeeld:
+    INPUT "Voer acceptabel risiconiveau in (1-5): ", Totaal
+    SELECT CASE Totaal
+
+        CASE IS >= 5
+            PRINT "Maximum risico en investeringsopbrengst."
+            PRINT "Kies aandelen."
+
+        CASE 2 TO 4
+            PRINT "Matig tot hoog risico en investeringsopbrengst."
+            PRINT "Kies obligaties."
+
+        CASE 1
+            PRINT "Geen risico, lage investeringsopbrengst."
+            PRINT "Kies rente op jaarbasis."
+
+    END SELECT
+
+Zie ook     \i\p\aIF...THEN...ELSE\v@IF\v\i\p
+.context SLEEP
+.context @SLEEP
+:nHet statement SLEEP
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Onderbreekt het programma tijdelijk.
+
+\bSLEEP [seconden&]\p
+
+    ş \bseconden&\p    Aantal seconden dat het programma wordt onderbroken.
+
+    ş Als seconden& 0 is of ontbreekt, wordt het programma onderbroken
+      totdat er op een toets wordt gedrukt of wanneer er een bepaalde
+      actie optreedt ('event trapping').
+
+Voorbeeld:
+    PRINT "Even tien seconden pauze..."
+    SLEEP 10
+    PRINT "Weer aan het werk!"
+
+Zie ook     \i\p\aWAIT\v@WAIT\v\i\p
+.context STOP
+.context @STOP
+:nHet statement STOP
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Stopt de programma-uitvoering.
+
+\bSTOP\p
+
+    ş Het trefwoord STOP stopt tevens 'event trapping' in de volgende
+      statements:
+
+      \i\p\aCOM, ON COM\v@COM\v\i\p      \i\p\aKEY, ON KEY\v@KETV\v\i\p         \i\p\aPEN, ON PEN\v@PEN\v\i\p
+      \i\p\aPLAY, ON PLAY\v@PLAYEV\v\i\p    \i\p\aSTRIG, ON STRIG\v@STRIG\v\i\p     \i\p\aTIMER, ON TIMER\v@TIMER\v\i\p
+
+Voorbeeld:
+    FOR i% = 1 TO 10
+        PRINT i%
+        IF i% = 5 THEN STOP     'STOP pauzeert; F5 voor voortzetting.
+    NEXT i%
+
+Zie ook      \i\p\aEND\v@END\v\i\p    \i\p\aSYSTEM\v@SYSTEM\v\i\p
+.context SYSTEM
+.context @SYSTEM
+:nHet statement SYSTEM
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sluit alle geopende bestanden en geeft de besturing terug aan het
+besturingssysteem.
+
+\bSYSTEM\p
+
+Zie ook     \i\p\aEND\v@END\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context TRON
+.context @TRON
+.context TROFF
+.context @TROFF
+:nDe statements TRON en TROFF
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+TRON en TROFF activeren en deactiveren het opsporen van programmastatements.
+
+\bTRON\p
+\bTROFF\p
+
+    ş De Debug-voorzieningen van QBasic maken deze statements overbodig.
+
+Zie ook     \i\p\aToetsen voor Debug en Uitvoeren\v@dk\v\i\p
+.context wend
+.context @wend
+.context WHILE
+.context @WHILE
+:nHet statement WHILE...WEND
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Voert een serie statements uit zolang aan een opgegeven voorwaarde voldaan is.
+
+\bWHILE voorwaarde\p
+\b.\p
+\b.\p
+\b.\p
+\bWEND\p
+
+    ş \bvoorwaarde\p    Een numerieke uitdrukking die door Basic wordt
+                    ge‹nterpreteerd als waar (niet-nul) of niet waar (nul).
+
+    ş DO...LOOP biedt een betere manier voor het uitvoeren van statements
+      in een programmalus.
+
+Zie ook     \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p
+.comment ******************************************************************
+.comment * Boolean Operators
+.comment ******************************************************************
+.context AND
+.context @AND
+.context EQV
+.context @EQV
+.context IMP
+.context @IMP
+.context NOT
+.context @NOT
+.context OR
+.context @OR
+.context XOR
+.context @XOR
+:nBoole'se operatoren
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Boole'se operatoren voeren bit-manipulaties, Boole'se bewerkingen, of
+tests op meervoudige relaties uit. Ze retourneren een waarde voor waar
+(niet-nul) of niet waar (nul) die gebruikt wordt in het beslissingsproces.
+
+\bresultaat = uitdrukking1 boole'se_operator uitdrukking2\p
+
+    ş \bboole'se_operator\p    Een van de volgende Boole'se operatoren:
+
+        NOT                Complement per bit
+        AND                Conjunctie
+        OR                 Disjunctie (inclusief "or")
+        XOR                Exclusief "or"
+        EQV                Equivalentie
+        IMP                Impliciete bewerking
+
+    ş Elke operator retourneert waarden volgens de volgende waarheidstabel.
+      W is waar (niet-nul); N is niet waar (nul):
+
+        Uitdrukking1  Uitdrukking2  NOT  AND  OR   XOR  EQV  IMP
+        ÍÍÍÍÍÍÍÍÍÍÍÍ  ÍÍÍÍÍÍÍÍÍÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ
+        W             W             N    W    W    N    W    W
+        W             N             N    N    W    W    N    N
+        N             W             W    N    W    W    N    W
+        N             N             W    N    N    N    W    W
+
+    ş Boole'se bewerkingen worden na rekenkundige en relationele
+      bewerkingen uitgevoerd in volgorde van belangrijkheid.
+    ş Uitdrukkingen worden geconverteerd naar gehele getallen of
+      'long integers' voordat een Boole'se bewerking wordt uitgevoerd.
+    ş Als de uitdrukkingen 0 of -1 opleveren, retourneert een Boole'se
+      bewerking 0 of -1 als resultaat. Aangezien Boole'se operatoren
+      berekeningen per bit uitvoeren, kunnen er onverwachte resultaten
+      optreden wanneer andere waarden dan 0 voor niet waar en -1 voor waar
+      worden gebruikt.
+.comment ******************************************************************
+.comment * Keywords
+.comment ******************************************************************
+.context NEXT
+.context @NEXT
+:nHet trefwoord NEXT
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Verhoogt en test de telvariabele in een FOR...NEXT-lus. Indien gebruikt
+met RESUME, zet het de programma-uitvoering voort vanaf een
+foutafhandelingsroutine.
+
+Zie ook     \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context STEP
+.context @STEP
+:nHet trefwoord STEP
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+In een FOR...NEXT-lus specificeert dit met hoeveel de telvariabele moet
+worden verhoogt bij elke iteratie. Bij grafische statements specificeert
+het dat de pixel-co”rdinaten relatief zijn ten opzichte van de huidige
+cursorpositie.
+
+Zie ook     \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aGET, PUT\v@ggx\v\i\p    \i\p\aLINE\v@LINE\v\i\p
+            \i\p\aPAINT\v@PAINT\v\i\p     \i\p\aPRESET, PSET\v@PRESET\v\i\p
+.context TO
+.context @TO
+:nHet trefwoord TO
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Specificeert het bereik voor:
+
+    ş Een CASE-clausule van een SELECT CASE-statement.
+    ş Een telvariabele in een FOR...NEXT-lus.
+    ş Te vergrendelen of ontgrendelen records in een LOCK...UNLOCK-statement.
+    ş De laagste en hoogste grens in een DIM- of REDIM-statement.
+
+Zie ook     \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aLOCK, UNLOCK\v@LOCK\v\i\p    \i\p\aSELECT CASE\v@SELECT\v\i\p

@@ -1,0 +1,43 @@
+
+SUMMARY  pname() form a "pretty" version of a user file name
+ */
+
+#include <tools.h>
+
+char *pname (char *pszName)
+
+DESCRIPTION
+  
+  	OS/2 v1.2 and later will allow filenames to retain the case
+  	when created while still being case insensitive for all operations.
+  	This allows the user to create more visually appealing file names.
+  
+  	All runtime routines should, therefore, preserve the case that was
+  	input.	Since the user may not have input in the case that the entries
+  	were created, we provide a service whereby a pathname is adjusted
+  	to be more visually appealing.	The rules are:
+  
+  	if (real mode)
+  	    lowercase the sucker
+  	else
+  	if (version is <= 1.1)
+  	    lowercase the sucker
+  	else
+  	if (filesystem is FAT)
+  	    lowercase the sucker
+  	else
+  	    for each component starting at the root, use DosFindFirst
+  		to retrieve the original case of the name.
+  
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+

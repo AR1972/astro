@@ -1,0 +1,147 @@
+SUMMARY swopen swclose swread swfind swparse swmatch
+
+#include <tools.h>
+
+FILE *swopen(pstrFile, pstrSection)
+char *pstrFile;
+char *pstrSection;
+
+int swclose(pFile)
+FILE *pFile;
+
+int swread(pstrBuf, len, pFile)
+char * pstrBuf;
+int len;
+FILE *pFile;
+
+char *swfind(pstrEntry, pFile, pstrSection)
+char * pstrEntry;
+FILE *pFile;
+char * pstrSection;
+
+flagType swgoto(pFile, pstrSection)
+FILE *pFile;
+char *pstrSection;
+
+int swparse(pstrBuf, seps, lhs, rhs, sep)
+char *pstrBuf;
+char *seps[];
+char **plhs;
+char **prhs;
+char **psep;
+
+char *swmatch(fh, pstrSection)
+FILE *fh;
+char *pstrSection;
+
+
+DESCRIPTION
+
+swopen, swread and swclose are used to locate and read a particular
+switch section of a file, e.g. the [make] section of TOOLS.INI.
+pathopen is used to open the file, i.e. environment variable expansion
+is done.
+
+swopen returns a pointer to FILE if the specified file has a line that
+has the specified section.  The file is left open.  If it does not contain
+a section, the file is closed and NULL is returned.  A line contains the
+specified section if its first non-white space characters are [section],
+e.g. [make].  The file is left positioned after the section line.
+
+swclose does fclose(pFile) and returns the return value of fclose.
+
+swread reads lines from the switch file.  It returns NULL if it reaches
+end of file or another section line otherwise non-NULL is returned.  Lines
+beginning with a semicolon are NOT returned.
+
+swfind reads lines from the switch file looking for a line containing
+    lhs=rhs
+If a line is found where the lhs is the string pstrEntry, then rhs is
+returned.  The returned string is allocated via strdup and should be free'd
+when you are done.  If pFile is non-NULL, then the file is assumed to have
+been opened by a prior call to swopen and the pstrSection is ignored; the call
+to swopen specified the section of interest.  If pFile is NULL then an swopen
+is called with $USER:\TOOLS.INI and pstrSection.  NULL is returned if a 
+matching lsh could not be found or if the rhs is does not contain a non-white 
+space char, i.e. if rhs contains only white space char, then NULL is returned.
+White space characters are space and tab.
+
+    p = swfind("mysrc", NULL, "to");    /* if file not opened */
+    p = swfind("mysrc", pFile, NULL);   /* if file opened     */
+
+swgoto reads lines from the already opened file pFile looking for a start
+of section with label pstrSection.  Returns zero if section not found else
+returns non-zero and file is left positioned to read first line of section,
+i.e. read for a call to swfind.  This interface allows you to open the
+file with an interface other than swopen or swfind and yet get the file
+postioned so that you can use swfind.
+
+swparse parses the given line and returns pointers to lhs, rhs and the
+separator. seps is a null-terminated list of valid separators. This interface
+makes it real easy to process the lines as you read them in one after the
+other without having to look for a specific lhs or in a specified order. If
+any of lhs, rhs or sep are missing, the pointers returned for them will be
+NULL. Note that the buffer contents may be modified (pass in a copy if the
+line is required for further processing).
+
+   char *seps[] = {":", "=", ":=", NULL};  /* possible set of separators */
+
+swmatch is a variation of swgoto that looks for the start of a section with
+a label that has the prefix (case insensitive) pstrSection. If successful it 
+returns the actual label found otherwise NULL is returned. This interface is 
+helpful if you do not know the label you are looking for or if all sections 
+are of interest (in this case set pstrSection = "").
+
+
+RETURN VALUE
+
+
+IMPLEMENTATION
+
+
+SEE ALSO  pathopen 
+
+NOTE
+
+
+EXAMPLE
+
+#include <malloc.h>
+#include <tools.h>
+
+#define BUFLEN 256
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    FILE *pFile;
+    char strLine[BUFLEN];
+    char *p;
+
+    if ((pFile = swopen ("$USER:\\tools.ini", "to") )) {
+        printf ("Contents of $USER:\\tools.ini section [to]\n");
+        while (swread (strLine, BUFLEN, pFile) )
+            printf ("\"%s\"\n", strLine);
+        swclose (pFile);
+        }
+    p = swfind ("mysrc", NULL, "to");
+    printf ("\n%s\n", p);
+    free (p);
+    if ((pFile = swopen ("$USER:\\tools.ini", "to") )) {
+        p = swfind ("mysrc", pFile, NULL);
+        printf ("\n%s\n", p);
+        free (p);
+        swclose (pFile);
+        }
+    if ((p = swfind ("mysrc", NULL, "to"))) {
+        printf ("\n%s\n", p);
+        free (p);
+	}
+    if ((pFile = fopen ("my.ini", "rt") )) {
+	p = swmatch (pFile, "TOOL")
+	printf ("\n%s\n", p);
+	free (p);
+	swclose (pFile);
+	}
+}

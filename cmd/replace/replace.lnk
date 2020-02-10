@@ -1,0 +1,9 @@
+REPLACE.obj+
+_REPLACE.OBJ+
+_MSGRET.OBJ+
+_PARSE.OBJ
+REPLACE
+NUL
+..\..\lib\mapper.lib+
+..\..\lib\comsubs.lib /STACK:31620;
+

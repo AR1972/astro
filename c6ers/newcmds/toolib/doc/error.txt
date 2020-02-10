@@ -1,0 +1,34 @@
+SUMMARY error
+
+#include <tools.h>
+
+char *error();
+
+DESCRIPTION
+
+
+RETURN VALUE
+
+Returns text of error corresponding to the most recent DOS error.  If
+error is <0 or >sys_nerr returns "unknown error".
+
+IMPLEMENTATION
+
+
+SEE ALSO
+
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    /* ... dos operation returning error ... */
+    printf("%s\n", error);
+}

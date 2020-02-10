@@ -1,0 +1,41 @@
+
+SUMMARY  Blank a region of the screen
+
+#include <tools.h>
+
+; blank (x1, y1, x2, y2, a) blanks a region of the screen
+
+
+ifdef  OS2
+cProc	blank,<PUBLIC>
+parmW	x1
+parmW	y1
+parmW	x2
+parmW	y2
+parmB	a
+localW	cell
+else
+cProc	blank,<PUBLIC>,<si,di>
+parmB	x1
+parmB	y1
+parmB	x2
+parmB	y2
+parmB	a
+
+
+DESCRIPTION
+
+the x and y coordinate values are character columns and rows
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+
+

@@ -1,0 +1,28 @@
+
+SUMMARY 
+
+#include <tools.h>
+
+fmove (source file, destination file) copies the source to the destination
+
+char *fmove (src,dst)
+char *src, *dst;
+
+DESCRIPTION
+
+fmove does the copy and preserves file attributes
+
+RETURN VALUE
+
+preserving attributes and filetimes.  Returns NULL if OK or a char pointer
+to the corresponding text of the error
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+

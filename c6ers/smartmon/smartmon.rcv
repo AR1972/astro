@@ -1,0 +1,12 @@
+#include <version.h>
+
+#define VER_FILETYPE			VFT_APP
+#define VER_FILESUBTYPE			VFT_UNKNOWN
+#define VER_FILEDESCRIPTION_STR 	"SmartDrive Monitor application file"
+#define VER_INTERNALNAME_STR		"SMARTMON"
+#define VER_LEGALCOPYRIGHT_YEARS	"1991-1992"
+#define VER_ORIGINALFILENAME_STR	"SMARTMON.EXE"
+#define VER_FILEVERSION_STR		"1.03.011\0"
+#define VER_FILEVERSION 		1,03,0,11
+
+#include <common.ver>

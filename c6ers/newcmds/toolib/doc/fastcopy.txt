@@ -1,0 +1,27 @@
+SUMMARY  fastcopy
+
+#include <tools.h>
+char * fastcopy (hfSrcParm, hfDstParm)
+HFILE hfSrcParm, hfDstParm;
+
+DESCRIPTION
+
+fastcopy - copy data quickly from one handle to another
+parameters:
+	hfSrcParm	    file handle to read from
+	hfDstParm	    file handle to write to
+
+
+RETURN VALUE
+
+NULL if successful otherwise pointer to error string 
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+

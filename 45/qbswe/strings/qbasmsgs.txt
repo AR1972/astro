@@ -1,0 +1,496 @@
+; QBasic Standard Error Messages.
+; This file is read by the tool makemsgs, which produces the files:
+;      qbimsgs.asm, qbimsgs.inc, and qbimsgs.h
+;
+; Entries in this file have the form:
+;  [<symbol's name>,[<msg index/error code>],"<ASCII msg>"] [;<comment>]
+;
+; If <msg index/error code> is not specified, the next available one
+;    is assigned.
+;
+;Section 1:  Runtime Errors - symbol names are kept small to decrease
+;            the size of the runtime library.
+;            Names begin with ER_ to distinguish them from non-runtime
+;            errors, which begin with MSG_.
+;
+;NOTE: A *BLANK* line terminates MAKEMSG.  Do not add blank lines!
+;
+;
+ER_NF,1,"NEXT utan FOR"
+ER_SN,2,"Syntaxfel"
+ER_RG,3,"RETURN utan GOSUB"
+ER_OD,4,"Slut pÜ DATA"
+ER_FC,5,"Ogiltigt funktionsanrop"
+ER_OV,6,"ôverskridning"
+ER_OM,7,"Slut pÜ minnet"
+ER_UL,8,"Etiketten Ñr inte definierad"
+ER_SOR,9,"Index utanfîr intervallet"
+ER_DD,10,"Definitionen finns redan"
+ER_DV0,11,"Division med noll"
+ER_ID,12,"Ogiltigt i direktlÑget"
+ER_TM,13,"Olika typer"
+ER_OS,14,"Slut pÜ strÑngutrymme"
+;15 is unused
+ER_BS,16,"StrÑngformeln fîr komplex"
+ER_CN,17,"Kan inte fortsÑtta"
+ER_UF,18,"Funktionen inte definierad"
+ER_NR,19,"RESUME finns inte"
+ER_RE,20,"RESUME utan fel"
+;21 is unused
+;22 is unused
+;23 is unused
+ER_DTO,24,"Tiden ute fîr enheten"
+ER_DF,25,"Enhetsfel"
+ER_FN,26,"FOR utan NEXT"
+ER_OP,27,"Slut pÜ papper"
+;28 is unused
+ER_WH,29,"WHILE utan WEND"
+ER_WE,30,"WEND utan WHILE"
+;31 is unused
+;32 is unused
+ER_DL,33,"Etiketten finns redan"
+;34 is unused
+ER_US,35,"Delprogrammet inte definierat"
+;; ER_SIU,36,"Subprogram already in use"  ;dead after recursion added
+ER_AC,37,"Felaktigt antal argument"
+ER_UA,38,"Matrisen inte definierad"
+ER_CaseElse,39,"CASE ELSE vÑntades"
+ER_VarReq,40,"Variabel krÑvs"
+;41 is unused
+;42 is unused
+;43 is unused
+;44 is unused
+;45 is unused
+;46 is unused
+;47 is unused
+;48 is unused
+;49 is unused
+ER_FOV,50,"ôverskridning i FIELD-satsen"
+ER_IER,51,"Internt fel"
+ER_BFN,52,"Felaktigt filnamn eller nummer"
+ER_FNF,53,"Fil saknas"
+ER_BFM,54,"Felaktigt fillÑge"
+ER_FAO,55,"Filen redan îppen"
+ER_FSA,56,"FIELD-sats aktiv"
+ER_IOE,57,"Enhetsfel (I/O)"
+ER_FAE,58,"Filen finns redan"
+ER_BRL,59,"Felaktig postlÑngd"
+;60 is unused
+ER_DFL,61,"Disken Ñr full"
+ER_RPE,62,"Inmatning efter filslut"
+ER_BRN,63,"Felaktigt postnummer"
+ER_IFN,64,"Felaktigt filnamn"
+;65 is unused
+;66 is unused   - used to be ER_FDR - Direct statement in file
+ER_TMF,67,"Fîr mÜnga filer"
+ER_DNA,68,"Enhet ej tillgÑnglig"
+ER_CBO,69,"Kommunikationsbufferten full"
+ER_PRM,70,"Behîrighet saknas"
+ER_DNR,71,"Disken Ñr inte klar"
+ER_DME,72,"Fel pÜ disken"
+ER_ADF,73,"Egenskapen ej tillgÑnglig"
+ER_RAD,74,"Namnbyte till annan disk"
+ER_PAE,75,"ètkomstfel fîr sîkvÑg/fil"
+ER_PNF,76,"Kan inte hitta sîkvÑgen"
+;;;ER_DLK,77,"Deadlock" ;not needed until OS/2 version
+;
+; The following ER_UE marks the last trappable Runtime Error Code
+;
+ER_UE,,"Oskrivbart fel"
+;
+;=========================================================================
+; Subsequent ER_ messages are special, and are intimately tied in with
+; the runtime message file, messages.inc.
+; Some of these errors are considered "very fatal", and cause termination;
+; others are not errors at all - - we just supply the text for some runtime
+; messages here.
+; These messages must remain contiguous and in the same order, unless
+; a matching change is made in messages.inc.
+;
+; First group of internal errors - - these are actually runtime messages,
+; not errors
+; Any message that begins ER_UL is used in constructing a message
+; as follows:
+;  Error in loading (file) - Internal error
+;
+ER_RFS,,"Bîrja om frÜn bîrjan"
+ER_BFC,,"Byte ledigt",CR         ;'CR' means terminate with a Carriage Return
+ER_ULP,,"Kan inte hitta filen ("    ;preamble for user file path prompt
+ER_ULT,,"). Skriv in sîkvÑg: "       ;postamble for user file path prompt
+ER_ULE,,"Fel vid laddning av filen (" ;preamble for loader errors
+ER_ULG,,") - "                  ;postamble for loader errors
+ER_RNS,,"StartvÑrde fîr slumptal (-32768 till 32767)"
+ER_HRS,,"Tryck pÜ valfri tangent fîr att fortsÑtta" ;Displayed when errors occurr in QBC exec.
+;
+; Second group of internal errors - these are "very fatal"
+ER_SSC,,"StrÑngutrymmet fîrstîrt"  ;string space or local heap trashed somehow
+ER_ULD,,"Diskfel (I/O)"        ;problem in loading U.L. from disk
+ER_ULI,,"Ogiltigt format"        ;attempt to load a U.L. with incorrect format
+ER_ULF,,"Kan inte hitta filen"      ;redirected IO and cannot find file in path
+;
+; Third group of internal errors - these are also "very fatal"
+ER_D21,,"KrÑver DOS 2.10 eller senare"
+ER_INI,,"Fel vid QBasic initiering" ;error in initializing runtime
+ER_ULO,,"Slut pÜ minnet"         ;out of memory loading U.L.
+ER_DMA,,"DOS minesomrÜdesfel" ;someone walked on DOS-owned memory
+ER_FHC,,"FjÑrrstacken fîrstîrd"      ;similar to string space corrupt
+ER_ULM,,"Internt fel"        ;U.L. loading found a bad segment address
+;
+; QB-specific internal errors - these are "very fatal"
+; NOTE: These must come after other internal errors (no equivalent in
+;       messages.inc)
+;
+;Both groups of the command line help message must remain contiguous.
+;They must start with the label ER_ISWEDIT/ER_ISWHELP/ER_ISWINTERP and end
+;with the label ER_ISWEDITEND/ER_ISWHELPEND/ERISWINTERPEND.  The labels of the
+;intermediate lines does not matter.
+;
+ER_ISWEDIT,,"Startar MS-DOS Editor, som skapar och Ñndrar ASCII-filer."
+ER_ISWEDIT1,," "
+ER_ISWEDIT2,,"EDIT [[enhet:][sîkvÑg]filnamn] [/B] [/G] [/H] [/NOHI]"
+ER_ISWEDIT3,,"  [enhet:][sîkvÑg]filnamn  ASCII-filen som ska redigeras."
+ER_ISWEDIT4,,"  /B        Fîr anvÑndning av en monokrom skÑrm med fÑrggrafikkort."
+ER_ISWEDIT5,,"  /G        Uppdaterar en CGA-skÑrm sÜ fort som mîjligt."
+ER_ISWEDIT6,,"  /H        Visar det maximala antalet rader som din maskinvara kan klara av."
+ER_ISWEDITEND,,"  /NOHI     Fîr anvÑndning av skÑrmar som inte stîder hîg intensitet."
+;
+ER_ISWQHELP,,"Startar MS-DOS HjÑlp om MS-DOS-kommandon."
+ER_ISWQHELP1,," "
+ER_ISWQHELP2,,"HELP [Ñmne] [/B] [/G] [/H] [/NOHI] [Ñmne]"
+ER_ISWQHELP3,," "
+ER_ISWQHELP4,,"  /B          Mîjliggîr anvÑndning av monokrom bildskÑrm med ett fÑrggrafikkort."
+ER_ISWQHELP5,,"  /G          Ger den snabbaste uppdateringen av en CGA-bildskÑrm."
+ER_ISWQHELP6,,"  /H          Visar maximalt antal linjer pÜ datorn."
+ER_ISWQHELP7,,"  /NOHI       Mîjliggîr anvÑndning av bildskÑrm utan hîgintensitetsstîd."
+ER_ISWQHELPEND,,"  [Ñmne]      Anger det Ñmne som ska visas."
+;
+ER_ISWINTERP,,"Startar QBasic programmeringsmiljî."
+ER_ISWINTERP1,," "
+ER_ISWINTERP2,,"QBASIC [/B] [/EDITOR] [/G] [/H] [/MBF] [/NOHI] [[/RUN] [enhet:][sîkvÑg]filnamn]"
+ER_ISWINTERP3,," /B          Fîr anvÑndning av en monokrom skÑrm med fÑrggrafikkort."
+ER_ISWINTERP4,," /EDITOR     Startar MS-DOS Editor."
+ER_ISWINTERP5,," /G          Uppdaterar en CGA-skÑrm sÜ fort som mîjligt."
+ER_ISWINTERP6,," /H          Visar det maximala antalet rader som din maskinvara kan klara av."
+ER_ISWINTERP7,," /MBF        Konverterar funktionerna MKS$, MKD$, CVS och CVD till"
+ER_ISWINTERP8,,"             MKSMBF$, MKDMBF$, CVSMBF respektive CVDMBF."
+ER_ISWINTERP9,," /NOHI       Fîr anvÑndning av skÑrmar som inte stîder hîg intensitet."
+ER_ISWINTERPA,," /RUN        Gîr att QBasic laddar och kîr en programfil innan den visas."
+ER_ISWINTERPEND,,"  [[enhet:][sîkvÑg]filnamn] Programmet som ska laddas eller kîras."
+;
+;=========================================================================
+;
+;-------------------------------------------------------------------------
+;MSG_GoDirect is non-trappable interpreter-specific
+; error which allow us to back out of what we're doing and escape back
+; to direct mode.
+;
+MSG_GoDirect,,""
+MSG_OutOfStack,,"Slut pÜ stackutrymmet"
+MSG_DocTooLarge,,"Dokumentet fîr stort"
+MSG_InclTooLarge,,"Inkluderad fil fîr stor"
+;
+;-------------------------------------------------------------------------
+; End of runtime errors.  Messages beyond this point can be re-arranged
+; in any order.
+;-------------------------------------------------------------------------
+;
+;Section 2: QBI Parser Related Messages
+;
+MSG_IdTooLong,,"Identifieraren Ñr fîr lÜng"
+MSG_BadId,,"Ogiltig identifierare"
+MSG_IdImp,,"Identifierare kan inte sluta med %, &, !, #, $"
+MSG_BadElemRef,,"Identifierare kan inte innehÜlla punkt"
+MSG_ExpTooComplex,,"Uttrycket fîr komplext"
+MSG_IllegalNumber,,"Ogiltigt tal"
+MSG_InvConst,,"Ogiltig konstant"
+MSG_expected,,"VÑntade: "
+MSG_or,," eller "
+;
+; Parser errors which are preceded by "Expected: "
+;
+MSG_ExpAssignment,,"variabel=uttryck"
+MSG_ExpExp,,"uttryck"
+MSG_ExpVar,,"variabel"
+MSG_ExpId,,"identifierare"
+MSG_ExpStatement,,"sats"
+MSG_ExpLabel,,"etikett"
+MSG_ExpLn,,"radnummer"
+MSG_Letter,,"bokstav"
+MSG_eos,,"slut pÜ satsen"
+MSG_RightParen,,")"
+MSG_ExpIdCallArg,,"uttryck"
+MSG_ExpIdParm,,"variabel"
+MSG_ExpFNId,,"identifierare som bîrjar med FN"
+MSG_ExpIfClause,,"etikett eller sats"
+MSG_ExpLabLn,,"etikett eller radnummer"
+MSG_ExpLitString,,"strÑngkonstant"
+MSG_ExpLit0,,"0"
+MSG_ExpLit1,,"1"
+MSG_ExpNArgs,,"[uttryck],..."
+MSG_ExpRwB,,"B"
+MSG_ExpRwF,,"F"
+MSG_ExpRwBF,,"BF"
+MSG_ExpRel,,"<, <=, >, >=, = eller <>"
+;
+;Section 3:  TextMgr/ReParse errors
+;
+MSG_InvModLev,,"Ogiltigt utanfîr SUB, FUNCTION eller DEF FN"
+MSG_InvMain,,"Ogiltigt utanfîr SUB/FUNCTION"
+MSG_InvProc,,"Ogiltigt i SUB, FUNCTION eller DEF FN"
+MSG_InvBeforeProcDef,,"Sats kan inte fîregÜ SUB/FUNCTION-definition"
+MSG_ProcNoEnd,,"SUB/FUNCTION utan END SUB/FUNCTION"
+MSG_EndNoProc,,"END SUB/FUNCTION utan SUB/FUNCTION"
+MSG_EndNoDef,,"END DEF utan DEF"
+MSG_UndElem,,"Elementet inte definierat"
+MSG_UndType,,"Typen inte definierad"
+MSG_1stStmt,,"MÜste vara fîrsta satsen pÜ raden"
+MSG_EndProc,,"END SUB eller END FUNCTION mÜste vara pÜ sista raden"
+MSG_NoEndType,,"TYPE utan END TYPE"
+MSG_NoType,,"END TYPE utan TYPE"
+MSG_InvInTypeBlk,,"Sats ej tillÜtet i TYPE-block"
+MSG_InvIncl,,"Sats fÜr ej fîrekomma inom INCLUDE-fil"
+MSG_InvDecl,,"Ogiltig DECLARE fîr Basic-procedur"
+MSG_FNstart,,"Kan inte bîrja med 'FN'"
+MSG_NotBlock,,"Operationen krÑver en disk"
+MSG_BadMeta,,"$Metakommandofel"
+MSG_NoBpCase,,"Brytpunkt ej tillÜten i CASE-sats eller END SELECT-sats"
+;
+;Section 4:  Scan-time errors
+;
+MSG_OBA,,"Matrisen redan dimensionerad"
+MSG_COM,,"COMMON och DECLARE mÜste fîregÜ exekverbara satser"
+MSG_EWI,,"END IF utan IF-block"
+MSG_IWE,,"IF-block utan END IF"
+MSG_ElseWI,,"ELSE utan IF"
+MSG_ExitScope,,"EXIT FOR inte inom FOR...NEXT"
+MSG_ExitDo,,"EXIT DO inte inom DO...LOOP"
+MSG_Do,,"DO utan LOOP"
+MSG_Loop,,"LOOP utan DO"
+MSG_Select,,"SELECT utan END SELECT"
+MSG_Case,,"CASE utan SELECT"
+MSG_EndSelect,,"END SELECT utan SELECT"
+MSG_InvFixStr,,"StrÑng med fast lÑngd ej tillÜten"
+MSG_InvTypedVar,,"Typad variabel ej tillÜten i uttryck"
+MSG_DefNoEnd,,"DEF utan END DEF"
+MSG_ParmTM,,"Olika parametertyper"
+MSG_DupLibPrs,,"Proceduren redan definierad i Quick-biblioteket"
+MSG_ASRqd1st,,"AS-sats krÑvs vid fîrsta deklaration"
+MSG_ASRqd,,"AS-sats krÑvs"
+MSG_ExpectedCase,,"Ej tillÜten placering av satser"
+MSG_NoNumArr,,"Numerisk matris ej tillÜten"
+MSG_InType,,"Ogiltigt utanfîr TYPE-block"
+MSG_ULCom,,"COMMON i Quick-biblioteket fîr liten"
+MSG_SubCnt,,"Fel antal dimensioner"
+MSG_DefFnCtrl,,"DEF FN ej tillÜtet i kontrollsatser"
+MSG_Unsupported,,"Egenskapen ej tillgÑnglig"
+;
+;Section 5.1: User Interface Related Messages that could be described in
+;             user guide's error message appendix
+;
+;MSG_CantCont,,"Du kommer att fÜ starta om programmet. Vill du fortsÑtta?"
+MSG_CantCont,,"Du kommer att fÜ starta om programmet efter redigering.Vill du fortsÑtta?"
+MSG_NoMainProg,,"Ingen huvudmodul. VÑlj Set Main Module from Run menu to select one"
+MSG_HelpOOM,,"OtillrÑckligt minne fîr att visa HjÑlp"
+;
+;Section 5.2: Messages that require special handling in ReportError()
+;
+;Note: The next 2 messages must have numbers < 256 for because they can be
+;      passed to RtError_Ini by exStRunFile during command-line load.
+;
+MSG_DupMrs,,"Filen redan laddad"
+MSG_DupPrs,,"Fîrsîkte ladda fil med procedurdefinition som redan finns"
+MSG_MrsNotFound,,"Modulen ej funnen. Ska modulen inte laddas in i programmet?"
+;
+;Section 5.3: General User Interface messages
+;
+MSG_Overwrite,,"Filen finns redan. Ska den skrivas îver?"
+MSG_DelProc,,"Ta bort proceduren frÜn modulen?"
+MSG_MakeRem,,"Blankrader inte tillÜtna innan SUB/FUNCTION-rad. ér kommentar OK?"
+MSG_NotSaved,,"Filen Ñndrad sedan den sist sparades. Ska den sparas nu?"
+MSG_NotSavedAll,,"Den aktuella filen har inte sparats. Ska den sparas nu?"
+MSG_NotSavedInc,,"Modifierade INCLUDE-filer mÜste sparas innan kîrning. Ska de sparas nu?"
+MSG_NotSavedIncSav,,"Spara modifierade INCLUDE-filer fîrst?"
+MSG_BadNextStmt,,"Kan inte korsa procedur/modul-grÑnsen"
+MSG_Prt1,,"VÑntar pÜ skrivaren"
+MSG_Prt2,,"Skriver ut - tryck pÜ ESC om du vill avbryta"
+MSG_Immediate,,"Direkt"
+MSG_Untitled,,"Namnlîs"
+MSG_FALSE,,"<FALSE>"
+MSG_TRUE,,"<TRUE>"
+MSG_Black,,"Svart"
+MSG_Blue,,"BlÜ"
+MSG_Green,,"Grîn"
+MSG_Cyan,,"Cyan"
+MSG_Red,,"Rîd"
+MSG_Magenta,,"Magenta"
+MSG_Brown,,"Brun"
+MSG_White,,"Vit"
+MSG_Gray,,"GrÜ"
+MSG_BrBlue,,"LjBlÜ"
+MSG_BrGreen,,"LjGrîn"
+MSG_BrCyan,,"LjCyan"
+MSG_BrRed,,"LjRîd"
+MSG_Pink,,"SkÑr"
+MSG_Yellow,,"Gul"
+MSG_BrWhite,,"LjVit"
+MSG_MustSpecifyName,,"MÜste ange namn"
+MSG_DataMoved,,"DATA-satser flyttades frÜn SUB- till modulnivÜ"
+MSG_ModuleExists,,"Modul med det namnet har redan laddats"
+MSG_NoHelp,,"Filen "
+MSG_NoHelp1,," ej funnen."
+MSG_NoHelp2,,"SÑtt in disketten med denna fil i diskettenheten och fîrsîk igen,"
+MSG_NoHelp3,,"eller Ñndra sîkvÑgen med Alternativ+SîkvÑg till HjÑlp."
+MSG_NoQHelp2,,"VÑlj OK och kontrollera att"
+MSG_NoQHelp3,,"filen finns i din sîkvÑg."
+MSG_NoSearchString,,"MÜste ange sîkstrÑng"
+MSG_MatchNotFound,,"StrÑngen ej funnen"
+MSG_ChangeComplete,,"ErsÑttning klar"
+MSG_Is,," Ñr "
+MSG_MainModule,,"huvudmodul"
+MSG_Module,,"en modul"
+MSG_IncludeFile,,"en inkluderad fil"
+MSG_Document,,"ett dokument"
+MSG_Sub,,"ett delprogram i "
+MSG_Function,,"en funktion i "
+MSG_ReqSub,,"Operationen krÑver SUB eller FUNCTION"
+;If text of MSG_SwitchDisks changes, ref code in uifile.c must change as well.
+MSG_SwitchDisks,,"SÑtt in disketten i enhet A:"
+MSG_Loading,,"Laddar och analyserar"
+MSG_Saving,,"Sparar"
+MSG_Compiling,,"Binder"
+MSG_Searching,,"Sîker - tryck pÜ ESC om du vill avbryta"
+MSG_CantSetTabs,,"Kan inte stÑlla in tabblÑgen medan filen Ñr laddad"
+MSG_OutNearMem,,"Slut pÜ datautrymme"
+MSG_ModTooLarge,,"Koden fîr modulnivÜn Ñr fîr stor"
+MSG_ProcTooLarge,,"Proceduren Ñr fîr stor"
+MSG_ExitToRet,,CR,"Skriv EXIT nÑr du vill ÜtervÑnda till QBasic"
+MSG_QeditText1,," StÑll in fÑrger fîr     "
+MSG_QeditText2,," textredigeringsfînstret:"
+MSG_NormalText,," Normal text       "
+MSG_Breakpoint,," Brytpunktsrader   "
+MSG_CurStmt,," Aktuell sats      "
+MSG_HelpTitle,,"HJéLP: "
+MSG_HelpTitleQH,,"MS-DOS HjÑlp: "
+MSG_FirstContextStr,,"h.pg1"
+MSG_HelpAboutEditor,,"MS-DOS Editor"
+MSG_HelpAboutQHelp,,"MS-DOS HjÑlp"
+MSG_HelpAboutInterp,,"MS-DOS QBasic"
+MSG_HelpAbout2,,"Version 1.1"
+MSG_HelpAbout3,,"Copyright (C) Microsoft Corporation, 1987-1993."
+;
+;Section 5.4: HELP messages for menu items <THESE MUST REMAIN CONTIGUOUS>
+;
+; NOTE: These must match the EXACT order of the midFileNew...midHelpHowToUse
+;       definitions in ..\ir\qbasmsgs.txt, because ..\uq\uictl.c (MainWndProc)
+;       does a direct mapping from midXxx to MSG_HelpXxx assuming this
+;       ordering exists.
+;
+MSG_HelpFileNew,,"Tar bort aktuell fil frÜn minnet"
+MSG_HelpFileOpen,,"Laddar in en ny fil i minnet"
+MSG_HelpFileMerge,,""
+MSG_HelpFileSave,,"Sparar aktuell fil"
+MSG_HelpFileSaveAs,,"Sparar aktuell fil med angivet namn"
+MSG_HelpFileSaveAll,,""
+MSG_HelpFileCreate,,""
+MSG_HelpFileLoad,,""
+MSG_HelpFileUnload,,""
+MSG_HelpFilePrint,,"Skriver ut angiven text"
+MSG_HelpFileShell,,""
+MSG_HelpFileExit,,"Avslutar Qbasic/Editor och ÜtervÑnder till DOS"
+MSG_HelpFileExitQH,,"Avslutar HjÑlp och ÜtervÑnder till DOS"
+MSG_HelpEditUndo,,""
+MSG_HelpEditCut,,"Tar bort markerad text och lÑgger den i Urklipp"
+MSG_HelpEditCopy,,"Kopierar markerad text och lÑgger den i Urklipp"
+MSG_HelpEditClear,,"Raderar markerad text utan att lÑgga den i Urklipp"
+MSG_HelpEditPaste,,"Infogar texten i Urklipp dÑr markîren stÜr"
+MSG_HelpEditNewSub,,"ôppnar ett fînster fîr ett nytt delprogram"
+MSG_HelpEditNewFunc,,"ôppnar ett fînster fîr en ny funktion"
+MSG_HelpViewSubs,,"Visar laddade funktioner eller delprogram"
+MSG_HelpViewNextProc,,""
+MSG_HelpViewSplit,,"VÑxlar mellan enkelt och dubbelt skÑrmbildslÑge"
+MSG_HelpViewNextStatement,,""
+MSG_HelpViewOutputScreen,,"Visar utdataskÑrmen"
+MSG_HelpViewIncludes,,""
+MSG_HelpViewEditIncl,,""
+MSG_HelpSearchFind,,"Sîker efter text"
+MSG_HelpSearchSelected,,""
+MSG_HelpSearchNext,,"Sîker efter nÑsta text i tidigare sîkning"
+MSG_HelpSearchChange,,"Sîker och ersÑtter text"
+MSG_HelpSearchLabel,,""
+MSG_HelpRunStart,,"Kîr aktuellt program"
+MSG_HelpRunRestart,,"Rensar variabler som fîrberedelse fîr stegning"
+MSG_HelpRunContinue,,"FortsÑtter exekveringen efter ett avbrott"
+MSG_HelpRunSetCommand,,""
+MSG_HelpRunMakeExe,,""
+MSG_HelpRunMakeLib,,""
+MSG_HelpRunSetMain,,""
+MSG_HelpDebugStep,,"Stegar igenom huvudprogram och procedurer"
+MSG_HelpDebugPStep,,"Stegar enbart igenom huvudprogram"
+MSG_HelpDebugAddWatch,,""
+MSG_HelpDebugInstantWatch,,""
+MSG_HelpDebugWatchPoint,,""
+MSG_HelpDebugDelWatch,,""
+MSG_HelpDebugDelAllWatch,,""
+MSG_HelpDebugTraceOn,,"Ljusmarkerar den sats som exekveras fîr nÑrvarande"
+MSG_HelpDebugHistoryOn,,""
+MSG_HelpDebugToggleBp,,"SÑtter/tar bort en brytpunkt vid markîren"
+MSG_HelpDebugClearAllBp,,"Tar bort alla brytpunkter"
+MSG_HelpDebugBreakOnErr,,""
+MSG_HelpDebugSetNextStmt,,"Gîr satsen till nÑsta sats fîr exekvering"
+MSG_HelpOptionsDisplay,,"éndrar skÑrmattribut"
+MSG_HelpOptionsPaths,,"StÑller in sîkvÑgen fîr hjÑlpfiler"
+MSG_HelpOptionsMouse,,""
+MSG_HelpOptionsSyntax,,"StÑnger av/sÑtter pÜ syntaxkontroll"
+MSG_HelpOptionsFullMenu,,""
+MSG_HelpHelpIndex,,"Visar hjÑlpindex"
+MSG_HelpHelpContents,,"Visar innehÜllsfîrteckningen i HjÑlp"
+MSG_HelpHelpSyntax,,"Visar information om det markerade nyckelordet"
+MSG_HelpHelpHelp,,"Visar information om hur man anvÑnder HjÑlp"
+MSG_HelpHelpStarted,,"Visar hur man anvÑnder MS-DOS Editor"
+MSG_HelpHelpKeyboard,,"Visar fîrflyttnings- och redigeringstangenter"
+MSG_HelpHelpAbout,,"Visar produktversion och information om copyright"
+MSG_HelpHowToUse,,"Visar information om hur man anvÑnder MS-DOS HjÑlp"
+;
+;Section 5.5: Status line HELP messages <THESE MUST REMAIN CONTIGUOUS>
+;
+; IMPORTANT:  If the text of ANY of the following messages changes, the
+; IMPORTANT:  constants used by DoStatusButton() in UINHELP.ASM must be updated!
+; IMPORTANT:  See UINHELP.ASM for a description of how to change the text of
+; IMPORTANT:  MSG_Status[Edit, Running, Immediate, Help, ShiftF1].
+;
+MSG_StatusMenu,,"RETUR=Visa meny   ESC=Avbryt   PIL=NÑsta"
+MSG_StatusDialog,,"RETUR=Utfîr   ESC=Avbryt   TAB=NÑsta fÑlt   PIL=NÑsta"
+MSG_StatusEdit,,"<F6=Fînster><F2=Fnr dlprg><F5=Kîr><F8=Stega>"
+MSG_StatusRunning,,"<F5=FortsÑtt><F9=Brytpunkt><F8=Stega>"
+MSG_StatusImmediate,,"<F6=Fînster><RETUR=Exekvera rad>"
+MSG_StatusHelp,,"<F6=Fînster><ESC=Avbryt><CTRL+F1=NÑsta><ALT+F1=BakÜt>"
+MSG_StatusQEdit,,"MS-DOS Editor <F1=HjÑlp> Aktivera menyer med ALT"
+MSG_StatusQHelp,,"<F1=HjÑlp><F6=Fînster><ESC=Avbryt><CTRL+F1=NÑsta><ALT+F1=BakÜt>"
+MSG_StatusQHStart,,"MS-DOS HjÑlp          <F1=HjÑlp> Aktivera menyer med ALT"
+;
+;
+MSG_StatusQHhelp,,"<ALT+I=InnehÜll> <ALT+N=NÑsta> <ALT+B=BakÜt>"
+;
+; LOCALIZATION - To change the accelerator chars in the above line, change the
+;       the values in rgmpvkeyidQhelp[], in UIRSRCC.C (At about line #460).
+;
+;
+MSG_StatusF1Help,,"F1=HjÑlp   "
+MSG_StatusShiftF1,,"<SKIFT+F1=HjÑlp>"
+;
+; IMPORTANT:  If the text of ANY of the previous messages changes, the
+; IMPORTANT:  constants used by DoStatusButton() in UINHELP.ASM must be updated!
+;
+;Section 5.6: Variable HELP messages <Some of these must remain contiguous>
+;Ripped these out for LQB
+;
+;Section 5.7: misc messages
+;
+MSG_SearchPathEdit,,"SîkvÑg fîr filen EDIT.HLP:"
+MSG_SearchPathHelp,,"SîkvÑg fîr filen HELP.HLP:"
+MSG_SearchPathInterp,,"SîkvÑg fîr filen QBASIC.HLP:"
+;
+;Section touch: Messages can be added to the bottom of the file
+; and all objects except uiutil.obj and qbimsgs.obj can be touched.
+; Also touch qbimsgs.rpl, then *.hlp!
+; Later, these messages should be moved into their appropriate sections.

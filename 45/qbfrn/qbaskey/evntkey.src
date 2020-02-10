@@ -1,0 +1,424 @@
+.comment ******************************************************************
+.comment *  Event Trapping Family - QBasic                                *
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/22/90 stevesau                                              *
+.comment *  Incorporated final review edits/comments.                     *
+.comment ******************************************************************
+.comment *  6/8/90 stevesau                                               *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/9/90 stevesau                                               *
+.comment *  Deleted EVENT.                                                *
+.comment *  Added Declaring User-Defined Keys node (linked from KEY)      *
+.comment *  with Keyboard Flag Table info.                                *
+.comment *  Combined COM/ON COM, KEY/ON KEY, PEN/ON PEN, PLAY/ON PLAY,    *
+.comment *  STRIG/ON STRIG, TIMER/ON TIMER.                               *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  4/20/90 stevesau                                              *
+.comment *  Added action lines.                                           *
+.comment *  Deleted ON UEVENT, SetUEvent, UEVENT.			  *
+.comment *  Deleted OS/2 references (ON PEN, ON PLAY, ON STRIG, PEN,	  *
+.comment *  PLAY, STRIG).                                                 *
+.comment ******************************************************************
+.comment *  4/17/90 bethpr                                                *
+.comment *  Removed On Signal statement and Signal statements		  *
+.comment ******************************************************************
+.context COM
+.context @COM
+:nInstructions COM, ON COM 
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+COM  active, d‚sactive ou suspend l'interception d'‚v‚nements au cours
+     d'activit‚s de communication sur un port donn‚.
+     Si l'interception d'‚v‚nements est activ‚e, ON COM ex‚cute une sous-
+     routine chaque fois que des donn‚es sont re‡ues sur le port.
+
+\bCOM(n%) ON\p
+\bCOM(n%) OFF\p
+\bCOM(n%) STOP\p
+\bON COM(n%) GOSUB ligne\p
+
+    ş \bn%\p              Le num‚ro d'un port COM (s‚rie) (1 ou 2).
+    ş \bCOM(n%) ON\p      Active l'interception d'‚v‚nements relatifs
+                      aux communications.
+    ş \bCOM(n%) OFF\p     D‚sactive l'interception d'‚v‚nements relatifs
+                      aux communications.
+    ş \bCOM(n%) STOP\p    Suspend l'interception d'‚v‚nements relatifs
+                      aux communications. Ces ‚v‚nements sont m‚moris‚s
+                      et trait‚s aprŠs activation de l'interception
+                      d'‚v‚nements par l'instruction COM ON.
+    ş \bligne\p           L'‚tiquette ou le num‚ro de ligne de la premiŠre
+                      ligne de la routine d'interception d'‚v‚nements.
+
+Exemple :
+    COM(1) ON       'Active l'interception d'‚v‚nements sur le port 1.
+    ON COM(1) GOSUB GestionCom
+    DO : LOOP WHILE INKEY$ = ""
+    COM(1) OFF
+    END
+
+    GestionCom:
+        PRINT "Quelque chose a ‚t‚ tap‚ sur le terminal attach‚ … COM1."
+        RETURN
+
+Voir aussi    \i\p\aOPEN COM\v@opcom\v\i\p
+.context .ketv
+.context @ketv
+:nInstructions KEY, ON KEY (Interception d'‚v‚nements)
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+KEY active, d‚sactive ou suspend l'interception de touches sp‚cifi‚es.
+    Si l'interception est activ‚e, ON KEY cause l'ex‚cution d'une
+    sous-routine chaque fois qu'une touche donn‚e est press‚e.
+
+\bKEY(n%) ON\p
+\bKEY(n%) OFF\p
+\bKEY(n%) STOP\p
+\bON KEY(n%) GOSUB line\p
+
+    ş \bn%\p              Une valeur qui indique une touche de fonction,
+                          de direction ou une touche d‚finie par
+                          l'utlisateur:
+
+                      n%        Key
+                      ÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                      0         Toutes les touches list‚es ci-dessous
+                                (KEY(0) ON, KEY(0) OFF et KEY(0) STOP).
+                      1-10      Touches de fonction F1-F10.
+                      11        Touche HAUT
+                      12        Touche GAUCHE
+                      13        Touche DROITE
+                      14        Touche BAS
+                      15-25     Touches d‚finies par l'utilisateur.
+                                Pour plus d'informations, voyez :
+                                \i\p\aTouches d‚finies par l'utilisateur\v@kbflags\v\i\p.
+                      30, 31    Touches de fonction F11 et F12
+
+    ş \bKEY(n%) ON\p      Active l'interception pour la touche sp‚cifi‚e.
+    ş \bKEY(n%) OFF\p     D‚sactive l'interception.
+    ş \bKEY(n%) STOP\p    Suspend l'interception. Les pressions seront
+                      trait‚es aprŠs activation par l'instruction
+                      KEY ON.
+    ş \bline\p            Le label ou le num‚ro de la premiŠre ligne de
+                      la routine d'interception.
+
+Exemple :
+    'Pour cet exemple VERR.MAJ et VERR.NUM doivent ˆtre d‚sactiv‚s.
+    CONST ESC = 27
+    KEY 15, CHR$(&H4) + CHR$(&H1F)          'Etablit Ctrl+S comme KEY 15.
+    ON KEY(15) GOSUB GestionPause
+    KEY(15) ON
+    WHILE INKEY$ <> CHR$(ESC)
+        PRINT "Pressez Echap pour arrˆter, Ctrl+S pour pause."
+        PRINT
+    WEND
+    END
+
+    GestionPause:
+        SLEEP 1
+        RETURN
+
+Voir aussi    \i\p\aKEY (Affectation)\v@KEY\v\i\p    \i\p\aTouches d‚finies par l'utilisateur\v@kbflags\v\i\p
+.context .kbflags
+.context @kbflags
+:nTouches d‚finies par l'utilisateur
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Pour d‚clarer une touche d‚finie par l'utilisateur, utiliser les variantes
+suivantes de l'instruction KEY :
+
+\bKEY n%, CHR$(indClav%) + CHR$(codeBal%)\p
+
+    ş \bn%\p             Valeur comprise entre 15 et 25 qui identifie la touche.
+    ş \bindClav%\p       Une des valeurs suivantes ou une somme de ces valeurs,
+                     qui sp‚cifie si la touche est utilis‚e en combinaison
+                     avec SHIFT, CTRL, ALT, VERR.NUM ou VERR.MAJ ou avec
+                     les touches ‚tendues :
+
+                     Valeur            Touche
+                     ÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                     0                Pas d'indicateur de clavier
+                     1 through 3      L'une ou l'autre des touches MAJ
+                     4                CTRL
+                     8                ALT
+                     32               VERR.NUM
+                     64               VERR.MAJ
+                     128              Touches ‚tendues du clavier 101 touches
+
+
+                     Pour indiquer une combinaison de touches, additioner
+                     plusieurs valeurs. Par exemple, la valeur 12 indique
+                     que la touche d‚finie par l'utilisateur est utilis‚e
+                     en combinaison avec CTRL et ALT.
+
+    ş \bcodeBal%\p      Le code du clavier pour la touche d‚clar‚e.
+                    Voir \i\p\aCodes de balayage clavier\v@kbsct\v\i\p.
+
+Voir aussi   \i\p\aKEY (Affectation)\v@KEY\v\i\p   \i\p\aKEY, ON KEY (Interception d'‚v‚nements)\v@ketv\v\i\p
+.context PEN
+.context @PEN
+:nInstructions PEN, ON PEN
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PEN active, d‚sactive ou suspend l'interception d'‚v‚nements relatifs
+    au crayon optique. Si l'interception d'‚v‚nement est activ‚e,
+    ON PEN branche sur une sous-routine lorsque le crayon optique est
+    activ‚.
+
+\bPEN ON\p
+\bPEN OFF\p
+\bPEN STOP\p
+\bON PEN GOSUB ligne\p
+
+    ş \bPEN ON\p      Active l'interception d'‚v‚nements crayon optique.
+    ş \bPEN OFF\p     D‚sactive l'interception d'‚v‚nements crayon optique.
+    ş \bPEN STOP\p    Suspend l'interception d'‚v‚nements crayon optique.
+                  Ces ‚v‚nements seront trait‚s aprŠs ex‚cution de
+                  l'instruction PEN ON.
+    ş \bligne\p       Etiquette ou num‚ro de la premiŠre ligne de la
+                  routine d'interception.
+
+Exemple :
+    'Cet exemple n‚cessite un crayon optique
+    ON PEN GOSUB Gest
+    PEN ON
+
+    Gest:
+        ligne% = PEN(6)
+        colone%= PEN(7)
+        RETURN
+
+Voir aussi    \i\p\aFonction PEN\v@penf\v\i\p
+.context .playf
+.context @playf
+:nFonction PLAY
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PLAY retourne le nombre de notes dans la file d'attente musicale,
+en arriŠre-plan.
+
+\bPLAY(n)\p
+
+    ş \bn\b    Expression num‚rique.
+
+Exemple :
+    Music$ = "MBT180o2P2P8L8GGGL2E-P24P8L8FFFL2D"
+    PLAY Music$
+    WHILE PLAY(0) > 5: WEND
+    PRINT "Just about done!"
+
+Voir aussi    \i\p\aPLAY (Musique)\v@PLAY\v\i\p    \i\p\aPLAY, ON PLAY (Interception d'‚v‚nements)\v@playev\v\i\p
+.context .playev
+.context @playev
+:nInstructions PLAY, ON PLAY  (Interception d'‚v‚nements)
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PLAY active, d‚sactive ou suspend l'interception d'‚v‚nements sonores.
+     Si l'interception d'‚v‚nements est active, PLAY branche sur une
+     sous-routine dŠs que le file d'attente musicale contient moins
+     d'un nombre sp‚cifi‚ de notes.
+
+\bPLAY ON\p
+\bPLAY OFF\p
+\bPLAY STOP\p
+\bON PLAY(limiteQueue%) GOSUB ligne\p
+
+    ş \bPLAY ON\p        Active l'interception d'‚v‚nements sonores.
+    ş \bPLAY OFF\p       D‚sactive l'interception d'‚v‚nements sonores.
+    ş \bPLAY STOP\p      Suspend l'interception d'‚v‚nements sonores.
+                     Les ‚v‚nements seront trait‚s aprŠs activation de
+                     l'interception par l'instruction PLAY ON.
+    ş \blimiteQueue%\p   Un nombre compris entre 1 et 32.
+                     ON PLAY branche sur une routine dŠs que la file
+                     d'attente musicale contient moins de queuelimit%
+                     notes.
+    ş \bligne\p          Etiquette ou num‚ro de la premiŠre ligne de
+                     la routine d'interception.
+
+Exemple :
+    ON PLAY(3) GOSUB ArrierePlan
+    PLAY ON
+    Music$ = "MBo3L8ED+ED+Eo2Bo3DCL2o2A"
+    PLAY Music$
+    LOCATE 2, 1: PRINT "Appuyez sur une touche pour quitter.";
+    DO WHILE INKEY$ = "": LOOP
+    END
+
+    ArrierePlan:
+        i% = i% + 1
+        LOCATE 1, 1: PRINT "ArrierePlan appel‚e "; i%; "fois";
+        PLAY Music$
+        RETURN
+
+Voir aussi    \i\p\aPLAY (Musique)\v@PLAY\v\i\p    \i\p\aFonction PLAY\v@playf\v\i\p
+.context .strigf
+.context @strigf
+:nFonction STRIG
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+STRIG retourne l'‚tat d'un bouton de la manette de jeu.
+
+\bSTRIG(n%)\p
+
+    ş \bn%\p    Valeur indiquant le type d'information fourni :
+
+            n%    Information
+            ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+            0     Bouton inf‚rieur manette A enfonc‚ depuis dernier STRIG(0)
+            1     Bouton inf‚rieur manette A enfonc‚
+            2     Bouton inf‚rieur manette B enfonc‚ depuis dernier STRIG(2)
+            3     Bouton inf‚rieur manette B enfonc‚
+            4     Bouton sup‚rieur manette A enfonc‚ depuis dernier STRIG(4)
+            5     Bouton sup‚rieur manette A enfonc‚
+            6     Bouton sup‚rieur manette B enfonc‚ depuis dernier STRIG(6)
+            7     Bouton sup‚rieur manette B enfonc‚
+
+    ş STRIG renvoie -1 si l'information est vraie, 0 sinon.
+
+Exemple :
+    DO
+    LOOP UNTIL STRIG(0)
+    DO
+        BEEP                  'BEEP tant que bouton inf‚rieur de A enfonc‚
+    LOOP WHILE STRIG(1)
+
+Voir aussi    \i\p\aSTICK\v@STICK\v\i\p    \i\p\aInstructions STRIG, ON STRIG \v@STRIG\v\i\p
+.context STRIG
+.context @STRIG
+:nInstructions STRIG, ON STRIG
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+STRIG active, d‚sactive ou suspend l'interception de l'activit‚ d'une
+      manette de jeu. Si l'interception est activ‚e, ON STRIG branche sur
+      une sous-routine chaque fois qu'un bouton est press‚.
+
+\bSTRIG(n%) ON\p
+\bSTRIG(n%) OFF\p
+\bSTRIG(n%) STOP\p
+\bON STRIG(n%) GOSUB ligne\p
+
+    ş \bn%\p                Valeur qui indique un bouton de manette de jeu :
+
+                        n%    Bouton
+                        ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                        0     Bouton inf‚rieur, manette A
+                        2     Bouton inf‚rieur, manette B
+                        4     Bouton sup‚rieur, manette A
+                        6     Bouton sup‚rieur, manette B
+
+    ş \bSTRIG(n%) ON\p      Active l'interception d'‚v‚nements.
+    ş \bSTRIG(n%) OFF\p     D‚sactive l'interception d'‚v‚nements.
+    ş \bSTRIG(n%) STOP\p    Suspend l'interception d'‚v‚nements.
+                        Les ‚v‚nements seront trait‚s aprŠs activation
+                        de l'interception par l'instruction STRIG ON.
+    ş \bligne\p             Etiquette ou num‚ro de la premiŠre ligne de
+                        la routine d'interception.
+
+Exemple :
+    'Cet exemple n‚cessite une manette de jeu.
+    ON STRIG(0) GOSUB Gest
+    STRIG(0) ON
+
+    Gest:
+        DO
+        LOOP UNTIL STRIG(0)
+        RETURN
+
+Voir aussi    \i\p\aSTICK\v@STICK\v\i\p    \i\p\aFonction STRIG\v@strigf\v\i\p
+.context .timerf
+.context @timerf
+:nFonction TIMER
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+TIMER retourne le nombre de secondes ‚coul‚es depuis minuit.
+
+\bTIMER\p
+
+    ş La fonction TIMER peut servir pour chronom‚trer l'ex‚cution de
+      tout ou partie d'un programme. Elle peut aussi ˆtre utilis‚e
+      avec l'instruction RANDOMIZE pour g‚n‚rer un nombre al‚atoire.
+
+Exemple :
+    RANDOMIZE TIMER
+
+Voir aussi    \i\p\aRANDOMIZE, RND\v@randomize\v\i\p    \i\p\aTIMER, ON TIMER Instructions\v@TIMER\v\i\p
+.context TIMER
+.context @TIMER
+:nInstructions TIMER, ON TIMER
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ\p
+TIMER active, d‚sactive ou suspend l'interception des ‚v‚nements relatifs
+      … la minuterie. Lorsque l'interception est activ‚e.
+ON TIMER branche sur une sous-routine … intervalles de temps r‚guliers.
+
+\bTIMER ON\p
+\bTIMER OFF\p
+\bTIMER STOP\p
+\bON TIMER(n%) GOSUB ligne\p
+
+    ş \bTIMER ON\p     Active l'interception de l'interruption "laps de temps".
+    ş \bTIMER OFF\p    D‚sactive l'interception de l'interruption "laps de temps".
+    ş \bTIMER STOP\p   Suspend l'interception de l'interruption "laps de temps".
+                   Les ‚v‚nements seront trait‚s aprŠs activation de
+                   l'interception par TIMER ON.
+    ş \bn%\p           Valeur comprise entre 1 et 86400.
+                   Nombre de seconde dans l'intervalle de temps.
+    ş \bligne\p        Etiquette ou num‚ro de la premiŠre ligne de la
+                   routine d'interception.
+
+Exemple :
+    ON TIMER(1) GOSUB Affiche
+    TIMER ON
+    CLS
+    PRINT "Heure : "; TIME$
+    HDepart = TIMER
+    WHILE Temps < 10
+        Temps = TIMER - HDepart
+    WEND
+    END
+
+    Affiche:
+        LOCATE 1, 7: PRINT TIME$
+        RETURN
+
+Voir aussi    \i\p\aTIMER Fonction\v@timerf\v\i\p
+.comment *******************************************************************
+.comment *  ON and OFF keyword screens follow.
+.comment *******************************************************************
+.context ON
+.context @ON
+:nMot-cl‚ ON
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ON est utilis‚ dans diff‚rentes instructions d'interception d'‚v‚nements :
+
+    ş Active le traitement d'erreurs avec l'instruction ON ERROR.
+    ş Active l'interception d'‚v‚nements avec les instructions suivantes :
+      COM ON, KEY ON, PEN ON, PLAY ON, STRIG ON et TIMER ON.
+    ş Indique le type d'‚v‚nement … intercepter avec les instructions
+      suivantes : ON COM, ON KEY, ON PEN, ON PLAY, ON STRING et ON TIMER.
+    ş Indique une expression … ‚valuer avec les instructions ON...GOSUB
+      et ON...GOTO.
+
+Voir aussi  \i\p\aCOM, ON COM\v@COM\v\i\p      \i\p\aKEY, ON KEY\v@ketv\v\i\p        \i\p\aON ERROR\v@onerr\v\i\p
+            \i\p\aON...GOSUB, ON...GOTO\v@ongo\v\i\p                 \i\p\aPEN, ON PEN\v@PEN\v\i\p
+            \i\p\aPLAY, ON PLAY\v@playev\v\i\p    \i\p\aSTRIG, ON STRIG\v@STRIG\v\i\p    \i\p\aTIMER, ON TIMER\v@TIMER\v\i\p
+.context OFF
+.context @OFF
+:nMot-cl‚ OFF
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+OFF supprime l'affichage de la programmation des touches avec l'instruction
+KEY (Affectation) ou d‚sactive l'interception d'‚v‚nements avec les
+instructions suivantes :
+COM OFF, KEY OFF, PEN OFF, PLAY OFF, STRIG OFF et TIMER OFF.
+
+Voir aussi  \i\p\aCOM, ON COM\v@COM\v\i\p    \i\p\aKEY, ON KEY\v@ketv\v\i\p      \i\p\aKEY (Affectation)\v@KEY\v\i\p
+            \i\p\aPEN, ON PEN\v@PEN\v\i\p    \i\p\aPLAY, ON PLAY\v@playev\v\i\p    \i\p\aSTRIG, ON STRIG\v@STRIG\v\i\p
+            \i\p\aTIMER, ON TIMER\v@TIMER\v\i\p
+

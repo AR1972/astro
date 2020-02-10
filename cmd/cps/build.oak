@@ -1,0 +1,7 @@
+
+all:
+   xcopy makefile.oak $(OAKDIR)\cmd\cps\makefile      < $(OAKDIR)\f.key
+   $(MAKE) -f mirror\copy.oak
+   $(MAKE) -f rebuild\copy.oak
+
+

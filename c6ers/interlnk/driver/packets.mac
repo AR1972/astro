@@ -1,0 +1,253 @@
+;***
+;* $Workfile:   packets.mac  $
+;* $Revision:   1.0  $
+;*   $Author:   Dave Sewell  $
+;*     $Date:   02 Jun 1989 14:09:26  $
+;***
+
+                SUBTTL  Communication packet definitions
+                PAGE
+
+COMMENT @
+    packets.mac : January 4, 1989 : Alan Butt
+
+    This file contains the structure definitions for the packets used
+    in the expansion box device drivers
+@
+
+TEST_PACKET_REQ     EQU     0           ; Data Transfer Test packet types
+INIT_PACKET_REQ     EQU     1           ; Initialization Information packet types
+MEDIA_CHECK_REQ     EQU     2           ; Media Check packet types
+BUILD_BPB_REQ       EQU     3           ; Build BPB packet types
+READ_REQ            EQU     4           ; Read packet types
+WRITE_REQ           EQU     5           ; Write packet types
+WRITE_VER_REQ       EQU     6           ; Write-Verify packet types
+ERROR_REQ           EQU     7           ; Error packet type
+AUX_INIT_REQ        EQU     8
+AUX_READ_REQ        EQU     9           ; Auxiliary driver read request
+AUX_WRITE_REQ       EQU     10          ; Auxiliary driver write request
+AUX_WRITE_VER_REQ   EQU     11          ; Auxiliary driver write verify request
+ND_READ_REQ         EQU     12          ; Non-Destructive read request
+INPUT_STATUS_REQ    EQU     13          ; Input status request
+OUTPUT_STATUS_REQ   EQU     14          ; Output status request
+FLUSH_INPUT_REQ     EQU     15          ; Flush Input request
+FLUSH_OUTPUT_REQ    EQU     16          ; Flush Output request
+AUX_DEV_OPEN_REQ    EQU     17          ; Auxiliary device open request
+AUX_DEV_CLOSE_REQ   EQU     18          ; Auxiliary device close request
+AUX_IOCTL_READ_REQ  EQU     19          ; Auxiliary device IOCTL READ request
+AUX_IOCTL_WRITE_REQ EQU     20          ; Auxiliary device IOCTL WRITE request
+OUTPUT_TIL_BUSY_REQ EQU     21          ; Output until busy request
+DEV_OPEN_REQ        EQU     22          ; Device Open request
+DEV_CLOSE_REQ       EQU     23          ; Device Close requset
+REMOVABLE_MEDIA_REQ EQU     24          ; Removable media request
+BIOS_PRINT_REQ      EQU     25          ; Auxiliary BIOS print character
+BIOS_INIT_REQ       EQU     26          ; Auxiliary BIOS init printer
+BIOS_STATUS_REQ     EQU     27          ; Auxiliary BIOS get printer status
+DRIVE_INFO_REQ      EQU     28          ; Get drive info.
+GEN_IOCTL_REQ       EQU     29          ; Generic IOCTL
+PACKET_TYPES        EQU     30          ; Number of packet types
+
+UNASSIGNED          EQU     0FFH
+DONT_CARE           EQU     0FEH
+
+COMMENT @
+    Conventions for packet structure definitions:
+      o All packet definitions have the common packet at the front.  The common
+        packet contains fields which are common to all packets.
+      o There are two types of packets.  Requests and Answers.  The packet
+        request structures are suffixed with an '_r' and packet answer
+        structures with an '_a'.
+      o All fields in the structures (except the common fields) are prefixed
+        with the initials of the packet name.  This has to be done since the
+        field names must be unique.
+@
+
+common_packet   STRUC                   ; Fields Common to all packets
+    packet_type db      ?               ; Packet type
+common_packet   ENDS
+
+OS_MSDOS        EQU     0
+DEV_SEWELL      EQU     0
+
+server_info_r   STRUC
+    sir_os_type         dw  ?
+    sir_developer       dw  ?
+    sir_product         dw  ?
+    sir_version         dw  ?
+    sir_device_driver   db  ?
+    sir_want_supported  db  ?
+    sir_checksum        db  ?
+    sir_crc             db  ?
+    sir_max_ser_block   dw  ?
+    sir_reserved        db  12 dup(?)
+    sir_client_id       dd  ?
+    sir_last_server_id  dd  ?
+server_info_r   ENDS
+
+server_info_a   STRUC
+    sia_os_type         dw  ?
+    sia_developer       dw  ?
+    sia_product         dw  ?
+    sia_version         dw  ?
+    sia_device_server   db  ?
+    sia_checksum        db  ?
+    sia_crc             db  ?
+    sia_max_ser_block   dw  ?
+    sia_reserved        db  12 dup(?)
+    sia_last_client_id  dd  ?
+    sia_server_id       dd  ?
+server_info_a   ENDS
+
+init_packet_r   STRUC                   ; Init packet request
+                        db  TYPE common_packet DUP (?)
+    ipr_major_version   db  ?           ; Client program major version number
+    ipr_minor_version   db  ?           ; Client program minor version number
+    ipr_dos_version     dw  ?           ; Client DOS version number
+    ipr_max_devices     db  ?           ; Maximum devices master can accept
+    ipr_first_unit      db  ?           ; First unit number in driver on master
+    ;--- IMPORTANT NOTE: ipr_prn_map must immediately precede ipr_mapping because
+    ;--- a block move is used to load up the values.
+    ipr_prn_map         db  3 DUP (?)   ; First redirected LPT port on master
+    ipr_mapping         db  MAX_DEVICES DUP (?)
+init_packet_r   ENDS
+
+
+init_packet_a   STRUC                   ; Init packet answer
+    ipa_major_version   db  ?           ; Server program major version number
+    ipa_minor_version   db  ?           ; Server program minor version number
+    ipa_dos_version     dw  ?           ; Server DOS version
+    ipa_devices         db  ?           ; # of logical devices on remote
+    ;--- IMPORTANT NOTE: ipa_prn_map must immediately precede ipa_mapping because
+    ;--- a block move is used to copy the values.
+    ipa_prn_map         db  3 DUP(?)    ; Mapping of printer ports
+    ipa_mapping         db  MAX_DEVICES DUP (?)
+    ipa_attributes      dw  MAX_DEVICES DUP (?)
+    ipa_multitasker     db  ?
+init_packet_a   ENDS
+
+
+
+media_check_r   STRUC                   ; Media check request
+                    db  TYPE common_packet DUP (?)
+    mcr_unit        db  ?               ; Unit number
+    mcr_media_id    db  ?               ; MS-DOSs notion of media id byte
+media_check_r   ENDS
+
+
+media_check_a   STRUC                   ; Media check answer
+    mca_status      dw  ?               ; Driver status word
+    mca_changed     db  ?               ; Media Changed code
+    mca_volume      db  MAX_VOLUME DUP (?)
+    mca_serial_num  dd  ?
+media_check_a   ENDS
+
+
+
+build_bpb_r     STRUC                   ; Build BPB request
+                    db  TYPE common_packet DUP (?)
+    bbr_unit        db  ?               ; Unit Number
+    bbr_media_id    db  ?               ; MS-DOSs notion of the media id byte
+build_bpb_r     ENDS
+
+
+build_bpb_a     STRUC                   ; Build BPB answer
+    bba_status          dw  ?               ; Device driver status word
+    bba_bpb             bios_parameter_block <>   ; buffer for the bpb
+build_bpb_a     ENDS
+
+
+io_r            STRUC  ; Read/Write/Write-Verify/IOCTL-Read/IOCTL-Write request
+                    db  TYPE common_packet DUP (?)
+    ior_unit        db  ?               ; Unit number
+    ior_media_id    db  ?               ; MS-DOSs notion of the media ID Byte
+    ior_requested   dw  ?               ; Bytes/Sectors requested
+    ior_start       dw  ?               ; Starting sector number
+    ior_huge_start  dd  ?               ; 32-bit starting sector number
+io_r            ENDS
+
+io_a            STRUC  ; Read/Write/Write-Verify/IOCTL-Read/IOCTL-Write answer
+    ioa_status      dw  ?               ; Device driver status word
+    ioa_transfered  dw  ?               ; Bytes/Sectors transfered
+    ioa_volume      db  MAX_VOLUME + 4 DUP (?)
+io_a            ENDS
+
+
+error_r         STRUC                   ; Error packet
+                    db  TYPE common_packet DUP (?)
+    err_block_dvr   db  ?               ; True if block driver
+    err_unit        db  ?               ; Unit number or Id code
+    err_code        db  ?               ; Error code
+    err_data        db  ?               ; Additional information byte
+error_r         ENDS
+
+
+ocrm_r          STRUC                   ; Open/Close/Removable media requests
+                db  TYPE common_packet DUP (?)
+    ocr_unit    db  ?                   ; Unit number
+ocrm_r          ENDS
+
+ocrm_a          STRUC                   ; Open/Close/removable media answers
+    oca_status  dw  ?                   ; Device driver status word
+ocrm_a          ENDS
+
+gen_ioctl_r     STRUC
+                    db  TYPE common_packet DUP (?)
+    gir_unit        db  ?
+    gir_category    db  ?
+    gir_function    db  ?
+gen_ioctl_r     ENDS
+
+gen_ioctl_a     STRUC
+    gia_status  dw  ?                   ; Device driver status word
+gen_ioctl_a     ENDS
+
+bios_r          STRUC                   ; Auxiliary BIOS request (INT 17H) requests
+                    db  ?               ; Byte for packet type
+    bsr_bios_port   db  ?               ; Bios Port number
+    bsr_char        db  ?               ; Character to print
+bios_r          ENDS
+
+bios_a          STRUC                   ; Auxiliary BIOS request (INT 17H) answers
+    bsa_status      db  ?               ; Return status
+bios_a          ENDS
+
+drive_info_r        STRUC
+                    db  TYPE common_packet DUP (?)
+    dir_unit        db  ?   
+drive_info_r        ENDS
+
+drive_info_a       STRUC
+    dia_size        db  10 DUP (?)
+    dia_vol_label   db  12 DUP (?)
+    dia_write_prot  db  ?
+drive_info_a       ENDS
+
+lpt_o_r             STRUC
+                    db  TYPE common_packet DUP (?)
+    lpt_id          db  ?
+    print_count     dw  ?
+    print_data      db  ?
+lpt_o_r             ENDS
+
+lpt_o_a             STRUC
+    lpt_status      dw  ?
+    lpt_transferred dw  ?
+lpt_o_a             ENDS
+
+
+lpt_cmd_r           STRUC
+                    db  TYPE common_packet DUP (?)
+    lpt_id          db  ?
+lpt_cmd_r           ENDS
+
+lpt_cmd_a           STRUC
+    lca_status      dw  ?
+lpt_cmd_a           ENDS
+
+
+MAX_PACKET      EQU     TYPE init_packet_a ; Maximum packet size
+
+; Below are the definitions of the error codes for ERROR_REQ
+
+ER_BAD_MEDIA    EQU     0               ; Unusable media error
+ER_BAD_ID_CODE  EQU     1               ; Bad id_code in auxiliary driver

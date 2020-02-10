@@ -1,0 +1,115 @@
+SUMMARY Translate abbreviated strings to integers.
+
+KEYWORDS mapAbbrStr
+
+USAGE
+
+#include <mapstr.h>
+
+
+// basic lookup structure
+typedef char *MapTxt;
+typedef int MapVal;
+typedef char* (*MapTst) ( char*, char* );
+
+typedef struct {
+    MapTxt label;
+    MapVal value;	// use your favorite enum here
+    } MapItemRec, *MapItemPtr;
+
+MapItemPtr mapAbbrStr (
+    MapTxt szArg,
+    MapItemPtr pTable,
+    MapTst pTest
+    );
+
+DESCRIPTION
+
+The mapAbbrStr routine maps a string to an integer, especially in
+the face of multiple string matches.  It uses an array of
+label and value pairs to define the mapping function, and calls
+a user supplied test routine to actually preform comparisons.
+
+The table argument defines the mapping from labels to values.
+It is terminated with an element having a NULL label.  A pointer
+to this element is returned if no match is found.
+
+If the arg parameter is a perfect match for any of the labels,
+a pointer to the corresponding MapItemRec is returned.	If arg
+is a partial match of any of the labels, a pointer to the first
+MapItemRec is returned unless there are ambiguous matches.  If
+there are ambiguous matches, NULL is returned.
+
+The test routine will be called with the arg parameter as the
+first parameter and one of the labels as the second parameter.
+The test routine must determine if the two strings don't match,
+partially match, or perfectly match.
+
+If the two strings do not match, test must return NULL.  If
+the two string match "perfectly", test must return a the address
+of the terminating null character of its second argument.  This
+indicates a "full" match.  If the two strings partially match,
+any non-NULL pointer can be returned.
+
+SEE ALSO
+
+strprefix
+
+striprefix
+
+
+EXAMPLE
+
+#include <stdlib.h>
+#include <stdio.h>
+
+#include "strpfx.h"
+#include "mapstr.h"
+
+typedef enum {
+    ARG_UNK,
+    ARG_SRC, ARG_DST, ARG_BINARY, ARG_ASCII,
+    ARG_AMBIGUOUS, ARG_DEMO,
+    ARG_BAD }
+    ArgSet;
+
+MapItemRec allow[] = {
+    // "standard" strings
+    { "SRC",	ARG_SRC },
+    { "DST",	ARG_DST	},
+    { "BINARY", ARG_BINARY },
+    { "ASCII",	ARG_ASCII },
+
+    { "AMBIGUOUS", ARG_AMBIGUOUS },
+    { "DEMO",	   ARG_DEMO },
+
+    // "alias" strings
+    { "SOURCE",      ARG_SRC },
+    { "DESTINATION", ARG_DST },
+    { "D",	     ARG_DST },     // exact match on "d" is not ambiguous
+
+    // must be last
+    { NULL,	     ARG_UNK }
+    };
+
+void
+main (
+    int argc,
+    char **argv
+    )
+{
+    MapItemPtr arg;
+
+    for ( ; *argv; argv++ ) {
+
+	arg = mapAbbrStr ( *argv, allow, striprefix );
+
+	if ( arg == NULL )
+	    printf ( "argument %s had multiple ambiguous matches.\n", *argv );
+	else if ( arg->label == NULL )
+	    printf ( "argument %s not in table.\n", *argv );
+	else
+	    printf ( "argument %s matched %s (%d).\n",
+		     *argv, arg->label, arg->value );
+	}
+    }

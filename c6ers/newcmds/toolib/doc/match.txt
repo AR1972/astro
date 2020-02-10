@@ -1,0 +1,21 @@
+
+SUMMARY  match a DOS wildcard pattern against given text
+
+flagType fMatch (pat, text)
+char *pat, *text;
+
+#include <tools.h>
+
+DESCRIPTION
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+

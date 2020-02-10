@@ -1,0 +1,29 @@
+SUMMARY  EnFile 
+
+#include <tools.h>
+
+int EnFile (pat, attr, rtn, args)
+char *pat;
+int attr;
+void (*rtn)();
+unsigned args;
+
+DESCRIPTION
+
+EnFile - apply a procedure to all files that match the input pattern
+
+	pat 	pattern of file to enumerate
+	attr	attribute to see
+	rtn 	routine to call
+	args	arguments to pass to routine
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+

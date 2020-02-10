@@ -1,0 +1,48 @@
+SUMMARY  kbhit zgetch
+
+#include <tools.h>
+
+int kbhit();
+
+char zgetch();
+
+DESCRIPTION
+
+kbhit returns 0 if a character from the keyboard is available otherwise
+non-zero is returned.
+
+zgetch returns the next character typed.  Input is NOT automatically echoed.
+
+RETURN VALUE
+
+
+IMPLEMENTATION
+
+
+SEE ALSO
+
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+/*  #include <stdio.h> is NOT needed for access to putchar from C library
+ *  because including tools.h automatically includes <stdio.h>
+ */
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    char ch;
+
+    while (ch != 's') {
+	ch = '.';
+	 if (!kbhit())
+	    ch = zgetch();
+	 putchar(ch);
+	}
+}

@@ -1,0 +1,17 @@
+
+
+; =========================================================================
+; Microsoft Confidential
+; Copyright (c) Microsoft Corporation 1991
+; All Rights Reserved.
+;
+; This is the file layout for the destination (user) disks.
+
+
+
+;Destination disk: STARTUP.
+
+[disk-0]
+
+;..\disk-2.txt follows
+

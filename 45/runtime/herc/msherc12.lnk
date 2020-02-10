@@ -1,0 +1,5 @@
+fstart.obj   fvars.obj	  stanfnt.obj  +
+setmode.obj  cursor.obj   rwchar.obj   +
+rwdot.obj    gwrite.obj   gscroll.obj  +
+tty.obj      fcommon.obj  fmakeres.obj
+msherc.com /tiny;

@@ -1,0 +1,909 @@
+.comment ===================================================
+.comment IBM DOS Editor de Ayuda
+.comment ===================================================
+.comment 8/2/90 bethpr
+.comment Changed all occurrences of MS-DOS Editor to IBM DOS
+.comment Editor to create IBM flavor of the product. The
+.comment MS-DOS Editor visual freeze version is archived as
+.comment \rev7 in \qbasic.slm.	The IBM DOS Editor version
+.comment will be archived as \ibmrev1 in \qbasic.slm.
+.comment ===================================================
+.comment 7/30/90 bethpr
+.comment Changed Print Dialog box so that both dialog boxes
+.comment say "Selected Text Only" to reflect UI change due
+.comment in Rel.07.  Also, edited Cut and Copy command help
+.comment so that they don't scroll.  Removed the line "The
+.comment Clipboard can only contain one piece of text at a
+.comment time." as is redundant with line that follows, "Each
+.comment time you cut or copy a piece of text to the Clipboard
+.comment it replaces the existing text on the Clipboard."
+.comment 7/24/90 bethpr
+.comment References to QBASIC herein not changed to QBasic;
+.comment appropriate as is.  Used as directory name or filename.
+.comment ===================================================
+.comment 7/17/90 stevesau
+.comment Incorporated QA/copy edits (except error messages).
+.comment ===================================================
+.comment 6/25/90 stevesau
+.comment Incorporated final edit/review comments.
+.comment ===================================================
+.comment 6/15/90 stevesau
+.comment Changed EDIT references to DOS Editor.
+.comment Added File Save context.
+.comment ===================================================
+.comment 5/4 - Bethpr
+.comment Added EDIT error messages; corrected Print dialog
+.comment box errors; moved h.pg$ to last help topic.
+.comment ===================================================
+.comment 4/30 - 5/2 1st edit pass -- Jeffwe
+.comment Global stuff: Initial cap keynames
+.comment Bug fixes: removed duplicate contexts for h.default,
+.comment h.pg1, h.notfound; added h.pg$; fixed line-too-long.
+.comment Other: edited screens (1st pass), some rewording.
+.comment ===================================================
+.comment 4/22-4/24 edits for EDIT -- Bethpr
+.comment I've pooled information from QB45 and BC71 to make
+.comment the EDIT Help file. Error messages are currently
+.comment missing from this file.
+.comment ===================================================
+.comment ------------------------------------------------
+.comment   Help for Menu titles
+.comment ------------------------------------------------
+.context hidGreetingBox
+.context h.pg1
+:nBienvenido al Editor MS-DOS
+  ş Presione Esc para entrar al ambiente del Editor MS-DOS.
+
+  ş Presione Entrar para examinar la Gu¡a de Referencia
+    B sica de MS-DOS, la cual le indica como usar el Editor
+    y el sistema de ayuda para el Editor MS-DOS.
+.comment ------------------------------------------------
+.comment     Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context hidFileOpen
+:nAbrir, cuadro de di logo
+Usado para abrir un archivo existente y editarlo.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄ Abrir ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                 ³  Escriba aqu¡ el nombre
+³ Archivo: ±±±±±±±± ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ del archivo, si est 
+³                                 ³  en el directorio actual
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ (indicado aqu¡), o
+³                                 ³
+³     Archivos        Dirs/Unidad ³
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  Elija aqu¡ un archivo,
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  un directorio o una
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  unidad si el archivo
+³                               ³  est  en otro lugar.
+³        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ ÀÄÄÄÄÄÄÄÄÄÄÄÙ
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Elija <SI>.
+
+Tambi‚n puede seleccionar una unidad nueva y directorio
+escribi‚ndolos en el cuadro de texto "Archivo".
+
+Si desea examinar el contenido de otras unidades y
+directorios, escriba un comod¡n como archivo (as¡ *.TXT)
+en el campo de texto "Archivo", y seleccione una unidad
+nueva o directorio.
+.context hidFileSave
+:nGuardar como, cuadro de di logo
+Se usa para guardar y asignar un nombre al archivo actual.
+ÚÄÄÄÄÄÄÄÄÄÄ Guardar Como ÄÄÄÄÄÄÄÄÄ¿
+³                                 ³  Acepte este archivo o
+³ Archivo: ±±±±±±±± ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ escriba otro nombre.
+³                                 ³
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ El archivo se guardar 
+³                                 ³  en este directorio.
+³            Dirs/Unidad          ³
+³            ±±±±±±±±±±±          ³  Use Dirs/Unidad para
+³            ±±±±±±±±±±± ÄÄÄÄÄÄÄÄÄÄ guardar un archivo en
+³            ±±±±±±±±±±±          ³  una unidad o directorio
+³                                 ³  diferente.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Elija <SI>.
+.context hidFilePrint
+:nImprimir, cuadro de di logo
+Se usa para imprimir todo o parte del documento que se est 
+editando.
+ÚÄÄÄÄÄÄ Imprimir ÄÄÄÄÄÄÄ¿
+³ ± Texto seleccionado ÄÄ Imprime el texto seleccionado.
+³                       ³
+³ ± Imprime ventana ÄÄÄÄÄ Imprime el documento completo.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+Si el cursor est  en la ventana Ayuda y elige el comando
+Imprimir, tendr  las siguientes opciones para imprimir.
+ÚÄÄÄÄÄÄ Imprimir ÄÄÄÄÄÄÄ¿
+³ ± Texto seleccionado ÄÄ Imprime texto de ayuda elegido.
+³                       ³
+³ ± Ventana actual ÄÄÄÄÄÄ Imprime el tema de ayuda entero
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  presentado en la ventana.
+
+El Editor MS-DOS imprime en la impresora conectada al
+dispositivo LPT1 en su computadora.
+
+Info: Seleccione el texto en su documento o en la ventana
+      Ayuda antes de elegir el comando Imprimir. Coloque
+      el cursor al inicio del texto que desea imprimir, y
+      presione May£s+teclas de direcci¢n hasta resaltar
+      todo el texto, y luego elija el comando Imprimir.
+.context hidSearchFind
+:nB£squeda, cuadro de di logo del comando
+Se usa para buscar una cadena de texto especificada.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Buscar ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                   ³   Escriba el texto o
+³ Buscar: ±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄ use el actual.
+³                                   ³
+³ ± May£s/min£s  ± Palabra completa ÄÄ Seleccione el tipo
+³                                   ³   de b£squeda.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   Elija <SI>.
+
+Seleccione "May£s/min£s" para buscar la misma combinaci¢n
+de may£sculas y min£sculas o "Palabra completa" para exclu-
+ir equivalencias dentro de palabras o cadenas de texto.
+"Palabra completa" reconoce equivalencias s¢lo cuando el
+texto buscado est  entre espacios, puntuaci¢n u otros
+caracteres especiales. El texto buscado puede tener hasta
+127 carateres.
+.context hidSearchChange
+:nCambiar, cuadro de di logo
+Se usa para reemplazar una cadena de texto por otra.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Cambiar ÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                    ³ Escriba el texto o
+³    Buscar: ±±±±±±±±±±±±±±±±±±±± ÄÄÄ use el actual.
+³                                    ³
+³ Cambiar a: ±±±±±±±±±±±±±±±±±±±± ÄÄÄ Escriba reemplazo.
+³                                    ³
+³± May£s/min£s ± Palabra completa ÄÄÄ Indique el tipo de
+³                                    ³ b£squeda.
+³<Buscar y verificar> <Cambiar todo>Ä Indique si desea
+³                                    ³ revisar cada cambio
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ o cambiar todo.
+
+Seleccione "May£s/min£s" para buscar la misma combinaci¢n de
+may£sculas y min£sculas o "Palabra completa" para excluir
+equivalencias dentro de palabras o cadenas de texto.
+"Palabra completa" reconoce equivalencias s¢lo cuando el
+texto buscado est  entre espacios, puntuaci¢n u otros
+caracteres especiales. El texto reemplazado puede tener
+hasta 127 caracteres.
+.context hidConfirm
+:nCambiar, cuadro de di logo
+Se ha encontrado texto que coincide con el buscado, y ‚ste
+aparece resaltado en la ventana actual. Usted podr :
+  ş Elegir <Cambiar> para efectuar el reemplazo y seguir
+    buscando.
+  ş Elegir <Omitir> para dejar el texto intacto y seguir
+    buscando.
+  ş Elegir <Cancelar> o presionar Esc para dejar el texto
+    intacto y suspender la b£squeda.
+.context hidOptnsDisplay
+:nPresentar, cuadro de di logo
+Se usa para personalizar la pantalla del Editor MS-DOS.
+                ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄPresentarÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+                ³   ÚÄÄÄÄÄÄÄÄÄÄÄÄ Colores ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³
+Colores elegidos³                      1erPlano  Fondo    ³
+aqu¡...ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ ±±±±±±±±  ±±±±±±±± ³
+                ³ Definir colores para ±±±±±±±±  ±±±±±±±± ³
+...aparecen en  ³ ventana del editor:  ±±±±±±±±  ±±±±±±±± ³
+este bloque de  ³                     ±±±±±±±±  ±±±±±±±± ³
+texto. ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ           ±±±±±±±±  ±±±±±±±± ³
+                ³                                         ³
+                ³  ÚÄÄÄÄÄÄ Opciones de presentaci¢n ÄÄÄÄÄ¿³
+                ³    ± Barras/desplaz.      Altos/tab: ±  ³
+                ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+Presenta u oculta las³    Escriba el n£mero de espacios³
+barras de desplaza-  ³    que Tab avanzar  el cursor.ÄÄÙ
+miento en pantalla.ÄÄÙ
+
+Para establecer las opciones:
+  1. Presione la tecla Tab para mover el cursor al cuadro
+     de di logo Colores u Opciones de presentaci¢n.
+  2. Utilice las teclas de direcci¢n para seleccionar un
+     color o una opci¢n de presentaci¢n.
+  3. Elija <SI> o presione Entrar para guardar y hacer
+     efectivas las opciones seleccionadas.
+
+Las opciones elegidas ser n guardadas y permanecer n
+en efecto la pr¢xima vez que inicie el Editor MS-DOS.
+.context MSG_SearchPathEdit
+:nRuta de Ayuda, cuadro de di logo
+El Editor MS-DOS busca el archivo de ayuda EDIT.HLP en los
+directorios que usted indique en este cuadro de di logo.
+No es necesario especificar la ruta de acceso a Ayuda si ya
+lo ha hecho usando la variable de ambiente PATH de DOS o si
+EDIT.HLP est  en el directorio en uso.
+ÚÄÄÄÄÄÄÄÄÄÄÄ Ruta de Ayuda ÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                      ³
+³  Lugar (ruta) del archivo EDIT.HLP:  ³
+³                                      ³ Escriba la unidad,
+³    ±±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄ y directorio donde
+³                                      ³ se encuentra el
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ archivo EDIT.HLP.
+
+Info: Si el Editor MS-DOS no puede encontrar EDIT.HLP, debe
+      verificar la escritura correcta de dicho directorio.
+.comment ------------------------------------------------
+.comment   End of Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context m.f
+.context m.e
+.context m.s
+.context m.o
+.context m.h
+:nBarra de men£s del Editor MS-DOS
+Uso de los men£s y comandos del Editor MS-DOS:
+
+  ş Para activar men£s y comandos, presione la letra
+    resaltada o use el Mouse en un men£ o comando.
+  ş Para pasar de men£(s) y comando(s) a otro, utilice
+    las teclas de direcci¢n o el Mouse.
+.comment ------------------------------------------------
+.comment   UI Help for Menu Commands and Dialog Support
+.comment ------------------------------------------------
+.context MSG_HelpFileNew
+:nNuevo, comando
+Se usa para crear un documento nuevo. Aparecer  un cuadro
+de di logo si ya tiene abierto un documento. Despu‚s:
+  ş Elija <S¡> para guardar el documento existente.
+  ş Elija <No> para cerrar el documento sin guardarlo.
+  ş Elija <Cancelar> para cancelar el comando Nuevo y
+    regresar al documento existente.
+
+Info: Use comando Abrir para cargar un documento existente.
+.context MSG_HelpFileOpen
+:nAbrir, comando
+Se usa para abrir un documento existente con el objeto de
+modificarlo o imprimirlo.
+
+Info: Use comando Nuevo si desea crear un documento nuevo.
+.context MSG_HelpFileSave
+:nGuardar, comando
+Se usa para guardar la versi¢n actual del documento.
+
+El Editor MS-DOS le pedir  que escriba un nombre si el
+documento no se guard¢ anteriormente. Si un documento
+existente tiene el mismo nombre del que se est  guardando,
+el nuevo ser  sobrescrito encima del documento existente.
+.context MSG_HelpFileSaveAs
+:nGuardar como, comando
+Se usa para guardar un documento como archivo. Si desea
+conservar la versi¢n anterior del documento, escriba un
+nombre nuevo en el cuadro de texto "Archivo".
+.context MSG_HelpFilePrint
+:nImprimir, comando
+Se usa para imprimir parte o todo un documento.
+
+Se puede imprimir:
+  ş Texto seleccionado
+  ş Ventana de Ayuda
+  ş Documento completo
+
+El Editor MS-DOS enviar  la informaci¢n a la impresora que
+est‚ conectada al puerto LPT1 en su computadora.
+
+Info: Seleccione el texto del documento o la ventana de
+      Ayuda antes de elegir el comando Imprimir. Coloque
+      el cursor al principio del texto que desee imprimir,
+      presione May£s+teclas de direcci¢n hasta seleccionar
+      todo el texto y despu‚s elija el comando Imprimir.
+.context MSG_HelpFileExit
+:nSalir, comando
+Se usa para salir del ambiente del Editor de MS-DOS.
+
+Si el documento ha sido modificado desde la £ltima vez que
+se guard¢, el Editor MS-DOS presentar  un cuadro de di logo.
+  ş Elija <S¡> para guardar el documento y sus cambios.
+  ş Elija <No> para descartar los cambios.
+  ş Elija <Cancelar> para cancelar el comando Salir y volver
+    al documento.
+.context MSG_HelpEditCut
+:nCortar, comando
+Use el comando Cortar (o May£s+Supr) para eliminar el texto
+seleccionado y copiarlo al Portapapeles, un lugar temporal
+de almacenamiento.
+
+Despu‚s, podr  usar el comando Pegar (May£s+Ins) e insertar
+el texto a un lugar nuevo. Tambi‚n podr  abrir un documento
+nuevo o existente e insertar el texto ah¡.
+
+El texto permanecer  en el Portapapeles y podr  ser
+reinsertado. Cada vez que corte o copie un trozo de texto,
+el texto nuevo reemplazar  el contenido del Portapapeles.
+
+Info: Para seleccionar texto, coloque el cursor al inicio
+      del texto y presione May£s+teclas de direcci¢n. Para
+      eliminarlo sin copiarlo al Portapapeles, presione la
+      tecla Supr.
+.context MSG_HelpEditCopy
+:nCopiar, comando
+Se usa el comando Copiar (o Ctrl+Ins) para copiar el texto
+seleccionado al Portapapeles. El texto original permanecer 
+intacto.
+
+Despu‚s podr  usar el comando Pegar ( May£s+Ins) e insertar
+el texto a un lugar nuevo. Tambi‚n podr  abrir un documento
+nuevo o un documento existente e insertar el texto ah¡.
+
+Info: Para seleccionar texto, coloque el cursor al inicio
+      del texto y presione May£s+teclas de direcci¢n.
+
+El texto permanecer  en el Portapapeles y podr  ser
+reinsertado. Cada vez que corte o copie un trozo de texto,
+el texto nuevo reemplazar  el contenido del Portapapeles.
+.context MSG_HelpEditPaste
+:nPegar, comando
+Se usa el comando Pegar (May£s+Ins) para insertar un bloque
+de texto desde el Portapapeles a cualquier parte de un
+documento.
+
+Para insertar texto, coloque el cursor donde desee hacer
+la inserci¢n y elija el comando Pegar.
+
+Para reemplazar un texto por otro, seleccione el texto que
+desee reemplazar y elija el comando Pegar.
+
+Info: Para colocar texto en el Portapapeles, use Cortar o
+      Copiar. Despu‚s de insertar texto usando Pegar, el
+      Portapapeles conservar  a£n el texto, y podr  volver
+      a insertarlo.
+.context MSG_HelpEditClear
+:nBorrar, comando
+Use el comando Borrar (o la tecla Supr) para eliminar un
+texto sin copiarlo al Portapapeles. Despu‚s de usar este
+comando, el contenido del Portapapeles permanecer  intacto.
+.context MSG_HelpSearchFind
+:nB£squeda, comando
+Se usa para buscar una cadena de texto. Puede pedir la
+b£squeda de una combinaci¢n de may£sculas y min£sculas
+o Palabra completa.
+
+Si desea reemplazar un texto, use el comando Cambiar.
+.context MSG_HelpSearchChange
+:nCambiar, comando
+Se usa para reemplazar un texto por otro.
+
+Se puede:
+  ş Distinguir entre may£sculas y min£sculas o buscar s¢lo
+    palabras completas al hacer el reemplazo.
+  ş Verificar cada reemplazo antes de hacer el cambio.
+  ş Hacer todos los reemplazos sin verificarlos.
+.context MSG_HelpSearchNext
+:nRepetir b£squeda, comando
+Use comando Repetir b£squeda (o presione F3) para repetir la
+£ltima b£squeda realizada por el comando Buscar o Cambiar.
+
+Si no se ha ejecutado ning£n comando Buscar o Cambiar desde
+que se inici¢ el Editor de MS-DOS, Repetir b£squeda buscar 
+la siguiente aparici¢n de:
+  ş La palabra en que se encuentre el cursor.
+  ş La palabra a la izquierda del cursor, si el cursor no
+    est  dentro de una palabra.
+.context MSG_HelpOptionsDisplay
+:nPresentar, comando
+Se usa para ajustar:
+  ş Los colores de la pantalla
+  ş Las barras de desplazamiento en las ventanas
+  ş El n£mero de espacios que avanza el cursor al presionar
+    la tecla Tab.
+
+Las opciones del comando Presentar permanecer n en efecto
+la pr¢xima vez que se inicie el Editor MS-DOS.
+.context MSG_HelpOptionsPaths
+:nRuta de Ayuda, comando
+Se usa para cambiar los directorios en los que el Editor
+MS-DOS busca el archivo de Ayuda del Editor, EDIT.HLP.
+.context MSG_HelpHelpStarted
+:nIntroducci¢n, comando
+Se usa para obtener informaci¢n acerca de:
+  ş El uso de los men£s, comandos y cuadros de di logo
+    del Editor MS-DOS
+  ş C¢mo obtener Ayuda para el Editor MS-DOS
+  ş El uso de opciones al iniciar el Editor MS-DOS
+  ş Derechos de autor y marcas registradas del Editor MS-DOS
+.context MSG_HelpHelpKeyboard
+:nTeclado, comando
+Se usa para obtener informaci¢n acerca de:
+  ş Las teclas que realizan tareas con el Editor MS-DOS
+  ş Las secuencias de teclas de WordStar que se pueden
+    usar con el Editor MS-DOS
+.context MSG_HelpHelpAbout
+:nAcerca de, comando
+Se usa para presentar el n£mero de versi¢n e informaci¢n
+acerca de los derechos de autor del Editor MS-DOS.
+.context helpSurvivalId
+:nReferencia B sica
+
+ \bUso del Editor MS-DOS:\p
+
+   ş Para activar la barra de men£s del Editor MS-DOS, presione Alt.
+   ş Para activar un men£ o comando, presione la letra resaltada.
+   ş Para ir de un men£ o comando a otro, use las teclas de direcci¢n.
+   ş Para obtener Ayuda del men£, comando o cuadro de di logo
+     seleccionado, presione F1.
+   ş Para salir de Ayuda, presione Esc.
+
+ \bVista r pida del sistema de Ayuda del Editor MS-DOS:\p
+
+   ş Para seleccionar uno de los temas siguientes, presione la tecla Tab o
+     la primera letra del tema. Despu‚s, presione la tecla Entrar para
+     obtener informaci¢n sobre:
+
+     \i\p\aIntroducci¢n\vhelpStartedId\v\i\p  Cargar y usar el Editor MS-DOS y el sistema de Ayuda
+                     de MS-DOS
+     \i\p\aTeclado\vhelpKeyboardId\v\i\p       Modificar y manejar texto y la informaci¢n de Ayuda
+
+ Info: Tambi‚n se puede obtener acceso a estos temas desde el men£ de Ayuda.
+.context helpEditorHelp
+.context helpStartedId
+:nIntroducci¢n
+  \bIntroducci¢n\p  \i\p\aTeclado\vhelpKeyboardId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Esta secci¢n le ayuda a iniciar y usar el Editor MS-DOS.
+ Seleccione uno de los temas siguientes para ver informaci¢n sobre:
+
+   \i\p\aUso de la Ayuda\vhelpOnHelpId\v\i\p
+   \i\p\aUso de los Men£s y comandos\v@sg.men\v\i\p
+   \i\p\aUso de un Cuadro de di logo\v@sg.dia\v\i\p
+   \i\p\aOpciones del Editor MS-DOS\v@sg.opt\v\i\p
+   \i\p\aCopyright y Marcas registradas\v@cccp\v\i\p
+.context @sg.men
+:nUso de los Men£s y Comandos
+  \i\p\aIntroducci¢n\vhelpStartedId\v\i\p  \i\p\aTeclado\vhelpKeyboardId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Use la barra de men£s en la parte superior de la pantalla para seleccionar
+ los men£s y comandos.
+
+ Acci¢n del men£      Con el Mouse...              Con el teclado...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Presentar un men£    Mueva el puntero del Mouse   Presione Alt para resaltar
+                      sobre el nombre del men£,    las letras del men£, y
+                      presione y suelte (haga      presione la letra que
+                      clic) con el bot¢n del       corresponde al men£ que
+                      Mouse.                       desee presentar.
+
+ Elegir un comando    Haga clic en el nombre       Presione la letra que 
+                      del comando.                 aparece resaltada en el
+                                                   nombre del comando.
+
+ Cancelar un comando  Haga clic fuera del men£.    Presione Esc.
+
+ Info: Vea la barra de referencia en la parte inferior de la pantalla para
+       obtener ayuda sobre la tarea en curso. Para elegir cualquier elemento
+       haga clic en ese elemento.
+.context @sg.dia
+:nUso del cuadro de di logo
+  \i\p\aIntroducci¢n\vhelpStartedId\v\i\p  \i\p\aTeclado\vhelpKeyboardId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ El Editor MS-DOS presenta un cuadro de di logo cuando se elijen comandos
+ que disponen de opciones.
+
+ Acci¢n del cuadro    Con el Mouse...              Con el teclado...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Seleccionar un       Mueva el puntero del Mouse   Presione Tab hasta colocar
+ cuadro de texto      al cuadro de texto, haga     el cursor en el cuadro
+ para suministrar     clic con el bot¢n del        de texto.
+ informaci¢n          Mouse.
+
+ Elegir un elemento   Haga doble clic en el        Resalte el elemento
+ en un cuadro de      elemento.                    presionando las teclas
+ lista                                             de direcci¢n, y despu‚s
+                                                   presione Entrar.
+
+ Elegir una opci¢n    Haga clic en la opci¢n.      Mueva el cursor a la
+                                                   opci¢n usando las teclas
+                                                   de direcci¢n.
+
+ Activar o            Haga clic en la casilla.     Use Tab para mover el
+ desactivar                                        cursor a la casilla y
+ una casilla                                       presione la Barra
+                                                   espaciadora.
+
+ Elegir un bot¢n      Haga clic en el bot¢n        Use Tab para mover el
+ de comando           de comando.                  cursor al bot¢n de comando
+                                                   y presione Entrar.
+.context helpOnHelpId
+:nUso de la Ayuda
+  \i\p\aInformaci¢n\vhelpStartedId\v\i\p  \i\p\aTeclado\vhelpKeyboardId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Uso de la Ayuda del Editor MS-DOS:
+
+   ş Para obtener Ayuda del men£, comando o cuadro de di logo del Editor
+     MS-DOS coloque el cursor en el elemento o bot¢n <Ayuda> y presione F1.
+
+   ş Para ver los temas de Ayuda del Editor, presione Alt+Y y despu‚s
+     presione la letra resaltada para elegir el comando Introducci¢n
+     o el comando Teclado.
+
+   ş Para mover el cursor a la ventana de Ayuda, presione F6.
+
+   ş Para desplazar la informaci¢n de Ayuda, presione la tecla AvP g o ReP g.
+
+   ş Para mover el cursor a un tema relacionado, presione Tab o la primera
+     letra del tema. Los temas relacionados est n entre flechas resaltadas
+     (\i \p).
+
+   ş Para ver un tema relacionado, coloque el cursor en cualquier parte del
+     tema y presione F1 o haga clic con el bot¢n derecho del Mouse.
+
+   ş Para cerrar la ventana de Ayuda, presione Esc.
+
+ El Editor MS-DOS guarda los £ltimos 20 temas de Ayuda examinados. Para
+ verlos, presione Alt+F1 o haga clic en el bot¢n <Regresar> varias veces.
+.context EDIT.COM
+.context EDIT
+.context @sg.opt
+:nMS-DOS Editor, Opciones
+  \i\p\aInformaci¢n\vhelpStartedId\v\i\p  \i\p\aTeclado\vhelpKeyboardId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ El comando EDIT ejecuta los archivos, QBASIC.EXE, de ambiente para el
+ Editor MS-DOS y EDIT.COM. Podr  escribir las siguientes opciones de
+ comandos en l¡nea despu‚s del comando EDIT para cargar un archivo o
+ modificar la presentaci¢n de su hardware.
+
+ \bEDIT [archivo] [/B] [/G] [/H] [/NOHI]\p
+
+ Opci¢n      Descripci¢n
+ ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ archivo     Especifica el nombre del archivo que ser  cargado al iniciar
+             el Editor MS-DOS.
+
+ /B          Permite el uso de un monitor compuesto (monocrom tico) con
+             una tarjeta de gr ficos a color. La opci¢n /B presenta el
+             Editor MS-DOS en monocromo si dispone de un monitor a color.
+
+ /G          Hace que el Editor MS-DOS actualice una pantalla CGA lo m s
+             r pido posible (s¢lo para m quinas con monitor CGA). Si ve
+             "nieve" (puntos intermitentes en la pantalla) cuando el editor
+             actualiza la pantalla, significa que su hardware no es compa-
+             tible con esta opci¢n. Si prefiere una pantalla limpia reinicie
+             el Editor sin la opci¢n /G.
+
+ /H          Presenta el n£mero m ximo de l¡neas que su hardware es capaz
+             de producir.
+
+ /NOHI       Permite el uso de un monitor que no acepta alta intensidad.
+             No se debe utilizar en computadoras port tiles "laptop" Compaq.
+.context @cccp
+.context .cccp
+:nCopyright y Marcas Registradas
+  \i\p\aIntroducci¢n\vhelpStartedId\v\i\p  \i\p\aTeclado\vhelpKeyboardId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  La informaci¢n contenida en este documento est  sujeta a cambios sin
+  previo aviso y no representa compromiso alguno por parte de Microsoft
+  Corporation. El software y/o los archivos descritos en este documento se
+  proporcionan bajo un convenio de licencia o de no divulgaci¢n. El software
+  y/o los archivos deben utilizarse o copiarse £nicamente en conformidad
+  con los t‚rminos del mencionado convenio. El usuario puede hacer una copia
+  del software como copia de seguridad. Es ilegal reproducir o transmitir
+  este sistema de Ayuda en pantalla de ninguna manera ni por ning£n medio,
+  ya sea electr¢nico o mec nico, incluyendo fotocopiado, grabaci¢n o sistemas
+  de almacenamiento de datos, sea cual sea el motivo, sin permiso expl¡cito
+  y por escrito de Microsoft Corporation.
+
+  DERECHOS LIMITADOS. El uso por el gobierno de los Estados Unidos est  
+  sujeto a restricciones seg£n (c) (1) (ii) de DFARS 252.227-7013.
+
+  (C) Copyright Microsoft Corporation, 1987-1991.
+      Todos los derechos reservados.
+
+  Microsoft, MS y MS-DOS son marcas registradas.
+
+  La documentaci¢n de Microsoft utiliza el t‚rmino "DOS" para referirse
+  tanto al sistema operativo MS-DOS como al sistema operativo IBM Personal
+  Computer DOS. El nombre de un sistema operativo espec¡fico se utiliza
+  cuando sea necesario para explicar funciones que son pertinentes a un
+  sistema en particular.
+
+  Compaq es una marca registrada de Compaq Computer Corporation.
+
+  IBM es una marca registrada de International Business Machines
+  Corporation.
+
+  WordStar es una marca registrada de MicroPro International Corporation.
+.context helpKeyboardId
+:nTeclado
+  \i\p\aIntroducci¢n\vhelpStartedId\v\i\p  \bTeclado\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Esta secci¢n est  dise¤ada para ayudarle a manejar y editar texto
+ mientras utiliza el Editor MS-DOS.
+
+ Seleccione uno de los temas siguientes para ver informaci¢n sobre:
+
+     \i\p\aM‚todo abreviado, teclas\v@.sk\v\i\p         \i\p\aSeleccionar texto, teclas\v@sel.keys\v\i\p
+     \i\p\aAyuda, teclas\v@.hk\v\i\p                    \i\p\aInsertar y copiar, teclas\v@i.keys\v\i\p
+     \i\p\aMovimiento del cursor, teclas\v@m.keys\v\i\p    \i\p\aEliminar, teclas\v@d.keys\v\i\p
+     \i\p\aDesplazar texto, teclas\v@s.keys\v\i\p          \i\p\aBuscar y cambiar, teclas\v@fc.keys\v\i\p
+
+ El Editor MS-DOS reconoce secuencias de combinaciones de teclas conocidas
+ por los usuarios de otros programas de Microsoft (como Microsoft Word), as¡
+ como las secuencias de combinaciones de teclas para WordStar. Las secuencias
+ de teclas para WordStar que se pueden usar con el Editor MS-DOS, aparecen en
+ la columna derecha de las tablas en tres columnas para secuencias de teclas.
+.context @.sk
+:nM‚todo abreviado, teclas
+  \i\p\aIntroducci¢n\vhelpStartedId\v\i\p  \i\p\aTeclado\vhelpKeyboardId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  ÚÄInsertarÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÚÄCopiarÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Alternar insertar/reemplazar Ins ³ ³ Al Portapapeles         Ctrl+Ins ³
+  ³ L¡nea arriba       Inicio,Ctrl+N ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ L¡nea abajo           Fin+Entrar ³ ÚÄBuscarÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Desde Portapapeles     May£s+Ins ³ ³ Buscar texto            Ctrl+Q,F ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ Repetir b£squeda              F3 ³
+  ÚÄSeleccionarÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ Caracteres/l¡neas   May£s+Flecha ³ ÚÄEliminarÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Palabras       May£s+Ctrl+Flecha ³ ³ L¡nea actual              Ctrl+Y ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ Hasta fin de l¡nea      Ctrl+Q,Y ³
+  ÚÄObtener AyudaÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³ Texto seleccionado    May£s+Supr ³
+  ³ Con men£s y comandos          F1 ³ ³ Borrar texto seleccionado   Supr ³
+  ³ Introducci¢n            May£s+F1 ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+.context @m.keys
+:nMovimiento del cursor, teclas
+  \i\p\aIntroducci¢n\vhelpStartedId\v\i\p  \i\p\aTeclado\vhelpKeyboardId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Un car cter hacia la izquierda                Flecha Izq       Ctrl+S
+ Un car cter hacia la derecha                  Flecha Der       Ctrl+D
+ Una palabra hacia la izquierda                Ctrl+Flecha Izq  Ctrl+A
+ Una palabra hacia la derecha                  Ctrl+Flecha Der  Ctrl+F
+ Una l¡nea hacia arriba                        Flecha Arriba    Ctrl+E
+ Una l¡nea hacia abajo                         Flecha Abajo     Ctrl+X
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Primer nivel de sangr¡a de la l¡nea en uso    Inicio
+ Principio de la l¡nea en uso                                   Ctrl+Q,S
+ Principio de la l¡nea siguiente               Ctrl+Entrar      Ctrl+J
+ Fin de la l¡nea                               Fin              Ctrl+Q,D
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Principio de la ventana                                        Ctrl+Q,E
+ Fin de la ventana                                              Ctrl+Q,X
+ Ir a la ventana siguiente                     F6
+ Aumentar tama¤o de la ventana activa          Alt+M s
+ Reducir tama¤o de la ventana activa           Alt+Menos
+.context @s.keys
+:nDesplazar texto, teclas
+  \i\p\aIntroducci¢n\vhelpStartedId\v\i\p  \i\p\aTeclado\vhelpKeyboardId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Una l¡nea hacia arriba          Ctrl+Flecha Arriba   Ctrl+W
+ Una l¡nea hacia abajo           Ctrl+Flecha Abajo    Ctrl+Z
+ Una p gina hacia arriba         ReP g                Ctrl+R
+ Una p gina hacia abajo          AvP g                Ctrl+C
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ A la izquierda una ventana      Ctrl+ReP g
+ A la derecha una ventana        Ctrl+AvP g
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Fijar marca-textos (4 m ximo)   Ctrl+K,0-3
+ Ir a marca-textos fijados       Ctrl+Q,0-3
+.context @sel.keys
+:nSeleccionar texto, teclas
+  \i\p\aIntroducci¢n\vhelpStartedId\v\i\p  \i\p\aTeclado\vhelpKeyboardId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Un car cter hacia la izquierda         May£s+Flecha Izquierda
+ Un car cter hacia la derecha           May£s+Flecha Derecha
+ Una palabra hacia la izquierda         May£s+Ctrl+Flecha Izquierda
+ Una palabra hacia la derecha           May£s+Ctrl+Flecha Derecha
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ L¡nea en uso                           May£s+Flecha Abajo
+ Una l¡nea hacia arriba                 May£s+Flecha Arriba
+ Una pantalla hacia arriba              May£s+ReP g
+ Una pantalla hacia abajo               May£s+AvP g
+ Hasta el principio del archivo         May£s+Ctrl+Inicio
+ Hasta el final del archivo             May£s+Ctrl+Fin
+.context @i.keys
+:nInsertar y copiar, teclas
+  \i\p\aIntroducci¢n\vhelpStartedId\v\i\p  \i\p\aTeclado\vhelpKeyboardId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Alternar entre modo de insertar y reemplazar         Ins       Ctrl+V
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Copiar texto seleccionado al Portapapeles            Ctrl+Ins
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Borrar texto seleccionado y copiar a Portapapeles    May£s+Supr
+ Borrar l¡nea en uso y copiar a Portapapeles          Ctrl+Y
+ Borrar hasta final de l¡nea y copiar a Portapapeles            Ctrl+Q,Y
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Pegar contenido del Portapapeles                     May£s+Ins
+ Insertar l¡nea en blanco debajo del cursor           Fin+Entrar
+ Insertar l¡nea en blanco encima del cursor                     Inicio,Ctrl+N
+.context @d.keys
+:nEliminar, teclas
+  \i\p\aIntroducci¢n\vhelpStartedId\v\i\p  \i\p\aTeclado\vhelpKeyboardId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Borrar un car cter a la izquierda del cursor         Retroceso      Ctrl+H
+ Borrar un car cter sobre el cursor                   Supr           Ctrl+G
+ Borrar la palabra donde est  el cursor                              Ctrl+T
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Borrar el texto seleccionado                         Supr           Ctrl+G
+ Borrar espacios seguidos en l¡neas seleccionadas     May£s+Tab
+.context @fc.keys
+:nBuscar y cambiar, teclas
+  \i\p\aIntroducci¢n\vhelpStartedId\v\i\p  \i\p\aTeclado\vhelpKeyboardId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Repetir b£squeda del mismo texto   Ctrl+L o F3
+ Buscar texto                       Ctrl+Q,F
+ Cambiar texto                      Ctrl+Q,A
+.context @.hk
+:nAyuda, teclas
+  \i\p\aIntroducci¢n\vhelpStartedId\v\i\p  \i\p\aTeclado\vhelpKeyboardId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Ver Ayuda sobre el ambiente del Editor MS-DOS    F1 (o haga clic con el
+                                                  bot¢n derecho del Mouse)
+ Salir de Ayuda                                   Esc
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Ver la Introducci¢n                              May£s+F1
+ Presentar el men£ de Ayuda                       Alt+Y
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Mover el cursor al siguiente tema de Ayuda       Tab
+ Mover el cursor al tema de Ayuda anterior        May£s+Tab
+ Mover el cursor al siguiente tema que empiece    car cter
+  con el car cter especificado
+ Mover el cursor al tema anterior que empiece     May£s+car cter
+  con el car cter especificado
+ Ver tema de Ayuda anterior (repetir hasta        Alt+F1 (o doble clic
+  20 veces)                                       en bot¢n <Regresar>)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Ver el siguiente tema en el archivo de Ayuda     Ctrl+F1
+ Ver el tema anterior en el archivo de Ayuda      May£s+Ctrl+F1
+.context QB_ER_OM
+.context QB_ER_OS
+.context MSG_OutNearMem
+:nMemoria agotada
+Se necesita m s memoria de la cantidad disponible. Para corregirlo:
+  ş Salga y reduzca el n£mero de b£feres DOS (BUFFERS=)
+    en su archivo CONFIG.SYS. Reinicie su sistema.
+  ş Salga y reduzca el n£mero de programas residentes en memoria.
+  ş Salga y reduzca el n£mero de controladores de dispositivos cargados.
+    Despu‚s, reinicie su sistema.
+.context QB_ER_DF
+:nFallo en dispositivo
+El Editor MS-DOS ha detectado un error en la impresora.
+Aseg£rese de que:
+  ş La impresora est‚ conectada al dispositivo LPT1.
+  ş La luz indicadora "on line" de la impresora est‚ encendida.
+  ş La impresora est‚ enchufada y encendida.
+  ş El cable de la impresora est‚ bien conectado a la
+    impresora y a la computadora.
+.context QB_ER_DTO
+:nExcedido el tiempo de espera del dispositivo
+El Editor MS-DOS no recibi¢ informaci¢n de un dispositivo
+(tal como una impresora) dentro del tiempo de espera necesario.
+Si desea imprimir un documento, aseg£rese que la impresora est‚
+conectada al dispositivo LPT1.
+.context QB_ER_OP
+:nFalta papel
+La impresora no tiene papel, o no est  encendida.
+.context QB_ER_IER
+:nError interno
+Ha ocurrido un error interno en el Editor MS-DOS. Por favor
+debe informar este error a Microsoft.
+.context QB_ER_FNF
+:nNo se encuentra el archivo
+En el cuadro de di logo Abrir, ha especificado un archivo que
+no existe. Verifique que el nombre del archivo est‚ escrito
+correctamente y que haya seleccionado la unidad de disco y el
+directorio correcto.
+.context QB_ER_IOE
+:nError de dispositivo I/O
+Ha utilizado el comando Imprimir del men£ Archivo y ha ocurrido
+un error de impresora. Verifique la impresora.
+.context QB_ER_DFL
+:nDisco lleno
+No hay suficiente espacio en el disco especificado para guardar
+el archivo indicado. Cambie de disco o especifique otro disco
+en el cuadro de lista "Directorios/Unidades".
+.context QB_ER_IFN
+.context QB_ER_BFN
+:nNombre de archivo incorrecto
+El nombre de archivo que ha especificado contiene demasiados
+caracteres o caracteres no v lidos para nombres de archivos.
+.context QB_ER_DNA
+:nDispositivo no disponible
+El dispositivo al que ha intentado obtener acceso no est  en l¡nea
+o no existe. Verifique que el dispositivo est‚ encendido y 
+conectado a la computadora.
+.context QB_ER_PRM
+:nPermiso denegado
+Ha intentado escribir en un disco que est  protegido contra
+escritura o en un archivo de s¢lo-lectura.
+
+Para evitar el conflicto de s¢lo-lectura, utilice otro nombre
+de archivo. Retire la etiqueta o utilice otro disquete si tiene
+una etiqueta de protecci¢n contra escritura.
+.context QB_ER_DNR
+:nEl disco no est  listo
+La unidad est  abierta o no se ha insertado un disquete
+en la unidad.
+.context QB_ER_DME
+:nError f¡sico en el disco
+Se ha detectado un fallo f¡sico en el disquete, o el Editor
+MS-DOS no reconoce el formato del disquete. Utilice otro
+disquete o salga y vuelva a dar formato al disquete.
+.context QB_ER_TMF
+:nDemasiados archivos
+Hay demasiados archivos en el directorio ra¡z. Para resolver
+este problema, salga, cree un subdirectorio y ponga sus
+archivos de documentos en el subdirectorio creado.
+.context QB_ER_PNF
+:nNo se encuentra la ruta de acceso
+El Editor MS-DOS no pudo encontrar la ruta de acceso
+especificada en el cuadro de di logo para los comandos
+Abrir o Guardar como. Verificar la escritura correcta
+de la ruta de acceso.
+.context MSG_DocTooLarge
+:nDocumento demasiado largo
+El Editor MS-DOS no puede cargar o copiar una porci¢n de
+un documento que exceda una longitud de m s de 32,700 l¡neas.
+
+Utilice otro editor para dividir el documento en varios archivos
+m s peque¤os. Si este error ocurre al usar el comando Copiar,
+intente copiar y pegar porciones de texto m s peque¤as.
+.context MSG_NotBlock
+:nLa operaci¢n requiere un disco
+Ha intentado cargar desde, o guardar en un dispositivo
+diferente a un disco (tal como una impresora o teclado).
+.context MSG_NoSearchString
+:nFalta el texto de b£squeda
+El cuadro de texto "Buscar" estaba en blanco al ejecutar un
+comando Buscar o Cambiar. Vuelva al cuadro "Buscar" y escriba
+texto antes de elegir <SI>.
+.context MSG_SwitchDisks
+:nInserte un disquete
+Se ha referido a su unidad de disquete A: siendo ‚sta la
+unidad B:, o viceversa.
+
+Aseg£rese de que el archivo al que desea aplicar este comando
+est‚ en un disco en la unidad de disquete, y elija <SI>.
+El Editor MS-DOS presentar  el nuevo nombre de unidad.
+.context MSG_MatchNotFound
+:nNo se encuentra el texto
+El Editor MS-DOS no pudo encontrar el texto especificado.
+
+El cursor permanecer  en el lugar donde se inici¢ la b£squeda.
+.context MSG_ChangeComplete
+:nCambios finalizados
+Se ha finalizado la tarea de buscar y reemplazar. El cursor
+regres¢ a la posici¢n donde se inici¢ la b£squeda.
+.context MSG_CantSetTabs
+:nNo se pueden fijar tabulaciones
+Cuando se tiene abierto un archivo que contiene tabulaciones
+previamente fijadas, ‚stas no se puede cambiar usando la opci¢n
+"Tabulaciones" del comando Presentar. Guarde el archivo, y
+despu‚s utilice el comando Nuevo para borrar la ventana del Editor.
+Utilice el comando Presentar para fijar la tabulaci¢n y luego
+vuelva a abrir el archivo.
+.context MSG_NotSavedAll
+.context MSG_NotSaved
+:n¨Guardar el archivo cargado?
+El documento actual nunca ha sido guardado o no se ha guardado
+despu‚s de su £ltima modificaci¢n. Podr , ya sea:
+  ş Elegir <S¡> para guardar el documento, incorporando los cambios.
+    Si el documento no tiene nombre, se le pedir  que le asigne
+    un nombre.
+  ş Elegir <No> para descartar los cambios. Si es un documento
+    nuevo que nunca ha sido guardado, <No> descartar 
+    el documento completo.
+  ş Elegir <Cancelar> para anular el comando y volver al
+    documento.
+.context QB_ER_PAE
+:nError de acceso a la ruta/archivo
+Aseg£rese de que la ruta de acceso y el nombre de archivo
+especificado en el cuadro de texto tenga el formato correcto.
+Se puede indicar la unidad de disco y una ruta de acceso
+completa o parcial junto con cualquier nombre de archivo.
+
+Este error tambi‚n puede ocurrir cuando intente guardar un
+archivo que reemplazar¡a un archivo existente que tenga el
+atributo de s¢lo-lectura.
+.context MSG_MustSpecifyName
+:nEspecifique un nombre
+Ha elegido <SI> en un cuadro de di logo cuando el cuadro de
+texto estaba en blanco. Borre este cuadro de Ayuda y escriba
+un nombre de archivo o una cadena de texto en el cuadro de texto.
+.context MSG_Overwrite
+.context h.pg$
+:n¨Escribir encima del archivo existente?
+  ş Elija <S¡> s¢lo si est  seguro que no perder  informaci¢n
+    importante al escribir encima del contenido del documento
+    en el disco, reemplaz ndolo con el contenido del documento
+    en la memoria.
+  ş Elija <No> para volver a presentar el cuadro de di logo y
+    escriba un nombre de archivo diferente para guardar el documento.
+  ş Elija <Cancelar> para anular el comando Guardar como o Salir y
+    volver al documento.

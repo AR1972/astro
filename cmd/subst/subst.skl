@@ -1,0 +1,40 @@
+;/*
+; *                      Microsoft Confidential
+; *                      Copyright (C) Microsoft Corporation 1991
+; *                      All Rights Reserved.
+; */
+
+;SUBST Utility                                                                  ;AN000;
+;Message Service Routine                                                        ;AN000;
+
+:util  SUBST                            ;BEGIN UTIL                     ;AN000;
+
+:class 1                                ;EXTENDED ERRORS                ;AN000;
+;-------                                 ---------------
+;:use  EXTEND3                          ;Path not found
+;:use  EXTEND8                          ;Insufficient memory
+
+:class 2                                ;PARSE ERRORS                   ;AN000;
+;-------                                 ------------
+;:use  PARSE3                           ;Invalid switch
+;:use  PARSE10                          ;Invalid parameter                      ;AN000;
+
+:class A                                ;COMMON & DEFINED MSGS          ;AN000;
+;-------                                 ------------
+:use  1 COMMON1                         ;Incorrect DOS version          ;AN000;
+:def  2 "Incorrect number of parameters",CR,LF                          ;AN000;
+:def  5 "Drive already SUBSTed",CR,LF
+:use 12 COMMON12                        ;Cannot %1 a network drive      ;AN000;
+
+
+; 300 - 399 reserved for options help messages
+:def 300  SUBST /?
+:def 301  SUBST /?
+:def 302  SUBST /?
+:def 303  SUBST /?
+:def 304  SUBST /?
+:def 305  SUBST /?
+:def 306  SUBST /?
+
+:end                                                   ;END UTIL        ;AN000;
+

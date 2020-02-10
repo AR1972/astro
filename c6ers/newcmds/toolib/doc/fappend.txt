@@ -1,0 +1,45 @@
+SUMMARY fappend
+
+#include <tools.h>
+
+char *fappend(pstrSrc, fhDest)
+char *pstrSrc;
+int fhDest;
+
+DESCRIPTION
+
+fappend does a fast append of source to destination.
+
+RETURN VALUE
+
+If successful returns NULL else returns a char pointer to the corresponding
+test of the error.  Also sets errno (see C library).
+
+IMPLEMENTATION
+
+
+SEE ALSO   fcopy fdelete fexpunge 
+
+NOTE
+
+
+EXAMPLE
+
+#include <fcntl.h>  /* to get O_RDWR */
+#include <tools.h>
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    int fhDest;
+    char *pstr;
+
+    /* use open from C library, stdio.h included by tools.h */
+    if ((fhDest = open("temp.hlp", O_RDWR)) != -1) {
+        if ((pstr = fappend("temp.xpl", fhDest)))
+            printf("Error: %s\n");
+        }
+    else
+        printf("Error: can't open destination\n");
+}

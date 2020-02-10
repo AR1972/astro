@@ -1,0 +1,10 @@
+These are files that contain displayable copyright strings that need
+to be modified when updating the copyright
+
+DOSSHELL: \dosshell\inc\about.des
+                   \loader\transmsg.inc
+                   \copyrite.txt
+
+FDISK:    \cmd\fdisk\fdisk.msg
+
+EMM386:   \dev\emm386\emmmes.asm

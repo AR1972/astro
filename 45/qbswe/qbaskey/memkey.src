@@ -1,0 +1,473 @@
+.comment ******************************************************************
+.comment *  Memory Family - QBasic                                        *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments                       *
+.comment ******************************************************************
+.comment *  6/12/90 stevesau                                              *
+.comment *  Incorporated RonS comments                                    *
+.comment ******************************************************************
+.comment *  5/13/90 stevesau                                              *
+.comment *  Combined MKn$/CVn, MKSMBF$/MKDMBF$/CVSMBF/CVDMBF, HEX$/OCT$,  *
+.comment *  LCASE$/UCASE$, LEFT$/RIGHT$, LTRIM$/RTRIM$,                   *
+.comment *  MID$ function/statement, PEEK/POKE, STR$/VAL.                 *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/12/90 stevesau                                              *
+.comment *  Reinserted VARTPR$ (need for PLAY and DRAW X command).        *
+.comment *  Deleted STACK function and statement.                         *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Reinserted VARPTR, VARSEG (need for CALL ABSOLUTE example).   *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Deleted SADD, SETMEM, SSEG, SSEGADD, VARPTR, VARSEG (moved    *
+.comment *  to Unsupported Keywords (Contents).                           *
+.comment *  Deleted CHR$ (combined with ASC in Math family).              *
+.comment *  Moved CVSMBF, etc., from Math family.                         *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Added action lines.						  *
+.comment ******************************************************************
+.comment *  4/17/90 BethPr                                                *
+.comment *  Removed StringAddress, StringAssign, StringLength and         *
+.comment *  StringRelease routines                                        *
+.comment ******************************************************************
+.context CLEAR
+.context @CLEAR
+:nCLEAR, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+St„nger alla filer, t”mmer filbuffertar, rensar alla vanliga variabler,
+s„tter numeriska variabler och matriser till noll, s„tter str„ngvariabler
+till tomma str„ngar, och initierar stacken. CLEAR kan, om s† ”nskas, „ndra
+storleken p† stacken.
+
+\bCLEAR [,,stack&]\p
+
+    ş \bstack&\p    Best„mmer storleken (i byte) p† stackutrymmet f”r
+                programmet.
+
+Exempel:
+    CLEAR ,,2000
+
+Se „ven     \i\p\aERASE\v@ERASE\v\i\p
+.context SEG
+.context @SEG
+:nDEF SEG, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+S„tter den aktuella segmentadressen.
+
+\bDEF SEG [=adress]\p
+
+    ş \badress\p     En segmentadress som anv„nds av BLOAD, BSAVE,
+                 CALL ABSOLUTE, PEEK eller POKE; ett v„rde mellan 0 och
+                 65 535. Om adress saknas †terst„ller DEF SEG den aktuella
+                 segmentadressen till det datasegment som „r standard.
+
+Exempel:
+    DEF SEG = 0
+    Status% = PEEK(&H417)              'L„s tangentbordsstatus.
+    POKE &H417, (Status% XOR &H40)     'ndra status f”r Caps Lock, bit 6.
+
+Se „ven     \i\p\aBSAVE, BLOAD\v@BLOAD\v\i\p    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aPEEK, POKE\v@PEEK\v\i\p
+.context FRE
+.context @FRE
+:nFRE, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar m„ngden tillg„ngligt eller oanv„nt minne (i byte).
+
+\bFRE(numerisktuttryck)\p
+\bFRE(str„nguttryck$)\p
+
+    ş \bnumerisktuttryck\p      Ett v„rde som anger typen av minne:
+
+                            V„rde               FRE returnerar
+                            ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                            -1                  Storleken p† den st”rsta
+                                                matris (ickestr„ng) som
+                                                kan skapas
+                            -2                  Oanv„nt stackutrymme
+			    Alla andra tal	Tillg„ngligt str„ngutrymme
+
+    ş \bstr„nguttryck$\p        Ett str„nguttryck. FRE komprimerar det lediga
+                            str„ngutrymmet till ett enda block, och
+                            returnerar sedan m„ngden tillg„ngligt
+                            str„ngutrymme.
+
+Exempel:
+    PRINT "Str„ngutrymme", FRE("")
+    PRINT "Oanv„nt str„ngutrymme", FRE(-2)
+    PRINT "Matrisutrymme", FRE(-1)
+.context HEX$
+.context @HEX$
+.context OCT$
+.context @OCT$
+:nHEX$, funktion; OCT$, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+HEX$ returnerar en hexadecimal str„ngrepresentation av ett tal.
+OCT$ returnerar en oktal str„ngrepresentation av ett tal.
+
+\bHEX$(numerisktuttryck&)\p
+\bOCT$(numerisktuttryck&)\p
+
+    ş \bnumerisktuttryck&\p      Ett numeriskt uttryck. Uttrycket avrundas
+                             till ett heltal eller l†ngt heltal innan det
+                             ber„knas.
+
+Exempel:
+    INPUT x
+    a$ = HEX$ (x)
+    b$ = OCT$ (x)
+    PRINT x; "decimalt „r "; a$; " hexadecimalt och "; b$; " oktalt."
+.context INSTR
+.context @INSTR
+:nINSTR, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar positionen f”r f”rsta f”rekomsten av en str„ng i en annan str„ng.
+
+\bINSTR([start%,]str„nguttryck1$,str„nguttryck2$)\p
+
+    ş \bstart%\p                Anger teckenpositionen d„r s”kningen ska
+                            b”rja. Om start% saknas startar INSTR vid
+                            position 1.
+    ş \bstr„nguttryck1$\p       Str„ngen som ska genoms”kas.
+    ş \bstr„nguttryck2$\p       Str„ngen som man letar efter.
+
+Exempel:
+    a$ = "Microsoft QBasic"
+    PRINT "Str„ngposition ="; INSTR(1, a$, "QBasic")
+
+Se „ven     \i\p\aLEFT$, RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p    \i\p\aMID$\v@MID$\v\i\p
+.context LCASE$
+.context @LCASE$
+.context UCASE$
+.context @UCASE$
+:nLCASE$, funktion; UCASE$, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Konverterar str„ngar till gemener eller versaler.
+
+\bLCASE$(str„nguttryck$)\p
+\bUCASE$(str„nguttryck$)\p
+
+    ş \bstr„nguttryck$\p    Ett str„nguttryck.
+
+Exempel:
+    Test$ = "ETT ord"
+    PRINT Test$
+    PRINT LCASE$(Test$); " gemener"
+    PRINT UCASE$(Test$); " VERSALER"
+.context LEFT$
+.context @LEFT$
+.context RIGHT$
+.context @RIGHT$
+:nLEFT$, funktion; RIGHT$, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar ett visst antal av de tecken som „r l„ngst till v„nster eller
+l„ngst till h”ger i en str„ng.
+
+\bLEFT$(str„nguttryck$,n%)\p
+\bRIGHT$(str„nguttryck$,n%)\p
+
+    ş \bstr„nguttryck$\p       Ett str„nguttryck.
+    ş \bn%\p                   Antal tecken som ska returneras, med b”rjan
+                           p† det tecken som „r l„ngst till v„nster eller
+                           l„ngst till h”ger i str„ngen.
+
+Exempel:
+    a$ = "Microsoft QBasic"
+    PRINT LEFT$(a$, 5)     'Utdata „r:  Micro
+    PRINT RIGHT$(a$, 5)    'Utdata „r:  Basic
+
+Se „ven     \i\p\aMID$\v@MID$\v\i\p
+.context LEN
+.context @LEN
+:nLEN, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar antalet tecken i en str„ng eller antalet byte som kr„vs f”r att
+lagra en variabel.
+
+\bLEN(str„nguttryck$)\p
+\bLEN(variabel)\p
+
+    ş \bstr„nguttryck$\p       Ett str„nguttryck.
+    ş \bvariabel\p             En variabel som inte „r en str„ng.
+
+Exempel:
+    a$ = "Microsoft QBasic"
+    PRINT LEN(a$)
+
+Se „ven     \i\p\aOPEN\v@OPEN\v\i\p
+.context LTRIM$
+.context @LTRIM$
+.context RTRIM$
+.context @RTRIM$
+:nLTRIM$, funktion; RTRIM$, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Tar bort inledande eller efterf”ljande blanksteg ur en str„ng.
+
+\bLTRIM$(str„nguttryck$)\p
+\bRTRIM$(str„nguttryck$)\p
+
+    ş \bstr„nguttryck$\p    Ett str„nguttryck.
+
+Exempel:
+    a$ = "    Basic    "
+    PRINT "*" + a$ + "*"            'Utdata „r:  *    Basic    *
+    PRINT "*" + LTRIM$(a$) + "*"    'Utdata „r:  *Basic    *
+    PRINT "*" + RTRIM$(a$) + "*"    'Utdata „r:  *    Basic*
+.context MID$
+.context @MID$
+:nMID$, funktion och sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Funktionen MID$ returnerar en del av en str„ng.
+Satsen MID$ byter ut en del av en str„ngvariabel med en annan str„ng.
+
+\bMID$(str„nguttryck$,start%[,l„ngd%])\p
+\bMID$(str„ngvariabel$,start%[,l„ngd%])=str„nguttryck$\p
+
+    ş \bstr„nguttryck$\p       Str„ngen som funktionen MID$ returnerar en
+                           delstr„ng fr†n, eller ers„ttningsstr„ngen som
+                           anv„nds av satsen MID$. Det kan vara vilket
+                           str„nguttryck som helst.
+    ş \bstart%\p               Positionen f”r f”rsta tecknet i delstr„ngen
+                           som ska returneras eller ers„ttas.
+    ş \bl„ngd%\p               Antalet tecken i en delstr„ng. Om l„ngd inte
+                           „r med returnerar eller ers„tter MID$ alla tecken
+                           till h”ger om startpositionen.
+    ş \bstr„ngvariabel$\p      Str„ngvariabeln som „ndras av satsen MID$.
+
+Exempel:
+    a$ = "Var „r Paris?"
+    PRINT MID$(a$, 7, 5)        'Utdata „r:  Paris
+    Text$ = "Paris, Frankrike"
+    PRINT Text$                 'Utdata „r:  Paris, Frankrike
+    MID$(Text$, 8) = "Texas "
+    PRINT Text$                 'Utdata „r:  Paris, Texas
+
+Se „ven     \i\p\aLEFT$, RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p
+.context CVI
+.context @CVI
+.context CVS
+.context @CVS
+.context CVL
+.context @CVL
+.context CVD
+.context @CVD
+.context MKL$
+.context @MKL$
+.context MKI$
+.context @MKI$
+.context MKS$
+.context @MKS$
+.context MKD$
+.context @MKD$
+:nMKn$, funktion; CVn, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MKI$, MKL$, MKS$ och MKD$ konverterar tal till numersika str„ngar som kan
+lagras i FIELD-satsens str„ngvariabler. CVI, CVL, CVS och CVD konverterar
+tillbaka str„ngarna till tal.
+
+\bMKI$(heltalsuttryck%)\p
+\bMKL$(l†ngtHeltalsuttryck&)\p
+\bMKS$(enkelprecisionsuttryck!)\p
+\bMKD$(dubbelprecisionsuttryck#)\p
+\bCVI(2-byte-numeriskStr„ng)\p
+\bCVL(4-byte-numeriskStr„ng)\p
+\bCVS(4-byte-numeriskStr„ng)\p
+\bCVD(8-byte-numeriskStr„ng)\p
+
+    Funktion    Returnerar          Funktion    Returnerar
+    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+    MKI$        En 2-byte str„ng    CVI         Ett heltal
+    MKL$        En 4-byte str„ng    CVL         Ett l†ngt heltal
+    MKS$        En 4-byte str„ng    CVS         Ett enkelprecisionstal
+    MKD$        En 8-byte str„ng    CVD         Ett dubbelprecisionstal
+
+Se „ven     \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aMKSMBF$, MKDMBF$, CVSMBF, CVDMBF\v@CVSMBF\v\i\p
+.context MKDMBF$
+.context @MKDMBF$
+.context MKSMBF$
+.context @MKSMBF$
+.context CVDMBF
+.context @CVDMBF
+.context CVSMBF
+.context @CVSMBF
+:nMKSMBF$, MKDMBF$, CVSMBF, CVDMBF, funktioner
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MKSMBF$ och MKDMBF$ konverterar tal p† IEEE-format till numeriska str„ngar p†
+Microsoft-Binary-format, som kan lagras i FIELD-satsens str„ngvariabler.
+CVSMBF och CVDMBF konverterar tilbaka s†dana str„ngar till tal p† IEEE-format.
+
+\bMKSMBF$(enkelprecisionsuttryck!)\p
+\bMKDMBF$(dubbelprecisionsuttryck#)\p
+\bCVSMBF (4-byte-numeriskStr„ng)\p
+\bCVDMBF (8-byte-numeriskStr„ng)\p
+
+    Funktion    Returnerar
+    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+    MKSMBF$     En str„ng p† 4 byte som inneh†ller ett tal p†
+                Microsoft-Binary-format
+    MKDMBF$     En str„ng p† 8 byte som inneh†ller ett tal p†
+                Microsoft-Binary-format
+    CVSMBF      Ett enkelprecisionstal p† IEEE-format
+    CVDMBF      Ett dubbelprecisionstal p† IEEE-format
+
+    ş De h„r funktionerna „r anv„ndbara om man vill beh†lla datafiler som
+      skapats med „ldre versioner av Basic.
+
+Exempel:
+    TYPE Buffer
+        SngNum AS STRING * 4
+        DblNum AS STRING * 8
+    END TYPE
+    DIM RecBuffer AS Buffer
+    OPEN "TESTDAT.DAT" FOR RANDOM AS #1 LEN = 12
+    SNum = 98.9
+    DNum = 645.3235622#
+    RecBuffer.SngNum = MKSMBF$(SNum)
+    RecBuffer.DblNum = MKDMBF$(DNum)
+    PUT #1, 1, RecBuffer
+    GET #1, 1, RecBuffer
+    CLOSE #1
+    PRINT CVSMBF(RecBuffer.SngNum), CVDMBF(RecBuffer.DblNum)
+
+Se „ven     \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aMKn$, CVn\v@CVS\v\i\p
+.context PEEK
+.context @PEEK
+.context POKE
+.context @POKE
+:nPEEK, funktion; POKE, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PEEK returnerar ett bytev„rde som lagras i en viss plats i minnet.
+POKE skriver ett bytev„rde p† en viss plats i minnet.
+
+\bPEEK(adress)\p
+\bPOKE adress,byte%\p
+
+    ş \badress\p     En byteposition relativt den aktuella segmentadressen
+		 som satts av DEF SEG; ett v„rde mellan 0 och 65 535.
+    ş \bbyte%\p      Ett bytev„rde som ska skrivas p† den angivna platsen
+                 i minnet; ett v„rde mellan 0 och 255.
+
+Exempel:
+    DEF SEG = 0
+    Status% = PEEK(&H417)              'L„s tangentbordsstatus.
+    POKE &H417, (Status% XOR &H40)     'ndra status f”r Caps Lock, bit 6.
+
+Se „ven     \i\p\aDEF SEG\v@SEG\v\i\p
+.context SPACE$
+.context @SPACE$
+:nSPACE$, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar en str„ng med blanksteg.
+
+\bSPACE$(n%)\p
+
+    ş \bn%\p    Antalet blanksteg som du vill ha i str„ngen.
+
+Exempel:
+    FOR i% = 1 TO 5
+        x$ = SPACE$ (i%)
+        PRINT x$; i%
+    NEXT i%
+
+Se „ven     \i\p\aSPC\v@SPC\v\i\p    \i\p\aSTRING$\v@STRING$\v\i\p
+.context STR$
+.context @STR$
+.context VAL
+.context @VAL
+:nSTR$, funktion; VAL, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+STR$ returnerar en str„ngrepresentation f”r ett tal.
+VAL konverterar en str„ngrepresentation f”r ett tal till ett tal.
+
+\bSTR$(numerisktuttryck)\p
+\bVAL(str„nguttryck$)\p
+
+    ş \bnumerisktuttryck\p   Ett numeriskt uttryck.
+    ş \bstr„nguttryck$\p     En str„ngrepresentation f”r ett tal.
+
+Exempel:
+    PRINT "65 decimalt representeras hexadecimalt som ";
+    PRINT "&H" + LTRIM$(STR$(41))
+    PRINT VAL(RIGHT$("Microsoft 1990", 4))
+.context STRING$
+.context @STRING$
+:nSTRING$, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar en str„ng med angiven l„ngd best†ende av ett upprepat tecken.
+
+\bSTRING$(l„ngd%,{ascii-kod% | str„nguttryck$})\p
+
+    ş \bl„ngd%\p               L„ngden p† en str„ng.
+    ş \bascii-kod%\p           ASCII-koden f”r det upprepade tecknet.
+    ş \bstr„nguttryck$\p       Ett str„nguttryck. STRING$ fyller str„ngen
+                           med f”rsta tecknet i str„nguttryck$.
+
+Exempel:
+    PRINT STRING$(5, "-");
+    PRINT "Hej";
+    PRINT STRING$(5, "-")
+
+Se „ven     \i\p\aASCII-teckenkoder\v@ac\v\i\p
+.context VARSEG
+.context @VARSEG
+.context VARPTR
+.context @VARPTR
+:nVARPTR, funktion; VARSEG, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+VARPTR returnerar en variabels f”rskjutningsadress.
+VARSEG returnerar en variabels segmentadress.
+
+\bVARPTR(variabelnamn)\p
+\bVARSEG(variabelnamn)\p
+
+    ş \bvariabelnamn\p    En Basic-variabel.
+
+Se „ven     \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aDEF SEG\v@SEG\v\i\p    \i\p\aPEEK, POKE\v@PEEK\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p
+.context VARPTR$
+.context @VARPTR$
+:nVARPTR$, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar en str„ngrepresentation av en variabels adress, som sedan kan
+anv„ndas i satserna DRAW och PLAY.
+
+\bVARPTR$(kommandostr„ng$)\p
+
+    ş \bkommandostr„ng$\p    En str„ngvariabel som inneh†ller kommandona
+                         DRAW eller PLAY.
+
+Exempel:
+    Scale$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(Scale$)
+    NEXT i%
+
+Se „ven    \i\p\aDRAW\v@DRAW\v\i\p   \i\p\aPLAY (Musik)\v@PLAY\v\i\p    \i\p\aVARPTR, VARSEG\v@VARPTR\v\i\p

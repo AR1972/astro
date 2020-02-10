@@ -1,0 +1,38 @@
+SUMMARY delnode
+
+#include <tools.h>
+
+int delnode(pstr)
+char *pstr;
+
+DESCRIPTION
+
+delnode deletes files and directories, and its subdirectories, specified
+by the string.
+
+RETURN VALUE
+
+delnode returns TRUE if one or more files/directories were deleted else
+FALSE.
+
+IMPLEMENTATION
+
+forfile is used to enumerate the files/directories matching pstr.
+
+SEE ALSO
+
+
+NOTE
+
+Hidden and system are deleted if they match the pattern.
+
+EXAMPLE
+
+#include <tools.h>
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    printf("%d\n", delnode("deleted"));
+}

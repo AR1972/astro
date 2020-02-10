@@ -1,0 +1,584 @@
+.comment ==============================================================
+.comment QBasic Environment Help
+.comment  This file contains Environment Help (for menus,
+.comment  dialog boxes, etc.). These are not error messages
+.comment ==============================================================
+.comment 25/11/91 Comments cleared
+.comment      --Martinju
+.comment ==============================================================
+.context hidGreetingBox
+:nV„lkommen till QBasic
+  ş Tryck p† Esc f”r att starta programmeringsmilj”n i
+    QBasic.
+
+  ş Tryck p† Returtangenten f”r att se Nyb”rjarhj„lp i
+    QBasic. Nyb”rjarhj„lp hj„lper dig att b”rja anv„nda
+    QBasic och QBasic Hj„lp.
+.comment ------------------------------------------------
+.comment     Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context hidFileOpen
+:nDialogrutan ™ppna
+Anv„nds f”r att ”ppna en existerande programfil.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄ ™ppna ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                 ³  Skriv namnet p† filen
+³ Filnamn: ±±±±±±±± ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ h„r, om filen finns i
+³                                 ³  den aktuella katalogen
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ  (som syns h„r),
+³                                 ³
+³      Filer     Kataloger/Enheter³         eller
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  Ange enhet, katalog
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  och fil h„r, om filen
+³                               ³  finns n†gon annanstans.
+³        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÀÄÄÄÄÄÄÄÄÄÄÄÙ
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  V„lj <OK>.
+
+Man kan ocks† v„lja en ny enhet och katalog genom att skriva
+dem i textrutan Filnamn.
+
+Om du vill bl„ddra igenom inneh†llet i andra kataloger och
+enheter, kan du skriva ett filnamn med jokertecken
+(som i *.BAS) i textrutan Filnamn, och v„lja en annan enhet
+eller katalog.
+
+Obs! Om du vill ”ppna en fil som skapats med GW-BASIC eller
+     BASICA m†ste filen ha sparats i GW-BASIC eller BASICA
+     med v„xeln A.
+.context hidFileSave
+:nDialogrutan Spara som
+Anv„nds f”r att spara och ge namn p† den aktuella filen.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄ Spara som ÄÄÄÄÄÄÄÄÄ¿
+³                                ³  Acceptera filnamnet
+³ Filnamn: ±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄ eller skriv ett nytt
+³                                ³  namn h„r.
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ  Filen sparas i den h„r
+³                                ³  katalogen.
+³         Kataloger/Enheter      ³
+³           ±±±±±±±±±±±  ÄÄÄÄÄÄÄÄÄ Ange h„r i vilken enhet
+³           ±±±±±±±±±±±          ³  eller katalog som filen
+³           ±±±±±±±±±±±          ³  ska sparas.
+³                                ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  V„lj <OK>.
+.context hidFilePrint
+:nDialogrutan Skriv ut
+Anv„nds f”r att skriva ut hela eller delar av ett program
+eller ett hj„lpavsnitt. F”rs„kra dig om att skrivaren som
+„r ansluten till LPT1-porten p† din dator „r p† och f„rdig
+f”r utskrift. V„lj sedan ett av f”ljande alternativ och
+tryck p† Retur:
+ÚÄÄÄÄÄÄÄÄ Skriv ut ÄÄÄÄÄ¿
+³ ± Markerad text ÄÄÄÄÄÄÄ Skriver ut markerad text.
+³                       ³
+³ ± Aktuellt f”nster ÄÄÄÄ Skriver ut inneh†llet i det
+³                       ³  aktuella f”nstret.
+³ ± Hela programmet ÄÄÄÄÄ Skriver ut hela det aktuella
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  programmet.
+
+Alternativet Hela programmet „r inte tillg„ngligt om du
+v„ljer Skriv ut n„r mark”ren „r i Hj„lpf”nstret.
+
+Tips: Markera texten i ditt program eller i Hj„lpf”nstret
+      innan du v„ljer kommandot Skriv ut. Placera mark”ren
+      i b”rjan av den text du t„nker skriva ut. Tryck p†
+      Skift+mark”rtangenterna tills hela texten „r markerad,
+      och v„lj kommandot Skriv ut.
+.context hidNewProc
+:nDialogrutan Ny funktion eller Nytt delprogram
+Anv„nds f”r att skapa en ny funktion eller en nytt
+delprogram. Skriv in namnet p† den nya funktionen eller
+delprogrammet (h”gst 40 tecken) i textrutan, och v„lj <OK>.
+
+Beskrivande namn hj„lper dig att komma ih†g hur proceduren
+anv„nds, och hj„lper dig att undvika namn som redan „r
+upptagna.
+.context hidViewSubs
+:nDialogrutan Funktioner & delprogram
+Anv„nds f”r att redigera eller ta bort funktioner och
+delprogram.
+ÚÄÄÄÄÄFunktioner & delprogramÄÄÄÄ¿
+³ V„lj programdel att redigera:  ³  V„lj en programdel h„r.
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄ Modulniv†n kommer f”rst
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±  ³  och „r skriven med
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±  ³  versaler. procedurer
+³                                ³  markeras genom indrag.
+³ XXX „r xxxxxxxxxxxxxxxx ÄÄÄÄÄÄÄÄ Beskriver vald
+³                                ³  programdel.
+³  <Redigera>    <Radera> ÄÄÄÄÄÄÄÄ V„lj om du vill redigera
+³                                ³  eller ta bort vald
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  programdel.
+
+Om du v„ljer <Redigera> visar QBasic
+proceduren i det aktiva f”nstret.
+.context hidSearchFind
+:nDialogrutan S”k
+Anv„nds f”r att s”ka efter en specifik textstr„ng.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ S”k ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                   ³  Skriv in str„ngen
+³ S”k efter: ±±±±±±±±±±±±±±±±±±±± ÄÄÄ eller anv„nd den fr†n
+³                                   ³  f”reg†ende s”kningen.
+³ ± VERSALER/gemener ± Hela ord ÄÄÄÄÄ V„lj s”ks„tt.
+³                                   ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  V„lj <OK>.
+
+V„lj Matcha VERSALER/gemener eller Hela ord om det har
+betydelse vid s”kningen. Hela ord utesluter matchningar
+inom ord och str„ngar genom att bara godk„nna str„ngar
+som „r omgiven av blanksteg, skiljetecken, eller andra
+specialtecken. S”ktexten kan inneh†lla h”gst 127 tecken.
+.context hidSearchChange
+:nDialogrutan Ers„tt
+Anv„nds f”r att ers„tta en textstr„ng med en annan.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Ers„tt ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                   ³
+³ S”k efter:  ±±±±±±±±±±±±±±±±±±±± ÄÄ Skriv in str„ngarna
+³                                   ³  eller anv„nd dem fr†n
+³ Ers„tt med: ±±±±±±±±±±±±±±±±±±±± ÄÄ f”reg†ende s”kningen.
+³                                   ³
+³ ± VERSALER/gemener ± Hela ord ÄÄÄÄÄ V„lj s”ks„tt.
+³                                   ³
+³ <S”k & Bekr„fta> <Ers„tt allt> ÄÄÄÄ V„lj om du vill
+³                                   ³  bekr„fta
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ers„ttningarna eller
+				       ers„tta allt.
+
+V„lj Matcha VERSALER/gemener eller Hela ord om det har
+betydelse vid s”kningen. Hela ord utesluter matchningar
+inom ord och str„ngar genom att bara godk„nna str„ngar
+som „r omgiven av blanksteg, skiljetecken, eller andra
+specialtecken. S”ktexten kan inneh†lla h”gst 127 tecken.
+.context hidConfirm
+:nDialogrutan Ers„tt
+Str„ngen har hittats och „r markerad i det aktiva f”nstret.
+Du har f”ljande alternativ:
+  ş V„lj <Ers„tt> f”r att ers„tta och forts„tta
+    s”ka.
+  ş V„lj <Hoppa ”ver> f”r att l„mna texten utan „ndringar
+    och forts„tta s”ka.
+  ş V„lj <Avbryt> f”r att l„mna texten utan „ndringar och
+    sluta s”ka.
+.context hidOptnsDisplay
+:nDialogrutan Sk„rm
+Anv„nds f”r att anpassa sk„rmen i QBasic.
+		 ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄSk„rmÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+		 ³ ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ F„rger ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+		 ³                     F”rgrund  Bakgrund ³
+		 ³ ± Normal text       ±±±±±±±±  ±±±±±±±± ³
+		 ³                     ±±±±±±±±  ±±±±±±±± ³
+De f„rger du   ÄÄÄ± Aktuell sats      ±±±±±±±±  ±±±±±±±± ³
+v„ljer h„r       ³                                        ³
+kommer att     ÄÄÄ± Brytpunktsrader                      ³
+ljusmarkera text ³                                        ³
+vid fels”kning.  ³ ÚÄÄÄÄÄÄÄÄÄÄSk„rmalternativÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+		 ³   ± Rullningslister      Tabbl„gen: ±  ³
+		 ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+D”ljer eller visar   ³                                 ³
+rullningslister n„r  ³                 Ange tabbl„ngd.ÄÙ
+f”nster visas.ÄÄÄÄÄÄÄÙ
+
+
+V„lj alternativ s† h„r:
+  1. Tryck p† Tab-tangenten f”r att flytta mark”ren till
+     alternativrutan F„rger eller alternativrutan
+     Sk„rmalternativ.
+  2. Anv„nd mark”rtangenterna f”r att v„lja en f„rg eller
+     ett sk„rmalternativ.
+  3. V„lj <OK> eller tryck p† Retur f”r att spara de
+     alternativ du valt.
+
+Inst„llningarna sparas och finns kvar n„sta g†ng du startar
+QBasic.
+.context MSG_SearchPathInterp
+:nDialogrutan S”kv„g till Hj„lp
+QBasic s”ker efter hj„lpfilen QBASIC.HLP i de kataloger
+du anger i den h„r dialogrutan. Du beh”ver inte v„lja
+S”kv„g till hj„lp om du redan har gjort det med kommandot
+PATH i DOS, eller om QBASIC.HLP „r i den
+aktuella katalogen.
+ÚÄÄÄÄÄÄÄÄÄÄ S”kv„g till Hj„lp ÄÄÄÄÄÄÄÄÄÄ¿
+³                                       ³
+³      S”kv„g f”r filen QBASIC.HLP:     ³
+³                                       ³  Skriv in enhet
+³      ±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄ och katalog
+³                                       ³  d„r QBASIC.HLP
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  finns.
+
+Tips: Om QBasic inte kan hitta QBASIC.HLP, b”r du
+      kontrollera att du skrivit in r„tt katalognamn.
+.comment ------------------------------------------------
+.comment   End of Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context m.f
+.context m.e
+.context m.v
+.context m.s
+.context m.r
+.context m.d
+.context m.o
+.context m.h
+:nMenyraden i QBasic
+S† h„r anv„nder man menyer och kommandon i QBasic:
+
+  ş Om du vill aktivera menyer och kommandon, trycker du
+    antingen p† den tangent som motsvarar den ljusmarkerade
+    bokstaven eller ocks† klickar du p† en meny eller ett
+    kommando med musen.
+  ş Om du vill f”rflytta dig mellan menyer och kommandon,
+    anv„nder du mark”rtangenterna eller musen.
+.comment ------------------------------------------------
+.comment   UI Help for Menu Commands and Dialog Support
+.comment ------------------------------------------------
+.context MSG_HelpFileNew
+:nKommandot Nytt
+Anv„nds n„r du vill skapa ett nytt program. En dialogruta
+visas om du redan har ett program ”ppet. I s† fall:
+  ş V„lj <Ja> f”r att spara programmet.
+  ş V„lj <Nej> f”r att st„nga programmet utan att spara det.
+  ş V„lj <Avbryt> f”r att avbryta kommandot Nytt och g†
+    tillbaka till programmet.
+
+Tips: Anv„nd kommandot ™ppna f”r att ladda ett befintligt
+      program.
+.context MSG_HelpFileOpen
+:nKommandot ™ppna
+Anv„nds f”r att ladda ett program s† att du kan k”ra det
+eller „ndra i det.
+
+Anv„nd kommandot Nytt f”r att skapa ett nytt program.
+
+Obs! Om du vill ”ppna en fil som skapats med GW-BASIC eller
+     BASICA m†ste filen ha sparats i GW-BASIC eller BASICA
+     med alternativet ,A.
+.context MSG_HelpFileSave
+:nKommandot Spara
+Anv„nds f”r att spara den aktuella versionen av ett program .
+
+Du anmodas ange ett filnamn om du inte har sparat programmet
+tidigare. Om ett existerande program har samma namn som det
+program som h†ller p† att sparas, kommer det existerande
+programmet att skrivas ”ver.
+.context MSG_HelpFileSaveAs
+:nKommandot Spara som
+Anv„nds f”r att spara den aktuella versionen av ett program.
+Ange ett nytt namn i textrutan Filnamn om du vill beh†lla
+den tidigare versionen.
+.context MSG_HelpFilePrint
+:nKommandot Skriv ut
+Anv„nds f”r att skriva ut hela eller delar av ett program.
+
+Man kan skriva ut:
+  ş Markerad text.
+  ş Inneh†llet i det aktiva f”nstret.
+  ş Hela det aktuella programmet (inklusive procedurer).
+
+QBasic skriver ut p† den skrivare som „r ansluten till
+LPT1-porten.
+
+Tips: Markera texten i programmet eller i Hj„lpf”nstret
+      innan du v„ljer kommandot Skriv ut. Placera mark”ren
+      i b”rjan av den text du t„nker skriva ut. Tryck p†
+      Skift+mark”rtangenterna tills hela texten „r markerad,
+      och v„lj kommandot Skriv ut.
+.context MSG_HelpFileExit
+:nKommandot Avsluta
+Anv„nds f”r att l„mna QBasic och †terg† till DOS.
+
+Om din programfil har „ndrats sedan du sparade den sist,
+visar QBasic en dialogruta.
+  ş V„lj <Ja> f”r att spara aktuell version av programmet.
+  ş V„lj <Nej> f”r att ”verge „ndringarna.
+  ş V„lj <Avbryt> f”r att avbryta kommandot Avsluta och
+    †terg† till programmet.
+.context MSG_HelpEditCut
+:nKommandot Klipp ut
+Anv„nd Klipp ut (eller tryck p† Skift+Del) f”r att ta bort
+markerad text och spara den tillf„lligt i Urklipp.
+
+Sedan kan du anv„nda Klistra in (Skift+Ins) f”r att infoga
+texten p† ett annat st„lle i det aktiva f”nstret. Du kan
+ocks† ”ppna en ny eller existerande programfil och infoga
+texten.
+
+Texten finns fortfarande i Urklipp och kan klistras in igen.
+Varje g†ng du klipper ut eller kopierar text kommer den nya
+texten att ers„tta texten i Urklipp.
+
+Tips: Om du vill markera text, placerar du mark”ren i
+      b”rjan av texten och trycker p†
+      Skift+mark”rtangenterna. Om du vill ta bort markerad
+      text utan att kopiera den till Urklipp trycker du p†
+      Del-tangenten.
+.context MSG_HelpEditCopy
+:nKommandot Kopiera
+Anv„nd Kopiera (eller tryck p† Ctrl+Ins) f”r att kopiera
+markerad text och l„gga den i Urklipp. Den ursprungliga
+texten f”rblir of”r„ndrad.
+
+Sedan kan du anv„nda Klistra in (Skift+Ins) f”r att infoga
+texten p† ett annat st„lle i det aktiva f”nstret. Du kan
+ocks† ”ppna en ny eller existerande programfil och infoga
+texten d„r.
+
+Tips: Om du vill markera text, placerar du mark”ren i
+      b”rjan av texten och trycker p†
+      Skift+mark”rtangenterna.
+
+Texten finns fortfarande i Urklipp och kan klistras in igen.
+Varje g†ng du klipper ut eller kopierar text kommer den
+nya texten att ers„tta texten i Urklipp.
+.context MSG_HelpEditPaste
+:nKommandot Klistra in
+Anv„nd Klistra in (eller tryck p† Skift+Ins) f”r att infoga
+ett textblock fr†n Urklipp p† vilken plats som helst i det
+aktiva f”nstret.
+
+Om du vill infoga text, kan du placera mark”ren d„r du vill
+att texten ska infogas och v„lja Klistra in.
+
+Om du vill ers„tta en text med en annan, kan du markera
+texten som ska ers„ttas och v„lja Klistra in.
+
+Tips: Om du vill l„gga text i Urklipp, anv„nder du Klipp ut
+      eller Kopiera. Efter att du infogat text med hj„lp av
+      Klistra in finns texten fortfarande kvar i Urklipp och
+      kan klistras in igen.
+.context MSG_HelpEditClear
+:nKommandot Radera
+Anv„nd Radera (eller tryck p† Del-tangenten) om du vill ta
+bort markerad text utan att kopiera den till Urklipp.
+Inneh†llet i Urklipp f”rblir of”r„ndrat.
+.context MSG_HelpEditNewSub
+:nKommandot Nytt delprogram
+Anv„nds f”r att skapa ett nytt delprogram.
+
+Skriv in ett namn p† proceduren i dialogrutan Nytt
+delprogram. QBasic infogar satserna SUB och END SUB
+i delprogrammet och visar det i redigeringsf”nstret.
+
+Om du vill se eller redigera andra delar av programmet,
+anv„nder du kommandot Funktioner & delprogram i Se-menyn
+(eller trycker p† F2).
+
+Tips: Du kan ocks† skapa ett delprogram genom att anv„nda
+      nyckelordet SUB i QBasic.
+.context MSG_HelpEditNewFunc
+:nKommandot Ny funktion
+Anv„nds f”r att skapa en ny funktion.
+
+Skriv in ett namn p† proceduren i dialogrutan Ny funktion.
+QBasic infogar satserna FUNCTION och END FUNCTION f”r
+funktionen och visar den i redigeringsf”nstret.
+
+Om du vill se eller redigera andra delar av programmet, kan
+du anv„nda kommandot Funktioner & delprogram i Se-menyn
+(eller trycka p† F2).
+
+Tips: Du kan ocks† skapa en funktion genom att anv„nda
+      nyckelordet FUNCTION i QBasic.
+.context MSG_HelpViewSubs
+:nKommandot Funktioner & delprogram
+Anv„nds f”r att visa, redigera eller ta bort en funktion
+eller ett delprogram.
+
+Tips: Om du vill visa eller redigera tv† olika funktioner
+      eller delprogram samtidigt, v„ljer du Delad sk„rm
+      fr†n Se-menyn och anv„nder kommandot Funktioner &
+      delprogram f”r att visa procedurerna i tv† f”nster.
+.context MSG_HelpViewSplit
+:nKommandot Delad sk„rm
+Anv„nds f”r att dela f”nstret horisontellt, s† att man kan
+arbeta med tv† delar av programmet samtidigt.
+
+Anv„nd F6 och Skift+F6 f”r att flytta mellan f”nstren:
+  ş F6 flyttar mark”ren ned†t.
+  ş Skift+F6 flyttar mark”ren upp†t.
+
+Om du vill st„nga ett av f”nstrena, placerar du mark”ren
+i det f”nster som du vill ha kvar och v„ljer Delad sk„rm
+igen.
+
+Om du vill „ndra storlek p† det aktiva f”nstret med en mus,
+kan du dra f”nsterramen upp†t eller ned†t.
+
+Om du vill „ndra storlek p† det aktiva f”nstret med
+tangentbordet, kan du anv„nda:
+  ş Alt+Plus(+)  f”r att expandera det en rad.
+  ş Alt+Minus(-) f”r att krympa det en rad.
+  ş Ctrl+F10     f”r att expandera det s† det fyller
+		 sk„rmen, eller f”r att †terg† till dess
+		 tidigare storlek.
+.context MSG_HelpViewOutputScreen
+:nKommandot Utdatask„rm
+Anv„nd kommandot Utdatask„rm (eller tryck p† F4) f”r att se
+progammets utdatask„rm. Utdatask„rmen visar resultatet
+n„r ett program k”rs i QBasic.
+
+Tryck p† valfri tangent f”r att †terg† till QBasic
+efter att ha sett utdatask„rmen.
+.context MSG_HelpSearchFind
+:nKommandot S”k
+Anv„nds f”r att s”ka efter en textstr„ng. Du kan v„lja
+Matcha VERSALER/gemener eller Hela ord om det har betydelse
+vid s”kningen.
+
+Anv„nd Ers„tt f”r att ers„tta en str„ng.
+.context MSG_HelpSearchChange
+:nKommandot Ers„tt
+Anv„nds f”r att ers„tta en textstr„ng med en annan.
+
+Du har f”ljande alternativ:
+  ş V„lj Matcha VERSALER/gemener eller g”r en
+    helordss”kning.
+  ş Bekr„fta ers„ttningarna innan de utf”rs.
+  ş Ers„tt allt utan att bekr„fta varje ers„ttning.
+.context MSG_HelpSearchNext
+:nKommandot Upprepa s”kning
+Anv„nd Upprepa s”kning (eller tryck p† F3) f”r att upprepa
+den den senaste s”kningen (utf”rd genom ett av kommandona
+S”k och Ers„tt).
+
+Om inget av kommandona S”k eller Ers„tt har utf”rts sedan
+QBasic startades, s”ker kommandot Upprepa s”kning efter
+n„sta f”rekomst av:
+  ş Det ord som mark”ren st†r p†.
+  ş Det ord som „r till v„nster om mark”ren, om mark”ren
+    inte st†r p† ett ord.
+.context MSG_HelpRunStart
+:nKommandot Starta
+Anv„nd Starta (eller tryck p† Skift+F5) f”r att starta en
+k”rning av ett program med b”rjan p† den f”rsta
+exekverbara satsen i huvudmodulen.
+
+Om du stoppar ett program medan det k”rs, kommer Starta att
+radera all data som matats in och starta programmet fr†n
+b”rjan.
+.context MSG_HelpRunRestart
+:nKommandot Starta om
+Anv„nds f”r att f”rbereda ett program att starta fr†n
+b”rjan igen. Starta om raderar den data du matat in medan
+programmet k”rde, och markerar den f”rsta exekverbara
+satsen.
+.context MSG_HelpRunContinue
+:nKommandot Forts„tt
+Anv„nd Forts„tt (eller tryck p† F5) f”r att forts„tta
+k”rningen av ett program efter att det stoppats. Forts„tt
+raderar inte den data du matat in medan programmet k”rde,
+och startar programmet fr†n den sist exekverade satsen
+ist„llet f”r fr†n b”rjan.
+
+Forts„tt anv„nds ofta f”r att forts„tta en
+programexekvering efter en brytpunkt.
+.context MSG_HelpDebugStep
+:nKommandot Stega
+Anv„nd Stega (eller tryck p† F8) f”r att k”ra en enda
+sats i programmet. Med Stega kan du stega dig genom en
+programexekvering, inklusive procedurer, ett steg i taget.
+.context MSG_HelpDebugPStep
+:nKommandot Procedurstega
+Anv„nd Procedurstega (eller tryck p† F10) f”r att k”ra en
+enda sats i programmet. Procedurer r„knas som enskilda
+satser och k”rs d„rmed helt f„rdigt, oberoende av storlek.
+
+Med Procedurstega kan du, som med kommandot Stega, stega
+dig genom en programexekvering, men du slipper se de
+procedurer som du vet fungerar.
+.context MSG_HelpDebugTraceOn
+:nKommandot Sp†ra
+Anv„nds f”r att markera varje sats i programmet allt
+eftersom det exekveras. P† det s„ttet kan du observera
+programfl”det. Tryck p† Ctrl+Break f”r att avbryta
+programexekveringen.
+.context MSG_HelpDebugToggleBp
+:nKommandot Brytpunkt
+Anv„nd kommandot Brytpunkt (eller tryck p† F9) f”r att
+s„tta in och ta bort brytpunkter.
+Brytpunkter „r mark”rer som placeras i programmets satser.
+Om du k”r ett program och det kommer till en brytpunkt,
+stannar det p† den satsen. QBasic ljusmarkerar
+brytpunktsraden.
+
+G”r s† h„r f”r att s„tta in och ta bort en brytpunkt:
+  1. Flytta mark”ren till den rad du vill ha brytpunkten p†,
+     eller till en ljusmarkerad brytpunktsrad.
+  2. V„lj Brytpunkt (eller tryck p† F9).
+
+S„tt in en brytpunkt p† det st„lle i ett program d„r du
+misst„nker att det „r n†got fel, och g”r s† h„r:
+  ş Skriv ut variablers v„rde i Direkt-f”nstret.
+  ş Stega dig genom programmet med b”rjan fr†n brytpunkten.
+.context MSG_HelpDebugClearAllBp
+:nKommandot Ta bort brytpunkter
+Anv„nds f”r att ta bort alla brytpunkter ur ett program.
+
+Anv„nd Brytpunkt (eller tryck p† F9) f”r att st„nga av
+enstaka brytpunkter.
+.context MSG_HelpDebugSetNextStmt
+:nKommandot N„sta sats
+Anv„nds f”r att „ndra programexekveringen s† att n„sta sats
+som ska exekveras „r den som mark”ren st†r p†.
+.context MSG_HelpOptionsDisplay
+:nKommandot Sk„rm
+Anv„nds f”r att st„lla in:
+  ş Sk„rmbildens f„rger.
+  ş Rullningslister i f”nster.
+  ş Tabbl„ngd.
+
+Inst„llningarna sparas och finns kvar n„sta g†ng du startar
+QBasic.
+.context MSG_HelpOptionsPaths
+:nKommandot S”kv„g till Hj„lp
+Anv„nds f”r ange i vilken katalog hj„lpfilen QBASIC.HLP
+finns.
+.context MSG_HelpOptionsSyntax
+:nKommandot Syntaxkontroll
+Anv„nds f”r att s„tta p† och st„nga av syntaxkontrollen.
+N„r syntaxkontrollen „r p† g”r QBasic f”ljande n„r du
+skriver in en rad med kod:
+  1. Kontrollerar om raden inneh†ller syntaxfel.
+  2. Formaterar raden.
+  3. ™vers„tter raden till exekverbar form om syntaxen
+     st„mmer.
+.context MSG_HelpHelpIndex
+:nKommandot Index
+Anv„nds f”r att visa Index till Hj„lp. Index till Hj„lp „r
+en alfabetisk lista ”ver hj„lpavsnitten, inklusive
+nyckelorden i Qbasic. Var och en av termerna „r l„nkade till
+ytterligare information.
+
+G”r s† h„r f”r att f† hj„lp:
+  1. V„lj kommandot Index i ?-menyn.
+  2. Tryck p† den tangent som motsvarar f”rsta bokstaven i
+     hj„lpavsnittet.
+  3. Flytta mark”ren till det avsnitt som du vill ha hj„lp
+     om och tryck sedan p† F1.
+.context MSG_HelpHelpContents
+:nKommandot Inneh†ll
+Anv„nds f”r att visa inneh†llsf”rteckningen i Hj„lp.
+Inneh†llsf”rteckningen i Hj„lp inneh†ller en f”rteckning
+”ver de avsnitt som behandlas i Hj„lp.
+
+G”r s† h„r f”r att f† hj„lp om de avsnitt som finns i
+inneh†llsf”rteckningen:
+  1. V„lj kommandot Inneh†ll i Hj„lp-menyn.
+  2. Tryck p† den bokstavstangent som motsvarar den f”rsta
+     bokstaven i hj„lpavsnittet. Upprepa tills ”nskat
+     avsnitt markeras.
+  3. Tryck p† F1.
+.context MSG_HelpHelpSyntax
+:nKommandot Avsnitt
+Anv„nds f”r att visa information om ett avsnitt som best„ms
+av mark”rens aktuella placering. Avsnittet som mark”ren
+befinner sig p† „r en del av kommandot.
+
+Du kan ocks† f† fram hj„lp om ett avsnitt genom att trycka
+p† F1 eller klicka p† h”gerknappen p† musen.
+.context MSG_HelpHelpHelp
+:nKommandot Anv„nda Hj„lp
+Anv„nds f”r att visa avsnittet som handlar om hur man
+anv„nder Hj„lp. Anv„nda Hj„lp beskriver hur man anv„nder
+musen eller tangentbordet f”r att f† hj„lp om ett avsnitt
+som visas p† sk„rmen i QBasic.
+.context MSG_HelpHelpAbout
+:nKommandot Om
+Anv„nd Om f”r att se versionsnummer och information om
+copyright f”r QBasic.

@@ -1,0 +1,142 @@
+DESCRIPTION 
+GLOBAL_INFO 
+	{
+	CHARACTER 
+	NO_OVERLAP 
+	CC_COMPILED 
+	}
+
+MODULE uifile 
+	{
+	DIALOG dlgFileOpen AT (6, 2, 67, 20) 
+	CAB_NAME CABFileOpen 
+	HELP_ID hidFileOpen 
+	DIALOG_PROC FDlgLoadFile 
+	TMC_INIT tmcNull 
+		{
+		TEXT "Datei~name:" AT (1, 1, 11, 1) 
+		EDIT AT (13, 1, 50, 1) TMC_IMPORT tmcSzFileName ARG szFileName 
+
+		DUMMY_TEXT "~Dateien" AT (21, 4, 8, 1) 
+		LIST_BOX AT (1, 5, 45, 10) TMC tmcListFiles COMBO 
+			LIST_BOX_PROC  DIR 
+		TRACKING_TEXT AT (1, 3, 64, 1) 
+		DUMMY_TEXT "~Verz./Laufw." AT (50, 4, 14, 1) 
+		LIST_BOX AT (48, 5, 16, 10) ARG szDir 
+			LIST_BOX_PROC  DIR 
+		OK_BUTTON AT (11, 17, 6, 1) ACTION DISMISS_CAB DEFAULT 
+		CANCEL_BUTTON AT (25, 17, 13, 1) DISMISS
+		PUSH_BUTTON "~Hilfe" AT (45, 17, 9, 1) TMC_IMPORT tmcHelp
+		GROUP_BOX "" AT (12, 0, 52, 3) 
+		}
+
+	DIALOG dlgFileSave AT (19, 3, 42, 18) 
+	CAB_NAME CABFileSave 
+	HELP_ID hidFileSave 
+	DIALOG_PROC FDlgSaveCreateFile 
+	TMC_INIT tmcNull 
+	SUB_DIALOG sabSaveAll = fSaveAll 
+	SUB_DIALOG sabSaveNil = fSaveAll + fSaveNil 
+		{
+		TEXT "Datei~name:" AT (1, 1, 11, 1) 
+		EDIT AT (13, 1, 25, 1) TMC_IMPORT tmcSzFileName ARG szFileName 
+
+		IF fSaveNil
+			LIST_BOX AT (35, 3, 5, 4) COMBO 
+				LIST_BOX_PROC  DIR
+		ENDIF 
+		TRACKING_TEXT AT (1, 3, 39, 1) 
+		DUMMY_TEXT "~Verz./Laufw." AT (13, 4, 13, 1) 
+		LIST_BOX AT (12, 5, 16, 9) ARG szDir 
+			LIST_BOX_PROC  DIR 
+		OK_BUTTON AT (2, 15, 6, 1) ACTION DISMISS_CAB DEFAULT
+		CANCEL_BUTTON AT (13, 15, 13, 1) DISMISS
+		PUSH_BUTTON "~Hilfe" AT (30, 15, 9, 1) TMC_IMPORT tmcHelp 
+		GROUP_BOX "" AT (12, 0, 27, 3) 
+		}
+
+	DIALOG dlgFilePrint AT (20, 7, 34, 9) 
+	CAB_NAME CABFilePrint 
+	HELP_ID hidFilePrint 
+	TMC_INIT tmcNull 
+	SUB_DIALOG sabPrintQbas = fPrintWindow + fPrintQbas 
+	SUB_DIALOG sabPrintQedit = fPrintQedit 
+	SUB_DIALOG sabPrintHelp = fPrintWindow 
+		{
+		RADIO_GROUP 
+			ARG  oFilePrintWhat 
+			{
+			RADIO_BUTTON "Markierter Text " AT (6, 1, 22, 1) VALUE isFilePrintSelectedText
+			RADIO_BUTTON "" AT (6, 2, 6, 1) VALUE isFilePrintCurrentWindow
+			IF fPrintQbas 
+				RADIO_BUTTON "Ganzes Programm" AT (6, 3, 22, 1) VALUE isFilePrintCurrentModule
+			ENDIF
+			}
+		IF fPrintWindow
+			TEXT "Aktuelles Fenster" AT (10, 2, 18, 1)
+		ENDIF 
+		IF fPrintQedit 
+			TEXT "Ganzes Dokument" AT (10, 2, 18, 1)
+		ENDIF 
+
+		OK_BUTTON AT (1, 6, 6, 1) DISMISS_CAB DEFAULT
+		CANCEL_BUTTON AT (8, 6, 13, 1) DISMISS 
+		PUSH_BUTTON "~Hilfe" AT (22, 6, 9, 1) TMC_IMPORT tmcHelp 
+		}
+
+
+	DIALOG dlgFilePrintQH AT ( 7, 6, 68, 12)
+	CAB_NAME CABFilePrintQH
+	HELP_ID hidFilePrint
+	DIALOG_PROC FDlgFilePrintQH
+	TMC_INIT tmcNull
+      {
+		TEXT "Drucken des angezeigten Themas nach:" AT (4, 1, 37, 1)
+
+      RADIO_GROUP TMC tmcFilePrintQHDest
+	 ARG  oFilePrintQHDest
+	 {
+	 RADIO_BUTTON "D~rucker an" AT (5, 3, 15, 1) ACTION TMC tmcQHPrinter VALUE isFilePrintQHPrinter
+	 RADIO_BUTTON "~Datei" AT (5, 4, 20, 1) ACTION TMC tmcQHFile VALUE isFilePrintQHFile
+	 }
+		TEXT "LPT1" AT (21, 3, 8, 1) TMC tmcFilePrintQHPort
+
+		TEXT "Dateiname:" AT (4, 6, 11, 1) TMC tmcFileName
+
+		GROUP_BOX "" AT (16, 5, 34, 3)
+		EDIT AT (18, 6, 31, 1) TMC tmcFilePrintQHEdit ARG szPrintFile
+
+		OK_BUTTON AT (1, 9, 6, 1) DISMISS_CAB DEFAULT
+		CANCEL_BUTTON AT (10, 9, 13, 1) DISMISS
+		PUSH_BUTTON "Drucker ~einrichten ... " AT (25, 9, 27, 1) ACTION TMC tmcPrintSetup
+		PUSH_BUTTON "~Hilfe " AT (54, 9, 10, 1) TMC_IMPORT tmcHelp
+      }
+
+
+	DIALOG dlgPrintSetup AT (19, 8, 46, 11)
+	CAB_NAME CABPrintSetup
+	HELP_ID hidPrintSet
+	TMC_INIT tmcNull
+      {
+		TEXT "Folgenden Druckeranschluá verwenden:" AT (3, 1, 37, 1)
+
+      RADIO_GROUP
+	 ARG  oPrintSetupPort
+	 {
+	 RADIO_BUTTON "LPT~1" AT (7,  3, 10, 1) VALUE isPrintSetupLPT1
+	 RADIO_BUTTON "LPT~2" AT (7,  4, 10, 1) VALUE isPrintSetupLPT2
+	 RADIO_BUTTON "LPT~3" AT (7,  5, 10, 1) VALUE isPrintSetupLPT3
+	 RADIO_BUTTON "~COM1" AT (25, 3, 10, 1) VALUE isPrintSetupCOM1
+	 RADIO_BUTTON "C~OM2" AT (25, 4, 10, 1) VALUE isPrintSetupCOM2
+	 }
+
+		OK_BUTTON AT (3, 8, 6, 1) DISMISS_CAB DEFAULT
+		CANCEL_BUTTON AT (15, 8, 13, 1) DISMISS
+		PUSH_BUTTON "~Hilfe " AT (32, 8, 10, 1) TMC_IMPORT tmcHelp
+      }
+
+
+   }
+
+
+END_DESCRIPTION 

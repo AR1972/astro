@@ -1,0 +1,15 @@
+prompts.lib
+y
++error.obj&
++header.obj&
++message.obj&
++mstring.obj&
++dfltprmt.obj&
++dskerror.obj&
++dskprmpt.obj&
++fmtstat.obj&
++display.obj&
++newscr.obj&
++gage.obj;
+
+

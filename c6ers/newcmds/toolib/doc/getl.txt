@@ -1,0 +1,85 @@
+SUMMARY getlinit getl getlpos
+
+#include <tools.h>
+
+void getlinit(pbuf, len, fh)
+char far *pbuf;
+int len;
+int fh;     /* file handle NOT a pointer to FILE */
+
+int getl(pstrDest, len)
+char *pstrDest;
+int len;
+
+long getlpos();
+
+DESCRIPTION
+
+getlinit, getl and getlpos are very fast routines for reading a file.
+
+getlinit stores its input for later use by getl.  pbuf is a long pointer to
+an area of size len that will be used as an input buffer when reading from
+the specified file.
+
+getl gets the next line of input and stores the '\0' terminated string at
+pstrDest; len is maximum number of characters that should be returned.
+returns zero if EOF else returns non-zero.  Tabs are expanded.  \n are removed.
+\r are NOT removed.  If returned line contains \r, the non-zero return
+value is 1.
+
+getlpos returns the current stream postion of the input.
+
+RETURN VALUE
+
+See above.
+
+IMPLEMENTATION
+
+
+SEE ALSO  fgetl fputl open (from C library)
+
+NOTE
+
+These routines use a file handle, an int, not a pointer to FILE as to
+fgetl and fputl.  Hence do NOT use pathopen to open the file (see example
+below).
+
+EXAMPLE
+
+#include <fcntl.h>      /* needed for access to open */
+#include <sys\types.h>  /* needed for access to open */
+#include <sys\stat.h>   /* needed for access to open */
+#include <io.h>         /* needed for access to open */
+#include <tools.h>
+
+#define BUFLEN 256
+char strPath[MAXPATHLEN];
+char bufInput[BUFLEN];
+char strLine[BUFLEN];
+long lPos;
+
+mygetl(p, len)
+char *p;
+int len;
+{
+    lPos = getlpos();
+    return getl(p, len);
+}
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    int fh;
+
+    /*  use open not pathopen because getlinit needs int not pointer to FILE
+     *  use findpath to expand USER environment variable
+     */
+    if (findpath("$USER:\\tools.ini", strPath, TRUE) &&
+        (fh = open(strPath, O_RDONLY | O_BINARY)) != -1) {
+        printf("Expanded pathname: %s\n", strPath);
+        getlinit((char far *)bufInput, BUFLEN, fh);
+        while (mygetl(strLine, BUFLEN) != NULL)
+            printf("%08ld %s\n", lPos, strLine);
+        }
+}

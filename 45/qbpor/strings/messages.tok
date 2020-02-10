@@ -1,0 +1,36 @@
+#
+# tokens for messages.src - used for qbasic exe files in DOS 5.
+#
+# Created 4th October 1990 by Terry Farrell (TerryF)
+#  [1] 06-11-90 - Updated to new messages.inc
+#
+#
+# Note: Only the messages with R60??? in the files messages.inc are
+#       relevant for DOS 5 (thats why they are the only ones tokenised).
+#
+# To reproduce messages.inc from messages.src using messages.tok type the
+# following:
+#
+# TOK -f messages.tok messages.src > messages.inc
+#
+
+
+
+	  [[QBMESS_1]]='- estouro de pilha'
+	  [[QBMESS_2]]='- ponto flutuante nao carregado'
+	  [[QBMESS_3]]='- inteiro dividido por 0'
+	  [[QBMESS_4]]='erro de tempo de execu‡ao R6005'
+	  [[QBMESS_5]]='- mem¢ria insuficiente para a exec'
+	  [[QBMESS_6]]='erro de tempo de execu‡ao R6006'
+	  [[QBMESS_7]]='- formato inv lido na exec'
+	  [[QBMESS_8]]='erro de tempo de execu‡ao R6007'
+	  [[QBMESS_9]]='- ambiente inv lido na exec'
+	  [[QBMESS_10]]='- espa‡o insuficiente para argumentos'
+	  [[QBMESS_11]]='- espa‡o insuficiente para o ambiente'
+	  [[QBMESS_12]]='- uso inv lido do ponteiro near (pr¢ximo)'
+	  [[QBMESS_13]]='- uso inv lido do ponteiro far (distante)'
+	  [[QBMESS_14]]='- control-BREAK encontrado'
+	  [[QBMESS_15]]='- interrup‡ao inesperada'
+
+# The space should be left at the end of the following string.
+	  [[QBMESS_16]]='erro na execu‡ao'

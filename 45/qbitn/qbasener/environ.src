@@ -1,0 +1,638 @@
+.context hidGreetingBox
+:nBenvenuti in QBASIC
+  ş Premere Esc per entrare nell'ambiente
+    QBASIC.
+
+  ş Premere Invio per visualizzare la Guida rapida di
+    QBASIC. La Guida rapida fornisce informazioni
+    sull'utilizzo dell'ambiente QBASIC e del suo sistema
+    di guida.
+.context hidFileOpen
+:nFinestra di dialogo Apri
+Viene usata per aprire un file di programma gi… esistente.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Apri ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                 ³  Digitare qui il nome
+³ Nome del file: ±±±±±±±±   ÄÄÄÄÄÄÄ del file se si trova
+³                                 ³  nella directory
+³                                 ³  corrente
+³ C:\\DOS  ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ (indicata qui), oppure
+³                                 ³
+³      File            Dir/Unit…  ³
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³ se il file si trova
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³ in un'altra directory,
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³ occorre selezionare il
+³                                 ³ file, la directory o
+³                               ³ l'unit… in questo punto.
+³        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÀÄÄÄÄÄÄÄÄÄÄÄÙ
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ Scegliere "OK".
+
+E' possibile, inoltre, selezionare un'unit… ed una
+directory nuove digitandole nella casella di testo
+"Nome del file".
+
+Per sfogliare il contenuto delle altre unit… e directory,
+digitare un nome di file utilizzando un carattere jolly
+(ad esempio *.BAS) nella casella di testo "Nome del file"
+e selezionare un'unit… o directory nuova.
+
+Nota   Per aprire un file creato con GW-BASIC o BASICA, il
+       file deve essere salvato in GW-BASIC o BASICA usando
+       l'opzione ,A.
+.context hidFileSave
+:nFinestra di dialogo Salva con nome
+Viene usata per salvare ed assegnare un
+nome al file corrente.
+ÚÄÄÄÄÄÄÄÄÄSalva con nomeÄÄÄÄÄÄÄÄÄÄ¿
+³                                 ³ Utilizzare questo nome
+³ Nome del file: ±±±±±±±± ÄÄÄÄÄÄÄÄ di file oppure digitarne
+³                                 ³ uno nuovo.
+³                                 ³
+³ C:\\DOS   ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Il file verr… salvato
+³                                 ³ in questa directory.
+³          Dir/Unit…              ³
+³          ±±±±±±±±±±±            ³ Usare Dir/Unit… per
+³          ±±±±±±±±±±±   ÄÄÄÄÄÄÄÄÄ salvare in una
+³          ±±±±±±±±±±±            ³ directory o unit…
+³                                 ³ differenti.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ Scegliere "OK".
+.context hidFilePrint
+:nFinestra di dialogo Stampa
+Viene usata per stampare il programma intero, parte di
+esso o un argomento della guida. Controllare
+che la stampante sia collegata alla periferica LPT1 del
+computer e che sia accesa e pronta per la stampa, quindi
+scegliere una delle seguenti opzioni e premere Invio:
+ÚÄÄÄÄÄÄÄÄÄÄ Stampa ÄÄÄÄÄÄÄÄÄÄ¿
+³ ± Solo testo selezionato ÄÄ Stampa il testo selezionato.
+³                            ³ Stampa una procedura o del
+³ ± Finestra corrente ÄÄÄÄÄÄÄ testo dalla finestra
+³                            ³ corrente.
+³ ± Programma intero ÄÄÄÄÄÄÄÄ Stampa tutto il programma
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ corrente.
+
+L'opzione "Programma intero" non Š disponibile
+se viene selezionato il comando Stampa quando
+il cursore Š posizionato nella finestra di guida.
+
+Suggerimento    Selezionare il testo nel programma
+                oppure la finestra di guida prima di
+                scegliere il comando Stampa. Posizionare
+                il cursore all'inizio del testo che si
+                desidera stampare, premere Maiusc+tasti
+                di DIREZIONE per evidenziare il testo
+                e quindi scegliere il comando Stampa.
+.context hidNewProc
+:nFinestra di dialogo Nuova SUB o FUNCTION
+Viene usata per creare una nuova procedura SUB o FUNCTION.
+Inserire il nome della nuova procedura (massimo 40
+caratteri) nella casella di testo. Scegliere "OK".
+
+La scelta di un nome descrittivo per la procedura
+aiuter… a ricordarne l'utilizzo e ridurr… la
+possibilit… di usare il nome di una procedura
+gi… esistente o di una variabile.
+.context hidViewSubs
+:nFinestra di dialogo SUBs
+Viene usata per modificare o eliminare le procedure
+SUB e FUNCTION.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ SUBs ÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³ Scegliere il programma         ³ Selezionare un programma.
+³ da modificare:                 ³ Il modulo viene per primo
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±± Ä ed in maiuscolo, le
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±  ³ procedure sono rientrate.
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±  ³
+³                                ³
+³ XXX Š xxxxxxxxxxxxxxxx ÄÄÄÄÄÄÄÄ  Descrive il programma
+³                                ³  selezionato.
+³  <Finestra attiva>  <Elimina> Ä  Scegliere se modificare
+³                                ³  o eliminare il programma
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  selezionato.
+
+Se si sceglie "Finestra attiva", QBASIC visualizza la
+procedura nella finestra attiva.
+.context hidSearchFind
+:nFinestra di dialogo Trova
+Viene usata per trovare una stringa
+di testo specifica.
+                                Inserire la stringa
+                                o utilizzare quella
+                                gi… esistente.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Trova ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³
+³                                        ³ ³
+³ Trova: ±±±±±±±±±±±±±±±±±±±±   ÄÄÄÄÄÄÄÄÄÄÙ
+³                                        ³
+³ ± Maiuscole/Minuscole ± Parola intera ÄÄ Selezionare una
+³                                        ³  delle seguenti
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  opzioni.
+                                            Scegliere "OK".
+
+Selezionare "Maiuscole/Minuscole" perch‚ la ricerca sia
+sensibile alle maiuscole, oppure "Parola intera" per
+escludere la corrispondenza nell'ambito di parole o
+stringhe. L'opzione "Parola intera" riconosce la
+corrispondenza solo se il testo di destinazione
+Š preceduto o seguito da spazi, punteggiatura o
+altri caratteri speciali. La stringa da trovare
+non deve superare i 127 caratteri.
+.context hidSearchChange
+:nFinestra di dialogo Cambia
+Viene usata per sostituire una stringa di testo
+con un altro testo.
+                               Inserire la stringa
+                               o utilizzare quella
+                               gi… esistente.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Cambia ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³
+³                                       ³ ³
+³ Trova    : ±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄÙ  Inserire la
+³                                       ³    sostituzione.
+³ Cambia in: ±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄÄÄÄÙ
+³                                       ³
+³ ± Maiuscole/Minuscole ± Parola intera ÄÄÄ Selezionare una
+³                                       ³    delle seguenti
+³ <Trova e Verifica>    <Cambia tutto> ÄÄÄ¿ opzioni.
+³                                       ³  ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³
+                                           ³
+                                    Scegliere se si
+                                    desidera controllare o
+                                    meno le modifiche prima
+                                    di apportarle.
+
+Selezionare "Maiuscole/Minuscole" perch‚ la ricerca sia
+sensibile alle maiuscole, oppure "Parola intera" per
+escludere la corrispondenza nell'ambito di parole o
+stringhe. L'opzione "Parola intera" riconosce la
+corrispondenza solo se il testo di destinazione
+Š preceduto o seguito da spazi, punteggiatura o
+altri caratteri speciali. La stringa da trovare
+non deve superare i 127 caratteri.
+.context hidConfirm
+:nFinestra di dialogo cambia
+Una corrispondenza Š stata trovata ed evidenziata nella
+finestra di dialogo attiva. E' possibile:
+  ş Scegliere "Cambia" per effettuare la sostituzione e
+    continuare la ricerca.
+  ş Scegliere "Salta" per non modificare il testo e
+    continuare la ricerca.
+  ş Scegliere "Annulla" o premere Esc per non modificare il
+    testo e non continuare la ricerca.
+.context hidOptnsDisplay
+:nFinestra di dialogo Schermo
+Viene usata per personalizzare lo schermo di QBASIC.
+
+ I colori scelti qui...
+ ÚÄÄÙ
+ ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Schermo ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+ ³  ³ ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Colori ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³
+ ³  ³                                                     ³
+ ³  ³                         Primo piano  Sfondo         ³
+ ³  ³                         ±±±±±±±±     ±±±±±±±±       ³
+ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ      ±±±±±±±±     ±±±±±±±±       ³
+    ³ Colori scelti per la    ±±±±±±±±     ±±±±±±±±       ³
+    ³ finestra dell'editor di ±±±±±±±±     ±±±±±±±±       ³
+    ³ testo                  ±±±±±±±±     ±±±±±±±±       ³
+  ÚÄÄÄÄÄÄÄÄÄÄÄÄÙ              ±±±±±±±±     ±±±±±±±±       ³
+  ³ ³                                                     ³
+  ³ ³ ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Opzioni schermo ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³
+  ³ ³   ± Barre di scorrimento  Punti di tabulazione: ±   ³
+  ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³     ³    Nasconde o mostra                        ³
+  ÀÄ¿   ÀÄ   le barre sullo                  ÚÄÄÄÄÄÄÄÄÙ
+    ³        schermo.                        ³
+ ... sono riportati su      Inserire il numero di spazi
+ questo blocco di testo.    di cui si desidera far avanzare
+                            il cursore premendo Tab.
+
+
+Come impostare le opzioni:
+  1. Premere Tab per spostare il cursore e scegliere i
+     Colori o nella casella "Opzioni schermo".
+  2. Usare i tasti di DIREZIONE per selezionare un colore
+     o un'opzione di visualizzazione.
+  3. Scegliere "OK" o premere Invio per salvare le opzioni
+     selezionate.
+
+Le opzioni selezionate e salvate rimangono attive anche
+all'avvio successivo di QBASIC.
+.context MSG_SearchPathInterp
+:nFinestra di dialogo Percorso di guida
+QBASIC cerca il file di guida QBASIC.HLP nelle directory
+che verranno indicate in questa finestra di dialogo. Non Š
+necessario impostare il percorso di guida se ci• Š gi…
+stato fatto usando la variabile di ambiente PATH in DOS
+o se il file QBASIC.HLP si trova nella directory corrente.
+
+                                   Inserire unit…
+                                   e directory in cui
+                                   si trova QBASIC.HLP.
+ÚÄÄÄÄÄÄÄÄÄÄ Percorso di guida ÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³
+³                                         ³ ³
+³Percorso del file QBASIC.HLP:            ³ ³
+³                                         ³ ³
+³     ±±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄÄÄÙ
+³                                         ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+Suggerimento   Se QBASIC non riesce a trovare QBASIC.HLP,
+               controllare se Š stata digitata la
+               directory corretta.
+.context m.f
+.context m.e
+.context m.v
+.context m.s
+.context m.r
+.context m.d
+.context m.o
+.context m.h
+:nBarra menu di QBASIC
+Utilizzo dei menu e dei comandi di QBASIC:
+
+  ş Per attivare i menu ed i comandi, premere la lettera
+    evidenziata o fare clic con il mouse sul menu o sul
+    comando.
+  ş Per spostarsi fra i menu ed i comandi, usare i tasti di
+    DIREZIONE o il mouse.
+.context MSG_HelpFileNew
+:nComando Nuovo
+Viene usato per per creare un programma nuovo. Se un
+programma Š gi… aperto, verr… visualizzata una finestra
+di dialogo:
+  ş Scegliere "S" per salvare il programma gi… esistente.
+  ş Scegliere "No" per chiudere il programma senza salvarlo.
+  ş Scegliere "Annulla" per annullare il comando Nuovo e
+    ritornare al programma gi… esistente.
+
+Suggerimento   Usare il comando Apri per caricare un
+               programma gi… esistente.
+.context MSG_HelpFileOpen
+:nComando Apri
+Viene usato per caricare un programma gi… esistente,
+quindi per avviarlo ed apportarvi eventuali
+modifiche.
+
+Usare il comando Nuovo per creare un programma nuovo.
+
+Nota   Per aprire un file creato con GW-BASIC o BASICA, il
+       file deve essere salvato in GW-BASIC o BASICA usando
+       l'opzione ,A.
+.context MSG_HelpFileSave
+:nComando Salva
+Viene usato per salvare la versione corrente del programma.
+
+Se il programma non Š stato salvato in precedenza QBASIC
+chieder… di assegnargli un nome. Se un programma ha lo
+stesso nome di quello che si desidera salvare, il programma
+gi… esistente verr… sovrascritto.
+.context MSG_HelpFileSaveAs
+:nComando Salva con nome
+Viene usato per salvare il programma come file. Per
+conservare la versione precedente del programma, occorre
+rinominarla nella casella di testo "Nome del file".
+.context MSG_HelpFilePrint
+:nComando Stampa
+Viene usato per stampare un programma, solo parte di esso 
+o di un argomento di guida.
+
+E' possibile stampare:
+  ş Del testo selezionato
+  ş Il contenuto della finestra attiva
+  ş L'intero programma corrente (procedure incluse).
+
+QBASIC stampa utilizzando la stampante LPT1
+collegata al sistema.
+
+Suggerimento   Prima di scegliere il comando Stampa,
+               selezionare il testo nel programma o la
+               finestra di guida. Posizionare il cursore
+               all'inizio del testo che si desidera
+               stampare, premere Maiusc+tasti di DIREZIONE
+               per evidenziare tutto il testo, quindi
+               scegliere il comando Stampa.
+.context MSG_HelpFileExit
+:nComando Esci
+Viene usato per uscire dall'ambiente QBASIC.
+
+Se il file di programma Š stato modificato dall'ultima volta
+che lo si Š salvato, QBASIC visualizza una finestra di
+dialogo.
+  ş Scegliere "S" per salvare il programma (modifiche
+    incluse).
+  ş Scegliere "No" per ignorare le modifiche.
+  ş Scegliere "Annulla" per annullare il comando Esci e
+    ritornare al programma.
+.context MSG_HelpEditCut
+:nComando Taglia
+Usare Taglia (o premere Maiusc+Canc) per rimuovere il testo
+selezionato e collocarlo temporaneamente in Appunti.
+
+Con il comando Incolla (Maiusc+Ins) Š possibile inserire
+il testo in una nuova posizione nella finestra attiva
+oppure aprire un file di programma nuovo o gi… esistente
+ed inserirvi il testo.
+
+Il testo si trova ancora in Appunti e pu• essere incollato
+nuovamente. Ogni volta che una parte di testo viene tagliata
+o copiata, il nuovo testo sostituisce quello presente in
+Appunti.
+
+Suggerimento   Per selezionare del testo, posizionare
+               il cursore all'inizio del testo e premere
+               Maiusc+tasti di DIREZIONE. Per cancellare
+               del testo senza copiarlo in Appunti,
+               premere Canc.
+.context MSG_HelpEditCopy
+:nComando Copia
+Usare Copia (o premere Ctrl+Ins) per copiare il testo
+selezionato in Appunti. Il testo originale non viene
+modificato.
+
+Con Incolla (Maiusc+Ins) Š possibile inserire il
+testo nella finestra attiva oppure aprire un file di
+programma nuovo o gi… esistente ed inserire il testo.
+
+Suggerimento   Per selezionare una parte di testo,
+               posizionare il cursore all'inizio del testo
+               e premere Maiusc+tasti di DIREZIONE.
+
+Il testo si trova ancora in Appunti e pu• essere incollato
+nuovamente. Ogni volta che una parte di testo viene tagliata
+o copiata, il nuovo testo sostituisce quello presente in
+Appunti.
+.context MSG_HelpEditPaste
+:nComando Incolla
+Usare Incolla (o premere Maiusc+Ins) per inserire un
+blocco di testo da Appunti in qualsiasi punto della
+finestra attiva.
+
+Per inserire del testo, posizionare il cursore dove si
+desidera inserire il testo e scegliere Incolla.
+
+Per sostituire una parte di testo, selezionarlo e
+scegliere Incolla.
+
+Suggerimento   Per collocare il testo in Appunti, occorre
+               usare Taglia o Copia. Dopo avere inserito
+               la parte di testo con il comando Incolla,
+               il testo Š ancora temporaneamente contenuto
+               in Appunti e pu• essere incollato nuovamente.
+.context MSG_HelpEditClear
+:nComando Cancella
+Usare Cancella (o premere Canc) per eliminare il testo
+selezionato senza copiarlo in Appunti. Il contenuto di
+Appunti non viene modificato.
+.context MSG_HelpEditNewSub
+:nComando Nuova SUB
+Viene usato per creare una procedura SUB.
+
+Inserire un nome per la procedura nella finestra di
+dialogo Nuova SUB. QBASIC inserir… le istruzioni SUB
+ed END SUB per la procedura e la mostrer… nella
+finestra di visualizzazione.
+
+Se si desidera visualizzare o modificare altre parti
+del programma, occorre usare il comando SUBs del menu
+Visualizza (oppure premere F2).
+
+Suggerimento   E' possibile creare una procedura SUB
+               usando la parola chiave SUB di QBASIC.
+.context MSG_HelpEditNewFunc
+:nComando Nuova FUNCTION
+Viene usato per creare una procedura FUNCTION.
+
+Inserire un nome per la procedura nella finestra di
+dialogo Nuova FUNCTION. QBASIC inserir… le istruzioni
+FUNCTION e END FUNCTION per la procedura e la mostrer…
+nella finestra di visualizzazione.
+
+Se si desidera visualizzare o modificare altre parti
+del programma, occorre usare il comando SUBs del menu
+Visualizza (oppure premere F2).
+
+Suggerimento   E' possibile creare una procedura FUNCTION
+               usando la parola chiave FUNCTION di QBASIC.
+.context MSG_HelpViewSubs
+:nComando SUBs
+Viene usato per visualizzare o modificare una procedura SUB
+o FUNCTION, oppure per eliminare una procedura.
+
+Suggerimento   Per visualizzare o modificare nello stesso
+               momento due diverse procedure SUB o FUNCTION,
+               scegliere Dividi dal menu Visualizza, quindi
+               usare il comando SUBs per visualizzare le
+               procedure in ciascuna finestra.
+.context MSG_HelpViewSplit
+:nComando Dividi
+Viene usato per dividere la finestra di visualizzazione
+orizzontalmente e poter lavorare su due parti del programma
+nello stesso momento.
+
+Usare F6 e Maiusc+F6 per spostarsi tra le finestre:
+  ş F6 sposta il cursore verso il basso nelle finestre.
+  ş Maiusc+F6 sposta il cursore verso l'alto.
+
+Per chiudere una finestra di visualizzazione,
+posizionare il cursore nella finestra che si desidera
+mantenere attiva, quindi scegliere nuovamente Dividi.
+Per dimensionare la finestra attiva con il mouse, trascinare
+i bordi della finestra su o gi—.
+
+Per dimensionare la finestra attiva usando la tastiera:
+  ş Alt+Pi—(+)  per allargarla di una riga
+  ş Alt+Meno(-) per ridurla di una riga
+  ş Ctrl+F10    per allargarla a tutto schermo, oppure
+                ripristinare la dimensione iniziale.
+.context MSG_HelpViewOutputScreen
+:nComando Schermo output
+Usare Schermo output (o premere F4) per visualizzare
+lo schermo di output del programma. Schermo output
+visualizza i risultati di un programma eseguito in
+ambiente QBASIC.
+
+Premere un tasto per ritornare in QBASIC dopo aver
+visualizzato lo schermo di output.
+.context MSG_HelpSearchFind
+:nComando Trova
+Viene usato per trovare una stringa di testo. Esistono
+due opzioni: la prima rende la ricerca sensibile alle
+maiuscole e la seconda permette di cercare parole
+intere.
+
+Per cambiare una stringa, occorre usare il
+comando Cambia.
+.context MSG_HelpSearchChange
+:nComando Cambia
+Viene usato per sostituire una stringa di testo.
+
+E' possibile:
+  ş Usare le opzioni "Maiuscole/Minuscole" e
+    "Parola intera".
+  ş Controllare ciascuna sostituzione prima che la modifica
+    sia apportata.
+  ş Fare tutte le sostituzioni senza prima controllarle.
+.context MSG_HelpSearchNext
+:nComando Ripeti Trova
+Usare Ripeti Trova (o premere F3) per ripetere l'ultima
+ricerca portata a termine dal comando Trova o dal comando
+Cambia.
+
+Se i comandi Trova o Cambia non sono stati utilizzati
+dopo l'avvio di QBASIC, Ripeti Trova cerca l'occorrenza
+successiva alla:
+  ş Parola su cui Š posizionato il cursore
+  ş Parola alla sinistra del cursore, se il
+    cursore non Š posizionato su una parola.
+.context MSG_HelpRunStart
+:nComando Avvia
+Usare Avvia (o premere Maiusc+F5) per avviare un programma
+iniziando con la prima istruzione eseguibile nel modulo
+principale.
+
+Se si interrompe un programma durante la sua esecuzione,
+il comando Avvia cancella qualsiasi dato inserito e riavvia
+il programma dall'inizio.
+.context MSG_HelpRunRestart
+:nComando Riavvia
+Viene usato per riavviare un programma dall'inizio.
+Riavvia cancella qualsiasi dato inserito durante
+l'avviamento del programma ed evidenzia la prima
+istruzione eseguibile.
+.context MSG_HelpRunContinue
+:nComando Continua
+Usare Continua (o premere F5) per riavviare un programma
+quando Š terminato. Continua non cancella i dati inseriti
+durante l'avviamento del programma e riavvia il programma
+non dall'inizio ma dall'ultima istruzione eseguita.
+
+Continua viene spesso utilizzato per riavviare un programma
+dopo un punto di interruzione.
+.context MSG_HelpDebugStep
+:nComando Passo
+Usare Passo (o premere F8) per eseguire una singola
+istruzione nel programma. Il comando Passo permette
+di spostarsi all'interno dell'esecuzione del programma,
+procedure incluse, un passo alla volta.
+.context MSG_HelpDebugPStep
+:nComando Procedura passo
+Usare Procedura passo (o premere F10) per eseguire
+una singola istruzione nel programma e per eseguire una
+chiamata di procedura e la procedura stessa come una
+istruzione unica.
+
+La Procedura passo, come il comando Passo, permette di
+spostarsi all'interno dell'esecuzione del programma
+un passo per volta e consente di non controllare le
+procedure il cui funzionamento Š gi… stato accertato.
+.context MSG_HelpDebugTraceOn
+:nComando Analizza il flusso
+Viene usato per evidenziare ogni istruzione del
+programma nel momento dell'esecuzione. Ci• permette
+di osservare il flusso generale del programma.
+Premere Ctrl+Interr per sospendere l'esecuzione del
+programma.
+.context MSG_HelpDebugToggleBp
+:nComando Punto di interruzione
+Usare Punto di interruzione (o premere F9) per attivare
+e disattivare i punti di interruzione. I punti di
+interruzione sono segni collocati sulle istruzioni nel
+programma. Se durante l'esecuzione, un programma incontra
+un punto di interruzione, il programma si blocca su
+quell'istruzione. QBASIC evidenzia la riga del punto
+di interruzione.
+
+Per attivare e disattivare un punto di interruzione:
+  1. Spostare il cursore sulla riga in cui si desidera
+     collocare il punto di interruzione, oppure su
+     una riga di punto di interruzione evidenziata.
+  2. Scegliere Punto di interruzione (o premere F9).
+
+Usare un punto di interruzione per interrompere il programma
+nel punto in cui potrebbero verificarsi dei problemi,
+quindi:
+  ş Stampare i valori delle variabili nella finestra di
+    comando Immediata.
+  ş Procedere passo a passo all'interno del programma
+    dal punto di interruzione in avanti.
+.context MSG_HelpDebugClearAllBp
+:nComando Elimina ogni punto di interruzione
+Viene usato per cancellare tutti i punti di interruzione
+dal programma.
+
+Usare Punto di interruzione (o premere F9) per disattivare
+individualmente i punti di interruzione.
+.context MSG_HelpDebugSetNextStmt
+:nComando Imposta istruzione successiva
+Viene usato per cambiare la sequenza di esecuzione del
+programma in modo che l'istruzione successiva da
+eseguire sia quella su cui Š posizionato il cursore.
+.context MSG_HelpOptionsDisplay
+:nComando Schermo
+Viene usato per controllare:
+  ş I colori dello schermo
+  ş Le barre di scorrimento nella finestra
+  ş Il numero di spazi di cui si desidera far avanzare
+    il cursore premendo Tab.
+
+Le impostazioni del comando Schermo vengono salvate e
+rimangono attive anche all'avvio successivo di QBASIC.
+.context MSG_HelpOptionsPaths
+:nComando Percorso di guida
+Viene usato per cambiare le directory in cui QBASIC
+cerca il file di guida di QBASIC
+QBASIC.HLP.
+.context MSG_HelpOptionsSyntax
+:nComando Verifica sintassi
+Viene usato per attivare e disattivare Verifica sintassi.
+Quando il comando Verifica sintassi Š attivo,
+per ogni riga di programma inserita, QBASIC svolge le
+operazioni seguentid:
+  1. Controlla gli errori di sintassi della riga.
+  2. Formatta la riga.
+  3. Traduce la riga in forma eseguibile se la sintassi
+     Š corretta.
+.context MSG_HelpHelpIndex
+:nComando Indice
+Viene usato per visualizzare l'indice. L'indice Š un
+elenco in ordine alfabetico di argomenti di guida che
+include le parole chiave del linguaggio BASIC. A ciascun
+termine dell'indice sono collegate informazioni
+supplementari.
+
+Come ottenere informazioni di guida:
+  1. Scegliere il comando Indice dal menu ?.
+  2. Premere il tasto corrispondente alla prima
+     lettera della voce desiderata.
+  3. Spostare il cursore sulla voce su cui si
+     desidera avere informazioni e premere
+     F1.
+.context MSG_HelpHelpContents
+:nComando Sommario
+Viene usato per visualizzare il sommario della Guida. Il
+sommario della Guida fornisce una guida per argomenti
+delle informazioni contenute nella Guida di QBASIC.
+
+Per avere informazioni su qualsiasi voce del sommario:
+  1. Scegliere il comando Sommario dal menu ?.
+  2. Premere il tasto corrispondente alla prima
+     lettera della voce. Ripetere fino a quando
+     il cursore non sar… sull'argomento sul quale
+     si desiderano informazioni.
+  3. Premere F1.
+.context MSG_HelpHelpSyntax
+:nComando Argomento
+Viene usato per visualizzare le informazioni relative
+all'argomento indicato dalla posizione del cursore. 
+L'argomento sul quale Š posizionato il cursore apparir… 
+come parte del comando.
+
+E' inoltre possibile visualizzare la guida contestuale
+premendo F1 o facendo clic sul pulsante destro del mouse.
+.context MSG_HelpHelpHelp
+:nComando Uso della Guida
+Viene usato per visualizzare l'argomento Uso della Guida
+che descrive come utilizzare il mouse o la tastiera per
+ottenere informazioni su una voce visualizzata sullo schermo
+di QBASIC.
+.context MSG_HelpHelpAbout
+:nComando Informazioni su
+Viene usato per visualizzare il numero della versione e le
+informazioni di copyright di QBASIC.

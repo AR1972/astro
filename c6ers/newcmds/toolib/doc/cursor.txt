@@ -1,0 +1,29 @@
+
+SUMMARY   cursor (x, y) sets the current cursor
+
+#include <tools.h>
+
+cProc	cursor,<PUBLIC>
+ifdef OS2
+parmW	x
+parmW	y
+else
+parmB	x
+parmB	y
+endif
+cBegin
+
+
+DESCRIPTION
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+

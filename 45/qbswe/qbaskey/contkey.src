@@ -1,0 +1,601 @@
+.comment ******************************************************************
+.comment *  Control Family - QBasic                                       *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, to BASIC language and products. *
+.comment ******************************************************************
+.comment *  7/10/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/22/90 stevesau                                              *
+.comment *  Incorporated final edit/review comments.                      *
+.comment ******************************************************************
+.comment *  6/6/90 stevesau                                               *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Combined GOSUB...RETURN/RETURN.                               *
+.comment *  Deleted STOP example (not recommended).                       *
+.comment *  Incorporated review comments and edits.                       *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/6/90 stevesau                                               *
+.comment *  Incorporated review comments.                                 *
+.comment ******************************************************************
+.comment *  4/30/90 stevesau                                              *
+.comment *  Combined logical operators.                                   *
+.comment *  Changed Absolute to CALL ABSOLUTE                             *
+.comment ******************************************************************
+.comment *  4/18/90 stevesau                                              *
+.comment *  Deleted CALL (NON-BASIC), Interrupt.			  *
+.comment *  Added action lines.						  *
+.comment ******************************************************************
+.comment *                                                                *
+.context @CALL
+.context CALL
+:nCALL, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Anropar ett delprogram.
+
+\b[CALL] namn [([argumentlista])]\p
+
+    ş \bnamn\p            Namnet p† delprogrammet som ska anropas.
+    ş \bargumentlista\p   Variablerna eller konstanterna som ska skickas till
+                      delprogrammet. Flera argument ska separeras med komma.
+                      Ange matrisargument med matrisnamnet f”ljt av tomma
+                      parenteser.
+
+    ş Om du utesluter nyckelordet CALL, ska „ven parenteserna runt
+      argumentlistan uteslutas. Deklarera delprogrammet i satsen
+      DECLARE innan du anropar den, eller spara programmet s† genererar
+      QBasic automatiskt satsen.
+    ş Om du vill ange ett argument vars v„rde inte ska „ndras av
+      delprogrammet, kan du skriva argumentet inom parenteser.
+
+Exempel:
+    Programmet REMLINE.BAS illustrerar hur delprogram anropas. Om du vill
+    se eller k”ra det programmet, kan du ladda REMLINE.BAS genom att
+    anv„nda kommandot ™ppna i Arkiv-menyn.
+
+Se „ven    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context ABSOLUTE
+.context @ABSOLUTE
+:nCALL ABSOLUTE Sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Anropar en procedur skriven i maskinspr†k.
+
+\bCALL ABSOLUTE ([argumentlista,] f”rskjutning%)\p
+
+    ş \bargumentlista\p   Argument som skickas till en procedur i maskinspr†k
+                      som f”rskjutningar fr†n det aktuella datasegmentet.
+    ş \bf”rskjutning%\p   F”rskjutningen fr†n det aktuella kodsegmentet, som
+                      best„mts med DEF SEG, till procedurens startpunkt.
+
+Exempel:
+    'Anropar en rutin f”r att skriva ut sk„rmen p† en lokal skrivare.
+    DIM a%(2)
+    DEF SEG = VARSEG(a%(0))
+    FOR i% = 0 TO 2
+       READ d%
+       POKE VARPTR(a%(0)) + i%, d%
+    NEXT i%
+    DATA 205, 5, 203  : ' int 5  retf  'Kod i maskinspr†k
+                                       'f”r att skriva ut sk„rmen.
+    CALL ABSOLUTE(VARPTR(a%(0)))
+    DEF SEG
+
+Se „ven    \i\p\aCALL\v@CALL\v\i\p    \i\p\aVARPTR, VARSEG\v@VARPTR\v\i\p    \i\p\aSkillnader j„mf”rt med BASICA\v@basica.diffs\v\i\p
+.context CHAIN
+.context @CHAIN
+:nCHAIN, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+™verf”r kontrollen fr†n det aktuella programmet till ett annat program i
+Basic.
+
+\bCHAIN filspec$\p
+
+    ş \bfilspec$\p    Namnet p† det program som kontrollen ska ”verf”ras till.
+
+Exempel:
+    'Antar att programmet TEST.BAS finns i katalogen \\DOS.
+    CHAIN "C:\\DOS\\TEST.BAS"
+
+Se „ven    \i\p\aCALL\v@CALL\v\i\p    \i\p\aCOMMON\vCOMMON\v\i\p    \i\p\aRUN\vRUN\v\i\p    \i\p\aSkillnader j„mf”rt med BASICA\v@basica.diffs\v\i\p
+.context DO
+.context @DO
+.context LOOP
+.context @LOOP
+.context UNTIL
+.context @UNTIL
+:nDO...LOOP, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Upprepar ett satsblock s† l„nge ett villkor g„ller, eller tills ett villkor
+blir sant.
+
+\bDO [{WHILE | UNTIL} villkor]\p
+    \b[satsblock]\p
+\bLOOP\p
+
+\bDO\p
+    \b[satsblock]\p
+\bLOOP [{WHILE | UNTIL} villkor]\p
+
+    ş \bvillkor\p      Ett numeriskt uttryck som Basic evaluerar till sant
+                   (icke-noll) eller falskt (noll).
+
+Exempel:
+    i% = 0
+    PRINT "V„rdet p† i% i b”rjan av den h„r slingan „r  "; i%
+    DO WHILE i% < 10
+        i% = i% + 1
+    LOOP
+    PRINT "V„rdet p† i% i slutet p† den h„r slingan „r  "; i%
+
+Se „ven    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aWHILE...WEND\v@WHILE\v\i\p
+.context END
+.context @END
+:nEND, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Avslutar ett program, en procedur, ett block, eller en anv„ndardefinierad
+datatyp.
+
+\bEND [{DEF | FUNCTION | IF | SELECT | SUB | TYPE}]\p
+
+    ş \bDEF\p         Avslutar en flerradig funktionsdefinition som inletts
+                  med DEF FN.
+    ş \bFUNCTION\p    Avslutar en funktionsdefinition som inletts med FUNCTION.
+    ş \bIF\p          Avslutar ett block med IF...THEN...ELSE.
+    ş \bSELECT\p      Avslutar ett block med  SELECT CASE.
+    ş \bSUB\p         Avslutar en delrutin som inletts med SUB.
+    ş \bTYPE\p        Avslutar definitionen av en anv„ndardefinierad datatyp.
+
+    ş Om inget argument anges, avslutar END programmet och st„nger alla filer.
+
+Exempel:
+    PRINT "Game over."
+    END
+
+Se „ven    \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aIF...THEN...ELSE\v@IF\v\i\p    \i\p\aSELECT CASE\v@IS\v\i\p
+           \i\p\aSTOP\v@STOP\v\i\p      \i\p\aSUB\v@SUB\v\i\p         \i\p\aSYSTEM\v@SYSTEM\v\i\p              \i\p\aTYPE\v@TYPE\v\i\p
+.context EXIT
+.context @EXIT
+:nEXIT, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Avbryter en DO- eller FOR-slinga, en procedur som inletts med
+FUNCTION eller SUB, eller en funktion som inletts med DEF FN.
+
+\bEXIT {DEF | DO | FOR | FUNCTION | SUB}\p
+
+    ş \bDEF\p         Avbryter en funktion som inletts med DEF FN.
+    ş \bDO\p          Avbryter en DO-slinga.
+    ş \bFOR\p         Avbryter en FOR-slinga.
+    ş \bFUNCTION\p    Avbryter en funktion som inletts med FUNCTION.
+    ş \bSUB\p         Avbryter ett delprogram som inletts med SUB.
+
+Exempel:
+    i% = 0
+    DO
+        i% = i% + 1
+        IF i% = 500 THEN EXIT DO
+    LOOP
+    PRINT "EXIT at"; i%
+
+Se „ven    \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context FOR
+.context @FOR
+:nFOR...NEXT, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Upprepar ett satsblock ett visst antal g†nger.
+
+\bFOR r„knare = start TO slut [STEP ”kning]\p
+    \b[satsblock]\p
+\bNEXT [r„knare [,r„knare]...]\p
+
+    ş \br„knare\p          En numerisk variabel som anv„nds som varvr„knare.
+    ş \bstart\p och \bslut\p   Det initiala och slutliga v„rdet p† r„knaren.
+    ş \b”kning\p           ™kningsm„ngden f”r varje g†ng slingan g†r runt.
+
+Exempel:
+    FOR i% = 1 TO 15
+        PRINT i%
+    NEXT i%
+    FOR i% = 7 to -6 STEP -3
+        PRINT i%
+    NEXT i%
+
+Se „ven    \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aWHILE...WEND\v@WHILE\v\i\p
+.context GOSUB
+.context @GOSUB
+.context RETURN
+.context @RETURN
+:nGOSUB...RETURN, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Hoppar till och returnerar fr†n en subrutin.
+
+\bGOSUB rad1\p
+\b.\p
+\b.\p
+\b.\p
+\bRETURN [rad2]\p
+
+    ş \brad1\p    Etiketten eller radnumret p† den f”rsta raden i subrutinen.
+    ş \brad2\p    Etiketten eller radnumret d„r subrutinen returnerar.
+
+    ş Om du inte anger en etikett eller ett radnummer f”r RETURN, forts„tter
+      programmet exekveringen vid den sats som f”ljer GOSUB (vid anrop till
+      subrutiner) eller n„r en h„ndelse intr„ffat (vid h„ndelsehantering).
+      Se nyckelordet \i\p\aON\v@ON\v\i\p om du vill ha information om satser f”r
+      h„ndelsehantering.
+    ş Satserna SUB och CALL (delprogram) „r ett b„ttre alternativ till
+      subrutiner som inleds med GOSUB.
+
+Exempel:
+    FOR i% = 1 TO 20
+        GOSUB Kvadrat
+    NEXT i%
+    END
+
+    Kvadrat:
+    PRINT i%, i% * i%
+    RETURN
+
+Se „ven    \i\p\aCALL\v@CALL\v\i\p    \i\p\aON, nyckelord\v@ON\v\i\p    \i\p\aON...GOSUB\v@ONGO\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context GOTO
+.context @GOTO
+:nGOTO, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Hoppar till en specifik rad.
+
+\bGOTO rad\p
+
+    ş \brad\p    Etiketten eller radnumret p† den rad som ska exekveras i n„sta
+             steg.
+
+    ş DO...LOOP, SELECT CASE, IF...THEN...ELSE, SUB, och FUNCTION „r b„ttre
+      s„tt att kontrollera ett programs fl”de.
+    ş GOTO anv„nds ocks† som nyckelord i satsen ON ERROR.
+
+\i\p\aExempel\v@errhand.ex\v\i\p
+
+Se „ven    \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p     \i\p\aIF...THEN...ELSE\v@IF\v\i\p
+           \i\p\aON ERROR\v@onerr\v\i\p     \i\p\aON...GOTO\v@ongo\v\i\p    \i\p\aSELECT CASE\v@SELECT\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context THEN
+.context @THEN
+.context ELSE
+.context @ELSE
+.context ELSEIF
+.context @ELSEIF
+.context ENDIF
+.context @ENDIF
+.context IF
+.context @IF
+:nIF...THEN...ELSE, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Exekverar en sats eller ett satsblock beroende p† de angivna villkoren.
+
+\bIF villkor1 THEN\p
+    \b[satsblock-1]\p
+\b[ELSEIF villkor2 THEN\p
+    \b[satsblock-2]]...\p
+\b[ELSE\p
+    \b[satsblock-n]]\p
+\bEND IF\p
+
+\bIF villkor THEN satser [ELSE satser]\p
+
+    ş \bvillkor1\p            Vilket uttryck som helst som kan evalueras till
+      \bvillkor2\p            sant (icke-noll) eller falskt (noll).
+    ş \bsatsblock-1\p         En eller flera satser p† en eller flera rader.
+      \bsatsblock-2\p
+      \bsatsblock-n\p
+    ş \bsatser\p              En eller flera satser, †tskilda med kolon.
+
+Exempel:
+    INPUT "1 eller 2? ", i%
+    IF i% = 1 OR i% = 2 THEN
+        PRINT "OK"
+    ELSE
+        PRINT "Utanf”r intervallet"
+    END IF
+
+Se „ven    \i\p\aON...GOSUB\v@ongo\v\i\p    \i\p\aON...GOTO\v@ongo\v\i\p    \i\p\aSELECT CASE\v@IS\v\i\p
+.context @ongo
+.context .ongo
+:nON...GOSUB, ON...GOTO, satser
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Hoppa till en eller flera platser, beroende p† v„rdet p† ett uttryck.
+
+\bON uttryck% GOSUB radlista\p
+\bON uttryck% GOTO radlista\p
+
+    ş \buttryck%\p       Ett uttryck i intervallet 0 till 255.
+    ş \bradlista\p       En upps„ttning etiketter eller radnummer. Om v„rdet p†
+                     uttrycket „r 1, hoppar programmet till f”rsta raden i
+                     listan; om v„rdet p† uttrycket „r 2, hoppar det till
+                     andra raden, o s v.
+
+    ş SELECT CASE „r ett b„ttre s„tt att hoppa till flera platser.
+
+Exempel:
+    FOR i% = 1 TO 2
+        ON i% GOSUB Adam, Bertil
+    NEXT i%
+    END
+
+    Adam: PRINT "Adam"
+    RETURN
+    Bertil: PRINT "Bertil"
+    RETURN
+
+Se „ven    \i\p\aON, nyckelord\v@ON\v\i\p    \i\p\aSELECT CASE\v@SELECT\v\i\p
+.context RUN
+.context @RUN
+:nRUN, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+K”r nuvarande program, eller ett angivet program.
+
+\bRUN [{radnummer | fil$}]\p
+
+    ş \bradnummer\p     Radnummmer i nuvarande program d„r exekveringen ska
+                    b”rja. Om inget radnummer anges, b”rjar exekveringen p†
+                    den f”rsta exekverbara raden.
+    ş \bfil$\p          Namnet p† k„llfilen i Basic. QBasic antar att filen
+                    har till„gget .BAS.
+
+    ş RUN st„nger alla filer och rensar programminnet innan ett program
+      laddas. Anv„nd satsen CHAIN om du vill k”ra ett program utan att st„nga
+      de filer som „r ”ppna!
+
+Exempel:
+    'Antar att programmet TEST.BAS ligger i katalogen \\DOS.
+    RUN "C:\\DOS\\TEST.BAS"
+
+Se „ven    \i\p\aCHAIN\v@CHAIN\v\i\p
+.context SELECT
+.context @SELECT
+.context CASE
+.context @CASE
+.context IS
+.context @IS
+:nSELECT CASE, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Exekverar ett satsblock beroende p† v„rdet p† ett uttryck.
+
+\bSELECT CASE testuttryck\p
+\bCASE uttryckslista1\p
+  \b[satsblock-1]\p
+\b[CASE uttryckslista2\p
+  \b[satsblock-2]]...\p
+\b[CASE ELSE\p
+  \b[satsblock-n]]\p
+\bEND SELECT\p
+
+    ş \btestuttryck\p         Ett numeriskt uttryck eller ett str„nguttryck.
+    ş \buttryckslista1\p      Ett eller flera uttryck som ska matcha
+                          testuttrycket.
+      \buttryckslista2\p      Nyckelordet IS m†ste st† framf”r en
+			  relationsoperator i ett uttryck.
+    ş \bsatsblock-1\p         En eller flera satser p† en eller flera rader.
+      \bsatsblock-2\p
+      \bsatsblock-n\p
+
+    ş Argumenten till uttryckslistan kan ha en av f”ljande former, eller en
+      kombination av formerna, †tskilda med komman:
+
+      \buttryck[,uttryck]...\p
+      \buttryck TO uttryck\p
+      \bIS relationsoperator uttryck\p
+
+          \buttryck\p                Ett numeriskt uttryck eller ett str„nguttryck
+                                 som „r kompatibelt med testuttrycket.
+          \brelationsoperator\p      En av f”ljande relationsoperatorer:
+                                   <, <=, >, >=, <>, or =.
+
+Exempel:
+    INPUT "Ange acceptabel riskniv† (1-5): ", Total
+    SELECT CASE Total
+
+        CASE IS >= 5
+            PRINT "H”g riskniv† och h”g potentiell avkastning."
+            PRINT "V„lj aktieinvesteringsplan."
+
+        CASE 2 TO 4
+            PRINT "M†ttlig till h”g risk och avkastning."
+            PRINT "V„lj n†gon aktiesparfond."
+
+        CASE 1
+            PRINT "Ingen risk, l†g avkastning."
+            PRINT "S„tt in pengarna p† ett sparkonto."
+
+    END SELECT
+
+Se „ven    \i\p\aIF...THEN...ELSE\v@IF\v\i\p
+.context SLEEP
+.context @SLEEP
+:nSLEEP, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+G”r ett uppeh†ll i programexekveringen.
+
+\bSLEEP [sekunder&]\p
+
+    ş \bsekunder&\p    Antal sekunder som uppeh†llet i programexekveringen
+                   ska vara.
+
+    ş Om v„rdet p† sekunder& „r 0 eller inte „r med, g”rs ett uppeh†ll i
+      programmet tills en tangent trycks ned, eller tills en f†ngad h„ndelse
+      intr„ffar.
+
+Exempel:
+    PRINT "Jag tar mig en tupplur i 10 sekunder..."
+    SLEEP 10
+    PRINT "Vakna!"
+
+Se „ven    \i\p\aWAIT\v@WAIT\v\i\p
+.context STOP
+.context @STOP
+:nSTOP, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Stoppar ett program.
+
+\bSTOP\p
+
+    ş Nyckelordet STOP stoppar ocks† inf†ngning av h„ndelse i f”ljande satser:
+
+      \i\p\aCOM, ON COM\v@COM\v\i\p      \i\p\aKEY, ON KEY\v@KETV\v\i\p         \i\p\aPEN, ON PEN\v@PEN\v\i\p
+      \i\p\aPLAY, ON PLAY\v@PLAYEV\v\i\p    \i\p\aSTRIG, ON STRIG\v@STRIG\v\i\p     \i\p\aTIMER, ON TIMER\v@TIMER\v\i\p
+
+Exempel:
+    FOR i% = 1 TO 10
+        PRINT i%
+        IF i% = 5 THEN STOP     'STOP g”r en paus; Forts„tt med F5.
+    NEXT i%
+
+Se „ven     \i\p\aEND\v@END\v\i\p    \i\p\aSYSTEM\v@SYSTEM\v\i\p
+.context SYSTEM
+.context @SYSTEM
+:nSYSTEM, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+St„nger alla ”ppna filer, och l„mnar ”ver kontrollen till operativsystemet.
+
+\bSYSTEM\p
+
+Se „ven    \i\p\aEND\v@END\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context TRON
+.context @TRON
+.context TROFF
+.context @TROFF
+:nTRON, TROFF, satser
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+TRON och TROFF aktiverar sp†rning av programsatser.
+
+\bTRON\p
+\bTROFF\p
+
+    ş Fels”kningsmenyn i QBasic g”r dessa satser ”verfl”diga.
+
+Se „ven    \i\p\aK”r- och fels”kningstangenter\v@dk\v\i\p
+.context wend
+.context @wend
+.context WHILE
+.context @WHILE
+:nWHILE...WEND, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Exekverar en serie satser s† l„nge som det angivna villkoret „r sant.
+
+\bWHILE villkor\p
+\b.\p
+\b.\p
+\b.\p
+\bWEND\p
+
+    ş \bvillkor\p    Ett numeriskt uttryck som Basic evaluerar till sant
+                 (icke-noll) eller falskt (noll).
+
+    ş DO...LOOP  „r ett b„ttre s„tt att exekvera satser i en slinga.
+
+Se „ven    \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p
+.comment ******************************************************************
+.comment * Boolean Operators
+.comment ******************************************************************
+.context AND
+.context @AND
+.context EQV
+.context @EQV
+.context IMP
+.context @IMP
+.context NOT
+.context @NOT
+.context OR
+.context @OR
+.context XOR
+.context @XOR
+:nBooleska operatorer
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+De booleska - eller logiska - operatorerna utf”r logiska operationer eller
+tester p† kombinerade relationer. De returnerar v„rdet sant (icke-noll) eller
+v„rdet falskt (noll), och kan anv„ndas f”r att fatta beslut.
+
+\bresultat = uttryck1 boolesk-operator uttryck2\p
+
+    ş \bboolesk-operator\p   N†gon av f”ljande booleska operatorer:
+
+	NOT		    Bitkomplement
+        AND                 Konjunktion
+        OR                  Disjunktion (inklusivt "eller")
+        XOR                 Exklusivt "eller"
+        EQV                 Ekvivalens
+        IMP                 Implikation
+
+    ş Varje operator returnerar resultat enligt f”ljande sanningstabell.
+      S „r sant (icke-noll); F „r falskt (noll):
+
+        Uttryck1     Uttryck2     NOT  AND  OR   XOR  EQV  IMP
+        ÍÍÍÍÍÍÍÍÍÍÍ  ÍÍÍÍÍÍÍÍÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ
+        S            S            F    S    S    F    S    S
+        S            F            F    F    S    S    F    F
+        F            S            S    F    S    S    F    S
+        F            F            S    F    F    F    S    S
+
+    ş De booleska operationerna utf”rs efter aritmetiska och relationella
+      operationer, enligt presedensordningen.
+    ş Uttryck konverteras till heltal eller l†nga heltal innan en boolesk
+      operation utf”rs.
+    ş Om resultatet av uttrycket blir 0 eller -1 returnerar en boolesk
+      operation 0 eller -1 som resultat. Eftersom de booleska operatorerna
+      g”r ber„kningar p† varje enskild bit i argumenten, kan andra v„rden
+      „n 0 f”r falskt och -1 f”r sant ge ov„ntade resultat.
+.comment ******************************************************************
+.comment * Keywords
+.comment ******************************************************************
+.context NEXT
+.context @NEXT
+:nNEXT, nyckelord
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+™kar och testar r„knaren i en FOR...NEXT-slinga, eller, tillsammans med
+RESUME, forts„tter exekveringen fr†n en felf†ngande hanterare.
+
+Se „ven    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context STEP
+.context @STEP
+:nSTEP, nyckelord
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Anger hur mycket r„knaren i en FOR...NEXT-slinga ska ”kas f”r varje
+upprepning. I grafiksatser anger STEP att bildpunktskoordinaterna „r
+relativt den nuvarande grafikmark”rens position.
+
+Se „ven    \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aGET, PUT\v@ggx\v\i\p    \i\p\aLINE\v@LINE\v\i\p
+           \i\p\aPAINT\v@PAINT\v\i\p     \i\p\aPRESET, PSET\v@PRESET\v\i\p
+.context TO
+.context @TO
+:nTO, nyckelord
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Anger intervall f”r:
+
+    ş CASE-delen i satsen SELECT CASE.
+    ş En varvr„knare i en FOR...NEXT-slinga.
+    ş Poster att l†sa eller l†sa upp i satsen LOCK...UNLOCK.
+    ş Nedre och ”vre begr„nsningar i satsen DIM eller REDIM.
+
+Se „ven    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aLOCK, UNLOCK\v@LOCK\v\i\p    \i\p\aSELECT CASE\v@SELECT\v\i\p

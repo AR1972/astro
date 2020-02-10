@@ -1,0 +1,54 @@
+BQB50
+y
++ crt0.obj     + crt0dat.obj  + fmsghdr.obj  &
++ chkstk.obj   + chksum.obj   + crt0fp.obj   &
++ ovlmul.obj   + dvinit.obj   + dkinit.obj   &
++ ..\tl\lib3\afldiv    + ..\tl\lib3\aflrem   &
++ ..\tl\lib3\fpreset   + nhlhcore.ob3 &
++ erproc.ob3   + messages.ob3 + nhlhutil.ob3 &
++ nhstutil.ob3 + rtinit.ob3   + nhinit.ob3   &
++ bload.ob3    + circle.ob3   + clear.ob3    &
++ stfree.ob3   + rtmload.ob3  + ifout.obj    &
++ rtm86.ob3    + draw.ob3     + rttoul.obj   &
++ dynamic.ob3  + field.obj    + fin.obj      &
++ fout.obj     + getput.ob3   + grinit.ob3   &
++ grfpinit.ob3 + grputil.obj  + grcoord.obj  &
++ grview.ob3   + grwindow.ob3 + prnvalfp.obj &
++ gwkey.obj    + grpmap.obj   + gwlin.obj    &
++ gwque.obj    + gwscr.obj    + helpi4.obj   &
++ hexoct.obj   + inpdsk.obj   + inptty.obj   &
++ inputf.obj   + grline.ob3   + grpoint.ob3  &
++ lininp.obj   + llagrp.obj   + gwscreen.obj &
++ llcgasup.obj + llegasup.obj + llxgasup.obj &
++ llhgcsup.obj + llgrstub.ob3 + erhandlr.obj &
++ iolpt.obj    + fhutil.obj   + grspace.ob3  &
++ mclprc.obj   + mid.obj      + mtfloat.obj  &
++ out.obj      + paint.ob3    + peek.ob3     &
++ pr0a.obj     + prnval.obj   + prtu.obj     &
++ pufout.obj   + random.obj   + read.obj     &
++ rlset.obj    + strfcn.obj   + string.obj   &
++ stringfp.obj + strnum.obj   + swap.obj     &
++ tabspc.obj   + vwclr.obj    + fhdebug.ob3  &
++ filename.ob3 + gwaevt.ob3   + gwcevt.ob3   &
++ llaevt.ob3   + llcevt.ob3   + id_util.ob3  &
++ gwplayf.ob3  + gwplays.ob3  + gwsound.ob3  &
++ llsnd.ob3    + gwdata.ob3   + sninit.ob3   &
++ gwio.ob3     + iocons.ob3   + llascn.ob3   &
++ llcscn.ob3   + llscnfcn.ob3 + llgrtabl.ob3 &
++ llscreen.ob3 + stinkey.obj  + llcgrp.ob3   &
++ lltext.ob3   + llcga.ob3    + llega.ob3    &
++ llvga.ob3    + llhgc.ob3    + lloga.ob3    &
++ stcore.obj   + dkutil.ob3   + keydsp.obj   &
++ rtllinit.ob3 + dvstmt.ob3   + llcom3.ob3   &
++ dkio.ob3     + dkstmt.ob3   + dkopen.ob3   &
++ lllpt.ob3    + osstmt.ob3   + osinit.ob3   &
++ dvpipe.ob3   + directry.ob3 + rtterm.ob3   &
++ cninit.ob3   + llinit.ob3   + llscnio.ob3  &
++ llque.ob3    + llparam.ob3  + llkeys.ob3   &
++ gwini.ob3    + fhinit.ob3   + gwpal.obj    + fhchn.ob3 &
++ ostimer.ob3  + osdate.ob3   + width.obj    &
++ iotty.ob3    + llevtstg.ob3 + dbtrace.obj  &
++ gwcom.ob3    + oscmd.ob3    + nhdebug.ob3  &
++ helpfp87.obj + evtcom.ob3   + evtkey.ob3   &
++ evtpen.ob3   + evtpla.ob3   + evtstg.ob3   &
++ evttim.ob3   + evtuev.ob3   + abs.ob3 ;

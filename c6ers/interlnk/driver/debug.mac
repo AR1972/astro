@@ -1,0 +1,41 @@
+;***
+;* $Workfile:   debug.mac  $
+;* $Revision:   1.0  $
+;*   $Author:   Dave Sewell  $
+;*     $Date:   02 Jun 1989 14:09:24  $
+;***
+
+COMMENT #
+    debug.mac : Alan Butt : December 22, 1988 : Expansion Box Project
+
+    This file contains some useful debugging macros.  These are used in
+    coordination with the routines and data defined in debug.asm.
+
+    macro dbg prints the argument string on the screen (or does nothing if
+    DEBUG is not defined.
+#
+
+WHITE_ON_BLUE       EQU     1FH
+WHITE_ON_GREEN      EQU     2FH
+WHITE_ON_CYAN       EQU     3FH
+WHITE_ON_RED        EQU     4FH
+WHITE_ON_MAGENTA    EQU     5FH
+
+DBG     MACRO   char
+    IFDEF DEBUG
+        push    ax
+        mov     al, char
+        call    debug_msg       ; debug_msg pops off AX and restores it
+    ENDIF
+        ENDM
+
+HEX     MACRO   char
+    IFDEF DEBUG
+        push    ax
+        mov     al, char
+        call    hex_out
+        pop     ax
+    ENDIF
+        ENDM
+
+

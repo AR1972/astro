@@ -1,0 +1,11 @@
+The following extrinsic commands have portions written in C:
+
+	ATTRIB
+	BACKUP
+	FDISK
+	JOIN
+	FILESYS
+	MEM
+	REPLACE
+	RESTORE
+	SUBST

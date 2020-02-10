@@ -1,0 +1,34 @@
+
+SUMMARY 
+
+#include <tools.h>
+
+char *pathcat (char *pDst, char *pSrc)
+
+DESCRIPTION
+
+   pathcat - handle concatenation of path strings
+    
+   Care must be take to handle:
+       ""	    XXX     =>	XXX
+       A	    B	    =>	A\B
+       A\           B	    =>	A\B
+       A	    \B	    =>	A\B
+       A\           \B	    =>	A\B
+
+       pDst	char pointer to location of 'A' above
+       pSrc	char pointer to location of 'B' above
+
+RETURN VALUE
+
+returns pDst
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+

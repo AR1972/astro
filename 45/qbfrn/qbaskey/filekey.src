@@ -1,0 +1,689 @@
+.comment ******************************************************************
+.comment *  File I/O Family - QBasic                                      *
+.comment ******************************************************************
+.comment *  7/31/90 bethpr                                                *
+.comment *  Get/Put (File I/O) put See Alsos in alphabetic order          *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, to BASIC language and products. *
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/25/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments.                      *
+.comment ******************************************************************
+.comment *  6/11/90 stevesau                                              *
+.comment *  Combined FILES with CHDIR/MKDIR/RMDIR.                        *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/10/90 stevesau                                              *
+.comment *  Reinserted IOCTL/IOCTL$.                                      *
+.comment *  Deleted CHDRIVE.                                              *
+.comment *  Combined LSET/RSET.                                           *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Deleted INPUT #/LINE INPUT # (combined with INPUT/LINE INPUT  *
+.comment *  in Device family).                                            *
+.comment ******************************************************************
+.comment *  5/4/90 stevesau                                               *
+.comment *  Deleted keyword references from action lines.                 *
+.comment ******************************************************************
+.comment *  5/3/90 stevesau                                               *
+.comment *  Combined OPEN file mode keywords, LOCK/UNLOCK, BLOAD/BSAVE,   *
+.comment *  CHDIR/MKDIR/RMDIR, GET/PUT, WRITE/WRITE #, SEEK Func./State.  *
+.comment *  Deleted PRINT # (combined with PRINT in Device family).       *
+.comment ******************************************************************
+.comment *  4/25/90 bethpr                                                *
+.comment *  Deleted CURDIR$, DIR$                                         *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                              *
+.comment *  Added action lines.                                           *
+.comment *  Added PRINT USING link to PRINT #.                            *
+.comment *  Added CLOSE, EOF, FILEATTR, LOF, OPEN from BC71 ISAM file,    *
+.comment *  deleted ISAM references.                                      *
+.comment ******************************************************************
+.context BLOAD
+.context @BLOAD
+.context BSAVE
+.context @BSAVE
+:nInstructions BSAVE, BLOAD
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+BSAVE copie le contenu d'une zone de la m‚moire dans un fichier.
+BLOAD charge un fichier cr‚‚ par BSAVE en m‚moire.
+
+\bBSAVE specFich$, adr%, lg&\p
+\bBLOAD specFich$[,adr%]\p
+
+    ş \bspecFich$\p    Pour BSAVE, un fichier dans lequel une zone de m‚moire
+                   (une image octet par octet) est copi‚e. Pour BLOAD, un
+                   fichier image-m‚moire cr‚‚ par BSAVE.
+    ş \badr%\p         Pour BSAVE, le d‚calage de l'adresse de d‚part
+                   de la zone … sauver. Pour BLOAD, le d‚calage
+                   de l'adresse de chargement.
+    ş \blg&\p          Nombre d'octets … copier (compris entre 0 et 65 635).
+
+    ş L'adresse de d‚part de la zone sauv‚e ou charg‚e est d‚termin‚e par
+      le d‚calage et l'ex‚cution la plus r‚cente de l'instruction DEF SEG.
+
+Voir aussi    \i\p\aDEF SEG\v@SEG\v\i\p    \i\p\aVARPTR, VARSEG\v@VARSEG\v\i\p    \i\p\aComparaison avec BASICA\v@basica.diffs\v\i\p
+.context CHDIR
+.context @CHDIR
+.context MKDIR
+.context @MKDIR
+.context RMDIR
+.context @RMDIR
+.context FILES
+.context @FILES
+:nInstructions CHDIR, MKDIR, RMDIR, FILES
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CHDIR change le r‚pertoire en cours d'une unit‚ de disque.
+MKDIR cr‚e un sous-r‚pertoire.
+MRDIR supprime un sous-r‚pertoire.
+FILES affiche le contenu du r‚pertoire en cours ou d'un r‚pertoire sp‚cifi‚.
+
+\bCHDIR pathname$\p
+\bMKDIR pathname$\p
+\bRMDIR pathname$\p
+\bFILES [specFich$]\p
+
+    ş \bpathname$\p    Nom du nouveau r‚pertoire en cours, du sous-r‚pertoire
+                   … cr‚er ou … supprimer.
+    ş \bspecFich$\p    Nom de fichier ou chemin (peut inclure une lettre
+                   d'unit‚ et des caractŠres g‚n‚riques MS-DOS).
+                   Si omis, FILES affiche tous les fichiers du r‚pertoire
+                   en cours.
+
+Exemple:
+    MKDIR "C:\\TEMP\\TEST"
+    CHDIR "C:\\TEMP"
+    FILES
+    RMDIR "TEST"
+.context CLOSE
+.context @CLOSE
+:nInstruction CLOSE
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CLOSE ferme un ou plusieurs fichiers ou p‚riph‚riques.
+
+\bCLOSE [[#]numFich%[,[#]numFich%]...]\p
+
+    ş \bnumFich%\p    Num‚ro d'un fichier ou p‚riph‚rique ouvert.
+
+    ş CLOSE utilis‚ sans argument ferme tous les fichiers
+      et p‚riph‚riques ouverts.
+
+Exemple:
+    CLS
+    INPUT "Nom du fichier : ", n$
+    OPEN n$ FOR OUTPUT AS #1
+    PRINT #1, "Ceci est enregistr‚ sur le fichier."
+    CLOSE
+    OPEN n$ FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT "Lecture depuis le fichier : "; a$
+    CLOSE
+
+Voir aussi    \i\p\aEND\v@END\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aRESET\v@RESET\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context EOF
+.context @EOF
+:nFonction EOF
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+EOF teste si la fin d'un fichier est atteinte. Elle retourne TRUE (valeur
+non nulle) si la fin d'un fichier est atteinte.
+
+
+\bEOF(numFich%)\p
+
+    ş \bnumFich%\p    Num‚ro d'un fichier ouvert.
+
+Exemple:
+    CLS
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    FOR i% = 1 TO 10
+        WRITE #1, i%, 2 * i%, 5 * i%
+    NEXT i%
+    CLOSE #1
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    DO
+        LINE INPUT #1, a$
+        PRINT a$
+    LOOP UNTIL (EOF(1))
+
+Voir aussi    \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aLOC\v@LOC\v\i\p    \i\p\aLOF\v@LOF\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p
+.context ERDEV
+.context @ERDEV
+.context ERDEV$
+.context @ERDEV$
+:nFonctions ERDEV, ERDEV$
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ERDEV retourne le code d'erreur g‚n‚r‚ par le dernier p‚riph‚rique ayant
+retourn‚ une erreur.
+ERDEV$ retourne le nom du p‚riph‚rique qui a g‚n‚r‚ l'erreur.
+
+\bERDEV\p
+\bERDEV$\p
+
+    ş L'octet de poids faible de la valeur retourn‚e par ERDEV contient
+      le code d'erreur DOS. L'octet de poids fort contient l'information
+      d'attribut du p‚riph‚rique.
+
+\i\p\aExemple\v@errhand.ex\v\i\p
+
+Voir aussi    \i\p\aERR, ERL\v@ERR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p
+.context FIELD
+.context @FIELD
+:nInstruction FIELD
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+FIELD alloue l'espace pour les variables dans un tampon pour un fichier
+… accŠs al‚atoire.
+
+\bFIELD [#]numFich%, lChamp% AS varChaine$\p
+                    \b[,lChamp% AS varChaine$] ...\p
+
+    ş \bnumFich%\p      Num‚ro d'un fichier ouvert.
+    ş \blChamp%\p       Nombre de caractŠres pour le champ.
+    ş \bvarChaine$\p    Variable identifiant le champ. Cette variable
+                    contiendra les donn‚es du champ.
+
+    ş Les variables d'enregistrement offrent un moyen plus commode
+      d'utiliser les fichiers … accŠs al‚atoire.
+
+Exemple:
+    OPEN "FILEDAT.DAT" FOR RANDOM AS #1 LEN = 80
+    FIELD #1, 30 AS nom$, 50 AS adresse$
+
+Voir aussi  \i\p\aGET, PUT\v@GET\v\i\p    \i\p\aLSET, RSET\v@LSET\v\i\p    \i\p\aTYPE\v@TYPE\v\i\p    \i\p\aComparaison avec BASICA\v@basica.diffs\v\i\p
+.context FILEATTR
+.context @FILEATTR
+:nFonction FILEATTR
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+FILEATTR retourne des informations concernant un fichier ouvert.
+
+\bFILEATTR(numFich%,attr%)\p
+
+    ş \bnumFich%\p    Num‚ro d'un fichier ouvert.
+    ş \battr%\p       Sp‚cifie le type d'information … retourner.
+                  Si attr% est ‚gal … 1, FILEATTR retourne
+                  une valeur indiquant le mode d'accŠs du fichier :
+
+                     Valeur  Mode
+                     ÍÍÍÍÍ   ÍÍÍÍÍÍ
+                     1       Input
+                     2       Output
+                     4       Random
+                     8       Append
+                     32      Binary
+
+                     Si attr% est ‚gal … 2, FILEATTR retourne le descripteur
+                     de fichier DOS.
+
+Exemple:
+    OPEN "TEST.DAT" FOR BINARY AS #1
+    PRINT FILEATTR(1, 1)
+    CLOSE
+
+Voir aussi    \i\p\aOPEN\v@OPEN\v\i\p
+.context FREEFILE
+.context @FREEFILE
+:nFonction FREEFILE
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+FREEFILE retourne le premier num‚ro de fichier BASIC disponible.
+
+\bFREEFILE\p
+
+Exemple:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT "Prochain num‚ro de fichier : "; FREEFILE
+    CLOSE
+
+Voir aussi    \i\p\aOPEN\v@OPEN\v\i\p
+.context GET
+.context @GET
+.context PUT
+.context @PUT
+:nInstructions GET, PUT  (E/S sur fichiers)
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+GET lit un fichier sur disque et place les donn‚es dans un tampon
+ou une variable.
+PUT ‚crit sur un fichier le contenu d'un tampon ou d'une variable.
+
+\bGET [#]numFich%[,[numEnr&][,variable]]\p
+\bPUT [#]numFich%[,[numEnr&][,variable]]\p
+
+   ş \bnumFich%\p   Num‚ro d'un fichier ouvert.
+   ş \bnumEnr&\p    Pour les fichiers … accŠs al‚atoire, num‚ro de
+                l'enregistrement … lire ou … ‚crire.
+                Pour les fichiers binaires, position de l'octet o—
+                l'‚criture ou la lecture commence.
+   ş \bvariable\p   Pour GET, variable employ‚e pour recevoir les donn‚es
+                … partir du fichier. Pour PUT, variable contenant les
+                donn‚es … ‚crire sur le fichier.
+                Une variable d'enregistrement est g‚n‚ralement employ‚e.
+
+Exemple:
+    TYPE enrTest
+        eNom AS STRING * 20
+        res AS SINGLE
+    END TYPE
+    DIM enr AS enrTest
+    OPEN "FINAL.DAT" FOR RANDOM AS #1 LEN = LEN(enr)
+    enr.eNom = "MarySa"
+    enr.res = 99
+    PUT #1, 1, enr
+    CLOSE #1
+    OPEN "FINAL.DAT" FOR RANDOM AS #1 LEN = LEN(enr)
+    GET #1, 1, enr
+    PRINT "NOM :     ", enr.eNom
+    PRINT "RESULTAT :", enr.res
+    CLOSE #1
+    KILL "FINAL.DAT"
+
+Voir aussi  \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aGET, PUT (Graphique)\v@ggx\v\i\p   \i\p\aLSET, RSET\v@LSET\v\i\p
+            \i\p\aFonctions MKn$, CVn\v@MKI$\v\i\p               \i\p\aTYPE\v@TYPE\v\i\p
+.context INPUT$
+.context @INPUT$
+:nFonction INPUT$
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+INPUT$ retourne une chaŒne de caractŠres lue … partir d'un fichier sp‚cifi‚.
+
+\bINPUT$(n[,[#]numFich%])\p
+
+    ş \bn\p           Nombre de caractŠres (octets) … lire.
+    ş \bnumFich%\p    Num‚ro d'un fichier ouvert. Si numFich% est omis,
+                  INPUT$ lit depuis le clavier.
+
+Exemple:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT #1, "Texte"
+    CLOSE
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    PRINT INPUT$(3, 1)        'Affiche les 3 premiers caractŠres.
+    CLOSE
+
+Voir aussi    \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p
+.context IOCTL
+.context @IOCTL
+.context IOCTL$
+.context @IOCTL$
+:nInstruction IOCTL, fonction IOCTL$
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+IOCTL transmet une chaŒne de contr“le … un gestionnaire de p‚riph‚rique.
+IOCTL$ retourne une chaŒne de contr“le d'un gestionnaire de p‚riph‚rique.
+
+\bIOCTL [#]numFich%, string$\p
+\bIOCTL$([#]numFich%)\p
+
+    ş \bnumFich%\p    Num‚ro d'un p‚riph‚rique ouvert.
+    ş \bstring$\p     ChaŒne de contr“le envoy‚e au p‚riph‚rique.
+
+    ş Les chaŒnes de contr“le envoy‚es par IOCTL et l'information retourn‚e
+      par IOCTL$ d‚pendent du gestionnaire de p‚riph‚rique. Consultez
+      la documentation de votre gestionnaire de p‚riph‚rique pour toutes
+      informations sur les chaŒnes de contr“le IOCTL et sur ce qui est
+      retourn‚ par IOCTL$.
+.context LOC
+.context @LOC
+:nFonction LOC
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LOC retourne la position actuelle du pointeur … l'int‚rieur du fichier.
+
+\bLOC(numFich%)\p
+
+    ş \bnumFich%\p    Num‚ro d'un fichier ou d'un p‚riph‚rique ouvert.
+
+    ş Pour les fichiers binaires, LOC retourne la position du dernier octet
+      lu ou ‚crit.
+    ş Pour les fichiers … accŠs al‚atoire, LOC retourne le num‚ro du dernier
+      enregistrement lu ou ‚crit.
+    ş Pour les fichiers s‚quentiels, LOC retourne la position de l'octet
+      actuellement point‚, divis‚e par 128.
+
+Exemple:
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+       PUT #1, , i%
+    NEXT i%
+    SEEK #1, 2
+    GET #1, , i%
+    PRINT "Donn‚e: "; i%; " Enregistrement : "; LOC(1); " Suivant : "; SEEK(1)
+
+Voir aussi    \i\p\aEOF\v@EOF\v\i\p    \i\p\aSEEK\v@SEEK\v\i\p
+.context LOCK
+.context @LOCK
+.context UNLOCK
+.context @UNLOCK
+:nInstructions LOCK, UNLOCK
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LOCK limite ou empˆche l'accŠs … un fichier dans un environnment r‚seau.
+UNLOCK libŠre un fichier verrouill‚ par une instruction LOCK.
+
+\bLOCK [#]numFich% [,{enr& | [pre&] TO der&}]\p
+\bUNLOCK [#]numFich% [,{enr& | [pre&] TO der&}]\p
+
+
+    ş \bnumFich%\p        Num‚ro d'un fichier ouvert.
+    ş \benr&\p            Pour les fichiers … accŠs al‚atoire, num‚ro
+                      de l'enregistrements … verrouiller, relativement
+                      au premier enregistrement du fichier.
+                      Pour les fichiers binaires, num‚ro d'un octet …
+                      verrouiller, relativement au premier octet
+                      du fichier.
+    ş \bpre&\p et \bder&\p    Num‚ros des premiers et derniers enregistrements
+                      ou d'octet d'un groupe d'enregistrements ou d'octets
+                      … verrouiller ou … d‚verouiller.
+
+    ş Pour les fichiers s‚quentiels, LOCK et UNLOCK affectent tout le fichier.
+
+Exemple:
+    'Cet exemple ne fonctionne qu'en environnment r‚seau.
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+        PUT #1, , i%
+    NEXT i%
+    LOCK #1, 2         'Verrouille enregistrement 2.
+    GET #1, 2, i%
+    UNLOCK #1, 2       'LibŠre enregistrement 2.
+.context LOF
+.context @LOF
+:nFonction LOF
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LOF retourne la longueur du fichier en octets.
+
+\bLOF(numFich%)\p
+
+    ş \bnumFich%\p    Num‚ro d'un fichier ouvert.
+
+Exemple:
+    INPUT "Nom du fichier : "; f$
+    OPEN f$ FOR BINARY AS #1
+    PRINT "Longueur = "; LOF(1)
+    CLOSE
+.context LSET
+.context @LSET
+.context RSET
+.context @RSET
+:nInstructions LSET, RSET
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LSET et RSET transfŠrent des donn‚es dans un tampon de fichier … accŠs
+al‚atoire (en pr‚paration de l'ex‚cution de PUT) et justifient … gauche
+ou … droite la valeur d'une variable de chaŒne. LSET copie aussi une
+variable d'enregistrement dans une autre variable d'enregistrement.
+
+\bLSET varChaine$=exprChaine$\p
+\bRSET varChaine$=exprChaine$\p
+\bLSET varEnr1=varEnr2\p
+
+    ş \bvarChaine$\p     Variable de chaŒne ou champ de fichier … accŠs
+                     al‚atoire d‚fini par une instruction FIELD.
+    ş \bexprChaine$\p    Pour LSET, version justifi‚e … gauche de
+                     varChaine$. Pour RSET, version justifi‚e
+                     … droite de varChaine$.
+    ş \bvarEnr1\p        Variables d'enregistrement.
+      \bvarEnr2\p        Utilisez LSET pour assigner une variable
+                     d'enregistrement d'un type … une variable
+                     d'enregistrement d'un autre type.
+
+Exemple:
+    OPEN "FILEDAT.DAT" FOR RANDOM AS #1 LEN = 10
+    FIELD #1, 5 AS Ls1$, 5 AS Rs1$
+    LSET Ls1$ = "LSET"
+    RSET Rs1$ = "RSET"
+    PUT #1, 1
+    CLOSE #1
+    OPEN "FILEDAT.DAT" FOR RANDOM AS #1 LEN = 10
+    FIELD #1, 5 AS Ls2$, 5 AS Rs2$
+    GET #1, 1
+    PRINT "*" + Ls2$ + "*", "*" + Rs2$ + "*"
+    CLOSE #1
+
+Voir aussi    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aGET, PUT\v@PUT\v\i\p
+.context NAME
+.context @NAME
+:nInstruction NAME
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+NAME renomme un fichier ou un r‚pertoire.
+
+\bNAME ancNom$ AS nouvNom$\p
+
+    ş \bancNom$\p et \bnouvNom$\p     Nom d'un fichier existant et nouveau
+                              nom du fichier. Chaque nom peut inclure un
+                              chemin d'accŠs.
+
+Exemple:
+    INPUT "Ancien nom :  "; ancFN$
+    INPUT "Nouveau nom : "; nouvFN$
+    NAME ancFN$ AS nouvFN$
+
+Voir aussi    \i\p\aFILES\v@FILES\v\i\p
+.context OPEN
+.context @OPEN
+:nInstruction OPEN
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+OPEN ouvre un fichier ou un p‚riph‚rique.
+
+\bOPEN fich$ [FOR mode] [ACCESS acc] [verr] AS [#]numFich% [LEN=lgEnr%]\p
+
+    ş \bfich$\p        Nom du fichier ou du p‚riph‚rique. Le nom peut
+                   inclure une lettre d'unit‚ et un chemin.
+    ş \bmode\p         Un des modes d'accŠs suivants : APPEND, BINARY, INPUT,
+                   OUTPUT ou RANDOM. Voir \i\p\aInstruction OPEN : modes d'accŠs\v@APPEND\v\i\p.
+    ş \bacc\p          Dans un environnement r‚seau, sp‚cifie si le fichier
+                   est ouvert avec accŠs READ, WRITE ou READ WRITE.
+                   Voir \i\p\aInstruction OPEN : clause ACCESS\v@ACCESS\v\i\p.
+    ş \bverr\p         Sp‚cifie le type de verrou dans un environnement
+                   r‚seau : SHARED, LOCK READ, LOCK WRITE, LOCK READ WRITE.
+    ş \bnumFich%\p     Un nombre compris entre 1 et 255 qui identifie le
+                   fichier pendant qu'il est ouvert.
+    ş \blgEnr%\p       Longueur d'un enregistrement. La valeur par d‚faut
+                   est 128 octets pour les fichiers … accŠs al‚atoire et
+                   512 octets pour les fichiers … accŠs s‚quentiels.
+
+Exemple:
+    INPUT "Nom du fichier : "; n$
+    OPEN n$ FOR OUTPUT AS #1
+    PRINT #1, "Ceci est enregistr‚ sur le fichier."
+    CLOSE
+    OPEN n$ FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT "Lecture fichier : "; a$
+    CLOSE
+
+Voir aussi  \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aFREEFILE\v@FREEFILE\v\i\p    \i\p\aOPEN COM\v@opcom\v\i\p    \i\p\aTYPE\v@TYPE\v\i\p
+            \i\p\aInstruction OPEN : autre syntaxe possible\v@openalt\v\i\p
+.context APPEND
+.context @APPEND
+.context BINARY
+.context @BINARY
+.context OUTPUT
+.context @OUTPUT
+.context RANDOM
+.context @RANDOM
+:nInstruction OPEN : modes d'accŠs
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Les mots-cl‚ APPEND, BINARY, INPUT, OUTPUT et RANDOM sont utilis‚s dans
+l'instruction OPEN pour sp‚cifier le mode d'accŠs au fichier.
+INPUT, OUTPUT et RANDOM sont aussi utilis‚s dans l'instruction OPEN COM.
+
+    ş APPEND sp‚cifie que le fichier doit ˆtre ouvert pour l'‚criture
+      s‚quentielle et place le pointeur de ce fichier … la fin de ce fichier.
+      Les instructions PRINT # ou WRITE # permettent ensuite d'ajouter
+      des donn‚es … la fin du fichier.
+    ş BINARY sp‚cifie le mode d'accŠs binaire. En mode binaire, vous pouvez
+      lire ou ‚crire des donn‚es … n'importe quel emplacement d'octet du
+      fichier grƒce aux instructions GET ou PUT.
+    ş INPUT sp‚cifie que le fichier est ouvert pour la lecture s‚quentielle.
+    ş OUTPUT sp‚cifie que le fichier est ouvert pour l'‚criture s‚quentielle.
+    ş RANDOM sp‚cifie que le fichier est ouvert en mode d'accŠs al‚atoire.
+      RANDOM est le mode d'accŠs par d‚faut.
+
+Voir aussi    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aOPEN COM\v@opcom\v\i\p    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aWRITE\v@WRITE\v\i\p
+.context ACCESS
+.context @ACCESS
+:nInstruction OPEN :  clause ACCESS
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+La clause ACCESS sp‚cifie le type de permission donn‚e aux utilisateurs
+d'un fichier.
+
+\bACCESS {READ | WRITE | READ WRITE}\p
+
+    ş \bREAD\p          Ouvre un fichier pour la lecture seulement.
+    ş \bWRITE\p         Ouvre un fichier pour l'‚criture seulement.
+    ş \bREAD WRITE\p    Ouvre un fichier pour la lecture et l'‚criture.
+                    Ce mode n'est valide qu'avec les fichiers … accŠs
+                    al‚atoire ou binaires, ainsi que pour les fichiers
+                    ouverts en mode APPEND.
+
+Voir aussi    \i\p\aOPEN\v@OPEN\v\i\p
+.context @openalt
+.context .openalt
+:nInstruction OPEN : autre syntaxe possible
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bOPEN mode2$,[#]numFich%,fichier$[,lgRec%]\p
+
+    ş \bmode2$\p      Expression de chaŒne qui commence par un des caractŠres
+                  suivants et sp‚cifie le mode d'accŠs :
+                    O    Mode ‚criture s‚quentielle.
+                    I    Mode lecture s‚quentielle.
+                    R    Mode lecture/‚criture sur fichier … accŠs al‚atoire.
+                    B    Mode fichier binaire.
+                    A    Mode ‚criture s‚quentielle. Place le pointeur en fin
+                         de fichier et le num‚ro d'enregistrement au dernier
+                         enregistrement du fichier. Les instructions PRINT #
+                         ou WRITE # ajoutent des donn‚es au fichier.
+    ş \bnumFich%\p    Nombre compris entre 1 et 255 qui identifie le fichier
+                  pendant qu'il est ouvert.
+    ş \bfichier$\p    Nom du fichier (peut inclure lettre d'unit‚ et chemin
+                  d'accŠs).
+    ş \blgRec%\p      Pour les fichiers … accŠs al‚atoire, longueur de
+                  l'enregistrement en octets. Pour les fichiers … accŠs
+                  s‚quentiels, longueur du tampon.
+
+    ş QBasic supporte cette syntaxe pour assurer la compatibilit‚ avec
+      les programmes ‚crits pour des versions ant‚rieures de Basic.
+
+Voir aussi    \i\p\aOPEN\v@OPEN\v\i\p
+.context RESET
+.context @RESET
+:nInstruction RESET
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+RESET ferme tous les fichiers et p‚riph‚riques ouverts.
+
+\bRESET\p
+
+Voir aussi    \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aEND\v@END\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context SEEK
+.context @SEEK
+:nFonction et instruction SEEK
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+La fonction SEEK retourne la position actuelle du pointeur dans un fichier.
+L'instruction SEEK sp‚cifie la position du pointeur pour la prochaine
+op‚ration de lecture ou d'‚criture.
+
+\bSEEK(numFich%)\p
+\bSEEK [#]numFich%, position&\p
+
+   ş \bnumFich%\p     Num‚ro d'un fichier ouvert.
+   ş \bposition&\p    Position … laquelle la prochaine op‚ration de
+                  lecture ou d'‚criture aura lieu. Pour les fichiers …
+                  accŠs al‚atoire, la position est un num‚ro d'enregistrement.
+                  Pour les autres modes d'accŠs, la position est un num‚ro
+                  d'octet relatif au d‚but du fichier. Le premier octet
+                  occupe la position 1.
+
+Exemple:
+  OPEN "TEST.DAT" FOR RANDOM AS #1
+  FOR i% = 1 TO 10
+      PUT #1, , i%
+  NEXT i%
+  SEEK #1, 2
+  GET #1, , i%
+  PRINT "Donn‚e : "; i%; " Enregistrement : "; LOC(1); " Suivant : "; SEEK(1)
+
+Voir aussi    \i\p\aGET, PUT\v@GET\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p
+.context WRITE
+.context @WRITE
+:nInstruction WRITE
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+WRITE ‚crit des donn‚es dans un fichier s‚quentiel ou sur l'‚cran.
+
+\bWRITE [[#]numFich%,] listeExpr\p
+
+    ş \bnumFich%\p       Num‚ro d'un fichier s‚quentiel ouvert.
+                     Si omis, WRITE ‚crit les donn‚es sur l'‚cran.
+    ş \blisteExpr\p      Une ou plusieurs variables ou expressions,
+                     s‚par‚es par des virgules, dont les valeurs sont
+                     ‚crites dans un fichier ou sur l'‚cran.
+
+    ş WRITE insŠre des virgules entre les ‚l‚ments et place les chaŒnes
+      entre guillemets lors de l'‚criture. WRITE ‚crit les valeurs sur le
+      fichier sous une forme lisible par l'instruction INPUT.
+
+Exemple:
+    CLS
+    OPEN "LIST" FOR OUTPUT AS #1
+    DO
+        INPUT "   NOM :        ", Nom$
+        INPUT "   AGE :        ", Age$
+        WRITE #1, Nom$, Age$
+        INPUT "Ajouter une entr‚e "; R$
+    LOOP WHILE UCASE$(R$) = "O"
+    CLOSE #1
+    'Afficher le fichier … l'‚cran.
+    OPEN "LIST" FOR INPUT AS #1
+    CLS
+    PRINT "Entr‚es dans le fichier ": PRINT
+    DO WHILE NOT EOF(1)
+        INPUT #1, Rec1$, Rec2$   'Lecture depuis fichier.
+        PRINT Rec1$, Rec2$       'Affichage … l'‚cran.
+    LOOP
+    CLOSE #1
+    KILL "LIST"
+
+Voir aussi    \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p
+.comment *******************************************************************
+.comment *  AS Keyword
+.comment *******************************************************************
+.context AS
+.context @AS
+:nMot-cl‚ AS
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+AS est utilis‚ par diff‚rentes instructions :
+
+    ş Sp‚cifie un type de variable avec les instructions
+      COMMON, DECLARE, DEF FN, DIM, FUNCTION, REDIM, SHARED, STATIC et SUB.
+    ş Sp‚cifie un type d'‚l‚ment dans un type d‚fini par l'utilisateur
+      avec l'instruction TYPE.
+    ş Affecte un num‚ro … un fichier ou … un p‚riph‚rique avec
+      l'instruction OPEN.
+    ş Sp‚cifie un nom de champ avec l'instruction FIELD.
+    ş Sp‚cifie un nouveau nom de fichier avec l'instruction NAME.
+
+Voir aussi  \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p     \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+            \i\p\aFIELD\v@FIELD\v\i\p     \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aNAME\v@NAME\v\i\p      \i\p\aOPEN\v@OPEN\v\i\p
+            \i\p\aSHARED, STATIC\v@SHARED\v\i\p          \i\p\aSUB\v@SUB\v\i\p       \i\p\aTYPE\v@TYPE\v\i\p

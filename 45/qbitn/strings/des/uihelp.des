@@ -1,0 +1,24 @@
+DESCRIPTION 
+GLOBAL_INFO 
+	{
+	CHARACTER 
+	NO_OVERLAP 
+	CC_COMPILED 
+	}
+
+MODULE uihelp 
+	{
+	DIALOG dlgHelpText AT (6, 2, 68, 21) 
+	CAPTION "GUIDA" 
+	CAB_NAME CABHelpText 
+	TMC_INIT tmcNull 
+		{
+		LIST_BOX AT (1, 0, 64, 17) TMC_IMPORT tmcCancel ARG iHelpText 
+			LIST_BOX_PROC  WListProcHelpText 
+		OK_BUTTON AT (31, 18, 4, 1) DISMISS_CAB DEFAULT 
+		}
+
+	}
+
+
+END_DESCRIPTION 

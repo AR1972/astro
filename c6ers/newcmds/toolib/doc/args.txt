@@ -1,0 +1,244 @@
+SUMMARY Access runtime options as names and values.
+
+KEYWORDS argConfig argSeqn argOpen argName argValu
+
+USAGE
+
+#include <args.h>
+
+// basic loockup structure
+typedef char *ArgName;
+
+typedef int *ArgOrder;
+
+typedef int (*ArgTestFunc) ( char *, char ** );
+
+ArgTestFunc argIsName;
+
+void argConfig (
+    MapItemPtr pNames,
+    ArgOrder piSeqn,
+    int cSeqn,
+    char *szMrk,
+    char *szSep
+    );
+
+void argSeqn (
+    ArgOrder piSeqn,
+    int cSeqn
+    );
+
+void argOpen (
+    char **argv
+    );
+
+char **argShut ( void );
+
+int argName (
+    int bad,
+    ArgName *pszText
+    );
+
+int argPeek (
+    int bad,
+    ArgName *pszText
+    );
+
+char *argValu (
+    void
+    );
+
+DESCRIPTION
+
+The arg library provides convenient access to a program's command
+line options.  The library supports multi-letter argument names
+(e.g. "/delete"), case insensitive name matches, positional
+arguments and flexible argument formats ("/domain:nbu" vs.
+"/domain nbu").
+
+The options on a command line are treated differently depending
+on their initial character.  Options that begin with a mark
+character (normally "/" or "-") are argument names.  Other options
+are argument values, and are associated with the preceeding
+argument name.
+
+Once the caller provides several small parsing tables and the
+address of the argv structure, argument names and values are
+retrieved in sequential order.
+
+argConfig() is used to establish the parsing tables.  The pNames
+    argument provides a mapping from strings to integers.
+    Normally, the integers are defined as an enumerated type.
+    One of these integers will be returned by argName when the
+    current command line option matches an argument name.  piSeqn
+    implements positional arguments.  It defines the sequence of
+    integers to be returned if an argument value is found without
+    a preceeding argument name.	cSeqn is the number of entries
+    in piSeqn.	szMrk is a string of the characters that mark an
+    argument.  If NULL, "-/" is used.  szSep is a similar string
+    of characters that separate a name from a value.  If NULL,
+    the characters ":=" are used.
+
+argOpen() provides the argument vector to the arg library.  It
+    need only be called once, with the argv received by main().
+
+argName() determines the name for the next argument.  If positional
+    argument values are not being used, the next option must start
+    with a mark character.  Otherwise argName returns with the value of
+    of the "bad" argument.  If the next option is a positional
+    argument values, the next entry from the piSeqn array is returned.
+    If the option starts with a mark charater, the remaining text
+    is checked for a match in the table of argument names.  The
+    actual text of the argument name is assigned to pszText on output.
+
+argValu() returns the next argument value string.  If the next
+    unread option in argv starts with a mark character (an
+    argument name, not an option), it returns NULL.
+
+argSeqn() allows the positional argument sequence to be changed.
+    This is generally used when one option changes the
+    potential meaning of later options.
+
+argPeek() allows you to "peek" at the next argument name in argv
+    without actually reading past it. So it functions in much the same
+    way as argName() except that it doesn't cause the advancement past the
+    next argument name.
+
+argIsName This pointer may be setup to point to one's own argument name
+    detection function. This is particularly useful for parsing arguments
+    that do not have the mark characters (like '-' or '/') preceeding the
+    argument names as in the case of services started up by Lan Manager.
+
+NOTES
+
+Argument name matching is performed with mapAbbrStr and striprefix,
+and the argument names table must conform to mapAbbrStr restrictions.
+
+SEE ALSO
+
+striprefix
+
+mapAbbrStr
+
+EXAMPLE
+
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
+#include "args.h"
+
+char *fnSrc;
+char *fnDst;
+
+typedef enum {
+    MODE_ASCII, MODE_BINARY }
+    ModeSet;
+
+ModeSet fMode;
+
+/////////////////////////
+// ARGUMENT DEFINITION //
+/////////////////////////
+
+typedef enum {
+    ARG_UNK,
+    ARG_SRC, ARG_DST, ARG_BINARY, ARG_ASCII,
+    ARG_BAD }
+    ArgSet;
+
+MapItemRec allow[] = {
+
+    // "standard" strings
+    { "SRC",	ARG_SRC },
+    { "DST",	ARG_DST	},
+    { "BINARY", ARG_BINARY },
+    { "ASCII",	ARG_ASCII },
+
+    // "alias" strings
+    { "SOURCE",      ARG_SRC },
+    { "DESTINATION", ARG_DST },
+
+    // must be last
+    { NULL,	     ARG_UNK }
+    };
+
+ArgSet seqTbl [] = { ARG_SRC, ARG_DST };
+int seqLen = ( sizeof ( seqTbl ) / sizeof ( ArgSet ));
+
+///////////////////////
+// ARGUMENT ROUTINES //
+///////////////////////
+
+// establish neutral configuration
+void
+setConfig ()
+{
+    fnSrc = NULL;
+    fnDst = NULL;
+    fMode = MODE_ASCII;
+    }
+
+// read command line configuration
+void
+getConfig (
+    char** argv
+    )
+{
+    ArgSet arg;
+    ArgName text;
+
+    // set up argument parser
+    argConfig ( allow, seqTbl, seqLen, NULL, NULL );
+    argOpen ( argv );
+
+    // process each argument
+    for(;;) {
+	switch ( arg = argNext ( ARG_BAD, &text )) {
+	case ARG_SRC:
+	    fnSrc = argOptn ();
+	    break;
+
+	case ARG_DST:
+	    fnDst = argOptn ();
+	    break;
+
+	case ARG_ASCII:
+	    fMode = MODE_ASCII;
+	    break;
+
+	case ARG_BINARY:
+	    fMode = MODE_BINARY;
+	    break;
+
+	default:
+	    if ( text == NULL ) return;
+
+	    // bad argument - fail
+	    fprintf ( stderr, "unknown argument %s.\n", text );
+	    exit (1);
+	    }
+	}
+   }
+
+void
+main (
+    int argc,
+    char **argv
+    )
+{
+
+    setConfig ();
+    getConfig ( argv + 1 );	// skip program name
+
+    printf ( "source is %s.\n",
+	      ( fnSrc ? fnSrc : "standard input" ));
+
+    printf ( "destination is %s.\n",
+	      ( fnDst ? fnDst : "standard output" ));
+
+    printf ( "mode is %s.\n",
+	      ( fMode == MODE_ASCII ? "ascii" : "binary" ));
+
+    exit (0);
+    }

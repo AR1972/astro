@@ -1,0 +1,34 @@
+
+SUMMARY   Scroll a region of the screen down
+
+#include <tools.h>
+
+; ScrollDn (x1, y1, x2, y2, n, a) scrolls a region down with attribute
+;
+ifdef  OS2
+cProc	ScrollDn,<PUBLIC>
+parmW	x1
+parmW	y1
+parmW	x2
+parmW	y2
+parmW	n
+parmW	a
+else
+cProc	ScrollDn,<PUBLIC>,<si,di>
+parmB	x1
+parmB	y1
+parmB	x2
+
+DESCRIPTION
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+

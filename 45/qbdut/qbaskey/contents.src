@@ -1,0 +1,982 @@
+.comment ******************************************************************
+.comment *  Contents family                                               *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed all references to BASIC language and previously       *
+.comment *  released products so that BASIC, either alone or embedded,    *
+.comment *  is all caps. Also revised Beyond QBasic screen.               *
+.comment ******************************************************************
+.comment *  7/17/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  7/6/90 stevesau                                               *
+.comment *  Moved menu bar help to environ.src.                           *
+.comment *  Added /RUN to command line options.                           *
+.comment ******************************************************************
+.comment *  6/25/90 stevesau                                              *
+.comment *  Incorporated final review comments/edits.                     *
+.comment ******************************************************************
+.comment *  6/14/90 stevesau                                              *
+.comment *  Added Differences from BASICA                                 *
+.comment ******************************************************************
+.comment *  5/24/90 bethpr                                                *
+.comment *  Removed currency support from BASIC Character Set, added new  *
+.comment *  link to Contents called "Version Differences" that compares   *
+.comment *  QBasic to GW-BASIC/BASICA, added unsupported GW-BASIC/BASICA  *
+.comment *  keywords to unsupported keyword screen and removed CURDIR$,   *
+.comment *  DIR$, SSEG, SSEGADD as per Markcha, added note to Syntax      *
+.comment *  Conventions about our use of type declaraction characters,    *
+.comment *  added MS Press books to Beyond QBasic, added info about       *
+.comment *  GW-BASIC/BASICA ,A switch to Command-Line Options.            *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Deleted VARPTR, VARSEG from unsupported keywords (reinserted  *
+.comment *  in Memory family).                                            *
+.comment ******************************************************************
+.comment *  5/4/90 - Bethpr                                               *
+.comment *  Deleted Shft+F8 and Shft+F10 functionality for history as per *
+.comment *  tomb; added h.pg$ to last topic in file.                      *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Added Unsupported Keywords node.                              *
+.comment *  Moved navigation buttons to flush left.                       *
+.comment *  Deleted limits info on COMMAND$ (unsupported).                *
+.comment ******************************************************************
+.comment *  4/17/90 Bethpr                                                *
+.comment *  Deleted Key Functions node and edited QBasic Memory           *
+.comment *  and Capacity node.                                            *
+.comment ******************************************************************
+.comment *  4/13/90 Bethpr                                                *
+.comment *  Edited Contents screen node and Keywords by task summary      *
+.comment *  screen.                                                       *
+.comment ******************************************************************
+.comment *  4/9/90 Bethpr                                                 *
+.comment *  In preparation for QBasic Help, the following                 *
+.comment *  nodes of information are being removed from this file:        *
+.comment *  10 common questions and their 10 related answer nodes,        *
+.comment *  BC command line, Configuring keys, Creating a custom          *
+.comment *  key file, Developing ISAM databases, Memory management        *
+.comment *  utilities, Overview of memory management, QBX memory          *
+.comment *  and capacity, Using expanded memory                           *
+.comment *  (EMS), Using extended memory (XMS), Using HIMEM.SYS,          *
+.comment *  Using RAMDRIVE.SYS, Using SMARTDRV.SYS, Using the             *
+.comment *  /Nofrills option.  Statements & Functions Listed by           *
+.comment *  Programming Task:  placed names of all F&S in related         *
+.comment *  nodes into this summary table; deleted related nodes,         *
+.comment *  obsolete language, and ISAM information. QBX Command          *
+.comment *  line options:  Edited this node to reflect QBasic; put        *
+.comment *  in placeholders for new switches.                             *
+.comment ******************************************************************
+.context h.pg1
+.context helpSurvivalId
+:nBeknopt overzicht
+
+ \bZo werkt u met QBasic:\p
+
+   ş Druk op Alt om de QBasic-menubalk te activeren.
+   ş Druk op de aangegeven letter om menu's en opdrachten te activeren.
+   ş Blader met de pijltoetsen door menu's en opdrachten.
+   ş Druk op F1 voor Help bij een geselecteerd trefwoord, dialoogvenster
+     of een geselecteerde opdracht.
+   ş Druk op Esc om Help af te sluiten.
+
+ \bZo bladert u door het QBasic Help-systeem:\p
+
+   ş Druk op Tab of de eerste letter van het onderwerp om een van de
+     volgende onderwerpen te selecteren. Druk vervolgens op Enter voor:
+
+     \i\p\aHelp-index\i\vhelpIndexId\v\p       De Help-index voor QBasic
+     \i\i\aInhoud\vhelpTableId\v\i\p           De inhoudsopgave voor QBasic Help
+     \i\i\aHelp gebruiken\i\vhelpOnHelpId\v\p   Informatie over het gebruik van QBasic Help
+
+ Tip: Deze onderwerpen zijn ook beschikbaar in het menu Help (het vraagteken
+      op de menubalk).
+.context helpOnHelpId
+:nHelp gebruiken
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Zo gebruikt u QBasic Help:
+
+   ş U verkrijgt Help over een Basic-trefwoord door de cursor op het
+     trefwoord te plaatsen en op F1 te drukken of op de rechtermuisknop
+     te klikken.
+
+   ş U verkrijgt Help over een QBasic-menu, -opdracht of -dialoogvenster
+     door de cursor op het menu-onderwerp of op de knop <Help> te plaatsen
+     en vervolgens op F1 te drukken.
+
+   ş Druk op Alt+? en vervolgens op de aangegeven letter van de opdracht
+     om QBasic Help-onderwerpen te bekijken.
+
+   ş Druk op Shift+F6 om de cursor naar het Help-venster te verplaatsen.
+
+   ş Blader met behulp van PgDn of PgUp door de Help-informatie.
+
+   ş U kunt Help-informatie (zoals een programmeervoorbeeld) naar het
+     uitvoerscherm kopi‰ren met de opdrachten in het QBasic-menu Bewerken.
+
+   ş Druk op Esc om het Help-venster te sluiten.
+
+ In het Help-venster kunt u informatie weergeven over:
+
+   ş Help-onderwerpen (aangegeven met accentuerende pijltjes \i \p)
+
+   ş Basic-trefwoorden
+
+ Druk op Tab of de eerste letter van het onderwerp om de cursor naar
+ een Help-onderwerp te verplaatsen. U kunt de informatie over het trefwoord
+ of onderwerp bekijken door de cursor erop te plaatsen en vervolgens op
+ F1 te drukken of op de rechtermuisknop te klikken.
+
+ QBasic slaat de laatste 20 Help-onderwerpen die u bekeken hebt op. Druk
+ herhaaldelijk op Alt+F1 of klik meerdere malen op <Terug> om deze
+ onderwerpen opnieuw te bekijken.
+.context @helpTableId
+.context helpTableId
+:nInhoudsopgave
+  \bInhoud\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  ÚInleidingÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÚToetsenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ \i\p\aHelp gebruiken\vhelpOnHelpId\v\i\p                   ³ ³ \i\p\aSamenvatting van sneltoetsen\v@sk\v\i\p  ³
+  ³ \i\p\aMenu's en opdrachten gebruiken\v@sg.men\v\i\p   ³ ³ \i\p\aBewerkingstoetsen\v@me\v\i\p             ³
+  ³ \i\p\aEen dialoogvenster gebruiken\v@sg.dia\v\i\p     ³ ³ \i\p\aToetsen voor Beeld en Zoeken\v@vk\v\i\p  ³
+  ³ \i\p\aSyntaxisconventies\vUsingHelpSyntax\v\i\p               ³ ³ \i\p\aToetsen voor Uitvoeren & Debug\v@dk\v\i\p³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ \i\p\aHelp-toetsen\v@hk\v\i\p                  ³
+  ÚQBasic gebruikenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ \i\p\aQBasic-opdrachtregel\v@qbas.exe\v\i\p             ³ ÚNaslagdeelÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ \i\p\aBasic-tekenset\v@fun.character.set\v\i\p                   ³ ³ \i\p\aASCII-codes\v@ac\v\i\p                   ³
+  ³ \i\p\aTrefwoorden voor programmeertaken\v@fk\v\i\p³ ³ \i\p\aToetsenbord-scancodes\v@kbsct\v\i\p         ³
+  ³ \i\p\aBeperkingen voor QBasic-omgeving\v@lqb\v\i\p ³ ³ \i\p\a'Run-time'-foutcodes\v@rtect\v\i\p          ³
+  ³ \i\p\aVersie-verschillen\v@vd\v\i\p               ³ ³ \i\p\aCopyright en handelsmerken\v@cccp\v\i\p    ³
+  ³ \i\p\aBASICA-programma's converteren\v@converting_BASIC\v\i\p   ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ \i\p\aMeer dan QBasic\v@beyqb\v\i\p                  ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+.context @cccp
+.context .cccp
+:nCopyright en handelsmerken
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  De informatie in dit document kan zonder enige voorafgaande waarschuwing
+  worden gewijzigd en houdt geen enkele verplichting in voor Microsoft
+  Corporation. De software, zoals deze in dit document staat beschreven,
+  wordt geleverd onder de voorwaarden van een licentie-overeenkomst of
+  een niet-bekendmakingsovereenkomst. De bedoelde software mag alleen
+  volgens de voorwaarden van deze overeenkomsten worden gebruikt of
+  gekopieerd. Het is bij de wet verboden bedoelde software te kopi‰ren
+  op andere wijzen dan uitdrukkelijk beschreven in voornoemde overeenkomsten.
+  Behoudens de in of krachtens de Auteurswet van 1912 gestelde
+  uitzonderingen, mag niets uit dit online Help-systeem worden verveelvoudigd
+  en/of openbaar gemaakt door middel van druk, fotokopie, microfilm, of op
+  welke andere wijze dan ook en evenmin in een gegevens-opzoeksysteem worden
+  opgeslagen zonder voorafgaande schriftelijke toestemming van Microsoft
+  Corporation.
+
+  Mits anders vermeld zijn alle in de schermafdrukken, voorbeelduitvoer
+  en diverse voorbeelden vermelde bedrijven, personen, gegevens en
+  adressen fictief. Deze dienen slechts om het gebruik van een Microsoft-
+  produkt te illustreren.
+
+  (C) Copyright Microsoft Corporation, 1987-1991.
+      Alle rechten voorbehouden.
+
+  Microsoft, MS, MS-DOS, Microsoft Press en GW-BASIC zijn geregistreerde
+  handelsmerken.
+
+  In de Microsoft-documentatie verwijst de term "DOS" zowel naar het
+  MS-DOS als het IBM Personal Computer DOS besturingssysteem. Namen van
+  specifieke besturingssystemen worden gebruikt wanneer er naar bepaalde
+  voorzieningen wordt verwezen die uniek zijn voor dat betreffende systeem.
+
+  AT&T is een geregistreerd handelsmerk van American Telephone and
+  Telegraph Company.
+
+  Compaq is een geregistreerd handelsmerk van Compaq Computer Corporation.
+
+  Hercules is een geregistreerd handelsmerk van Hercules Computer Technology.
+
+  IBM is een geregistreerd handelsmerk van International Business Machines
+  Corporation.
+
+  Olivetti is een geregistreerd handelsmerk van Ing. C. Olivetti.
+
+  WordStar is een geregistreerd handelsmerk van MicroPro International
+  Corporation.
+.comment *********************************************************************
+.comment Orientation nodes
+.comment *********************************************************************
+.context UsingHelpSyntax
+.context @UsingHelpSyntax
+:nSyntaxisconventies
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ TREFWOORDEN            Items in hoofdletters zijn Basic-trefwoorden.
+                        Trefwoorden vormen een vereist onderdeel van de
+                        syntaxis van een statement, tenzij ze tussen
+                        vierkante haakjes staan.
+
+ vervangbare            Items in kleine letters zijn vervangbare
+ aanduidingen           aanduidingen voor informatie die u in het statement
+                        moet opgeven (bijvoorbeeld: bestandsnaam$). In de
+                        QBasic-syntaxis worden achtervoegsels voor
+                        gegevenstypen gebruikt voor vervangbare aanduidingen
+                        die alleen door ‚‚n bepaald gegevenstype mogen
+                        worden vervangen. Aanduidingen die door meerdere
+                        gegevenstypen mogen worden vervangen, hebben geen
+                        achtervoegsels.
+
+ [optioneel item]       Items tussen vierkante haakjes zijn optioneel.
+
+ {keuze1 | keuze2}      Accolades en een verticale streep geven een keuze
+                        aan tussen twee of meer items. U dient een van de
+                        items te gebruiken, tenzij de accolades tussen
+                        vierkante haakjes staan.
+
+ item, item, ...        Drie puntjes achter een item betekenen dat meer
+                        items van het voorgaande type kunnen worden gebruikt
+                        in ‚‚n statement.
+
+ Begin-trefwoord        Drie onder elkaar geplaatste punten tussen twee
+ .                      bloksgewijs geplaatste statements betekenen dat er
+ .                      andere statements kunnen worden ingevoegd tussen
+ .                      het begin en eind van het blok.
+ Eind-trefwoord
+.context @sg.men
+:nMenu's en opdrachten gebruiken
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Gebruik de menubalk bovenaan het scherm om menu's en opdrachten te
+ selecteren.
+
+ Handeling            Met de muis...               Met het toetsenbord...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Menu weergeven.      Verplaats de muisaanwijzer   Druk op Alt om de
+                      naar de menunaam en klik     menubalk te activeren en
+                      vervolgens op de muisknop.   druk op de voor het menu
+                                                   aangegeven letter.
+
+ Opdracht kiezen.     Klik op de opdrachtnaam.     Typ de voor de opdracht
+                                                   aangegeven letter.
+
+ Opdracht annuleren.  Klik buiten het menu.        Druk op Esc.
+
+ Tip: Controleer de statusbalk onderaan het scherm voor Help over de
+      huidige taak. Een item tussen punthaken kiest u door erop te klikken.
+.context @sg.dia
+:nEen dialoogvenster gebruiken
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ QBasic geeft dialoogvensters weer voor opdrachten die opties bevatten.
+
+ Handeling            Met de muis...               Met het toetsenbord...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Tekstvak voor        Verplaats de muisaanwijzer   Druk op Tab totdat de
+ invoer selecteren.   naar het tekstvak en klik    cursor zich in het
+                      vervolgens op de muisknop.   tekstvak bevindt.
+
+ Item uit een         Dubbelklik op het item.      Selecteer het item met
+ keuzelijst                                        de pijltoetsen en druk
+ selecteren.                                       vervolgens op Enter.
+
+ Optie kiezen.        Klik op de optie.            Verplaats de cursor met
+                                                   de pijltoetsen naar
+                                                   de gewenste optie.
+
+ Aankruisvakje in-    Klik op het aankruisvakje.   Verplaats de cursor met
+ of uitschakelen.                                  Tab naar het aankruisvakje
+                                                   en druk vervolgens op
+                                                   de spatiebalk.
+
+ Opdrachtknop         Klik op de opdrachtknop.     Verplaats de cursor met
+ kiezen.                                           Tab naar de opdrachtknop
+                                                   en druk op Enter.
+.comment *********************************************************************
+.comment Command Line node
+.comment *********************************************************************
+.context qbas.exe
+.context @qbas.exe
+:nQBasic-opdrachtregel
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ De volgende opties kunnen op de DOS-opdrachtregel worden getypt na de
+ opdracht QBasic:
+
+ \bQBASIC [/B] [/EDITOR] [/G] [/H] [/MBF] [/NOHI] [[/RUN] bronbestand]\p
+
+ Optie              Beschrijving
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ /B                 Stelt u in staat een composiete (monochrome) monitor te
+                    gebruiken met een CGA-kaart. De optie /B geeft QBasic in
+                    monochrome modus weer als u een kleurenmonitor gebruikt.
+
+ /EDITOR            Roept de tekst-editor MS-DOS Editor aan. Deze optie
+                    kan worden afgekort tot /ED.
+
+ /G                 Stelt QBasic in staat een CGA-scherm zo snel mogelijk
+                    bij te werken (deze optie werkt alleen met CGA-monitors).
+                    Als u 'sneeuw' (knipperende stipjes op het scherm) ziet
+                    wanneer QBasic uw scherm bijwerkt, ondersteunt uw
+                    apparatuur deze optie niet helemaal. Wanneer u een schoon
+                    scherm prefereert, kunt u QBasic opnieuw starten zonder
+                    de optie /G.
+
+ /H                 Geeft het maximum aantal regels weer dat uw apparatuur
+                    kan verwerken.
+
+ /MBF               Zorgt dat de QBasic-conversiefuncties (CVS, CVD, MKS$
+                    en MKD$) getallen in IEEE-formaat als getallen in
+                    Microsoft-binair formaat behandelen.
+
+ /NOHI              Maakt het gebruik van een monitor mogelijk die geen
+                    hoge intensiteit ondersteunt. Kan niet worden gebruikt
+                    met Compaq laptop-computers.
+
+ bronbestand        Het bestand dat moet worden geladen wanneer QBasic
+                    wordt gestart. Als u een bestand wilt laden dat met
+                    GW-BASIC of BASICA werd gemaakt, moet dit bestand
+                    in GW-BASIC of BASICA zijn opgeslagen met de
+                    optie A.
+
+ /RUN bronbestand   Zorgt ervoor dat QBasic een programmabestand laadt
+                    en uitvoert voordat het dit weergeeft.
+.context @fun.character.set
+.context .fun.character.set
+:nBasic-tekenset
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ De Microsoft Basic-tekenset omvat de letters van het alfabet (A-Z, a-z),
+ numerieke tekens (0-9 en A-F of a-f voor hexadecimale getallen) en
+ speciale tekens. Sommige tekens hebben een speciale betekenis in Basic:
+
+   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄAchtervoegsels voor gegevenstypenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+   ³  !  Enkele-precisie                  %  Geheel getal                ³
+   ³  #  Dubbele-precisie                 &  'Long integer'              ³
+   ³  $  Tekenreeks                                                      ³
+   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+   ÚÄÄÄÄRekenkundige operatorenÄÄÄÄÄ¿  ÚÄÄÄÄÄÄÄÄÄÄÄÄSpeciaalÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+   ³  *  Vermenigvuldigingsteken    ³  ³  '  Commentaar (aanhalingsteken)³
+   ³  -  Minteken                   ³  ³  ;  Bestuurt invoer van PRINT-  ³
+   ³  /  Deelteken (slash)          ³  ³       en INPUT-statement        ³
+   ³  =  Relationele operator of    ³  ³  ,  Bestuurt invoer van PRINT-  ³
+   ³       toewijzingssymbool       ³  ³       en INPUT-statement        ³
+   ³  >  'groter dan'-teken         ³  ³  :  Scheidt meerdere statements ³
+   ³  +  Plusteken                  ³  ³       op ‚‚n regel              ³
+   ³  .  Decimale punt              ³  ³  ?  Aanwijzing INPUT-statement  ³
+   ³  <  'kleiner dan'-teken        ³  ³  _  Onderstreepteken voor voort-³
+   ³  \\  Scheidingsteken voor       ³  ³       zetting regel (gereser-   ³
+   ³      gehele getallen           ³  ³       veerd voor compatibiliteit³
+   ³      (backslash)               ³  ³       met andere versies van    ³
+   ³  ^  Exponentie-teken           ³  ³       Basic. Wordt niet         ³
+   ³       (pijl-omhoog of caret)   ³  ³       ondersteund door QBasic). ³
+   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+.comment *******************************************************************
+.comment Keys nodes
+.comment *******************************************************************
+.context .sk
+.context @sk
+:nSamenvatting van sneltoetsen
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  ÚSelecterenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ÚVerwijderenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Tekens/regels         Shift+Pijl ³  ³ Hele regel knippen        Ctrl+Y ³
+  ³ Woorden          Shift+Ctrl+Pijl ³  ³ Tot eind regel knippen  Ctrl+Q,Y ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³ Selectie knippen       Shift+Del ³
+  ÚInvoegenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³ Selectie wissen              Del ³
+  ³ Invoegen/overschrijven aan   Ins ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ Regel erboven        Home,Ctrl+N ³  ÚKopi‰renÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Regel eronder          End+Enter ³  ³ Naar Klembord           Ctrl+Ins ³
+  ³ Vanaf Klembord         Shift+Ins ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ÚDebugÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ÚZoekenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³ Uitvoerscherm bekijken        F4 ³
+  ³ Naar tekst zoeken       Ctrl+Q,F ³  ³ Doorgaan met uitvoering       F5 ³
+  ³ Volgende zoeken               F3 ³  ³ Uitvoeren tot cursorpositie   F7 ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³ Breekpunt aan/uit             F9 ³
+  ÚHelp verkrijgenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³ Enkele stap                   F8 ³
+  ³ Over QBasic Help        Shift+F1 ³  ³ Procedurestap                F10 ³
+  ³ Over trefwoorden/onderwerpen  F1 ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+.context .dk
+.context @dk
+:nToetsen voor Uitvoeren & Debug
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Programma-uitvoering vanaf het begin                              Shift+F5
+ Doorgaan met programma-uitvoering vanaf huidig statement          F5
+ Programma uitvoeren tot huidige cursorpositie                     F7
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Volgend programma-statement als enkele stap uitvoeren             F8
+ Stapsgewijs procedures opsporen                                   F10
+ ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Een breekpunt instellen of wissen                                 F9
+.context @vk
+.context .vk
+:nToetsen voor Beeld en Zoeken
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Tussen uitvoerscherm en invoervenster schakelen                 F4
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Lijst met geladen SUB-procedures weergeven                      F2
+ Volgende procedure weergeven                                    Shift+F2
+ Vorige procedure weergeven                                      Ctrl+F2
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Van volgend venster het actieve venster maken                   F6
+ Van vorig venster het actieve venster maken                     Shift+F6
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Tussen meerdere vensters en volledig venster schakelen          Ctrl+F10
+ Actieve venster vergroten                                       Alt+Plus
+ Actieve venster verkleinen                                      Alt+Min
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Volgende zoeken                                                 Ctrl+L of F3
+ Tekst zoeken                                                    Ctrl+Q,F
+ Tekst zoeken en vervangen                                       Ctrl+Q,A
+.context @hk
+.context .hk
+:nHelp-toetsen
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Help bekijken voor het onderwerp bij de cursor           F1 (of klik op
+                                                          rechtermuisknop)
+ Help afsluiten                                           Esc
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Het onderwerp Help gebruiken bekijken                    Shift+F1
+ Help-menu weergeven                                      Alt+?
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Cursor naar volgend Help-onderwerp verplaatsen           Tab
+ Cursor naar vorig Help-onderwerp verplaatsen             Shift+Tab
+ Cursor naar volgend onderwerp met dat teken verplaatsen  teken
+ Cursor naar vorig onderwerp met dat teken verplaatsen    Shift+teken
+ Vorig Help-onderwerp (maximaal 20 keer te herhalen)      Alt+F1 (of klik
+                                                          op <Terug>)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Volgend onderwerp in Help-bestand bekijken               Ctrl+F1
+ Vorig onderwerp in Help-bestand bekijken                 Shift+Ctrl+F1
+.context @me
+:nBewerkingstoetsen
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+ \bCursorverplaatstingstoetsen                     QBasic           WordStar\p
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Teken naar links                                Pijl-links       Ctrl+S
+ Teken naar rechts                               Pijl-rechts      Ctrl+D
+ Woord naar links                                Ctrl+Pijl-links  Ctrl+A
+ Woord naar rechts                               Ctrl+Pijl-rechts Ctrl+F
+ Regel omhoog                                    Pijl-omhoog      Ctrl+E
+ Regel omlaag                                    Pijl-omlaag      Ctrl+X
+ Eerste inspringniveau op huidige regel          Home
+ Begin van huidige regel                                          Ctrl+Q,S
+ Begin van volgende regel                        Ctrl+Enter       Ctrl+J
+ Eind van regel                                  End              Ctrl+Q,D
+ Begin van venster                                                Ctrl+Q,E
+ Eind van venster                                                 Ctrl+Q,X
+ Naar volgend venster                            F6
+ Actief venster vergroten                        Alt+Plusteken
+ Actief venster verkleinen                       Alt+Minteken
+
+ \bToetsen om door tekst te bladeren               QBasic           WordStar\p
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Regel omhoog                                    Ctrl+Pijl-omhoog Ctrl+W
+ Regel omlaag                                    Ctrl+Pijl-omlaag Ctrl+Z
+ Heel scherm omhoog                              PgUp             Ctrl+R
+ Heel scherm omlaag                              PgDn             Ctrl+C
+ Een venster naar links                          Ctrl+PgUp
+ Een venster naar rechts                         Ctrl+PgDn
+ Bladwijzers instellen (maximaal 4)              Ctrl+K,0-3
+ Naar ingestelde bladwijzers gaan                Ctrl+Q,0-3
+
+ \bToetsen voor selectie van tekst                 QBasic\p
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Teken links van cursor                          Shift+Pijl-links
+ Teken rechts van cursor                         Shift+Pijl-rechts
+ Woord links van cursor                          Shift+Ctrl+Pijl-links
+ Woord rechts van cursor                         Shift+Ctrl+Pijl-rechts
+ Huidige regel                                   Shift+Pijl-omlaag
+ Regel boven cursor                              Shift+Pijl-omhoog
+ Scherm boven cursor                             Shift+PgUp
+ Scherm onder cursor                             Shift+PgDn
+ Tot begin van bestand                           Shift+Ctrl+Home
+ Tot eind van bestand                            Shift+Ctrl+End
+
+ \bToetsen voor invoegen en kopi‰ren               QBasic           WordStar\p
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Tussen invoegen en overschrijven schakelen      Ins              Ctrl+V
+ Selectie naar Klembord kopi‰ren                 Ctrl+Ins
+ Selectie wissen en naar Klembord kopi‰ren       Shift+Del
+ Huidige regel wissen en naar Klembord kopi‰ren  Ctrl+Y
+ Tot eind regel wissen en naar Klembord kopi‰ren                  Ctrl+Q,Y
+ Inhoud van Klembord plakken                     Shift+Ins
+ Blanco regel onder cursorpositie invoegen       End,Enter
+ Blanco regel boven cursorpositie invoegen                        Home,Ctrl+N
+ Speciale tekens invoegen                        Ctrl+P,Ctrl+key
+
+ \bVerwijdertoetsen                                QBasic           WordStar\p
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ E‚n teken links van de cursor verwijderen       Backspace        Ctrl+H
+ E‚n teken bij de cursor verwijderen             Del              Ctrl+G
+ Rest van woord bij de cursor verwijderen                         Ctrl+T
+ Geselecteerde tekst verwijderen                 Del              Ctrl+G
+ Spaties aan begin van geselecteerde regels      Shift+Tab
+ verwijderen
+.comment *******************************************************************
+.comment Quick Reference nodes
+.comment *******************************************************************
+.context .fk
+.context @fk
+:nTrefwoorden voor programmeertaken
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+ Programmeertaak                      Hier opgenomen trefwoorden
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Verloop programma besturen           DO...LOOP, END, EXIT, FOR...NEXT,
+                                      IF...THEN...ELSE, GOSUB...RETURN,
+                                      GOTO, ON...GOSUB, ON...GOTO,
+                                      SELECT CASE, STOP, SYSTEM
+
+ Constanten en variabelen             CONST, DATA, DIM, ERASE, OPTION BASE,
+ declareren                           READ, REDIM, REM, RESTORE, SWAP,
+                                      TYPE...END TYPE
+
+ Basic-procedures defini‰ren en       CALL, DECLARE, EXIT, FUNCTION, RUN,
+ aanroepen                            SHELL, SHARED, STATIC, SUB
+
+ Invoer/uitvoer voor apparaat         CLS, CSRLIN, INKEY$, INP, INPUT,
+                                      KEY (toewijzing), LINE INPUT, LOCATE,
+                                      LPOS, LPRINT, LPRINT USING, OPEN COM,
+                                      OUT, POS, PRINT, PRINT USING, SPC,
+                                      de functie SCREEN, TAB, VIEW PRINT,
+                                      WAIT, WIDTH
+
+ Grafische afbeeldingen weergeven     CIRCLE, COLOR, GET (grafisch), LINE,
+                                      PAINT, PALETTE, PCOPY, PMAP, POINT,
+                                      PRESET, PSET, PUT (grafisch), het
+                                      statement SCREEN, VIEW, WINDOW
+
+ Opdrachten voor DOS-bestandssysteem  CHDIR, KILL, MKDIR, NAME, RMDIR
+
+ Bestandsinvoer/uitvoer               CLOSE, EOF, FILEATTR, FREEFILE
+                                      GET (bestands-I/O), INPUT, INPUT$,
+                                      LINE INPUT, LOC, LOCK, LOF, OPEN,
+                                      PUT (bestands-I/O), de functie SEEK,
+                                      het statement SEEK, UNLOCK, WRITE
+
+ Geheugenbeheer                       CLEAR, FRE, PEEK, POKE
+
+ Tekenreeksen manipuleren             ASC, CHR$, HEX$, INSTR, LCASE$, LEFT$,
+                                      LEN, LSET, LTRIM$, de functie MID$,
+                                      het statement MID$, OCT$, RIGHT$, RSET,
+                                      RTRIM$, SPACE$, STR$, STRING$, UCASE$,
+                                      VAL
+
+ Wiskundige berekeningen uitvoeren    ABS, ASC, ATN, CDBL, CINT, CLNG, COS,
+                                      CSNG, CVDMBF, CVSMBF, EXP, INT, LOG,
+                                      RANDOMIZE, RND, SGN, SIN, SQR, TAN,
+                                      de functie TIME$
+
+ 'event trapping' en                  COM, ERDEV, ERDEV$, ERL, ERR, ERROR,
+ 'error trapping'                     KEY ('event trapping'), ON COM,
+                                      ON ERROR, ON KEY, ON PEN, ON PLAY,
+                                      ON STRIG, ON TIMER, PEN,
+                                      PLAY ('event trapping'), RESUME,
+                                      RETURN, STRIG, de functie TIMER,
+                                      het statement TIMER
+.context .vd
+.context @vd
+:nVersie-verschillen
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+                                             BASICA/GW-BASIC    QBasic
+                                             ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍ
+ Voorzieningen van programmeertaal
+
+     Regelnummers                            Vereist            Optioneel
+     Blok IF/THEN/ELSE/END IF                Nee                Ja
+     Procedureblokken (SUB en FUNCTION)      Nee                Ja
+     Gebruikergedefinieerde typen (records)  Nee                Ja
+     SELECT CASE                             Nee                Ja
+     DO WHILE/UNTIL, LOOP WHILE/UNTIL        Nee                Ja
+     LONG (32-bit) integers                  Nee                Ja
+     Getallen in IEEE-formaat                Nee                Ja
+     Constanten                              Nee                Ja
+     Tekenreeksen met vaste lengte           Nee                Ja
+     VGA-schermmodi                          Nee                Ja
+     Ondersteuning van Hercules/Olivetti     Nee                Ja
+     Recursie                                Nee                Ja
+     Ondersteuning van cassettes             Ja                 Nee
+     Code- + gegevenscapaciteit              64 kB              160 kB
+
+ Debug-mogelijkheden
+
+     Enkele stap                             Nee                Ja
+     Procedurestap                           Nee                Ja
+     Mogelijkheid tot opsporen               Nee                Ja
+     Breekpunten                             Nee                Ja
+     Bewerken en verder gaan                 Nee                Ja
+
+ Bewerkingsmogelijkheden
+
+     Onmiddellijke controle van syntaxis     Nee                Ja
+     Diagnostische foutmeldingen             Nee                Ja
+     Onmiddellijke Help bij fouten           Nee                Ja
+     Meerdere vensters                       Nee                Ja
+     Muisondersteuning                       Nee                Ja
+     Menu-interface                          Nee                Ja
+     Compatibel met Wordstar                 Nee                Ja
+     Code-indeling                           Lineair            Modulair
+     Documentmodus voor tekstbewerking       Nee                Ja
+     Zoeken/Zoeken naar/Wijzigen             Nee                Ja
+     Online-naslagmogelijkheden              Geen               Volledig
+
+ Zie ook     \i\p\aVerschillen met BASICA\v@basica.diffs\v\i\p    \i\p\aNiet-ondersteunde trefwoorden\v@unsupported\v\i\p
+.context @ac
+:nASCII-codes
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                    \bStandaard ASCII-tekenset (codes 0 - 127)\p
+  000   (nul)   016  (dle)   032 sp   048 0   064 @   080 P   096 `   112 p
+  001  (soh)   017  (dc1)   033 !    049 1   065 A   081 Q   097 a   113 q
+  002  (stx)   018  (dc2)   034 "    050 2   066 B   082 R   098 b   114 r
+  003  (etx)   019  (dc3)   035 #    051 3   067 C   083 S   099 c   115 s
+  004  (eot)   020  (dc4)   036 $    052 4   068 D   084 T   100 d   116 t
+  005  (enq)   021  (nak)   037 %    053 5   069 E   085 U   101 e   117 u
+  006  (ack)   022  (syn)   038 &    054 6   070 F   086 V   102 f   118 v
+  007  (bel)   023  (etb)   039 '    055 7   071 G   087 W   103 g   119 w
+  008  (bs)    024  (can)   040 (    056 8   072 H   088 X   104 h   120 x
+  009   (tab)   025  (em)    041 )    057 9   073 I   089 Y   105 i   121 y
+  010   (lf)    026   (eof)   042 *    058 :   074 J   090 Z   106 j   122 z
+  011  (vt)    027  (esc)   043 +    059 ;   075 K   091 [   107 k   123 {
+  012  (np)    028  (fs)    044 ,    060 <   076 L   092 \\   108 l   124 |
+  013   (cr)    029  (gs)    045 -    061 =   077 M   093 ]   109 m   125 }
+  014  (so)    030  (rs)    046 .    062 >   078 N   094 ^   110 n   126 ~
+  015  (si)    031  (us)    047 /    063 ?   079 O   095 _   111 o   127 
+
+                   \bUitgebreide ASCII-tekenset (codes 128 - 255)\p
+    128 €   143    158    172 ¬   186 º   200 È   214 Ö   228 ä   242 ò
+    129    144    159 Ÿ   173 ­   187 »   201 É   215 ×   229 å   243 ó
+    130 ‚   145 ‘   160     174 ®   188 ¼   202 Ê   216 Ø   230 æ   244 ô
+    131 ƒ   146 ’   161 ¡   175 ¯   189 ½   203 Ë   217 Ù   231 ç   245 õ
+    132 „   147 “   162 ¢   176 °   190 ¾   204 Ì   218 Ú   232 è   246 ö
+    133 …   148 ”   163 £   177 ±   191 ¿   205 Í   219 Û   233 é   247 ÷
+    134 †   149 •   164 ¤   178 ²   192 À   206 Î   220 Ü   234 ê   248 ø
+    135 ‡   150 –   165 ¥   179 ³   193 Á   207 Ï   221 İ   235 ë   249 ù
+    136 ˆ   151 —   166 ¦   180 ´   194 Â   208 Ğ   222 Ş   236 ì   250 ú
+    137 ‰   152 ˜   167 §   181 µ   195 Ã   209 Ñ   223 ß   237 í   251 û
+    138 Š   153 ™   168 ¨   182 ¶   196 Ä   210 Ò   224 à   238 î   252 ü
+    139 ‹   154 š   169 ©   183 ·   197 Å   211 Ó   225 á   239 ï   253 ı
+    140 Œ   155 ›   170 ª   184 ¸   198 Æ   212 Ô   226 â   240 ğ   254 ş
+    141    156 œ   171 «   185 ¹   199 Ç   213 Õ   227 ã   241 ñ   255
+    142    157 
+
+.context .kbsct
+.context @kbsct
+:nToetsenbord-scancodes
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+     \bToets      Code\p   º  \bToets           Code\p    º   \bToets          Code\p
+                       º                          º
+     Esc        1      º  A               30      º   CapsLock       58
+     ! of 1     2      º  S               31      º   F1             59
+     @ of 2     3      º  D               32      º   F2             60
+     # of 3     4      º  F               33      º   F3             61
+     $ of 4     5      º  G               34      º   F4             62
+     % of 5     6      º  H               35      º   F5             63
+     ^ of 6     7      º  J               36      º   F6             64
+     & of 7     8      º  K               37      º   F7             65
+     * of 8     9      º  L               38      º   F8             66
+     ( of 9     10     º  : of ;          39      º   F9             67
+     ) of 0     11     º  " of '          40      º   F10            68
+     _ of -     12     º  ~ of `          41      º   F11            133
+     + of =     13     º  Linker Shift    42      º   F12            134
+     Backspace  14     º  | of \\          43      º   NumLock        69
+     Tab        15     º  Z               44      º   Scroll_Lock    70
+     Q          16     º  X               45      º   Home of 7      71
+     W          17     º  C               46      º   Omhoog of 8    72
+     E          18     º  V               47      º   PgUp of 9      73
+     R          19     º  B               48      º   Grijze -       74
+     T          20     º  N               49      º   Links of 4     75
+     Y          21     º  M               50      º   Midden of 5    76
+     U          22     º  < of ,          51      º   Rechts of 6    77
+     I          23     º  > of .          52      º   Grijze +       78
+     O          24     º  ? of /          53      º   End of 1       79
+     P          25     º  Rechter Shift   54      º   Omlaag of 2    80
+     { of [     26     º  PrintScrn of *  55      º   PgDn of 3      81
+     } of ]     27     º  Alt             56      º   Ins of 0       82
+     Enter      28     º  Spatiebalk      57      º   Del of .       83
+     Ctrl       29     º                          º
+.context .rtect
+.context @rtect
+:n'Run-time'-foutcodes
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ \bCode Melding\p                       º  \bCode Melding\p
+                                    º
+ 1    NEXT zonder FOR               º  37   Onjuist aantal argumenten
+ 2    Syntaxisfout                  º  38   Array niet gedefinieerd
+ 3    RETURN zonder GOSUB           º  40   Variabele vereist
+ 4    Geen verdere DATA             º  50   FIELD-overloop
+ 5    Ongeldige functie-aanroep     º  51   Interne fout
+ 6    Overloop                      º  52   Onjuiste bestandsnaam/nummer
+ 7    Onvoldoende geheugen          º  53   Bestand niet gevonden
+ 8    Label niet gedefinieerd       º  54   Verkeerde bestandsmodus
+ 9    Element niet in bereik        º  55   Bestand reeds geopend
+ 10   Dubbele definitie             º  56   FIELD-statement actief
+ 11   Delen door nul                º  57   I/O-fout voor apparaat
+ 12   Ongeldig in directe modus     º  58   Bestand bestaat reeds
+ 13   Typen komen niet overeen      º  59   Onjuiste record-lengte
+ 14   Onvoldoende tekenreeksruimte  º  61   Schijf is vol
+ 16   Tekenreeks te lang            º  62   Invoer na bestandseinde
+ 17   Doorgaan onmogelijk           º  63   Onjuist record-nummer
+ 18   Functie niet gedefinieerd     º  64   Onjuiste bestandsnaam
+ 19   Geen RESUME                   º  67   Te veel bestanden
+ 20   RESUME zonder fout            º  68   Apparaat niet beschikbaar
+ 24   'time-out' van apparaat       º  69   Overloop communicatiebuffer
+ 25   Apparaatfout                  º  70   Permissie geweigerd
+ 26   FOR zonder NEXT               º  71   Schijf niet gereed
+ 27   Geen papier in printer        º  72   Fout bij schijf-media
+ 29   WHILE zonder WEND             º  73   Voorziening niet beschikbaar
+ 30   WEND zonder WHILE             º  74   Hernoemen op meerdere schijven
+ 33   Dubbel label                  º  75   Fout bij toegang pad/bestand
+ 35   Subprogramma niet gedefinieerdº  76   Pad niet gevonden
+.context .lqb
+.context @lqb
+:nBeperkingen voor QBasic-omgeving
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ In dit gedeelte worden de beperkingen besproken voor de volgende
+ onderdelen van de QBasic-omgeving:
+
+   \i\p\aBeperkingen voor namen, tekenreeksen en getallen\v@lim.nsn\v\i\p
+   \i\p\aBeperkingen voor arrays\v@lim.arr\v\i\p
+   \i\p\aBeperkingen voor procedures en bestanden\v@lim.pf\v\i\p
+
+ Zie ook     \i\p\aMeer dan QBasic\v@beyqb\v\i\p
+.context .lim.nsn
+.context @lim.nsn
+:nBeperkingen voor namen, tekenreeksen en getallen
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                             Maximum                  Minimum
+                             ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Lengte variabelenaam        40 tekens                1 teken
+ Lengte tekenreeks           32767 tekens             0 tekens
+ Gehele getallen             32767                    -32768
+ 'Long integers'             2147483647               -2147483648
+ Enkele-precisie getallen:
+   Positief                  3.402823E+38              2.802597E-45
+   Negatief                 -2.802597E-45             -3.402823E+38
+ Dubbele-precisie getallen:
+   Positief                  1.79769313486231D+308     4.940656458412465D-324
+   Negatief                 -4.940656458412465D-324   -1.79769313486231D+308
+.context @lim.arr
+:nBeperkingen voor arrays
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                                      Maximum                Minimum
+                                      ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍ
+ Array-grootte (alle elementen):
+   Statisch                           65535 bytes (64 kB)    1 byte
+   Dynamisch                          65535 bytes (64 kB)
+ Aantal toegestane dimensies          60                     1
+ Aantal toegestane niet-              8                      1
+ gespecificeerde dimensies
+ Waarde array-element                 32767                 -32768
+
+   Opmerking: Het maximum bereik tussen waarden van array-subscripts is 32767.
+.context @lim.pf
+:nBeperkingen voor procedures en bestanden
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                                   Maximum                 Minimum
+                                   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ
+ Proceduregrootte                  64 kB                   0
+ Aantal doorgegeven argumenten     60                      0
+ Nummers gegevensbestanden         255                     1
+ Record-nummers gegevensbestanden  2147483647              1
+ Record-grootte gegevensbestanden  32 kB                   1 byte
+ Grootte gegevensbestanden         Beschikbare ruimte      0
+ Padnamen                          127 tekens              1 teken
+ Nummers foutmeldingen             255                     1
+.context @converting_BASIC
+:nBASICA-programma's converteren
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  Let bij het converteren van BASICA-programma's naar QBasic op de
+  volgende punten:
+
+  ş Sla het BASICA-programma op in ASCII-formaat. QBasic kan niet met
+    programma's werken die zijn opgeslagen in BASICA binair formaat.
+
+  ş Gebruik de opdrachtoptie /MBF bij het starten van QBasic. De optie /MBF
+    zorgt dat QBasic BASICA-gegevensbestanden kan lezen en schrijven.
+
+  ş Wijzig de CALL-statements in CALL ABSOLUTE. Het BASICA-statement CALL
+    komt overeen met het QBasic-statement CALL ABSOLUTE.
+
+  Verder kunt u het programma REMLINE.BAS gebruiken om overtollige
+  regelnummers te verwijderen uit de te converteren programma's. QBasic
+  vereist geen regelnummers en het verwijderen ervan kan de leesbaarheid
+  van het programma ten goede komen.
+
+ Zie ook     \i\p\aVerschillen met BASICA\v@basica.diffs\v\i\p    \i\p\aNiet-ondersteunde trefwoorden\v@unsupported\v\i\p
+             \i\p\aVersie-verschillen\v@vd\v\i\p
+.context beyqb
+.context @beyqb
+:nMeer dan QBasic
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ QBasic is een eenvoudig te gebruiken omgeving voor het maken van Basic-
+ programma's. Het is echter mogelijk dat u taken wilt uitvoeren die de
+ mogelijkheden van QBasic te boven gaan. In dat geval volgt hier een lijst
+ met mogelijke oplossingen.
+
+ Voor                            Kunt u
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ     ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+ Snelle programma-uitvoering     Een Basic-compiler gebruiken (bijvoorbeeld
+                                 Microsoft QuickBasic of Microsoft Basic
+                                 Professional Development System) om uw
+                                 Basic-code in machinecode te vertalen.
+
+ Het bouwen van programma's      Een Basic-development-omgeving gebruiken
+ die meer dan 160 kB geheugen    die het maken van grote programma's
+ vereisen                        ondersteunt.
+
+ Het distribueren van uw         Een Basic-compiler gebruiken om van uw
+ programma's                     QBasic-code 'stand-alone'-toepassingen
+                                 te maken. Hierdoor kunt u uw programma's
+                                 distribueren zonder dat QBasic verder
+                                 nodig is voor het uitvoeren van de
+                                 programma's.
+
+ Het maken van een programma     De ge‹ntegreerde Indexed Sequential Access
+ voor gegevensbeheer             Method (ISAM) gebruiken die is opgenomen
+                                 in het Microsoft Basic Professional
+                                 Development System voor het ontwikkelen
+                                 van database-toepassingen.
+
+ Raadpleeg uw plaatselijke softwareleverancier voor meer informatie over
+ produkten voor het programmeren in Basic. Als u meer wilt weten over het
+ programmeren in Basic, kunt u onder meer de volgende boeken van
+ Microsoft Press raadplegen:
+
+   ş "Running QBasic" door Michael Halvorson en David Rygmyr (1991).
+   ş "QBasic: Programmer's Quick Reference" door Kris Jamsa (1991).
+   ş "The Waite Group's QBasic Reference Plus" door Waite, Prata, et al.
+     (1991).
+   ş "The Waite Group's Microsoft QuickBASIC Bible" door Waite, Prata, et al.
+     (1990).
+   ş "The Waite Group's Microsoft QuickBASIC Primer Plus" door Waite et al.
+     (1990).
+   ş "Microsoft QuickBASIC Programmer's Toolbox" door John Clark Craig (1988).
+   ş "Microsoft QuickBASIC" door Douglas Hergert (derde editie, 1988).
+.context @unsupported
+.context ALIAS
+.context EVENT
+.context LOCAL
+.context BYVAL
+.context $INCLUDE
+.context SADD
+.context SETMEM
+.context CDECL
+.context Int86
+.context Interrupt
+.context SIGNAL
+.context COMMAND$
+.context Int86X
+.context InterruptX
+.context UEVENT
+.context AUTO
+.context NEW
+.context CONT
+.context LLIST
+.context RENUM
+.context LOAD
+.context SAVE
+.context DELETE
+.context MERGE
+.context USR
+.context EDIT
+.context MOTOR
+:nNiet-ondersteunde trefwoorden
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ De volgende QuickBasic-trefwoorden worden niet ondersteund in QBasic:
+
+     ALIAS       EVENT       LOCAL         SETMEM
+     BYVAL       $INCLUDE    SADD          SIGNAL
+     CDECL       Int86       Interrupt     UEVENT
+     COMMAND$    Int86X      InterruptX
+
+ De volgende GW-BASIC/BASICA-trefwoorden worden niet ondersteund in QBasic:
+
+     AUTO        EDIT        MERGE         RENUM
+     CONT        LIST        MOTOR         SAVE
+     DEF USR     LLIST       NEW           USR
+     DELETE      LOAD
+
+ Zie ook     \i\p\aBASICA-programma's converteren\v@converting_BASIC\v\i\p    \i\p\aVerschillen met BASICA\v@basica.diffs\v\i\p
+             \i\p\aVersie-verschillen\v@vd\v\i\p
+.context @basica.diffs
+:nVerschillen met BASICA
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ De volgende trefwoorden hebben in QBasic een andere betekenis dan in BASICA:
+
+ \bBSAVE, BLOAD\p     QBasic ondersteunt geen cassette met BSAVE en BLOAD
+                  en de geheugenlocaties kunnen verschillen.
+
+ \bCALL ABSOLUTE\p    Assembleertaal-programma's die vanuit BASICA worden
+                  aangeroepen en tekenreeksargumenten bevatten, moeten
+                  herzien voor QBasic aangezien QBasic-tekenreeksaanduiders
+                  een lengte van 4 bytes hebben. De 4 bytes omvatten de
+                  lage en hoge byte van de tekenreekslengte gevolgd door
+                  de lage en hoge byte van het tekenreeksadres.
+
+ \bCHAIN\p            In QBasic kunt u geen regelnummer opgeven met
+                  CHAIN en QBasic ondersteunt de BASICA-opties ALL, MERGE
+                  of DELETE niet.
+
+ \bCOMMON, DECLARE\p  In QBasic kunnen geen uitvoerbare statements worden
+                  opgegeven v¢¢r de statements COMMON en DECLARE.
+
+ \bDEFtype\p          Als BASICA op een variabele stuit zonder specifiek
+                  gegevenstype (aangegeven met !, #, &, $ of %), wordt
+                  het standaardtype gebruikt dat in het meest recente
+                  statement DEFtype werd ingesteld. Het type voor de
+                  variabele IFLAG bijvoorbeeld, verandert van geheel getal
+                  in enkele-precisie in het volgende BASICA-codefragment:
+
+                      10  DEFINT I
+                      20  PRINT IFLAG
+                      30  DEFSNG I
+                      40  GOTO 20
+
+                  In QBasic kan het type van een variabele niet worden
+                  gewijzigd nadat het in een programma is voorgekomen.
+
+ \bDIM\p              Alle arrays in BASICA zijn dynamisch omdat BASICA
+                  array-ruimte altijd tijdens de uitvoering van het
+                  programma toewijst. In QBasic kunt u met DIM aangeven
+                  of de array statisch dan wel dynamisch is.
+
+ \bDRAW, PLAY\p       De BASICA-statements DRAW en PLAY die variabelen
+                  of andere opdrachtreeksen binnen opdrachtreeksen
+                  gebruiken, moeten voor QBasic worden gewijzigd.
+                  Gebruik hiervoor de functie VARPTR$, die een tekenreeks-
+                  equivalent retourneert van het adres van een variabele:
+
+                  BASICA-statement        QBasic-equivalent
+                  ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ      ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                  DRAW "Xopdrachtreeks$"  DRAW "X" + VARPTR$ (opdrachtreeks$)
+                  DRAW "TA = hoek"        DRAW "TA =" + VARPTR$(hoek)
+
+ \bFIELD\p            Wanneer een random-access bestand in BASICA is
+                  gesloten met het statement CLOSE of RESET, behouden
+                  FIELD-variabelen de laatste waarde die is toegekend door
+                  het statement GET. In QBasic worden alle FIELD-variabelen
+                  leeggemaakt.
+
+ Zie ook   \i\p\aBASICA-programma's converteren\v@converting_BASIC\v\i\p   \i\p\aNiet-ondersteunde trefwoorden\v@unsupported\v\i\p
+           \i\p\aVersie-verschillen\v@vd\v\i\p

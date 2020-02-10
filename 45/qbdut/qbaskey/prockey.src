@@ -1,0 +1,255 @@
+.comment ******************************************************************
+.comment *  Procedure Family - QBasic                                     *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/16/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments.                      *
+.comment ******************************************************************
+.comment *  6/13/90 stevesau                                              *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/13/90 stevesau                                              *
+.comment *  Combined ENVIRON/ENVIRON$.                                    *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Added action lines.                                           *
+.comment *  Deleted SHELL Function (OS/2 only).                           *
+.comment *  Added parameter info from Details for DECLARE, FUNCTION, SUB. *
+.comment ******************************************************************
+.comment *  4/17/90 BethPr                                                *
+.comment *  Removed Command$ function, Declare Statement (Non-BASIC       *
+.comment *  procedures), Alias clause in the Declare statement,           *
+.comment *  Byval clause, Cdecl keyword.                                  *
+.comment ******************************************************************
+.context CONST
+.context @CONST
+:nHet statement CONST
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definieert een of meer symbolische constanten.
+
+\bCONST constante_naam = uitdrukking [,constante_naam = uitdrukking]...\p
+
+    ş \bconstante_naam\p  De naam van de constante. Deze naam kan maximaal
+                      40 tekens omvatten en moet met een letter beginnen.
+                      Geldige tekens zijn A-Z, 0-9 en de punt (.).
+    ş \buitdrukking\p     Een uitdrukking die is toegewezen aan de constante.
+                      De uitdrukking kan bestaan uit numerieke waarden
+                      (zoals 1.0), andere constanten, rekenkundige of
+                      logische bewerkingen behalve machtsverheffing (^),
+                      of een enkele tekenreeks.
+
+Voorbeeld:
+    CONST PI = 3.141593
+    INPUT "Straal van cirkel: "; r
+    PRINT "Oppervlakte = "; PI * r ^ 2
+.context DECLARE
+.context @DECLARE
+.context ANY
+.context @ANY
+:nHet statement DECLARE
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Declareert een FUNCTION- of SUB-procedure en zorgt dat het gegevenstype van
+de parameters wordt gecontroleerd.
+
+\bDECLARE {FUNCTION | SUB} naam [([parameterlijst])]\p
+
+    ş \bnaam\p             De naam van de procedure.
+    ş \bparameterlijst\p   Een of meer variabelen die parameters aanduiden
+                       die moeten worden doorgegeven aan de procedure
+                       wanneer deze wordt aangeroepen:
+
+                       \bvar[( )] [AS type] [, var[( )] [AS type]]...\p
+
+                       \bvar\p      Een naam van een BASIC-variabele.
+                       \btype\p     Het gegevenstype van de variabele
+                                (INTEGER, LONG, SINGLE, DOUBLE, STRING
+                                of een gebruikergedefinieerd gegevenstype).
+                                ANY staat elk gegevenstype toe.
+
+    ş DECLARE is vereist wanneer u SUB-procedures aanroept zonder CALL.
+      QBasic genereert automatisch DECLARE-statements wanneer u uw
+      programma opslaat.
+
+Voorbeeld:
+    Het programma REMLINE.BAS illustreert het declareren van FUNCTION-
+    en SUB-procedures. U kunt dit programma uitvoeren of bekijken door
+    REMLINE.BAS te laden  met behulp van de opdracht Openen in het
+    menu Bestand.
+
+Zie ook     \i\p\aCALL\v@CALL\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context DEF
+.context @DEF
+:nHet statement DEF FN
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definieert een functie.
+
+\bDEF FNnaam[(parameterlijst)] = uitdrukking\p
+\bDEF FNnaam[(parameterlijst)]\p
+    \b[statementblok]\p
+  \bFNname = uitdrukking\p
+    \b[statementblok]\p
+  \bEXIT DEF]\p
+    \b[statementblok]\p
+  \bEND DEF\p
+
+    ş \bparameterlijst\p   Een of meer parameters van de volgende vorm:
+
+                       \bvar[( )] [AS type] [, var[( )] [AS type]]...\p
+
+                       \bvar\p      Een naam van een BASIC-variabele.
+                       \btype\p     Het gegevenstype van de variabele
+                                (INTEGER, LONG, SINGLE, DOUBLE, STRING
+                                of een gebruikergedefinieerd gegevenstype).
+
+    ş \buitdrukking\p      De door de functie geretourneerde waarde.
+
+    ş Het statement FUNCTION vormt een betere manier om functies te
+      defini‰ren.
+
+Zie ook     \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p
+.context ENVIRON
+.context @ENVIRON
+.context ENVIRON$
+.context @ENVIRON$
+:nDe functie ENVIRON$ en het statement ENVIRON
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ENVIRON$ retourneert een element uit de DOS-omgevingstabel.
+ENVIRON wijzigt een element uit de DOS-omgevingstabel of voegt hier een
+element aan toe.
+
+\bENVIRON$ (omgevingsvar$)\p
+\bENVIRON$ (n%)\p
+\bENVIRON tekenreeksuitdrukking$\p
+
+    ş \bomgevingsvar$\p          De naam van een DOS-omgevingsvariabele.
+    ş \bn%\p                     Geeft aan dat ENVIRON$ de n-de tekenreeks
+                             uit de omgevingstabel retourneert.
+    ş \btekenreeksuitdrukking$\p De naam en instelling van een
+                             DOS-omgevingsvariabele (zoals PATH of PROMPT)
+                             in een van de volgende vormen:
+
+                             \bomgevingsvar$=omgevingstekenreeks$\p
+                             \bomgevingsvar$ omgevingstekenreeks$\p
+
+    ş Wijzigingen die door het statement ENVIRON worden aangebracht, worden
+      verwijderd wanneer het programma wordt afgesloten.
+
+Voorbeeld:
+    ENVIRON "PATH=TEST"
+    PRINT ENVIRON$("PATH")
+.context FUNCTION
+.context @FUNCTION
+:nHet statement FUNCTION
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definieert een FUNCTION-procedure.
+
+\bFUNCTION naam [(parameterlijst)] [STATIC]\p
+    \b[statementblok]\p
+  \bnaam = uitdrukking\p
+    \b[statementblok]\p
+\bEND FUNCTION\p
+
+    ş \bnaam\p             De naam van de functie en het gegevenstype dat
+                       wordt geretourneerd. Dit wordt bepaald door het
+                       achtervoegsel voor gegevenstypen (%, &, !, # of $).
+    ş \bparameterlijst\p   Een of meer variabelen die de parameters
+                       aangeven die moeten worden doorgegeven aan de
+                       functie wanneer deze wordt aangeroepen:
+
+                       \bvar[( )] [AS type] [, var[( )] [AS type]]...\p
+
+                       \bvar\p      Een naam van een BASIC-variabele.
+                       \btype\p     Het gegevenstype van de variabele
+                                (INTEGER, LONG, SINGLE, DOUBLE, STRING
+                                of een gebruikergedefinieerd gegevenstype).
+
+    ş \bSTATIC\p           Geeft aan dat de waarden van de lokale
+                       variabelen van de functie worden opgeslagen
+                       tussen functie-aanroepen.
+    ş \buitdrukking\p      De waarde die door de functie wordt
+                       geretourneerd.
+
+    ş Wanneer u een functie aanroept, kunt u opgeven dat de waarde van
+      een parameter niet wordt gewijzigd door de functie. U doet dit door
+      de parameter tussen haakjes te plaatsen.
+
+
+Voorbeeld:
+    Het programma REMLINE.BAS illustreert het aanroepen van
+    FUNCTION-procedures. U kunt dit programma uitvoeren of bekijken door
+    REMLINE.BAS te laden  met behulp van de opdracht Openen in het
+    menu Bestand.
+
+Zie ook     \i\p\aDECLARE\v@DECLARE\v\i\p    \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context SHELL
+.context @SHELL
+:nHet statement SHELL
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Onderbreekt de uitvoering van een Basic-programma tijdelijk om een
+DOS-opdracht of batch-bestand uit te kunnen voeren.
+
+\bSHELL [opdrachtreeks$]\p
+
+    ş \bopdrachtreeks$\p  De naam van de DOS-opdracht of het batch-bestand.
+
+    ş Uw programma wordt voortgezet wanneer de DOS-opdracht of het
+      batch-bestand voltooid is.
+
+    ş Als u de opdrachtreeks weglaat, geeft SHELL de DOS-aanwijzing weer.
+      Gebruik de DOS-opdracht EXIT om verder te gaan met uw programma.
+
+Voorbeeld:
+    SHELL "DIR"
+.context SUB
+.context @SUB
+:nHet statement SUB
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p   \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definieert SUB-procedure.
+
+\bSUB naam[(parameterlijst)] [STATIC]\p
+  \b[statementblok]\p
+\bEND SUB\p
+
+    ş \bnaam\p             De naam van de SUB-procedure (maximaal
+                       40 tekens) zonder achtervoegsel voor het
+                       gegevenstype.
+    ş \bparameterlijst\p   Een of meer variabelen die de parameters
+                       aangeven die moeten worden doorgegeven aan de
+                       SUB-procedure wanneer deze wordt aangeroepen:
+
+                       \bvar[( )] [AS type] [, var[( )] [AS type]]...\p
+
+                       \bvar\p      Een naam van een BASIC-variabele.
+                       \btype\p     Het gegevenstype van de variabele
+                                (INTEGER, LONG, SINGLE, DOUBLE, STRING
+                                of een gebruikergedefinieerd gegevenstype).
+
+    ş \bSTATIC\p           Geeft aan dat de waarden van de lokale
+                       variabelen van de SUB-procedure worden opgeslagen
+                       tussen functie-aanroepen.
+
+    ş Wanneer u de SUB-procedure aanroept,kunt u opgeven dat de waarde van
+      een parameter niet wordt gewijzigd door de functie. U doet dit door
+      de parameter tussen haakjes te plaatsen.
+
+
+Voorbeeld:
+    Het programma REMLINE.BAS illustreert het aanroepen van SUB-procedures.
+    U kunt dit programma uitvoeren of bekijken door REMLINE.BAS te laden
+    met behulp van de opdracht Openen in het menu Bestand.
+
+Zie ook     \i\p\aCALL\v@CALL\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p

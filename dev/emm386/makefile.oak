@@ -1,0 +1,177 @@
+#******************************************************************************
+#	title	MAKEFILE - CEMM build file
+#******************************************************************************
+#
+#   (C) Copyright MICROSOFT Corp. 1986-1993
+#   (C) Copyright COMPAQ Computer Corp. 1986-1993
+#
+#   Title:    EMM386 - MICROSOFT Expanded Memory Manager 386
+#
+#   Module:   MAKEFILE
+#
+#   Version:  0.05
+#
+#   Date:     May 12, 1986
+#
+#   Author:   Steve Preston
+#
+#******************************************************************************
+#
+#   Change log:
+#
+#     DATE    REVISION			DESCRIPTION
+#   --------  --------	-------------------------------------------------------
+#	      Original
+#   01/27/89    4.00         EMM files moved to CEMM directory (RDV)
+#
+#******************************************************************************
+#
+#   Functional Description:
+#
+#   This file assembles and links
+#	(1) EMM386.EXE	- Production version of CEMM driver
+#
+#******************************************************************************
+
+
+#******************************************************************************
+#	R U L E S   and   M A C R O S
+#******************************************************************************
+.SUFFIXES:
+.SUFFIXES:	.c .asm .obj .lst .def .lnk .lrf .exe .com
+
+
+#	Definition for turning OFF high memory allocation
+#		HIFLAG = -DNOHIMEM => turns it off
+#		HIFLAG =	   => turns on high memory allocation
+HIFLAG	=
+
+# International Modifications:
+MSG_DIR=$(LANG_SRC)\$(COUNTRY)\dev\emm386
+
+
+#	Definitions for assembler
+#
+ASM	 = masm
+AFLAGS	 = -Mx -t -I$(MSG_DIR) -DMSFLAG $(HIFLAG)
+
+
+#	Definitions for linker for old style .exe files
+LINK	= link
+LFLAGS  = /NOI /M
+
+#	Rules for generating object and linker response and definition files
+.asm.obj:
+	$(ASM) $(AFLAGS) $*.asm;
+
+#******************************************************************************
+#	List of include files required
+#******************************************************************************
+MEMMINC = romstruc.equ \
+      romxbios.equ dma.inc emm386.inc kbd.inc \
+      $(MSG_DIR)\oemdep.inc page.inc vdmseg.inc vdmsel.inc vm386.inc \
+      emmfunct.inc emmdata.inc allocmem.inc \
+      ps2ex.inc ps2equ.inc
+
+#******************************************************************************
+#	List of object files required
+#******************************************************************************
+
+MEMMOBJ =	memm386.obj elimfunc.obj init.obj allocmem.obj emmmes.obj \
+		wsinit.obj memmonf.obj WinSrch.obj modesw.obj i286.obj \
+		i386.obj tabdef.obj except.obj vminst.obj dmatrap.obj \
+		vminit.obj int15.obj retreal.obj rrtrap.obj vdminit.obj \
+		errhndlr.obj ekbd.obj util.obj initdeb.obj emm.obj \
+		emminit.obj iotrap.obj a20trap.obj emmfunct.obj pictrap.obj\
+		vcpi.obj emmdata.obj emmutils.obj emm40.obj dmaserv.obj\
+		winemm.obj XMS.obj dmaeisa.obj dmaps2.obj segfix.obj \
+		segend.obj dbg.obj pagetrap.obj ps2table.obj umbseg.obj \
+		xmsutils.obj
+
+BUGOBJ =	memm386.obj elimfunc.obj initD.obj allocmem.obj emmmes.obj \
+		wsinit.obj memmonf.obj WinSrch.obj modesw.obj i286.obj \
+		i386.obj tabdefD.obj exceptD.obj vminstD.obj dmatrap.obj \
+		vminit.obj int15.obj retreal.obj rrtrap.obj vdminitD.obj \
+		errhndlr.obj ekbd.obj util.obj initdebD.obj XMS.obj dmaps2.obj \
+		dmaeisa.obj emmD.obj emminit.obj iotrap.obj a20trap.obj dmaserv.obj \
+		kbd.obj print.obj emmfunct.obj vcpi.obj emmdata.obj pictrap.obj\
+		emmutils.obj emm40.obj winemm.obj segfix.obj segend.obj dbg.obj \
+		pagetrap.obj ps2table.obj
+
+#******************************************************************************
+#	List of libraries required
+#******************************************************************************
+
+
+BUGLIBS  = buglib.lib
+
+
+#******************************************************************************
+#	MEMM targets
+#******************************************************************************
+#MEMM: emm386.exe
+bins    =..\..\binaries
+cprs    =..\..\compress
+dest    =emm386.exe
+cpr     =emm386.ex_
+inc     =..\..\inc
+
+#
+####################### Dependencies Begin Here ##########################
+#
+
+!IFNDEF       BUILDER
+
+all: icopy $(dest)
+
+!ELSE
+
+all: icopy $(dest) $(bins)\$(dest) $(cprs)\$(cpr)
+
+$(bins)\$(dest): $(dest)
+            copy $(dest) $(bins)
+
+$(cprs)\$(cpr):  $(cpr)
+            copy $(cpr) $(cprs)
+
+$(cpr):       $(dest)
+            $(compress) $(dest) $(cpr)
+
+!ENDIF
+
+icopy:
+   copy $(LANG_SRC)\$(COUNTRY)\dev\emm386\emmmes.obj
+   copy $(LANG_SRC)\$(COUNTRY)\dev\emm386\errhndlr.obj
+
+emmmes.obj: $(LANG_SRC)\$(COUNTRY)\dev\emm386\emmmes.obj
+   copy $(LANG_SRC)\$(COUNTRY)\dev\emm386\emmmes.obj
+
+errhndlr.obj: $(LANG_SRC)\$(COUNTRY)\dev\emm386\errhndlr.obj
+   copy $(LANG_SRC)\$(COUNTRY)\dev\emm386\errhndlr.obj
+
+
+#	production version of EMM386 device driver
+#
+$(dest): $(MEMMOBJ) memm.lnk
+	$(LINK) $(LFLAGS)  @memm.lnk
+	copy emm386.exe lhvxd\emm386.exe
+	del emm386.exe
+	cd lhvxd
+	nmake
+	cd..
+        ren emm386nw.exe $(dest)
+
+
+#******************************************************************************
+# VDM modules
+#******************************************************************************
+
+a20trap.obj: a20trap.asm $(MEMMINC)
+
+dmatrap.obj: dmatrap.asm $(MEMMINC)
+	$(ASM) $(AFLAGS) $*.asm;
+
+dmaps2.obj: dmaps2.asm $(MEMMINC)
+	$(ASM) $(AFLAGS) $*.asm;
+
+

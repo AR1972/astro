@@ -1,0 +1,38 @@
+SUMMARY UnTab
+
+#include <tools.h>
+
+void UnTab(pstrSrc, pstrDest)
+char *pstrSrc;
+char *pstrDest;
+
+DESCRIPTION
+
+UnTab copies the source string to the destination expanding '\t' tabs.
+
+RETURN VALUE
+
+
+IMPLEMENTATION
+
+
+SEE ALSO
+
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+char bufS[] = "oh\thello\tthere";
+char bufD[256];
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    UnTab(bufS, bufD);
+    printf("123456781234567812345678\n%s\n", bufD);
+}

@@ -1,0 +1,50 @@
+	Installable Screen Drivers:
+
+ ibmtext.csd	is a basic installable screen driver supporting
+		7 screen modes under DOS3.
+
+ fx_csd3.obj	is the fixed version of ibmtext.csd
+
+ fx_twin.obj	is a fixed version of ibmtext.csd with the video
+		save routines.
+
+ vio.csd	is the basic OS/2 version.
+ fx_csd5.obj	is the basic fixed OS/2 version.
+
+	Others:
+
+ amstrad.csd	amstrad support
+ biosafe.csd	rudimentary "bios-safe" support
+ cgasnow.csd	
+ genius.csd
+ hercules.csd
+ ibmfont.csd	graphics-text support
+ olivetti.csd
+ t3100.csd
+ tandy.csd
+ vectra.csd
+
+
+	Include Files:
+
+ genmodes.asm	contains the definitions for the 7 basic screen modes
+		-included in fx_twin, ibmtext, and fx_csd3
+ geninit.asm	contains a general FInitCsd routine
+		-used in fx_twin, ibmtext, and fx_csd3
+
+ saveega.inc	ega save information
+ saveega.asm	-included in fx_twin
+
+ cpfont.asm	contains the routine ChrisPFont
+		-included in ibmfont, hercules, t3100, tandy, vectra
+			     olivetti, and genius
+		-define the symbols CPF814 and CPF816 for 8x14 and 8x16
+		 font support respectively
+
+
+	Please avoid duplicating code when adding new drivers.
+
+
+
+
+

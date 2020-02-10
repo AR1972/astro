@@ -1,0 +1,498 @@
+; QBasic Standard Error Messages.
+; This file is read by the tool makemsgs, which produces the files:
+;      qbimsgs.asm, qbimsgs.inc, and qbimsgs.h
+;
+; Entries in this file have the form:
+;  [<symbol's name>,[<msg index/error code>],"<ASCII msg>"] [;<comment>]
+;
+; If <msg index/error code> is not specified, the next available one
+;    is assigned.
+;
+;Section 1:  Runtime Errors - symbol names are kept small to decrease
+;            the size of the runtime library.
+;            Names begin with ER_ to distinguish them from non-runtime
+;            errors, which begin with MSG_.
+;
+;NOTE: A *BLANK* line terminates MAKEMSG.  Do not add blank lines!
+;
+;
+ER_NF,1,"NEXT without FOR"
+ER_SN,2,"Syntax error"
+ER_RG,3,"RETURN without GOSUB"
+ER_OD,4,"Out of DATA"
+ER_FC,5,"Illegal function call"
+ER_OV,6,"Overflow"
+ER_OM,7,"Out of memory"
+ER_UL,8,"Label not defined"
+ER_SOR,9,"Subscript out of range"
+ER_DD,10,"Duplicate definition"
+ER_DV0,11,"Division by zero"
+ER_ID,12,"Illegal in direct mode"
+ER_TM,13,"Type mismatch"
+ER_OS,14,"Out of string space"
+;15 is unused
+ER_BS,16,"String formula too complex"
+ER_CN,17,"Cannot continue"
+ER_UF,18,"Function not defined"
+ER_NR,19,"No RESUME"
+ER_RE,20,"RESUME without error"
+;21 is unused
+;22 is unused
+;23 is unused
+ER_DTO,24,"Device timeout"
+ER_DF,25,"Device fault"
+ER_FN,26,"FOR without NEXT"
+ER_OP,27,"Out of paper"
+;28 is unused
+ER_WH,29,"WHILE without WEND"
+ER_WE,30,"WEND without WHILE"
+;31 is unused
+;32 is unused
+ER_DL,33,"Duplicate label"
+;34 is unused
+ER_US,35,"Subprogram not defined"
+;; ER_SIU,36,"Subprogram already in use"  ;dead after recursion added
+ER_AC,37,"Argument-count mismatch"
+ER_UA,38,"Array not defined"
+ER_CaseElse,39,"CASE ELSE expected"
+ER_VarReq,40,"Variable required"
+;41 is unused
+;42 is unused
+;43 is unused
+;44 is unused
+;45 is unused
+;46 is unused
+;47 is unused
+;48 is unused
+;49 is unused
+ER_FOV,50,"FIELD overflow"
+ER_IER,51,"Internal error"
+ER_BFN,52,"Bad file name or number"
+ER_FNF,53,"File not found"
+ER_BFM,54,"Bad file mode"
+ER_FAO,55,"File already open"
+ER_FSA,56,"FIELD statement active"
+ER_IOE,57,"Device I/O error"
+ER_FAE,58,"File already exists"
+ER_BRL,59,"Bad record length"
+;60 is unused
+ER_DFL,61,"Disk full"
+ER_RPE,62,"Input past end of file"
+ER_BRN,63,"Bad record number"
+ER_IFN,64,"Bad file name"
+;65 is unused
+;66 is unused	- used to be ER_FDR - Direct statement in file
+ER_TMF,67,"Too many files"
+ER_DNA,68,"Device unavailable"
+ER_CBO,69,"Communication-buffer overflow"
+ER_PRM,70,"Permission denied"
+ER_DNR,71,"Disk not ready"
+ER_DME,72,"Disk-media error"
+ER_ADF,73,"Advanced feature unavailable"
+ER_RAD,74,"Rename across disks"
+ER_PAE,75,"Path/File access error"
+ER_PNF,76,"Path not found"
+;;;ER_DLK,77,"Deadlock" ;not needed until OS/2 version
+;
+; The following ER_UE marks the last trappable Runtime Error Code
+;
+ER_UE,,"Unprintable error"
+;
+;=========================================================================
+; Subsequent ER_ messages are special, and are intimately tied in with
+; the runtime message file, messages.inc.
+; Some of these errors are considered "very fatal", and cause termination;
+; others are not errors at all - - we just supply the text for some runtime
+; messages here.
+; These messages must remain contiguous and in the same order, unless
+; a matching change is made in messages.inc.
+;
+; First group of internal errors - - these are actually runtime messages,
+; not errors
+; Any message that begins ER_UL is used in constructing a message
+; as follows:
+;  Error in loading (file) - Internal error
+;
+ER_RFS,,"Redo from start"
+ER_BFC,,"Bytes free",CR		;'CR' means terminate with a Carriage Return
+ER_ULP,,"Cannot find file ("	;preamble for user file path prompt
+ER_ULT,,"). Input path: "	;postamble for user file path prompt
+ER_ULE,,"Error in loading file (" ;preamble for loader errors
+ER_ULG,,") - "			;postamble for loader errors
+ER_RNS,,"Random-number seed (-32768 to 32767)"
+ER_HRS,,"Press any key to continue" ;Displayed when errors occurr in QBC exec.
+;
+; Second group of internal errors - these are "very fatal"
+ER_SSC,,"String space corrupt"	;string space or local heap trashed somehow
+ER_ULD,,"Disk I/O error"	;problem in loading U.L. from disk
+ER_ULI,,"Invalid format"	;attempt to load a U.L. with incorrect format
+ER_ULF,,"Cannot find file"	;redirected IO and cannot find file in path
+;
+; Third group of internal errors - these are also "very fatal"
+ER_D21,,"Requires DOS 2.10 or later"
+ER_INI,,"Error during QBasic initialization" ;error in initializing runtime
+ER_ULO,,"Out of memory"		;out of memory loading U.L.
+ER_DMA,,"DOS memory-arena error" ;someone walked on DOS-owned memory
+ER_FHC,,"Far heap corrupt"	;similar to string space corrupt
+ER_ULM,,"Internal error"	;U.L. loading found a bad segment address
+;
+; QB-specific internal errors - these are "very fatal"
+; NOTE: These must come after other internal errors (no equivalent in
+;	messages.inc)
+;
+;Both groups of the command line help message must remain contiguous.
+;They must start with the label ER_ISWEDIT/ER_ISWHELP/ER_ISWINTERP and end
+;with the label ER_ISWEDITEND/ER_ISWHELPEND/ERISWINTERPEND.  The labels of the
+;intermediate lines does not matter.
+;
+ER_ISWEDIT,,"Starts the MS-DOS Editor, which creates and changes ASCII files."
+ER_ISWEDIT1,," "
+ER_ISWEDIT2,,"EDIT [[drive:][path]filename] [/B] [/G] [/H] [/NOHI]"
+ER_ISWEDIT3,," "
+ER_ISWEDIT4,,"  [drive:][path]filename  Specifies the ASCII file to edit."
+ER_ISWEDIT5,,"  /B          Allows use of a monochrome monitor with a color graphics card."
+ER_ISWEDIT6,,"  /G          Provides the fastest update of a CGA screen."
+ER_ISWEDIT7,,"  /H          Displays the maximum number of lines possible for your hardware."
+ER_ISWEDITEND,,"  /NOHI       Allows the use of a monitor without high-intensity support."
+;
+ER_ISWQHELP,,"Starts MS-DOS Help on MS-DOS commands."
+ER_ISWQHELP1,," "
+ER_ISWQHELP2,,"HELP [/B] [/G] [/H] [/NOHI] [topic]"
+ER_ISWQHELP3,," "
+ER_ISWQHELP4,,"  /B          Allows use of a monochrome monitor with a color graphics card."
+ER_ISWQHELP5,,"  /G          Provides the fastest update of a CGA screen."
+ER_ISWQHELP6,,"  /H          Displays the maximum number of lines possible for your hardware."
+ER_ISWQHELP7,,"  /NOHI       Allows the use of a monitor without high-intensity support."
+ER_ISWQHELPEND,,"  [topic]     Specifies the help topic to view."
+;
+ER_ISWINTERP,,"Starts the MS-DOS QBasic programming environment."
+ER_ISWINTERP1,," "
+ER_ISWINTERP2,,"QBASIC [/B] [/EDITOR] [/G] [/H] [/MBF] [/NOHI] [[/RUN] [drive:][path]filename]"
+ER_ISWINTERP3,," "
+ER_ISWINTERP4,,"  /B          Allows use of a monochrome monitor with a color graphics card."
+ER_ISWINTERP5,,"  /EDITOR     Starts the MS-DOS Editor."
+ER_ISWINTERP6,,"  /G          Provides the fastest update of a CGA screen."
+ER_ISWINTERP7,,"  /H          Displays the maximum number of lines possible for your hardware."
+ER_ISWINTERP8,,"  /MBF        Converts the built-in functions MKS$, MKD$, CVS, and CVD to"
+ER_ISWINTERP9,,"              MKSMBF$, MKDMBF$, CVSMBF, and CVDMBF, respectively."
+ER_ISWINTERPA,,"  /NOHI       Allows the use of a monitor without high-intensity support."
+ER_ISWINTERPB,,"  /RUN        Runs the specified Basic program before displaying it."
+ER_ISWINTERPEND,,"  [[drive:][path]filename] Specifies the program file to load or run."
+;
+;=========================================================================
+;
+;-------------------------------------------------------------------------
+;MSG_GoDirect is non-trappable interpreter-specific
+; error which allow us to back out of what we're doing and escape back
+; to direct mode.
+;
+MSG_GoDirect,,""
+MSG_OutOfStack,,"Out of stack space"
+MSG_DocTooLarge,,"Document too large"
+MSG_InclTooLarge,,"Include file too large"
+;
+;-------------------------------------------------------------------------
+; End of runtime errors.  Messages beyond this point can be re-arranged
+; in any order.
+;-------------------------------------------------------------------------
+;
+;Section 2: QBI Parser Related Messages
+;
+MSG_IdTooLong,,"Identifier too long"
+MSG_BadId,,"Invalid identifier"
+MSG_IdImp,,"Identifier cannot end with %, &, !, #, or $"
+MSG_BadElemRef,,"Identifier cannot include period"
+MSG_ExpTooComplex,,"Expression too complex"
+MSG_IllegalNumber,,"Illegal number"
+MSG_InvConst,,"Invalid constant"
+MSG_expected,,"Expected: "
+MSG_or,," or "
+;
+; Parser errors which are preceded by "Expected: "
+;
+MSG_ExpAssignment,,"variable=expression"
+MSG_ExpExp,,"expression"
+MSG_ExpVar,,"variable"
+MSG_ExpId,,"identifier"
+MSG_ExpStatement,,"statement"
+MSG_ExpLabel,,"label"
+MSG_ExpLn,,"line number"
+MSG_Letter,,"letter"
+MSG_eos,,"end-of-statement"
+MSG_RightParen,,")"
+MSG_ExpIdCallArg,,"expression"
+MSG_ExpIdParm,,"variable"
+MSG_ExpFNId,,"identifier that begins with FN"
+MSG_ExpIfClause,,"label or statement"
+MSG_ExpLabLn,,"label or line number"
+MSG_ExpLitString,,"string constant"
+MSG_ExpLit0,,"0"
+MSG_ExpLit1,,"1"
+MSG_ExpNArgs,,"[expression],..."
+MSG_ExpRwB,,"B"
+MSG_ExpRwF,,"F"
+MSG_ExpRwBF,,"BF"
+MSG_ExpRel,,"<, <=, >, >=, =, or <>"
+;
+;Section 3:  TextMgr/ReParse errors
+;
+MSG_InvModLev,,"Illegal outside of SUB, FUNCTION or DEF FN"
+MSG_InvMain,,"Illegal outside of SUB/FUNCTION"
+MSG_InvProc,,"Illegal in procedure or DEF FN"
+MSG_InvBeforeProcDef,,"Statement cannot precede SUB/FUNCTION definition"
+MSG_ProcNoEnd,,"SUB/FUNCTION without END SUB/FUNCTION"
+MSG_EndNoProc,,"END SUB/FUNCTION without SUB/FUNCTION"
+MSG_EndNoDef,,"END DEF without DEF"
+MSG_UndElem,,"Element not defined"
+MSG_UndType,,"Type not defined"
+MSG_1stStmt,,"Must be first statement on the line"
+MSG_EndProc,,"END SUB or END FUNCTION must be last line in window"
+MSG_NoEndType,,"TYPE without END TYPE"
+MSG_NoType,,"END TYPE without TYPE"
+MSG_InvInTypeBlk,,"Statement illegal in TYPE block"
+MSG_InvIncl,,"Statement cannot occur within INCLUDE file"
+MSG_InvDecl,,"Invalid DECLARE for Basic procedure"
+MSG_FNstart,,"Cannot start with 'FN'"
+MSG_NotBlock,,"Operation requires disk"
+MSG_BadMeta,,"$Metacommand error"
+MSG_NoBpCase,,"Breakpoints not allowed on CASE clauses or END SELECT"
+;
+;Section 4:  Scan-time errors
+;
+MSG_OBA,,"Array already dimensioned"
+MSG_COM,,"COMMON and DECLARE must precede executable statements"
+MSG_EWI,,"END IF without block IF"
+MSG_IWE,,"Block IF without END IF"
+MSG_ElseWI,,"ELSE without IF"
+MSG_ExitScope,,"EXIT not within FOR...NEXT"
+MSG_ExitDo,,"EXIT DO not within DO...LOOP"
+MSG_Do,,"DO without LOOP"
+MSG_Loop,,"LOOP without DO"
+MSG_Select,,"SELECT without END SELECT"
+MSG_Case,,"CASE without SELECT"
+MSG_EndSelect,,"END SELECT without SELECT"
+MSG_InvFixStr,,"Fixed-length string illegal"
+MSG_InvTypedVar,,"Typed variable not allowed in expression"
+MSG_DefNoEnd,,"DEF without END DEF"
+MSG_ParmTM,,"Parameter type mismatch"
+MSG_DupLibPrs,,"Procedure already defined in Quick library"
+MSG_ASRqd1st,,"AS clause required on first declaration"
+MSG_ASRqd,,"AS clause required"
+MSG_ExpectedCase,,"Statements/labels illegal between SELECT CASE and CASE"
+MSG_NoNumArr,,"Numeric array illegal"
+MSG_InType,,"Illegal outside of TYPE block"
+MSG_ULCom,,"COMMON in Quick library too small"
+MSG_SubCnt,,"Wrong number of dimensions"
+MSG_DefFnCtrl,,"DEF FN not allowed in control statements"
+MSG_Unsupported,,"This feature is unavailable"
+;
+;Section 5.1: User Interface Related Messages that could be described in
+;	      user guide's error message appendix
+;
+MSG_CantCont,,"You will have to restart your program after this edit. Proceed anyway?"
+MSG_NoMainProg,,"No main module. Choose Set Main Module from Run menu to select one"
+MSG_HelpOOM,,"Insufficient memory to display Help"
+;
+;Section 5.2: Messages that require special handling in ReportError()
+;
+;Note: The next 2 messages must have numbers < 256 for because they can be
+;      passed to RtError_Ini by exStRunFile during command-line load.
+;
+MSG_DupMrs,,"File previously loaded"
+MSG_DupPrs,,"Tried to load file with duplicate procedure definition"
+MSG_MrsNotFound,,"Module not found. Unload module from program?"
+;
+;Section 5.3: General User Interface messages
+;
+MSG_Overwrite,,"File already exists. Overwrite?"
+MSG_DelProc,,"Delete procedure from module?"
+MSG_MakeRem,,"Blank lines not allowed before SUB/FUNCTION line.  Is remark OK?"
+MSG_NotSaved,,"File has been modified since last saved. Save it now?"
+MSG_NotSavedAll,,"Loaded file is not saved. Save it now?"
+MSG_NotSavedInc,,"Modified INCLUDE files must be saved before running. Save them now?"
+MSG_NotSavedIncSav,,"Save modified INCLUDE files first?"
+MSG_BadNextStmt,,"Cannot cross procedure/module boundary"
+MSG_Prt1,,"Waiting for printer"
+MSG_Prt2,,"Printing - press Esc to cancel"
+MSG_Immediate,,"Immediate"
+MSG_Untitled,,"Untitled"
+MSG_FALSE,,"<FALSE>"
+MSG_TRUE,,"<TRUE>"
+MSG_Black,,"Black"
+MSG_Blue,,"Blue"
+MSG_Green,,"Green"
+MSG_Cyan,,"Cyan"
+MSG_Red,,"Red"
+MSG_Magenta,,"Magenta"
+MSG_Brown,,"Brown"
+MSG_White,,"White"
+MSG_Gray,,"Gray"
+MSG_BrBlue,,"BrBlue"
+MSG_BrGreen,,"BrGreen"
+MSG_BrCyan,,"BrCyan"
+MSG_BrRed,,"BrRed"
+MSG_Pink,,"Pink"
+MSG_Yellow,,"Yellow"
+MSG_BrWhite,,"BrWhite"
+MSG_MustSpecifyName,,"Must specify name"
+MSG_DataMoved,,"DATA statements were moved from SUB to module level"
+MSG_ModuleExists,,"Module with that name is already loaded"
+MSG_NoHelp,,"File "
+MSG_NoHelp1,," not found."
+MSG_NoHelp2,,"Put the floppy disk with this file into the drive and"
+MSG_NoHelp3,,"Retry, or change your Help path in Options+Help Path."
+MSG_NoQHelp2,,"Choose OK, and then make sure the"
+MSG_NoQHelp3,,"file is in your PATH."
+MSG_NoSearchString,,"Must specify search string"
+MSG_MatchNotFound,,"Match not found"
+MSG_ChangeComplete,,"Change complete"
+MSG_Is,," is "
+MSG_MainModule,,"the Main Module"
+MSG_Module,,"a Module"
+MSG_IncludeFile,,"an Include File"
+MSG_Document,,"a Document"
+MSG_Sub,,"a SUB in "
+MSG_Function,,"a FUNCTION in "
+MSG_ReqSub,,"Operation requires selection of a SUB or FUNCTION"
+;If text of MSG_SwitchDisks changes, ref code in uifile.c must change as well.
+MSG_SwitchDisks,,"Insert Diskette for drive A:"
+MSG_Loading,,"Loading and parsing"
+MSG_Saving,,"Saving"
+MSG_Compiling,,"Binding"
+MSG_Searching,,"Searching - press Esc to cancel"
+MSG_CantSetTabs,,"Cannot change tab stops while file is loaded"
+MSG_OutNearMem,,"Out of data space"
+MSG_ModTooLarge,,"Module level code too large"
+MSG_ProcTooLarge,,"Procedure too large"
+MSG_ExitToRet,,CR,"Type EXIT to return to QBasic"
+MSG_QeditText1,," Set colors for the "
+MSG_QeditText2,," text editor window:"
+MSG_NormalText,," Normal Text       "
+MSG_Breakpoint,," Breakpoint Lines  "
+MSG_CurStmt,," Current Statement "
+MSG_HelpTitle,,"HELP: "
+MSG_HelpTitleQH,,"MS-DOS Help: "
+MSG_FirstContextStr,,"h.pg1"
+MSG_HelpAboutEditor,,"MS-DOS Editor"
+MSG_HelpAboutQHelp,,"MS-DOS Help"
+MSG_HelpAboutInterp,,"MS-DOS QBasic"
+MSG_HelpAbout2,,"Version 1.1"
+MSG_HelpAbout3,,"Copyright (C) Microsoft Corporation, 1987-1992."
+;
+;Section 5.4: HELP messages for menu items <THESE MUST REMAIN CONTIGUOUS>
+;
+; NOTE: These must match the EXACT order of the midFileNew...midHelpHowToUse
+;	definitions in ..\ir\qbasmsgs.txt, because ..\uq\uictl.c (MainWndProc)
+;	does a direct mapping from midXxx to MSG_HelpXxx assuming this
+;	ordering exists.
+;
+MSG_HelpFileNew,,"Removes currently loaded file from memory"
+MSG_HelpFileOpen,,"Loads new file into memory"
+MSG_HelpFileMerge,,""
+MSG_HelpFileSave,,"Saves current file"
+MSG_HelpFileSaveAs,,"Saves current file with specified name"
+MSG_HelpFileSaveAll,,""
+MSG_HelpFileCreate,,""
+MSG_HelpFileLoad,,""
+MSG_HelpFileUnload,,""
+MSG_HelpFilePrint,,"Prints specified text"
+MSG_HelpFileShell,,""
+MSG_HelpFileExit,,"Exits editor and returns to DOS"
+MSG_HelpFileExitQH,,"Exits MS-DOS Help and returns to DOS"
+MSG_HelpEditUndo,,""
+MSG_HelpEditCut,,"Deletes selected text and copies it to buffer"
+MSG_HelpEditCopy,,"Copies selected text to buffer"
+MSG_HelpEditClear,,"Deletes selected text without copying it to buffer"
+MSG_HelpEditPaste,,"Inserts buffer contents at current location"
+MSG_HelpEditNewSub,,"Opens a window for a new subprogram"
+MSG_HelpEditNewFunc,,"Opens a window for a new FUNCTION procedure"
+MSG_HelpViewSubs,,"Displays a loaded SUB or FUNCTION"
+MSG_HelpViewNextProc,,""
+MSG_HelpViewSplit,,"Divides screen into two View windows"
+MSG_HelpViewNextStatement,,""
+MSG_HelpViewOutputScreen,,"Displays output screen"
+MSG_HelpViewIncludes,,""
+MSG_HelpViewEditIncl,,""
+MSG_HelpSearchFind,,"Finds specified text"
+MSG_HelpSearchSelected,,""
+MSG_HelpSearchNext,,"Finds next occurrence of text specified in previous search"
+MSG_HelpSearchChange,,"Finds and changes specified text"
+MSG_HelpSearchLabel,,""
+MSG_HelpRunStart,,"Runs current program"
+MSG_HelpRunRestart,,"Clears variables in preparation for restarting single stepping"
+MSG_HelpRunContinue,,"Continues execution after a break"
+MSG_HelpRunSetCommand,,""
+MSG_HelpRunMakeExe,,""
+MSG_HelpRunMakeLib,,""
+MSG_HelpRunSetMain,,""
+MSG_HelpDebugStep,,"Executes next program statement"
+MSG_HelpDebugPStep,,"Executes next program statement, tracing over procedure calls"
+MSG_HelpDebugAddWatch,,""
+MSG_HelpDebugInstantWatch,,""
+MSG_HelpDebugWatchPoint,,""
+MSG_HelpDebugDelWatch,,""
+MSG_HelpDebugDelAllWatch,,""
+MSG_HelpDebugTraceOn,,"Highlights statement currently executing"
+MSG_HelpDebugHistoryOn,,""
+MSG_HelpDebugToggleBp,,"Sets/clears breakpoint at cursor location"
+MSG_HelpDebugClearAllBp,,"Removes all breakpoints"
+MSG_HelpDebugBreakOnErr,,""
+MSG_HelpDebugSetNextStmt,,"Makes the statement at the cursor the next statement to execute"
+MSG_HelpOptionsDisplay,,"Changes display attributes"
+MSG_HelpOptionsPaths,,"Sets search path for Help files"
+MSG_HelpOptionsMouse,,""
+MSG_HelpOptionsSyntax,,"Turns editor's syntax checking on or off."
+MSG_HelpOptionsFullMenu,,""
+MSG_HelpHelpIndex,,"Displays help index"
+MSG_HelpHelpContents,,"Displays help table of contents"
+MSG_HelpHelpSyntax,,"Displays information about the Basic keyword the cursor is on"
+MSG_HelpHelpHelp,,"Displays information about how to use online Help"
+MSG_HelpHelpStarted,,"Displays information on loading and using the MS-DOS Editor"
+MSG_HelpHelpKeyboard,,"Displays navigation and editing keystrokes"
+MSG_HelpHelpAbout,,"Displays product version and copyright information"
+MSG_HelpHowToUse,,"Displays information on using MS-DOS Help"
+;
+;Section 5.5: Status line HELP messages <THESE MUST REMAIN CONTIGUOUS>
+;
+; IMPORTANT:  If the text of ANY of the following messages changes, the
+; IMPORTANT:  constants used by DoStatusButton() in UINHELP.ASM must be updated!
+; IMPORTANT:  See UINHELP.ASM for a description of how to change the text of
+; IMPORTANT:  MSG_Status[Edit, Running, Immediate, Help, ShiftF1].
+;
+MSG_StatusMenu,,"Enter=Display Menu   Esc=Cancel   Arrow=Next Item"
+MSG_StatusDialog,,"Enter=Execute   Esc=Cancel   Tab=Next Field   Arrow=Next Item"
+MSG_StatusEdit,,"<F6=Window> <F2=Subs> <F5=Run> <F8=Step>"
+MSG_StatusRunning,,"<F5=Continue> <F9=Toggle Bkpt> <F8=Step>"
+MSG_StatusImmediate,,"<F6=Window> <Enter=Execute Line>"
+MSG_StatusHelp,,"<F6=Window> <Esc=Cancel> <Ctrl+F1=Next> <Alt+F1=Back>"
+MSG_StatusQEdit,,"MS-DOS Editor  <F1=Help> Press ALT to activate menus"
+MSG_StatusQHelp,,"<F1=Help> <F6=Window> <Esc=Cancel> <Ctrl+F1=Next> <Alt+F1=Back>"
+MSG_StatusQHStart,,"MS-DOS Help         <F1=Help> Press ALT to activate menus"
+;
+;
+MSG_StatusQHhelp,,"<Alt+C=Contents> <Alt+N=Next> <Alt+B=Back>"
+;
+; LOCALIZATION - To change the accelerator chars in the above line, change the
+;       the values in rgmpvkeyidQhelp[], in UIRSRCC.C (At about line #460).
+;
+;
+MSG_StatusF1Help,,"F1=Help   "
+MSG_StatusShiftF1,,"<Shift+F1=Help> "
+;
+; IMPORTANT:  If the text of ANY of the previous messages changes, the
+; IMPORTANT:  constants used by DoStatusButton() in UINHELP.ASM must be updated!
+;
+;Section 5.6: Variable HELP messages <Some of these must remain contiguous>
+;Ripped these out for LQB
+;
+;Section 5.7: misc messages
+;
+MSG_SearchPathEdit,,"Location (path) of EDIT.HLP file:"
+MSG_SearchPathHelp,,"Location (path) of HELP.HLP file:"
+MSG_SearchPathInterp,,"Location (path) of QBASIC.HLP file:"
+;
+;Section touch: Messages can be added to the bottom of the file
+; and all objects except uiutil.obj and qbimsgs.obj can be touched.
+; Also touch qbimsgs.rpl, then *.hlp!
+; Later, these messages should be moved into their appropriate sections.
+

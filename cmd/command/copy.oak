@@ -1,0 +1,20 @@
+all:
+   xcopy command\makefile.oak $(OAKDIR)\cmd\command\makefile < $(OAKDIR)\f.key
+   xcopy command\comequ.asm   $(OAKDIR)\cmd\command
+   xcopy command\command.lnk  $(OAKDIR)\cmd\command
+   xcopy command\command.skl  $(OAKDIR)\cmd\command
+   xcopy command\comseg.asm   $(OAKDIR)\cmd\command
+   xcopy command\comsw.asm    $(OAKDIR)\cmd\command
+   xcopy command\ifequ.asm    $(OAKDIR)\cmd\command
+   xcopy command\rdata.asm    $(OAKDIR)\cmd\command
+   xcopy command\resmsg.equ   $(OAKDIR)\cmd\command
+   xcopy command\rom.lnk      $(OAKDIR)\cmd\command
+   xcopy command\romhead.asm  $(OAKDIR)\cmd\command
+   xcopy command\romldr.asm   $(OAKDIR)\cmd\command
+   xcopy command\romres.asm   $(OAKDIR)\cmd\command
+   xcopy command\tdata.asm    $(OAKDIR)\cmd\command
+   xcopy command\tranmsg.asm  $(OAKDIR)\cmd\command
+   xcopy command\uinit.asm    $(OAKDIR)\cmd\command
+   xcopy command\*.obj        $(OAKDIR)\lang\$(COUNTRY)\cmd\command\diskobjs < $(OAKDIR)\d.key
+
+

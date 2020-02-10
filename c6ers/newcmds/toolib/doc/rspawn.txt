@@ -1,0 +1,52 @@
+SUMMARY rspawnl rspawnv
+
+#include <tools.h>
+
+int rspawnl(fin, fout, pstrPathName, args)
+char *fin, *fout, *pstrPathName;
+char *args;
+
+int rspawnv(fin, fout, pstrPathName, pargs)
+char *fin, *fout, *pstrPathName;
+char *pargs[];
+
+DESCRIPTION
+
+rspawnl and rpawnv start a child task with stdin/stdout redirected to fin/fout
+if fin/fout are non-zero else stdin/stdout are not redirected.  It is
+assumed that by duping fd 0 and 1, the child process will not attempt to
+access handles other than 0, 1 and those that it has opened.  The child
+is spawned using the C library spawnp interface with mode P_WAIT.
+pstrPathName specifies the file to be executed.
+
+RETURN VALUE
+
+If fin/fout can not be redirected -1 is returned else both return the
+same value as spawnp.
+
+IMPLEMENTATION
+
+rspawnl:
+    return rspawnv(fin, fout, pstrPathName, &args);
+
+rspawnv:
+    do redirection
+    ret = spawnvp(P_WAIT, pstrPathName, parg);
+    undo redirection
+    return ret
+
+SEE ALSO
+
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+main(c, argv)
+int c;
+char *argv[];
+{
+}

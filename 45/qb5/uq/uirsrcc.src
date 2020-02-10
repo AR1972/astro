@@ -1,0 +1,551 @@
+/*** 
+*uirsrcc.c - Resources (isolated for internationalization).
+*
+*       Copyright <C> 1985-1988, Microsoft Corporation
+*
+*Purpose:
+*       Menu data structure definitions.
+*
+*******************************************************************************/
+
+/* First, include version definition header */
+#include <version.h>
+
+/* Next, include TextWin's interface headers */
+#include <cw/version.h>
+#include <cw/windows.h>
+#include <cw/edityp.h>
+
+/* Next, include QBI's headers */
+#ifndef UI_H
+#include <ui.h>
+#endif
+
+#ifndef UIINT_H
+#include <uiint.h>
+#endif
+
+/*------------------------------ Menu Bar ------------------------------------*/
+
+#define CBMAX_FILE [[UIRSRCC_1]]
+static char szFileNew[]         = [[UIRSRCC_2]];                /* [21] */
+static char szFileOpen[]        = [[UIRSRCC_3]];                /* [21] */
+static char szFileSave[]        = [[UIRSRCC_4]];                /* [27] */
+static char szFileSaveAs[]      = [[UIRSRCC_5]];                /* [3] */
+static char szFilePrint[]       = [[UIRSRCC_6]];                /* [3] */
+static char szFileExit[]        = [[UIRSRCC_7]];                /* [3] */
+
+// a-emoryh:
+// The title for the PrintSetup dialog (a sub-dialog of FilePrint).
+// This seemed the best place to put it, seeing as all the other dialog titles
+// are generated from the strings in this file.
+//
+char szPrintSetup[]         = [[UIRSRCC_201]];
+
+
+// NOTE: The last parameter to the menuitem and menuitemX calls is the
+// NOTE: number of characters of the string to use for the dialog box
+// NOTE: title.  If it doesn't have dialog box, or it doesn't have a title,
+// NOTE: this should be 0.  Make sure the EZ and full menu versions match!
+
+#define CBMAX_FILEQHELP   [[UIRSRCC_202]]   // Enough for Print... and Exit
+MENUITEM rgMenuItemFileQhelp[] = {
+    menuitemX (midFilePrint,    szFilePrint ,[[UIRSRCC_203]] ,[[UIRSRCC_204]])
+    menuitemSep
+    menuitemX (midFileExitQH,   szFileExit, [[UIRSRCC_205]], 0)
+};
+
+MENUITEM rgMenuItemFile[] = {
+	 menuitemX (midFileNew,         szFileNew,              [[UIRSRCC_99]], 0)
+	 menuitemX (midFileOpen,        szFileOpen,     [[UIRSRCC_100]], [[UIRSRCC_8]])
+	 menuitemX (midFileSave,        szFileSave,     [[UIRSRCC_101]], [[UIRSRCC_9]])   //[27]
+	 menuitemX (midFileSaveAs, szFileSaveAs,        [[UIRSRCC_102]], [[UIRSRCC_10]])
+    menuitemSep
+	 menuitemX (midFilePrint,       szFilePrint,    [[UIRSRCC_103]], [[UIRSRCC_11]])
+    menuitemSep
+	 menuitemX (midFileExit,        szFileExit,     [[UIRSRCC_104]], 0)
+};
+
+#define CBMAX_EDIT [[UIRSRCC_12]]
+static char szEditCut[]         = [[UIRSRCC_13]];               // [3] [19]
+static char szEditCopy[]        = [[UIRSRCC_14]];               // [3] [19]
+static char szEditPaste[]       = [[UIRSRCC_15]];               // [3] [19]
+static char szEditClear[]       = [[UIRSRCC_16]];
+static char szEditNewSub[]      = [[UIRSRCC_17]];               /* [3] */
+static char szEditNewFunc[]= [[UIRSRCC_18]];            /* [3] */
+
+MENUITEM rgMenuItemEditQedit[] = {
+	 menuitemX (midEditCut, szEditCut,      [[UIRSRCC_106]], 0)
+	 menuitemX (midEditCopy,        szEditCopy, [[UIRSRCC_107]], 0)
+	 menuitemX (midEditPaste,       szEditPaste,    [[UIRSRCC_108]], 0)
+	 menuitemX (midEditClear,         szEditClear,  [[UIRSRCC_109]], 0)
+};
+
+MENUITEM rgMenuItemEdit[] = {
+	 menuitemX (midEditCut, szEditCut,      [[UIRSRCC_106]], 0)
+	 menuitemX (midEditCopy,        szEditCopy, [[UIRSRCC_107]], 0)
+	 menuitemX (midEditPaste,       szEditPaste,    [[UIRSRCC_108]], 0)
+	 menuitemX (midEditClear,         szEditClear,  [[UIRSRCC_109]], 0)
+    menuitemSep
+	 menuitemX (midEditNewSub, szEditNewSub,        [[UIRSRCC_110]], [[UIRSRCC_19]])
+	 menuitemX (midEditNewFunc,     szEditNewFunc, [[UIRSRCC_111]], [[UIRSRCC_20]])
+};
+
+#define CBMAX_VIEW [[UIRSRCC_21]]
+static char szViewSubs[]        = [[UIRSRCC_22]];               // [3] [19]
+static char szViewSplit[]       = [[UIRSRCC_23]];               /* [3] */
+static char szViewOutScrn[]= [[UIRSRCC_24]];            // [3] [19]
+
+MENUITEM rgMenuItemView[] = {
+	 menuitemX (midViewSubs,        szViewSubs, [[UIRSRCC_113]], [[UIRSRCC_114]])
+	 menuitemX (midViewSplit,       szViewSplit,    [[UIRSRCC_115]], 0)
+	 menuitemX (midViewOutScrn,     szViewOutScrn, [[UIRSRCC_116]], 0)
+};
+
+#define CBMAX_SEARCH [[UIRSRCC_25]]
+static char szSearchFind[]              = [[UIRSRCC_26]];                               /* [3] */
+static char szSearchNext[]              = [[UIRSRCC_27]];                               // [3] [19]
+static char szSearchChange[]    = [[UIRSRCC_28]];                               /* [3] */
+
+MENUITEM rgMenuItemSearchQhelp[] = {
+    menuitemX (midSearchFind,   szSearchFind, [[UIRSRCC_206]],  [[UIRSRCC_207]])
+    menuitemX (midSearchNext,   szSearchNext, [[UIRSRCC_208]] , [[UIRSRCC_209]])
+};
+
+MENUITEM rgMenuItemSearch[] = {
+	 menuitemX (midSearchFind, szSearchFind,        [[UIRSRCC_118]], [[UIRSRCC_29]])
+	 menuitemX (midSearchNext, szSearchNext,        [[UIRSRCC_119]], [[UIRSRCC_30]])
+	 menuitemX (midSearchChange,    szSearchChange, [[UIRSRCC_120]], [[UIRSRCC_31]])
+};
+
+#define CBMAX_RUN [[UIRSRCC_32]]
+static char szRunStart[]        =[[UIRSRCC_33]];        // [3] [19]
+static char szRunRestart[]      =[[UIRSRCC_34]];        /* [3] */
+static char szRunContinue[]=[[UIRSRCC_35]];     // [3] [19]
+
+MENUITEM rgMenuItemRun[] = {
+	 menuitemX (midRunStart,        szRunStart, [[UIRSRCC_122]], 0)
+	 menuitemX (midRunRestart, szRunRestart,        [[UIRSRCC_123]], 0)
+	 menuitemX (midRunContinue,     szRunContinue, [[UIRSRCC_124]], 0)        //[23]
+};
+
+#define CBMAX_DEBUG [[UIRSRCC_36]]
+static char szDebugStep[]                       = [[UIRSRCC_37]];/* [21] */
+static char szDebugPStep[]                      = [[UIRSRCC_38]];/* [21] */
+static char szDebugTraceOn[]            = [[UIRSRCC_39]];/* [3] */
+static char szDebugToggleBp[]           = [[UIRSRCC_40]];// [3] [19]
+static char szDebugClearAllBp[] = [[UIRSRCC_41]];/* [3] */
+static char szDebugSetNextStmt[] = [[UIRSRCC_42]];/* [3] */
+
+// IF Instant watch EVER changes postion, then UICTL.C shift+rightmouse
+// needs to change postion.
+
+MENUITEM rgMenuItemDebug[] = {
+	 menuitemX (midStep,            szDebugStep,            [[UIRSRCC_126]], 0)
+	 menuitemX (midPStep,           szDebugPStep,           [[UIRSRCC_127]], 0)
+    menuitemSep
+	 menuitemX (midDebugTraceOn,            szDebugTraceOn, [[UIRSRCC_128]], 0)
+    menuitemSep
+	 menuitemX (midDebugToggleBp,   szDebugToggleBp,        [[UIRSRCC_129]], 0)
+	 menuitemX (midDebugClearAllBp, szDebugClearAllBp,      [[UIRSRCC_130]], 0)
+	 menuitemX (midDebugSetNextStmt, szDebugSetNextStmt,    [[UIRSRCC_131]], 0)
+};
+
+#define CBMAX_OPTNS [[UIRSRCC_43]]
+static char szOptnsDisplay[]    = [[UIRSRCC_44]];
+static char szOptnsPaths[]              = [[UIRSRCC_45]];               // [12]
+static char szOptnsSyntax[]     = [[UIRSRCC_46]];               /* [3] */
+
+MENUITEM rgMenuItemOptnsQedit[] = {
+	 menuitemX (midOptnsDisplay,    szOptnsDisplay, [[UIRSRCC_133]], [[UIRSRCC_47]])
+	 menuitemX (midOptnsPaths,      szOptnsPaths,           [[UIRSRCC_134]], [[UIRSRCC_48]])          // [21]
+};
+
+MENUITEM rgMenuItemOptns[] = {
+	 menuitemX (midOptnsDisplay,    szOptnsDisplay, [[UIRSRCC_133]], [[UIRSRCC_47]])
+	 menuitemX (midOptnsPaths,      szOptnsPaths,           [[UIRSRCC_134]], [[UIRSRCC_48]])          // [21]
+	 menuitemX (midOptnsSyntax,     szOptnsSyntax,  [[UIRSRCC_135]], 0)
+};
+
+
+/*
+   The current keyword is inserted in the MID_HELP_SYNTAX menu item.
+*/
+#define OB_HELP_SYNTAX [[UIRSRCC_136]]   //offset into szHelpSyntax to insert the keyword
+#define CB_HELP_SYNTAX 8        //# of chars of keyword that are shown
+//[14]   The keyword is inserted here
+//[14]                        vvvvvvvv
+char szHelpSyntax[] = [[UIRSRCC_49]];           //[14]
+
+#define CBMAX_HELP [[UIRSRCC_50]]
+static char szHelpIndex[]       = [[UIRSRCC_51]];                                               /* [7] */
+static char szHelpTable[]       = [[UIRSRCC_52]];                                       /* [7] */
+static char szHelpHelp[]        = [[UIRSRCC_53]];       //[26]
+static char szHelpAbout[]       = [[UIRSRCC_54]];                                       //[25]
+
+MENUITEM rgMenuItemHelp[] = {
+	 menuitemX (midHelpIndex,       szHelpIndex,    [[UIRSRCC_138]], 0 )      /* [5] */
+	 menuitemX (midHelpTable,       szHelpTable,    [[UIRSRCC_139]], 0 )      /* [5] */
+	 menuitemX (midHelpSyntax, szHelpSyntax,        [[UIRSRCC_140]], 0 )
+	 menuitemX (midHelpHelp,        szHelpHelp, [[UIRSRCC_141]], 0 )          //[26]
+    menuitemSep                                                 //[25]
+	 menuitemX (midHelpAbout,       szHelpAbout,    [[UIRSRCC_142]], 0 )      //[25]
+};
+
+#define CBMAX_EDITHELP [[UIRSRCC_55]]                                   //[25]
+static char szHelpStarted[]     = [[UIRSRCC_56]];               //[25]
+static char szHelpKeyboard[]    = [[UIRSRCC_57]];               //[25]
+
+MENUITEM rgMenuItemEditHelp[] = {                               //[25]
+	 menuitemX (midHelpStarted,     szHelpStarted, [[UIRSRCC_143]], 0 )       //[25]
+	 menuitemX (midHelpKeyboard,    szHelpKeyboard, [[UIRSRCC_144]], 0 )      //[25]
+    menuitemSep                                                 //[25]
+	 menuitemX (midHelpAbout,       szHelpAbout,    [[UIRSRCC_142]], 0 )      //[25]
+};                                                              //[25]
+
+#define CBMAX_QHELPHELP [[UIRSRCC_210]]
+static char szHelpHowToUse[]    = [[UIRSRCC_211]] ;
+
+MENUITEM rgMenuItemQhelpHelp[] = {
+    menuitemX (midHelpHowToUse, szHelpHowToUse, [[UIRSRCC_212]], 0 )
+    menuitemSep
+    menuitemX (midHelpAbout,    szHelpAbout, [[UIRSRCC_213]], 0 )
+};
+
+
+static char szFile[]            = [[UIRSRCC_58]];       /* [3] */
+static char szEdit[]            = [[UIRSRCC_59]];       /* [3] */
+static char szView[]            = [[UIRSRCC_60]];       /* [3] */
+static char szSearch[]  = [[UIRSRCC_61]];       /* [3] */
+static char szRun[]             = [[UIRSRCC_62]];       /* [3] */
+static char szDebug[]   = [[UIRSRCC_63]];       /* [3] */
+static char szOptns[]   = [[UIRSRCC_64]];
+static char szHelp[]            = [[UIRSRCC_65]];       //[12]
+
+MENU rgMenuQedit[] = {
+
+    {
+	midFile,                                        /* idMenu      */
+	[[UIRSRCC_66]],                                         /* rxTitle              */
+	[[UIRSRCC_98]],                                  /* ichHilite    */
+	FALSE, TRUE, 0,                                 /* fHandle, fEnabled, filler */
+	[[UIRSRCC_67]],                                         /* cchTitle     */
+	szFile,                                         /* pchTitle    */
+	sizeof (rgMenuItemFile) / sizeof (MENUITEM),    /* cItem       */
+	CBMAX_FILE,                                     /* cchItemMax  */
+	rgMenuItemFile,                                 /* rgMenuItem  */
+	0                                               /* wParamUser  */
+    },
+
+    {
+	midEdit,                                        /* idMenu      */
+	[[UIRSRCC_68]],                                         /* rxTitle              */
+	[[UIRSRCC_105]],                                          /* ichHilite   */
+	FALSE, TRUE, 0,                                 /* fHandle, fEnabled, filler */
+	[[UIRSRCC_69]],                                         /* cchTitle     */
+	szEdit,                                         /* pchTitle    */
+	sizeof (rgMenuItemEditQedit) / sizeof (MENUITEM),       /* cItem       */
+	CBMAX_EDIT,                                     /* cchItemMax  */
+	rgMenuItemEditQedit,                            /* rgMenuItem  */
+	0                                               /* wParamUser  */
+    },
+
+    {
+	midSearch,                                      /* idMenu      */
+	[[UIRSRCC_70]],                                         /* rxTitle              */
+	[[UIRSRCC_117]],                                          /* ichHilite   */
+	FALSE, TRUE, 0,                                 /* fHandle, fEnabled, filler */
+	[[UIRSRCC_71]],                                         /* cchTitle     */
+	szSearch,                                       /* pchTitle    */
+	sizeof (rgMenuItemSearch) / sizeof (MENUITEM),  /* cItem       */
+	CBMAX_SEARCH,                                   /* cchItemMax  */
+	rgMenuItemSearch,                               /* rgMenuItem  */
+	0                                               /* wParamUser  */
+    },
+
+    {
+	midOptns,                                       /* idMenu      */
+	[[UIRSRCC_72]],                                         /* rxTitle              */
+	[[UIRSRCC_132]],                                          /* ichHilite   */
+	FALSE, TRUE, 0,                                 /* fHandle, fEnabled, filler */
+	[[UIRSRCC_73]],                                         /* cchTitle     */
+	szOptns,                                        /* pchTitle    */
+	sizeof (rgMenuItemOptnsQedit) / sizeof (MENUITEM),      /* cItem       */
+	CBMAX_OPTNS,                                    /* cchItemMax  */
+	rgMenuItemOptnsQedit,                           /* rgMenuItem  */
+	0                                               /* wParamUser  */
+    },
+
+    {
+	midHelp,                                        /* idMenu      [25] */
+	[[UIRSRCC_74]],                                         /* rxTitle              [25] */
+	[[UIRSRCC_137]],                                          /* ichHilite   [25] */
+	FALSE, TRUE, 0,                                 /* fHandle, fEnabled, filler */
+	[[UIRSRCC_75]],                                         /* cchTitle     [25] */
+	szHelp,                                         /* pchTitle    [25] */
+	sizeof (rgMenuItemEditHelp) / sizeof (MENUITEM),/* cItem       [25] */
+	CBMAX_EDITHELP,                                 /* cchItemMax  [25] */
+	rgMenuItemEditHelp,                             /* rgMenuItem  [25] */
+	0                                               /* wParamUser  [25] */
+    },
+
+
+};
+
+MENU rgMenuQhelp[] = {
+
+    {
+	midFile,					/* idMenu      */
+        [[UIRSRCC_214]],                                /* rxTitle     */
+        [[UIRSRCC_215]],                                /* ichHilite   */
+	FALSE, TRUE, 0, 				/* fHandle, fEnabled, filler */
+        [[UIRSRCC_216]],                                /* cchTitle    */
+	szFile, 					/* pchTitle    */
+	sizeof(rgMenuItemFileQhelp) / sizeof(MENUITEM), /* cItem       */
+	CBMAX_FILEQHELP,				/* cchItemMax  */
+	rgMenuItemFileQhelp,				/* rgMenuItem  */
+	0						/* wParamUser  */
+    },
+
+    {
+	midSearch,					/* idMenu      */
+        [[UIRSRCC_217]],                                /* rxTitle     */
+        [[UIRSRCC_218]],                                /* ichHilite   */
+	FALSE, TRUE, 0, 				/* fHandle, fEnabled, filler */
+        [[UIRSRCC_219]],                                /* cchTitle    */
+	szSearch,					/* pchTitle    */
+	sizeof(rgMenuItemSearchQhelp) / sizeof(MENUITEM), /* cItem	 */
+	CBMAX_SEARCH,					/* cchItemMax  */
+	rgMenuItemSearchQhelp,				/* rgMenuItem  */
+	0						/* wParamUser  */
+    },
+
+    {
+	midHelp,					/* idMenu      [25] */
+        [[UIRSRCC_220]],                                /* rxTitle     [25] */
+        [[UIRSRCC_221]],                                /* ichHilite   [25] */
+	FALSE, TRUE, 0, 				/* fHandle, fEnabled, filler */
+        [[UIRSRCC_222]],                                /* cchTitle    [25] */
+	szHelp, 					/* pchTitle    [25] */
+	sizeof (rgMenuItemQhelpHelp) / sizeof (MENUITEM),/* cItem	[25] */
+	CBMAX_QHELPHELP,				/* cchItemMax  [25] */
+	rgMenuItemQhelpHelp,				/* rgMenuItem  [25] */
+	0						/* wParamUser  [25] */
+    },
+
+
+};
+
+MENU rgMenuQbas[] = {
+
+    {
+	midFile,                                        /* idMenu      */
+	[[UIRSRCC_76]],                                         /* rxTitle              */
+	[[UIRSRCC_98]],                                  /* ichHilite    */
+	FALSE, TRUE, 0,                                 /* fHandle, fEnabled, filler */
+	[[UIRSRCC_77]],                                         /* cchTitle     */
+	szFile,                                         /* pchTitle    */
+	sizeof (rgMenuItemFile) / sizeof (MENUITEM),    /* cItem       */
+	CBMAX_FILE,                                     /* cchItemMax  */
+	rgMenuItemFile,                                 /* rgMenuItem  */
+	0                                               /* wParamUser  */
+    },
+
+    {
+	midEdit,                                        /* idMenu      */
+	[[UIRSRCC_78]],                                         /* rxTitle              */
+	[[UIRSRCC_105]],                                          /* ichHilite   */
+	FALSE, TRUE, 0,                                 /* fHandle, fEnabled, filler */
+	[[UIRSRCC_79]],                                         /* cchTitle     */
+	szEdit,                                         /* pchTitle    */
+	sizeof (rgMenuItemEdit) / sizeof (MENUITEM),    /* cItem       */
+	CBMAX_EDIT,                                     /* cchItemMax  */
+	rgMenuItemEdit,                                 /* rgMenuItem  */
+	0                                               /* wParamUser  */
+    },
+
+    {
+	midView,                                        /* idMenu      */
+	[[UIRSRCC_80]],                                         /* rxTitle              */
+	[[UIRSRCC_112]],                                          /* ichHilite   */
+	FALSE, TRUE, 0,                                 /* fHandle, fEnabled, filler */
+	[[UIRSRCC_81]],                                         /* cchTitle     */
+	szView,                                         /* pchTitle    */
+	sizeof (rgMenuItemView) / sizeof (MENUITEM),    /* cItem       */
+	CBMAX_VIEW,                                     /* cchItemMax  */
+	rgMenuItemView,                                 /* rgMenuItem  */
+	0                                               /* wParamUser  */
+    },
+
+    {
+	midSearch,                                      /* idMenu      */
+	[[UIRSRCC_82]],                                         /* rxTitle              */
+	[[UIRSRCC_117]],                                          /* ichHilite   */
+	FALSE, TRUE, 0,                                 /* fHandle, fEnabled, filler */
+	[[UIRSRCC_83]],                                         /* cchTitle     */
+	szSearch,                                       /* pchTitle    */
+	sizeof (rgMenuItemSearch) / sizeof (MENUITEM),  /* cItem       */
+	CBMAX_SEARCH,                                   /* cchItemMax  */
+	rgMenuItemSearch,                               /* rgMenuItem  */
+	0                                               /* wParamUser  */
+    },
+
+    {
+	midRun,                                         /* idMenu      */
+	[[UIRSRCC_84]],                                         /* rxTitle              */
+	[[UIRSRCC_121]],                                          /* ichHilite   */
+	FALSE, TRUE, 0,                                 /* fHandle, fEnabled, filler */
+	[[UIRSRCC_85]],                                         /* cchTitle     */
+	szRun,                                          /* pchTitle    */
+	sizeof (rgMenuItemRun) / sizeof (MENUITEM),     /* cItem       */
+	CBMAX_RUN,                                      /* cchItemMax  */
+	rgMenuItemRun,                                  /* rgMenuItem  */
+	0                                               /* wParamUser  */
+    },
+
+    {
+	midDebug,                                       /* idMenu      */
+	[[UIRSRCC_86]],                                         /* rxTitle              */
+	[[UIRSRCC_125]],                                          /* ichHilite   */
+	FALSE, TRUE, 0,                                 /* fHandle, fEnabled, filler */
+	[[UIRSRCC_87]],                                         /* cchTitle     */
+	szDebug,                                        /* pchTitle    */
+	sizeof (rgMenuItemDebug) / sizeof (MENUITEM),   /* cItem       */
+	CBMAX_DEBUG,                                    /* cchItemMax  */
+	rgMenuItemDebug,                                /* rgMenuItem  */
+	0                                               /* wParamUser  */
+    },
+
+    {
+	midOptns,                                       /* idMenu      */
+	[[UIRSRCC_88]],                                         /* rxTitle              */
+	[[UIRSRCC_132]],                                          /* ichHilite   */
+	FALSE, TRUE, 0,                                 /* fHandle, fEnabled, filler */
+	[[UIRSRCC_89]],                                         /* cchTitle     */
+	szOptns,                                        /* pchTitle    */
+	sizeof (rgMenuItemOptns) / sizeof (MENUITEM),   /* cItem       */
+	CBMAX_OPTNS,                                    /* cchItemMax  */
+	rgMenuItemOptns,                                /* rgMenuItem  */
+	0                                               /* wParamUser  */
+    },
+
+    {
+	midHelp,                                        /* idMenu      [12] */
+	[[UIRSRCC_90]],                                         /* rxTitle              [12] */
+	[[UIRSRCC_137]],                                          /* ichHilite   [12] */
+	FALSE, TRUE, 0,                                 /* fHandle, fEnabled, filler */
+	[[UIRSRCC_91]],                                         /* cchTitle     [12] */
+	szHelp,                                         /* pchTitle    [12] */
+	sizeof (rgMenuItemHelp) / sizeof (MENUITEM),    /* cItem       [12] */
+	CBMAX_HELP,                                     /* cchItemMax  [12] */
+	rgMenuItemHelp,                                 /* rgMenuItem  [12] */
+	0                                               /* wParamUser  [12] */
+    },
+
+};
+
+/*---------------------- Main Accelerator Keys ------------------------------*/
+
+MPVKEYID rgmpvkeyidQedit[] = {
+/* [2] Add ALT+ and ALT- */
+	 [[UIRSRCC_92]],        midWndGrow,             /* [2] */
+	 [[UIRSRCC_93]],        midWndGrow,     //[17] main kbd '+' is shift '='
+	 [[UIRSRCC_94]],        midWndShrink,           /* [2] */
+	 [[UIRSRCC_95]],        midEditClear2,          /* [2] */
+	 [[UIRSRCC_96]],        midEditCut2,            /* [2] */
+    VK_INSERT | KK_CONTROL,     midEditCopy,
+    VK_INSERT | KK_SHIFT,       midEditPaste,
+	 [[UIRSRCC_97]],        midSearchNext,          /* [2] Ctrl+L */
+    VK_F1 | KK_ALT,             midHelpBack,            // [16]
+    VK_F3,                      midSearchNext,
+    VK_F6,                      midNextWindow,
+    VK_F6 | KK_SHIFT,           midPreviousWindow,
+    0,    0
+};
+
+MPVKEYID rgmpvkeyidQhelp[] = {
+/* Add ALT+ and ALT- */
+    VK_F1 | KK_ALT,		midHelpBack,		// [16]
+    VK_F3,			midSearchNext,
+//
+// LOCALIZATION -
+//    Change this char in the following 3 lines if you need to change the
+//            |         accelerator character.
+//            |
+//            v
+//
+    (VK_A+(  [[UIRSRCC_223]]  -'A')) | KK_ALT,   midHelpHelp,         // Contents
+    (VK_A+(  [[UIRSRCC_224]]  -'A')) | KK_ALT,   midHelpNext,         // Next
+    (VK_A+(  [[UIRSRCC_225]]  -'A')) | KK_ALT,   midHelpBack,         // Back
+    0,	  0
+};
+
+MPVKEYID rgmpvkeyidQbas[] = {
+/* [2] Add ALT+ and ALT- */
+	 [[UIRSRCC_92]],        midWndGrow,             /* [2] */
+	 [[UIRSRCC_93]],        midWndGrow,     //[17] main kbd '+' is shift '='
+	 [[UIRSRCC_94]],        midWndShrink,           /* [2] */
+//[21]    '\x08' | KK_ALT,              midEditUndo,            /* [2] */
+	 [[UIRSRCC_95]],        midEditClear2,          /* [2] */
+	 [[UIRSRCC_96]],                midEditCut2,            /* [2] */
+    VK_INSERT | KK_CONTROL,     midEditCopy,
+    VK_INSERT | KK_SHIFT,       midEditPaste,
+	 [[UIRSRCC_97]],        midSearchNext,          /* [2] Ctrl+L */
+//[21]    '\x1c' | KK_CONTROL,  midSearchSel,           /* [2] Ctrl+\ */
+    VK_F1 | KK_ALT,             midHelpBack,            // [16]
+    VK_F2,                      midViewSubs,
+    VK_F2 | KK_SHIFT,           midViewNextProc,
+    VK_F2 | KK_CONTROL,         midViewPrevProc,
+    VK_F3,                      midSearchNext,
+    VK_F4,                      midViewOutScrn,
+    VK_F5,                      midRunContinue,
+    VK_F5 | KK_SHIFT,           midRunStart,
+    VK_F5 | KK_CONTROL,         midWndRestore,
+    VK_F6,                      midNextWindow,
+    VK_F6 | KK_SHIFT,           midPreviousWindow,
+    VK_F7,                      midGoUntilCursor,
+    VK_F8,                      midStep,
+//[21]    VK_F8 | KK_SHIFT,             midHistBack,
+    VK_F9,                      midDebugToggleBp,
+    VK_F10,                     midPStep,
+//[21]    VK_F10 | KK_SHIFT,            midHistForward,
+    VK_F10 | KK_CONTROL,        midWndMaximize,
+    0,    0
+};
+
+MENUBAR MenuBarQedit = {
+    sizeof (rgMenuQedit) / sizeof (MENU),
+    rgMenuQedit,        //[21]
+    rgmpvkeyidQedit
+};
+
+MENUBAR MenuBarQhelp = {
+    sizeof (rgMenuQhelp) / sizeof (MENU),
+    rgMenuQhelp,
+    rgmpvkeyidQhelp
+};
+
+MENUBAR MenuBarQbas = {
+    sizeof (rgMenuQbas) / sizeof (MENU),
+    rgMenuQbas,         //[21]
+    rgmpvkeyidQbas
+};
+
+
+void NEAR SetHelpKeyword (szSrc)
+char *szSrc;
+{
+    register ushort cb;
+    register char ch;
+    char *pchDst;
+
+    cb = CB_HELP_SYNTAX;
+    pchDst = szHelpSyntax + OB_HELP_SYNTAX;
+    while(cb && (ch = *szSrc++)) {
+	*pchDst++ = ch;
+	cb--;
+    }
+    while (cb--) {
+	*pchDst++ = ' ';
+    }
+}

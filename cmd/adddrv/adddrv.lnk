@@ -1,0 +1,3 @@
+adddrv.obj + addsub.obj + syncsigl.obj + portliba.obj + 
+oem.obj + bio + hardint + lpstring + keys + _msgret
+low.exe /NOI/noe ;

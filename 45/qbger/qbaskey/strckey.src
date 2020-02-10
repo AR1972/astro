@@ -1,0 +1,431 @@
+.comment ******************************************************************
+.comment *  Structure Family - QBasic                                     *
+.comment ******************************************************************
+.comment * 1/10/90 Cleaned comments.
+.comment *    -- JeffWe
+.comment ******************************************************************
+.context $STATIC
+.context @$STATIC
+.context $DYNAMIC
+.context @$DYNAMIC
+:n$STATIC-, $DYNAMIC-Metabefehle
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Legen den Standard-Datenfeldspeicher fest.
+
+\b{REM | '} $STATIC\p
+\b{REM | '} $DYNAMIC\p
+
+    ş \b{REM | '}\p    Einem Metabefehl muá REM oder das Anmerkungszeichen (')
+                   vorangehen.
+    ş \b$STATIC\p      Gibt an, daá die Datenfelder in den nachfolgenden DIM-
+                   Anweisungen als statisch deklariert werden, sofern sie
+                   nicht in einer nicht-statischen SUB- oder FUNCTION-
+                   Prozedur deklariert sind. Datenfeldspeicher wird beim
+                   Starten des Programms zugeordnet und bleibt zugeordnet.
+    ş \b$DYNAMIC\p     Gibt an, daá die Datenfelder in den nachfolgenden DIM-
+                   Anweisungen als dynamisch deklariert werden. Datenfeld-
+                   speicher wird w„hrend des Ablaufs des Programms dynamisch
+                   zugeordnet.
+
+    ş Um Datenfelder als dynamisch oder statisch zu deklarieren, eignen sich
+      DIM und REDIM normalerweise besser.
+
+Siehe auch    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aREM\v@REM\v\i\p    \i\p\aSHARED, STATIC\v@STATIC\v\i\p
+.context COMMON
+.context @COMMON
+:nCOMMON-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definiert globale Variablen, die w„hrend der gesamten Ausfhrung des
+Programms von Modulen gemeinsam verwendet oder mit anderen Programmen
+verkettet werden k”nnen.
+
+\bCOMMON [SHARED] Variablenliste\p
+
+    ş \bSHARED\p          Gibt an, daá Variablen von allen SUB- oder FUNCTION-
+                      Prozeduren gemeinsam verwendet werden k”nnen.
+    ş \bVariablenliste\p  Eine oder mehrere Variablen, die gemeinsam verwendet
+                      werden sollen:
+
+                      \bVariable[( )] [AS Typ] [, Variable[( )] [AS Typ]]...\p
+
+                      \bVariable\p    Eine BASIC-Variable. Variablennamen k”nnen
+                                  aus bis zu 40 Zeichen bestehen und mssen
+                                  mit einem Buchstaben beginnen. Gltige
+                                  Zeichen sind A-Z, 0-9 und Punkt (.).
+                      \bTyp\p         Der Datentyp der Variable (INTEGER, LONG,
+                                  SINGLE, DOUBLE, STRING oder ein benutzer-
+                                  definierter Datentyp).
+
+    ş Falls eine Datenfeldvariable nicht in einer vorausgehenden
+      DIM-Anweisung als statisch deklariert wurde, ist sie in einer
+      COMMON-Anweisung stets ein dynamisches Datenfeld. Das Datenfeld muá in
+      einer nachfolgenden DIM- oder REDIM-Anweisung dimensioniert werden.
+
+Siehe auch    \i\p\aCHAIN\v@CHAIN\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p
+              \i\p\aSHARED, STATIC\v@SHARED\v\i\p           \i\p\aSUB\v@SUB\v\i\p
+.context DATA
+.context @DATA
+.context READ
+.context @READ
+.context RESTORE
+.context @RESTORE
+:nDATA-, READ-, RESTORE-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DATA gibt Werte an, die von einer nachfolgenden READ-Anweisung gelesen werden.
+READ liest diese Werte und weist sie Variablen zu.
+RESTORE erm”glicht es READ, Werte in der angegebenen DATA-Anweisung erneut
+        einzulesen.
+
+\bDATA Konstante[,Konstante]...\p
+\bREAD Variablenliste\p
+\bRESTORE [Zeile]\p
+
+ ş \bKonstante\p       Eine oder mehrere numerische oder Zeichenfolgen-
+                   konstanten, die die einzulesenden Daten festlegen.
+                   Zeichenfolgenkonstanten, die Kommas, Doppelpunkte oder
+                   fhrende oder nachfolgende Leerzeichen enthalten, werden
+                   in Anfhrungszeichen (" ") eingeschlossen.
+ ş \bVariablenliste\p  Eine oder mehrere Variablen, die durch Kommas getrennt
+                   sind und denen Werte zugeordnet sind. Variablennamen
+                   k”nnen bis zu 40 Zeichen enthalten und mssen mit einem
+                   Buchstaben beginnen. Gltige Zeichen sind A-Z, 0-9 und
+                   Punkt (.).
+ ş \bZeile\p            Die Marke oder Zeilennummer einer DATA-Anweisung.
+                   Wenn Zeile weggelassen wird, liest die n„chste READ-
+                   Anweisung die Werte der ersten DATA-Anweisung des
+                   Programms.
+
+ ş DATA-Anweisungen k”nnen nur innerhalb von Modulen und nicht in
+   Prozeduren verwendet werden.
+
+Beispiel:
+    FOR i% = 1 TO 3
+        READ a%, b$
+        PRINT a%, b$
+        RESTORE
+    NEXT i%
+    DATA 1, "Wiederholen"
+.context DEFINT
+.context @DEFINT
+.context DEFLNG
+.context @DEFLNG
+.context DEFSNG
+.context @DEFSNG
+.context DEFDBL
+.context @DEFDBL
+.context DEFSTR
+.context @DEFSTR
+:nDEFtype-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Legt den Standarddatentyp fr Variablen, DEF FN-Funktionen und FUNCTION-
+Prozeduren fest.
+
+\bDEFINT Buchstaben [,Buchstaben]...\p
+\bDEFLNG Buchstaben [,Buchstaben]...\p
+\bDEFSNG Buchstaben [,Buchstaben]...\p
+\bDEFDBL Buchstaben [,Buchstaben]...\p
+\bDEFSTR Buchstaben [,Buchstaben]...\p
+
+    ş \bBuchstaben\p     Ein Buchstabe oder ein Buchstabenbereich (wie z.B.
+                     A-M). QBASIC legt den Standarddatentyp fr Variablen,
+                     DEF FN-Funktionen und FUNCTION-Prozeduren, deren Namen
+                     mit dem angegebenen Buchstaben beginnen, folgendermaáen
+                     fest:
+
+                     Anweisung    Standarddatentyp
+                     ÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                     DEFINT       Ganzzahl
+                     DEFLNG       Lange Ganzzahl
+                     DEFSNG       Einfache Genauigkeit
+                     DEFDBL       Doppelte Genauigkeit
+                     DEFSTR       Zeichenfolge
+
+    ş Ein Datentyp-Suffix (%, &, !, #, or $) hat immer Vorrang vor einer
+      DEFtype-Anweisung.
+    ş Der Standard-Datentyp ist Einfache Genauigkeit, falls  Sie keine andere
+      DEFtype-Anweisung angeben.
+    ş Nachdem Sie in Ihrem Programm eine DEFtype-Anweisung angegeben haben,
+      fgt QBASIC automatisch die entsprechende DEFtype-Anweisung in jede
+      Prozedur ein, die Sie danach erstellen.
+
+Beispiel:
+    DEFDBL A-Z
+    a = SQR(3)
+    PRINT "Quadratwurzel von 3 = "; a
+
+Siehe auch    \i\p\aUnterschiede zu BASICA\v@basica.diffs\v\i\p
+.context DIM
+.context @DIM
+.context REDIM
+.context @REDIM
+:nDIM-, REDIM-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+DIM deklariert ein Datenfeld oder legt einen Datentyp fr Nicht-Datenfeld-
+    Variable fest.
+REDIM deklariert ein dynamisches Datenfeld oder „ndert die Gr”áe eines
+      dynamischen Datenfelds, wobei alle vorherigen Werte gel”scht werden.
+
+\bDIM [SHARED] Variable[(Dimension)] [AS Typ]\p
+             \b[,Variable[(Dimension)] [AS Typ]]...\p
+\bREDIM [SHARED] Variable(Dimension) [AS Typ]\p
+               \b[,Variable(Dimension) [AS Typ]]...\p
+
+    ş \bSHARED\p        Gibt an, daá Variablen von allen SUB- und FUNCTION-
+                    Prozeduren des Moduls gemeinsam benutzt werden k”nnen.
+    ş \bVariable\p      Der Name eines Datenfelds oder einer Variable.
+    ş \bDimension\p     Die Dimensionen des Datenfelds:
+
+                    \b[unten TO] oben [,[lunten TO] oben]...\p
+
+                    \bunten\p    Die untere Grenze der Indizes des Datenfelds.
+                             Standardm„áig ist die untere Grenze Null.
+                    \boben\p     Die obere Grenze.
+
+    ş \bAS Typ\p        Deklariert den Datentyp des Datenfelds oder der Variable
+                    (INTEGER, LONG, SINGLE, DOUBLE, STRING oder ein
+                    benutzerdefinierter Datentyp).
+
+    ş DIM deklariert sowohl statische als auch dynamische Datenfelder. Falls
+      mit $STATIC, $DYNAMIC oder COMMON nicht ausdrcklich ein Datenfeld-
+      speicher festgelegt wurde, werden numerisch dimensionierte Datenfelder
+      statisch und mit Variablen als Indizes dimensionierte Datenfelder
+      dynamisch. REDIM deklariert immer dynamische Datenfelder.
+    ş Statischer Datenfeldspeicher wird beim Programmstart zugeordnet und
+      bleibt zugeordnet. Dynamischer Datenfeldspeicher wird w„hrend der Aus-
+      fhrung des Programms zugeordnet.
+
+Beispiel:
+    ' $DYNAMIC
+    DIM A(49, 49)
+    REDIM A(19, 14)
+
+Siehe auch    \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aERASE\v@ERASE\v\i\p    \i\p\aOPTION BASE\v@BASE\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p
+              \i\p\a$STATIC, $DYNAMIC\v@$DYNAMIC\v\i\p    \i\p\aUnterschiede zu BASICA\v@basica.diffs\v\i\p
+.context ERASE
+.context @ERASE
+:nERASE-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Fr statische Datenfelder: Reinitialisiert die Elemente eines Datenfelds.
+Fr dynamische Datenfelder: Hebt die Speicherzuordnung auf.
+
+\bERASE Feldname [,Feldname]...\p
+
+    ş \bFeldname\p    Der Name des Datenfelds.
+
+    ş Fr statische Datenfelder setzt ERASE alle Elemente eines numerischen
+      Datenfelds auf Null und alle Elemente eines Zeichenfolgen-Datenfelds
+      auf eine Null-Zeichenfolge ("").
+    ş Fr dynamische Datenfelder gibt ERASE den vom Datenfeld benutzten
+      Speicher wieder frei. Vor der Verwendung von ERASE mssen Sie das
+      Datenfeld mit REDIM oder DIM neu dimensionieren.
+
+Beispiel:
+    DIM a%(0)
+    a%(0) = 6
+    PRINT "Vorher: "; a%(0)
+    ERASE a%
+    PRINT "Nachher: "; a%(0)
+
+Siehe auch    \i\p\aCLEAR\v@CLEAR\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context LBOUND
+.context @LBOUND
+.context UBOUND
+.context @UBOUND
+:nLBOUND-, UBOUND-Funktionen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Geben die untere bzw. obere Grenze der angegebenen Datenfelddimension zurck
+(den kleinsten bzw. gr”áten vorhandenen Index).
+
+\bLBOUND(Feld[,Dimension%])\p
+\bUBOUND(Feld[,Dimension%])\p
+
+    ş \bFeld\p          Der Name des Datenfelds.
+    ş \bDimension%\p    Bezeichnet die Dimension des Datenfelds, dessen untere
+                    bzw. obere Grenze zurckgegeben wird. Verwenden Sie 1 fr
+                    die erste Dimension, 2 fr die zweite Dimension usw.
+                    Der Standardwert ist 1.
+
+Beispiel:
+    DIM a%(1 TO 3, 2 TO 7)
+    PRINT LBOUND(a%, 1), UBOUND(a%, 2)
+
+Siehe auch    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context LET
+.context @LET
+:nLET-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Weist einer Variable den Wert eines Ausdrucks zu.
+
+\b[LET] Variable=Ausdruck\p
+
+    ş \bVariable\p      Eine beliebige Variable. Variablennamen k”nnen aus bis zu
+                    40 Zeichen bestehen und mssen mit einem Buchstaben
+                    beginnen.  Gltige Zeichen sind A-Z, 0-9 und Punkt (.).
+    ş \bAusdruck\p      Ein beliebiger Ausdruck, der einen zuzuweisenden Wert
+                    liefert.
+
+    ş Die Verwendung des optionalen Schlsselworts LET wird nicht empfohlen.
+      Jede Zuweisung der Form Variable=Ausdruck wird ausgefhrt, ob Sie dazu
+      LET verwenden oder nicht.
+
+Siehe auch    \i\p\aLSET, RSET\v@LSET\v\i\p
+.context OPTION
+.context @OPTION
+.context BASE
+.context @BASE
+:nOPTION BASE-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Legt die untere Standardgrenze fr Datenfeldindizes fest.
+
+\bOPTION BASE {0 | 1}\p
+
+ ş Die untere Grenze eines Datenfeldindex kann besser mit dem Schlsselwort
+   TO der DIM-Anweisung festgelegt werden.
+
+Siehe auch    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aLBOUND, UBOUND\v@UBOUND\v\i\p
+.context REM
+.context @REM
+:nREM-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Erm”glicht das Einfgen von erl„uternden Kommentaren in das Programm.
+
+\bREM Kommentar\p
+\b' Kommentar\p
+
+    ş \bKommentar\p    Ein beliebiger Text.
+
+    ş Anmerkungen werden bei der Ausfhrung des Programms ignoriert, es sei
+      denn, sie enthalten Metabefehle.
+    ş Anmerkungen k”nnen nach einer ausfhrenden Anweisung in dieselbe Zeile
+      eingefgt werden, wenn sie von einem einfachen Hochkomma (') oder von
+      einem Doppelpunkt (:) gefolgt von REM eingeleitet werden.
+
+Beispiel:
+    REM    Dies ist ein Kommentar.
+    '      Dies ist ein Kommentar.
+    PRINT "Test1"       'Dies ist ein Kommentar nach einer PRINT-Anweisung.
+    PRINT "Test2" :  REM Dies ist auch ein Kommentar.
+
+Siehe auch    \i\p\a$STATIC, $DYNAMIC\v@$STATIC\v\i\p
+.context SHARED
+.context @SHARED
+.context STATIC
+.context @STATIC
+:nSHARED-, STATIC-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SHARED erm”glicht Prozeduren den Zugang zu Variablen in Modulen.
+STATIC macht eine Variable lokal zu einer Funktion oder Prozedur und erh„lt
+ihren Wert zwischen Aufrufen.
+
+\bSHARED Variable[()] [AS Typ] [,Variable[()] [AS Typ]]...\p
+\bSTATIC Variable[()] [AS Typ] [,Variable[()] [AS Typ]]...\p
+
+ ş \bVariable\p    Der Name einer Variable aus einem Modul, auf die zugegriffen
+               werden bzw. die lokal gemacht werden soll. Variablennamen
+               k”nnen aus bis zu 40 Zeichen bestehen und mssen mit einem
+               Buchstaben beginnen. Gltige Zeichen sind A-Z, 0-9 und
+               Punkt (.).
+ ş \bAS Typ\p      Deklariert den Datentyp einer Variable (INTEGER, LONG,
+               SINGLE, DOUBLE, STRING oder ein benutzerdefinierter Typ).
+
+Beispiel:
+    Das Programm REMLINE.BAS veranschaulicht die Verwendung von SHARED-
+    und STATIC-Anweisung. Um sich dieses Programm anzusehen und auszufhren,
+    laden Sie das Programm REMLINE.BAS mit dem Befehl ™ffnen vom Men Datei.
+
+Siehe auch    \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+.context SWAP
+.context @SWAP
+:nSWAP-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Tauscht die Werte zweier Variablen aus.
+
+\bSWAP Variable1, Variable2\p
+
+    ş \bVariable1\p und \bVariable2\p    Zwei Variablen desselben Datentyps.
+
+Beispiel:
+    a% = 1: b% = 2
+    PRINT "Vorher: "; a%, b%
+    SWAP a%, b%
+    PRINT "Nachher: "; a%, b%
+.context TYPE
+.context @TYPE
+:nTYPE-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definiert einen Datentyp, der ein oder mehrere Elemente enth„lt.
+
+\bTYPE neuerTyp\p
+  \bElementname AS Typname\p
+  \b[Elementname AS Typname]\p
+\b.\p
+\b.\p
+\b.\p
+\bEND TYPE\p
+
+    ş \bneuerTyp\p       Der Name des zu definierenden Datentyps. Namen k”nnen
+                     aus bis zu 40 Zeichen bestehen und mssen mit einem
+                     Buchstaben beginnen. Gltige Zeichen sind A-Z, 0-9 und
+                     Punkt (.).
+    ş \bElementname\p    Ein Element des benutzerdefinierten Datentyps.
+    ş \bTypname\p        Der Typ des Elements (INTEGER, LONG, SINGLE, DOUBLE,
+                     STRING oder ein benutzerdefinierter Datentyp).
+
+    ş Verwenden Sie DIM-, REDIM-, COMMON-, STATIC- oder SHARED-Anweisungen,
+      um Variablen als benutzerdefinierte Typen zu deklarieren.
+
+Beispiel:
+    TYPE Karten
+        Farbe AS STRING * 9
+        Wert AS INTEGER
+    END TYPE
+    DIM Spiel(1 TO 52) AS Karten
+    Spiel(1).Farbe = "Pik"
+    Spiel(1).Wert = 2
+    PRINT Spiel(1).Farbe, Spiel(1).Wert
+
+Siehe auch    \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p
+.comment ******************************************************************
+.comment *  Data Type Keywords screen                                     *
+.comment ******************************************************************
+.context INTEGER
+.context @INTEGER
+.context LONG
+.context @LONG
+.context SINGLE
+.context @SINGLE
+.context DOUBLE
+.context @DOUBLE
+.context STRING
+.context @STRING
+:nDatentyp-Schlsselw”rter
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Legen den Datentyp von Variablen in einer deklarativen Anweisung oder einer
+Parameterliste fest:
+
+    ş \bINTEGER\p      Eine 16-Bit ganzzahlige Variable mit Vorzeichen.
+    ş \bLONG\p         Eine 32-Bit ganzzahlige Variable mit Vorzeichen.
+    ş \bSINGLE\p       Eine 32-Bit Flieákomma-Variable einfacher Genauigkeit.
+    ş \bDOUBLE\p       Eine 64-Bit Flieákomma-Variable doppelter Genauigkeit.
+    ş \bSTRING * n%\p  Eine Zeichenfolgenvariable fester L„nge mit einer L„nge
+                   von  n% Byte.
+    ş \bSTRING\p       Eine Zeichenfolgenvariable variabler L„nge.
+
+Siehe auch    \i\p\aAS\v@AS\v\i\p          \i\p\aBASIC-Zeichensatz\v@fun.character.set\v\i\p          \i\p\aCOMMON\v@COMMON\v\i\p
+              \i\p\aDECLARE\v@DECLARE\v\i\p     \i\p\aDEF FN\v@DEF\v\i\p                     \i\p\aDIM, REDIM\v@DIM\v\i\p
+              \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aSHARED, STATIC\v@SHARED\v\i\p             \i\p\aSUB\v@SUB\v\i\p
+              \i\p\aTYPE\v@TYPE\v\i\p

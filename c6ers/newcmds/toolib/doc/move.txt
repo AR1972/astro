@@ -1,0 +1,26 @@
+
+SUMMARY   memory routines
+
+#include <tools.h>
+
+cProc	Move,<PUBLIC>,<DS,SI,DI>
+parmD	src
+parmD	dst
+parmW	count
+
+cProc	Fill,<PUBLIC>,<DI>
+parmD	dst
+parmB	value
+parmW	count
+
+DESCRIPTION
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE

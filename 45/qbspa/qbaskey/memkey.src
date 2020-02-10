@@ -1,0 +1,480 @@
+.comment ******************************************************************
+.comment *  Memory Family - QBasic                                        *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments                       *
+.comment ******************************************************************
+.comment *  6/12/90 stevesau                                              *
+.comment *  Incorporated RonS comments                                    *
+.comment ******************************************************************
+.comment *  5/13/90 stevesau                                              *
+.comment *  Combined MKn$/CVn, MKSMBF$/MKDMBF$/CVSMBF/CVDMBF, HEX$/OCT$,  *
+.comment *  LCASE$/UCASE$, LEFT$/RIGHT$, LTRIM$/RTRIM$,                   *
+.comment *  MID$ function/statement, PEEK/POKE, STR$/VAL.                 *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/12/90 stevesau                                              *
+.comment *  Reinserted VARTPR$ (need for PLAY and DRAW X command).        *
+.comment *  Deleted STACK function and statement.                         *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Reinserted VARPTR, VARSEG (need for CALL ABSOLUTE example).   *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Deleted SADD, SETMEM, SSEG, SSEGADD, VARPTR, VARSEG (moved    *
+.comment *  to Unsupported Keywords (Contents).                           *
+.comment *  Deleted CHR$ (combined with ASC in Math family).              *
+.comment *  Moved CVSMBF, etc., from Math family.                         *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Added action lines.						  *
+.comment ******************************************************************
+.comment *  4/17/90 BethPr                                                *
+.comment *  Removed StringAddress, StringAssign, StringLength and         *
+.comment *  StringRelease routines                                        *
+.comment ******************************************************************
+.context CLEAR
+.context @CLEAR
+:nCLEAR, instrucci¢n
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Cierra todos los archivos, libera los b£feres de archivos, borra las variables
+comunes, asigna el valor de cero a las variables num‚ricas y a las matrices,
+asigna el valor nulo a las variables de cadena e inicializa la pila. Si
+especifica la opci¢n \p, CLEAR tambi‚n puede cambiar el tama¤o de la pila.
+
+\bCLEAR [,,pila&]\p
+
+    ş \bpila&\p    Establece el tama¤o (en bytes) de la pila para su programa.
+
+Ejemplo:
+    CLEAR ,,2000
+
+Vea tambi‚n  \i\p\aERASE\v@ERASE\v\i\p
+.context SEG
+.context @SEG
+:nDEF SEG, instrucci¢n
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Define la direcci¢n del segmento actual.
+
+\bDEF SEG [=direcci¢n]\p
+
+    ş \bdirecci¢n\p  Una direcci¢n de segmento utilizada por BLOAD, BSAVE,
+                 CALL ABSOLUTE, PEEK o POKE; un valor entre 0 y 65,535. Si
+                 se omite direcci¢n, DEF SEG asignar  el valor del segmento
+                 de datos predeterminado a la direcci¢n de segmento actual.
+
+Ejemplo:
+    DEF SEG = 0
+    Estado% = PEEK(&H417)              'Lee el estado del teclado.
+    POKE &H417, (Estado% XOR &H40)     'Cambia estado de Bloq May£s, bit 6.
+
+Vea tambi‚n   \i\p\aBSAVE, BLOAD\v@BLOAD\v\i\p    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aPEEK, POKE\v@PEEK\v\i\p
+.context FRE
+.context @FRE
+:nFRE, funci¢n
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Devuelve la cantidad (en bytes) de memoria libre o disponible.
+
+\bFRE(expresi¢n-num‚rica)\p
+\bFRE(expresi¢n-cadena$)\p
+
+    ş \bexpresi¢n-num‚rica\p    Un valor que especifica el tipo de memoria:
+
+                            Valor               FRE devuelve
+                            ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                            -1                  El tama¤o de la matriz m s
+                                                grande (no de cadena) que se
+                                                pueda crear
+                            -2                  Espacio de pila disponible
+                            Cualquier otro      La cantidad de espacio 
+                            n£mero              disponible para cadenas
+
+    ş \bexpresi¢n-cadena$\p     Cualquier expresi¢n de cadena. FRE compacta
+                            el espacio disponible para cadenas en un solo
+                            bloque, y despu‚s devuelve la cantidad de
+                            espacio disponible para cadenas.
+
+Ejemplo:
+    PRINT "Espacio para cadenas", FRE("")
+    PRINT "Espacio disponible en pila", FRE(-2)
+    PRINT "Espacio para matrices", FRE(-1)
+.context HEX$
+.context @HEX$
+.context OCT$
+.context @OCT$
+:nHEX$ y OCT$, funciones
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+HEX$ devuelve una representaci¢n hexadecimal de cadena de un n£mero.
+OCT$ devuelve una representaci¢n octal de cadena de un n£mero.
+
+\bHEX$(expresi¢n-num‚rica&)\p
+\bOCT$(expresi¢n-num‚rica&)\p
+
+    ş \bexpresi¢n-num‚rica&\p    Cualquier expresi¢n num‚rica. La expresi¢n ser 
+                             redondeada a un entero o entero largo antes de
+                             ser evaluada.
+
+Ejemplo:
+    INPUT x
+    a$ = HEX$ (x)
+    b$ = OCT$ (x)
+    PRINT x; "decimal es "; a$; " hexadecimal y "; b$; " en octal."
+.context INSTR
+.context @INSTR
+:nINSTR, funci¢n
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Devuelve la posici¢n de la primera aparici¢n de una cadena dentro de otra.
+
+\bINSTR([inicio%,]expresi¢n-cadena1$,expresi¢n-cadena2$)\p
+
+    ş \binicio%\p               Establece la posici¢n de car cter donde se
+                            iniciar  la b£squeda. Si se omite inicio%, INSTR
+                            se iniciar  en la posici¢n 1.
+    ş \bexpresi¢n-cadena1$\p    La cadena en la que se realizar  la b£squeda.
+    ş \bexpresi¢n-cadena2$\p    La cadena que ser  buscada.
+
+Ejemplo:
+    a$ = "Microsoft QBasic"
+    PRINT "Posici¢n de cadena ="; INSTR(1, a$, "QBasic")
+
+Vea tambi‚n  \i\p\aLEFT$, RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p    \i\p\aMID$\v@MID$\v\i\p
+.context LCASE$
+.context @LCASE$
+.context UCASE$
+.context @UCASE$
+:nLCASE$ y UCASE$, funciones
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Convierte cadenas en letras min£sculas o letras may£sculas.
+
+\bLCASE$(expresi¢n-cadena$)\p
+\bUCASE$(expresi¢n-cadena$)\p
+
+    ş \bexpresi¢n-cadena$\p    Cualquier expresi¢n de cadena.
+
+Ejemplo:
+    Test$ = "LA cadena"
+    PRINT Test$
+    PRINT LCASE$(Test$); " en min£sculas"
+    PRINT UCASE$(Test$); " EN MAYUSCULAS"
+.context LEFT$
+.context @LEFT$
+.context RIGHT$
+.context @RIGHT$
+:nLEFT$ y RIGHT$, funciones
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Devuelven un n£mero espec¡fico de caracteres al extremo izquierdo o derecho
+en una cadena.
+
+\bLEFT$(expresi¢n-cadena$,n%)\p
+\bRIGHT$(expresi¢n-cadena$,n%)\p
+
+    ş \bexpresi¢n-cadena$\p    Cualquier expresi¢n de cadena.
+    ş \bn%\p                   El n£mero de caracteres que devolver  como
+                           resultado, comenzando con el £ltimo car cter de
+                           la izquierda o de la derecha de la cadena.
+
+Ejemplo:
+    a$ = "Microsoft QBasic"
+    PRINT LEFT$(a$, 5)     'Resultado:  Micro
+    PRINT RIGHT$(a$, 5)    'Resultado:  Basic
+
+Vea tambi‚n  \i\p\aMID$\v@MID$\v\i\p
+.context LEN
+.context @LEN
+:nLEN, funci¢n
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Devuelve el n£mero de caracteres en una cadena, o el n£mero de bytes
+requeridos para almacenar una variable.
+
+\bLEN(expresi¢n-cadena$)\p
+\bLEN(variable)\p
+
+    ş \bexpresi¢n-cadena$\p    Cualquier expresi¢n de cadena.
+    ş \bvariable\p             Cualquier variable que no sea de cadena.
+
+Ejemplo:
+    a$ = "Microsoft QBasic"
+    PRINT LEN(a$)
+
+Vea tambi‚n  \i\p\aOPEN\v@OPEN\v\i\p
+.context LTRIM$
+.context @LTRIM$
+.context RTRIM$
+.context @RTRIM$
+:nLTRIM$ y RTRIM$, funciones
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Eliminan los espacios delante o detr s de una cadena.
+
+\bLTRIM$(expresi¢n-cadena$)\p
+\bRTRIM$(expresi¢n-cadena$)\p
+
+    ş \bexpresi¢n-cadena$\p    Cualquier expresi¢n de cadena.
+
+Ejemplo:
+    a$ = "    Basic    "
+    PRINT "*" + a$ + "*"	    'Resultado:  *    Basic    *
+    PRINT "*" + LTRIM$(a$) + "*"    'Resultado:  *Basic    *
+    PRINT "*" + RTRIM$(a$) + "*"    'Resultado:  *    Basic*
+.context MID$
+.context @MID$
+:nMID$, funci¢n e instrucci¢n
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+La funci¢n MID$ devuelve una porci¢n de una cadena (una subcadena).
+La instrucci¢n MID$ reemplaza una porci¢n de una variable de cadena con
+otra cadena.
+
+\bMID$(expresi¢n-cadena$,inicio%[,longitud%])\p
+\bMID$(variable-cadena$,inicio%[,longitud%])=expresi¢n-cadena$\p
+
+    ş \bexpresi¢n-cadena$\p    La cadena de la cual funci¢n MID$ toma una
+                           subcadena, o la cadena de reemplazo utilizada
+                           por la instrucci¢n MID$. Puede ser cualquier
+                           expresi¢n de cadena.
+    ş \binicio%\p              La posici¢n del primer car cter de la
+                           subcadena que ser  devuelta o reemplazada.
+    ş \blongitud%\p            El n£mero de caracteres en la subcadena. Si
+                           se omite, MID$ devolver  o reemplazar  todos
+                           los caracteres situados a la derecha de la
+                           posici¢n de inicio.
+    ş \bvariable-cadena$\p     La variable de cadena que ser  modificada por
+                           la instrucci¢n MID$.
+
+Ejemplo:
+    a$ = "¨D¢nde est  Paris?"
+    PRINT MID$(a$, 10, 5)       'Resultado:  Paris
+    Texto$ = "Paris, Francia"
+    PRINT Texto$                 'Resultado:  Paris, Francia
+    MID$(Texto$, 8) = "Texas "
+    PRINT Texot$                 'Resultado:  Paris, Texas
+
+Vea tambi‚n  \i\p\aLEFT$, RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p
+.context CVI
+.context @CVI
+.context CVS
+.context @CVS
+.context CVL
+.context @CVL
+.context CVD
+.context @CVD
+.context MKL$
+.context @MKL$
+.context MKI$
+.context @MKI$
+.context MKS$
+.context @MKS$
+.context MKD$
+.context @MKD$
+:nMKn$ y CVn, funciones
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MKI$, MKL$, MKS$ y MKD$ convierten n£meros en cadenas num‚ricas que pueden
+ser almacenadas en variables de cadena a trav‚s de la instrucci¢n FIELD.
+CVI, CVL, CVS y CVD convierten esas cadenas nuevamente en n£meros.
+
+\bMKI$(expresi¢n-entero%)\p
+\bMKL$(expresi¢n-entero-largo&)\p
+\bMKS$(expresi¢n-precisi¢n-sencilla!)\p
+\bMKD$(expresi¢n-precisi¢n-doble#)\p
+\bCVI(cadena-num‚rica-de-2-bytes)\p
+\bCVL(cadena-num‚rica-de-4-bytes)\p
+\bCVS(cadena-num‚rica-de-4-bytes)\p
+\bCVD(cadena-num‚rica-de-8-bytes)\p
+
+    Funci¢n     Devuelve            Funci¢n     Devuelve
+    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ   ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+    MKI$        Cadena de 2 bytes   CVI         Entero
+    MKL$        Cadena de 4 bytes   CVL         Entero largo
+    MKS$        Cadena de 4 bytes   CVS         N£mero de precisi¢n sencilla
+    MKD$        Cadena de 8 bytes   CVD         N£mero de precisi¢n doble
+
+Vea tambi‚n  \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aMKSMBF$, MKDMBF$, CVSMBF, CVDMBF\v@CVSMBF\v\i\p
+.context MKDMBF$
+.context @MKDMBF$
+.context MKSMBF$
+.context @MKSMBF$
+.context CVDMBF
+.context @CVDMBF
+.context CVSMBF
+.context @CVSMBF
+:nMKSMBF$, MKDMBF$, CVSMBF y CVDMBF, funciones
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MKSMBF$ y MKDMBF$ convierten n£meros con el formato IEEE en cadenas num‚ricas
+con el formato binario de Microsoft que pueden ser almacenadas en variables
+de cadena a trav‚s de la instrucci¢n FIELD.
+CVSMBF y CVDMBF convierten esas cadenas nuevamente a n£meros con el
+formato IEEE.
+
+\bMKSMBF$(expresi¢n-precisi¢n-sencilla!)\p
+\bMKDMBF$(expresi¢n-precisi¢n-doble#)\p
+\bCVSMBF (cadena-num‚rica-de-4-bytes)\p
+\bCVDMBF (cadena-num‚rica-de-8-bytes)\p
+
+    Funci¢n     Devuelve
+    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+    MKSMBF$     Una cadena de 4 bytes que contiene un n£mero con el formato
+                binario de Microsoft
+    MKDMBF$     Una cadena de 8 bytes que contiene un n£mero con el formato
+                binario de Microsoft
+    CVSMBF      Un n£mero de precisi¢n sencilla con el formato IEEE
+    CVDMBF      Un n£mero de precisi¢n doble con el formato IEEE
+
+    ş Estas funciones son £tiles para mantener archivos de datos creados
+      con versiones antiguas de Basic.
+
+Ejemplo:
+    TYPE Buffer
+        SngNum AS STRING * 4
+        DblNum AS STRING * 8
+    END TYPE
+    DIM RecBuffer AS Buffer
+    OPEN "TESTDAT.DAT" FOR RANDOM AS #1 LEN = 12
+    SNum = 98.9
+    DNum = 645.3235622#
+    RecBuffer.SngNum = MKSMBF$(SNum)    RecBuffer.DblNum = MKDMBF$(DNum)
+    PUT #1, 1, RecBuffer
+    GET #1, 1, RecBuffer
+    CLOSE #1
+    PRINT CVSMBF(RecBuffer.SngNum), CVDMBF(RecBuffer.DblNum)
+
+Vea tambi‚n  \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aMKn$, CVn\v@CVS\v\i\p
+.context PEEK
+.context @PEEK
+.context POKE
+.context @POKE
+:nPEEK funci¢n, y POKE instrucci¢n
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PEEK devuelve un valor de byte almacenado en una posici¢n de memoria
+espec¡fica.
+POKE escribe un valor de byte en una posici¢n de memoria espec¡fica.
+
+\bPEEK(direcci¢n)\p
+\bPOKE direcci¢n,byte%\p
+
+    ş \bdirecci¢n\p  Una posici¢n de byte relativa a la direcci¢n del
+                 segmento actual establecida mediante DEF SEG; un valor
+                 entre 0 y 65,535.
+    ş \bbyte%\p      Un valor de byte que ser  escrito en la direcci¢n de
+                 memoria especificada; un valor entre 0 y 255.
+
+Ejemplo:
+    DEF SEG = 0
+    Estado% = PEEK(&H417)              'Lee el estado del teclado.
+    POKE &H417, (Estado% XOR &H40)     'Cambia estado de Bloq May£s, bit 6.
+
+Vea tambi‚n  \i\p\aDEF SEG\v@SEG\v\i\p
+.context SPACE$
+.context @SPACE$
+:nSPACE$, funci¢n
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Devuelve una cadena de espacios.
+
+\bSPACE$(n%)\p
+
+    ş \bn%\p    El n£mero de espacios que tendr  la cadena.
+
+Ejemplo:
+    FOR i% = 1 TO 5
+        x$ = SPACE$ (i%)
+        PRINT x$; i%
+    NEXT i%
+
+Vea tambi‚n   \i\p\aSPC\v@SPC\v\i\p    \i\p\aSTRING$\v@STRING$\v\i\p
+.context STR$
+.context @STR$
+.context VAL
+.context @VAL
+:nSTR$ y VAL, funciones
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+STR$ devuelve una representaci¢n de un n£mero como cadena.
+VAL convierte una representaci¢n de n£mero como cadena en un n£mero.
+
+\bSTR$(expresi¢n-num‚rica)\p
+\bVAL(expresi¢n-cadena$)\p
+
+    ş \bexpresi¢n-num‚rica\p    Cualquier expresi¢n num‚rica.
+    ş \bexpresi¢n-cadena$\p     Una representaci¢n de n£mero en forma
+                            de cadena.
+
+Ejemplo:
+    PRINT "65 decimal es representado en hexadecimal como ";
+    PRINT "&H" + LTRIM$(STR$(41))
+    PRINT VAL(RIGHT$("Microsoft 1990", 4))
+.context STRING$
+.context @STRING$
+:nSTRING$, funci¢n
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Devuelve una cadena de longitud espec¡fica constituida por un car cter
+repetido.
+
+\bSTRING$(longitud%,{c¢digo-ascii% | expresi¢n-cadena$})\p
+
+    ş \blongtitud%\p           La longitud de la cadena.
+    ş \bascii-code%\p          El c¢digo ASCII del car cter repetido.
+    ş \bexpresi¢n-cadena$\p    Cualquier expresi¢n de cadena. STRING$ llena la
+                           cadena con el primer car cter de expresi¢n-cadena$.
+
+Ejemplo:
+    PRINT STRING$(4, "-");
+    PRINT "Hola";
+    PRINT STRING$(4, "-")
+
+Vea tambi‚n  \i\p\aC¢digos de caracteres ASCII\v@ac\v\i\p
+.context VARSEG
+.context @VARSEG
+.context VARPTR
+.context @VARPTR
+:nVARPTR y VARSEG, funciones
+  \i\p\aContenido\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+VARPTR devuelve la direcci¢n compensada de una variable.
+VARSEG devuelve la direcci¢n de segmento de una variable.
+
+\bVARPTR(nombre-variable)\p
+\bVARSEG(nombre-variable)\p
+
+    ş \bnombre-variable\p	  Cualquier nombre de variable Basic.
+
+Vea tambi‚n   \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aDEF SEG\v@SEG\v\i\p    \i\p\aPEEK, POKE\v@PEEK\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p
+.context VARPTR$
+.context @VARPTR$
+:nVARPTR$, funci¢n
+  \i\p\aContenido\v@helpTableId\v\i\p	\i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aRegresar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Devuelve una representaci¢n de la direcci¢n de una variable en forma de una
+cadena para ser utilizada en instrucciones DRAW y PLAY.
+
+\bVARPTR$(cadena-comando$)\p
+
+    ş \bcadena-comando$\p    Una variable de cadena que contiene comandos
+                         DRAW o PLAY.
+Ejemplo:
+    Escala$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(Escala$)
+    NEXT i%
+
+Vea tambi‚n  \i\p\aDRAW\v@DRAW\v\i\p   \i\p\aPLAY (m£sica)\v@PLAY\v\i\p    \i\p\aVARPTR, VARSEG\v@VARPTR\v\i\p

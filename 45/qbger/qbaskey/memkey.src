@@ -1,0 +1,494 @@
+.comment ******************************************************************
+.comment *  Memory Family - QBasic                                        *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, for BASIC language and products.*
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/26/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments                       *
+.comment ******************************************************************
+.comment *  6/12/90 stevesau                                              *
+.comment *  Incorporated RonS comments                                    *
+.comment ******************************************************************
+.comment *  5/13/90 stevesau                                              *
+.comment *  Combined MKn$/CVn, MKSMBF$/MKDMBF$/CVSMBF/CVDMBF, HEX$/OCT$,  *
+.comment *  LCASE$/UCASE$, LEFT$/RIGHT$, LTRIM$/RTRIM$,                   *
+.comment *  MID$ function/statement, PEEK/POKE, STR$/VAL.                 *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/12/90 stevesau                                              *
+.comment *  Reinserted VARTPR$ (need for PLAY and DRAW X command).        *
+.comment *  Deleted STACK function and statement.                         *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Reinserted VARPTR, VARSEG (need for CALL ABSOLUTE example).   *
+.comment ******************************************************************
+.comment *  4/26/90 stevesau                                              *
+.comment *  Deleted SADD, SETMEM, SSEG, SSEGADD, VARPTR, VARSEG (moved    *
+.comment *  to Unsupported Keywords (Contents).                           *
+.comment *  Deleted CHR$ (combined with ASC in Math family).              *
+.comment *  Moved CVSMBF, etc., from Math family.                         *
+.comment ******************************************************************
+.comment *  4/24/90 stevesau                                              *
+.comment *  Added action lines.						  *
+.comment ******************************************************************
+.comment *  4/17/90 BethPr                                                *
+.comment *  Removed StringAddress, StringAssign, StringLength and         *
+.comment *  StringRelease routines                                        *
+.comment ******************************************************************
+.context CLEAR
+.context @CLEAR
+:nCLEAR-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Schlieát alle Dateien, gibt Dateipuffer frei, gibt alle globalen Variablen
+frei, setzt numerische Variablen und Datenfelder auf Null, setzt Zeichen-
+folgenvariablen auf Null und initialisiert die Stapelgr”áe (Stack).
+Wahlweise ver„ndert CLEAR auch die Gr”áe des Stacks.
+
+\bCLEAR [,,Stack&]\p
+
+    ş \bStack&\p    Legt die Gr”áe (in Byte) des Stacks fr das Programm fest.
+
+Beispiel:
+    CLEAR ,,2000
+
+Siehe auch    \i\p\aERASE\v@ERASE\v\i\p
+.context SEG
+.context @SEG
+:nDEF SEG-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Legt die gegenw„rtige Segmentadresse fest.
+
+\bDEF SEG [=Adresse]\p
+
+    ş \bAdresse\p    Eine Segmentadresse, die von den Anweisungen BLOAD,
+                 BSAVE, CALL ABSOLUTE, PEEK oder POKE verwendet wird; Werte
+                 zwischen 0 und 65.535 sind gltig. Wenn die Adresse weg-
+                 gelassen wird, setzt DEF SEG die gegenw„rtige Segmentadresse
+                 auf das Standarddatensegment zurck.
+
+Beispiel:
+    DEF SEG = 0
+    Status% = PEEK(&H417)              'Tastaturstatus lesen.
+    POKE &H417, (Status% XOR &H40)     'UMSCHALT-Zustand „ndern, Bit 6.
+
+Siehe auch    \i\p\aBSAVE, BLOAD\v@BLOAD\v\i\p    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aPEEK, POKE\v@PEEK\v\i\p
+.context FRE
+.context @FRE
+:nFRE-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt die Gr”áe des zur Verfgung stehenden Speichers zurck (in Byte).
+
+\bFRE(Numerischer Ausdruck)\p
+\bFRE(Zeichenfolgenausdruck$)\p
+
+    ş \bNumerischer Ausdruck\p
+                            Ein Wert, der die Art des Speichers angibt:
+
+                            Wert                Rckgabe von FRE
+                            ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                            -1                  Die Gr”áe des gr”áten Daten-
+                                                felds, das erstellt werden
+                                                kann (kein Zeichenfolgen-
+                                                Datenfeld).
+                            -2                  Die Gr”áe des ungenutzten
+                                                Stacks.
+                            Jeder andere Wert   Die verfgbare Gr”áe des
+                                                Zeichenfolgenspeichers.
+
+    ş \bZeichenfolgenausdruck$\p
+                            Ein beliebiger Zeichenfolgenausdruck. FRE faát
+                            den verfgbaren Zeichenfolgenspeicher zu einem
+                            einzelnen Speicherblock zusammen und gibt dann
+                            die Gr”áe des verfgbaren Speichers zurck.
+
+Beispiel:
+    PRINT "Zeichenfolgen-Speicherplatz", FRE("")
+    PRINT "Ungenutzter Stack-Speicherplatz", FRE(-2)
+    PRINT "Datenfeld-Speicherplatz", FRE(-1)
+.context HEX$
+.context @HEX$
+.context OCT$
+.context @OCT$
+:nHEX$-, OCT$-Funktionen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+HEX$ gibt eine Zeichenfolge zurck, die den Hexadezimalwert eines numerischen
+     Ausdrucks darstellt.
+OCT$ gibt eine Zeichenfolge zurck, die den Oktalwert eines numerischen
+     Ausdrucks darstellt.
+
+\bHEX$(Numerischer Ausdruck&)\p
+\bOCT$(Numerischer Ausdruck&)\p
+
+    ş \bNumerischer Ausdruck&\p  Ein beliebiger numerischer Ausdruck. Der Aus-
+                             druck wird vor der Auswertung zu einer Ganzahl
+                             oder langen Ganzzahl gerundet.
+
+Beispiel:
+    INPUT x
+    a$ = HEX$ (x)
+    b$ = OCT$ (x)
+    PRINT x; "in dezimal ist "; a$; " in hexadezimal und "; b$; " in oktal."
+.context INSTR
+.context @INSTR
+:nINSTR-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt das erste Auftreten einer Zeichenfolge innerhalb einer anderen
+Zeichenfolge zurck.
+
+\bINSTR([Beginn%,]Stringausdruck1$,Stringausdruck2$)\p
+
+    ş \bBeginn%\p             Legt die Position fr den Beginn des Suchvorgangs
+                          fest. Wenn Beginn% ausgelassen wird, beginnt
+                          INSTR an Position 1.
+    ş \bStringausdruck1$\p    Die Zeichenfolge, in der gesucht werden soll.
+    ş \bStringausdruck2$\p    Die Zeichenfolge, nach der gesucht werden soll.
+
+Beispiel:
+    a$ = "Microsoft QBasic"
+    PRINT "Stringposition ="; INSTR(1, a$, "QBasic")
+
+Siehe auch    \i\p\aLEFT$, RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p    \i\p\aMID$\v@MID$\v\i\p
+.context LCASE$
+.context @LCASE$
+.context UCASE$
+.context @UCASE$
+:nLCASE$-, UCASE$-Funktionen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Wandeln Zeichenfolgen in nur Kleinbuchstaben bzw. nur Groábuchstaben um.
+
+\bLCASE$(Stringausdruck$)\p
+\bUCASE$(Stringausdruck$)\p
+
+    ş \bStringausdruck$\p    Eine beliebige Zeichenfolge.
+
+Beispiel:
+    Test$ = "Das Dings"
+    PRINT Test$
+    PRINT LCASE$(Test$); " in kleinbuchstaben."
+    PRINT UCASE$(Test$); " IN GROSSBUCHSTABEN."
+.context LEFT$
+.context @LEFT$
+.context RIGHT$
+.context @RIGHT$
+:nLEFT$-, RIGHT$-Funktionen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Geben eine festgelegt Anzahl der „uáerst links bzw. „uáerst rechts stehenden
+Zeichen einer Zeichnfolge zurck.
+
+\bLEFT$(Stringausdruck$,n%)\p
+\bRIGHT$(Stringausdruck$,n%)\p
+
+    ş \bStringausdruck$\p    Ein beliebiger Zeichenfolgenausdruck.
+    ş \bn%\p                 Die Anzahl der zurckzugebenden Zeichen, beginnend
+                         mit dem „uáerst links bzw. „uáerst rechts
+                         stehenden Zeichen.
+
+Beispiel:
+    a$ = "Microsoft QBasic"
+    PRINT LEFT$(a$, 5)     'Ausgabe:  Micro
+    PRINT RIGHT$(a$, 5)    'Ausgabe:  Basic
+
+Siehe auch    \i\p\aMID$\v@MID$\v\i\p
+.context LEN
+.context @LEN
+:nLEN-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt die Anzahl der Zeichen in einer Zeichenfolge oder die Anzahl der Bytes
+zurck, die ben”tigt werden, um eine Variable zu speichern.
+
+\bLEN(Stringausdruck$)\p
+\bLEN(Variable)\p
+
+    ş \bStringausdruck$\p     Ein beliebiger Zeichenfolgenausdruck.
+    ş \bVariable\p            Eine beliebige Nicht-Zeichenfolge-Variable.
+
+Beispiel:
+    a$ = "Microsoft QBasic"
+    PRINT LEN(a$)
+
+Siehe auch    \i\p\aOPEN\v@OPEN\v\i\p
+.context LTRIM$
+.context @LTRIM$
+.context RTRIM$
+.context @RTRIM$
+:nLTRIM$-, RTRIM$-Funktionen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Entfernen fhrende bzw. nachfolgende Leerzeichen von einer Zeichenfolge.
+
+\bLTRIM$(Stringausdruck$)\p
+\bRTRIM$(Stringausdruck$)\p
+
+    ş \bStringausdruck$\p    Ein beliebiger Zeichenfolgenausdruck.
+
+Beispiel:
+    a$ = "    BASIC    "
+    PRINT "*" + a$ + "*"            'Ausgabe:  *    BASIC    *
+    PRINT "*" + LTRIM$(a$) + "*"    'Ausgabe:  *BASIC    *
+    PRINT "*" + RTRIM$(a$) + "*"    'Ausgabe:  *    BASIC*
+.context MID$
+.context @MID$
+:nMID$-Funktion und -Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Die MID$-Funktion gibt eine Teilzeichenfolge zurck (einen Teil einer
+Zeichenfolge).
+Die MID$-Anweisung ersetzt einen Teil einer Zeichenfolgenvariable durch eine
+andere Zeichenfolge.
+
+\bMID$(Stringausdruck$,Start%[,L„nge%])\p
+\bMID$(Stringvariable$,Start%[,L„nge%])=Stringausdruck$\p
+
+ ş \bStringausdruck$\p    Die Zeichenfolge, von der die MID$-Funktion eine
+                      Teilzeichenfolge zurckgibt, bzw. die ersetzende
+                      Zeichenfolge, die die MID$-Anweisung verwendet.
+                      Kann ein beliebiger Zeichenfolgenausdruck sein.
+ ş \bStart%\p             Die Position des ersten Zeichens der Teilzeichen-
+                      folge, die zurckgegeben oder ersetzt werden soll.
+ ş \bL„nge%\p             Die Anzahl von Zeichen in der Teilzeichenfolge.
+                      Wenn L„nge nicht angegeben wird, nimmt MID$ an, daá
+                      alle Zeichen rechts des ersten Zeichens zurck
+                      gegeben oder ersetzt werden sollen.
+
+ ş \bStringvariable$\p    Die Zeichenfolgenvariable, die von der MID$-
+                      Anweisung modifiziert werden soll.
+
+Beispiel:
+    a$ = "Wo ist Paris?"
+    PRINT MID$(a$, 8, 5)        'Ausgabe:  Paris
+    Text$ = "Paris, France"
+    PRINT Text$                 'Ausgabe:  Paris, France
+    MID$(Text$, 8) = "Texas "
+    PRINT Text$                 'Ausgabe:  Paris, Texas
+
+Siehe auch    \i\p\aLEFT$, RIGHT$\v@LEFT$\v\i\p    \i\p\aLEN\v@LEN\v\i\p
+.context CVI
+.context @CVI
+.context CVS
+.context @CVS
+.context CVL
+.context @CVL
+.context CVD
+.context @CVD
+.context MKL$
+.context @MKL$
+.context MKI$
+.context @MKI$
+.context MKS$
+.context @MKS$
+.context MKD$
+.context @MKD$
+:nMKn$-, CVn-Funktionen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MKI$, MKL$, MKS$ und MKD$ wandeln Zahlen in numerische Zeichenfolgen um.
+Diese k”nnen dann in Zeichenfolgen gespeichert werden, die in einer FIELD-
+Anweisung zuvor definiert wurden.
+CVI, CVL, CVS und CVD wandeln diese Zeichenfolgen wieder in Zahlen um.
+
+\bMKI$(Integer-Ausdruck%)\p
+\bMKL$(long-Integer-Ausdruck&)\p
+\bMKS$(einfach-genauer-Ausdruck!)\p
+\bMKD$(doppelt-genauer-Ausdruck#)\p
+\bCVI(2-Byte-Numerischer-String)\p
+\bCVL(4-Byte-Numerischer-String)\p
+\bCVS(4-Byte-Numerischer-String)\p
+\bCVD(8-Byte-Numerischer-String)\p
+
+   Funktion   Rckgabe               Funktion   Rckgabe
+   ÍÍÍÍÍÍÍÍ   ÍÍÍÍÍÍÍÍÍÍÍÍÍ          ÍÍÍÍÍÍÍÍ   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+   MKI$       2-Byte-String          CVI        Ganzzahl
+   MKL$       4-Byte-String          CVL        Lange Ganzzahl
+   MKS$       4-Byte-String          CVS        Wert einfacher Genauigkeit
+   MKD$       8-Byte-String          CVD        Wert doppelter Genauigkeit
+
+Siehe auch    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aMKSMBF$, MKDMBF$, CVSMBF, CVDMBF\v@CVSMBF\v\i\p
+.context MKDMBF$
+.context @MKDMBF$
+.context MKSMBF$
+.context @MKSMBF$
+.context CVDMBF
+.context @CVDMBF
+.context CVSMBF
+.context @CVSMBF
+:nMKSMBF$-, MKDMBF$-, CVSMBF-, CVDMBF-Funktionen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MKSMBF$ und MKDMBF$ wandeln Zahlen im IEEE-Format in numerische Zeichenfolgen
+im Microsoft-Binary-Format um. Diese k”nnen dann in numerischen Zeichenfolgen
+gespeichert werden, die in einer FIELD-Anweisung zuvor definiert wurden.
+CVSMBF und CVDMBF wandeln diese Zeichenfolgen wieder in Zahlen im IEEE-Format
+um.
+
+\bMKSMBF$(einfach-genauer-Ausdruck!)\p
+\bMKDMBF$(doppelt-genauer-Ausdruck#)\p
+\bCVSMBF (4-Byte-numerischer-String)\p
+\bCVDMBF (8-Byte-numerischer-String)\p
+
+    Funktion    Rckgabe
+    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+    MKSMBF$     Eine 4-Byte-Zeichenfolge, die einen Wert im
+                Microsoft-Binary-Format enth„lt.
+    MKDMBF$     Eine 8-Byte-Zeichenfolge, die einen Wert im
+                Microsoft-Binary-Format enth„lt.
+    CVSMBF      Ein Wert einfacher Genauigkeit im IEEE-Format.
+    CVDMBF      Ein Wert doppelter Genauigkeit im IEEE-Format.
+
+    ş Diese Funktionen sind ntzlich, um Datendateien zu verwalten, die mit
+      „lteren Versionen von BASIC erstellt wurden.
+
+Beispiel:
+    TYPE Puffer
+        EinfZahl AS STRING * 4
+        DoplZahl AS STRING * 8
+    END TYPE
+    DIM TestPuffer AS Puffer
+    OPEN "TEST.DAT" FOR RANDOM AS #1 LEN = 12
+    EZahl = 98.9
+    DZahl = 645.3235622#
+    TestPuffer.EinfZahl = MKSMBF$(EZahl)
+    TestPuffer.DoplZahl = MKDMBF$(DZahl)
+    PUT #1, 1, TestPuffer
+    GET #1, 1, TestPuffer
+    CLOSE #1
+    PRINT CVSMBF(TestPuffer.EinfZahl), CVDMBF(TestPuffer.DoplZahl)
+
+Siehe auch    \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aMKn$, CVn\v@CVS\v\i\p
+.context PEEK
+.context @PEEK
+.context POKE
+.context @POKE
+:nPEEK-Funktion, POKE-Anweisung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PEEK gibt das an der angegebenen Speicheradresse gespeicherte Byte zurck.
+POKE schreibt ein Byte an die angegebene Stelle im Speicher.
+
+\bPEEK(Adresse)\p
+\bPOKE Adresse,Byte%\p
+
+    ş \bAdresse\p    Die Position eines Byte relativ zur gegenw„rtigen Segment-
+                 adresse, die mit DEF SEG festgelegt wurde; Werte zwischen
+                 0 und 65.535 sind gltig.
+    ş \bByte%\p      Der Wert eines Byte, der an die angegebene Speicherstelle
+                 geschrieben werden soll; Werte zwischen 0 und 255 sind
+                 gltig.
+
+Beispiel:
+    DEF SEG = 0
+    Status% = PEEK(&H417)              'Tastaturstatus lesen.
+    POKE &H417, (Status% XOR &H40)     'UMSCHALT-Zustand „ndern, Bit 6.
+
+Siehe auch    \i\p\aDEF SEG\v@SEG\v\i\p
+.context SPACE$
+.context @SPACE$
+:nSPACE$-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt eine Zeichenfolge von Leerzeichen zurck.
+
+\bSPACE$(n%)\p
+
+    ş \bn%\p    Die Anzahl der gewnschten Leerzeichen in der Zeichenfolge.
+
+Beispiel:
+    FOR i% = 1 TO 5
+        x$ = SPACE$ (i%)
+        PRINT x$; i%
+    NEXT i%
+
+Siehe auch    \i\p\aSPC\v@SPC\v\i\p    \i\p\aSTRING$\v@STRING$\v\i\p
+.context STR$
+.context @STR$
+.context VAL
+.context @VAL
+:nSTR$-, VAL-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+STR$ gibt die Zeichenfolgendarstellung eines numerischen Werts zurck.
+VAL wandelt die Zeichenfolgendarstellung einer Zahl wieder in einen
+    numerischen Wert um.
+
+\bSTR$(numerischer-Ausdruck)\p
+\bVAL(Stringausdruck$)\p
+
+    ş \bnumerischer-Ausdruck\p   Ein beliebiger numerischer Ausdruck.
+    ş \bStringausdruck$\p        Die Zeichenfolgendarstellung einer Zahl.
+
+Beispiel:
+    PRINT "Dezimal 65 wird in hexadezimal dargestellt als ";
+    PRINT "&H" + LTRIM$(STR$(41))
+    PRINT VAL(RIGHT$("Microsoft 1991", 4))
+.context STRING$
+.context @STRING$
+:nSTRING$-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt eine Zeichenfolge der angegebenen L„nge zurck, die aus einem einzigen
+sich wiederholenden Zeichen besteht.
+
+\bSTRING$(L„nge%,{ASCII-Code% | Stringausdruck$})\p
+
+    ş \bL„nge%\p             Die L„nge der Zeichenfolge.
+    ş \bASCII-code%\p        Der ASCII-Code des sich wiederholenden Zeichens.
+    ş \bStringausdruck$\p    Ein beliebiger Zeichenfolgenausdruck.
+                         STRING$ fllt die Zeichenfolge mit dem ersten
+                         Zeichen von Stringausdruck$.
+
+Beispiel:
+    PRINT STRING$(5, "-");
+    PRINT "H„llo";
+    PRINT STRING$(5, "-")
+
+Siehe auch    \i\p\aASCII-Zeichencodes\v@ac\v\i\p
+.context VARSEG
+.context @VARSEG
+.context VARPTR
+.context @VARPTR
+:nVARPTR-, VARSEG-Funktionen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+VARPTR gibt die Offset-Adresse einer Variable zurck.
+VARSEG gibt die Segment-Adresse einer Variable zurck.
+
+\bVARPTR(Variablenname)\p
+\bVARSEG(Variablenname)\p
+
+    ş \bVariablenname\p    Eine beliebige BASIC-Variable.
+
+Siehe auch    \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aDEF SEG\v@SEG\v\i\p    \i\p\aPEEK, POKE\v@PEEK\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p
+.context VARPTR$
+.context @VARPTR$
+:nVARPTR$-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt die Zeichenfolgendarstellung der Adresse einer Variable zurck, die dann
+in einer DRAW- oder PLAY-Anweisung verwandt werden kann.
+
+\bVARPTR$(Befehlsstring$)\p
+
+    ş \bBefehlsstring$\p    Eine Zeichenfolgenvariable, die DRAW- oder PLAY-
+                        Befehle enth„lt.
+
+Beispiel:
+    Tonleiter$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(Tonleiter$)
+    NEXT i%
+
+Siehe auch   \i\p\aDRAW\v@DRAW\v\i\p   \i\p\aPLAY (Musik)\v@PLAY\v\i\p    \i\p\aVARPTR, VARSEG\v@VARPTR\v\i\p

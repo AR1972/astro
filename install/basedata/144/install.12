@@ -1,0 +1,12 @@
+
+; Microsoft Confidential
+; Copyright (c) Microsoft Corporation 1991
+; All Rights Reserved.
+
+
+;Destination disk: SHELL.
+
+[disk-3]
+
+;..\disk-5.txt follows
+

@@ -1,0 +1,29 @@
+all:
+   xcopy dos\dispatch.txt $(OAKDIR)\dos                < $(OAKDIR)\d.key
+   xcopy dos\divmes.inc   $(OAKDIR)\dos
+   xcopy dos\dosmes.inc   $(OAKDIR)\dos
+   xcopy dos\dostab.asm   $(OAKDIR)\dos
+   xcopy dos\makedos.oak  $(OAKDIR)\dos\makedos.bat    < $(OAKDIR)\f.key
+   xcopy dos\makefile.oak $(OAKDIR)\dos\makefile       < $(OAKDIR)\f.key
+   xcopy dos\msconst.asm  $(OAKDIR)\dos
+   xcopy dos\msdata.asm   $(OAKDIR)\dos
+   xcopy dos\msdos.lnk    $(OAKDIR)\dos
+   xcopy dos\msdos.skl    $(OAKDIR)\dos
+   xcopy dos\msdosme.asm  $(OAKDIR)\dos
+   xcopy dos\mssw.asm     $(OAKDIR)\dos
+   xcopy dos\origin.asm   $(OAKDIR)\dos
+   xcopy dos\scnam.inc    $(OAKDIR)\dos
+   xcopy dos\mpatch.asm   $(OAKDIR)\dos
+   xcopy dos\diskobjs     $(OAKDIR)\dos
+   del $(OAKDIR)\dos\*.tag
+   del $(OAKDIR)\dos\msdata.obj
+   del $(OAKDIR)\dos\origin.obj
+
+  -md $(OAKDIR)\lang\$(COUNTRY)\dos
+   copy  dos\mstable.obj   $(OAKDIR)\lang\$(COUNTRY)\dos
+   del $(OAKDIR)\dos\mstable.obj
+
+
+
+
+

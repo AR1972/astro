@@ -1,0 +1,14 @@
+mem+
+_msgret+
+memex+
+submsg+
+membase+
+chkvdisk+
+memctrlc+
+lines+
+emm386+
+wintest+
+xms
+
+
+..\..\lib\xmm ..\..\lib\mem;

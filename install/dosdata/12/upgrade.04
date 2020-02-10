@@ -1,0 +1,17 @@
+;===================================================================
+;
+;	Copyright (c) 1991 - Microsoft Corp.
+;	All rights reserved.
+;	Microsoft Confidential
+;
+;===================================================================
+
+; =========================================================================
+; 1.2m or 1.44M DESTINATION DISK LAYOUT
+; This is the file layout for the destination (user) disks.
+
+;Destination disk: RECOVERY 1.
+
+[disk-0]
+
+;..\disk-0.txt follows

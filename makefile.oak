@@ -1,0 +1,25 @@
+#************************* Root level Makefile *************************
+
+all:
+   cd tools\bin\source\buildmsg
+# IPG - build BUILDMSG.EXE first in case another language version is being built
+   $(MAKE)
+   cd ..\..\..\..
+   cd messages
+   $(MAKE)
+   cd ..\boot
+   $(MAKE)
+   cd ..\dos
+   $(MAKE)
+   makedos
+   cd ..\cmd
+   $(MAKE)
+   cd ..\dev
+   $(MAKE)
+   cd ..\install
+   $(MAKE)
+   cd ..\mkimage
+   $(MAKE)
+   cd ..
+
+

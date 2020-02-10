@@ -1,0 +1,41 @@
+
+SUMMARY  pgetl - do fgetl() from a pipe without blocking. 
+
+#include <tools.h>
+
+pgetl ( buf, max, fh )
+char *buf;
+int max;
+int fh;
+
+DESCRIPTION
+
+  
+  	    If ( Buffer is empty )
+  		Fill Buffer
+  	    If ( 0 length request ) return ( there is more data )?
+  	    { - 1 allows for '\0' byte in target }
+  	    set max to min(max - 1, count of valid bytes);
+  	    If ( "full line" is buffered )
+  		Transfer Full line.
+  		Clean up and go
+  	    Move partial line to base of buffer
+  	    Fill rest of buffer
+  	    If ( we have a "full line" now ) transfer it
+  	    Else
+  		return	FALSE
+  
+  	A "full line" is either LF terminated or len bytes long, whichever
+  	comes first.
+  
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+

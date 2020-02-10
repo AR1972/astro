@@ -1,0 +1,27 @@
+
+SUMMARY convert an arbitrary based number to an integer 
+
+#include <tools.h>
+
+int ntoi (p, base)
+char *p;
+int base;
+
+
+DESCRIPTION
+
+p points to characters, return -1 if no good characters found
+and base is 2 <= base <= 16
+
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+

@@ -1,0 +1,335 @@
+;***
+; MESSAGE.INC - 20-Jul-87 - Runtime Message Definitions
+;***
+	.XLIST
+;***
+;
+;	Copyright <C> 1986, Microsoft Corporation
+;
+;Purpose:
+;	Message text, number and symbol information. If the macro RTEDEF has
+;	already been defined, we just use it, else we use a macro which just
+;	defines the symbolic labels that the error numbers relate to.
+;
+;
+;******************************************************************************
+	PAGE
+;******************************************************************************
+;
+; Message Isolation and Internationalization.
+;
+; All text messages in the BASIC runtime are defined in this file. A kit is
+; provided to allow an OEM customer to alter the text of the messages. This
+; kit consists of:
+;
+;	messages.inc	- This file. Defines all text.
+;	*.asm		- Assembly files which include this file to generate
+;			  actual message text.
+;	newmsg.bat	- A batch file which assembles the *.asm files, and
+;			  replaces them in their appropriate libraries.
+;	chmsg.exe	- A message extraction / insertion utility to alter the
+;			  messages in the runtime module .EXE files without
+;			  relinking.
+;
+; To change message text:
+;
+;	1) Edit this file to change the text of the messages as required. The
+;	   text is always the last argument to the RTEDEF or RLEDEF macros.
+;	   Commented out text is present for documentation purposes only, and
+;	   editting it will have no effect.
+;
+;	   There is no length limit on messages altered in this file.
+;
+;	   Messages may not contain null characters.
+;
+;	2) Run newmsg.bat, with this file, the *.asm files, and the product
+;	   libraries in the current directory.
+;
+;	3) Run chmsg on the runtime module:
+;
+;		chmsg brun30c.exe >brun30c.txt
+;
+;	4) Edit brun30c.txt to alter the messages as desired.
+;
+;	5) Run chmsg on the runtime module again:
+;
+;		chmsg brun30c.exe brun30c.txt
+;
+;	   Note: no redirection this time. This will install the new messages.
+;	   There is a limit, as reported by chmsg, as to the available space
+;	   for altered messages.
+;
+;	6) repeat steps 3 through 6 on brun30p.exe.
+;
+;******************************************************************************
+	PAGE
+;******************************************************************************
+;
+; RTEDEF macro
+;
+; Used to define Run Time Error and other text messages, and symbolic constants
+; associated with them. If RTEDEF has not already been defined by the time this
+; file is INCLUDEd, the default RTEDEF just equates the symbol to the numeric
+; value. In this way, just INCLUDEing this file, without any further thought,
+; gives you the set of symbolic message constants.
+;
+; Files which actually want to define the text associated with the messages
+; will define RTEDEF, prior to including this file, to perform whatever they
+; need with the information available.
+;
+IFNDEF	RTEDEF			;if no RTEDEF macro already defined
+
+RTEDEF	MACRO	TYPE,SYMBOL,NUM,MSG
+
+IFNB	<SYMBOL>		;;If there is a symbol to be defined
+SYMBOL	EQU	NUM		;;Define message symbol
+ENDIF
+
+	ENDM			;;RTEDEF MACRO
+
+ENDIF				;IFNDEF RTEDEF
+
+;******************************************************************************
+;
+; RCEDEF macro
+;
+; This is a special case of the RCEDEF macro used to define the strings used by
+; the DOS 3 runtime loader. (RCE -> Runtime C Error). By default the macro
+; does what RTEDEF does. In the files needed, the macro is defined as required
+; to define symbolic constants and/or text.
+;
+IFNDEF	RCEDEF			; if RCEDEF macro not already defined
+
+RCEDEF	MACRO	TYPE,SYMBOL,NUM,MSG
+	RTEDEF	TYPE, SYMBOL, NUM, <MSG>
+	ENDM			;;RCEDEF MACRO
+
+ENDIF	;IFNDEF	RCEDEF
+
+;******************************************************************************
+;
+; RLEDEF macro
+;
+; This is a special case of the RTEDEF macro used to define the strings used by
+; the DOS 3 runtime loader. (RLE -> Runtime Loader Error). By default the macro
+; does nothing. In the files needed, the macro is defined as required to define
+; symbolic constants and/or text.
+;
+IFNDEF	RLEDEF			;if RLEDEF macro not already defined
+
+RLEDEF	MACRO	LABEL,TEXT	;if not defined, just null
+	ENDM	;;RLEDEF MACRO  
+
+ENDIF	;IFNDEF	RLEDEF		
+
+;******************************************************************************
+;
+; RXEDEF macro [32]
+;
+; This is a special case of the RTEDEF macro used to define the strings used by
+; the DOEXEC procedure.  (RXE -> Runtime eXec Error). By default the macro does
+; nothing.  In the files needed, the macro is defined as required to define
+; labels and text.
+;
+IFNDEF	RXEDEF			; if RXEDEF macro not already defined
+
+RXEDEF	MACRO	LABEL,NUM,TEXT	; if not defined, just null
+	ENDM	;;RXEDEF MACRO	
+
+ENDIF	;IFNDEF	RXEDEF		
+
+
+;******************************************************************************
+;
+; Define useful characters
+;
+ASCCR	=	0DH		;Carriage return
+
+;******************************************************************************
+;
+;	Messages.
+;	Messages are numbered as follows:
+;
+;	0000H - 00FFH:	BE_???? - Standard "Basic" Errors 0 through 255
+;	0100H - 7FFFH:	Unused
+;	8000H - FFFFH:	Internal messages.
+;			8000 - 8FFFH:	MS_??? - Non-error messages
+;			9000 - 9FFFH:	FE_??? - Fatal "crash and burn" errors.
+;				9000-93FF:	Line number & Module valid
+;				9400-96FF:	Module valid
+;				9700-97FF:	QB interp initialization errors
+;				9800-9BFF:	Nothing valid
+;
+;******************************************************************************
+;
+;	BE: Basic Errors
+;	These are all the basic errors that can be generated at run time.
+;
+;******************************************************************************
+	RTEDEF	SN,  BE_SYNTAX,    2,"Syntax error"
+	RTEDEF	RG,  BE_RETURN,    3,"RETURN without GOSUB"
+	RTEDEF	OD,  BE_NODATA,    4,"Out of DATA"
+	RTEDEF	FC,  BE_ILLFUN,    5,"Illegal function call"
+	RTEDEF	OV,  BE_OVERFLOW,  6,"Overflow"
+	RTEDEF	OM,  BE_MEMORY,    7,"Out of memory"
+	RTEDEF	BS,  BE_SUBSCRIP,  9,"Subscript out of range"
+	RTEDEF	<DD>,BE_REDIM,	  10,"Duplicate definition"	; <DD> avoids assembly confusion
+	RTEDEF	DV0, BE_DIVIDE0,  11,"Division by zero"
+	RTEDEF	TM,  BE_TYPE,	  13,"Type mismatch"
+	RTEDEF	OS,  BE_STRINGSP, 14,"Out of string space"
+	RTEDEF	ST,  BE_STRINGFO, 16,"String formula too complex"
+	RTEDEF	NR,  BE_NORESUME, 19,"No RESUME"
+	RTEDEF	RE,  BE_RESUME,   20,"RESUME without error"
+	RTEDEF	DTO, BE_DEVTIME,  24,"Device timeout"
+	RTEDEF	DVF, BE_DEVFAULT, 25,"Device fault"
+	RTEDEF	OTP, BE_NOPAPER,  27,"Out of paper"
+	RTEDEF	,,		  39,"CASE ELSE expected"	
+	RTEDEF	RVR, BE_RECVARREQ,40,"Variable required"	
+	RTEDEF	FOV, BE_FIELD,	  50,"FIELD overflow"
+	RTEDEF	INT, BE_INTERNAL, 51,"Internal error"
+	RTEDEF	IFN, BE_FILENUM,  52,"Bad file name or number"	
+	RTEDEF	FNF, BE_NOFILE,   53,"File not found"
+	RTEDEF	BFM, BE_FILEMODE, 54,"Bad file mode"
+	RTEDEF	FAO, BE_FILEOPEN, 55,"File already open"
+	RTEDEF	FSA, BE_FLDACTIVE,56,"FIELD statement active"	
+	RTEDEF	IOE, BE_DEVICEIO, 57,"Device I/O error"
+	RTEDEF	FAE, BE_EXISTS,   58,"File already exists"
+	RTEDEF	BRL, BE_BADRECLEN,59,"Bad record length"	
+	RTEDEF	DFL, BE_DISKFULL, 61,"Disk full"
+	RTEDEF	RPE, BE_PASTEND,  62,"Input past end of file"	
+	RTEDEF	BRN, BE_BADREC,   63,"Bad record number"
+	RTEDEF	BFN, BE_BADNAME,  64,"Bad file name"
+	RTEDEF	TMF, BE_TOOMANY,  67,"Too many files"
+	RTEDEF	DNA, BE_NODEVICE, 68,"Device unavailable"
+	RTEDEF	CBO, BE_COMMBUFF, 69,"Communication-buffer overflow" 
+	RTEDEF	FWP, BE_HANDSOFF, 70,"Permission denied"	
+	RTEDEF	DNR, BE_NOTREADY, 71,"Disk not ready"
+	RTEDEF	DME, BE_MEDIA,	  72,"Disk-media error"		
+	RTEDEF	AFE, BE_ADVANCED, 73,"Advanced feature unavailable" 
+	RTEDEF	RAD, BE_RENAME,   74,"Rename across disks"
+	RTEDEF	ACD, BE_ACCESS,   75,"Path/File access error"	
+	RTEDEF	PNF, BE_NOTFOUND, 76,"Path not found"
+
+	RTEDEF	UPE, BE_UNPRINT, 255,"Unprintable error"
+
+;******************************************************************************
+;
+;	MS: Internal Messages of various sorts
+;	These are just text messages, not necessarily related to errors.
+;
+;******************************************************************************
+	RTEDEF	,MS_BASE,	8000H		;Base of messages
+	RTEDEF	,MS_REDO,	8000H,"Redo from start"		
+	RTEDEF	,MS_BYTESFREE,	8001H,<"Bytes free",ASCCR>
+	RTEDEF	,MS_ULPROMPT,	8002H		;"Cannot find file (" 
+	RTEDEF	,MS_ULPROMPTEND 8003H		;"). Input path: " 
+	RTEDEF	,MS_ULERR,	8004H		;"Error in loading file ( " 
+	RTEDEF	,MS_ULERREND,	8005H		;") - " 
+	RTEDEF	,MS_SEED,	8006H,<"Random-number seed (-32768 to 32767)">	     
+	RTEDEF	,MS_HITTORETURN,8007H,"Hit any key to return to system" 
+	RTEDEF	,MS_QBEND,	8007H		;End of interp messages
+
+	RTEDEF	,MS_IN, 	8008H," in "
+	RTEDEF	,MS_OF, 	8009H," of "
+	RTEDEF	,MS_LINE,	800AH,"line "
+	RTEDEF	,MS_MODULE,	800BH,"module "
+	RTEDEF	,MS_ATADDR,	800CH," at address "
+	RTEDEF	,MS_BREAK,	800DH,"*Break*"
+
+;******************************************************************************
+;
+;	FE: Fatal Errors of various sorts
+;
+;******************************************************************************
+;
+;	Errors when line numbers and module names should be valid
+;
+;**** WARNING: If you change order, add or delete messages, make sure
+;**** WARNING: that you notify the interpreter of these changes.
+
+
+	RTEDEF	,FE_BASE,	9000H
+	RTEDEF	SSC,FE_CORRUPT, 9000H,"String space corrupt"	
+	RTEDEF	,FE_ULDISK,	9001H		;"Disk I/O error"
+	RTEDEF	,FE_ULINVALID,	9002H		;"Invalid format"
+	RTEDEF	,FE_ULSEGORDER, 9003H		;"Segment ordering problem"
+	RTEDEF	,FE_ULFILE,	9004H		;"Cannot find file"
+	RTEDEF	,FE_QBEND	9004H		;End of QB FE "all valid" messages
+
+	RTEDEF	EXE,FE_EXE,	9005H,"Error in EXE file"	
+	RTEDEF	,FE_STOP,	9006H,"STOP"
+	RTEDEF	OSS,FE_NOSTACK, 9007H,"Out of stack space"    
+;
+;	Errors when module name should be valid
+;
+	RTEDEF	,FE_NOLINEBASE, 9400H
+	RTEDEF	NOL,FE_NOLINES, 9400H,"No line number in "	
+;
+;	QB interpreter Initialization errors after Runtime init has
+;	succeeded.
+;
+	RTEDEF	,FE_QBINITBASE, 9700H	
+;
+;	Errors when NOTHING is valid
+;
+	RTEDEF	,FE_NOTHINGBASE,  9800H
+	RTEDEF	DOS,FE_DOSERR,	  9800H,"Requires DOS 2.10 or later"	
+	RTEDEF	LLI,FE_LLINITERR, 9801H,"Error during run-time initialization"	
+	RTEDEF	,FE_MEMORY,	  9802H,"Out of memory" 	
+	RTEDEF	MEM,FE_DOSMEMERR, 9803H,"DOS memory-arena error"
+	RTEDEF	FHC,FE_FHCONSIST, 9804H,"Far heap corrupt"	
+;
+;	User library loader messages
+;
+	RTEDEF	,FE_ULMEMALLOC,   9806H 	;"Memory allocation error"
+	RTEDEF	,FE_QBNOTHINGEND, 9806H 	;End of QB error messages
+
+;
+; Messages that are generated by the interpeter, processed through the runtime
+; error handler, and passed on to the intepreter. (9900H)
+;
+	RTEDEF	,FE_GODIRECT,	  9900H 	
+
+
+; C message number have been given a high byte of 9Ah.  All these moved
+; here with revision [32].
+
+	RCEDEF  ,FE_STARTUPBASE,9A00H           ; C startup messages
+	RCEDEF  ,,9A00H,<'R6000',13,10,[[QBMESS_1]],13,10>
+	RCEDEF  ,,9A02H,<'R6002',13,10,[[QBMESS_2]],13,10>
+	RCEDEF  ,,9A03H,<'R6003',13,10,[[QBMESS_3]],13,10>
+
+	; Messages copied and used by DOEXEC (these 3 must be contiguous)
+	RXEDEF EX_MSG_BEG,,
+	RXEDEF ,9A05H,<13,10,[[QBMESS_4]],13,10,[[QBMESS_5]],13,10,'$'>
+	RXEDEF ,9A06H,<13,10,[[QBMESS_6]],13,10,[[QBMESS_7]],13,10,'$'>
+	RXEDEF ,9A07H,<13,10,[[QBMESS_8]],13,10,[[QBMESS_9]],13,10,'$'>
+	RXEDEF EX_MSG_END,,
+
+; The following messages are required for mixed-language processing and
+; internationalization.
+	RCEDEF  ,,9A08H,<'R6008',13,10,[[QBMESS_10]],13,10>
+	RCEDEF  ,,9A09H,<'R6009',13,10,[[QBMESS_11]],13,10>
+	RCEDEF  ,,9A0CH,<'R6012',13,10,[[QBMESS_12]],13,10>
+	RCEDEF  ,,9A0DH,<'R6013',13,10,[[QBMESS_13]],13,10>
+	RCEDEF  ,,9A0EH,<'R6014',13,10,[[QBMESS_14]],13,10>
+	RCEDEF  ,,9A0FH,<'R6015',13,10,[[QBMESS_15]],13,10>
+	RCEDEF  ,FE_STARTUPEND,9AFFH,<13,10,[[QBMESS_16]]>      ;
+
+; Die "really quick" errors.  These have a high byte of '9B'.
+
+;
+;	Runtime module loader error messages.
+;
+	RLEDEF	HeaderErrStr,<"Error in loading RTM: $"> 
+	RLEDEF	MemAllocErrStr,<"Memory allocation error","$">	
+	RLEDEF	CannotFindStr,<"Cannot find file in PATH","$">	
+	RLEDEF	DiskIOErrStr,<"Disk I/O error","$">		
+	RLEDEF	InvalidStr,<"Invalid format","$">		
+	RLEDEF	OutOfMemStr,<"Out of memory","$">		
+	RLEDEF	ArenaBadStr,<"DOS memory-arena error","$">	
+	RLEDEF	BadUsrRtmStr,<"Incompatible extended run-time module","$"> 
+	RLEDEF	TrailerErrStr,<".",13,10,"$">
+	RLEDEF	PathPromptStr,<"Input run-time module path: ","$">	
+
+	.LIST

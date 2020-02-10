@@ -1,0 +1,60 @@
+SUMMARY fgetl fputl
+
+#include <tools.h>
+
+int fgetl(pbuf, len, pFile);
+char *pbuf;
+int len;
+FILE *pFile;
+
+int fputl(pbuf, len, pFile);
+char *pbuf;
+int len;
+FILE *pFile;
+
+DESCRIPTION
+
+fgetl gets the next line from the specified file.  CR and LF are removed
+and line is terminated with '\0'.  len is the max number of characters
+that may be stored into pbuf.  Returns zero if EOF and no characters written
+else returns non-zero.  Tabs, \t, are replaced by appropriate number of
+blanks to reach the next tab stop.  Tabs tops are at n*8 for n greater
+than or equal to zero.
+
+fputl writes a line to the specified file from pbuf and appends "\r\n" to
+indicate end of line.  If EOF on output returns EOF else returns 0.
+Tabs are not expanded on output.
+
+RETURN VALUE
+
+See above.
+
+IMPLEMENTATION
+
+
+SEE ALSO  getl putl pathopen mgetl 
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+#define BUFLEN 256
+char strPath[MAXPATHLEN];
+char bufInput[BUFLEN];
+char strLine[BUFLEN];
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    FILE *pFile;
+
+    if ((pFile = pathopen("$USER:\\tools.ini", strPath, "r"))) {
+        printf("Expanded pathname: %s\n", strPath);
+        while (fgetl(strLine, BUFLEN, pFile))
+            printf("%s\n", strLine);
+        }
+}

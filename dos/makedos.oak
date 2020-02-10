@@ -1,0 +1,10 @@
+rem 
+rem 	Microsoft Confidential
+rem 	Copyright (C) Microsoft Corporation 1991
+rem 	All Rights Reserved.
+rem 
+
+rem This will set the kernel sizes for a table in the MSDOS
+
+getsize
+nmake

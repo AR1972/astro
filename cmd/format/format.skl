@@ -1,0 +1,346 @@
+;
+;---------------------------------------------------------------------------
+;
+; M024 : B#5495. Added "Insufficient memory" message when FORMAT cannot
+;		allocate memory for FAT, Directory... etc 
+;
+; M028 : B#6073. Changed comment for msg 55 from "Attempting to....."
+;		to "Trying to....."
+;
+;---------------------------------------------------------------------------
+;
+
+:util FORMAT
+
+:class 1
+:use EXTEND2                            ;File not found
+:use EXTEND4                            ;Too many open files
+:use EXTEND5                            ;Access denied
+:use EXTEND8                            ;Insufficient memory
+:use EXTEND15                           ;Invalid drive was specified
+:use EXTEND26                           ;Unknown media type
+
+:class A
+;msgBadDosVersion
+;"Incorrect DOS version",CR,LF,"$"
+:use COMMON1
+
+;msgCurrentTrack
+;"Head: %3d Cylinder: %4d", CR, 0
+;:def 2 "Head: %1 Cylinder: %2",CR
+:def 2 CR,"%1 percent completed",CR
+
+;msgDataSpace
+;"%l10d bytes available on disk",CR,LF,0
+:use COMMON3
+
+;msgFormatComplete
+;"Format complete              ",CR,LF,0
+:def 4 CR,"Format complete      ",CR,LF
+
+;msgBadSpace
+;"%l10d bytes in bad sectors", CR, LF, 0
+:use COMMON5
+
+;msgTotalDiskSpace
+;"%l10d bytes total disk space", CR, LF, 0
+:use COMMON6
+
+;msgInsertDisk
+;"Insert new diskette for drive %c:",CR,LF
+:def 7 "Insert new diskette for drive %1:",CR,LF
+
+;msgSystemSpace
+;"%l10d bytes used by system", CR, LF, 0
+:use COMMON8
+
+;msgReInsertDisk
+;"Re-insert diskette for drive %c:",0
+:def 9  "Re-insert diskette for drive %1:",CR,LF
+
+;msgLabelPrompt
+;"Volume label (11 characters, ENTER for none)? ",0
+:use 10 COMMON35
+
+;msgFormatNotSupported
+;"Format not supported on drive %c:", CR,LF,0
+:def 11 CR,"Format not supported on drive %1:", CR,LF
+
+;msgInvalidDeviceParameters
+;"Invalid device parameters from device driver",CR,LF,0
+:def 12 CR,"Invalid device parameters from device driver",CR,LF
+
+;msgErrorInIOCTL
+;"Error in IOCTL call", CR, LF, 0
+:def 13 CR,"Error in IOCTL call         ",CR,LF
+
+;msgNotBlockDevice
+;"Not a block device", CR, LF
+:def 14 CR,"Not a block device          ",CR,LF
+
+;msgFATwriteError
+;"Error writing FAT", CR, LF, 0
+:def 15 CR,"Error writing FAT           ",CR,LF
+
+;msgDirectoryWriteError
+;"Error writing directory            ", CR, LF, 0
+:def 16 CR,"Error writing directory",CR,LF
+
+;msgAssignedDrive
+;"Cannot format an ASSIGNed, SUBSTed, or JOINed drive. ", CR, LF, 0
+:def 17 CR,"Cannot format an ASSIGNed, SUBSTed, or JOINed drive. ",CR,LF
+
+
+;msgNoSystemFiles
+;"Cannot find System Files",CR,LF,0
+:def 18 CR,"Cannot find System Files",CR,LF
+
+
+;msgNetDrive
+;"Cannot FORMAT a Network drive", CR, LF, 0
+:def 19 CR,"Cannot FORMAT a Network drive",CR,LF
+
+;msgBadCharacters
+;"Invalid characters in volume label          ", CR, LF, 0
+:use 20 COMMON21
+
+;msgDblspaceDrv
+;'You must use "DBLSPACE/FORMAT %1:" to format that drive',CR,LF
+:def 90 'You must use "DBLSPACE/FORMAT %1:" to format that drive',CR,LF,0
+
+;msgDblspaceHost
+; CR,"WARNING:  Disk %1: is a host drive, format (Y/N)?"
+:def 91 CR,"WARNING:  Disk %1: is a host drive, format (Y/N)?"
+
+; 300 - 399 reserved for options help messages
+;msgOptions
+:def 300  FORMAT /?
+:def 301  FORMAT /?
+:def 302  FORMAT /?
+:def 303  FORMAT /?
+:def 304  FORMAT /?
+:def 305  FORMAT /?
+:def 306  FORMAT /?
+:def 307  FORMAT /?
+:def 308  FORMAT /?
+:def 309  FORMAT /?
+:def 310  FORMAT /?
+:def 311  FORMAT /?
+:def 312  FORMAT /?
+:def 313  FORMAT /?
+:def 314  FORMAT /?
+:def 315  FORMAT /?
+:def 316  FORMAT /?
+
+
+:CLASS B
+
+;msgParametersNotSupported
+;"Parameters not supported",CR,LF,0
+:def 21 CR,"Parameters not supported",CR,LF
+
+;msgFormatFailure
+; Note: This message must be long enough to wipe out message msgCurrentTrack
+;"Format terminated            ",CR,LF,0
+:def 22 CR,"Format terminated                                                  ",CR,LF
+
+;msgNotSystemDisk
+;"Disk unsuitable for system disk", CR, LF, 0
+:def 23 CR,"Disk unsuitable for system disk",CR,LF
+
+;msgDiskUnusable
+;"Invalid media or Track 0 bad - disk unusable", CR, LF, 0
+:def 24 CR,"Invalid media or Track 0 bad - disk unusable",CR,LF
+
+;msgBootWriteError
+;"Unable to write BOOT", CR, LF, 0
+:def 25 CR,"Unable to write BOOT                      ",CR,LF
+
+;msgDirectoryReadError
+;"Error reading directory", CR, LF, 0
+:def 26 CR,"Error reading directory",CR,LF
+
+;msgNeedDrive
+;"No target drive specified",CR,LF,0
+:use COMMON27
+
+;ContinueMsg
+;Press any key to continue
+:def 28 CR,"and press ENTER when ready..."
+
+;msgBadVolumeId
+;"Invalid Volume ID", CR, LF, 0
+:def 29 CR,"Invalid Volume ID                        ",CR,LF
+
+;msgSystemTransfered
+;"System transferred",CR,LF,0
+:use COMMON30
+
+;msgWhatIsVolumeId?
+;"Enter current Volume Label for drive %c: ", 0
+:def 31 CR,"Enter current Volume Label for drive %1: "
+
+
+;msgIncompatibleParametersForHardDisk
+;" with fixed disk", CR,LF,0
+:def 32 CR,"Parameters not compatible",CR,LF,"with fixed disk",CR,LF
+
+;msgPartitionTableReadError
+;"Error reading partition table", CR, LF, 0
+:def 35 CR,"Error reading partition table",CR,LF
+
+;msgSerialNumber
+:use COMMON36
+
+;msgFormatBroken
+;"Format Broken", CR, LF, 0
+:def 37 CR,"Format Broken",CR,LF
+
+;msgEXECFailure
+:def 38 CR,"Format not available on drive %1",CR,LF
+
+;NO_SYS_MESS:
+; THIS IS A SPECIAL MESSAGE WHICH IS INCLUDED IN THE "FAKE" IBMBIO.COM
+;  FILE PLACED ON DISKS FORMATTED /B or /R. NOTE THAT IT IS NUL TERMINATED.
+;"Non-System disk or disk error",13,10,0
+:def 39 CR,"Non-System disk or disk error",CR,LF
+
+;msgbadpartitiontable
+;"Bad Partition Table", CR, LF, 0
+:def 40 CR,"Bad Partition Table        ",CR,LF
+
+:CLASS C
+
+;msgParametersNotSupportedByDrive
+;"Parameters not Supported by Drive",CR, LF, 0
+:def 41 CR,"Parameters not Supported by Drive",CR,LF
+
+;msgCRLF
+:def 42 CR,LF
+
+;msgInterrupt
+:def 43 CR,LF,LF
+
+;msgInsertDosDisk db "Insert DOS disk in drive %c:", CR, LF
+:def 44 CR,"Insert DOS disk in drive %1:",CR,LF
+
+
+;msgHardDiskWarning db  CR,LF
+;                   db "WARNING, ALL DATA ON NON-REMOVABLE DISK",CR,LF
+;                   db "DRIVE %c: WILL BE LOST!",CR,LF
+;                   db "Proceed with Format (Y/N)?",0
+:def 45 CR,LF,"WARNING, ALL DATA ON NON-REMOVABLE DISK",CR,LF
+"DRIVE %1: WILL BE LOST!",CR,LF
+"Proceed with Format (Y/N)?"
+
+;msgFormatAnother? db "Format another (Y/N)?",0
+:def 46 CR,"Format another (Y/N)?"
+
+;msgPartitionTableReadError db "Error reading partition table", CR, LF, 0
+:def 47 CR,"Error reading partition table",CR,LF
+
+;msgPartitionTableWriteError db "Error writing partition table", CR, LF, 0
+:def 48 CR,"Error writing partition table",CR,LF
+
+;msgIncompatibleParametere forproc.sal not compatible", CR,LF
+;"Parameters not compatible", CR,LF,0
+:def 49 CR,"Parameters not compatible", CR,LF
+
+;msgNumAlloc
+:def 50 "%1 allocation units available on disk",CR,LF
+
+;msgAllocSize
+:def 51 "%1 bytes in each allocation unit",CR,LF
+
+;msgPartitionTableWriteError
+; "Error writing partition table", CR, LF, 0
+:def 52 CR, "Error writing partition table",CR,LF
+
+;msgSameSwitch
+:def 53  CR,"Same parameter entered twice",CR,LF
+
+;msgBad_T_N
+:def 54  CR,"Must enter both /T and /N parameters",CR,LF                        ;AN009;
+
+;MsgVerify
+:def 55  CR,"Trying to recover allocation unit %1                          ",CR ; M028
+
+;msgNoRoomForRestore
+:def 56  CR,"There is not space to create an UNFORMAT file",CR,LF
+"This disk cannot be unformatted",CR,LF
+"Proceed with Format (Y/N)?"
+
+;msgNoRoomDestDisk
+:def 57  CR,"There is not enough disk space to for system files ",CR,LF
+
+;msgNotCompatablePart
+:def 58	CR,"Disk was formatted under a different version of DOS",CR,LF
+"This disk cannot be unformatted",CR,LF
+"Proceed with Format (Y/N)?"
+
+;msgFileCreationError
+:def 59	CR,"There was an error creating the format recovery file",CR,LF
+"This disk cannot be unformatted",CR,LF
+"Proceed with Format (Y/N)?"
+
+;msgBad_8_V
+:def 60 CR,"Volume label is not supported with /8 parameter",CR,LF
+
+;msgOutOfMemory
+:def 70 CR,"Insufficient memory to load system files",CR,LF
+
+;msgInsufficientMemory						; M024
+:def 71 CR,"Insufficient memory",CR,LF				; M024
+
+;msgQuickFormatAnother? db "QuickFormat another (Y/N)?",0
+:def 75 CR,"QuickFormat another (Y/N)?"
+
+;msgExistingFormatDiffers
+:def 76 CR,"Existing format differs from that specified",CR,LF
+"This disk cannot be unformatted",CR,LF
+"Proceed with Format (Y/N)?"
+
+;msgNoQuickFormat
+:def 77 CR,"Invalid existing format",CR,LF
+"This disk cannot be QuickFormatted",CR,LF
+"Proceed with Unconditional Format (Y/N)?"
+
+;msgShowKBytes
+:def 78 CR,"Formatting %1K",CR,LF
+
+;msgShowMBytes
+:def 79 CR,"Formatting %1M",CR,LF
+
+;msgDecimalMBytes
+:def 80 CR,"Formatting %1.%2M",CR,LF
+
+;msgSysWarning
+:def 81 CR,"WARNING: This disk cannot be unformatted if system files are transferred",CR,LF
+"Proceed with system transfer anyway (Y/N)?"
+
+;msgVerifyShowKBytes
+:def 82 CR,"Verifying %1K",CR,LF
+
+;msgVerifyShowMBytes
+:def 83 CR,"Verifying %1M",CR,LF
+
+;msgVerifyDecimalMBytes
+:def 84 CR,"Verifying %1.%2M",CR,LF
+
+;msgSavingUNFORMATInfo
+:def 85 CR,"Saving UNFORMAT information",CR,LF
+
+;msgCheckExistingDiskFormat
+:def 86 CR,"Checking existing disk format",CR,LF
+
+;msgQuickFormatShowKBytes
+:def 87 CR,"QuickFormatting %1K",CR,LF
+
+;msgQuickFormatShowMBytes
+:def 88 CR,"QuickFormatting %1M",CR,LF
+
+;msgQuickFormatDecimalMBytes
+:def 89 CR,"QuickFormatting %1.%2M",CR,LF
+
+:end
+

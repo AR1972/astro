@@ -1,0 +1,41 @@
+SUMMARY rootpath
+
+#include <tools.h>
+
+int rootpath(pstrSrc, pstrDest)
+char *pstrSrc, *pstrDest;
+
+
+DESCRIPTION
+
+rootpath generates a path to a file from the root.  *pstrDest is assumed to
+be large enough to hold the result.  The source may specify a drive other
+than the current drive.
+
+RETURN VALUE
+
+Returns zero if it succeeds else non-zero.
+
+IMPLEMENTATION
+
+
+SEE ALSO
+
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    char str[MAXPATHLEN];
+
+    rootpath("temp.txt",     str); printf("%s\n", str);
+    rootpath("..\\temp.txt", str); printf("%s\n", str);
+    rootpath("b:temp.txt",   str); printf("%s\n", str);
+}

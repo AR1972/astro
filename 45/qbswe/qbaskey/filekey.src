@@ -1,0 +1,669 @@
+.comment ******************************************************************
+.comment *  File I/O Family - QBasic                                      *
+.comment ******************************************************************
+.comment *  7/31/90 bethpr                                                *
+.comment *  Get/Put (File I/O) put See Alsos in alphabetic order          *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, to BASIC language and products. *
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/25/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments.                      *
+.comment ******************************************************************
+.comment *  6/11/90 stevesau                                              *
+.comment *  Combined FILES with CHDIR/MKDIR/RMDIR.                        *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/10/90 stevesau                                              *
+.comment *  Reinserted IOCTL/IOCTL$.                                      *
+.comment *  Deleted CHDRIVE.                                              *
+.comment *  Combined LSET/RSET.                                           *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Deleted INPUT #/LINE INPUT # (combined with INPUT/LINE INPUT  *
+.comment *  in Device family).                                            *
+.comment ******************************************************************
+.comment *  5/4/90 stevesau                                               *
+.comment *  Deleted keyword references from action lines.                 *
+.comment ******************************************************************
+.comment *  5/3/90 stevesau                                               *
+.comment *  Combined OPEN file mode keywords, LOCK/UNLOCK, BLOAD/BSAVE,   *
+.comment *  CHDIR/MKDIR/RMDIR, GET/PUT, WRITE/WRITE #, SEEK Func./State.  *
+.comment *  Deleted PRINT # (combined with PRINT in Device family).       *
+.comment ******************************************************************
+.comment *  4/25/90 bethpr                                                *
+.comment *  Deleted CURDIR$, DIR$                                         *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                              *
+.comment *  Added action lines.                                           *
+.comment *  Added PRINT USING link to PRINT #.                            *
+.comment *  Added CLOSE, EOF, FILEATTR, LOF, OPEN from BC71 ISAM file,    *
+.comment *  deleted ISAM references.                                      *
+.comment ******************************************************************
+.context BLOAD
+.context @BLOAD
+.context BSAVE
+.context @BSAVE
+:nBSAVE, sats; BLOAD, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+BSAVE kopierar inneh†llet i ett omr†de i minnet till en fil.
+BLOAD laddar in en fil, som skapats av BSAVE, i minnet.
+
+\bBSAVE filspec$, f”rskjutning%, l„ngd&\p
+\bBLOAD filspec$[,f”rskjutning%]\p
+
+    ş \bfilspec$\p        F”r BSAVE „r det en fil som ett omr†de i minnet (en
+                      bild av varje byte i minnet) kopieras till. F”r BLOAD
+                      „r det en bild av minnet som skapats av en tidigare
+                      BSAVE.\p
+    ş \bf”rskjutning%\p   F”r BSAVE „r det en f”rskjutning av startadressen f”r
+                      omr†det i minnet som sparas. F”r BLOAD „r det en
+                      f”rskjutning av adressen d„r laddningen startar.
+    ş \bl„ngd&\p	  Antalet byte som ska kopieras (fr†n 0 till 65 535).
+
+    ş Startadressen f”r det omr†de i minnet som sparas eller laddas best„ms
+      av f”rskjutningen och den senaste DEF SEG-satsen.
+
+Se „ven     \i\p\aDEF SEG\v@SEG\v\i\p    \i\p\aVARPTR, VARSEG\v@VARSEG\v\i\p    \i\p\aSkillnader j„mf”rt med BASICA\v@basica.diffs\v\i\p
+.context CHDIR
+.context @CHDIR
+.context MKDIR
+.context @MKDIR
+.context RMDIR
+.context @RMDIR
+.context FILES
+.context @FILES
+:nCHDIR, sats; MKDIR, sats; RMDIR, sats; FILES, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CHDIR byter aktuell katalog. MKDIR skapar en underkatalog.
+RMDIR tar bort en underkatalog. FILES visar inneh†llet i den
+aktuella katalogen eller en angiven katalog.
+
+\bCHDIR s”kv„g$\p
+\bMKDIR s”kv„g$\p
+\bRMDIR s”kv„g$\p
+\bFILES [filspec$]\p
+
+    ş \bs”kv„g$\p      S”kv„gen till den nya aktuella katalogen, underkatalogen
+                   som ska skapas, eller underkatalogen som ska tas bort.
+    ş \bfilspec$\p     Ett filnamn eller en s”kv„g (kan inneh†lla enhet och
+                   DOS jokertecken). Om du inte anger n†gon filspec$ visar
+                   FILES alla filerna i den aktuella katalogen.
+
+Exempel:
+    MKDIR "C:\\TEMP\\TEST"
+    CHDIR "C:\\TEMP"
+    FILES
+    RMDIR "TEST"
+.context CLOSE
+.context @CLOSE
+:nCLOSE, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+St„nger en eller fler ”ppna filer eller enheter.
+
+\bCLOSE [[#]filnummer%[,[#]filnummer%]...]\p
+
+    ş \bfilnummer%\p    Numret p† en ”ppen fil eller enhet.
+
+    ş CLOSE utan argument st„nger alla ”ppna filer och enheter.
+
+Exempel:
+    CLS
+    INPUT "Skriv in filnamn: ", n$
+    OPEN n$ FOR OUTPUT AS #1
+    PRINT #1, "Detta sparas i filen."
+    CLOSE
+    OPEN n$ FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT "L„s fr†n fil: "; a$
+    CLOSE
+
+Se „ven     \i\p\aEND\v@END\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aRESET\v@RESET\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context EOF
+.context @EOF
+:nEOF, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Testar om det „r slut p† filen. EOF returnerar sant (icke-noll) om filslutet
+har n†tts.
+
+\bEOF(filnummer%)\p
+
+    ş \bfilnummer%\p    Numret p† den ”ppna filen.
+
+Exempel:
+    CLS
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    FOR i% = 1 TO 10
+        WRITE #1, i%, 2 * i%, 5 * i%
+    NEXT i%
+    CLOSE #1
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    DO
+        LINE INPUT #1, a$
+        PRINT a$
+    LOOP UNTIL (EOF(1))
+
+Se „ven     \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aLOC\v@LOC\v\i\p    \i\p\aLOF\v@LOF\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p
+.context ERDEV
+.context @ERDEV
+.context ERDEV$
+.context @ERDEV$
+:nERDEV, funktion; ERDEV$, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ERDEV returnerar en felkod fr†n den senaste enheten som genererade ett
+allvarligt fel. ERDEV$ returnerar namnet p† enheten som genererade felet.
+
+\bERDEV\p
+\bERDEV$\p
+
+    ş Det returnerade v„rdet best†r av tv† byte. Den f”rsta best†r av DOS
+      felkod, och den andra av information om enhetsattribut.
+
+\i\p\aExempel\v@errhand.ex\v\i\p
+
+Se „ven     \i\p\aERR, ERL\v@ERR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p
+.context FIELD
+.context @FIELD
+:nFIELD, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Tilldelar utrymme f”r variabler i en direktfilsbuffert.
+
+\bFIELD [#]filnummer%, f„ltbredd% AS str„ngvariabel$\p
+                    \b[,f„ltbredd% AS str„ngvariabel$] ...\p
+
+    ş \bfilnummer%\p         Numret p† en ”ppen fil.
+    ş \bf„ltbredd%\p         Antalet tecken i ett f„lt.
+    ş \bstr„ngvariabel$\p    En variabel som identifierar f„ltet och inneh†ller
+                         f„ltdata.
+
+    ş Postvariabler „r vanligtvis ett b„ttre s„tt att hantera
+      registerdata.
+
+Exempel:
+    OPEN "FILEDAT.DAT" FOR RANDOM AS #1 LEN = 80
+    FIELD #1, 30 AS namn$, 50 AS adress$
+
+Se „ven     \i\p\aGET, PUT\v@GET\v\i\p    \i\p\aLSET, RSET\v@LSET\v\i\p    \i\p\aTYPE\v@TYPE\v\i\p
+            \i\p\aSkillnader j„mmf”rt med BASICA\v@basica.diffs\v\i\p
+.context FILEATTR
+.context @FILEATTR
+:nFILEATTR, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar information om en ”ppen fil.
+
+\bFILEATTR(filnummer%,attribut%)\p
+
+    ş \bfilnummer%\p    Numret p† en ”ppen fil.
+    ş \battribut%\p     Anger typen av information som ska returneras.
+                    N„r attribut% „r 1, returnerar FILEATTR ett v„rde
+                    som indikerar filens †tkomstl„ge:
+
+                     V„rde   L„ge
+                     ÍÍÍÍÍ   ÍÍÍÍÍÍ
+                     1       Input
+                     2       Output
+                     4       Random
+                     8       Append
+                     32      Binary
+
+                     N„r attribut% „r 2, returnerar FILEATTR
+                     filhanteraren i DOS.
+
+Exempel:
+    OPEN "TEST.DAT" FOR BINARY AS #1
+    PRINT FILEATTR(1, 1)
+    CLOSE
+
+Se „ven     \i\p\aOPEN\v@OPEN\v\i\p
+.context FREEFILE
+.context @FREEFILE
+:nFREEFILE, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar n„sta giltiga oanv„nda filnummer.
+
+\bFREEFILE\p
+
+Exempel:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT "N„sta filnummer: "; FREEFILE
+    CLOSE
+
+Se „ven     \i\p\aOPEN\v@OPEN\v\i\p
+.context GET
+.context @GET
+.context PUT
+.context @PUT
+:nGET, sats PUT, sats (Fil I/O)
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+GET l„ser fr†n en fil till en direktbuffert eller en variabel.
+PUT skriver en variabel eller en direktbuffert till en fil.
+
+\bGET [#]filnummer%[,[postnummer&][,variabel]]\p
+\bPUT [#]filnummer%[,[postnummer&][,variabel]]\p
+
+    ş \bfilnummer%\p       Numret p† en ”ppen fil.
+    ş \bpostnummer&\p      F”r direktfiler „r det numret p† posten som ska
+                       l„sas eller skrivas. F”r bin„rfiler „r det den byte
+                       d„r l„sningen eller skrivningen ska starta.
+    ş \bvariabel\p         F”r GET „r det en variabel som anv„nds f”r att
+                       ta emot indata fr†n filen. F”r PUT „r det en variabel
+                       som inneh†ller utdata som ska skrivas in i filen.
+                       Variabeln „r vanligtvis en variabel av en
+                       anv„ndardefinierad datatyp.
+
+Exempel:
+    TYPE Protokoll
+        Elev AS STRING * 20
+        Resultat AS SINGLE
+    END TYPE
+    DIM Klass AS Protokoll
+    OPEN "FINAL.DAT" FOR RANDOM AS #1 LEN = LEN(Klass)
+    Klass.Elev = "Gunilla"
+    Klass.Resultat = 99
+    PUT #1, 1, Klass
+    CLOSE #1
+    OPEN "FINAL.DAT" FOR RANDOM AS #1 LEN = LEN(Klass)
+    GET #1, 1, Klass
+    PRINT "ELEV:", Klass.Elev
+    PRINT "RESULTAT:", Klass.Resultat
+    CLOSE #1
+    KILL "FINAL.DAT"
+
+Se „ven     \i\p\aFIELD\v@FIELD\v\i\p     \i\p\aGET, PUT (Grafik)\v@ggx\v\i\p    \i\p\aLSET, RSET\v@LSET\v\i\p
+            \i\p\aMKn$, funktion; CVn, funktion\v@MKI$\v\i\p    \i\p\aTYPE\v@TYPE\v\i\p
+.context INPUT$
+.context @INPUT$
+:nINPUT$, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar en teckenstr„ng som l„st fr†n en angiven fil.
+
+\bINPUT$(n[,[#]filnummer%])\p
+
+    ş \bn\p              Antalet tecken (byte) som ska l„sas.
+    ş \bfilnummer%\p     Numret p† en ”ppen fil. Om filnummer% inte
+                     „r med l„ser INPUT$ fr†n tangentbordet.
+
+Exempel:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT #1, "Texten"
+    CLOSE
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    PRINT INPUT$(3, 1)        'Skriv de 3 f”rsta tecknen.
+    CLOSE
+
+Se „ven     \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p
+.context IOCTL
+.context @IOCTL
+.context IOCTL$
+.context @IOCTL$
+:nIOCTL, sats; IOCTL$, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+IOCTL s„nder en kontrollstr„ng till en enhets drivrutin.
+IOCTL$ returnerar aktuell statusinformation fr†n en enhets drivrutin.
+
+\bIOCTL [#]filnummer%, str„ng$\p
+\bIOCTL$([#]filnummer%)\p
+
+    ş \bfilnummer%\p     Numret p† en ”ppen enhet.
+    ş \bstr„ng$\p        Kontrollstr„ngen som s„nts till enheten.
+
+    ş Kontrollstr„ngarna fr†n IOCTL och informationen som returneras av
+      IOCTL$ beror p† enhetens drivrutin. L„s dokumentationen f”r
+      drivrutinen om du vill ha information om IOCTL kontrollstr„ngar
+      och vad som returneras av IOCTL$.
+.context LOC
+.context @LOC
+:nLOC, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar den nuvarande positionen i en fil.
+
+\bLOC(filnummer%)\p
+
+    ş \bfilnummer%\p    Numret p† en ”ppen fil eller enhet.
+
+    ş F”r bin„rfiler returnerar LOC positionen p† den byte som l„sts eller
+      skrivits sist.
+    ş F”r direktfiler returnerar LOC numret p† den sista posten som l„sts
+      eller skrivits in i filen.
+    ş F”r sekventiella filer returnerar LOC den aktuella byte-positionen,
+      dividerad med 128.
+
+Exempel:
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+       PUT #1, , i%
+    NEXT i%
+    SEEK #1, 2
+    GET #1, , i%
+    PRINT "Data: "; i%; " Nuvarande post: "; LOC(1); " N„sta: "; SEEK(1)
+
+Se „ven     \i\p\aEOF\v@EOF\v\i\p    \i\p\aSEEK\v@SEEK\v\i\p
+.context LOCK
+.context @LOCK
+.context UNLOCK
+.context @UNLOCK
+:nLOCK, sats, UNLOCK, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LOCK begr„nsar eller f”rbjuder †tkomst av en fil genom en n„tverksprocess.
+UNLOCK l†ser upp det l†s som st„ngts av den senaste LOCK-satsen.
+
+\bLOCK [#]filnummer% [,{post& | [start&] TO slut&}]\p
+\bUNLOCK [#]filnummer% [,{post& | [start&] TO slut&}]\p
+
+    ş \bfilnummer%\p         Numret p† en ”ppen fil.
+    ş \bpost&\p              F”r direktfiler „r det numret p† den post som
+                         ska l†sas, relativt den f”rsta posten i filen.
+                         F”r bin„rfiler „r det numret p† den byte som ska
+                         l†sas, relativt den byte som kommer f”rst i filen.
+    ş \bstart&\p och \bslut&\p   Numren p† de poster eller byte som kommer f”rst eller
+                         sist i en serie poster eller byte som ska l†sas
+                         eller l†sas upp.
+
+    ş F”r sekventiella filer p†verkar LOCK och UNLOCK hela filen.
+
+Exempel:
+    'Detta exempel fungerar bara i en n„tverksmilj”.
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+        PUT #1, , i%
+    NEXT i%
+    LOCK #1, 2         'L†s post 2.
+    GET #1, 2, i%
+    UNLOCK #1, 2       'L†s upp post 2.
+.context LOF
+.context @LOF
+:nLOF, funktion
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returnerar l„ngden p† en fil i byte.
+
+\bLOF(filnummer%)\p
+
+    ş \bfilnummer%\p    Numret p† en ”ppen fil.
+
+Exempel:
+    INPUT "Skriv filnamnet: "; f$
+    OPEN f$ FOR BINARY AS #1
+    PRINT "Fill„ngd = "; LOF(1)
+    CLOSE
+.context LSET
+.context @LSET
+.context RSET
+.context @RSET
+:nLSET, sats; RSET, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LSET och RSET flyttar data in i en direktfilsbuffert (som f”rberedelse f”r
+satsen PUT) och v„nster- eller h”gerjusterar v„rdet p† en str„ngvariabel.
+LSET kopierar ocks† inneh†llet i en postvariabel till en annan.
+
+\bLSET str„ngvariabel$=str„nguttryck$\p
+\bRSET str„ngvariabel$=str„nguttryck$\p
+\bLSET postvariabel1=postvariabel2\p
+
+    ş \bstr„ngvariabel$\p      En str„ngvariabel eller ett direktfilsf„lt
+                           som definierats med satsen FIELD.
+    ş \bstr„nguttryck$\p       F”r LSET „r det den v„nsterjusterade versionen av
+                           str„ngvariabel$. F”r RSET „r det den h”gerjusterade
+                           versionen av str„ngvariabel$.
+    ş \bpostvariabel1\p        Postervariabler av en anv„ndardefinierad datatyp.
+      \bpostvariabel2\p        Anv„nd LSET f”r att tilldela en postvariabel av en
+                           datatyp till en annan anv„ndardefinierad datatyp.
+
+Exempel:
+    OPEN "FILEDAT.DAT" FOR RANDOM AS #1 LEN = 10
+    FIELD #1, 5 AS Ls1$, 5 AS Rs1$
+    LSET Ls1$ = "LSET"
+    RSET Rs1$ = "RSET"
+    PUT #1, 1
+    CLOSE #1
+    OPEN "FILEDAT.DAT" FOR RANDOM AS #1 LEN = 10
+    FIELD #1, 5 AS Ls2$, 5 AS Rs2$
+    GET #1, 1
+    PRINT "*" + Ls2$ + "*", "*" + Rs2$ + "*"
+    CLOSE #1
+
+Se „ven     \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aGET, PUT\v@PUT\v\i\p
+.context NAME
+.context @NAME
+:nNAME, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Byter namn p† en fil eller katalog.
+
+\bNAME gammalspec$ AS nyspec$\p
+
+    ş \bgammalspec$\p och \bnyspec$\p  Namnet p† en existerande fil och det nya
+                               filnamnet. Varje namn f†r inneh†lla en s”kv„g.
+
+Exempel:
+    INPUT "Gammalt namn: "; OldFN$
+    INPUT "Nyttnamn: "; NewFN$
+    NAME OldFN$ AS NewFN$
+
+Se „ven     \i\p\aFILES\v@FILES\v\i\p
+.context OPEN
+.context @OPEN
+:nOPEN, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+™ppnar en fil eller enhet.
+
+\bOPEN fil$ [FOR l„ge] [ACCESS †tkomst] [l†s] AS [#]filnummer% [LEN=postl„ngd%]\p
+
+    ş \bfil$\p           Namnet p† en fil eller enhet. Filnamnet kan inneh†lla
+                     en enhet och s”kv„g.
+    ş \bl„ge\p           Ett av f”ljande fill„gen: APPEND, BINARY, INPUT,
+                     OUTPUT eller RANDOM. Se \i\p\aOPEN, sats - fill„gen\v@APPEND\v\i\p.
+    ş \b†tkomst\p        I n„tverksmilj”er anger †tkomst om filen har ”ppnats
+                     f”r l„sning (READ), skrivning (WRITE) eller l„sning och
+                     skrivning (READ WRITE).
+                     Se \i\p\aOPEN, sats - †tkomst\v@ACCESS\v\i\p.
+    ş \bl†s\p            Anger fill†sningen i n„tverksmilj”er:
+                     SHARED, LOCK READ, LOCK WRITE, LOCK READ WRITE.
+    ş \bfilnummer%\p     Ett tal mellan 1 och 255 som identifierar filen
+                     medan den „r ”ppen.
+    ş \bpostl„ngd%\p     F”r direktfiler „r det l„ngden p† en post (standard „r
+                     128 byte). F”r sekventiella filer „r det antalet tecken
+                     i bufferten (standard „r 512 byte).
+
+Exempel:
+    INPUT "Skriv filnamn: "; n$
+    OPEN n$ FOR OUTPUT AS #1
+    PRINT #1, "Detta sparas i filen."
+    CLOSE
+    OPEN n$ FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT "L„s fr†n filen: "; a$
+    CLOSE
+
+Se „ven     \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aFREEFILE\v@FREEFILE\v\i\p    \i\p\aOPEN COM\v@opcom\v\i\p    \i\p\aTYPE\v@TYPE\v\i\p
+            \i\p\aOPEN, sats - alternativ syntax\v@openalt\v\i\p
+.context APPEND
+.context @APPEND
+.context BINARY
+.context @BINARY
+.context OUTPUT
+.context @OUTPUT
+.context RANDOM
+.context @RANDOM
+:nOPEN, sats - fill„gen
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Nyckelorden APPEND, BINARY, INPUT, OUTPUT och RANDOM anv„nds i satsen OPEN
+f”r att ange fill„gen. INPUT, OUTPUT och RANDOM anv„nds ocks† i satsen
+OPEN COM.
+
+    ş APPEND anger att filen ska ”ppnas f”r sekventiell utmatning
+      och s„tter filpekaren till slutet av filen. Satsen PRINT # eller
+      satsen WRITE # ut”kar sedan (l„gger till) filen.
+    ş BINARY anger ett bin„rfilsl„ge. I bin„rfilsl„ge kan man l„sa eller
+      skriva information i en byteposition i filen med satserna GET och PUT.
+    ş INPUT anger att filen ska ”ppnas f”r sekventiell inmatning.
+    ş OUTPUT anger att filen ska ”ppnas f”r sekventiell utmatning.
+    ş RANDOM anger att filen ska ”ppnas i direktfilsl„ge.
+      RANDOM „r standardfill„get.
+
+Se „ven     \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aOPEN COM\v@opcom\v\i\p    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aWRITE\v@WRITE\v\i\p
+.context ACCESS
+.context @ACCESS
+:nOPEN, sats - †tkomst
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Anger †tkomstm”jligheter som anv„ndare har till en ”ppen fil.
+
+\bACCESS {READ | WRITE | READ WRITE}\p
+
+    ş \bREAD\p          ™ppnar en fil f”r endast l„sning.
+    ş \bWRITE\p         ™ppnar en fil f”r endast skrivning.
+    ş \bREAD WRITE\p    ™ppnar en fil f”r b†de l„sning och skrivning. L„get
+                    READ WRITE „r giltigt endast f”r direktfiler och
+                    bin„rfiler, och f”r filer som ”ppnats f”r APPEND
+                    (till„gg).
+
+Se „ven     \i\p\aOPEN\v@OPEN\v\i\p
+.context @openalt
+.context .openalt
+:nOPEN, sats - alternativ syntax
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bOPEN l„ge2$,[#]filnum%,fil$[,postl„ngd%]\p
+
+    ş \bl„ge2$\p      Ett str„nguttryck som b”rjar med ett av f”ljande
+                  tecken, och som anger fill„get:
+                    O    L„ge f”r sekventiell utmatning.
+                    I    L„ge f”r sekvensiell inmatning.
+                    R    L„ge f”r direktfilsinmatning och utmatning.
+                    B    L„ge f”r bin„rfiler.
+                    A    L„ge f”r sekventiell utmatning. S„tter filpekaren
+                         till slutet av filen och postnumret till den sista
+                         posten i filen. Satsen PRINT # eller satsen WRITE #
+                         ut”kar sedan (l„gger till) filen..\p
+    ş \bfilnum%\p     Ett tal mellan 1 och 255 som identifierar filen
+                  medan den „r ”ppen.
+    ş \bfil$\p        Namnet p† filen (kan inneh†lla enhet och s”kv„g).
+    ş \bpostl„ngd%\p  F”r direktfiler „r det l„ngden p† en post. F”r
+                  sekventiella filer „r det antalet tecken i bufferten.
+
+    ş QBasic st”der den h„r syntaxen f”r kompatibilitet med program som
+      skrivits i tidigare versioner av BASIC.
+
+Se „ven     \i\p\aOPEN\v@OPEN\v\i\p
+.context RESET
+.context @RESET
+:nRESET, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+St„nger alla ”ppna filer och enheter.
+
+\bRESET\p
+
+Se „ven     \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aEND\v@END\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context SEEK
+.context @SEEK
+:nSEEK, funktion och sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Funktionen SEEK returnerar den nuvarande filpositionen.
+Satsen SEEK st„ller in filpositionen f”r n„sta l„sning eller skrivning.
+
+\bSEEK(filnummer%)\p
+\bSEEK [#]filnummer%, position&\p
+
+    ş \bfilnummer%\p     Numret p† en ”ppen fil.
+    ş \bposition&\p      Positionen d„r n„sta l„sning eller skrivning f”rekommer.
+                     F”r direktfiler „r det ett postnummer. F”r andra filer „r
+                     det bytepositionen relativt b”rjan av filen. Den f”rsta
+                     bytepositionen „r vid position 1.
+
+Exempel:
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+        PUT #1, , i%
+    NEXT i%
+    SEEK #1, 2
+    GET #1, , i%
+    PRINT "Data: "; i%; " Nuvarande post: "; LOC(1); " N„sta: "; SEEK(1)
+
+Se „ven     \i\p\aGET, PUT\v@GET\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p
+.context WRITE
+.context @WRITE
+:nWRITE, sats
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Skriver data p† sk„rmen eller i en sekventiell fil.
+
+\bWRITE [[#]filnummer%,] uttryckslista\p
+
+    ş \bfilnummer%\p        Numret p† en sekventiell ”ppen fil. Om filnumret
+                        inte „r med skriver WRITE p† sk„rmen.
+    ş \buttryckslista\p     En eller flera variabler eller uttryck, †tskillda
+                        med komman, vars v„rden skrivs p† sk„rmen eller i
+                        filen.
+
+    ş WRITE infogar komman mellan elementen, och citationstecken runt
+      str„ngar n„r de skrivs. WRITE skriver v„rdet i en form som kan l„sas
+      av satsen INPUT.
+
+Exempel:
+    CLS
+    OPEN "LIST" FOR OUTPUT AS #1
+    DO
+        INPUT "   NAMN:       ", Name$
+        INPUT "   LDER:      ", Age$
+        WRITE #1, Name$, Age$
+        INPUT "Vill du l„gga till mer"; R$
+    LOOP WHILE UCASE$(R$) = "J"
+    CLOSE #1
+    'Skriv ut filen p† sk„rmen.
+    OPEN "LIST" FOR INPUT AS #1
+    CLS
+    PRINT "Filens inneh†ll:": PRINT
+    DO WHILE NOT EOF(1)
+        INPUT #1, Rec1$, Rec2$   'L„s poster fr†n filen.
+        PRINT Rec1$, Rec2$       'Skriv ut posterna p† sk„rmen.
+    LOOP
+    CLOSE #1
+    KILL "LIST"
+
+Se „ven     \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p
+.comment *******************************************************************
+.comment *  AS Keyword
+.comment *******************************************************************
+.context AS
+.context @AS
+:nAS, nyckelord
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Utf”r olika handlingar som del av flera satser:
+
+    ş Anger en variabeltyp n„r det anv„nds i satserna COMMON, DECLARE, DEF FN,
+      DIM, FUNCTION, REDIM, SHARED, STATIC och SUB.
+    ş Anger en elementtyp i en anv„ndardefinierad datatyp n„r det anv„nds
+      i satsen TYPE.
+    ş Tilldelar ett filnummer till en fil eller enhet n„r det anv„nds i
+      satsen OPEN.
+    ş Anger ett f„ltnamn n„r det anv„nds i satsen FIELD.
+    ş Anger ett nytt filnamn n„r det anv„nds i satsen NAME.
+
+Se „ven     \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p     \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+            \i\p\aFIELD\v@FIELD\v\i\p     \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aNAME\v@NAME\v\i\p      \i\p\aOPEN\v@OPEN\v\i\p
+            \i\p\aSHARED, STATIC\v@SHARED\v\i\p          \i\p\aSUB\v@SUB\v\i\p       \i\p\aTYPE\v@TYPE\v\i\p

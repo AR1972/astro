@@ -1,0 +1,840 @@
+.comment ******************************************************************
+.comment *  Device I/O Family - QBasic                                    *
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Combined INP/OUT.                                             *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/22/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments.                      *
+.comment ******************************************************************
+.comment *  6/8/90 stevesau                                               *
+.comment *  Combined LOCATE/CSRLIN/POS                                    *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/8/90 stevesau                                               *
+.comment *  Combined INPUT/LINE INPUT/INPUT#/LINE INPUT#, PRESET/PSET.    *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Combined CSRLIN/POS.                                          *
+.comment ******************************************************************
+.comment *  5/4/90 stevesau                                               *
+.comment *  Revised CLS, WIDTH.                                           *
+.comment *  Combined LPRINT/PRINT, LPRINT USING/PRINT USING.              *
+.comment *  Deleted SCREEN (combined with SCREEN Func. in Graphics).      *
+.comment *  Deleted Screen adapters, modes, displays info (created new    *
+.comment *  screen modes topic in Graphics).                              *
+.comment ******************************************************************
+.comment *  5/3/90 stevesau                                               *
+.comment *  Added link to OPEN File Modes to INPUT.                       *
+.comment *  Deleted WRITE (combined with WRITE # in File family).         *
+.comment *  Combined PRINT and PRINT # (from File family).                *
+.comment *  Added PRINT # info to PRINT USING.                            *
+.comment *  Moved PRINT USING format specifiers to separate node.         *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                              *
+.comment *  Added Screen Modes, Adapters and Displays, Attributes and     *
+.comment *  Colors, made links local.                                     *
+.comment *  Deleted links to individual Screen Modes on SCREEN.           *
+.comment *  Added Setting Screen Width (from WIDTH Details).              *
+.comment ******************************************************************
+.comment *  4/20/90 stevesau                                              *
+.comment *  Added action lines. 					  *
+.comment *  Deleted table from USING Keyword screen.			  *
+.comment *  Deleted OS/2 references.                                      *
+.comment ******************************************************************
+.comment *  4/17/90 Beth Preslar                                          *
+.comment *  Removed FormatX$ functions, SetFormatCC routine		  *
+.comment ******************************************************************
+.context BEEP
+.context @BEEP
+:nHet statement BEEP
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Instrueert uw computer een piepsignaal te genereren.
+
+\bBEEP\p
+.context CLS
+.context @CLS
+:nHet statement CLS
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Maakt het scherm leeg.
+
+\bCLS [{0 | 1 | 2}]\p
+
+    CLS      Maakt een tekst- of grafisch uitvoervenster ('viewport') leeg.
+             Als er een grafisch uitvoervenster is ingesteld (m.b.v. VIEW),
+             wordt alleen het grafische uitvoervenster leeggemaakt. Anders
+             wordt het tekstuitvoervenster of het hele scherm leeggemaakt.
+    CLS 0    Wist het hele beeldscherm.
+    CLS 1    Wist een grafisch uitvoervenster of het hele scherm als er
+             geen grafisch uitvoervenster is ingesteld.
+    CLS 2    Wist een tekstuitvoervenster.
+
+Zie ook     \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+.context INKEY$
+.context @INKEY$
+:nDe functie INKEY$
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Leest een teken van het toetsenbord.
+
+\bINKEY$\p
+
+    ş INKEY$ retourneert een nul-teken als er geen teken is dat
+      geretourneerd kan worden.
+    ş Voor standaardtoetsen retourneert INKEY$ een tekenreeks van 1 byte
+      bestaande uit het gelezen teken.
+    ş Voor toetsen uit de uitgebreide tekenset retourneert INKEY$ een
+      tekenreeks van 2 bytes bestaande uit het nul-teken (ASCII 0) en
+      de toetsenbord-scancode.
+
+Voorbeeld:
+    PRINT "Druk op Esc om programma af te sluiten..."
+    DO
+    LOOP UNTIL INKEY$ = CHR$(27)    '27 is de ASCII-code voor Esc.
+
+Zie ook     \i\p\aToetsenbord-scancodes\v@kbsct\v\i\p
+.context INP
+.context @INP
+.context OUT
+.context @OUT
+:nDe functie INP en het statement OUT
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+INP retourneert een op een I/O-poort gelezen byte-waarde.
+OUT stuurt een byte-waarde naar een bepaalde I/O-poort.
+
+\bINP(poort%)\p
+\bOUT poort%, gegevens%\p
+
+    ş \bpoort%\p      Een getal in het bereik van 0 t/m 65.535 dat
+                  de poort aanduidt.
+    ş \bgegevens%\p   Een numerieke uitdrukking in het bereik van 0 t/m 255
+                  die naar de poort moet worden gestuurd.
+
+Voorbeeld:
+    x% = INP(&H3FC)          'Leest COM1 modembesturingsregister.\p
+    OUT &H3FC, (x% XOR 1)    'Wijzigt de 'Terminal gereed'-gegevensbit.
+
+Zie ook     \i\p\aWAIT\v@WAIT\v\i\p
+.context INPUT
+.context @INPUT
+:nDe statements INPUT en LINE INPUT
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+INPUT leest invoer vanaf het toetsenbord of vanuit een bestand. LINE INPUT
+leest een regel van maximaal 255 tekens vanaf het toetsenbord of vanuit een
+bestand.
+
+\bINPUT [;] ["prompt"{; | ,}] variabelen\p
+\bLINE INPUT [;] ["prompt";] variabele$\p
+\bINPUT #bestandsnummer%, variabelen\p
+\bLINE INPUT #bestandsnummer%, variabele$\p
+
+    ş \bprompt\p          Een optionele tekenreeks die wordt weergeven
+                      voordat de gebruiker gegevens invoert. Een puntkomma
+                      direct na "prompt" voegt een vraagteken toe aan de
+                      tekenreeks "prompt".
+    ş \bvariabelen\p      E‚n of meer variabelen, gescheiden door komma's,
+                      waarin gegevens staan opgeslagen die worden ingevoerd
+                      vanaf het toetsenbord of gelezen vanuit een bestand.
+                      Namen van variabelen kunnen maximaal 40 tekens
+                      omvatten en moeten met een letter beginnen. De tekens
+                      A-Z, 0-9 en de punt (.) zijn geldig.
+    ş \bvariabele$\p      Omvat een regel tekens die is ingevoerd van het
+                      toetsenbord of gelezen vanuit een gestand.
+    ş \bbestandsnummer%\p Het nummer van het geopende bestand.
+
+    ş INPUT gebruikt een komma voor het scheiden van ingevoerde waarden.
+      LINE INPUT leest alle tekens tot aan een regelterugloop.
+    ş Voor toetsenbordinvoer zorgt een puntkomma direct na het woord INPUT
+      dat de cursor op dezelfde regel blijft staan nadat de gebruiker op
+      Enter drukt.
+
+Voorbeeld:
+    CLS
+    OPEN "LIST" FOR OUTPUT AS #1
+    DO
+        INPUT "   NAAM:       ", Naam$  'Leest invoer vanaf het toetsenbord.
+        INPUT "   LEEFTIJD:   ", Leeftijd$
+        WRITE #1, Naam$, Leeftijd$
+        INPUT "Nog een naam en leeftijd invoeren"; R$
+    LOOP WHILE UCASE$(R$) = "J"
+    CLOSE #1
+    'Geeft het bestand op het scherm weer.
+    OPEN "LIST" FOR INPUT AS #1
+    CLS
+    PRINT "Ingangen in bestand:": PRINT
+    DO WHILE NOT EOF(1)
+        LINE INPUT #1, REC$  'Leest ingangen vanuit het bestand.
+        PRINT REC$           'Druk ingangen op het scherm af.
+    LOOP
+    CLOSE #1
+    KILL "LIST"
+
+Zie ook     \i\p\aINKEY$\v@INKEY$\v\i\p    \i\p\aINPUT$\v@INPUT$\v\i\p    \i\p\aBestandsmodi voor het statement OPEN\v@APPEND\v\i\p
+.context LIST
+.context @LIST
+.context KEY
+.context @KEY
+:nHet statement KEY (toewijzing)
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Wijst tekenreekswaarden toe aan functietoetsen en geeft eventueel
+toetsenwaarden weer.
+
+\bKEY toets%, tekenreeksuitdrukking$\p
+\bKEY LIST\p
+\bKEY ON\p
+\bKEY OFF\p
+
+    ş \btoets%\p                 Het nummer van de functietoets. Gebruik
+                             1 tot en met 10 voor F1 tot en met F10.
+                             Gebruik 30 en 31 voor functietoetsen F11 en
+                             F12 op uitgebreide toetsenborden.
+    ş \btekenreeksuitdrukking$\p Een tekenreeks van maximaal 15 tekens
+                             die wordt weergegeven wanneer op de
+                             functietoets wordt gedrukt.
+    ş \bLIST\p                   Toont de toewijzingen voor elke toets.
+    ş \bON\p                     Schakelt de functietoets-weergaveregel in.
+    ş \bOFF\p                    Schakelt de functietoets-weergaveregel uit.
+
+Voorbeeld:
+    KEY 4, "MENU" + CHR$ (13)
+    KEY LIST
+    KEY 4, ""
+    KEY LIST
+
+Zie ook     \i\p\aKEY, ON KEY ("event trapping")\v@ketv\v\i\p
+.context KILL
+.context @KILL
+:nHet statement KILL
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Verwijdert bestanden van een schijf.
+
+\bKILL bestandsaanduiding$\p
+
+    ş \bbestandsaanduiding$\p  Specificeert te verwijderen bestand(en).
+                           U kunt een pad opnemen en de jokertekens
+                           ? en * opnemen.
+
+Voorbeeld:
+    INPUT "Te verwijderen bestand: "; f$
+    KILL f$
+
+Zie ook     \i\p\aFILES\v@FILES\v\i\p
+.context LOCATE
+.context @LOCATE
+.context CSRLIN
+.context @CSRLIN
+.context POS
+.context @POS
+:nHet statement LOCATE en de functies CSRLIN en POS
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LOCATE verplaatst de cursor naar een opgegeven positie op het scherm.
+CSRLIN retourneert de huidige rijpositie van de cursor.
+POS retourneert de huidige kolompositie van de cursor.
+
+\bLOCATE  [rij%] [,[kolom%] [,[cursor%] [,start% [,stop%]]]]\p
+\bCSRLIN\p
+\bPOS(uitdrukking)\p
+
+    ş \brij%\p en \bkolom%\p    Het nummer van de rij of kolom waarnaar
+                        de cursor verplaatst wordt.
+    ş \bcursor%\p           Geeft aan of de cursor zichtbaar is:
+                            0 = onzichtbaar, 1 = zichtbaar
+    ş \bstart%\p en \bstop%\p   Een geheel getal uit het bereik van 0 t/m 31
+                        dat de eerste en de laatste scanregel aangeeft.
+                        U kunt de cursorgrootte veranderen door de
+                        cursor-scanregels te wijzigen.
+    ş \buitdrukking\b       Een uitdrukking.
+
+Voorbeeld:
+    CLS
+    LOCATE 5, 5
+    Mijnrij% = CSRLIN
+    Mijnkolom% = POS(0)
+    PRINT "Positie 1 (Druk op een toets)"
+    DO
+    LOOP WHILE INKEY$ = ""
+    LOCATE (Mijnrij% + 2), (Mijnkolom% + 2)
+    PRINT "Position 2"
+.context LPOS
+.context @LPOS
+:nDe functie LPOS
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert het aantal tekens dat naar een printer werd gestuurd na de
+laatste regelterugloop.
+
+\bLPOS(n%)\p
+
+    ş \bn%\p    Specificeert een van de printerpoorten:
+              0 = LPT1, 1 = LPT1, 2 = LPT2, 3 = LPT3
+Voorbeeld:
+    'Dit voorbeeld vereist een printer.
+    LPRINT
+    FOR i% = 1 TO 20
+        LPRINT i%;
+        IF LPOS(1) >= 10 THEN LPRINT     'Begint een nieuwe regel.
+    NEXT i%
+.context .opcom
+.context @opcom
+:nHet statement OPEN COM
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Opent en initialiseert een communicatiepoort voor invoer of uitvoer (I/O).
+Het statement OPEN COM moet worden uitgevoerd voordat een apparaat kan
+worden gebruikt voor communicatie bij gebruik van een RS232-interface.
+
+\bOPEN "COMn: opties1 opties2" [FOR modus] AS [#]bestandsnr% [LEN=rec_len%]\p
+
+    ş \bn\p           De te openen communicatiepoort (1 = COM1, 2 = COM2).
+    ş \bopties1\p     De meestgebruikte communicatieparameters:
+                    \b[baud] [,[pariteit] [,[databits] [,[stopbits]]]]\p
+                  baud is de baudrate van het apparaat dat wordt geopend:
+                    75, 110, 150, 300, 600, 1200, 2400, 4800, 9600
+                  pariteit is de methode voor pariteitscontrole:
+                    N (geen)      E (even)         O (oneven)
+                    S (spatie)    M (merkteken)    PE (foutcontrole aan)
+                  databits is het aantal databits per byte:
+                    5, 6, 7, 8
+                  stop is het aantal stopbits:
+                    1, 1.5, 2
+                  Standaard: 300 baud, even pariteit, 7 databits, 1 stopbit.
+    ş \bopties2\p     Een lijst van minder vaak gebruikte parameters,
+                  gescheiden door komma's:
+
+                  Optie     Beschrijving
+                  ÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                  ASC       Opent een apparaat in ASCII-modus.
+                  BIN       Opent een apparaat in binaire modus.
+                  CD[m]     Stelt de "time-out"-periode (in milliseconden)
+                            in op de DCD-regel (Data Carrier Detect).
+                  CS[m]     Stelt de "time-out"-periode (in milliseconden)
+                            in op de CTS-regel (Clear to Send).
+                  DS[m]     Stelt de "time-out"-periode (in milliseconden)
+                            in op de DS-regel (Data Set Ready).
+                  LF        Genereert een regelopschuiving na een
+                            regelterugloop.
+                  OP[m]     Bepaalt hoe lang (in milliseconden) OPEN COM
+                            wacht tot alle communicatielijnen open zijn.
+                  RB[n]     Specificeert de grootte (in bytes) van de
+                            ontvangstbuffer.
+                  RS        Onderdrukt het RTS-signaal (Request to Send).
+                  TB[n]     Specificeert de grootte (in bytes) van de
+                            transmissiebuffer.
+
+    ş \bmodus\p       INPUT, OUTPUT of RANDOM (de standaardinstelling).
+                  Zie \i\p\aBestandsmodi voor het statement OPEN\v@APPEND\v\i\p.
+    ş \bbestandsnr%\p Een getal in het bereik van 1 t/m 255 dat het
+                  communicatiekanaal aangeeft zolang het open is.
+    ş \brec_len%\p    Random-access-modus buffergrootte (standaardwaarde
+                  is 128 bytes).
+
+Voorbeeld:
+    'Gebruik dit voorbeeld voor probleemoplossing voor seri‰le
+     communicatiepoorten.
+    'Langzame baudrate en hardware-handshaking zijn buiten beschouwing\p
+     gelaten en buffers zijn vergroot.
+    OPEN "COM1:300,N,8,1,CD0,CS0,DS0,OP0,RS,TB2048,RB2048" FOR RANDOM AS #1
+
+Zie ook     \i\p\aOPEN\v@OPEN\v\i\p
+.context .penf
+.context @penf
+:nDe functie PEN
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert de status van de lichtpen.
+
+\bPEN(n%)\p
+
+    ş \bn%\p    Bepaalt de informatie die wordt geretourneerd omtrent de
+                status van de lichtpen:
+
+            n%    Retourneert
+            ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+            0     Of de pen is gebruikt sinds de laatste controle
+                  (-1 indien ja, 0 indien nee)
+            1     De x-co”rdinaat van de laatste positie van de lichtpen
+            2     De y-co”rdinaat van de laatste positie van de lichtpen
+            3     De huidige pen-actiestatus (-1 is neerwaartse verplaatsing,
+                  0 is opwaartse verplaatsing)
+            4     De laatste geldige x-co”rdinaat
+            5     De laatste geldige y-co”rdinaat
+            6     De laatste regelpositie van de lichtpen
+            7     De laatste kolompositie van de lichtpen
+            8     De laatste regelpositie onafhankelijk van de positie
+                  van de lichtpen
+            9     De laatste kolompositie onafhankelijk van de positie
+                  van de lichtpen
+
+Voorbeeld:
+    DO
+      P = PEN(3)
+      LOCATE 1, 1: PRINT "Pen is ";
+      IF P THEN PRINT "omlaag gericht" ELSE PRINT "omhoog gericht  "
+      PRINT "X ="; PEN(4), " Y ="; PEN(5); "  "
+    LOOP
+
+Zie ook     \i\p\aDe statements PEN en ON PEN\v@PEN\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aSchermmodi\v@screen.modes\v\i\p
+.context PLAY
+.context @PLAY
+:nHet statement PLAY (muziek)
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Speelt muzieknoten.
+
+\bPLAY opdrachtreeks$\p
+
+    ş \bopdrachtreeks$\p    Een tekenreeks die een of meer van de volgende
+                        PLAY-opdrachten bevat:
+
+      Opdrachten voor octaven en tonen:
+        O\boctaaf\p    Stelt het huidige octaaf in (0 - 6).
+        < of >     Gaat ‚‚n octaaf omlaag of omhoog.
+        A - G      Speelt een specifieke noot in het huidige octaaf.
+        N\bnoot\p      Speelt een specifieke noot (0 - 84) in het
+                   bereik van de 7 octaven (0 is een rust).
+
+      Opdrachten voor duur en tempo:
+        L\blengte\p    Stelt de lengte van elke noot in (1 - 64). L1 is
+                   een hele noot, L2 een halve enz.
+        ML         Speelt de noten legato.
+        MN         Speelt de noten normaal.
+        MS         Speelt de noten staccato.
+        P\brust\p      Bepaalt een rust (1 - 64). P1 is een hele rust,
+                   P2 is een halve rust enz.
+        T\btempo\p     Bepaalt het tempo in kwartnoten per minuut (32 - 255).
+
+      Modi-opdrachten:
+        MF          Speelt muziek op de voorgrond.
+        MB          Speelt muziek op de achtergrond.
+
+      Achtervoegsels:
+        # of +      Verhoogt de noot met een halve toon.
+        -           Verlaagt de noot met een halve toon.
+        .           Laat de noot anderhalf maal zolang aanhouden.
+
+    ş U kunt een PLAY-subopdrachtreeks uitvoeren vanuit een
+      PLAY-opdrachtreeks met behulp van de opdracht "X":
+
+      PLAY "X"+ VARPTR$(opdrachtreeks$)
+
+Voorbeeld:
+    'Speelt de toonladder in 7 verschillende octaven
+    toonladder$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(toonladder$)
+    NEXT i%
+
+Zie ook     \i\p\aBEEP\v@BEEP\v\i\p    \i\p\aDe functie PLAY\v@PLAYF\v\i\p   \i\p\aPLAY, ON PLAY ("event trapping")\v@playev\v\i\p
+            \i\p\aSOUND\v@SOUND\v\i\p   \i\p\aVARPTR$\v@VARPTR$\v\i\p           \i\p\aVerschillen met BASICA\v@basica.diffs\v\i\p
+.context PMAP
+.context @PMAP
+:nDe functie PMAP
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Vertaalt een 'window'-co”rdinaat (vensterco”rdinaat) in een 'viewport'-
+co”rdinaat (uitvoervensterco”rdinaat) zoals gedefinieerd in het statement
+WINDOW, of vice versa.
+
+\bPMAP (co”rdinaat#, n%)\p
+
+    ş \bco”rdinaat#\p   Een Window- of 'viewport'-co”rdinaat.
+    ş \bn%\p            Een waarde die aangeeft welke co”rdinaat
+                    wordt geretourneerd:
+
+                    co”rdinaat#              n%   Retourneert
+                    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍ   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                    'window' x-co”rdinaat    0    'viewport' x-co”rdinaat
+                    'window' y-co”rdinaat    1    'viewport' y-co”rdinaat
+                    'viewport' x-co”rdinaat  2    'window' x-co”rdinaat
+                    'viewport' y-co”rdinaat  3    'window' y-co”rdinaat
+
+Voorbeeld:
+    'Dit voorbeeld vereist een grafische adapter die schermmodus 1
+     ondersteunt.
+    SCREEN 1
+    WINDOW SCREEN (0, 0)-(100, 100)
+    PRINT "Logische x=50, fysieke x="; PMAP(50, 0)
+    PRINT "Logische y=50, fysieke y="; PMAP(50, 1)
+
+Zie ook     \i\p\aPOINT\v@POINT\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+.context POINT
+.context @POINT
+:nDe functie POINT
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert de huidige grafische cursorco”rdinaten of de kleur van een
+opgegeven pixel.
+
+\bPOINT {(n%) | (x%,y%)}\p
+
+    ş \b(n%)\p       Geeft het type co”rdinaat aan dat moet worden
+                     geretourneerd:
+
+                 n%    Retorneert
+                 ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                 0     De huidige 'viewport' x-co”rdinaat
+                 1     De huidige 'viewport' y-co”rdinaat
+                 2     De huidige 'window' x-co”rdinaat
+                 3     De huidige 'window' x-co”rdinaat
+
+    ş \b(x%,y%)\p    De co”rdinaten van de pixel waarvan POINT de kleur
+                     controleert.
+                     Als de co”rdinaten zich buiten het huidige
+                     uitvoervenster ('viewport') bevinden, retourneert
+                     POINT -1.
+
+Voorbeeld:
+    'Dit voorbeeld vereist een grafische kleurenadapter.
+    SCREEN 1
+    LINE (0, 0)-(100, 100), 2
+    LOCATE 14, 1
+    FOR y% = 1 TO 10
+        FOR x% = 1 TO 10
+            PRINT POINT(x%, y%);
+        NEXT x%
+        PRINT
+    NEXT y%
+
+Zie ook     \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aPMAP\v@PMAP\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aKleuren en kleurwaarden\v@color.table\v\i\p
+.context PRESET
+.context @PRESET
+.context PSET
+.context @PSET
+:nDe statements PRESET en PSET
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Tekenen op de opgegeven positie een stip op het scherm.
+
+\bPRESET [STEP] (x!,y!) [,kleur%]\p
+\bPSET [STEP] (x!,y!) [,kleur%]\p
+
+    ş \bSTEP\p       Geeft aan dat x! en y! relatieve co”rdinaten zijn
+                 ten opzichte van de huidige grafische cursorpositie.
+    ş \b(x!,y!)\p    De schermco”rdinaten van het in te stellen pixel.
+    ş \bkleur%\p     Een kleur voor het in te stellen pixel. Als kleur%
+                 wordt weggelaten, gebruikt PRESET de huidige
+                 achtergrondkleur en gebruikt PSET de huidige voorgrondkleur.
+
+    ş Welke kleuren beschikbaar zijn is afhankelijk van uw grafische
+      adapter en schermmodus. Co”rdinaatwaarden hangen af van uw grafische
+      adapter, schermmodus en de meest recente VIEW- en WINDOW-statements.
+
+Voorbeeld:
+    'Dit voorbeeld vereist een grafische kleurenadapter.
+    SCREEN 1
+    FOR i% = 0 TO 320
+        PSET (i%, 100)
+        FOR vertraging% = 1 TO 100: NEXT vertraging%
+        PRESET (i%, 100)
+    NEXT i%
+
+Zie ook     \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aKleuren en kleurwaarden\v@color.table\v\i\p    \i\p\aSchermmodi\v@screen.modes\v\i\p
+.context PRINT
+.context @PRINT
+.context LPRINT
+.context @LPRINT
+:nDe statements PRINT en LPRINT
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PRINT schrijft gegevens naar het scherm of naar een bestand.
+LPRINT drukt gegevens af op de printer die is aangesloten op LPT1.
+
+\bPRINT [#bestandsnr%,] [uitdrukkingen] [{; | ,}]\p
+\bLPRINT [uitdrukkingen] [{; | ,}]\p
+
+    ş \bbestandsnr%\p       Het nummer van een geopend bestand. Als u geen
+                        bestandsnummer opgeeft, schrijft PRINT naar het
+                        scherm.
+    ş \buitdrukkingen\p     Een lijst van een of meer af te drukken numerieke of
+                        tekenreeks-uitdrukkingen.
+    ş \b{; | ,}\p           Bepaalt waar de volgende uitvoer begint:
+                          ; betekent dat onmiddellijk na de laatste waarde
+                            wordt afgedrukt.
+                          , betekent dat bij het begin van de volgende
+                            afdrukzone wordt afgedrukt. Afdrukzones hebben
+                            een breedte van 14 tekens.
+
+Voorbeeld:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT #1, USING "##.###  "; 12.12345
+    CLOSE
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT a$
+    LPRINT "Dit is regel"; 1
+    LPRINT "Dit is regel",
+    LPRINT 2
+
+Zie ook     \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p    \i\p\aWRITE\v@WRITE\v\i\p
+.context .zpu
+.context @zpu
+.context .lprintu
+.context @lprintu
+:nDe statements PRINT USING en LPRINT USING
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PRINT USING schrijft uitvoer volgens een bepaalde opmaak naar het scherm of
+naar een bestand.
+LPRINT USING drukt uitvoer volgens een bepaalde opmaak af op de printer die
+aangesloten is op LPT1.
+
+\bPRINT [#bestandsnr%,] USING opmaakreeks$; uitdrukkingen [{; | ,}]\p
+\bLPRINT USING opmaakreeks$; uitdrukkingen [{; | ,}]\p
+
+    ş \bbestandsnr%\p       Het nummer van het geopende bestand.
+    ş \bopmaakreeks$;\p     Een tekenreeksuitdrukking die een of meer
+                        \i\p\aOpmaakaanduidingen\v@forspec\v\i\p bevat.
+    ş \buitdrukkingen\p     Een lijst van een of meer af te drukken numerieke
+                        of tekenreeksuitdrukkingen, gescheiden door komma's,
+                        puntkomma's, spaties of tabs.
+    ş \b{; | ,}\p           Bepaalt waar de volgende uitvoer begint:
+                          ; betekent dat onmiddellijk na de laatste waarde
+                            wordt afgedrukt.
+                          , betekent dat bij het begin van de volgende
+                            afdrukzone wordt afgedrukt. Afdrukzones hebben
+                            een breedte van 14 tekens.
+Voorbeeld:
+    a = 123.4567
+    PRINT USING "###.##"; a
+    LPRINT USING "+###.####"; a
+    a$ = "ABCDEFG"
+    PRINT USING "!"; a$
+    LPRINT USING "\\ \\"; a$
+
+Zie ook     \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p
+.context @forspec
+:nOpmaakaanduidingen
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+        \bTekens die de opmaak van een numerieke uitdrukking bepalen\p
+ \b#\p    Cijferpositie.                     º \b-\p     Achter cijfer, zorgt dat
+ \b.\p    Positie decimale punt.             º       achter negatief getal een
+ \b,\p    Links van de decimale punt, drukt  º       minteken wordt geplaatst.
+      om de drie posities een komma af.  º \b$$\p    Plaatst $ voor getal.
+ \b+\p    Positie van het nummerteken        º \b**\p    Spaties voor getal worden *.
+\b^^^^\p  Drukt in exponenti‰le notatie af.  º \b**$\p   Combineert ** en $$.
+
+   \bTekens die worden gebruikt voor de opmaak van een tekenreeksuitdrukking\p
+ \b&\p    Drukt hele tekenreeks af.          º \b\\ \\\p   Drukt n tekens af,
+ \b!\p    Drukt alleen het eerste teken van  º       waarbij n het aantal spaties
+      de tekenreeks af.                  º       tussen de slashes is + 2.
+
+       \bTekens die worden gebruikt bij het letterlijk afdrukken van tekens\p
+ \b_\p    Drukt het volgende teken in de     º       Elk teken dat niet in
+      opmaakreeks letterlijk af.         º       deze tabel staat, wordt
+                                         º       letterlijk afgedrukt.
+.context SOUND
+.context @SOUND
+:nHet statement SOUND
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Produceert geluid via de ingebouwde luidspreker.
+
+\bSOUND frequentie, duur\p
+
+    ş \bfrequentie\p   De frequentie van het geluid in Hertz; een waarde in
+                   het bereik van 37 tot en met 32767.
+    ş \bduur\p         Het aantal kloktikken dat de toon aanhoudt; een waarde
+                   in het bereik van 0 tot en met 65535. E‚n seconde is
+                   18,2 kloktikken.
+
+Voorbeeld:
+    FOR i% = 440 TO 1000 STEP 5
+    SOUND i%, i% / 1000
+    NEXT i%
+
+Zie ook     \i\p\aPLAY\v@PLAY\v\i\p
+.context SPC
+.context @SPC
+:nDe functie SPC
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Slaat een opgegeven aantal spaties over in het statement PRINT of LPRINT.
+
+\bSPC(n%)\p
+
+    ş \bn%\p    Het aantal spaties dat moet worden overgeslagen; een waarde
+            in het bereik van 0 tot en met 32767.
+
+Voorbeeld:
+    PRINT "Tekst1"; SPC(10); "Tekst2"
+
+Zie ook     \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p
+            \i\p\aSPACE$\v@SPACE$\v\i\p           \i\p\aTAB\v@TAB\v\i\p
+.context STICK
+.context @STICK
+:nDe functie STICK
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert de co”rdinaten van de joystick.
+
+\bSTICK(n%)\p
+
+    ş \bn%\p    Geeft de te retourneren co”rdinaten weer:
+
+            n%    Retourneert
+            ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+            0     x-co”rdinaat van joystick A
+            1     y-co”rdinaat van joystick A
+            2     x-co”rdinaat van joystick B
+            3     y-co”rdinaat van joystick B
+
+    ş U moet STICK(0) aanroepen voor STICK(1), STICK (2) of STICK(3).
+      STICK(0) registreert de huidige co”rdinaten.
+
+Voorbeeld:
+    Temp% = STICK(0)
+    PRINT STICK(2), STICK(3)
+
+Zie ook     \i\p\aDe functie STRIG\v@strigf\v\i\p    \i\p\aDe statements STRIG en ON STRIG\v@STRIG\v\i\p
+.context TAB
+.context @TAB
+:nDe functie TAB
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Verplaatst de tekstcursor naar een opgegeven afdrukpositie.
+
+\bTAB(kolom%)\p
+
+    ş \bkolom%\p    Het kolomnummer van de nieuwe afdrukpositie.
+
+Voorbeeld:
+    PRINT TAB(25); "Tekst"
+
+Zie ook     \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p
+            \i\p\aSPC\v@SPC\v\i\p    \i\p\aSPACE$\v@SPACE$\v\i\p
+.context .vupri
+.context @vupri
+:nHet statement VIEW PRINT
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Stelt de grenzen van een tekstvenster in.
+
+\bVIEW PRINT [bovenste_regel% TO onderste_regel%]\p
+
+    ş \bbovenste_regel%\p    Nummer van bovenste regel van het tekstvenster.
+    ş \bonderste_regel%\p    Nummer van onderste regel van het tekstvenster.
+
+    ş Als u de argumenten bovenste_regel% en onderste_regel% weglaat
+      stelt VIEW PRINT het hele scherm in als tekstvenster.
+    ş Het bereik voor bovenste_regel% en onderste_regel% hangt af van de
+      schermmodus.
+
+Voorbeeld:
+    VIEW PRINT 10 TO 15
+    FOR i% = 1 TO 100      'Uitvoer wordt over scherm geschoven.
+        PRINT i%
+    NEXT i%
+
+Zie ook     \i\p\aCLS\v@CLS\v\i\p    \i\p\aLOCATE\v@LOCATE\v\i\p    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p
+            \i\p\aSchermmodi\v@screen.modes\v\i\p
+.context WAIT
+.context @WAIT
+:nHet statement WAIT
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Onderbreekt de programma-uitvoer tot een opgegeven bit-patroon wordt
+ingevoerd vanaf een invoerpoort.
+
+\bWAIT poortnummer%, AND-uitdrukking% [,XOR-uitdrukking%]\p
+
+    ş \bpoortnummer%\p       Het nummer van de invoerpoort.
+    ş \bAND-uitdrukking%\p   Een geheel getal dat door WAIT wordt gecombineerd
+                         met de bit-patroonwaarde en AND-operator. Wanneer
+                         resultaat niet gelijk is aan nul, stopt WAIT met
+                         het bewaken van de poort.
+    ş \bXOR-uitdrukking%\p   Kan worden gebruikt om regel-bits in en uit
+                         te schakelen in het bit-patroon voordat de
+                         AND-bewerking hierop is uitgevoerd.
+
+Voorbeeld:
+    'Leest het poortadres &H20 van de interrupt-controller.
+    'Druk op een toets om verder te gaan.
+    WAIT &H20, 1
+
+Zie ook     \i\p\aINP, OUT\v@INP\v\i\p    \i\p\aBoole'se operatoren\v@AND\v\i\p
+.context WIDTH
+.context @WIDTH
+:nHet statement WIDTH
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Wijst een breedte voor de uitvoerregel toe aan een apparaat (zoals een
+printer) of bestand, of wijzigt het aantal kolommen en rijen in de
+schermweergave.
+
+\bWIDTH [kolommen%] [,rijen%]\p
+\bWIDTH {#bestandsnr% | apparaat$}, kolommen%\p
+\bWIDTH LPRINT kolommen%\p
+
+    ş \bkolommen%\p       De gewenste breedte in kolommen. De breedte voor
+                      de schermweergave moet 40 of 80 kolommen zijn.
+    ş \brijen%\p          De gewenste hoogte van de schermweergave in rijen.
+                      De waarde kan 25, 30, 43, 50 of 60 zijn afhankelijk
+                      van uw weergave-adapter en schermmodus.
+    ş \b#bestandsnr%\p    Het nummer van het geopende bestand of apparaat.
+    ş \bapparaat$\p       De naam van het apparaat:
+                        SCRN:, COM1:, COM2:, LPT1:, LPT2:, LPT3:
+
+Voorbeeld:
+    OPEN "LPT1:" FOR OUTPUT AS #1
+    WIDTH #1, 132
+
+Zie ook     \i\p\aPRINT, LPRINT\v@LPRINT\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p
+.context WINDOW
+.context @WINDOW
+:nHet statement WINDOW
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definieert logische dimensies voor het huidige grafische uitvoervenster.
+Gebruik het statement WINDOW om uw eigen co”rdinatensysteem voor
+uitvoervensters ('viewports') te defini‰ren.
+
+\bWINDOW [[SCREEN] (x1!,y1!)-(x2!,y2!)]\p
+
+    ş \bSCREEN\p       Keert de richting van het normale Cartesische
+                   assenstelsel zodanig om dat de y-waarden van boven naar
+                   beneden toenemen.
+    ş \b(x1!,y1!)\p    Logische co”rdinaten die schermco”rdinaten van de
+                   linkerbovenhoek van het uitvoervenster vormen.
+    ş \b(x2!,y2!)\p    Logische co”rdinaten die schermco”rdinaten van de
+                   rechterbenedenhoek van het uitvoervenster vormen.
+
+    ş WINDOW zonder argumenten deactiveert het logische co”rdinatensysteem.
+    ş Gebruik het statement VIEW om de grootte van het uitvoervenster te
+      wijzigen.
+
+Voorbeeld:
+    'Dit voorbeeld vereist een grafische kleurenadapter.
+    SCREEN 1
+    FOR i% = 1 TO 10 STEP 2
+        WINDOW (-160 / i%, -100 / i%)-(160 / i%, 100 / i%)
+        CIRCLE (0, 0), 10
+    NEXT i%
+
+Zie ook     \i\p\aCLS\v@CLS\v\i\p    \i\p\aPMAP\v@PMAP\v\i\p    \i\p\aPOINT\v@POINT\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p
+.comment *****************************************************************
+.comment * One Keyword screen in this family.
+.comment *****************************************************************
+.context USING
+.context @USING
+:nHet trefwoord USING
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Bepaalt de opmaak voor de statements PRINT USING en LPRINT USING
+en de palet-toewijzingen voor het statement PALETTE USING.
+
+Zie ook     \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p

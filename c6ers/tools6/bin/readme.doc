@@ -1,0 +1,1305 @@
+
+                               README.DOC File
+
+             Release Notes for the Microsoft(R) C Professional
+                      Development System, Version 6.0
+
+                  (C) Copyright Microsoft Corporation, 1990
+                                          
+     This document contains release notes for version 6.0 of the
+     Microsoft C Professional Development System and libraries for
+     MS-DOS(R) and the Microsoft Operating System/2 (MS(R) OS/2). The
+     information in this document and in the Microsoft Advisor (on-line
+     help) is more up to date than that in the manuals.
+  
+     Microsoft improves its languages documentation at the time of
+     reprinting, so some of the information in this file may already be
+     included in your manuals.
+
+
+
+================================< Contents >================================
+
+  
+     This file has ll parts:
+  
+               Part     Note
+               ----     ----
+               1        SETUP Program Notes
+
+               2        Differences between C 5.1 and 6.0
+
+               3        Compiler and C Language Notes
+
+               4        Programmer's WorkBench (PWB) Notes
+
+               5        CodeView and Utilities Notes
+
+               6        Getting Help on Start-Up Error Messages
+
+               7        Notes on "Installing and Using"
+
+               8        Notes on "C Reference"
+
+               9        Notes on "Advanced Programming Techniques"
+
+               10       Notes on Patching the MOUCALLS.DLL Dynamic-
+                        Link Library (OS/2 1.1 Only)
+
+               11       HIMEM, RAMDRIVE, and SMARTDRV
+
+
+
+=======================< Part 1: SETUP Program Notes >=======================
+
+
+     Installation Program Notes
+     --------------------------
+
+        - If you are already running QuickHelp as a keyboard monitor
+          under OS/2, disable it before running SETUP so it can copy
+          new versions of QuickHelp and MSHELP.DLL to your hard disk.
+
+
+
+===============< Part 2: Differences between C 5.1 and 6.0 >=================
+
+
+     For a complete discussion of the differences between Microsoft C
+     versions 5.1 and 6.0, see Appendix B of "Advanced Programming
+     Techniques."
+
+
+     Functions Declared as Float
+     ---------------------------
+
+     In Microsoft C 5.1, functions declared as float always return a
+     result of type double. In C 6.0, functions declared as float
+     return a value of type float for ANSI compliance. This difference
+     will cause compatibility problems when linking C 6.0 objects with
+     C 5.1 objects and libraries that contain functions that return
+     values of type float.
+
+     To remedy the problem, prototype each function in your C 5.1
+     libraries that returns type float as type double in your C 6.0
+     source code. Then compile with C 6.0. For example:
+
+          double func_in_51_lib( float );
+
+
+     The sizeof Function Return Value
+     --------------------------------
+
+     To comply with ANSI specifications, the sizeof function now
+     returns an unsigned int rather than an int. This may cause
+     problems in statements of the following form:
+
+          -sizeof( expression )
+
+     For example, the following line of code, used to position
+     a file pointer one record from the end, no longer works:
+
+          fseek( file, (long)(-sizeof( record )), SEEK_END );
+
+     Because sizeof returns an unsigned int, the record size is
+     zero-extended to a long value rather than sign-extended to the
+     appropriate signed value.
+
+     To avoid this problem, you can cast the record size to a
+     long before you negate it, as follows:
+
+          fseek( file, -((long)sizeof( record )), SEEK_END );
+
+
+     Arithmetic Operations on Signed Short Values
+     --------------------------------------------
+
+     In C 5.1 and Microsoft QuickC(R) 2.0, arithmetic on constants of
+     type signed short is done using a signed long value. C 6.0
+     conforms to the ANSI specification by performing arithmetic
+     operations on signed shorts and yielding a signed short value.
+
+     This causes overflow in some instances of constant arithmetic,
+     most noticeably, multiplication. For example, when interpreted
+     as a signed short, 48*1000 results in a value of -15232 rather
+     than 48000.
+
+
+     Hexadecimal Constants in Strings
+     --------------------------------
+
+     Hexadecimal escape sequences in strings now conform to the ANSI
+     specification by treating every potential hexadecimal digit
+     following the \x as part of the constant. In C 5.1 and QuickC 2.0,
+     hexadecimal escape sequences are limited to three characters.
+
+     Typically, you will notice this when using hexadecimal escape
+     sequences for length-preceded strings. Consider the following
+     example:
+
+          char TypeArray[] =
+              "\x005float\x006double";
+
+     In C 5.1 and QuickC 2.0, TypeArray contains the following bytes:
+
+          <5>float<6>double<0>
+
+     In C 6.0, TypeArray has the following bytes:
+
+          _loatmouble<0>
+
+     This is because in C 6.0, \x005f and \x006d are legal hexadecimal
+     sequences that represent the underscore and 'm' characters,
+     respectively.
+
+     There are two ways to avoid this problem. The simplest is to
+     use string concatenation, as follows:
+
+          char TypeArray[] =
+              "\x005"  "float"  "\x006"  "double";
+
+     According to the ANSI standard, adjacent string literals are
+     concatenated after escape sequences have been calculated.
+
+     A second solution is to use octal, which can never be more than
+     three digits. The use of octal requires a small calculation and
+     also requires that you pad out the digits with zeros on the left
+     if necessary. However, even older, non-ANSI compilers will support
+     this solution if portability is a concern.
+
+
+     The offsetof Macro
+     ------------------
+
+     The offsetof macro (defined in STDDEF.H) takes a struct type
+     name and member name, and returns a type size_t value giving the
+     offset in bytes of the member from the beginning of the struct.
+
+     The expression
+
+          offsetof( type, member_name )
+
+     yields the byte offset of the member from the beginning of the
+     struct.
+
+     Loop Optimization (/Ol)
+     -----------------------
+
+     The loop optimization option (/Ol) in C 6.0 has a different effect
+     than in C 5.1. To get the equivalent of the C 5.1 /Ol option
+     in C 6.0, use /Ole (loop code optimization and global register
+     optimization). See Chapter 1 of "Advanced Programming Techniques"
+     and on-line help for further details.
+
+
+
+=================< Part 3: Compiler and C Language Notes >===================
+
+     Compiler notes:
+
+        - The CL and LINK environment variables work just as in
+          previous versions of Microsoft C. The contents of the
+          environment variable are interpreted as a series of command-
+          line options for the associated utility. Note, however, that
+          the use of these environment variables can cause
+          unpredictable build behavior under the Programmer's WorkBench
+          (PWB).
+
+        - The CL command line can be used to specify the name of
+          an OS/2 or Microsoft Windows(TM) module-definition file to be
+          used by the linker. For example,
+
+               CL CLOCK.C CLOCK.DEF
+
+          tells CL to pass the name of the module-definition file
+          'CLOCK.DEF' to the linker after compiling.
+
+        - The /Gm compiler option, as described in the "C Reference"
+          and in on-line help, is no longer supported by C 6.0.
+          The /Gm option placed near const items in the CONST segment.
+
+        - When using the /qc and /Zr options together, specify them
+          in the following order on the command line:
+
+               /qc /Zr
+
+        - Using the setjmp and longjmp functions with global
+          optimization options /Ox, /Oe, /Ol, or /Og can cause
+          incorrect code to be generated. To ensure that the compiler
+          generates correct code, either compile without these
+          options, or use the optimize pragma to turn off /Oe, /Ol,
+          and /Og in functions containing setjmp and longjmp, as
+          follows:
+
+               #pragma optimize( "elg",off )
+
+                    . . . {function containing setjmp or longjmp}
+
+               #pragma optimize( "",on )
+
+
+     Features added since the documentation was printed:
+
+        - /BATCH Option. To disable prompting for library names or
+          other information and permit the use of CL in a batch or
+          command file, specify the /BATCH option.
+
+        - To get the fastest possible code, use the following
+          optimization settings:
+
+               /Oxaz /Grs
+
+          The /Oz option causes the compiler to perform the most
+          aggressive type of loop optimization.
+
+          To get the smallest possible code, use the following
+          settings:
+
+               /Osleazr
+
+          For small code with a greater margin of safety, use
+
+               /Osler
+
+        - The /Gh option allows building with Microsoft Windows 2.x
+          libraries. This option is not needed for versions of Windows
+          greater than 2.x. In addition, this feature exists only in C
+          6.0, and will be phased out in future versions of the
+          compiler.
+
+
+     C Language notes:
+
+        - The return values for _setfont as described in on-line help
+          are incorrect. The _setfont function returns the font index
+          number if successful, or a negative number if unsuccessful.
+
+        - The return values for the fstat function are described
+          incompletely in on-line help. Under DOS or versions of
+          OS/2 prior to 1.2, fstat returns the same value (the
+          modification time) in the st_mtime, st_atime, and st_ctime
+          fields, because that is the only value maintained by the
+          system.
+
+          However, under OS/2 1.2's High Performance File System,
+          fstat returns the expected values in st_mtime (time the
+          file was last written), st_atime (time the file was last
+          accessed for reading or writing), and st_ctime (time the
+          file was created).
+
+        - You cannot use a tag or typedef to add the members of an
+          anonymous (nameless) struct or union to another anonymous
+          struct or union. Instead, you must give the full definition
+          of the struct to be nested. Assume you have the following
+          anonymous struct:
+
+               struct oneTag
+               {
+                   int aMem;
+                   int bMem;
+               };
+
+          The following code fragment shows the incorrect way to
+          include the members of this struct in another anonymous
+          struct:
+
+               struct anotherTag
+               {
+                   struct oneTag;       // INCORRECT
+                   int cMem;
+               };
+
+          The correct method is to specify the nested struct fully:
+
+               struct anotherTag
+               {
+                   struct              // CORRECT
+                   {
+                       int aMem;
+                       int bMem;
+                   };
+                   cMem;
+               };
+
+        - The signal function has limitations when used to build
+          multithreaded applications or dynamic-link libraries.
+          Specifically, only signal(SIGFPE,...) is supported in a
+          multithreaded environment. To trap error or interrupt
+          conditions in this case, use direct calls to
+          DOSSETSIGHANDLER or DOSSETVEC.
+
+
+
+================< Part 4: Programmer's WorkBench (PWB) Notes >==============
+
+
+     PWB Build Procedure
+     -------------------
+
+     When developing programs with PWB, you usually follow these basic
+     steps:
+
+        - Edit your source file or files.
+        - Use the Build Options command on the Options menu to set
+          initial build options.
+        - Use the Compiler Options and Link Options commands to adjust
+          specific parameters.
+        - If you are building a multimodule program, use Set Program
+          List on the Make menu to specify the files that will be
+          included in the program.
+        - Choose Build or Rebuild All from the Make menu to
+          build your program.
+
+     For more information, choose "Building and Running Programs" from
+     the Programmer's WorkBench contents screen in on-line help.
+
+
+     Building Presentation Manager Applications in PWB
+     -------------------------------------------------
+
+     The Presentation Manager build options in PWB assume that
+     functions in your program use the _loadds attribute in the
+     functions that require it and that exported functions are
+     identified with the _export keyword.
+
+     If your program does not identify exported and/or _loadds
+     functions in the function header, you need to do two things to
+     build the program successfully under PWB. First, select the
+     Windows Entry/Exit Codes check box in the C Compiler Options
+     dialog box. This is the equivalent of specifying /Gw on the
+     command line.
+
+     Second, make sure the exported function names in your .DEF file
+     are all in uppercase so that they can be found correctly at link
+     time. You can also build the program successfully by disabling
+     the No Ignore Case option in the Link Options dialog box, but
+     this is not recommended.
+
+     In particular, you will have the problems described here if you
+     use PWB to build the example programs in Charles Petzold's book
+     "Programming the OS/2 Presentation Manager." Programs built using
+     the makefiles provided in the book will run correctly, but
+     programs built from within PWB must follow the instructions
+     specified above.
+
+
+     Loading PWB Quickly
+     -------------------
+
+     PWB consists of the basic editor and four editor extensions that
+     contain the functionality for building, linking, on-line help,
+     and the Source Browser. These editor extensions are loaded
+     automatically each time you invoke PWB.
+
+     If you want PWB to load more quickly, you can rename some or all
+     of the PWB extensions and then load them only when they are
+     needed.
+
+     For example, you can change the names of all the extension files
+     from *.MXT (DOS) or *.PXT to *.EXT. Then include the following
+     section in your TOOLS.INI file:
+
+          [pwb-ext]
+          load:$PATH:pwbhelp.ext      ;On-line Help
+          load:$PATH:pwbc.ext         ;C compiler
+          load:$PATH:pwbrowse.ext     ;Source Browser
+          load:$PATH:pwbutils.ext     ;LINK, NMAKE, and CodeView
+
+     To load all the extensions at once, execute the following in PWB:
+
+          arg "ext" initialize
+
+     With the default key assignments, this is
+
+          ALT+A "ext" SHIFT+F8
+
+     To load a single extension--the help extension, for example--you
+     can use the following:
+
+          arg "load:$PATH:pwbhelp.ext" assign
+
+     With the default key assignment, this translates to
+
+          ALT+A "load:$PATH:pwbhelp.ext" ALT+=
+
+     If you decide to rename the extensions and thus disable the
+     extension autoload feature of PWB, you still have the option
+     of starting up PWB with all the extensions loaded.
+
+     To do this, define a macro in the PWB section of TOOLS.INI
+     and assign it to a key of your choice. The following TOOLS.INI
+     entry creates a macro called 'extload' and assigns it to the F11
+     key:
+
+          extload:=arg "ext" initialize
+          extload:F11
+
+     Then when you start PWB, you can use the /e option to execute
+     'extload' on start-up:
+
+          PWB /e extload
+
+
+     PWB Notes
+     ---------
+
+        - In OS/2 1.1, starting up PWB on a dual-monitor system will
+          result in PWB appearing on the monitor that was active at
+          the time the system was booted.
+
+          For example, suppose you have both a color and a monochrome
+          monitor, and the color monitor is the active monitor when you
+          boot your machine. If you switch to the monochrome monitor
+          and then invoke PWB, PWB will appear on the color monitor.
+
+          This problem does not exist under OS/2 1.2.
+
+        - To avoid conflict with special characters used by the
+          PWB MAKE facility, file names in a PWB program list or in
+          customized build options can only have extensions that
+          contain the following characters:
+
+               0Ä9
+               AÄZ
+               aÄz
+
+          No other characters are allowed in a file-name extension.
+
+        - The Command Line option on the Run menu in PWB cannot contain
+          characters that have special meaning for NMAKE. In particular,
+          you should not use the caret (^) or the dollar sign ($)
+          in command lines that are passed to your application by
+          PWB.
+
+        - The CL environment variable is fully supported in version
+          6.0 of the C compiler. However, when building programs
+          from within PWB, you should disable the CL environment
+          variable to avoid interaction with PWB build settings.
+
+        - You can launch the editor of your choice from within the
+          PWB integrated environment. For more information, consult
+          the on-line help for the Customize Menu option on the Run
+          menu.
+
+        - The on-line help for the Customize Menu option on the Run
+          Menu is partially incorrect. It says that when you are
+          adding a command to the Run menu you can specify %S in the
+          Argument box to get the name of the current file. However,
+          to specify the current file as an argument, you must use
+          %s (lower-case s).
+
+        - PWB handles the SHIFT+ALT and SHIFT+CTRL key assignments
+          differently depending on whether you are running in DOS or
+          OS/2. In DOS, a key sequence beginning with SHIFT+ALT or
+          SHIFT+CTRL only recognizes the unshifted value of the third
+          key:
+
+               SHIFT+CTRL+<unshifted_character>
+               SHIFT+ALT+<unshifted_character>
+
+          In OS/2, however, this key combination requires the shifted
+          version of the key to work correctly:
+
+               SHIFT+CTRL+<shifted_character>
+               SHIFT+ALT+<shifted_character>
+
+        - For information on how to keep system include files (include
+          file names surrounded by angle brackets) out of your list of
+          build dependencies, see on-line help for a description of
+          the Build switch's system/no system option.
+
+        - You can add your own build information to a PWB makefile by
+          putting the following line at the end of the file:
+
+               # << User_supplied_information >>
+
+          You can then add your own NMAKE description file commands
+          without disturbing the information created by PWB's build
+          process.
+
+          For more information, consult the on-line help for the Make
+          menu's Set Program List command.
+
+
+     OS/2 1.2 Long File-Name Support
+     -------------------------------
+
+     OS/2 1.2 long file names are supported in all PWB file-handling
+     functions, with a couple of exceptions. This section defines
+     long file names, summarizes restrictions, and enumerates special
+     cases. See Part 5 for additional information on support of long
+     file names.
+
+
+     Long File Names
+
+     To PWB, a "long file name" is any file name containing the
+     characters
+
+          +=[];^,
+
+     Also included is any file name containing a space, or any file
+     name whose base name is longer than eight characters. Long file
+     names can contain more than one period (.) and can have more
+     than three letters following the final period.
+
+     However, files that are intended to be used as part of the build
+     process have more severe naming restrictions. To be used as part
+     of a build, the file name cannot contain spaces or any of the
+     special characters listed above.
+
+     In addition, existing rules for specifying an extension apply:
+     the extension consists of a period (.) followed by one to three
+     alphanumeric characters. To avoid conflict with NMAKE, file-name
+     extensions should not contain any dollar signs ($).
+
+
+     Quoted File Names
+
+     Any file name may be quoted anywhere. Quoting involves ONLY the
+     addition of the double-quote character (") at the beginning and
+     end of the complete file name, including the path. There is no
+     escape character, as quotes themselves are not valid file-name
+     characters. Some situations may require quoting of long file
+     names containing characters that were previously illegal.
+
+
+     File-Name Length
+
+     Under OS/2 1.2, each portion of a file name is restricted in
+     length to 256 characters. In PWB and other utilities, the ENTIRE
+     file-name length is restricted to 200 characters.
+
+
+     Extensions
+
+     For build purposes, file-name extensions are recognized as such
+     ONLY if they are three characters or fewer in length. Thus
+     'WAIT.C' is recognized as having an extension of '.C', while
+     'WAIT.C PROGRAM' is treated as if it has no extension.
+
+
+     Case Preservation
+
+     OS/2 1.2 is case insensitive and case preserving. Thus, 'File' and
+     'FILE' both refer to the same file, but OS/2 will not perform any
+     case changes on the file names created or copied. PWB operates
+     similarly: case in file names is preserved as typed by the user,
+     but matches are made without regard to case.
+
+
+     Exceptions
+
+     Help files may not have long file names. The Helpfiles switch,
+     therefore, does not support long file names.
+
+
+     What to Quote
+
+     You must explicitly quote long file names in the following
+     situations:
+
+        - File names inserted in a "%s" format field that could be long
+          file names. For example, if long file names could be used,
+          the Readonly switch, under OS/2, could be set to:
+
+               readonly: attrib -r "%s"
+
+        - Commands to be executed that happen to be long file names.
+          For example, for a program named "Change Attribute", the
+          readonly command above might instead be:
+
+               readonly: "Change Attribute" -r "%s"
+
+
+     Disabled Keyboard in OS/2 1.1 Release 88300
+     -------------------------------------------
+
+     If you are using release 88300 of OS/2 1.1 and running PWB in a
+     window, your keyboard may become disabled after choosing Run OS/2
+     Command or Execute on the Run menu. If you have this release,
+     contact your OS/2 distributor for upgrade information.
+
+     This is not a problem with versions of OS/2 other than 88300,
+     nor does it occur when running PWB in a full-screen group.
+
+
+
+=================< Part 5: CodeView and Utilities Notes >===================
+
+
+     CodeView notes:
+
+        - The Microsoft CodeView(R) debugger now has a TOOLS.INI switch
+          that controls whether breakpoints, window configurations, and
+          other information is saved and restored from one debugging
+          session to the next. This switch, the Statefileread switch,
+          is set to yes if you want this information to be preserved,
+          and no if you do not.
+
+          For further information, see "Configuring CodeView" in the
+          CodeView on-line help. Also, see the description of the /TSF
+          start-up option below.
+
+        - Do not attempt to debug programs with code in include files
+          if those files are included prior to the main function.
+
+        - When using CodeView to debug programs containing _fastcall
+          functions, you cannot call the _fastcall functions from
+          within CodeView.
+
+        - Pressing CTRL+BREAK to end a debugging session while
+          recording debug history in OS/2 can result in a corruption
+          of the files used to record debug history. Turn off debug
+          history before ending a debugging session with CTRL+BREAK.
+
+          If you do press CTRL+BREAK while debug history is on, do not
+          try to reuse the files containing the debug history
+          information (.CVH or .CVI files).
+
+        - When debugging a graphics program or using two-monitor
+          debugging, make sure you have the most current version (7.0)
+          of the Microsoft Mouse driver installed. If you do not have
+          the most current version, or are using a mouse from another
+          manufacturer, you should use the /M option (disable mouse
+          support) in the situations referred to above.
+
+
+     CodeView features added since the documentation was printed:
+
+          Start-up switches:
+
+               /K     Disable keyboard monitor installation (OS/2) or
+                      disable hooking of the keyboard interrupt (DOS).
+                      See on-line help for further details.
+
+               /TSF   Disable or enable the reading of the CodeView
+                      state file, depending on the setting of the
+                      Statefileread switch in TOOLS.INI. The CodeView
+                      state file restores breakpoints, windows,
+                      and other parameters from the last debugging
+                      session. See on-line help for further details.
+
+
+     Utilities notes:
+
+        - The text for the LINK error message L1116 should read as
+          follows: "/EXEPACK only valid for OS/2 and real mode
+          applications." In other words, you cannot use the
+          /EXEPACK option when linking Windows applications.
+
+        - If you experience difficulties using NMAKE with memory-
+          intensive makefiles under DOS, you can use the alternate
+          program NMK.COM. For further information about NMK, type
+          NMK /HELP at the operating system prompt.
+
+        - LINK, LIB, NMAKE, and BIND have two restrictions
+          with regard to support of OS/2 1.2 long file names:
+
+            1. Quoted file names can be used only once per argument.
+               You can get around this limitation by using a
+               response file.
+
+            2. If quotes are necessary, the full file name (including
+               the path) must be enclosed in quotes.
+
+        - You can define NMAKE inference rules that allow for the
+          placement of source files in one directory and object files
+          in another directory. The following example makefile shows
+          how to do this:
+
+               # Define 'source' as the directory for .C files and
+               # 'obj' for .OBJ files. The caret (^) is required prior
+               # to the last backslash (\) to tell NMAKE to use the
+               # character literally, not as the line-continuation
+               # character.
+
+               source = d:\src^\
+               obj    = d:\obj^\
+
+               # Next, set up an inference rule to compile .C files in
+               # the d:\src directory into a .OBJ file and put the
+               # .OBJ in the d:\obj directory. Use the compiler option
+               # /Fo to give the object the name of the current target
+               # ($@).
+
+               {$(source)}.c{$(obj)}.obj :
+                   $(CC) -c /Fo$@ $<
+
+               $(obj)test.obj : $(src)test.c
+
+
+     LINK feature added since the documentation was printed:
+
+        - The /NOG[ROUPASSOCIATION] option
+
+          The /NOG option causes the linker to ignore group
+          associations when assigning addresses to data and code
+          items. It is provided primarily for compatibility with
+          previous versions of the linker (versions 2.02 and earlier)
+          and early versions of Microsoft language compilers.
+
+          NOTE: This option should be used only with assembly-language
+                programs.
+
+
+     Blank Screen While Debugging under OS/2 1.2
+     -------------------------------------------
+
+     If your screen group goes blank after returning from debugging,
+     check to see if the following conditions are true:
+
+        - You are running CodeView under OS/2 1.2
+        - You are using the two-monitor option (/2)
+
+     If all of the above conditions are true, take the following
+     steps to determine if you need to upgrade your version of
+     OS/2:
+
+       1. Type 'syslevel' at an OS/2 command prompt. This identifies
+          the version of OS/2 you have installed.
+
+          NOTE: Identifying the version alone does not indicate
+                a problem. The conditions above must be present
+                before an upgrade is required.
+
+       2. If the syslevel command returns the value 'xr04043' and
+          you have experienced the difficulties described above,
+          contact your OS/2 distributor for an upgrade.
+
+
+     CodeView Extended Memory Option with Video Seven VGA 16
+     -------------------------------------------------------
+
+     To use the CodeView extended memory option (/X) on a Northgate(TM)
+     computer with the Video Seven Vega(TM) 16-bit VGA video adapter,
+     you must run the Northgate program NORMAL.COM before starting
+     CodeView.
+
+     Northgate is a registered trademark of Northgate Computer
+     Systems, a division of ABL Corporation. Vega is a trademark of
+     Video Seven, Inc.
+
+
+
+============< Part 6: Getting Help on Start-Up Error Messages >==============
+
+
+     Sometimes a program in the C 6.0 Professional Development System
+     may encounter an error condition on start-up that prevents the
+     program from running.
+
+     To find out more about the resulting error message, you can use
+     the on-line help system. Access on-line help by using the
+     stand-alone utility QuickHelp, or by using the Help menu in the
+     Programmer's WorkBench (PWB).
+
+     To find out about an error message using QuickHelp, at the
+     operating system prompt type
+
+          QH cxxxx
+
+     where <c> is the error's alphabetic prefix and <xxxx> is the
+     four-digit error number.
+
+     To find out more about how to view errors from within PWB, choose
+     "Errors Help" from the Microsoft Advisor Contents screen in PWB.
+     (The Microsoft Advisor Contents screen appears when you choose
+     "Contents" from the Help menu in PWB.)
+
+
+
+================< Part 7: Notes on "Installing and Using" >=================
+
+
+     Getting Help on Files Listed in the Packing List
+     ------------------------------------------------
+
+     You can use the QuickHelp program to get help on any of the
+     executable files listed in the file PACKING.LST. Simply type
+     QH followed by the name of executable file. For example, to
+     view the on-line help file for NMAKE, type
+
+          QH NMAKE.EXE
+
+     at the operating-system prompt.
+
+
+     Using a Large Number of Help Files
+     ----------------------------------
+
+     If the help files for OS/2 and several different languages are
+     loaded onto your system, you may receive a message that you have
+     too many help files open.
+
+     You can get around this problem by concatenating some of the help
+     files. Most applications that display help allow up to 19 open
+     physical help files. However, the number of logical (that is,
+     concatenated) help files allowed is usually much larger.
+
+     To concatenate help files, use the DOS or OS/2 COPY command with
+     the /B (binary) option. For example, to concatenate LINK.HLP and
+     UTILS.HLP into a single help file called COMBO.HLP, use the
+     following command:
+
+          COPY LINK.HLP /B + UTILS.HLP /B COMBO.HLP /B
+
+     The order in which you concatenate the files determines the order
+     in which the files are searched for help information.
+
+     As a final step, be sure to delete the original help files, or
+     move them to a directory that is not listed in your HELPFILES
+     environment variable.
+
+
+     Increasing the Maximum Number of Open Files
+     -------------------------------------------
+
+     C 6.0 allows you to increase the maximum number of files that may
+     be open for I/O (the default number is 20). To use this feature,
+     you must be running either OS/2 or DOS version 3.3 or later. Use
+     the procedures described in the remainder of this section to
+     increase the maximum number of open files.
+
+
+     Increasing File Handles
+
+     To increase the number of file handles, edit the start-up source
+     file CRT0DAT.ASM, which is provided in this release. Change the
+     line
+
+          _NFILE_ = 20
+
+     so that _NFILE_ is set to the desired maximum. For example, to
+     increase the maximum number of available file handles to 40,
+     change the line as shown here:
+
+          _NFILE_ = 40
+
+     NOTE: Increasing the number of file handles allows you to use
+           low-level I/O functions, such as open and read, with more
+           files. However, it does not affect the number of
+           stream-level I/O files (that is, the number of FILE *
+           streams).
+
+
+     Increasing Streams
+
+     To increase the number of streams, edit the source file _FILE.C.
+     Change the line
+
+          #define _NFILE_ 20
+
+     to set _NFILE_ to the desired maximum. For example, to allow a
+     maximum of 40 streams, change the line as shown here:
+
+          #define _NFILE_ 40
+
+     Increasing the number of streams allows you to use stream-level
+     I/O functions, such as fopen and fread, with more files.
+
+     NOTE: The number of low-level file handles must be greater than
+           or equal to the number of stream-level files. Thus, if you
+           increase the value of _NFILE_ in the module _FILE.C, you
+           must also increase the value of _NFILE_ in the module
+           CRT0DAT.ASM.
+
+
+     Increasing the System Limit
+
+     To use more than 20 files at a time, you must increase the file
+     limit imposed on your process by the operating system.
+
+     To increase the system-wide limit, increase the number of files
+     available on your system as a whole by editing your system
+     configuration file (CONFIG.SYS). For example, to allow 100 open
+     files at a time on your system, put this statement in the
+     configuration file:
+
+          FILES=120
+
+     To increase the process-by-process limit, you must also increase
+     the number of files the operating system makes available to your
+     particular process. To do this, edit CRT0DAT.ASM and enable the
+     commented-out code that is preceded by the appropriate
+     description.
+
+     In the DOS version of CRT0DAT.ASM, for example, the commented-out
+     code appears as shown here:
+
+          ;       mov     ah,67h
+          ;       mov     bx,_NFILE_
+          ;       callos
+
+     In the OS/2 version of CRT0DAT.ASM, the code appears as a
+     call to DOSSETMAXFH. Under OS/2, you must also enable the
+     'extrn DOSSETMAXFH:far' declaration that appears near the
+     beginning of the file.
+
+     In either case, remove the semicolon (;) comment characters.
+
+     NOTE: Under OS/2, you must take into account the fact that each
+           process has the potential to "own" open files. When
+           planning how many open files to allow on a system-wide
+           basis, take this into account.
+
+
+     Using the Modified Startup Files
+
+     After you modify CRT0DAT.ASM and/or _FILE.C, assemble or compile
+     the file(s). The start-up MAKEFILE contains sample command lines
+     to perform these jobs. Note that the object files will differ for
+     OS/2 and DOS.
+
+     To use the new object files, either explicitly link your program
+     with the new CRT0DAT.OBJ and _FILE.OBJ file(s), or replace the
+     CRT0DAT.OBJ and _FILE.OBJ object(s) in the appropriate model of
+     the C run-time library.
+
+
+     Multithread (MT) and Dynamic-Link Library (DLL) Libraries
+
+     By default, the C 6.0 MT and DLL libraries support 40 file
+     handles and streams instead of 20, which is the single thread
+     library default.
+
+     To increase the number of file handles (low-level I/O), simply
+     issue a DOSSETMAXFH call from within your program. This increases
+     the open file limit for the calling process.
+
+     To increase the allowable number of open streams, first make sure
+     that the number of file handles is greater than or equal to the
+     number of streams you want. Then rebuild module _FILE.C with the
+     desired _NFILE setting (as described under the single thread
+     description). Since the MT and DLL libraries are large model, be
+     sure to compile _FILE.C with the /AL switch.
+
+
+     43-Line Mode with DOS 4.01 ANSI.SYS
+     -----------------------------------
+
+     You may experience problems trying to switch CodeView or the
+     Programmer's WorkBench (PWB) to 43-line mode if you are using DOS
+     4.01 and ANSI.SYS.
+
+     To use Codeview or PWB in 43-line mode in this situation,
+     switch to 43-line mode using the MODE command (MODE CO80,43)
+     before you invoke the program.
+
+     This problem also affects the graphics functions _settextrows
+     and _setvideomoderows. Under DOS 4.01 with ANSI.SYS installed,
+     using these functions to set 43-line mode may cause unexpected
+     behavior.
+
+     At the moment, the only known solution is to remove ANSI.SYS
+     from your CONFIG.SYS file and reboot your machine.
+
+
+
+====================< Part 8: Notes on "C Reference" >======================
+
+
+     Page    Note
+     ----    ----
+
+     5       CL (Compiler) /Bx Options
+             -------------------------
+             The complete syntax of the /B1, /B2, and /B3 options is as
+             follows:
+
+                  /B1 [drive:path]C1L
+                  /B2 [drive:path]C2L
+                  /B3 [drive:path]C3L
+
+             See on-line help for further information.
+
+     7       CL (Compiler) /ML Option
+             ------------------------
+             The third sentence should read: "The /ML option is
+             functionally equivalent to /ALw /FPa /G2 /D_MT; however, you
+             must specify /ML rather than the expanded equivalent."
+
+     8       CL (Compiler) /MT Option
+             ------------------------
+             The second sentence should read: "The /MT option is
+             functionally equivalent to /ALw /FPi /G2 /D_MT; however, you
+             must specify /MT rather than the expanded equivalent."
+
+     34      NAME Statement
+             --------------
+             The syntax for the NAME statement in a LINK module-definition
+             file is as follows:
+
+                  NAME [appname] [apptype] [NEWFILES]
+
+             The optional attribute NEWFILES specifies that the
+             application supports long file names and extended file
+             attributes under OS/2 1.2.
+
+             The linker also supports LONGNAMES as a synonym for NEWFILES,
+             although LONGNAMES is now considered obsolete.
+
+     347     The _strtold Function
+             ---------------------
+             The _strtold function is not an ANSI function.
+
+
+
+==========< Part 9: Notes on "Advanced Programming Techniques" >============
+
+
+     C 6.0 and the ANSI C Specification
+     ----------------------------------
+
+     The on-line help for the __STDC__ macro implies that C 6.0 is
+     fully ANSI C compatible. While C 6.0 has many ANSI-related
+     enhancements, it is not strictly accurate to say that the
+     compiler is fully ANSI compatible.
+
+     For complete information on Microsoft C 6.0 ANSI compatibility,
+     see Appendix B of "Advanced Programming Techniques."
+
+
+     "Advanced Programming Techniques" Notes
+     ---------------------------------------
+
+     Page    Note
+     ----    ----
+
+     36      The Tiny Memory Model
+             ---------------------
+             In the third paragraph, the reference to CRTCOM.OBJ should be
+             to CRTCOM.LIB.
+
+     38      Specifying a Memory Model
+             -------------------------
+             At the bottom of the page, the reference to CRTCOM.OBJ should
+             be to CRTCOM.LIB.
+
+     99      Preparing for Incremental Linking: The /INCREMENTAL Option
+             ----------------------------------------------------------
+             The first sentence of the second paragraph in this section
+             should read: "The /INCREMENTAL (/INC) option prepares a .EXE
+             file for incremental linking."
+
+     124     PWB's extmake Syntax
+             --------------------
+             The Programmer's WorkBench extmake switch referred to in this
+             section is now called the build switch. However, the syntax
+             for getting information about fully qualified file names is
+             still valid.
+
+             For further information, see the help topic "build."
+
+     348     Calling the OS/2 API
+             --------------------
+             The second paragraph on page 349 should read: "Most OS/2 API
+             functions return 0 if the operation is successful. They
+             return an error code if the operation fails. The exception to
+             this is Presentation Manager APIs, which return 0 if the
+             operation fails. If you are programming under the
+             Presentation Manager, use the WinGetLastError function to
+             determine the nature of an API function call error."
+
+     352     Family API Functions
+             --------------------
+             The functions VioGetBuf and VioShowBuf should not be
+             included in the list of OS/2 1.1 Family API functions.
+
+     430     The _fastcall Attribute (/Gr Option)
+             ------------------------------------
+             The list of argument types and their potential register
+             assignments should note that far pointers are passed on
+             the stack.
+
+     456     Default Date and Time
+             ---------------------
+             References in this section to the predefined date and
+             time macros should be to __DATE__ and __TIME__, rather
+             than _DATE_ and _TIME_.
+
+
+
+=============< Part 10: Patching MOUCALLS.DLL (OS/2 1.1 Only) >==============
+
+
+     The dynamic-link library, MOUCALLS.DLL, handles OS/2 API
+     functions that process mouse messages. Some versions of
+     MOUCALLS.DLL shipped with OS/2 1.1 cause a general protection
+     fault when running such applications as the Programmer's
+     WorkBench (PWB). This section describes how to patch MOUCALLS.DLL
+     to correct the error.
+
+     Identifying the Problem
+     -----------------------
+     When a general protection fault occurs under OS/2, the system
+     displays the location of the fault. If the fault occurs with CS
+     equal to 20F, follow the procedure outlined in the next section
+     to patch MOUCALLS.DLL.
+
+     Patching MOUCALLS.DLL
+     ---------------------
+     Because OS/2 1.1 with the Presentation Manager uses MOUCALLS.DLL,
+     you cannot directly alter the file. Instead you must modify a copy
+     of the file as shown:
+
+       1. Create a directory on your boot disk called C:\NEWMOU.
+
+       2. Copy your C:\CONFIG.SYS file to C:\CONFIG.MOU.
+
+       3. Edit your C:\CONFIG.SYS file. There is a line in it that
+          begins with LIBPATH. Add the directory C:\NEWMOU as the first
+          directory in the line. So, if the LIBPATH line originally
+          looks like
+
+               LIBPATH=C:\OS2;C:\LANMAN
+
+          change it to
+
+               LIBPATH=C:\NEWMOU;C:\OS2;C:\LANMAN
+
+       4. Locate the file MOUCALLS.DLL on your hard drive. It is
+          probably in the OS2 directory of your boot drive. If not, it
+          is certainly in one of the directories listed in the LIBPATH
+          line you just edited.
+
+          Copy MOUCALLS.DLL to the C:\NEWMOU directory.
+
+       5. Reboot your computer.
+
+       6. After the system has come back up, change directories to the
+          C:\OS2 directory, or wherever the original MOUCALLS.DLL
+          resides.
+
+       7. Run the following command:
+
+               PATCH MOUCALLS.DLL
+
+          The PATCH program prompts you for the offset location to be
+          patched. Type the following offset:
+
+               1432
+
+          Then change the hexadecimal value of the byte at that
+          location from 1A to 1C.
+
+          Note that there should be a program called PATCH.EXE on your
+          path. It will make the appropriate change to the
+          MOUCALLS.DLL file.
+
+       8. Copy C:\CONFIG.MOU back over C:\CONFIG.SYS and delete
+          C:\CONFIG.MOU.
+
+       9. Reboot your computer.
+
+      10. After the system has come back up, delete the files in
+          C:\NEWMOU and remove the directory.
+
+
+
+================< Part 11: HIMEM, RAMDRIVE, and SMARTDRV >==================
+
+
+     The DOS device driver HIMEM.SYS is provided with the C 6.0
+     Professional Development System for compatibility with CodeView
+     3.0. In addition, new versions of two related drivers,
+     SMARTDRV.SYS and RAMDRIVE.SYS, are provided to go with the updated
+     version of HIMEM.
+
+     NOTE: This version of HIMEM is not compatible with versions of
+           Microsoft Windows earlier than version 3.0.
+
+
+     HIMEM
+     -----
+
+     Description
+
+     HIMEM.SYS is an extended memory manager provided so that CodeView
+     can take advantage of all your computer's available memory when
+     running under DOS on an 80286 or 80386 machine with expanded
+     memory.
+
+
+     Usage
+
+     DEVICE=[d:][path]HIMEM.SYS [options]
+
+     The most common way to use HIMEM.SYS is to include the following
+     line in your CONFIG.SYS file:
+
+          DEVICE=HIMEM.SYS
+
+     The following options are also available:
+
+          /HMAMIN=h
+          /NUMHANDLES=n
+
+     The /HMAMIN option allows controlled access to high memory by
+     specifying (in <h>) the minimum amount of memory a terminate-and-
+     stay-resident (TSR) program can use in high memory.
+
+     The /NUMHANDLES option sets (in <n>) the maximum number of
+     extended memory block handles that can be used at any given time.
+
+
+     RAMDRIVE
+     --------
+
+     Description
+
+     RAMDRIVE.SYS is an installable device driver that lets you use a
+     portion of your computer's memory as if it were a hard disk.
+
+
+     Usage
+
+     DEVICE=[d:][path]RAMDRIVE.SYS [disksize][sectorsize][entries][memtype]
+
+     <disksize> specifies the disk size in kilobytes (K). The default
+     is 64K, and the minimum is 16K.
+
+     <sectorsize> specifies the sector size in bytes. The default size
+     is 512 bytes. The following values are allowed: 128, 256, 512, and
+     1024.
+
+     <entries> specifies the number of entries allowed in the root
+     directory. The default value is 64; the minimum, 4; the maximum,
+     1024.
+
+     <memtype> specifies what kind of memory you want RAMDRIVE to use.
+     The following options are available:
+
+        - The /e option lets you use any installed memory above one
+          megabyte as a RAM disk. This option cannot be used with the
+          /a option.
+
+        - The /a option lets you use memory on an expanded memory
+          board that is compatible with the Lotus/Intel/Microsoft
+          Expanded Memory specification. This option cannot be used
+          with the /e option.
+
+        - If you omit the <memtype> option altogether, RAMDRIVE
+          attempts to set up a virtual drive in conventional memory.
+
+
+     SMARTDRV
+     --------
+
+     Description
+
+     SMARTDRV.SYS is a disk-caching program for computers that have a
+     hard disk and extended or expanded memory. For SMARTDRV to operate
+     correctly, the current version of HIMEM must be installed.
+
+
+     Usage
+
+     DEVICE=[d:][path]SMARTDRV.SYS [size][/a]
+
+     <size> is the amount of memory you want SMARTDRV to have. The
+     default is 256K of extended memory or all of expanded memory.
+
+     The /a switch is used when you have expanded memory or an
+     expanded memory emulator. If you omit this switch, SMARTDRV uses
+     extended memory.

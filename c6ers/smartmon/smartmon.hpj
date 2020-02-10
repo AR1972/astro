@@ -1,0 +1,10 @@
+[options]
+;CONTENTS=hlpidx_idx_sm
+TITLE=SmartDrv Monitor
+compress=TRUE
+
+[files]
+smartmon.rtf
+
+[map]
+ocal 0x0001

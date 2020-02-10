@@ -1,0 +1,13 @@
+hdisk.lib
+y
++findpart.obj&
++hd_parms.obj&
++partboot.obj&
++getsec.obj&
++fmtboot.obj&
++hd_isfmt.obj&
++isdosprt.obj&
++is_dos4.obj&
++makepart.obj&
++map_ent.obj&
++partmap.obj;

@@ -1,0 +1,6 @@
+diris = display\ega
+
+all:
+ echo Y|del c:$(diris)\*.*
+ echo D|xcopy c:$(diris) c:\dos50oak\dev\$(diris)
+        del c:\dos50oak\dev\$(diris)\copy.oak

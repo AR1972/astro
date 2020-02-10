@@ -1,0 +1,12 @@
+[[1]]='Rutinas de Compatibilidad para Video Hercules Residente. Versi¢n 1.12'
+[[2]]='Rutinas de Compatibilidad para Video Hercules Residente. Versi¢n 1.10'
+
+[[3]]='Rutinas de Compatibilidad para Video Hercules ya se instal¢.'
+
+[[4]]='Tarjeta de Video Hercules no se encuentra.',0DH,0AH
+[[5]]='Rutinas de Compatibilidad para Video Hercules no instaladas.'
+
+
+[[6]]='Permite usar programas gr ficos QBasic con tarjeta de gr ficos Hercules.', 0DH, 0AH, 0DH, 0AH
+[[7]]='MSHERC [/HALF]', 0DH, 0AH, 0DH, 0AH
+[[8]]='  /HALF       Usar s¢lo con adaptador de color instalado.', 0DH, 0AH

@@ -1,0 +1,45 @@
+The following file is called CBOXDIST.TXT (checked into LIB\CW\DOC).
+
+CBOX Distribution for Multiplan 4.x:
+====================================
+
+All builds are made from FAVOG.
+
+Favog has distribution directory enlisted, build is made from DOS machine
+(all .OBJs and original sources remain on FAVOG).
+Special dedicated CBOX and DRV directories for Plan have been created.
+The Sbmgr, Interpreter and Mathpack are from standard distributions (since
+they do not change significantly) -- and the resulting .LIB files checked
+into the CW\LIB directory.
+
+The Plan distribution directories will get out of sync, but will represent
+the time that the Plan build was made.
+
+The distribution root is /u/eu/dist on favog, or \\favog\slm\dist
+
+CW + final CBOX build:
+
+	lib/cbox/plan40/dcbox/cw
+
+Distribution steps:
+1) check everything in
+2) log in to favog
+3) ssync the /u/eu/dist/lib/cbox/plan40/dcbox/cw directory ("ssync -vrf")
+	(this may be a selective "ssync" if only specific changes are to
+	be changed in the build).
+4) connect to FAVOG\SLM from DOS machine
+5) go to build directory (\DIST\LIB\CBOX\PLAN40\DCBOX\CW).
+6) run the "make_all" batch file.
+7) run the update batch file UPDCBOX.BAT (in \LIB\CW\CBOX on your machine,
+	updcbox uses P: and V: so don't start it from these drives).
+
+All distributed files are copied to \\PSTOOLS\DIST\CBOX.
+
+========== ========== ==========
+
+Yet to be added to the standard distribution are:
+
+standard libraries: SBMGR/MATH/LMEM/INTER.
+CW drivers.
+
+========== ========== ==========

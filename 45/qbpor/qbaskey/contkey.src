@@ -1,0 +1,613 @@
+.comment ******************************************************************
+.comment *  Control Family - QBasic                                       *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, to BASIC language and products. *
+.comment ******************************************************************
+.comment *  7/10/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/22/90 stevesau                                              *
+.comment *  Incorporated final edit/review comments.                      *
+.comment ******************************************************************
+.comment *  6/6/90 stevesau                                               *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Combined GOSUB...RETURN/RETURN.                               *
+.comment *  Deleted STOP example (not recommended).                       *
+.comment *  Incorporated review comments and edits.                       *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/6/90 stevesau                                               *
+.comment *  Incorporated review comments.                                 *
+.comment ******************************************************************
+.comment *  4/30/90 stevesau                                              *
+.comment *  Combined logical operators.                                   *
+.comment *  Changed Absolute to CALL ABSOLUTE                             *
+.comment ******************************************************************
+.comment *  4/18/90 stevesau                                              *
+.comment *  Deleted CALL (NON-BASIC), Interrupt.			  *
+.comment *  Added action lines.						  *
+.comment ******************************************************************
+.comment *                                                                *
+.context @CALL
+.context CALL
+:nInstru‡ao CALL
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Transfere o controle para um procedimento SUB.
+
+\b[CALL] nome [([lista-de-argumentos])]\p
+
+    ş \bnome\p                 O nome do procedimento SUB a chamar.
+    ş \blista-de-argumentos\p  As vari veis ou constantes a serem passadas
+                           ao procedimento SUB.
+                           Separe os argumentos m£ltiplos com v¡rgulas.
+                           Especifique os argumentos da matriz com o nome da
+                           matriz seguido por parˆnteses vazios.
+
+    ş Se vocˆ omitir a palavra-chave CALL, tamb‚m omita os parˆnteses entre a
+      lista de argumentos. Declare o procedimento em uma instru‡ao DECLARE
+      antes de cham -lo ou salve o programa e o QBasic automaticamente
+      gera a instru‡ao DECLARE.
+    ş Para especificar um argumento cujo valor nao ser  alterado pelo
+      procedimento, coloque o argumento entre parˆnteses.
+
+Exemplo:
+    O programa REMLINE.BAS mostra procedimentos de chamada ao SUB. Para
+    visualizar ou executar esse programa, carregue o REMLINE.BAS usando
+    o comando Abrir no menu Arquivo.
+
+Consulte tamb‚m  \i\p\aCALL ABSOLUTE\v@ABSOLUTE\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p    \i\p\aSUB\v@SUB\v\i\p
+.context ABSOLUTE
+.context @ABSOLUTE
+:nInstru‡ao CALL ABSOLUTE
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Transfere o controle … um procedimento de linguagem de m quina.
+
+\bCALL ABSOLUTE ([lista-de-argumentos,] deslocamento%)\p
+
+    ş \blista-de-argumentos\p    Argumentos passados … um procedimento de
+                             linguagem de m quina como um deslocamento
+                             do segmento de dados atual.
+    ş \bdeslocamento%\p          O deslocamento do segmento de c¢digo atual,
+                             definido por DEF SEG, para o in¡cio da
+                             localiza‡ao do procedimento.
+
+Exemplo:
+    'Chama rotina para imprimir conte£do da tela para uma impressora local.
+    DIM a%(2)
+    DEF SEG = VARSEG(a%(0))
+    FOR i% = 0 TO 2
+       READ d%
+       POKE VARPTR(a%(0)) + i%, d%
+    NEXT i%
+    DATA 205, 5, 203  : ' int 5  retf  'C¢digo de linguagem de m quina
+                                       'para imprimir tela.
+    CALL ABSOLUTE(VARPTR(a%(0)))
+    DEF SEG
+
+Consulte tamb‚m  \i\p\aCALL\v@CALL\v\i\p    \i\p\aVARPTR, VARSEG\v@VARPTR\v\i\p    \i\p\aDiferen‡as do BASICA\v@basica.diffs\v\i\p
+.context CHAIN
+.context @CHAIN
+:nInstru‡ao CHAIN
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Transfere o controle do programa atual para um outro programa Basic.
+
+\bCHAIN espec-arq$\p
+
+    ş \bespec-arq$\p    O nome do arquivo para o qual o controle ‚ passado.
+
+Exemplo:
+    'Assume que o programa TEST.BAS est  em um diret¢rio \\DOS.
+    CHAIN "C:\\DOS\\TEST.BAS"
+
+Consulte tamb‚m   \i\p\aCALL\v@CALL\v\i\p    \i\p\aCOMMON\vCOMMON\v\i\p    \i\p\aRUN\vRUN\v\i\p    \i\p\aDiferen‡as do BASICA\v@basica.diffs\v\i\p
+.context DO
+.context @DO
+.context LOOP
+.context @LOOP
+.context UNTIL
+.context @UNTIL
+:nInstru‡ao DO...LOOP
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Repete um bloco de instru‡oes enquanto uma condi‡ao ‚ verdadeira ou at‚
+uma condi‡ao se tornar verdadeira.
+
+\bDO [{WHILE | UNTIL} condi‡ao]\p
+    \b[bloco-instru‡oes]\p
+\bLOOP\p
+
+\bDO\p
+    \b[bloco-instru‡oes]\p
+\bLOOP [{WHILE | UNTIL} condi‡ao]\p
+
+    ş \bcondi‡ao\p    Uma expressao num‚rica que o Basic avalia como sendo
+                  verdadeira (diferente de zero) ou falsa (zero).
+
+Exemplo:
+    i% = 0
+    PRINT "Valor de i% no in¡cio do loop ‚  "; i%
+    DO WHILE i% < 10
+        i% = i% + 1
+    LOOP
+    PRINT "Valor de i% no final do loop ‚  "; i%
+
+Consulte tamb‚m  \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aWHILE...WEND\v@WHILE\v\i\p
+.context END
+.context @END
+:nInstru‡ao END
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Finaliza um programa, procedimento, bloco ou tipo de dado definido pelo
+usu rio.
+
+\bEND [{DEF | FUNCTION | IF | SELECT | SUB | TYPE}]\p
+
+    ş \bDEF\p         Finaliza uma defini‡ao de fun‡ao multilinha DEF FN.
+    ş \bFUNCTION\p    Finaliza uma defini‡ao de um procedimento FUNCTION.
+    ş \bIF\p	      Finaliza uma instru‡ao de bloco IF...THEN...ELSE.
+    ş \bSELECT\p      Finaliza um bloco SELECT CASE.
+    ş \bSUB\p         Finaliza um procedimento SUB.
+    ş \bTYPE\p        Finaliza um tipo de dado definido pelo usu rio.
+
+    ş Se nenhum argumento for fornecido, END finaliza o programa e fecha
+      todos os arquivos.
+
+Exemplo:
+    PRINT "O jogo terminou."
+    END
+
+Consulte tamb‚m \i\p\aDEF FN\v@DEF\v\i\p  \i\p\aFUNCTION\v@FUNCTION\v\i\p   \i\p\aIF...THEN...ELSE\v@IF\v\i\p   \i\p\aSELECT CASE\v@IS\v\i\p
+                \i\p\aSTOP\v@STOP\v\i\p    \i\p\aSUB\v@SUB\v\i\p        \i\p\aSYSTEM\v@SYSTEM\v\i\p             \i\p\aTYPE\v@TYPE\v\i\p
+.context EXIT
+.context @EXIT
+:nInstru‡ao EXIT
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sai de um loop DO ou FOR, um procedimento FUNCTION ou SUB, ou uma fun‡ao
+DEF FN.
+
+\bEXIT {DEF | DO | FOR | FUNCTION | SUB}\p
+
+    ş \bDEF\p         Sai de uma fun‡ao DEF FN.
+    ş \bDO\p          Sai de um loop DO.
+    ş \bFOR\p         Sai de um loop FOR.
+    ş \bFUNCTION\p    Sai de um procedimento FUNCTION.
+    ş \bSUB\p         Sai de um procedimento SUB.
+
+Exemplo:
+    i% = 0
+    DO
+        i% = i% + 1
+        IF i% = 500 THEN EXIT DO
+    LOOP
+    PRINT "SAIR DO"; i%
+
+Consulte tamb‚m  \i\p\aDEF FN\v@DEF\v\i\p   \i\p\aDO...LOOP\v@DO\v\i\p   \i\p\aFOR...NEXT\v@FOR\v\i\p   \i\p\aFUNCTION\v@FUNCTION\v\i\p
+                 \i\p\aSUB\v@SUB\v\i\p
+.context FOR
+.context @FOR
+:nInstru‡ao FOR...NEXT
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Repete um bloco de instru‡oes um n£mero especificado de vezes.
+
+\bFOR contador = in¡cio TO fim [STEP incremento]\p
+    \b[bloco-instru‡oes]\p
+\bNEXT [contador [,contador]...]\p
+
+    ş \bcontador\p          Uma vari vel num‚rica usada como contador de loop.
+    ş \bin¡cio\p e \bfim\p      Os valores inicial e final do contador.
+    ş \bincremento\p        A quantidade de vezes que o contador ‚ alterado
+                        pelo loop.
+
+Exemplo:
+    FOR i% = 1 TO 15
+        PRINT i%
+    NEXT i%
+    FOR i% = 7 to -6 STEP -3
+        PRINT i%
+    NEXT i%
+
+Consulte tamb‚m  \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aEXIT\v@EXIT\v\i\p    \i\p\aWHILE...WEND\v@WHILE\v\i\p
+.context GOSUB
+.context @GOSUB
+.context RETURN
+.context @RETURN
+:nInstru‡ao GOSUB...RETURN
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Desvia para e retorna de uma subrotina.
+
+\bGOSUB linha1\p
+\b.\p
+\b.\p
+\b.\p
+\bRETURN [linha2]\p
+
+    ş \blinha1\p    O nome ou n£mero da primeira linha da subrotina.
+    ş \blinha2\p    O nome ou n£mero da linha onde a subrotina retorna.
+
+    ş Se vocˆ nao fornecer um nome ou n£mero de linha para RETURN, o
+      programa continua a execu‡ao na instru‡ao que segue o GOSUB (para
+      chamadas de subrotinas) ou onde um evento ocorreu (para tratamento
+      de eventos). Consulte \i\p\aON\v@ON\v\i\p keyword para maiores
+      informa‡oes sobre instru‡oes de tratamento de eventos.
+    ş As instru‡oes SUB e CALL fornece uma melhor alternativa para as
+      subrotinas GOSUB.
+
+Exemplo:
+    FOR i% = 1 TO 20
+        GOSUB Quadrado
+    NEXT i%
+    END
+
+    Quadrado:
+    PRINT i%, i% * i%
+    RETURN
+
+Consulte tamb‚m  \i\p\aCALL\v@CALL\v\i\p   \i\p\aON Palavra-Chave\v@ON\v\i\p   \i\p\aON...GOSUB\v@ONGO\v\i\p   \i\p\aSUB\v@SUB\v\i\p
+.context GOTO
+.context @GOTO
+:nInstru‡ao GOTO
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Desvia para uma linha especificada.
+
+\bGOTO linha\p
+
+    ş \blinha\p    O nome ou n£mero da linha a ser executada posteriormente.
+
+    ş DO...LOOP, SELECT CASE, IF...THEN...ELSE, SUB e FUNCTION fornecem
+      melhores meios de controlar o fluxo de seu programa.
+    ş GOTO ‚ tamb‚m usado como uma palavra-chave na instru‡ao ON ERROR.
+
+\i\p\aExemplo\v@errhand.ex\v\i\p
+
+Consulte tamb‚m  \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aIF...THEN...ELSE\v@IF\v\i\p
+                 \i\p\aON ERROR\v@onerr\v\i\p     \i\p\aON...GOTO\v@ongo\v\i\p   \i\p\aSELECT CASE\v@SELECT\v\i\p
+		 \i\p\aSUB\v@SUB\v\i\p
+.context THEN
+.context @THEN
+.context ELSE
+.context @ELSE
+.context ELSEIF
+.context @ELSEIF
+.context ENDIF
+.context @ENDIF
+.context IF
+.context @IF
+:nInstru‡ao IF...THEN...ELSE
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Executa uma instru‡ao ou bloco de instru‡oes dependendo das condi‡oes
+especificadas.
+
+\bIF condi‡ao1 THEN\p
+    \b[bloco-instru‡oes-1]\p
+\b[ELSEIF condi‡ao2 THEN\p
+    \b[bloco-instru‡oes-2]]...\p
+\b[ELSE\p
+    \b[bloco-instru‡oes-n]]\p
+\bEND IF\p
+
+\bIF condi‡ao THEN instru‡oes [ELSE instru‡oes]\p
+
+    ş \bcondi‡ao1\p            Qualquer expressao que possa ser avaliada como
+      \bcondi‡ao2\p            verdadeira (diferente de zero) ou falsa (zero).
+    ş \bbloco-instru‡oes-1\p   Uma ou mais instru‡oes em uma ou mais linhas.
+      \bbloco-instru‡oes-2\p
+      \bbloco-instru‡oes-n\p
+    ş \binstru‡oes\p           Uma ou mais instru‡oes, separadas por
+                           dois-pontos.
+
+Exemplo:
+    INPUT "1 or 2? ", i%
+    IF i% = 1 OR i% = 2 THEN
+        PRINT "OK"
+    ELSE
+        PRINT "Fora do intervalo"
+    END IF
+
+Consulte tamb‚m  \i\p\aON...GOSUB\v@ongo\v\i\p    \i\p\aON...GOTO\v@ongo\v\i\p    \i\p\aSELECT CASE\v@IS\v\i\p
+.context @ongo
+.context .ongo
+:nInstru‡oes ON...GOSUB, ON...GOTO
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Desvia para um dos v rios locais, dependendo do valor de uma expressao.
+
+\bON expressao% GOSUB lista\p
+\bON expressao% GOTO lista\p
+
+    ş \bexpressao%\p     Uma expressao no intervalo de 0 … 255.
+    ş \blista\p          Um conjunto de nomes ou n£meros de linhas. Se o
+                     valor de uma expressao for 1, o programa desvia
+                     para a primeira linha na lista; se a expressao for 2,
+                     esta desvia para a segunda linha e assim por diante.
+
+    ş SELECT CASE fornece uma maneira melhor pra realizar desvios m£ltiplos.
+
+Exemplo:
+    FOR i% = 1 TO 2
+        ON i% GOSUB Um, Dois
+    NEXT i%
+    END
+
+    Um: PRINT "Um"
+    RETURN
+    Dois: PRINT "Dois"
+    RETURN
+
+Consulte tamb‚m    \i\p\aON Palavra-chave\v@ON\v\i\p    \i\p\aSELECT CASE\v@SELECT\v\i\p
+.context RUN
+.context @RUN
+:nInstru‡ao RUN
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Executa o programa atual ou um programa especificado.
+
+\bRUN [{n£mero-linha | arquivo$}]\p
+
+    ş \bn£mero-linha\p    O n£mero da linha no programa atual onde a
+                      execu‡ao deva iniciar. Se nenhuma linha for
+                      especificada, a execu‡ao inicia na primeira linha
+                      execut vel.
+    ş \barquivo$\p        O nome de um arquivo fonte Basic. O QBasic assume
+                      uma extensao .BAS.
+
+    ş RUN fecha todos os arquivos e limpa a mem¢ria do programa antes de
+      carregar um programa. Use a instru‡ao CHAIN para executar um programa
+      sem que seja preciso fechar os arquivos abertos.
+
+Exemplo:
+    'Assume que o programa TEST.BAS esteja em um diret¢rio \\DOS.
+    RUN "C:\\DOS\\TEST.BAS"
+
+Consulte tamb‚m    \i\p\aCHAIN\v@CHAIN\v\i\p
+.context SELECT
+.context @SELECT
+.context CASE
+.context @CASE
+.context IS
+.context @IS
+:nInstru‡ao SELECT CASE
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Executa um de diversos blocos de instru‡oes dependendo do valor de uma
+expressao.
+
+\bSELECT CASE expressao-teste\p
+\bCASE lista-expressoes-1\p
+  \b[bloco-instru‡oes-1]\p
+\b[CASE lista-expressoes-2\p
+  \b[bloco-instru‡oes-2]]...\p
+\b[CASE ELSE\p
+  \b[bloco-instru‡oes-n]]\p
+\bEND SELECT\p
+
+    ş \bexpressao-teste\p     Qualquer expressao num‚rica ou sequˆncia de
+                          caracteres.
+    ş \blista-expressoes-1\p  Uma ou mais expressoes compat¡veis com a
+                          expressao-teste.
+    ş \blista-expressoes-2\p  A palavra-chave IS precede quaisquer operadores
+                          relacionais em uma expressao.
+    ş \bbloco-instru‡oes-1\p  Uma ou mais instru‡oes em uma ou mais linhas.
+      \bbloco-instru‡oes-2\p
+      \bbloco-instru‡oes-n\p
+
+    ş Os argumentos da lista de expressoes podem ter uma dessas formas ou
+      uma combina‡ao das mesmas, separadas por v¡rgulas:
+
+      \bexpressao[,expressao]...\p
+      \bexpressao TO expressao\p
+      \bIS oper-relac expressao\p
+
+          \bexpressao\p        Qualquer expressao num‚rica ou alfab‚tica
+                           compat¡vel com a expressao-teste.
+          \boper-relac\p       Um dos seguintes operadores relacionais:
+                           <, <=, >, >=, <> ou =.
+
+Exemplo:
+    INPUT "Entre com o n¡vel de risco aceit vel (1-5): ", Total
+    SELECT CASE Total
+
+        CASE IS >= 5
+            PRINT "M ximo risco e retorno potencial."
+            PRINT "Escolha plano de investimento em a‡oes."
+
+        CASE 2 TO 4
+            PRINT "Moderado … alto risco e retorno potencial."
+            PRINT "Escolha m£tuo fundos ou bonds incorporados."
+
+        CASE 1
+            PRINT "Nenhum risco, baixo retorno."
+            PRINT "Escolha IRA."
+
+    END SELECT
+
+Consulte tamb‚m    \i\p\aIF...THEN...ELSE\v@IF\v\i\p
+.context SLEEP
+.context @SLEEP
+:nInstru‡ao SLEEP
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Suspende a execu‡ao do programa.
+
+\bSLEEP [segundos&]\p
+
+    ş \bsegundos&\p    N£mero de segundos para suspender o programa.
+
+    ş Se segundos& for 0 ou se for omitido, o programa ‚ suspendido at‚ que
+      uma tecla seja pressionada ou seja feita uma an lise de eventos.
+
+Exemplo:
+    PRINT "Tirando uma soneca de 10 segundos..."
+    SLEEP 10
+    PRINT "Acorde!"
+
+Consulte tamb‚m    \i\p\aWAIT\v@WAIT\v\i\p
+.context STOP
+.context @STOP
+:nInstru‡ao STOP
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Suspende um programa.
+
+\bSTOP\p
+
+   ş A palavra-chave STOP tamb‚m suspende os eventos nas seguintes instru‡oes:
+
+      \i\p\aCOM, ON COM\v@COM\v\i\p      \i\p\aKEY, ON KEY\v@KETV\v\i\p         \i\p\aPEN, ON PEN\v@PEN\v\i\p
+      \i\p\aPLAY, ON PLAY\v@PLAYEV\v\i\p    \i\p\aSTRIG, ON STRIG\v@STRIG\v\i\p     \i\p\aTIMER, ON TIMER\v@TIMER\v\i\p
+
+Exemplo:
+    FOR i% = 1 TO 10
+        PRINT i%
+        IF i% = 5 THEN STOP     'STOP pausa; F5 Continua.
+    NEXT i%
+
+Consulte tamb‚m     \i\p\aEND\v@END\v\i\p    \i\p\aSYSTEM\v@SYSTEM\v\i\p
+.context SYSTEM
+.context @SYSTEM
+:nInstru‡ao SYSTEM
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Fecha todos os arquivos abertos e retorna o controle ao sistema operacional.
+
+\bSYSTEM\p
+
+Consulte tamb‚m    \i\p\aEND\v@END\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context TRON
+.context @TRON
+.context TROFF
+.context @TROFF
+:nInstru‡oes TRON, TROFF
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+TRON e TROFF ativa e desativa a an lise de instru‡oes do programa.
+
+\bTRON\p
+\bTROFF\p
+
+    ş O recurso de depura‡ao do QBasic torna estas instru‡oes
+      desnecess rias.
+
+Consulte tamb‚m    \i\p\aTeclas de Execu‡ao/Depura‡ao\v@dk\v\i\p
+.context wend
+.context @wend
+.context WHILE
+.context @WHILE
+:nInstru‡ao WHILE...WEND
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Executa uma s‚rie de instru‡oes enquanto a condi‡ao especificada for
+verdadeira.
+
+\bWHILE condi‡ao\p
+\b.\p
+\b.\p
+\b.\p
+\bWEND\p
+
+    ş \bcondi‡ao\p    Uma expressao num‚rica que o Basic avalia como
+                  verdadeira (diferente de zero) ou falsa (zero).
+
+    ş DO...LOOP fornece uma maneira melhor de executar instru‡oes em
+      um loop de programa.
+
+Consulte tamb‚m    \i\p\aDO...LOOP\v@DO\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p
+.comment ******************************************************************
+.comment * Boolean Operators
+.comment ******************************************************************
+.context AND
+.context @AND
+.context EQV
+.context @EQV
+.context IMP
+.context @IMP
+.context NOT
+.context @NOT
+.context OR
+.context @OR
+.context XOR
+.context @XOR
+:nOperadores booleanos
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Operadores booleanos realizam manipula‡oes de bit, opera‡oes booleanas ou
+testes em rela‡oes m£ltiplas. Estes retornam um valor verdadeiro (diferente
+de zero) ou falso (zero) a ser usado ao se tomar uma decisao.
+
+\bresult = expressao1 operador booleano expressao2\p
+
+    ş \boperador booleano\p    Quaisquer dos seguintes operadores Booleanos:
+
+        NOT                 Complemento do bit
+        AND                 Uniao
+        OR                  Disjuncao ("ou" inclusivo)
+        XOR                 "Ou" exclusivo
+        EQV                 Equivalˆncia
+        IMP                 Implica‡ao
+
+    ş Cada operador retorna resultados como indicado na seguinte tabela.
+      T ‚ verdadeiro (true - diferente de zero); F ‚ falso (zero):
+
+        Expressao1  Expressao2  NOT  AND  OR   XOR  EQV  IMP
+        ÍÍÍÍÍÍÍÍÍÍ  ÍÍÍÍÍÍÍÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ  ÍÍÍ
+        T           T           F    T    T    F    T    T
+        T           F           F    F    T    T    F    F
+        F           T           T    F    T    T    F    T
+        F           F           T    F    F    F    T    T
+
+    ş Opera‡oes booleanas sao executadas ap¢s opera‡oes aritm‚ticas e
+      relacionais em ordem de precedˆncia.
+    ş Expressoes sao convertidas em inteiros ou inteiros longos antes da
+      execu‡ao da opera‡ao booleana.
+    ş Se o resultado de uma expressao for 0 ou -1, a opera‡ao Booleana retorna
+      0 or -1 como resultado. Como operadores booleanos calculam por bit, a
+      utiliza‡ao de valores diferentes de 0 para falso e -1 para verdadeiro
+      podem produzir resultados inesperados.
+.comment ******************************************************************
+.comment * Keywords
+.comment ******************************************************************
+.context NEXT
+.context @NEXT
+:nPalavra-Chave NEXT
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Incrementa e testa o contador em um loop FOR...NEXT ou, quando usado em
+RESUME, continua a execu‡ao a partir de uma rotina de tratamento de erro.
+
+Consulte tamb‚m    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aRESUME\v@RESUME\v\i\p
+.context STEP
+.context @STEP
+:nSTEP Palavra-Chave
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Em um loop FOR...NEXT, especifica em quanto um contador deve ser incrementado.
+Em instru‡oes gr ficas, especifica que coordenadas de pontos sao relativas
+ao gr fico na posi‡ao atual do cursor.
+
+Consulte tamb‚m  \i\p\aCIRCLE\v@CIRCLE\v\i\p	 \i\p\aFOR...NEXT\v@FOR\v\i\p	  \i\p\aGET, PUT\v@ggx\v\i\p
+                 \i\p\aLINE\v@LINE\v\i\p     \i\p\aPAINT\v@PAINT\v\i\p        \i\p\aPRESET, PSET\v@PRESET\v\i\p
+.context TO
+.context @TO
+:nPalavra-Chave TO
+  \i\p\aConte£do\v@helpTableId\v\i\p  \i\p\aIndice\v@helpIndexId\v\i\p  \i\p\aVoltar\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Especifica intervalos para:
+
+    ş Uma cl usula CASE de uma instru‡ao SELECT CASE.
+    ş Um contador em um loop FOR...NEXT.
+    ş Registros a serem bloqueados/desbloqueados em uma instru‡ao
+      LOCK...UNLOCK.
+    ş Limites inferior e superior em uma instru‡ao DIM ou REDIM.
+
+Consulte tamb‚m  \i\p\aDIM, REDIM\v@DIM\v\i\p    \i\p\aFOR...NEXT\v@FOR\v\i\p    \i\p\aLOCK, UNLOCK\v@LOCK\v\i\p
+                 \i\p\aSELECT CASE\v@SELECT\v\i\p

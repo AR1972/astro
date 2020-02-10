@@ -1,0 +1,44 @@
+SUMMARY fPathChr fSwitChr
+
+#include <tools.h>
+
+flagType fPathChr(ch)
+char ch;
+
+flagType fSwitChr(ch)
+char ch;
+
+DESCRIPTION
+
+fPathChr and fSwitChr test whether the character is a path separator or
+a command line switch character.
+
+RETURN VALUE
+
+fPathChr returns non-zero for \ and / otherwise zero.
+
+fSwitChr uses DOS function 37h to determine whether non-zero should be
+returned for / or for -.  Otherwise zero is returned.
+
+IMPLEMENTATION
+
+
+SEE ALSO
+
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    printf("\\ %d\n", fPathChr('\\'));
+    printf("/ %d\n", fPathChr('/'));
+    printf("/ %d\n", fSwitChr('/'));
+    printf("- %d\n", fSwitChr('-'));
+}

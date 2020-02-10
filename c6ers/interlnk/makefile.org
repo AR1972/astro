@@ -1,0 +1,95 @@
+# $Workfile:   makefile  $
+# $Revision:   1.7  $
+#   $Author:   Dave Sewell  $
+#     $Date:   22 Oct 1990 14:58:48  $
+
+.INCLUDE    version.def
+
+DRIVERS     =drivers
+VERSION     =\"Version $(VERSION_NUM)\"
+
+%if "$[u,$(CODEVIEW)]" == "ON"
+CODEVIEW   = ON
+MASM_FLAGS = -ZI
+C_FLAGS    = -Zi -Od
+LINK_FLAGS = /co
+%else
+CODEVIEW   = OFF
+MASM_FLAGS =
+C_FLAGS    = -Osleazrg -Gs
+LINK_FLAGS = /exepack/f/packcode/map
+%endif
+
+TARGET = intersvr.exe
+
+.INIT:
+    @%setenv INCLUDE=$(INCLUDE);paragon\include;fxlib;.
+    @%setenv LINT= \lint\sl-msc.c -e565
+    %if "$(CODEVIEW)" == "ON"
+    @%echo
+    @%echo *** CODEVIEW is ON ***
+    @%echo
+    %endif
+
+.asm.obj:
+    *masm -t -W2 -ML $(MASM_FLAGS) -Dlanguage=PASCAL -Dmemmodel=SMALL $<;
+
+.c.obj:
+    *cl -c -Gr -nologo -W3 -Zp $(C_FLAGS) -DMAJOR_VERSION=$(MAJOR_VER) -DMINOR_VERSION=$(MINOR_VER) $<
+         
+ASMOBJ1   = bell.obj calldvr.obj crctab.obj ctype.obj getprog.obj
+ASMOBJ2   = int2f.obj longtoa.obj percent.obj setcerr.obj switcher.obj
+
+COBJ1     = main.obj handler.obj clone.obj criterr.obj 
+COBJ2     = str.obj print.obj devinfo.obj
+COBJ3     = version.obj drivinfo.obj
+
+OBJ       = $(ASMOBJ1) $(ASMOBJ2) $(COBJ1) $(COBJ2) $(COBJ3)
+
+LIB       = paragon\lib\plibs.lib fxlib\fastlynx.lib
+
+LINKFLAGS = /stack:20000/noe$(LINK_FLAGS)
+
+$(TARGET) : $(OBJ) $(LIB)
+    link <@<
+$(ASMOBJ1)+
+$(ASMOBJ2)+
+$(COBJ1)+
+$(COBJ2)+
+$(COBJ3)
+$(TARGET)
+intersvr
+$(LIB)$(LINKFLAGS)
+NUL
+<
+
+version.obj: version.c version.def
+    cl -c -DVERSION="$(VERSION)" version.c
+
+handler.obj: handler.c version.def
+
+disk:
+    copy intersvr.exe a:
+    copy driver\interlnk.exe a:
+
+release:
+    rm \xtalk4\il.zip
+    zip -a \xtalk4\il.zip intersvr.exe driver\interlnk.exe
+   
+
+LANG = \il_lang
+
+language:
+    mkdir $(LANG)
+    rm $(LANG)\*
+    copy *.obj $(LANG)
+    copy str.c $(LANG)
+    copy paragon\lib\plibs.lib $(LANG)
+    copy fxlib\fastlynx.lib $(LANG)
+    copy driver\*.obj $(LANG)
+    copy driver\msg.asm $(LANG)
+    copy driver\vild.def $(LANG)
+    copy driver\vild.lnk $(LANG)
+    copy makefile.lng $(LANG)\makefile
+    rm \xtalk4\illang.zip
+    zip -a \xtalk4\illang.zip $(LANG)\*.*

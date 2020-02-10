@@ -1,0 +1,706 @@
+.comment *****************************************************************
+.comment *  File I/O Family - QBasic                                      *
+.comment ******************************************************************
+.comment *  7/31/90 bethpr                                                *
+.comment *  Get/Put (File I/O) put See Alsos in alphabetic order          *
+.comment ******************************************************************
+.comment *  7/29/90 bethpr                                                *
+.comment *  Changed text, as appropriate, to BASIC language and products. *
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/25/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments.                      *
+.comment ******************************************************************
+.comment *  6/11/90 stevesau                                              *
+.comment *  Combined FILES with CHDIR/MKDIR/RMDIR.                        *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/10/90 stevesau                                              *
+.comment *  Reinserted IOCTL/IOCTL$.                                      *
+.comment *  Deleted CHDRIVE.                                              *
+.comment *  Combined LSET/RSET.                                           *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Deleted INPUT #/LINE INPUT # (combined with INPUT/LINE INPUT  *
+.comment *  in Device family).                                            *
+.comment ******************************************************************
+.comment *  5/4/90 stevesau                                               *
+.comment *  Deleted keyword references from action lines.                 *
+.comment ******************************************************************
+.comment *  5/3/90 stevesau                                               *
+.comment *  Combined OPEN file mode keywords, LOCK/UNLOCK, BLOAD/BSAVE,   *
+.comment *  CHDIR/MKDIR/RMDIR, GET/PUT, WRITE/WRITE #, SEEK Func./State.  *
+.comment *  Deleted PRINT # (combined with PRINT in Device family).       *
+.comment ******************************************************************
+.comment *  4/25/90 bethpr                                                *
+.comment *  Deleted CURDIR$, DIR$                                         *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                              *
+.comment *  Added action lines.                                           *
+.comment *  Added PRINT USING link to PRINT #.                            *
+.comment *  Added CLOSE, EOF, FILEATTR, LOF, OPEN from BC71 ISAM file,    *
+.comment *  deleted ISAM references.                                      *
+.comment ******************************************************************
+.context BLOAD
+.context @BLOAD
+.context BSAVE
+.context @BSAVE
+:nDe statements BSAVE en BLOAD
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+BSAVE kopieert de inhoud van een geheugengebied naar een bestand.
+BLOAD laadt een door BSAVE gemaakt bestand in het geheugen.
+
+\bBSAVE bestandsnaam$, offset%, lengte&\p
+\bBLOAD bestandsnaam$[,offset%]\p
+
+    ş \bbestandsnaam$\p  Voor BSAVE, een bestand waarnaar een geheugengebied
+                     (een byte-bij-byte geheugen-"image") wordt gekopieerd.
+                     Voor BLOAD een "image"-bestand dat door een eerdere
+                     BSAVE-opdracht werd gemaakt.
+    ş \boffset%\p        Voor BSAVE, de offset van het beginadres van het
+                     geheugengebied dat wordt opgeslagen. Voor BLOAD, de
+                     offset van het adres waar met laden wordt begonnen.
+    ş \blengte&\p        Het aantal te kopi‰ren bytes (van 0 t/m 65535).
+
+    ş Het beginadres van het geheugengebied dat wordt opgeslagen of geladen
+      wordt bepaald door de offset en het meest recente statement DEF SEG.
+
+Zie ook     \i\p\aDEF SEG\v@SEG\v\i\p    \i\p\aVARPTR, VARSEG\v@VARSEG\v\i\p    \i\p\aVerschillen met BASICA\v@basica.diffs\v\i\p
+.context CHDIR
+.context @CHDIR
+.context MKDIR
+.context @MKDIR
+.context RMDIR
+.context @RMDIR
+.context FILES
+.context @FILES
+:nDe statements CHDIR, MKDIR, RMDIR en FILES
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CHDIR wijzigt de huidige directory van een station. MKDIR maakt een
+subdirectory. RMDIR verwijdert een subdirectory. FILES geeft de inhoud
+van de huidige directory of een opgegeven directory weer.
+
+\bCHDIR padnaam$\p
+\bMKDIR padnaam$\p
+\bRMDIR padnaam$\p
+\bFILES [bestandsnaam$]\p
+
+    ş \bpadnaam$\p       Het pad naar de nieuwe directory, naar de te maken
+                     subdirectory, of naar de te verwijderen subdirectory.
+    ş \bbestandsnaam$\p  Een bestandsnaam of pad (eventueel met station
+                     en jokertekens). Als u bestandsnaam$ niet opgeeft,
+                     geeft FILES alle bestanden in de huidige directory
+                     weer.
+
+Voorbeeld:
+    MKDIR "C:\\TEMP\\TEST"
+    CHDIR "C:\\TEMP"
+    FILES
+    RMDIR "TEST"
+.context CLOSE
+.context @CLOSE
+:nHet statement CLOSE
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sluit een of meer bestanden of apparaten.
+
+\bCLOSE [[#]bestandsnummer%[,[#]bestandsnummer%]...]\p
+
+    ş \bbestandsnummer%\p    Het nummer van het open bestand of apparaat.
+
+    ş CLOSE zonder argumenten sluit alle open bestanden of apparaten.
+
+Voorbeeld:
+    CLS
+    INPUT "Bestandsnaam: ", n$
+    OPEN n$ FOR OUTPUT AS #1
+    PRINT #1, "Dit wordt opgeslagen in een bestand."
+    CLOSE
+    OPEN n$ FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT "Lees van bestand: "; a$
+    CLOSE
+
+Zie ook     \i\p\aEND\v@END\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aRESET\v@RESET\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context EOF
+.context @EOF
+:nDe functie EOF
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Controleert of het einde van een bestand is bereikt. EOF retourneert een
+waarde 'waar' (niet-nul) als het einde van een bestand is bereikt.
+
+\bEOF(bestandsnummer%)\p
+
+    ş \bbestandsnummer%\p    Het nummer van een open bestand.
+
+Voorbeeld:
+    CLS
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    FOR i% = 1 TO 10
+        WRITE #1, i%, 2 * i%, 5 * i%
+    NEXT i%
+    CLOSE #1
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    DO
+        LINE INPUT #1, a$
+        PRINT a$
+    LOOP UNTIL (EOF(1))
+
+Zie ook     \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aLOC\v@LOC\v\i\p    \i\p\aLOF\v@LOF\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p
+.context ERDEV
+.context @ERDEV
+.context ERDEV$
+.context @ERDEV$
+:nDe functies ERDEV en ERDEV$
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ERDEV retourneert een foutcode van het laatste apparaat dat een kritieke
+fout heeft gegenereerd. ERDEV$ retourneert de naam van het apparaat dat
+de fout veroorzaakte.
+
+\bERDEV\p
+\bERDEV$\p
+
+    ş De laagste byte van de waarde die door ERDEV wordt geretourneert
+      bevat de DOS-foutcode. De hoogste byte bevat de gegevens over het
+      apparaat.
+
+\i\p\aVoorbeeld\v@errhand.ex\v\i\p
+
+Zie ook     \i\p\aERR, ERL\v@ERR\v\i\p    \i\p\aON ERROR\v@onerr\v\i\p
+.context FIELD
+.context @FIELD
+:nHet statement FIELD
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Wijst ruimte toe voor variabelen in een random-access bestandsbuffer.
+
+\bFIELD [#]bestandsnummer%, veldbreedte% AS variabele$\p
+                    \b[,veldbreedte% AS variabele$] ...\p
+
+    ş \bbestandsnummer%\p  Het nummer van een open bestand.
+    ş \bveldbreedte%\p     Het aantal tekens in het veld.
+    ş \bvariabele$\p       Een variabele die het veld aangeeft en de
+                       veldgegevens bevat.
+
+    ş Het is over het algemeen beter om recordvariabelen te gebruiken
+      voor het verwerken van recordgegevens.
+
+Voorbeeld:
+    OPEN "FILEDAT.DAT" FOR RANDOM AS #1 LEN = 80
+    FIELD #1, 30 AS naam$, 50 AS adres$
+
+Zie ook     \i\p\aGET, PUT\v@GET\v\i\p    \i\p\aLSET, RSET\v@LSET\v\i\p    \i\p\aTYPE\v@TYPE\v\i\p    \i\p\aVerschillen met BASICA\v@basica.diffs\v\i\p
+.context FILEATTR
+.context @FILEATTR
+:nDe functie FILEATTR
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert informatie over een open bestand.
+
+\bFILEATTR(bestandsnummer%,bestandsinfo%)\p
+
+    ş \bbestandsnummer%\p  Het nummer van een open bestand.
+    ş \bbestandsinfo%\p    Geeft het type informatie aan dat moet worden
+                       geretourneerd. Wanneer bestandsinfo% 1 is,
+                       retourneert FILEATTR een waarde die de toegangsmodus
+                       van het bestand aangeeft:
+
+                       Waarde   Modus
+                       ÍÍÍÍÍÍ   ÍÍÍÍÍÍ
+                       1        Invoer
+                       2        Uitvoer
+                       4        Random (willekeurig)
+                       8        Toevoegen
+                       32       Binair
+
+                       Wanneer bestandsinfo% 2 is, retourneert FILEATTR
+                       de DOS-bestandshandle.
+
+Voorbeeld:
+    OPEN "TEST.DAT" FOR BINARY AS #1
+    PRINT FILEATTR(1, 1)
+    CLOSE
+
+Zie ook     \i\p\aOPEN\v@OPEN\v\i\p
+.context FREEFILE
+.context @FREEFILE
+:nDe functie FREEFILE
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert het eerstvolgende geldige beschikbare bestandsnummer.
+
+\bFREEFILE\p
+
+Voorbeeld:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT "Volgend bestandsnummer: "; FREEFILE
+    CLOSE
+
+Zie ook     \i\p\aOPEN\v@OPEN\v\i\p
+.context GET
+.context @GET
+.context PUT
+.context @PUT
+:nDe statements GET en PUT (bestands-I/O)
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+GET leest van een bestand in een random-access buffer of variabele.
+PUT schrijft een variabele of random-access buffer naar een bestand.
+
+\bGET [#]bestandsnummer%[,[recordnummer&][,variabele]]\p
+\bPUT [#]bestandsnummer%[,[recordnummer&][,variabele]]\p
+
+    ş \bbestandsnummer%\p  Het nummer van een open bestand.
+    ş \brecordnummer&\p    Voor random-access bestanden is dit het nummer
+                       van een te lezen of te schrijven record. Voor
+                       binaire bestanden is dit de bytepositie waar met
+                       lezen of schrijven moet worden begonnen.
+    ş \bvariabele\p        Voor GET is dit een variabele die wordt gebruikt
+                       om invoer van een bestand te ontvangen. Voor PUT
+                       is dit een variabele die uitvoer bevat die naar
+                       een bestand moet worden geschreven. De variabele
+                       is meestal een door de gebruiker gedefinieerde
+                       variabele.
+
+Voorbeeld:
+    TYPE TestRecord
+        Student AS STRING * 20
+        Resultaat AS SINGLE
+    END TYPE
+    DIM MijnKlas AS TestRecord
+    OPEN "EIND.DAT" FOR RANDOM AS #1 LEN = LEN(MijnKlas)
+    MijnKlas.Student = "JanRap"
+    MijnKlas.Resultaat = 99
+    PUT #1, 1, MijnKlas
+    CLOSE #1
+    OPEN "EIND.DAT" FOR RANDOM AS #1 LEN = LEN(MijnKlas)
+    GET #1, 1, MijnKlas
+    PRINT "STUDENT:", MijnKlas.Student
+    PRINT "RESULTAAT:", MijnKlas.Resultaat
+    CLOSE #1
+    KILL "EIND.DAT"
+
+Zie ook     \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aGET, PUT (grafisch)\v@ggx\v\i\p    \i\p\aLSET, RSET\v@LSET\v\i\p
+            \i\p\aDe functies MKn$ en CVn\v@MKI$\v\i\p           \i\p\aTYPE\v@TYPE\v\i\p
+.context INPUT$
+.context @INPUT$
+:nDe functie INPUT$
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert een reeks tekens, gelezen uit een opgegeven bestand.
+
+\bINPUT$(n[,[#]bestandsnummer%])\p
+
+    ş \bn\p                Het aantal tekens (bytes) dat moet worden gelezen.
+    ş \bbestandsnummer%\p  Het nummer van een open bestand. Als de waarde
+                       bestandsnummer% wordt weggelaten, leest INPUT$ van
+                       het toetsenbord.
+
+Voorbeeld:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT #1, "De tekst"
+    CLOSE
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    PRINT INPUT$(3, 1)        'Drukt eerste 3 tekens af.
+    CLOSE
+
+Zie ook     \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p
+.context IOCTL
+.context @IOCTL
+.context IOCTL$
+.context @IOCTL$
+:nHet statement IOCTL en de functie IOCTL$
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+IOCTL stuurt een stuurtekenreeks naar een stuurprogramma.
+IOCTL$ retourneert recente statusinformatie die afkomstig is van het
+stuurprogramma.
+
+\bIOCTL [#]bestandsnummer%, tekenreeks$\p
+\bIOCTL$([#]bestandsnummer%)\p
+
+    ş \bbestandsnummer%\p    Het nummer van een open apparaat.
+    ş \btekenreeks$\p        De stuurtekenreeks die naar het apparaat
+                             wordt gestuurd.
+
+    ş IOCTL-stuurtekenreeksen en de informatie die wordt geretourneerd
+      door IOCTL$ vari‰ren per stuurprogramma. Raadpleeg de documentatie
+      die bij uw stuurprogramma werd geleverd voor informatie over
+      IOCTL-stuurtekenreeksen en wat voor informatie wordt geretourneerd
+      door IOCTL$.
+.context LOC
+.context @LOC
+:nDe functie LOC
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert de huidige positie in een bestand.
+
+\bLOC(bestandsnummer%)\p
+
+    ş \bbestandsnummer%\p    Het nummer van een open bestand of apparaat.
+
+    ş Voor binaire bestanden retourneert LOC de positie van de laatst
+      gelezen of geschreven byte.
+    ş Voor random-access bestanden retourneert LOC het nummer van het
+      record dat het laatst naar het bestand werd geschreven of van
+      het bestand werd gelezen.
+    ş Voor sequenti‰le bestanden retourneert LOC de huidige bytepositie
+      in het bestand, gedeeld door 128.
+
+Voorbeeld:
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+       PUT #1, , i%
+    NEXT i%
+    SEEK #1, 2
+    GET #1, , i%
+    PRINT "Gegevens: "; i%; " Huidig record: "; LOC(1); " Volgend: "; SEEK(1)
+
+Zie ook     \i\p\aEOF\v@EOF\v\i\p    \i\p\aSEEK\v@SEEK\v\i\p
+.context LOCK
+.context @LOCK
+.context UNLOCK
+.context @UNLOCK
+:nDe statements LOCK en UNLOCK
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LOCK beperkt of voorkomt toegang tot een bestand in een netwerkomgeving.
+UNLOCK heft alle beperkingen op die door het laatste statement LOCK
+werden ingesteld.
+
+\bLOCK [#]bestandsnummer% [,{record& | [begin&] TO eind&}]\p
+\bUNLOCK [#]bestandsnummer% [,{record& | [begin&] TO eind&}]\p
+
+    ş \bbestandsnummer%\p    Het nummer van een open bestand.
+    ş \brecord&\p            Voor random-access bestanden is dit het nummer
+                         van een record dat moet worden vergrendeld, gezien
+                         ten opzichte van het eerste record in het bestand.
+                         Voor binaire bestanden is dit het nummer van de
+                         byte die moet worden vergrendeld, gezien ten
+                         opzichte van de eerste byte in het bestand.
+    ş \bbegin&\p en \beind&\p    De nummers van het eerste en laatste record
+                         in een reeks records, of de eerste byte en laatste
+                         byte in een reeks bytes, die moeten worden
+                         vergrendeld of ontgrendeld.
+
+    ş Voor sequenti‰le bestanden werken LOCK en UNLOCK op het hele
+      bestand.
+
+Voorbeeld:
+    'Dit voorbeeld werkt alleen in een netwerkomgeving.
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+        PUT #1, , i%
+    NEXT i%
+    LOCK #1, 2         'Vergrendelt record 2.
+    GET #1, 2, i%
+    UNLOCK #1, 2       'Ontgrendelt record 2.
+.context LOF
+.context @LOF
+:nDe functie LOF
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert de lengte van een bestand in bytes.
+
+\bLOF(bestandsnummer%)\p
+
+    ş \bbestandsnummer%\p    Het nummer van een open bestand.
+
+Voorbeeld:
+    INPUT "Bestandsnaam: "; f$
+    OPEN f$ FOR BINARY AS #1
+    PRINT "Bestandslengte = "; LOF(1)
+    CLOSE
+.context LSET
+.context @LSET
+.context RSET
+.context @RSET
+:nDe statements LSET en RSET
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LSET en RSET verplaatsen gegevens naar een random-access bestandsbuffer
+(ter voorbereiding van het statement PUT) en lijnen de waarde voor de
+tekenreeksvariabele links dan wel rechts uit. LSET kopieert tevens de
+inhoud van de ene recordvariabele naar een andere recordvariabele.
+
+\bLSET tekenreeksvariabele$=tekenreeksuitdrukking$\p
+\bRSET tekenreeksvariabele$=tekenreeksuitdrukking$\p
+\bLSET recordvariabele1=recordvariabele2\p
+
+    ş \btekenreeksvariabele$\p    Een tekenreeksvariabele of een random-access
+                              bestandsveld dat bepaald is door het
+                              statement FIELD.
+    ş \btekenreeksuitdrukking$\p  Voor LSET is dit de linksuitgelijnde
+                              versie van tekenreeksuitdrukking$. Voor RSET
+                              is dit de rechtsuitgelijnde versie van
+                              tekenreeksuitdrukking$.
+    ş \brecordvariabele1\p        Een door de gebruiker gedefinieerde
+                              recordvariabele.
+      \brecordvariabele2\p        Gebruik LSET om de recordvariabele van
+                              het ene gegevenstype toe te wijzen aan het
+                              door de gebruiker gedefinieerde gegevenstype.
+
+Voorbeeld:
+    OPEN "FILEDAT.DAT" FOR RANDOM AS #1 LEN = 10
+    FIELD #1, 5 AS Ls1$, 5 AS Rs1$
+    LSET Ls1$ = "LSET"
+    RSET Rs1$ = "RSET"
+    PUT #1, 1
+    CLOSE #1
+    OPEN "FILEDAT.DAT" FOR RANDOM AS #1 LEN = 10
+    FIELD #1, 5 AS Ls2$, 5 AS Rs2$
+    GET #1, 1
+    PRINT "*" + Ls2$ + "*", "*" + Rs2$ + "*"
+    CLOSE #1
+
+Zie ook     \i\p\aFIELD\v@FIELD\v\i\p    \i\p\aGET, PUT\v@PUT\v\i\p
+.context NAME
+.context @NAME
+:nHet statement NAME
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Wijzigt de naam van een bestand of directory.
+
+\bNAME oudenaam$ AS nieuwenaam$\p
+
+    ş \boudenaam$\p en \bnieuwenaam$\p  De naam van een bestaand bestand
+                                en de nieuwe naam voor het bestand. De
+                                namen mogen een pad omvatten.
+
+Voorbeeld:
+    INPUT "Oude naam: "; OudFN$
+    INPUT "Nieuwenaam: "; NieuwFN$
+    NAME OudFN$ AS NieuwFN$
+
+Zie ook     \i\p\aFILES\v@FILES\v\i\p
+.context OPEN
+.context @OPEN
+:nHet statement OPEN
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Opent een bestand of apparaat.
+
+\bOPEN best$ [FOR mod] [ACCESS toegang] [grendel] AS [#]bestnr% [LEN=reclen%]\p
+
+    ş \bbest$\p          De naam van het bestand of apparaat. De
+                     bestandsnaam mag een station en pad omvatten.
+    ş \bmod\p            Een van de volgende bestandsmodi: APPEND, BINARY,
+                     INPUT, OUTPUT of RANDOM.
+                     Zie \i\p\aBestandsmodi voor het statement OPEN\v@APPEND\v\i\p.
+    ş \btoegang\p        Specificeert in netwerkomgevingen of het bestand
+                     geopend is voor toegang voor READ, WRITE of READ WRITE.
+                     Zie \i\p\aHet statement OPEN met clausule ACCESS\v@ACCESS\v\i\p.
+    ş \bgrendel\p        Specificeert bestandsvergrendeling in een
+                     netwerkomgeving: SHARED, LOCK READ, LOCK WRITE of
+                     LOCK READ WRITE.
+    ş \bbestnr%\p        Een nummer van 1 tot en met 255 dat het geopende
+                     bestand aangeeft.
+    ş \breclen%\p        Voor random-access bestanden is dit de recordlengte
+                     (standaard is 128 bytes). Voor sequenti‰le
+                     bestanden is dit het aantal tekens in de buffer
+                     (standaard is 512 bytes).
+
+Voorbeeld:
+    INPUT "Bestandsnaam: "; n$
+    OPEN n$ FOR OUTPUT AS #1
+    PRINT #1, "Dit wordt opgeslagen in het bestand."
+    CLOSE
+    OPEN n$ FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT "Lees van bestand: "; a$
+    CLOSE
+
+Zie ook     \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aFREEFILE\v@FREEFILE\v\i\p    \i\p\aOPEN COM\v@opcom\v\i\p    \i\p\aTYPE\v@TYPE\v\i\p
+            \i\p\aAlternatieve syntaxis voor het statement OPEN\v@openalt\v\i\p
+.context APPEND
+.context @APPEND
+.context BINARY
+.context @BINARY
+.context OUTPUT
+.context @OUTPUT
+.context RANDOM
+.context @RANDOM
+:nBestandsmodi voor het statement OPEN
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+De trefwoorden APPEND, BINARY, INPUT, OUTPUT en RANDOM worden gebruikt
+in het statement OPEN om bestandsmodi aan te geven. INPUT, OUTPUT en RANDOM
+worden tevens gebruikt in het statement OPEN COM.
+
+    ş APPEND geeft aan dat het bestand moet worden geopend voor sequenti‰le
+      uitvoer en plaatst de bestandspointer aan het eind van het bestand.
+      Een statement PRINT # of WRITE # breidt het bestand dan uit (voegt
+      gegevens toe).
+    ş BINARY specificeert een binaire bestandsmodus. In binaire modus
+      kunt u informatie lezen van of schrijven naar een bytepositie in
+      het bestand met behulp van het statement GET of PUT.
+    ş INPUT geeft aan dat het bestand is geopend voor sequenti‰le invoer.
+    ş OUTPUT geeft aan dat het bestand is geopend voor sequenti‰le uitvoer.
+    ş RANDOM geeft aan dat het bestand is geopend in random-access modus.
+      RANDOM is de standaard-bestandsmodus.
+
+Zie ook     \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aOPEN COM\v@opcom\v\i\p    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aWRITE\v@WRITE\v\i\p
+.context ACCESS
+.context @ACCESS
+:nHet statement OPEN met clausule ACCESS
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Geeft aan voor welke bewerking de gebruiker toegang heeft tot het
+geopende bestand.
+
+\bACCESS {READ | WRITE | READ WRITE}\p
+
+    ş \bREAD\p          Het geopende bestand kan alleen worden gelezen.
+    ş \bWRITE\p         Er kan alleen naar het geopende bestand worden
+                    geschreven.
+    ş \bREAD WRITE\p    Het geopende bestand kan worden gelezen en er kan
+                    naar worden geschreven. De modus READ WRITE is alleen
+                    geldig voor random-access bestanden en binaire
+                    bestanden, en voor bestanden die zijn geopend in
+                    APPEND-modus (sequenti‰le toegang).
+
+Zie ook     \i\p\aOPEN\v@OPEN\v\i\p
+.context @openalt
+.context .openalt
+:nAlternatieve syntaxis voor het statement OPEN
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bOPEN modus2$,[#]bestandsnr%,bestand$[,reclen%]\p
+
+    ş \bmodus2$\p      Een tekenreeksuitdrukking die begint met een van
+                   de volgende tekens en die de bestandsmodus aangeeft:
+                    O    Sequenti‰le uitvoermodus.
+                    I    Sequenti‰le invoermodus.
+                    R    Random-access invoer/uitvoermodus.
+                    B    Binaire bestandsmodus.
+                    A    Sequenti‰le uitvoermodus. Plaatst de
+                         bestandspointer aan het eind van het bestand en
+                         stelt het recordnummer in voor het laatste record
+                         van het bestand. Een statement PRINT # of WRITE #
+                         breidt het bestand uit (voegt gegevens toe).
+    ş \bbestandsnr%\p  Een getal van 1 tot en met 255 dat het open bestand
+                   identificeert.
+    ş \bbestand$\p     De bestandsnaam (eventueel met station en pad).
+    ş \breclen%\p      Voor random-access bestanden is dit de recordlengte
+                   in bytes.Voor sequenti‰le bestanden is dit het aantal
+                   tekens in de buffer.
+
+    ş QBasic ondersteunt deze syntaxis om compatibiliteit te waarborgen
+      met programma's die in eerdere versies van BASIC zijn geschreven.
+
+Zie ook     \i\p\aOPEN\v@OPEN\v\i\p
+.context RESET
+.context @RESET
+:nHet statement RESET
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sluit alle open bestanden en apparaten.
+
+\bRESET\p
+
+Zie ook     \i\p\aCLOSE\v@CLOSE\v\i\p    \i\p\aEND\v@END\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aSTOP\v@STOP\v\i\p
+.context SEEK
+.context @SEEK
+:nDe functie en het statement SEEK
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+De functie SEEK retourneert de huidige bestandspositie.
+Het statement SEEK stelt de bestandspositie in voor de volgende lees- of
+schrijfbewerking.
+
+\bSEEK(bestandsnr%)\p
+\bSEEK [#]bestandsnr%, positie&\p
+
+    ş \bbestandsnr%\p  Het nummer van het open bestand.
+    ş \bpositie&\p     De positie waar de volgende lees- of schrijfbewerking
+                   begint. Voor random-access bestanden is dit het
+                   recordnummer. Voor andere bestanden is dit de
+                   bytepositie ten opzichte van het begin van het bestand.
+                   De eerste byte is positie 1.
+
+Voorbeeld:
+    OPEN "TEST.DAT" FOR RANDOM AS #1
+    FOR i% = 1 TO 10
+        PUT #1, , i%
+    NEXT i%
+    SEEK #1, 2
+    GET #1, , i%
+    PRINT "Gegevens: "; i%; " Huidig record: "; LOC(1); " Volgend: "; SEEK(1)
+
+Zie ook     \i\p\aGET, PUT\v@GET\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p
+.context WRITE
+.context @WRITE
+:nHet statement WRITE
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Schrijft gegevens naar het scherm of naar een sequentieel bestand.
+
+\bWRITE [[#]bestandsnr%,] gegevens\p
+
+    ş \bbestandsnr%\p     Het nummer van een open sequentieel bestand.
+                      Als het bestandsnummer wordt weggelaten, schrijft
+                      WRITE naar het scherm.
+    ş \bgegevens\p        Een of meer variabelen of uitdrukkingen,
+                      gescheiden door komma's, waarvan de waarden naar
+                      het scherm of een bestand worden geschreven.
+
+    ş WRITE voegt komma's tussen items en plaatst tekenreeksen tussen
+      aanhalingstekens tijdens het schrijven. WRITE schrijft waarden naar
+      een bestand in een vorm die door het statement INPUT kan worden
+      gelezen.
+
+Voorbeeld:
+    CLS
+    OPEN "LIST" FOR OUTPUT AS #1
+    DO
+        INPUT "   NAAM:       ", Naam$
+        INPUT "   LEEFTIJD:   ", Leeftijd$
+        WRITE #1, Naam$, Leeftijd$
+        INPUT "Nog een naam en leeftijd"; R$
+    LOOP WHILE UCASE$(R$) = "J"
+    CLOSE #1
+    'Drukt het bestand af op het scherm.
+    OPEN "LIST" FOR INPUT AS #1
+    CLS
+    PRINT "Ingangen in bestand:": PRINT
+    DO WHILE NOT EOF(1)
+        INPUT #1, Rec1$, Rec2$   'Leest ingangen van het bestand.
+        PRINT Rec1$, Rec2$       'Drukt ingangen af op het scherm.
+    LOOP
+    CLOSE #1
+    KILL "LIST"
+
+Zie ook     \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p    \i\p\aOPEN\v@OPEN\v\i\p    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p
+.comment *******************************************************************
+.comment *  AS Keyword
+.comment *******************************************************************
+.context AS
+.context @AS
+:nHet trefwoord AS
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Voert diverse taken uit als onderdeel van verschillende statements:
+
+    ş Geeft een type variabele aan wanneer het gebruikt wordt in de
+      statements COMMON, DECLARE, DEF FN, DIM, FUNCTION, REDIM, SHARED,
+      STATIC en SUB.
+    ş Geeft een type element aan in gebruikergedefinieerde gegevenstypen
+      wanneer het gebruikt wordt met het statement TYPE.
+    ş Wijst een bestandsnummer toe aan een bestand of apparaat wanneer
+      het gebruikt wordt met het statement OPEN.
+    ş Geeft een veldnaam aan wanneer het gebruikt wordt met het
+      statement FIELD.
+    ş Geeft een nieuwe bestandsnaam aan wanneer het gebruikt wordt met
+      het statement NAME.
+
+Zie ook     \i\p\aCOMMON\v@COMMON\v\i\p    \i\p\aDECLARE\v@DECLARE\v\i\p     \i\p\aDEF FN\v@DEF\v\i\p    \i\p\aDIM, REDIM\v@DIM\v\i\p
+            \i\p\aFIELD\v@FIELD\v\i\p     \i\p\aFUNCTION\v@FUNCTION\v\i\p    \i\p\aNAME\v@NAME\v\i\p      \i\p\aOPEN\v@OPEN\v\i\p
+            \i\p\aSHARED, STATIC\v@SHARED\v\i\p          \i\p\aSUB\v@SUB\v\i\p       \i\p\aTYPE\v@TYPE\v\i\p

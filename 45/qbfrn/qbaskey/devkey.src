@@ -1,0 +1,822 @@
+.comment ******************************************************************
+.comment *  Device I/O Family - QBasic                                    *
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Combined INP/OUT.                                             *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/22/90 stevesau                                              *
+.comment *  Incorporated final review/edit comments.                      *
+.comment ******************************************************************
+.comment *  6/8/90 stevesau                                               *
+.comment *  Combined LOCATE/CSRLIN/POS                                    *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/8/90 stevesau                                               *
+.comment *  Combined INPUT/LINE INPUT/INPUT#/LINE INPUT#, PRESET/PSET.    *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/7/90 stevesau                                               *
+.comment *  Combined CSRLIN/POS.                                          *
+.comment ******************************************************************
+.comment *  5/4/90 stevesau                                               *
+.comment *  Revised CLS, WIDTH.                                           *
+.comment *  Combined LPRINT/PRINT, LPRINT USING/PRINT USING.              *
+.comment *  Deleted SCREEN (combined with SCREEN Func. in Graphics).      *
+.comment *  Deleted Screen adapters, modes, displays info (created new    *
+.comment *  screen modes topic in Graphics).                              *
+.comment ******************************************************************
+.comment *  5/3/90 stevesau                                               *
+.comment *  Added link to OPEN File Modes to INPUT.                       *
+.comment *  Deleted WRITE (combined with WRITE # in File family).         *
+.comment *  Combined PRINT and PRINT # (from File family).                *
+.comment *  Added PRINT # info to PRINT USING.                            *
+.comment *  Moved PRINT USING format specifiers to separate node.         *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                              *
+.comment *  Added Screen Modes, Adapters and Displays, Attributes and     *
+.comment *  Colors, made links local.                                     *
+.comment *  Deleted links to individual Screen Modes on SCREEN.           *
+.comment *  Added Setting Screen Width (from WIDTH Details).              *
+.comment ******************************************************************
+.comment *  4/20/90 stevesau                                              *
+.comment *  Added action lines. 					  *
+.comment *  Deleted table from USING Keyword screen.			  *
+.comment *  Deleted OS/2 references.                                      *
+.comment ******************************************************************
+.comment *  4/17/90 Beth Preslar                                          *
+.comment *  Removed FormatX$ functions, SetFormatCC routine		  *
+.comment ******************************************************************
+.context BEEP
+.context @BEEP
+:nInstruction BEEP
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+BEEP fait ‚mettre un signal sonore au haut-parleur de votre systŠme.
+
+\bBEEP\p
+.context CLS
+.context @CLS
+:nInstruction CLS
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+CLS efface l'‚cran.
+
+\bCLS [{0 | 1 | 2}]\p
+
+    CLS     Efface la fenˆtre de texte ou la fenˆtre graphique. Si une fenˆtre
+            graphique a ‚t‚ activ‚e (par l'instruction VIEW), efface seulement
+            cette fenˆtre.Sinon, efface la fenˆtre de texte ou tout l'‚cran.
+    CLS 0   Efface de l'‚cran tout le texte et tous les graphiques.
+    CLS 1   Efface la fenˆtre graphique ou tout l'‚cran si aucune fenˆtre
+            graphique n'a ‚t‚ activ‚e.
+    CLS 2   Efface la fenˆtre de texte.
+
+Voir aussi    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+.context INKEY$
+.context @INKEY$
+:nFonction INKEY$
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+INKEY$ lit un caractŠre entr‚ au clavier.
+
+\bINKEY$\p
+
+    ş INKEY$ retourne une chaŒne nulle si aucun caractŠre … retourner.
+    ş Pour les codes standards, INKEY$ retourne une chaŒne de 1 octet
+      contenant le caractŠre lu.
+    ş Pour les codes ‚tendus, INKEY$ retourne une chaŒne de 2 octets compos‚e
+      du caractŠre nul (ASCII 0) et du code de clavier.
+
+Exemple:
+    PRINT "Appuyez sur ECHAP pour quitter..."
+    DO
+    LOOP UNTIL INKEY$ = CHR$(27)    '27 is the ASCII code for Esc.
+
+Voir aussi    \i\p\aCodes de balayage clavier\v@kbsct\v\i\p
+.context INP
+.context @INP
+.context OUT
+.context @OUT
+:nFonction INP, Instruction OUT
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+INP retourne l'octet lu sur un port D'E/S.
+OUT transmet un octet … un port d'E/S.
+
+\bINP(port%)\p
+\bOUT port%, val%\p
+
+    ş \bport%\p     Un nombre compris entre 0 et 65 535 qui
+                identifie le port.
+    ş \bval%\p      Une expression num‚rique comprise entre 0 et 255
+                … transmettre au port.
+
+Exemple:
+    x% = INP(&H3FC)          'Lecture du registre de contr“le de COM1.
+    OUT &H3FC, (x% XOR 1)    'Modifie le bit Data Terminal Ready.
+
+Voir aussi    \i\p\aWAIT\v@WAIT\v\i\p
+.context INPUT
+.context @INPUT
+:nInstructions INPUT, LINE INPUT
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+INPUT lit les donn‚es entr‚es depuis le clavier ou un fichier.
+LINE INPUT lit une ligne (jusqu'… 255 caractŠres) depuis le clavier
+           ou un fichier.
+
+\bINPUT [;] ["msg"{; | ,}] listeVar\p
+\bLINE INPUT [;] ["prompt";] variable$\p
+\bINPUT #numFich%, listeVar\p
+\bLINE INPUT #numFich%, variable$\p
+
+    ş \bmsg\p           Message d'attente optionnel, indique … l'utilisateur
+                    ce qu'il doit entrer. Un point-virgule plac‚ aprŠs le
+                    message ajoute un point d'interrogation au message.
+    ş \blisteVar\p      Une ou plusieurs variables, s‚par‚es par des virgules,
+                    dans lesquelles les donn‚es lues depuis le clavier ou un
+                    fichier sont m‚moris‚es. Un nom de variable peut compter
+                    au plus 40 caractŠres et doit commencer par une lettre.
+                    Les caractŠres valides sont A-Z, 0-9, et le point (.).
+    ş \bvariable$\p     Retient tous les caractŠres tap‚s au clavier
+                    ou lus depuis un fichier.
+    ş \bnumFich%\p      Num‚ro d'un fichier ouvert.
+
+    ş INPUT utilise la virgule comme s‚parateur pour les entr‚es.
+      LINE INPUT lit tous les caractŠres jusqu'au retour chariot.
+    ş Poue les entr‚es clavier, un point-virgule plac‚ imm‚diatement aprŠs
+      INPUT laisse le curseur sur la mˆme ligne lorsque l'utilisateur
+      a appuy‚ sur ENTREE.
+
+Exemple:
+    CLS
+    OPEN "LIST" FOR OUTPUT AS #1
+    DO
+        INPUT "   NAME:       ", Name$  'Lecture entr‚es depuis clavier.
+        INPUT "   AGE:        ", Age$
+        WRITE #1, Nom$, Age$
+        INPUT "Ajouter une entr‚e "; R$
+    LOOP WHILE UCASE$(R$) = "O"
+    CLOSE #1
+    'Liste le fichier.
+    OPEN "LIST" FOR INPUT AS #1
+    CLS
+    PRINT "Entr‚es dans le fichier : ": PRINT
+    DO WHILE NOT EOF(1)
+        LINE INPUT #1, REC$  'Lecture entr‚es depuis fichier.
+        PRINT REC$           'Affichage sur l'‚cran.
+    LOOP
+    CLOSE #1
+    KILL "LIST"
+
+Voir aussi    \i\p\aINKEY$\v@INKEY$\v\i\p    \i\p\aINPUT$\v@INPUT$\v\i\p    \i\p\aInstruction OPEN : modes d'accŠs\v@APPEND\v\i\p
+.context LIST
+.context @LIST
+.context KEY
+.context @KEY
+:nInstruction KEY (Affectation)
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+KEY affecte des chaŒnes de programmation aux touches de fonction et permet
+d'afficher ces chaŒnes.
+
+\bKEY touche%, exprChaine$\p
+\bKEY LIST\p
+\bKEY ON\p
+\bKEY OFF\p
+
+    ş \btouche%\p              Num‚ro d'une touche de fonction, compris entre
+                           1 et 10 pour les touches F1 … F10. Utilisez
+                           les valeurs 30 et 31 pour F11 et F12 sur les
+                           claviers ‚tendus.
+    ş \bexprChaine$\p          ChaŒne d'au plus 15 caractŠres retourn‚e
+                           lorsque la touche de fonction est press‚e.
+    ş \bLIST\p                 Affiche la chaŒne affect‚e … chaque touche.
+    ş \bON\p                   Active la ligne d'affichage des touches de
+                           fonction programm‚es au bas de l'‚cran.
+    ş \bOFF\p                  D‚sactive la ligne d'affichage.
+
+Exemple:
+    KEY 4, "MENU" + CHR$ (13)
+    KEY LIST
+    KEY 4, ""
+    KEY LIST
+
+Voir aussi    \i\p\aKEY, ON KEY (Interception d'‚v‚nements)\v@ketv\v\i\p
+.context KILL
+.context @KILL
+:nInstruction KILL
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+KILL supprime des fichiers sur disque.
+
+\bKILL specFich$\p
+
+    ş \bspecFich$\p    Identifie le ou les fichiers … supprimer. Peut inclure
+                   un chemin et les caractŠres g‚n‚riques * et ?.
+
+Exemple:
+    INPUT "Fichier … supprimer : "; f$
+    KILL f$
+
+Voir aussi    \i\p\aFILES\v@FILES\v\i\p
+.context LOCATE
+.context @LOCATE
+.context CSRLIN
+.context @CSRLIN
+.context POS
+.context @POS
+:nInstruction LOCATE, Fonctions CSRLIN, POS
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LOCATE d‚place le curseur … une position sp‚cifi‚e sur l'‚cran.
+CSRLIN retourne la position de la ligne o— se trouve le curseur.
+POS retourne la position de la colonne o— se trouve le curseur.
+
+\bLOCATE  [ligne%] [,[colonne%] [,[curseur%] [,dep% [,fin%]]]]\p
+\bCSRLIN\p
+\bPOS(expression)\p
+
+    ş \bligne%\p et \bcolonne%\p    Num‚ros de la ligne et de la colonne o—
+                            le curseur sera plac‚.
+    ş \bcurseur%\p              Indique si le curseur sera visible :
+                            0 = invisible, 1 = visible
+    ş \bdep%\p et \bfin%\p          Expressions entiŠres comprises entre 0 et 31
+                            qui contr“lent la hauteur du curseur en
+                            d‚finissant les lignes de pixels sup‚rieure et
+                            inf‚rieure du curseur.
+    ş \bexpression\b            Expression quelconque.
+
+Exemple:
+    CLS
+    LOCATE 5, 5
+    ligne% = CSRLIN
+    col% = POS(0)
+    PRINT "Position 1 (Appuyez sur une touche)"
+    DO
+    LOOP WHILE INKEY$ = ""
+    LOCATE (ligne% + 2), (col% + 2)
+    PRINT "Position 2"
+.context LPOS
+.context @LPOS
+:nFonction LPOS
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+LPOS retourne le nombre de caractŠres envoy‚s … l'imprimante depuis le
+dernier retour chariot.
+
+\bLPOS(n%)\p
+
+    ş \bn%\p    Sp‚cifie un des ports imprimante :
+              0 = LPT1, 1 = LPT1, 2 = LPT2, 3 = LPT3
+Exemple:
+    'Cet exemple n‚cessite une imprimante
+    LPRINT
+    FOR i% = 1 TO 20
+        LPRINT i%;
+        IF LPOS(1) >= 10 THEN LPRINT     'Nouvelle ligne
+    NEXT i%
+.context .opcom
+.context @opcom
+:nInstruction OPEN COM
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+OPEN COM ouvre et initialise une voie de communication pour les
+entr‚es/sorties. L'instruction OPEN COM doit ˆtre ex‚cut‚e pour pouvoir
+utiliser un p‚riph‚rique de communication … travers une interface RS232.
+
+\bOPEN "COMn: listOpt1 listOpt2" [FOR mode] AS [#]numFich% [LEN=lgEnr%]\p
+
+    ş \bn\p           Port de communication … ouvrir (1 = COM1, 2 = COM2).
+    ş \blistOpt1\p    ParamŠtres de communication les plus courants :
+                    \b[baud] [,[par] [,[don] [,[stop]]]]\p
+                  baud est la vitesse de transmission du p‚riph‚rique ouvert :
+                    75, 110, 150, 300, 600, 1200, 2400, 4800, 9600
+                  par est la m‚thode de contr“le de parit‚ :
+                    N (aucun)     E (paire)    O (impaire)
+                    S (espace)    M (marque)   PE (active ctrl erreur)
+                  don est le nombre de bits de donn‚es par octet :
+                    5, 6, 7, 8
+                  stop est le nombre de bits d'arrˆt :
+                    1, 1.5, 2
+                  Valeurs par d‚faut : 300 bauds, parit‚ paire,
+                  7 bits de donn‚es, 1 stop bit.
+    ş \blistOpt2\p    ParamŠtres moins courants, s‚par‚s par des virgules :
+
+                  Option    Description
+                  ÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                  ASC       Ouvre le p‚riph‚rique en mode ASCII.
+                  BIN       Ouvre le p‚riph‚rique en mode binaire.
+                  CD[m]     Contr“le la temporisation (en milliseconde) sur
+                            la ligne d‚tection de porteur de donn‚es (Data
+                            Carrier Detect - DCD).
+                  CS[m]     Contr“le la temporisation (en milliseconde) sur
+                            la ligne prˆt … ‚mettre (Clear To Send - CTS).
+                  DS[m]     Contr“le la temporisation (en milliseconde) sur
+                            la ligne poste de donn‚es prˆt (Data Set Ready -
+                            DSR).
+                  LF        Envoie un caractŠre saut de ligne aprŠs un
+                            retour chariot.
+                  OP[m]     Contr“le le temps (en milliseconde) pendant lequel
+                            OPEN COM attend pour que les lignes de
+                            communication soient ouvertes.
+                  RB[n]     Fixe la taille (en octets) du tampon de r‚ception.
+                  RS        Supprime la d‚tection du signal demande pour
+                            ‚mettre (Request To Send - RTS).
+                  TB[n]     Fixe la taille (en octets) du tampon d'‚mission.
+
+    ş \bmode\p        INPUT, OUTPUT ou RANDOM (valeur par d‚faut).
+                  Voir \i\p\aInstruction OPEN : modes d'accŠs\v@APPEND\v\i\p.
+    ş \bnumFich%\p    Nombre compris entre 0 et 255 qui identifie la ligne
+                  de communication tant qu'elle est ouverte.
+    ş \blgEnr%\p      Taille du tampon … accŠs al‚atoire
+                  (128 octets par d‚faut).
+
+Exemple:
+    'Utiliser cet exemple pour r‚soudre un problŠme de communication.
+    'La vitesse de transmission est lente, la gestion de dialogue ignor‚e
+    'et les tampons aggrandis
+    OPEN "COM1:300,N,8,1,CD0,CS0,DS0,OP0,RS,TB2048,RB2048" FOR RANDOM AS #1
+
+Voir aussi    \i\p\aOPEN\v@OPEN\v\i\p
+.context .penf
+.context @penf
+:nFonction PEN
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PEN retourne l'‚tat du crayon optique.
+
+\bPEN(n%)\p
+
+    ş \bn%\p      Indique l'information retourn‚e :
+
+        n%    Retourne
+        ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+        0     Utilisation du crayon depuis le dernier appel (-1=oui, 0=non)
+        1     coordonn‚e x du dernier appui du crayon
+        2     coordonn‚e y du dernier appui du crayon
+        3     ‚tat actuel du crayon (-1=appuy‚, 0=libre)
+        4     DerniŠre coordonn‚e x connue et valable
+        5     DerniŠre coordonn‚e y connue et valable
+        6     Ligne de caractŠres du dernier appui du crayon
+        7     Colonne de caractŠres du dernier appui du crayon
+        8     Ligne de caractŠres de la derniŠre position du crayon
+        9     Colonne de caractŠres de la derniŠre position du crayon
+
+Exemple:
+    DO
+      P = PEN(3)
+      LOCATE 1, 1: PRINT "Le crayon est ";
+      IF P THEN PRINT "appuy‚" ELSE PRINT "libre"
+      PRINT "X ="; PEN(4), " Y ="; PEN(5); "  "
+    LOOP
+
+Voir aussi    \i\p\aInstructions PEN, ON PEN\v@PEN\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aModes d'‚cran\v@screen.modes\v\i\p
+.context PLAY
+.context @PLAY
+:nInstruction PLAY (Musique)
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PLAY joue de la musique.
+
+\bPLAY chaineCmd$\p
+
+    ş \bchaineCmd$\p   Expression de chaŒne qui contient une ou plusieurs
+                   des commandes PLAY suivantes :
+
+      Octave et notes :
+        O\boctave\p    Fixe l'octave en cours (0 - 6).
+        < ou >     Passage … l'octave inf‚rieure ou sup‚rieure.
+        A - G      Joue une note sp‚cifi‚e dans l'octave en cours.
+        N\bnote\p      Joue une note sp‚cifi‚e (0 - 84) dans l'intervalle
+                   des 7 octaves (0 est une pause).
+
+      Dur‚e d'un ton et tempo :
+        L\blg\p        Fixe la dur‚e de chaque note (1 - 64). L1 est une ronde,
+                   L2 is a half note, etc.
+        ML         Note jou‚e … sa pleine dur‚e.
+        MN         Note jou‚e … 7/8 de la dur‚e.
+        MS         Note jou‚e aux 3/4 de la dur‚e.
+        P\bpause\p     Pause correspondant … la dur‚e de n noires (n = 1 - 64).
+        T\btempo\p     Fixe le nombre de noires par minute (n = 32 - 255).
+
+      Op‚ration :
+        MF          Joue la musique en premier plan.
+        MB          Joue la musique en arriŠre-plan.
+
+      Suffixes :
+        # ou +      DiŠse.
+        -           B‚mol.
+        .           Joue la note pr‚c‚dente aux 3/2 de la longueur sp‚cifi‚e.
+
+    ş Pour ex‚cuter une sous-chaŒne de commande d'une chaŒne de commande PLAY,
+      utilisez la commande "X" :
+
+      PLAY "X"+ VARPTR$(chaineCmd$)
+
+Exemple:
+    'Joue la gamme sur 7 octaves
+    ech$ = "CDEFGAB"
+    PLAY "L16"
+    FOR i% = 0 TO 6
+        PLAY "O" + STR$(i%)
+        PLAY "X" + VARPTR$(ech$)
+    NEXT i%
+
+Voir aussi  \i\p\aBEEP\v@BEEP\v\i\p     \i\p\aFonction PLAY\v@PLAYF\v\i\p
+            \i\p\aSOUND\v@SOUND\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p    \i\p\aComparaison avec BASICA\v@basica.diffs\v\i\p
+            \i\p\aPLAY, ON PLAY (Interception d'‚v‚nements)\v@playev\v\i\p
+.context PMAP
+.context @PMAP
+:nFonction PMAP
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PMAP retourne la coordonn‚e logique correspondant … une coordonn‚e physique,
+ou vice-versa.
+
+\bPMAP (coordDep#, n%)\p
+
+    ş \bcoordDep#\p    Coordonn‚e du point … convertir.
+    ş \bn%\p           Valeur indiquant le type de conversion:
+
+                   coordDep#               n%   Retourne
+                   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ   ÍÍ   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                   Coordonn‚e x logique    0    Coordonn‚e x physique
+                   Coordonn‚e y logique    1    Coordonn‚e y physique
+                   Coordonn‚e x physique   2    Coordonn‚e x logique
+                   Coordonn‚e y physique   3    Coordonn‚e y logique
+
+Exemple:
+    'Cet exemple n‚cessite un adaptateur graphique qui gŠre le mode d'‚cran 1.
+    SCREEN 1
+    WINDOW SCREEN (0, 0)-(100, 100)
+    PRINT "Logique x=50, physique x="; PMAP(50, 0)
+    PRINT "Logique y=50, physique y="; PMAP(50, 1)
+
+Voir aussi    \i\p\aPOINT\v@POINT\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+.context POINT
+.context @POINT
+:nFonction POINT
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+POINT retourne les coordonn‚es en cours du curseur graphique ou l'attribut de
+couleur d'un pixel sp‚cifi‚.
+
+\bPOINT {(n%) | (x%,y%)}\p
+
+    ş \b(n%)\p       Indique le type de coordonn‚e … retouner :
+
+                 n%    Retourne
+                 ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                 0     Coordonn‚e physique x en cours
+                 1     Coordonn‚e physique y en cours
+                 2     Coordonn‚e logique x en cours
+                 3     Coordonn‚e logique y en cours
+
+    ş \b(x%,y%)\p    Coordonn‚es du pixel ‚valu‚ par POINT.
+                 Si ce pixel se trouve hors de port‚e,
+                 POINT retourne -1.
+
+Exemple:
+    'Cet exemple n‚cessite un adaptateur graphique.
+    SCREEN 1
+    LINE (0, 0)-(100, 100), 2
+    LOCATE 14, 1
+    FOR y% = 1 TO 10
+        FOR x% = 1 TO 10
+            PRINT POINT(x%, y%);
+        NEXT x%
+        PRINT
+    NEXT y%
+
+Voir aussi  \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aPMAP\v@PMAP\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aCouleurs et attributs de couleur\v@color.table\v\i\p
+.context PRESET
+.context @PRESET
+.context PSET
+.context @PSET
+:nInstructions PRESET, PSET
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PRESET et PSET tracent un point sur l'‚cran.
+
+\bPRESET [STEP] (x!,y!) [,coul%]\p
+\bPSET [STEP] (x!,y!) [,coul%]\p
+
+    ş \bSTEP\p       Indique que les valeurs x! et y! sont relatives
+                 … la position en cours du curseur graphique.
+    ş \b(x!,y!)\p    Coordonn‚es du point … tracer.
+    ş \bcoul%\p      Attribut de couleur qui fixe la couleur du pixel.
+                 Si omis, PRESET utilise la couleur de fond et PSET utilise
+                 la couleur du premier plan.
+
+    ş Les attributs de couleur disponibles d‚pendent de votre adaptateur
+      graphique et du mode d'‚cran. Les valeurs des coordonn‚es d‚pendent
+      de votre adaptateur graphique, du mode d'‚cran et de l'instruction
+      VIEW ou WINDOW la plus r‚cente.
+
+Exemple:
+    'Cet exemple n‚cessite un adaptateur graphique couleur.
+    SCREEN 1
+    FOR i% = 0 TO 320
+        PSET (i%, 100)
+        FOR delai% = 1 TO 100: NEXT delai%
+        PRESET (i%, 100)
+    NEXT i%
+
+Voir aussi  \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aCouleurs et attributs de couleur\v@color.table\v\i\p    \i\p\aModes d'‚cran\v@screen.modes\v\i\p
+.context PRINT
+.context @PRINT
+.context LPRINT
+.context @LPRINT
+:nInstructions PRINT, LPRINT
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PRINT affiche des donn‚es sur l'‚cran ou les ‚crit dans un fichier.
+LPRINT imprime des donn‚es sur l'imprimante LPT1:.
+
+\bPRINT [#numFich%,] [listeExpr] [{; | ,}]\p
+\bLPRINT [expressionlist] [{; | ,}]\p
+
+    ş \bnumFich%\p     Num‚ro d'un fichier ouvert. Si omis, PRINT affiche
+                   les donn‚es … l'‚cran.
+    ş \blisteExpr\p    Liste d'expressions num‚riques ou d'expressions
+                   de chaŒne … afficher.
+    ş \b{; | ,}\p      D‚termine la position d'affichage :
+                   ";" force l'affichage du prochain ‚l‚ment directement
+                   … la suite du dernier ‚l‚ment affich‚.
+                   "," force l'affichage du prochain ‚l‚ment au d‚but
+                   de la zone d'affichage suivante.
+                   Les zones d'affichage ont une longueur de 14 caractŠres.
+
+Exemple:
+    OPEN "TEST.DAT" FOR OUTPUT AS #1
+    PRINT #1, USING "##.###  "; 12.12345
+    CLOSE
+    OPEN "TEST.DAT" FOR INPUT AS #1
+    INPUT #1, a$
+    PRINT a$
+    LPRINT "Ceci est une ligne"; 1
+    LPRINT "Ceci est une ligne",
+    LPRINT 2
+
+Voir aussi    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p    \i\p\aWRITE\v@WRITE\v\i\p
+.context .zpu
+.context @zpu
+.context .lprintu
+.context @lprintu
+:nInstructions PRINT USING, LPRINT USING
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PRINT USING affiche des donn‚es selon un format sp‚cifi‚ sur l'‚cran ou les
+            ‚crit dans un fichier.
+LPRINT USING imprime des donn‚es format‚es sur l'imprimante LPT1:.
+
+\bPRINT [#numFich%,] USING chaineFmt$; listExpr [{; | ,}]\p
+\bLPRINT USING chaineFmt$; listExpr [{; | ,}]\p
+
+    ş \bnumFich%\p       Num‚ro d'un fichier ouvert.
+    ş \bchaineFmt$;\p    Expression de chaŒne qui contient une ou plusieurs
+                     \i\p\aSp‚cification de format\v@forspec\v\i\p.
+    ş \blistExpr\p       Liste d'expressions num‚riques ou de chaŒne …
+                     afficher, s‚par‚es par des virgules, des points-
+                     virgules, des espaces ou des tabulations.
+    ş \b{; | ,}\p        D‚termine la position d'affichage du prochain ‚l‚ment :
+                     ";" provoque l'affichage directement … la suite du
+                     dernier ‚l‚ment affich‚.
+                     "," force l'affichage au d‚but de la zone d'affichage
+                     suivante. Les zones ont 14 caractŠres de longueur.
+Exemple:
+    a = 123.4567
+    PRINT USING "###.##"; a
+    LPRINT USING "+###.####"; a
+    a$ = "ABCDEFG"
+    PRINT USING "!"; a$
+    LPRINT USING "\\ \\"; a$
+
+Voir aussi    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p
+.context @forspec
+:nSp‚cification de format
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+       \bCaractŠres utilis‚s pour mettre en forme une expression num‚rique\p
+ \b#\p  position de chiffre               º \b-\p   plac‚ aprŠs les positions de
+ \b.\p  position du point d‚cimal         º     chiffre, affiche un signe …
+ \b,\p  plac‚e … gauche du point d‚cimal, º     droite pour les nombres
+    affiche une virgule tous les 3    º     n‚gatifs
+    chiffres                          º \b$$\p  affiche le signe $ en tˆte
+ \b+\p  position du signe d'un nombre     º \b**\p  remplace les espaces de tˆte par *
+\b^^^^\paffiche en format exponentiel     º \b**$\p combine ** et $$
+
+      \bCaractŠres utilis‚s pour mettre en forme une expression de chaŒne\p
+ \b&\p  affiche toute la chaŒne           º \b\\ \\\p affiche les n premiers carac-
+ \b!\p  affiche uniquement le premier     º     tŠres, o— n=(nbre d'espaces
+    caractŠre de la chaŒne            º     entre les barres obliques + 2)
+
+                             \bCaractŠres litt‚raux\p
+ \b_\p  affiche le caractŠre de fomatage  º     tout autre caractŠre est
+    suivant en tant que caractŠre     º     affich‚ en tant que
+    litt‚ral                          º     caractŠre litt‚ral
+.context SOUND
+.context @SOUND
+:nInstruction SOUND
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SOUND ‚met un son sur le haut-parleur.
+
+\bSOUND frequence, duree\p
+
+    ş \bfrequence\p    Fr‚quence du son exprim‚e en Hertz; valeur comprise
+                   entre 37 et 32 767.
+    ş \bduree\p        Dur‚e du son exprim‚e en tops d'horloge; valeur comprise
+                   entre 0 et 65 535. Il y a 18,2 tops d'horloge par seconde.
+
+Exemple:
+    FOR i% = 440 TO 1000 STEP 5
+    SOUND i%, i% / 1000
+    NEXT i%
+
+Voir aussi    \i\p\aPLAY\v@PLAY\v\i\p
+.context SPC
+.context @SPC
+:nFonction SPC
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SPC passe un nombre sp‚cifi‚ d'espaces dans une instruction PRINT ou LPRINT.
+
+\bSPC(n%)\p
+
+    ş \bn%\p    Nombre d'espaces … passer. Valeur comprise entre
+            0 et 32 767.
+
+Exemple:
+    PRINT "Texte1"; SPC(10); "Texte2"
+
+Voir aussi  \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p
+            \i\p\aSPACE$\v@SPACE$\v\i\p           \i\p\aTAB\v@TAB\v\i\p
+.context STICK
+.context @STICK
+:nFonction STICK
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+STICK retourne les coordonn‚es d'une manette de jeu.
+
+\bSTICK(n%)\p
+
+    ş \bn%\p    Sp‚cifie les coordonn‚es sp‚cifi‚es :
+
+            n%    Retourne
+            ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+            0     coordonn‚e x de la manette de jeu A
+            1     coordonn‚e y de la manette de jeu A
+            2     coordonn‚e x de la manette de jeu B
+            3     coordonn‚e y de la manette de jeu B
+
+    ş Vous devez utiliser STICK(0) avant d'employer STICK(1), STICK(2)
+      ou STICK(3). STICK(0) enregistre les coordonn‚es de toutes les
+      manettes de jeu.
+
+Exemple:
+    Temp% = STICK(0)
+    PRINT STICK(2), STICK(3)
+
+Voir aussi    \i\p\aFonction STRIG\v@strigf\v\i\p    \i\p\aInstructions STRIG, ON STRIG\v@STRIG\v\i\p
+.context TAB
+.context @TAB
+:nFonction TAB
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+TAB d‚place la position d'impression.
+
+\bTAB(colonne%)\p
+
+    ş \bcolonne%\p    Nouvelle position d'impression (num‚ro de colonne).
+
+Exemple:
+    PRINT TAB(25); "Texte"
+
+Voir aussi  \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p
+            \i\p\aSPC\v@SPC\v\i\p    \i\p\aSPACE$\v@SPACE$\v\i\p
+.context .vupri
+.context @vupri
+:nInstruction VIEW PRINT
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+VIEW PRINT d‚finit les limites de la fenˆtre de texte … l'‚cran.
+
+\bVIEW PRINT [ligneS% TO ligneI%]\p
+
+   ş \bligneS%\p    Ligne sup‚rieure de la fenˆtre de texte.
+   ş \bligneI%\p    Ligne inf‚rieure de la fenˆtre de texte.
+
+   ş Si les paramŠtres ligneS% et ligneI% sont omis, VIEW PRINT initialise
+     la totalit‚ de l'‚cran comme fenˆtre de texte.
+   ş Les valeurs valides pour ligneS% et ligneI% d‚pendent du mode d'‚cran.
+
+Exemple:
+    VIEW PRINT 10 TO 15
+    FOR i% = 1 TO 100
+        PRINT i%
+    NEXT i%
+
+Voir aussi  \i\p\aCLS\v@CLS\v\i\p    \i\p\aLOCATE\v@LOCATE\v\i\p    \i\p\aPRINT, LPRINT\v@PRINT\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p
+            \i\p\aModes d'‚cran\v@screen.modes\v\i\p
+.context WAIT
+.context @WAIT
+:nInstruction WAIT
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+WAIT suspend l'ex‚cution du programme jusqu'… ce qu'une valeur sp‚cifi‚e soit
+lue sur un port d'entr‚e du systŠme.
+
+\bWAIT port%, exprAND% [,exprXOR%]\p
+
+    ş \bport%\p       Num‚ro du port.
+    ş \bexprAND%\p    Expression entiŠre que WAIT associe, par une
+                  op‚ration AND, aux donn‚es provenant du port.
+                  Lorsque le r‚sultat est non nul, WAIT cesse
+                  de surveiller le port.
+    ş \bexprXOR%\p    Expression entiŠre que WAIT associe, par une
+                  op‚ration XOR, aux donn‚es provenant du port. Ce
+                  r‚sultat est ensuite associ‚ … l'expression exprAND
+                  par une op‚ration AND. Lorsque le r‚sultat est non nul,
+                  WAIT cesse de surveiller le port.
+
+Exemple:
+    'Lit le port d'adresse &H20 du contr“leur d'interruption.
+    'Appuyez sur une touche pour continuer.
+    WAIT &H20, 1
+
+Voir aussi    \i\p\aINP, OUT\v@INP\v\i\p    \i\p\aOp‚rateurs logiques\v@AND\v\i\p
+.context WIDTH
+.context @WIDTH
+:nInstruction WIDTH
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Affecte une longueur de ligne de sortie … un fichier ou … un p‚riph‚rique,
+ou modifie le nombre de lignes et de colonnes affich‚es … l'‚cran.
+
+\bWIDTH [colonnes%] [,lignes%]\p
+\bWIDTH {#numFich% | periph$}, colonnes%\p
+\bWIDTH LPRINT colonnes%\p
+
+    ş \bcolonnes%\p    Largeur d‚sir‚e en colonnes. Le nombre de colonnes
+                   sp‚cifi‚ pour l'‚cran peut ˆtre 40 ou 80.
+    ş \blignes%\p      Hauteur de l'‚cran en lignes. Cette valeur peut
+                   ˆtre 25, 30, 43, 50 ou 60, selon l'adaptateur employ‚
+                   et le mode d'‚cran.
+    ş \b#numFich%\p    Num‚ro de fichier ou de p‚riph‚rique.
+    ş \bperiph$\p      Nom de p‚riph‚rique :
+                   SCRN:, COM1:, COM2:, LPT1:, LPT2:, LPT3:
+
+Exemple:
+    OPEN "LPT1:" FOR OUTPUT AS #1
+    WIDTH #1, 132
+
+Voir aussi  \i\p\aPRINT, LPRINT\v@LPRINT\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p
+.context WINDOW
+.context @WINDOW
+:nInstruction WINDOW
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+D‚finit les dimensions logiques de la fenˆtre graphique en cours. Utilisez
+l'instruction WINDOWS pour d‚finir votre propre systŠme de coordonn‚es.
+
+\bWINDOW [[SCREEN] (x1!,y1!)-(x2!,y2!)]\p
+
+    ş \bSCREEN\p       Inverse le sens normal de la coordonn‚e cart‚sienne y
+                   de fa‡on … ce que ses valeurs croissent du haut
+                   vers le bas.
+    ş \b(x1!,y1!)\p    Coordonn‚es logiques correspondant au coin sup‚rieur
+                   gauche de la fenˆtre graphique.
+    ş \b(x2!,y2!)\p    Coordonn‚es logiques correspondant au coin inf‚rieur
+                   droit de la fenˆtre graphique.
+
+    ş WINDOW utilis‚e sans argument d‚sactive les coordonn‚es logiques.
+    ş Utilisez l'instruction VIEW pour modifier la taille de la fenˆtre
+      graphique.
+
+Exemple:
+    'Cet exemple n‚cessite un adaptateur couleur graphique.
+    SCREEN 1
+    FOR i% = 1 TO 10 STEP 2
+        WINDOW (-160 / i%, -100 / i%)-(160 / i%, 100 / i%)
+        CIRCLE (0, 0), 10
+    NEXT i%
+
+Voir aussi    \i\p\aCLS\v@CLS\v\i\p    \i\p\aPMAP\v@PMAP\v\i\p    \i\p\aPOINT\v@POINT\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWIDTH\v@WIDTH\v\i\p
+.comment *****************************************************************
+.comment * One Keyword screen in this family.
+.comment *****************************************************************
+.context USING
+.context @USING
+:nMot-cl‚ USING
+  \i\p\aTable des matiŠres\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aPr‚c‚dent\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sp‚cifie la mise en forme pour les instructions PRINT USING et LPRINT USING,
+d‚finit les couleurs utilis‚s pour l'instruction PALETTE USING.
+
+Voir aussi  \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aPRINT USING, LPRINT USING\v@zpu\v\i\p

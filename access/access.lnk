@@ -1,0 +1,5 @@
+startup handicap mousekey toggle filter param stickeys timeout +
+serkeys init vars comm gide kbd mou drv int9 equip /LI /NOI /TINY /STACK:0x0F /MAP
+ados.com,ados,GRAPHICS.LIB
+
+

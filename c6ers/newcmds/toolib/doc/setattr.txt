@@ -1,0 +1,22 @@
+
+SUMMARY   setattr()  set attribute for a directory entry 
+
+#include <tools.h>
+
+int setattr (pname, attr)
+char *pname;
+int attr;
+
+DESCRIPTION
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+
+EXAMPLE
+
+

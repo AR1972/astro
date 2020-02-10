@@ -1,0 +1,527 @@
+/*********************************************************************
+ * Microsoft Diagnostics Version 2.0
+ *
+ * A diagnostic utility to detect as much useful information about a
+ *   customer's computer system as is possible.
+ *
+ * Microsoft Diagnostics:  We detect the World.
+ *
+ * DIALOGS.ADM - Source file describing the various dialog boxes
+ ********************************************************************/
+
+
+/*********************************************************************
+ * Dialog : dlgReport
+ *********************************************************************/
+
+#define dlgReportTM 36
+
+DIALOG_BOX dlgReport = {
+  // Dialog Info. X, Y, Width, Height, Help ID, ID of the first focus,
+  //    Count of the dialog items, The dialog caption.
+  { 4, 2, 71, 19,
+    hidDlgNull,
+    tmcNull, dlgReportTM, NULL },
+  {
+
+//  wClass, style, Extended Style, ID,
+//  X, Y, Width, Height, Accel Pos, Text
+
+    { WC_STATIC, 0, 0, IDD_USER, 2, 1, 18, 1, 0, "Report Information" },
+
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 1,  4,2, 25, 1, 12, "Report All *" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 2,  4,3,25,1, 10, "Customer Information" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 3,  4,4,25,1, 1, "System Summary" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 4,  4,5,25,1, 4, "Computer" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 5,  4,6,25,1, 1, "Memory" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 6,  4,7,25,1, 1, "Video" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 7,  4,8,25,1, 1, "Network" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 8,  4,9,25,1, 1, "OS Version" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 9,  30,2,16,1, 3, "Mouse" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 10, 30,3,18,1, 7, "Other Adapters" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 11, 30,4,16,1, 1, "Disk Drives" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 12, 30,5,16,1, 1, "LPT Ports" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 13, 30,6,16,1, 1, "COM Ports" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 14, 30,7,16,1, 3, "IRQ Status" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 15, 30,8,16,1, 1, "TSR Programs" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 16, 30,9,18,1, 9, "Device Drivers" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 17, 50,2,18,1, 11, "Memory Browser" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 18, 50,3,18,1, 0, "AUTOEXEC.BAT" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 19, 50,4,18,1, 0, "CONFIG.SYS" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 20, 50,5,18,1, 0, "SYSTEM.INI" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 21, 50,6,18,1, 0, "WIN.INI" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 22, 50,7,18,1, 0, "MSMAIL.INI" },
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 23, 50,8,18,1, 0, "PROTOCOL.INI" },
+
+
+    { WC_STATIC, 0, 0, IDD_USER + 24, 2, 11, 10, 1, 0, "Print to:" },
+
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP | WES_GROUP, IDD_USER + 25, 4,12,10,1, 4, "LPT1" },
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP, IDD_USER + 26, 4, 13,10,1, 4, "LPT2" },
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP, IDD_USER + 27, 4, 14,10,1, 4, "LPT3" },
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP, IDD_USER + 28, 14,12,10,1, 6, "COM1 !" },
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP, IDD_USER + 29, 14,13,10,1, 6, "COM2 @" },
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP, IDD_USER + 30, 14,14,10,1, 0, "COM3" },
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP, IDD_USER + 31, 26,12,9,1, 0, "COM4" },
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP, IDD_USER + 32, 26,13,9,1, 1, "File:" },
+
+    { WC_EDIT,	 0, WES_TABSTOP, IDD_USER + 33, 37, 13, 31, 1, 0, NULL },
+
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDOK,	26,16,9,2, 0, "OK"  },
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDCANCEL,  36, 16, 9, 2, 0, "Cancel" }
+   }, 
+};
+
+
+/*********************************************************************
+ * Dialog : dlgFindFile1
+ *********************************************************************/
+
+#define dlgFindFile1TM 8
+
+DIALOG_BOX dlgFindFile1 = {
+  // Dialog Info. X, Y, Width, Height, Help ID, ID of the first focus,
+  //    Count of the dialog items, The dialog caption.
+  { 1, 8, 78, 8,
+    hidDlgNull,
+    tmcNull, dlgFindFile1TM, NULL },
+  {
+
+//  wClass, style, Extended Style, ID,
+//  X, Y, Width, Height, Accel Pos, Text
+
+    { WC_STATIC, 0, 0, IDD_USER, 2, 1, 10, 1, 2, "Search for" },
+    { WC_EDIT,   0, WES_TABSTOP, IDD_USER + 1,  14, 1, 61, 1, 0, NULL },
+
+    { WC_STATIC, 0, 0, IDD_USER + 2, 2, 2, 10, 1, 2, "Start from" },
+    { WC_EDIT,   0, WES_TABSTOP, IDD_USER + 3,  14, 2, 61, 1, 0, NULL },
+
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 4,
+	12,  3, 20,  1, 10, "Include sub-dirs" },
+/*
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 5,
+        32,  3, 24,  1,  8, "Search boot drive" },
+*/
+    { WC_BUTTON, BS_AUTOCHECKBOX, WES_TABSTOP | WES_GROUP, IDD_USER + 5,
+	44,  3, 24,  1,  8, "Search all drives" },
+
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDOK,
+        27,  5, 11,  2,  1, "Search" },
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDCANCEL,
+        40,  5, 11,  2,  0, "Cancel" }
+   }, 
+};
+
+/*********************************************************************
+ * Dialog : dlgFindFile2
+ *********************************************************************/
+
+#define dlgFindFile2TM 6
+
+DIALOG_BOX dlgFindFile2 = {
+  // Dialog Info. X, Y, Width, Height, Help ID, ID of the first focus,
+  //    Count of the dialog items, The dialog caption.
+  { 1, 2, 78, 20,
+    hidDlgNull,
+    tmcNull, dlgFindFile2TM, NULL },
+  {
+
+//  wClass, style, Extended Style, ID,
+//  X, Y, Width, Height, Accel Pos, Text
+
+    { WC_STATIC, 0, 0, IDD_USER + 7, 2, 1, 6, 1, 2, "Files:" },
+    { WC_LIST, WS_LISTBOX | WS_BORDER | WS_VSCROLL, WES_TABSTOP, IDD_USER + 8, 1, 2, 76, 15, 0, NULL },
+
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDD_USER + 10,
+        16, 17, 17,  2,  1, "Display File" },
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDD_USER + 11,
+        35, 17, 14,  2,  6, "File Info" },
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDCANCEL,
+        51, 17, 11,  2,  0, "Cancel" },
+    { WC_BUTTON, 0, WES_GROUP, IDOK,
+        35, 18, 0,  1,  0, "OK" }
+   }, 
+};
+
+
+/*********************************************************************
+ * Dialog : dlgInsertCmd1
+ *********************************************************************/
+
+#define dlgInsertCmd1TM 6
+
+DIALOG_BOX dlgInsertCmd1 = {
+  // Dialog Info. X, Y, Width, Height, Help ID, ID of the first focus,
+  //    Count of the dialog items, The dialog caption.
+  { 1, 2, 78, 20,
+    hidDlgNull,
+    tmcNull, dlgInsertCmd1TM, NULL },
+  {
+
+//  wClass, style, Extended Style, ID,
+//  X, Y, Width, Height, Accel Pos, Text
+
+    { WC_STATIC, 0, 0, IDD_USER, 2, 1, 8, 1, 1, "Command:" },
+    { WC_STATIC, 0, 0, IDD_USER + 1, 52, 1, 8, 1, 0, "Section:" },
+    { WC_STATIC, 0, 0, IDD_USER + 2, 63, 1, 5, 1, 0, "File:" },
+
+    { WC_LIST, WS_LISTBOX | WS_BORDER | WS_VSCROLL, WES_TABSTOP, IDD_USER + 3, 1, 2, 76, 15, 0, NULL },
+
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDOK,  29,17,9,2, 0, "OK" },
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDCANCEL,  39, 17, 11, 2, 0, "Cancel" }
+   }, 
+};
+
+
+/*********************************************************************
+ * Dialog : dlgInsertCmd2
+ *********************************************************************/
+
+#define dlgInsertCmd2TM 8
+
+DIALOG_BOX dlgInsertCmd2 = {
+  // Dialog Info. X, Y, Width, Height, Help ID, ID of the first focus,
+  //    Count of the dialog items, The dialog caption.
+  { 9, 8, 62, 8,
+    hidDlgNull,
+    tmcNull, dlgInsertCmd2TM, NULL },
+  {
+
+//  wClass, style, Extended Style, ID,
+//  X, Y, Width, Height, Accel Pos, Text
+
+    { WC_STATIC, 0, 0, IDD_USER, 2, 1, 7, 1, 1, "Command" },
+    { WC_EDIT,   0, WES_TABSTOP, IDD_USER + 1, 11, 1, 49, 1, 0, NULL },
+
+    { WC_STATIC, 0, 0, IDD_USER + 2, 2, 2, 7, 1, 1, "Section" },
+    { WC_EDIT,   0, WES_TABSTOP, IDD_USER + 3, 11, 2, 49, 1, 0, NULL },
+
+    { WC_STATIC, 0, 0, IDD_USER + 4, 2, 3, 4, 1, 1, "File" },
+    { WC_EDIT,   0, WES_TABSTOP, IDD_USER + 5, 11, 3, 49, 1, 0, NULL },
+
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDOK,  22,5,9,2, 0, "OK" },
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDCANCEL,  32, 5, 11, 2, 0, "Cancel" }
+   }, 
+};
+
+
+/*********************************************************************
+ * Dialog : dlgInsertCmd3
+ *********************************************************************/
+
+#define dlgInsertCmd3TM 4
+
+DIALOG_BOX dlgInsertCmd3 = {
+  // Dialog Info. X, Y, Width, Height, Help ID, ID of the first focus,
+  //    Count of the dialog items, The dialog caption.
+  { 1, 6, 78, 12,
+    hidDlgNull,
+    tmcNull, dlgInsertCmd3TM, NULL },
+  {
+
+//  wClass, style, Extended Style, ID,
+//  X, Y, Width, Height, Accel Pos, Text
+
+    { WC_STATIC, 0, 0, IDD_USER, 2, 1, 15, 1, 1, "File to Change:" },
+
+    { WC_LIST, WS_LISTBOX | WS_BORDER | WS_VSCROLL, WES_TABSTOP, IDD_USER + 1, 1, 2, 76, 7, 0, NULL },
+
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDOK,  29,9,9,2, 0, "OK" },
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDCANCEL,  39, 9, 11, 2, 0, "Cancel" }
+   }, 
+};
+
+
+/*********************************************************************
+ * Dialog : dlgInsertCmd4
+ *********************************************************************/
+
+#define dlgInsertCmd4TM 4
+
+DIALOG_BOX dlgInsertCmd4 = {
+  // Dialog Info. X, Y, Width, Height, Help ID, ID of the first focus,
+  //    Count of the dialog items, The dialog caption.
+  { 1, 6, 78, 12,
+    hidDlgNull,
+    tmcNull, dlgInsertCmd4TM, NULL },
+  {
+
+//  wClass, style, Extended Style, ID,
+//  X, Y, Width, Height, Accel Pos, Text
+
+    { WC_STATIC, 0, 0, IDD_USER, 2, 1, 15, 1, 1, "Action to take:" },
+
+    { WC_LIST, WS_LISTBOX | WS_BORDER | WS_VSCROLL, WES_TABSTOP, IDD_USER + 1, 1, 2, 76, 7, 0, NULL },
+
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDOK,  29,9,9,2, 0, "OK" },
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDCANCEL,  39, 9, 11, 2, 0, "Cancel" }
+   }, 
+};
+
+
+/*********************************************************************
+ * Dialog : dlgTestPrinter
+ *********************************************************************/
+
+#define dlgTestPrinterTM 16
+
+DIALOG_BOX dlgTestPrinter =
+{
+  // Dialog Info. X, Y, Width, Height, Help ID, ID of the first focus,
+  //    Count of the dialog items, The dialog caption.
+  {
+    19, 4, 43, 15,
+    hidDlgNull,
+    tmcNull, dlgTestPrinterTM, NULL
+  },
+
+  {
+    // wClass, style, Extended Style, ID,
+    // X, Y, Width, Height, Accel Pos, Text
+
+    { WC_STATIC, 0, 0, IDD_USER, 2, 1, 13, 1, 0, "Printer Type:" },
+
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP | WES_GROUP, IDD_USER + 1, 17,1,23,1, 1, "Generic/TTY Printer" },
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP, IDD_USER + 2, 17, 2,22,1, 1, "Postscript Printer" },
+
+    { WC_STATIC, 0, 0, IDD_USER + 3, 2, 4, 10, 1, 0, "Test Type:" },
+
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP | WES_GROUP, IDD_USER + 4, 17,4,24,1, 1, "7-bit ASCII (32-127)" },
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP, IDD_USER + 5, 17, 5,24,1, 1, "8-bit ASCII (32-255)" },
+
+    { WC_STATIC, 0, 0, IDD_USER + 6, 2, 7, 13, 1, 0, "Printer Port:" },
+
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP | WES_GROUP, IDD_USER + 7, 17,7,8,1, 4, "LPT1" },
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP, IDD_USER + 8, 17, 8,8,1, 4, "LPT2" },
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP, IDD_USER + 9, 17, 9,8,1, 4, "LPT3" },
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP, IDD_USER + 10, 28, 7,8,1, 1, "COM1" },
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP, IDD_USER + 11, 28, 8,8,1, 2, "COM2" },
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP, IDD_USER + 12, 28, 9,8,1, 3, "COM3" },
+    { WC_BUTTON, BS_RADIOBUTTON, WES_TABSTOP, IDD_USER + 13, 28, 10,8,1, 4, "COM4" },
+
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDOK,  10,12,9,2, 0, "OK" },
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDCANCEL,  20, 12, 11, 2, 0, "Cancel" }
+  },
+};
+
+
+/*********************************************************************
+ * Dialog : dlgCustInfo
+ *********************************************************************/
+
+#define dlgCustInfoTM 19
+
+DIALOG_BOX dlgCustInfo =
+{
+  // Dialog Info. X, Y, Width, Height, Help ID, ID of the first focus,
+  //    Count of the dialog items, The dialog caption.
+  {
+    13, 4, 54, 15,
+    hidDlgNull,
+    tmcNull, dlgCustInfoTM, NULL
+  },
+
+  {
+    // wClass, style, Extended Style, ID,
+    // X, Y, Width, Height, Accel Pos, Text
+
+    { WC_STATIC, 0, 0, IDD_USER, 17, 1, 20, 1, 0, "Customer Information" },
+
+    /* &Name */
+    { WC_STATIC, 0, 0, IDD_USER + 1, 10, 3,  6, 1, 1, "Name: " },
+    { WC_EDIT,   0, WES_TABSTOP, IDD_USER + 2, 17, 3, 34, 1, 0, NULL },
+
+    /* &Company Name */
+    { WC_STATIC, 0, 0, IDD_USER + 3, 2, 4, 14, 1,  1, "Company Name: " },
+    { WC_EDIT,   0, WES_TABSTOP, IDD_USER + 4, 17, 4, 34, 1, 0, NULL },
+
+    /* Address &1 */
+    { WC_STATIC, 0, 0, IDD_USER + 5, 6, 5, 10, 1,  8, "Address1: " },
+    { WC_EDIT,   0, WES_TABSTOP, IDD_USER + 6, 17, 5, 34, 1, 0, NULL },
+
+    /* Address &2 */
+    { WC_STATIC, 0, 0, IDD_USER + 7, 6, 6, 10, 1,  8, "Address2: " },
+    { WC_EDIT,   0, WES_TABSTOP, IDD_USER + 8, 17, 6, 34, 1, 0, NULL },
+
+    /* City/ST/&Zip */
+    { WC_STATIC, 0, 0, IDD_USER + 9, 3, 7, 13, 1,  9, "City/ST/Zip: " },
+    { WC_EDIT,   0, WES_TABSTOP, IDD_USER + 10, 17, 7, 34, 1, 0, NULL },
+
+    /* Country */
+    { WC_STATIC, 0, 0, IDD_USER + 11, 7, 8,  9, 1,  5, "Country: " },
+    { WC_EDIT,   0, WES_TABSTOP, IDD_USER + 12, 17, 8, 34, 1, 0, NULL },
+
+    /* &Phone */
+    { WC_STATIC, 0, 0, IDD_USER + 13, 9, 9,  7, 1,  1, "Phone: " },
+    { WC_EDIT,   0, WES_TABSTOP, IDD_USER + 14, 17, 9, 34, 1, 0, NULL },
+
+    /* Co&mments */
+    { WC_STATIC, 0, 0, IDD_USER + 15, 6, 10, 10, 1,  3, "Comments: " },
+    { WC_EDIT,   0, WES_TABSTOP, IDD_USER + 16, 17, 10, 34, 1, 0, NULL },
+
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDOK,  16,12,9,2, 0, "OK" },
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDCANCEL,  27, 12, 11, 2, 0, "Cancel" }
+  },
+};
+
+
+/*********************************************************************
+ * Dialog : dlgAbout
+ *********************************************************************/
+
+#define dlgAboutTM 5
+
+DIALOG_BOX dlgAbout =
+{
+  // Dialog Info. X, Y, Width, Height, Help ID, ID of the first focus,
+  //    Count of the dialog items, The dialog caption.
+  {
+    16, 7, 48, 10,
+    hidDlgNull,
+    tmcNull, dlgAboutTM, NULL
+  },
+
+  {
+    // wClass, style, Extended Style, ID,
+    // X, Y, Width, Height, Accel Pos, Text
+
+    { WC_STATIC, 0, 0, IDD_USER + 0, 11, 1, 25, 1, 0, "Microsoft (R) Diagnostics" },
+    { WC_STATIC, 0, 0, IDD_USER + 1, 17, 2, 16, 1, 0, "Version 2.01" },
+    { WC_STATIC, 0, 0, IDD_USER + 2,  2, 4, 44, 1, 0, "Copyright (C) Microsoft Corporation, 1990-92" },
+    { WC_STATIC, 0, 0, IDD_USER + 3, 14, 5, 19, 1, 0, "All Rights Reserved" },
+
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP, IDOK,  20,7,9,2, 0, "OK" },
+    { WC_BUTTON, BS_OWNERDRAW, WES_GROUP, IDCANCEL,  20,9,0,2, 0, "Cancel" },
+  },
+};
+
+
+/*********************************************************************
+ * Dialog : dlgMemoryBlockDisplay
+ *********************************************************************/
+
+#define dlgMemoryBlockDisplayTM 6
+
+DIALOG_BOX dlgMemoryBlockDisplay = {
+  // Dialog Info. X, Y, Width, Height, Help ID, ID of the first focus,
+  //    Count of the dialog items, The dialog caption.
+  { 6, 1, 68, 23,
+    hidDlgNull,
+    tmcNull, dlgMemoryBlockDisplayTM, NULL },
+  {
+
+//  wClass, style, Extended Style, ID,
+//  X, Y, Width, Height, Accel Pos, Text
+
+    { WC_STATIC, 0, 0, IDD_USER, 2, 1, 17, 1, 2, "Allocated memory:" },
+    { WC_LIST, WS_LISTBOX | WS_BORDER | WS_VSCROLL, WES_TABSTOP, IDD_USER + 1, 1, 2, 39, 18, 0, NULL },
+
+    { WC_STATIC, 0, 0, IDD_USER + 2, 43, 1, 11, 1, 1, "Memory map:" },
+    { WC_LIST, WS_LISTBOX | WS_BORDER | WS_VSCROLL, WES_TABSTOP, IDD_USER + 3, 42, 2, 25, 18, 0, NULL },
+
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDOK,
+        30, 20, 10, 2, 1, "Close" },
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDCANCEL,
+        30, 22,  0, 2, 1, "Ok" },
+   }, 
+};
+
+
+/*********************************************************************
+ * Dialog : dlgMemoryBrowser
+ *********************************************************************/
+
+#define dlgMemoryBrowserTM 8
+
+DIALOG_BOX dlgMemoryBrowser = {
+  // Dialog Info. X, Y, Width, Height, Help ID, ID of the first focus,
+  //    Count of the dialog items, The dialog caption.
+  { 6, 1, 68, 23,
+    hidDlgNull,
+    tmcNull, dlgMemoryBrowserTM, NULL },
+  {
+
+//  wClass, style, Extended Style, ID,
+//  X, Y, Width, Height, Accel Pos, Text
+
+    { WC_STATIC, 0, 0, IDD_USER, 2, 1, 17, 1, 1, "Area to Browse:" },
+    { WC_LIST, WS_LISTBOX | WS_BORDER | WS_VSCROLL, WES_TABSTOP, IDD_USER + 1, 1, 2, 39, 16, 0, NULL },
+
+    { WC_STATIC, 0, 0, IDD_USER + 2, 43, 1, 11, 1, 1, "Memory map:" },
+    { WC_LIST, WS_LISTBOX | WS_BORDER | WS_VSCROLL, WES_TABSTOP, IDD_USER + 3, 42, 2, 25, 18, 0, NULL },
+
+    { WC_STATIC, 0, 0, IDD_USER + 4, 2, 18, 14, 1, 1, "Search String:" },
+    { WC_EDIT,   0, WES_TABSTOP, IDD_USER + 5, 18, 18, 21, 1, 0, NULL },
+
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDOK,      25, 20,  9, 2, 1, "OK" },
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDCANCEL,  35, 20, 10, 2, 1, "Close" },
+   }, 
+};
+
+
+/*********************************************************************
+ * Dialog : dlgViewWhichFile
+ *********************************************************************/
+
+#define dlgViewWhichFileTM 4
+
+DIALOG_BOX dlgViewWhichFile = {
+  // Dialog Info. X, Y, Width, Height, Help ID, ID of the first focus,
+  //    Count of the dialog items, The dialog caption.
+  { 1, 6, 78, 12,
+    hidDlgNull,
+    tmcNull, dlgViewWhichFileTM, NULL },
+  {
+
+//  wClass, style, Extended Style, ID,
+//  X, Y, Width, Height, Accel Pos, Text
+
+    { WC_STATIC, 0, 0, IDD_USER, 2, 1, 20, 1, 1, "Choose file to view:" },
+
+    { WC_LIST, WS_LISTBOX | WS_BORDER | WS_VSCROLL, WES_TABSTOP, IDD_USER + 1, 1, 2, 76, 7, 0, NULL },
+
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDOK,  29,9,9,2, 0, "OK" },
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDCANCEL,  39, 9, 11, 2, 0, "Cancel" }
+   }, 
+};
+
+
+/*********************************************************************
+ * Dialog : dlgWarnWindowUser
+ *********************************************************************/
+
+#define dlgWarnWindowsUserTM 16
+
+DIALOG_BOX dlgWarnWindowsUser = {
+  // Dialog Info. X, Y, Width, Height, Help ID, ID of the first focus,
+  //    Count of the dialog items, The dialog caption.
+  { 7, 1, 67, 22,
+    hidDlgNull,
+    tmcNull, dlgWarnWindowsUserTM, NULL },
+  {
+
+//  wClass, style, Extended Style, ID,
+//  X, Y, Width, Height, Accel Pos, Text
+
+    { WC_STATIC, 0, 0, IDD_USER +  0, 17,  1, 34, 1, 0, "You are running Microsoft Windows." },
+
+    { WC_STATIC, 0, 0, IDD_USER +  1,  2,  3, 63, 1, 0, "MSD can only report information specified by its associated" },
+    { WC_STATIC, 0, 0, IDD_USER +  2,  2,  4, 63, 1, 0, "Windows Program Information File (.PIF).  Therefore information" },
+    { WC_STATIC, 0, 0, IDD_USER +  3,  2,  5, 63, 1, 0, "presented may be less accurate or complete than if MSD is run" },
+    { WC_STATIC, 0, 0, IDD_USER +  4,  2,  6, 63, 1, 0, "outside of Windows.  For more accurate information please exit" },
+    { WC_STATIC, 0, 0, IDD_USER +  5,  2,  7, 43, 1, 0, "Windows and run MSD from the MS-DOS prompt." },
+
+    { WC_STATIC, 0, 0, IDD_USER +  6,  2,  9, 63, 1, 0, "Some areas may be affected while MSD is run under Windows:" },
+    { WC_STATIC, 0, 0, IDD_USER +  7,  2, 10, 63, 1, 0, "Memory values and types will reflect what Windows provides by" },
+    { WC_STATIC, 0, 0, IDD_USER +  8,  2, 11, 63, 1, 0, "itself, and through the associated .PIF file; IRQ values may" },
+    { WC_STATIC, 0, 0, IDD_USER +  9,  2, 12, 63, 1, 0, "be reported differently; and the visual memory map in Memory," },
+    { WC_STATIC, 0, 0, IDD_USER + 10,  2, 13, 63, 1, 0, "Memory Block Display, and Memory Browser may show different" },
+    { WC_STATIC, 0, 0, IDD_USER + 11,  2, 14, 63, 1, 0, "results.  Other areas that may be affected include Video," },
+    { WC_STATIC, 0, 0, IDD_USER + 12,  2, 15, 46, 1, 0, "OS Version, Mouse, Disk Drives, and COM Ports." },
+
+    { WC_STATIC, 0, 0, IDD_USER + 13, 13, 17, 44, 1, 0, "Choose OK to continue or Cancel to quit MSD." },
+
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDOK,      23, 19,  9, 2, 0, "OK" },
+    { WC_BUTTON, BS_OWNERDRAW, WES_TABSTOP | WES_GROUP | WES_3D, IDCANCEL,  34, 19, 11, 2, 0, "Cancel" }
+   }, 
+};

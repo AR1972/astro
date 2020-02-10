@@ -1,0 +1,968 @@
+.comment ******************************************************************
+.comment *  Contents family                                               *
+.comment ******************************************************************
+.comment 12/31/90 Added information on EOF(0) to version differences screen.
+.comment 1/9/91 Added links to "Differences from BASICA" from "Unsupported
+.comment        Keywords" and "Converting from BASICA" screens.
+.comment -- JeffWe (also, deleted comments history to date)
+.comment ******************************************************************
+.context h.pg1
+.context helpSurvivalId
+:nKurzbersicht
+ \bVerwenden von QBASIC:\p
+
+ ş Drcken Sie die ALT-Taste, um die QBASIC-Menzeile zu aktivieren.
+ ş Drcken Sie den hervorgehobenen Buchstaben eines Men- oder
+   Befehlnamens, um das Men oder den Befehl zu w„hlen.
+ ş Verwenden Sie die Richtungstasten, um sich zwischen Mens oder Befehlen
+   hin- und herzubewegen.
+ ş Drcken Sie die Taste F1, um Hilfe zu ausgew„hlten Schlsselw”rtern,
+   Befehlen und Dialogfeldern zu erhalten.
+ ş Drcken Sie die ESC-Taste, um Hilfe wieder zu verlassen.
+
+ \bDas QBasic-Hilfesystem:\p
+
+ ş Um eines der folgenden Themen auszuw„hlen, drcken Sie die
+   Tabulatortaste oder den ersten Buchstaben des Themas, und drcken Sie
+   dann die Eingabetaste. Sie sehen dann folgendes:
+
+   \i\p\aIndex\v@helpIndexId\v\i\p                  Der Index fr QBASIC-Hilfe
+   \i\p\aInhalt\vhelpTableId\v\i\p                 Das Inhaltsverzeichnis der QBASIC-Hilfethemen
+   \i\p\aVerwenden von Hilfe\vhelpOnHelpId\v\i\p    Informationen ber das Verwenden der QBASIC-Hilfe
+
+ Hinweis: Zu diesen Themen gelangen Sie auch ber das Men Hilfe.
+.context helpOnHelpId
+:nVerwenden von Hilfe
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Verwenden von QBASIC-Hilfe
+
+ ş Um Hilfe zu einem QBASIC-Schlsselwort zu erhalten, bewegen Sie den
+   Cursor darauf und drcken dann F1 (oder klicken Sie die rechte
+   Maustaste).
+
+ ş Um Hilfe zu einem QBASIC-Men, einem Befehl oder einem Dialogfeld zu er-
+   halten, bewegen Sie den Cursor darauf und drcken Sie dann F1 (oder
+   klicken Sie auf die Schaltfl„che <Hilfe>.
+
+ ş Um sich die QBASIC-Hilfethemen anzusehen, drcken Sie Alt+H und danach
+   den hervorgehobenen Buchstaben, um einen Befehl auszuw„hlen.
+
+ ş Um den Cursor in das Hilfe-Fenster zu bewegen, drcken Sie UMSCHALT+F6.
+
+ ş Um in der Hilfeinformation nach oben oder unten zu rollen, drcken Sie
+   die BILD-NACH-OBEN- oder die BILD-NACH-UNTEN-TASTE.
+
+ ş Um Hilfeinformationen (wie z.B. Programmbeispiele) in das
+   Ansichtsfenster zu kopieren, verwenden Sie die entsprechenden Befehle
+   im Men Bearbeiten.
+
+ ş Um das Hilfefenster wieder zu schlieáen, drcken Sie die ESC-TASTE.
+
+ Im Hilfefenster k”nnen Sie Informationen zu folgenden Themen anzeigen:
+
+ ş Hilfethemen. Diese sind durch hervorgehobene Pfeile (\i \p)
+   gekennzeichnet.
+
+ ş BASIC-Schlsselw”rter
+
+ Um den Cursor zu einem Hilfethema zu bewegen, drcken Sie die Tabulatortaste
+ oder den ersten Buchstaben des gewnschten Themas. Um das Thema oder die
+ Information zu einem Schlsselwort anzuzeigen, bewegen Sie den Cursor an
+ eine beliebige Stelle auf dem Thema oder Schlsselwort und drcken dann F1
+ (oder klicken Sie die rechte Maustaste).
+
+ QBASIC speichert die letzten 20 Hilfethemen, die Sie angesehen haben. Um
+ diese erneut anzusehen, drcken Sie ALT+F1 oder klicken Sie mehrmals auf die
+ Schaltfl„che <Zurck>.
+.context @helpTableId
+.context helpTableId
+:nInhaltsverzeichnis
+  \bInhalt\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  ÚEinfhrungÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÚTastenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿\p
+  ³ \i\p\aVerwenden von Hilfe\vhelpOnHelpId\v\i\p              ³ ³ \i\p\aTastenkurzkombinationen\v@sk\v\i\p      ³
+  ³ \i\p\aVerwenden von Mens und Befehlen\v@sg.men\v\i\p ³ ³ \i\p\aBearbeiten\v@me\v\i\p                   ³
+  ³ \i\p\aVerwenden von Dialogfeldern\v@sg.dia\v\i\p      ³ ³ \i\p\aAnsicht und Suchen\v@vk\v\i\p           ³
+  ³ \i\p\aSyntax-Konventionen\vUsingHelpSyntax\v\i\p              ³ ³ \i\p\aAusfhren und Debug\v@dk\v\i\p          ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ \i\p\aHilfetasten\v@hk\v\i\p                  ³
+  ÚVerwenden von QBASICÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ \i\p\aQBASIC-Befehlszeile\v@qbas.exe\v\i\p              ³ ÚKurzbersichtÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ \i\p\aZeichensatz\v@fun.character.set\v\i\p                      ³ ³ \i\p\aASCII-Zeichen-Codes\v@ac\v\i\p          ³
+  ³ \i\p\aSchlsselwort nach Kontext\v@fk\v\i\p       ³ ³ \i\p\aTastatur-Abfragecodes\v@kbsct\v\i\p        ³
+  ³ \i\p\aGrenzen der QBasic-Umgebung\v@lqb\v\i\p      ³ ³ \i\p\aLaufzeitfehler-Codes\v@rtect\v\i\p         ³
+  ³ \i\p\aVersions-Unterschiede\v@vd\v\i\p            ³ ³ \i\p\aCopyright und Warenzeichen\v@cccp\v\i\p   ³
+  ³ \i\p\aKonvertieren BASICA nach QBasic\v@converting_BASIC\v\i\p  ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ \i\p\aQBASIC und dann?\v@beyqb\v\i\p                 ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+.context @cccp
+.context .cccp
+:nCopyright und Warenzeichen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  Die in diesem Handbuch enthaltenen Informationen sind ohne Gew„hr und
+  k”nnen ohne weitere Benachrichtigung ge„ndert werden. Die Microsoft
+  Corporation geht hiermit keinerlei Verpflichtung ein. Die in diesem Hand-
+  buch beschriebene Software und/oder Dateien werden auf Basis eines Lizenz-
+  vertrags oder eines Nichtweitergabevertrags geliefert. Die Software und die
+  Dateien drfen nur in šbereinstimmung mit den vertraglichen Bedingungen
+  benutzt oder kopiert werden. Dem K„ufer der Software ist es gestattet, eine
+  Sicherungskopie der Software fr den pers”nlichen Gebrauch anzufertigen.
+  Teile dieser Online-Hilfe drfen weder auf elektronische noch auf mecha-
+  nische Weise, einschlieálich Fotokopieren und sonstige Aufzeichnungsarten,
+  vervielf„ltigt oder bertragen werden, es sei denn, die schriftliche
+  Genehmigung der Microsoft Corporation liegt hierfr vor.
+
+
+  EINGESCHRNKTE RECHTE. Die Verwendung durch die U.S.-Regierung unterliegt
+  den Regelungen von (c) (1) (ii) von DFARS 252.227-7013.
+
+  (C) Copyright Microsoft Corporation, 1987-1991.
+      Alle Rechte vorbehalten.
+
+  Microsoft, MS, MS-DOS, Microsoft Press und GW-BASIC sind eingetragene
+  Warenzeichen.
+
+  Microsoft-Dokumentationen verwenden den Begriff "DOS" sowohl fr das
+  MS-DOS- als auch fr das IBM-Personal-Computer-DOS-Betriebssystem. Wenn ein
+  bestimmtes Merkmal sich nur auf eines der beiden Betriebssysteme bezieht,
+  wird das Betriebssystem ausdrcklich genannt.
+
+  AT&T ist ein eingetragenes Warenzeichen der American Telephone and
+  Telegraph Company.
+
+  Compaq ist ein eingetragenes Warenzeichen der Compaq Computer Corporation.
+
+  Hercules ist ein eingetragenes Warenzeichen von Hercules Computer
+  Technology.
+
+  IBM ist ein eingetragenes Warenzeichen der International Business Machines
+  Corporation.
+
+  Olivetti ist ein eingetragenes Warenzeichen von Ing. C. Olivetti.
+
+  WordStar ist ein eingetragenes Warenzeichen der MicroPro International
+  Corporation.
+.comment *********************************************************************
+.comment Orientation nodes
+.comment *********************************************************************
+.context UsingHelpSyntax
+.context @UsingHelpSyntax
+:nSyntax-Konventionen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ SCHLšSSELW™RTER        Elemente in Groábuchstaben sind BASIC-Schlsselw”rter
+                        und werden als Bestandteil der Anweisungssyntax er-
+                        fordert, es sei denn, sie stehen in Klammern.
+
+ Platzhalter            Informationen, die Sie in die Anweisung einfgen
+                        mssen (wie beispielsweise ein Dateiname$).
+                        Die Syntax von QBASIC verwendet Suffixe fr den
+                        Datentyp fr Platzhalter, die einen bestimmten
+                        Datentyp verlangen. Platzhalter, die mehr als einen
+                        Datentyp haben k”nnen, haben keinen Datentyp-Suffix.
+
+ [optionales Element]   Elemente in eckigen Klammern sind optional.
+
+ {Auswahl1 | Auswahl2}  Geschweifte Klammern und ein senkrechter Strich
+                        bedeuten, daá Sie eines der angegebenen Elemente
+                        ausw„hlen k”nnen. Falls die geschweiften Klammern
+                        nicht in eckigen Klammern eingeschlossen ist, muá
+                        eines der Elemente benutzt werden.
+
+ Element, Element, ...  Drei Punkte hintereinander bedeuten, daá mehrere der
+                        vorangehenden Elemente in einer einzigen Anweisung
+                        und auf einer Zeile verwendet werden k”nnen.
+
+ START-SCHLšSSELWORT    Drei Punkte untereinander stehen fr eine Anweisung,
+ .                      die mehrere Zeilen lang ist oder fr eine Anweisung
+ .                      mit einer Blockstruktur. Dies bedeutet, daá zwischen
+ .                      Anfang und Ende des Blocks weitere Anweisungen stehen
+                        k”nnen.
+ END-SCHLšSSELWORT
+.context @sg.men
+:nVerwenden von Mens und Befehlen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Verwenden Sie die Menzeile am oberen Bildschirmrand, um Mens und Befehle
+ auszuw„hlen.
+
+ Vorgang              Mit der Maus                 Mit der Tastatur
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Anzeigen eines       Bewegen Sie den Mauszeiger   Drcken Sie die ALT-TASTE.
+ Mens                auf den Mennamen und        In jedem Mennamen ist nun
+                      klicken Sie die Maustaste    ein Buchstabe hervorge-
+                      ("klicken" bedeutet drcken  hoben. Drcken Sie die
+                      und wieder loslassen).       Taste mit dem Buchstaben
+                                                   des Mens, dessen Inhalt
+                                                   Sie anzeigen wollen.
+
+ Ausw„hlen eines      Klicken Sie auf den Namen    Drcken Sie die Taste, die
+ Befehls              des Befehls.                 dem hervorgehobenen Buch-
+                                                   staben des gewnschten
+                                                   Befehls entspricht.
+
+ Abbrechen eines     Klicken Sie auf eine belie-   Drcken Sie die ESC-TASTE.
+ Befehls             bige Stelle auáerhalb des
+                     Mens.
+
+ Hinweis: Lesen Sie die Meldung in der Referenzzeile am unteren
+          Bildschirmrand, um Hilfe zu der Aufgabe zu erhalten, die Sie im
+          Moment ausfhren. W„hlen Sie ein beliebiges der in eckigen Klammern
+          stehenden Elemente durch klicken aus.
+
+.context @sg.dia
+:nVerwenden eines Dialogfelds
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Wenn Sie einen Befehl w„hlen, der weiterfhrende Optionen besitzt, zeigt
+ QBASIC ein Dialogfeld an.
+
+ Dialogfeld-Vorgang   Mit der Maus                 Mit der Tastatur
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Ausw„hlen eines      Bewegen Sie den Mauszeiger   Drcken Sie so oft die
+ Textfelds, um Text   in das Textfeld und klicken  TABULATORTASTE, bis sich
+ einzugeben           Sie die Maustaste ("klicken" der Cursor im gewnschten
+                      bedeutet drcken und wieder  Textfeld befindet.
+                      loslassen.
+
+ Ausw„hlen eines      Doppelklicken Sie auf das    Benutzen Sie die
+ Elements aus einem   Element.                     Richtungstastentasten, um
+ Listenfeld                                        das Element zu markieren.
+                                                   Drcken Sie dann die
+                                                   EINGABETASTE.
+
+ Ausw„hlen einer     Klicken Sie auf die           W„hlen Sie die Option mit
+ Option              Option.                       den Richtungstasten aus.
+
+ An- und Ausschal-   Klicken Sie auf das           Bewegen Sie den Cursor mit
+ ten eines           Kontrollfeld.                 der TABULATORTASTE auf das
+ Kontrollfelds                                     Kontrollfeld und drcken
+                                                   Sie dann die LEERTASTE.
+
+ Ausw„hlen einer    Klicken Sie auf die            Bewegen Sie den Cursor mit
+ Befehlsfl„che      Befehlsfl„che.                 der TABULATORTASTE auf die
+                                                   Befehlsfl„che und drcken
+                                                   Sie dann die LEERTASTE.
+.comment *********************************************************************
+.comment Command Line node
+.comment *********************************************************************
+.context qbas.exe
+.context @qbas.exe
+:nQBASIC-Befehlszeile
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Diese Optionen k”nnen an der DOS-Befehlszeile nach dem Eingeben des QBASIC-
+ Befehls eingegeben werden:
+
+ \bQBASIC [/B] [/EDITOR] [/G] [/H] [/MBF] [/NOHI] [[/RUN] Quelldatei]\p
+
+ Option             Beschreibung
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ /B                 Erlaubt das Verwenden eines monochromen Monitors mit
+                    einer Farbgrafik-Karte. Mit der Option /B wird QBASIC
+                    auf einem Farbmonitor monochrom dargestellt.
+
+ /EDITOR            Ruft den Texteditor "MS-DOS Editor" auf. Diese Option
+                    kann auch in der Kurzform /ED eingegeben werden.
+
+ /G                 Weist QBASIC an, einen CGA-Monitor so schnell wie m”glich
+                    aufzufrischen (die Option ist nur mit Verwendung eines
+                    CGA-Monitors m”glich). Wenn beim Auffrischen des Monitors
+                    Bildschirm-Grieá erscheint, kann Ihre Hardware diese
+                    Option nicht untersttzen. Wenn Sie einen klaren Bild-
+                    schirm vorziehen, starten Sie QBASIC ohne die Option /G.
+
+ /H                 Zeigt die gr”áte verfgbare Anzahl von Zeilen an, die von
+                    der Hardware untersttzt wird.
+
+ /MBF               Weist die QBASIC-Umwandlungsfunktionen (CVS, CVD, MKS$,
+                    MKD$) an, Zahlen im IEEE-Format wie Zahlen im Microsoft-
+                    Bin„rformat zu behandeln.
+
+ /NOHI              Erlaubt das Verwenden eines Monitors, der keine Hoch-
+                    intensit„t untersttzt. Diese Option ist nicht geeignet
+                    fr Compaq Laptop-Computer.
+
+ Quelldatei         Die Datei, die QBASIC beim Programmstart ”ffnen soll. Um
+                    eine mit GW-BASIC oder BASICA erstellte Datei zu ”ffnen,
+                    muá diese in GW-BASIC bzw. BASICA mit der Option  ,A
+                    gespeichert worden sein.
+
+ /RUN Quelldatei    Weist QBASIC an, ein Programm zu ”ffnen und auszufhren,
+                    bevor es auf dem Bildschirm angezeigt wird.
+.context @fun.character.set
+.context .fun.character.set
+:nBASIC-Zeichensatz
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Der Microsoft BASIC-Zeichensatz besteht aus alphabetischen Zeichen (A-Z,
+ a-z), numerischen Zeichen (0-9 und A-F oder a-f fr Zahlen im Hexadezimal-
+ format) und Sonderzeichen.
+ Einige Zeichen haben in BASIC eine besondere Bedeutung:
+
+   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄDatentyp-SuffixeÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+   ³  !  Einfache Genauigkeit             %  Ganzzahl                    ³
+   ³  #  Doppelte Genauigkeit             &  Lange Ganzzahl              ³
+   ³  $  Zeichenfolge                                                    ³
+   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+   ÚÄÄÄÄÄMathematische OperatorenÄÄÄ¿  ÚÄÄÄÄÄÄÄÄÄSonderzeichenÄÄÄÄÄÄÄÄÄÄÄ¿
+   ³  *  Multiplikationszeichen     ³  ³  '  Kommentarzeile (Hochkomma)  ³
+   ³  -  Minuszeichen               ³  ³  ;  Steuert die Ausgabe der An- ³
+   ³  /  Divisionszeichen           ³  ³       weisungen PRINT und INPUT ³
+   ³      (Schr„gstrich)            ³  ³  ,  Steuert die Ausgabe der An- ³
+   ³  =  Relationaler Operator oder ³  ³       weisungen PRINT und INPUT ³
+   ³       Zuweisungszeichen        ³  ³  :  Trennt mehrere Anweisungen  ³
+   ³  >  Gr”áer als                 ³  ³       in einer einzigen Zeile   ³
+   ³  +  Pluszeichen                ³  ³       voneinander               ³
+   ³  .  Dezimalpunkt               ³  ³  ?  Eingabeaufforderung der An- ³
+   ³  <  Kleiner als                ³  ³       weisung INPUT             ³
+   ³  \\  Ganzzahl-Divisionszeichen  ³  ³  _  Unterstreichungszeichen fr ³
+   ³      (umgekehrter Schr„gstrich)³  ³       Zeilenweiterfhrung. (Fr ³
+   ³  ^  Exponentialzeichen         ³  ³       Kompatibilit„t mit anderen³
+   ³       (Pfeil nach oben oder    ³  ³       BASIC-Versionen, wird von ³
+   ³       das Zeichen ^ )          ³  ³       QBASIC nicht untersttzt.)³
+   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+.comment *******************************************************************
+.comment Keys nodes
+.comment *******************************************************************
+.context .sk
+.context @sk
+:nšbersicht ber Tastenkurzkombinationen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  ÚAusw„hlenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ÚEntfernenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Zeichen/Zeilen    UMSCH+RICHTUNG ³  ³ Aktuelle Zeile            STRG+Y ³
+  ³ W”rter       STRG+UMSCH+RICHTUNG ³  ³ Bis Zeilenende          STRG+Q,Y ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³ Text ausschneiden     UMSCH+ENTF ³
+  ÚEinfgenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³ Text entfernen              ENTF ³
+  ³ Einfgen/šberschreiben     EINFG ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ Zeile darber        POS1,STRG+N ³  ÚKopierenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Zeile darunter      ENDE+EINGABE ³  ³ In die Zwischenablage STRG+EINFG ³
+  ³ Von Zwischenablage   UMSCH+EINFG ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ÚFehlerbehebungÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ÚSuchenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³ Ausgabebildschirm ansehen     F4 ³
+  ³ Text suchen             STRG+Q,F ³  ³ Ausfhrung fortsetzen         F5 ³
+  ³ Suche wiederholen             F3 ³  ³ Bis zum Cursor ausfhren      F7 ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³ Haltepunkt ein/aus            F9 ³
+  ÚHilfe aufrufenÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³ Einzelschritt                 F8 ³
+  ³ Zur QBASIC-Hilfe        UMSCH+F1 ³  ³ Prozedurschritt              F10 ³
+  ³ Zu Themen/Schlsselw”rtern    F1 ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+.context .dk
+.context @dk
+:nTasten fr Programmablauf und Fehlerbehebung
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Programmausfhrung am Anfang beginnen             UMSCHALT+F5
+ Programmausfhrung an gegenw„rtiger Anweisung fortsetzen   F5
+ Programm bis zur aktuellen Cursorposition ausfhren        F7
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ N„chste Anweisung als Einzelschritt ausfhren              F8
+ Einzelschritt, Umgehen von Prozeduraufrufen               F10
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Haltepunkt festlegen/l”schen                               F9
+.context @vk
+.context .vk
+:nAnsichts- und Suchtasten
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Zwischen Ansichts- und Ausgabebildschirm hin- und herschalten  F4
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Eine Liste geladener SUB-Prozeduren anzeigen                   F2
+ Die n„chste Prozedur anzeigen                                  UMSCHALT+F2
+ Die vorhergehende Prozedur anzeigen                            STRG+F2
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Das n„chste Fenster zum aktiven Fenster machen                 F6
+ Das vorhergehende Fenster zum aktiven Fenster machen           UMSCHALT+F6
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Zwischen mehreren Fenstern und dem aktiven Fenster, das den    STRG+F10
+    gesamten Bildschirm einnimmt, hin- und herschalten
+ Das aktive Fenster vergr”áern                                  ALT+PLUS
+ Das aktive Fenster verkleinern                                 ALT+MINUS
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Die Suche nach gleichem Text wiederholen                       STRG+L o. F3
+ Text suchen                                                    STRG+Q,F
+ Text suchen und ersetzen                                       STRG+Q,A
+.context @hk
+.context .hk
+:nHilfetasten
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Hilfe zu dem Element anzeigen, auf dem sich der    F1 (oder klicken Sie die
+     Cursor befindet                                    rechte Maustaste)
+ Hilfe verlassen                                    ESC
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Anzeigen des Hilfe-šberblicks                      UMSCHALT+F1
+ Anzeigen des Hilfe-Mens                           ALT+H
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Den Cursor zum n„chsten Hilfethema bewegen         TABULATORTASTE
+ Den Cursor zum vorhergehenden Hilfethema bewegen   UMSCHALT+TABULATORTASTE
+ Den Cursor zum n„chsten Hilfethema bewegen, das    Buchstabe X
+     mit dem Buchstaben X beginnt
+ Den Cursor zum vorherigen Hilfethema bewegen, das  UMSCHALT+Buchstabe X
+     mit dem gewnschten Buchstaben beginnt
+ Das vorangegangene Hilfethema nochmals ansehen     ALT+F1 (oder klicken Sie
+     (kann bis zu 20 Mal wiederholt werden)              auf <Zurck>.
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Das n„chste Thema der Hilfedatei ansehen           STRG+F1
+ Das vorhergehende Thema der Hilfedatei ansehen     UMSCHALT+STRG+F1
+.context @me
+:nEditiertasten
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+ \bTasten zum Bewegen des Cursors                 QBASIC            WordStar\p
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Zeichen nach links                             NACH-LINKS-TASTE  STRG+S
+ Zeichen nach rechts                            NACH-RECHTS-TASTE STRG+D
+ Wort nach links                                STRG+NACH-LINKS   STRG+A
+ Wort nach rechts                               STRG+NACH-RECHTS  STRG+F
+ Zeile nach oben                                NACH-OBEN-TASTE   STRG+E
+ Zeile nach unten                               NACH-UNTEN-TASTE  STRG+X
+ Erste Einzugsebene der aktuellen Zeile         POS1
+ Anfang der aktuellen Zeile                                       STRG+Q,S
+ Anfang der n„chsten Zeile                      STRG+EINGABE      STRG+J
+ Ende der Zeile                                 ENDE-TASTE        STRG+Q,D
+ Oberste Zeile des Fensters                                       STRG+Q,E
+ Unterste Zeile des Fensters                                      STRG+Q,X
+ N„chstes Fenster                               F6
+ Aktives Fenster vergr”áern                     ALT+PLUS
+ Aktives Fenster verkleinern                    ALT+MINUS
+
+ \bTasten zum Rollen von Text                     QBASIC           WordStar\p
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Eine Zeile nach oben                           STRG+NACH-OBEN   STRG+W
+ Eine Zeile nach unten                          STRG+NACH-UNTEN  STRG+Z
+ Ein Bildschirm nach oben                       BILD-NACH-OBEN   STRG+R
+ Ein Bildschirm nach unten                      BILD-NACH-UNTEN  STRG+C
+ Ein Fenster nach links                         STRG+BILD-NACH-OBEN
+ Ein Fenster nach rechts                        STRG+BILD-NACH-UNTEN
+ Lesezeichen festlegen (maximal 4)              STRG+K,0-3
+ Zum Lesezeichen rollen                         STRG+Q,0-3
+
+ \bTextauswahltasten                              QBASIC\p
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Linkes Zeichen                                 UMSCHALT+NACH-LINKS
+ Rechtes Zeichen                                UMSCHALT+NACH-RECHTS
+ Linkes Wort                                    UMSCHALT+STRG+NACH-LINKS
+ Rechtes Wort                                   UMSCHALT+STRG+NACH-RECHTS
+ Aktuelle Zeile                                 UMSCHALT+NACH-UNTEN
+ Zeile darber                                  UMSCHALT+NACH-OBEN
+ Bildschirm darber                             UMSCHALT+BILD-NACH-OBEN
+ Bildschirm darunter                            UMSCHALT+BILD-NACH-UNTEN
+ Bis zum Dateianfang                            UMSCHALT+STRG+POS1
+ Bis zum Dateiende                              UMSCHALT+STRG+ENDE
+
+ \bEinfge- und Kopiertasten                      QBASIC           WordStar\p
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Zwischen Einfgen und šberschreiben wechseln   EINFG            STRG+V
+ Ausgew„hlten Text in Zwischenablage kopieren   STRG+EINFG
+ Ausgew„hlten Text entfernen und in die         UMSCHALT+ENTF
+     Zwischenablage kopieren
+ Aktuelle Zeile entfernen und in die Zwischen-  STRG+Y
+     ablage kopieren
+ Bis zum Zeilenende entfernen und in die                         STRG+Q,Y
+     Zwischenablage kopieren
+ Inhalt der Zwischenablage einfgen             UMSCHALT+EINFG
+ Unterhalb des Cursors eine Leerzeile einfgen  ENDE,EINGABETASTE
+ Oberhalb des Cursors eine Leerzeile einfgen                    POS1,STRG+N
+ Einfgen eines Sonderzeichens                  STRG+P,STRG+key**
+
+ \bL”schtasten                                     QBASIC           WordStar\p
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Das Zeichen links des Cursors l”schen          RšCKTASTE        STRG+H
+ Das Zeichen, an dem der Cursor steht, l”schen  ENTF             STRG+G
+ Den Rest des Worts, an dem der Cursor steht,   STRG+T
+     l”schen
+ Den ausgew„hlten Text l”schen                  ENTF             STRG+G
+ Fhrende Leerzeichen der ausgew„hlten Zeilen   UMSCHALT+TABULATORTASTE
+     l”schen
+.comment *******************************************************************
+.comment Quick Reference nodes
+.comment *******************************************************************
+.context .fk
+.context @fk
+:nSchlsselwortliste
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+ Programmieraufgabe                   Schlsselw”rter in dieser Liste
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Den Programmablauf steuern           DO...LOOP, END, EXIT, FOR...NEXT,
+                                      IF...THEN...ELSE, GOSUB...RETURN,
+                                      GOTO, ON...GOSUB, ON...GOTO,
+                                      SELECT CASE, STOP, SYSTEM
+
+ Konstanten und Variablen deklarieren CONST, DATA, DIM, ERASE, OPTION BASE,
+                                      READ, REDIM, REM, RESTORE, SWAP,
+                                      TYPE...END TYPE
+
+ BASIC-Prozeduren definieren und      CALL, DECLARE, EXIT, FUNCTION, RUN,
+     aufrufen                         SHELL, SHARED, STATIC, SUB
+
+ Ger„te-Ein-/Ausgabe                  CLS, CSRLIN, INKEY$, INP, INPUT,
+                                      KEY (Zuweisung), LINE INPUT, LOCATE,
+                                      LPOS, LPRINT, LPRINT USING, OPEN COM,
+                                      OUT, POS, PRINT, PRINT USING, SPC,
+                                      SCREEN-Funktion, TAB, VIEW PRINT,
+                                      WAIT, WIDTH
+
+ Grafiken darstellen                  CIRCLE, COLOR, GET (Grafik), LINE,
+                                      PAINT, PALETTE, PCOPY, PMAP, POINT,
+                                      PRESET, PSET, PUT (Grafik),
+                                      SCREEN-Anweisung, VIEW, WINDOW
+
+ DOS-Dateisystembefehle               CHDIR, KILL, MKDIR, NAME, RMDIR
+
+ Datei-Ein-/Ausgabe                   CLOSE, EOF, FILEATTR, FREEFILE
+                                      GET (Datei-E/A), INPUT, INPUT$,
+                                      LINE INPUT, LOC, LOCK, LOF, OPEN,
+                                      PUT (Datei-E/A), SEEK-Funktion,
+                                      SEEK-Anweisung, UNLOCK, WRITE
+
+ Speicher verwalten                   CLEAR, FRE, PEEK, POKE
+
+ Zeichenfolgen manipulieren           ASC, CHR$, HEX$, INSTR, LCASE$, LEFT$,
+                                      LEN, LSET, LTRIM$, MID$-Funktion, MID$-
+                                      Anweisung, OCT$, RIGHT$, RSET, RTRIM$
+                                      SPACE$, STR$, STRING$, UCASE$, VAL
+
+ Mathematische Berechnungen           ABS, ASC, ATN, CDBL, CINT, CLNG, COS,
+    ausfhren                         CSNG, CVDMBF, CVSMBF, EXP, INT, LOG,
+                                      RANDOMIZE, RND, SGN, SIN, SQR, TAN,
+                                      TIME$-Funktion
+
+ Ereignis- und Fehlerverfolgung       COM, ERDEV, ERDEV$, ERL, ERR, ERROR,
+    festlegen                         KEY (Ereignisverfolgung), ON COM,
+                                      ON ERROR, ON KEY, ON PEN, ON PLAY,
+                                      ON STRIG, ON TIMER, PEN, PLAY
+                                      (Ereignisverfolgung), RESUME, RETURN,
+                                      STRIG, TIMER-Funktion, TIMER-Anweisung
+.context .vd
+.context @vd
+:nUnterschiede von Versionen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+                                             BASICA/GW-BASIC    QBASIC
+                                             ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍ
+ Programmiersprachenelement
+
+     Zeilennummern                           Erforderlich       Optional
+     IF/THEN/ELSE/END IF-Block               Nein               Ja
+     Prozedur-Bl”cke (SUB und FUNCTION)      Nein               Ja
+     Benutzerdefinierte Datentypen           Nein               Ja
+     SELECT CASE                             Nein               Ja
+     DO WHILE/UNTIL, LOOP WHILE/UNTIL        Nein               Ja
+     Lange Ganzzahlen (LONG, 32-bit)         Nein               Ja
+     Zahlen im IEEE-Format                   Nein               Ja
+     Konstanten                              Nein               Ja
+     Zeichenfolgen fester L„nge              Nein               Ja
+     VGA-Videomodus                          Nein               Ja
+     Hercules/Olivetti-Untersttzung         Nein               Ja
+     Rekursion                               Nein               Ja
+     Cassettenrecorder-Untersttzung         Ja                 Nein
+     Kapazit„t von Code + Daten              64K                160K
+
+ Fehlerbeseitigung
+
+     Einzelschritt                           Nein               Ja
+     Prozedurschritt                         Nein               Ja
+     Ablaufverfolgung                        Nein               Ja
+     Haltepunkte                             Nein               Ja
+     Fehlerbeseitigung, ohne danach wieder   Nein               Ja
+        von vorn beginnen zu mssen
+
+ Bearbeiten
+
+     Sofortige Syntaxberprfung             Nein               Ja
+     Diagnostische Fehlermeldungen           Nein               Ja
+     Sofortige Hilfe zu Fehlern              Nein               Ja
+     Mehrfache Fenster                       Nein               Ja
+     Maus-Untersttzung                      Nein               Ja
+     Men-Oberfl„che                         Nein               Ja
+     Kompatibel mit Wordstar                 Nein               Ja
+     Organisation des Codes                  Linear             Modular
+     Schreibe-Modus fr Textbearbeitung      Nein               Ja
+     Suchen/Ersetzen                         Nein               Ja
+     Online-Hilfe                            Nein               Ja
+
+ Siehe auch    \i\p\aUnterschiede zu BASICA\v@basica.diffs\v\i\p
+               \i\p\aNicht untersttzte Schlsselw”rter\v@unsupported\v\i\p
+.context @ac
+:nASCII-Zeichencodes
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                \bRegul„re ASCII-Zeichen (Zeichencodes 0 - 127)\p
+  000   (nul)   016  (dle)   032 sp   048 0   064 @   080 P   096 `   112 p
+  001  (soh)   017  (dc1)   033 !    049 1   065 A   081 Q   097 a   113 q
+  002  (stx)   018  (dc2)   034 "    050 2   066 B   082 R   098 b   114 r
+  003  (etx)   019  (dc3)   035 #    051 3   067 C   083 S   099 c   115 s
+  004  (eot)   020  (dc4)   036 $    052 4   068 D   084 T   100 d   116 t
+  005  (enq)   021  (nak)   037 %    053 5   069 E   085 U   101 e   117 u
+  006  (ack)   022  (syn)   038 &    054 6   070 F   086 V   102 f   118 v
+  007  (bel)   023  (etb)   039 '    055 7   071 G   087 W   103 g   119 w
+  008  (bs)    024  (can)   040 (    056 8   072 H   088 X   104 h   120 x
+  009   (tab)   025  (em)    041 )    057 9   073 I   089 Y   105 i   121 y
+  010   (lf)    026   (eof)   042 *    058 :   074 J   090 Z   106 j   122 z
+  011  (vt)    027  (esc)   043 +    059 ;   075 K   091 [   107 k   123 {
+  012  (np)    028  (fs)    044 ,    060 <   076 L   092 \\   108 l   124 |
+  013   (cr)    029  (gs)    045 -    061 =   077 M   093 ]   109 m   125 }
+  014  (so)    030  (rs)    046 .    062 >   078 N   094 ^   110 n   126 ~
+  015  (si)    031  (us)    047 /    063 ?   079 O   095 _   111 o   127 
+
+               \bErweiterte ASCIIZeichen (Zeichencodes 128 - 255)\p
+    128 €   143    158    172 ¬   186 º   200 È   214 Ö   228 ä   242 ò
+    129    144    159 Ÿ   173 ­   187 »   201 É   215 ×   229 å   243 ó
+    130 ‚   145 ‘   160     174 ®   188 ¼   202 Ê   216 Ø   230 æ   244 ô
+    131 ƒ   146 ’   161 ¡   175 ¯   189 ½   203 Ë   217 Ù   231 ç   245 õ
+    132 „   147 “   162 ¢   176 °   190 ¾   204 Ì   218 Ú   232 è   246 ö
+    133 …   148 ”   163 £   177 ±   191 ¿   205 Í   219 Û   233 é   247 ÷
+    134 †   149 •   164 ¤   178 ²   192 À   206 Î   220 Ü   234 ê   248 ø
+    135 ‡   150 –   165 ¥   179 ³   193 Á   207 Ï   221 İ   235 ë   249 ù
+    136 ˆ   151 —   166 ¦   180 ´   194 Â   208 Ğ   222 Ş   236 ì   250 ú
+    137 ‰   152 ˜   167 §   181 µ   195 Ã   209 Ñ   223 ß   237 í   251 û
+    138 Š   153 ™   168 ¨   182 ¶   196 Ä   210 Ò   224 à   238 î   252 ü
+    139 ‹   154 š   169 ©   183 ·   197 Å   211 Ó   225 á   239 ï   253 ı
+    140 Œ   155 ›   170 ª   184 ¸   198 Æ   212 Ô   226 â   240 ğ   254 ş
+    141    156 œ   171 «   185 ¹   199 Ç   213 Õ   227 ã   241 ñ   255
+    142    157 
+
+.context .kbsct
+.context @kbsct
+:nTastatur-Abfragecodes
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+     \bTaste     Code\p    º     \bTaste        Code\p    º      \bTaste        Code\p
+                       º                          º
+     ESC         1     º     A            30      º     FESTSTELLTASTE     58
+     ! oder 1    2     º     S            31      º     F1                 59
+     @ oder 2    3     º     D            32      º     F2                 60
+     # oder 3    4     º     F            33      º     F3                 61
+     $ oder 4    5     º     G            34      º     F4                 62
+     % oder 5    6     º     H            35      º     F5                 63
+     ^ oder 6    7     º     J            36      º     F6                 64
+     & oder 7    8     º     K            37      º     F7                 65
+     * oder 8    9     º     L            38      º     F8                 66
+     ( oder 9    10    º     : oder ;     39      º     F9                 67
+     ) oder 0    11    º     " oder '     40      º     F10                68
+     _ oder -    12    º     ~ oder `     41      º     F11               133
+     + oder =    13    º     Linke UMSCH  42      º     F12               134
+     RšCKTASTE   14    º     | oder \\     43      º     NUM-FESTSTELL      69
+     TABULATOR   15    º     Z            44      º     ROLLEN-FESTSTELL   70
+     Q           16    º     X            45      º     POS1 oder 7        71
+     W           17    º     C            46      º     NACH-OBEN oder 8   72
+     E           18    º     V            47      º     BILD oder 9       73
+     R           19    º     B            48      º     Graue MINUSTASTE   74
+     T           20    º     N            49      º     NACH-LINKS oder 4  75
+     Y           21    º     M            50      º     Mitte oder 5       76
+     U           22    º     < oder ,     51      º     NACH-RECHTS oder 6 77
+     I           23    º     > oder .     52      º     Graue PLUSTASTE    78
+     O           24    º     ? oder /     53      º     ENDE oder 1        79
+     P           25    º     Rechte UMSCH 54      º     NACH-UNTEN oder 2  80
+     { oder [    26    º     DRUCK od. *  55      º     BILD oder 3       81
+     } oder ]    27    º     ALT          56      º     EINFG oder 0       82
+     EINGABE     28    º     LEERTASTE    57      º     ENTF oder .        83
+     STRG        29    º                          º
+.context .rtect
+.context @rtect
+:nLaufzeitfehler-Codes
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ \bCode   Fehlermeldung\p                º  \bCode    Fehlermeldung\p
+                                     º
+ 1      NEXT ohne FOR                º  37      Falsche Anzahl von Argumenten
+ 2      Syntaxfehler                 º  38      Feld nicht definiert
+ 3      RETURN ohne GOSUB            º  40      Variable erforderlich
+ 4      READ jenseits von DATA       º  50      FIELD-šberlauf
+ 5      Unzul„ssiger Funktionsaufruf º  51      Interner Fehler
+ 6      šberlauf                     º  52      Dateiname oder -nummer
+ 7      Zu wenig Speicher            º          unzul„ssig
+ 8      Marke nicht definiert        º  53      Datei nicht gefunden
+ 9      Index auáerhalb des          º  54      Falscher Dateimodus
+        zul„ssigen Bereichs          º  55      Datei bereits ge”ffnet
+ 10     Doppelte Definition          º  56      FIELD-Anweisung aktiv
+ 11     Division durch Null          º  57      Ger„tefehler bei Ein/Ausgabe
+ 12     Unzul„ssig im Direkt-Modus   º  58      Datei existiert bereits
+ 13     Falscher Datentyp            º  59      Ungltige Datensatzl„nge
+ 14     Zu wenig Zeichenketten-      º  61      Festplatte/Diskette voll
+        Speicherplatz                º  62      Eingabe nach Dateiende
+ 16     Zeichenketten-Formel zu      º  63      Unzul„ssige Datensatznummer
+        umfangreich                  º  64      Unzul„ssiger Dateiname
+ 17     QBasic kann nicht fortsetzen º  67      Zu viele Dateien
+ 18     QBasic-Funktion n. definiert º  68      Ger„t nicht verfgbar
+ 19     RESUME fehlt                 º  69      Kommunikationspuffer-
+ 20     RESUME ohne Fehler           º          -šberlauf
+ 24     Zeitberschreitung am Ger„t  º  70      Zugriff verweigert
+ 25     Ger„tefehler                 º  71      Festplatte/Diskette nicht
+ 26     FOR ohne NEXT                º          bereit
+ 27     Papier zu Ende               º  72      Datentr„gerfehler
+ 29     WHILE ohne WEND              º  73      Funktion nicht verfgbar
+ 30     WEND ohne WHILE              º  74      Umbenennen zwischen
+ 33     Doppelt definierte Marke     º          Datentr„gern
+ 35     QBasic-Unterprogramm         º  75      Pfad/Datei-Zugriffsfehler
+        nicht definiert              º  76      Pfad nicht gefunden
+.context .lqb
+.context @lqb
+:nDie Grenzen von QBASIC
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Dieser Abschnitt listet die Begrenzungen der QBASIC-Umgebung fr die folgen-
+ den Kategorien auf:
+
+   \i\p\aGrenzen von Namen, Zeichenfolgen und Zahlen\v@lim.nsn\v\i\p
+   \i\p\aGrenzen von Datenfeldern\v@lim.arr\v\i\p
+   \i\p\aGrenzen von Prozeduren und Dateien\v@lim.pf\v\i\p
+
+ Siehe auch    \i\p\ašber QBASIC hinaus\v@beyqb\v\i\p
+.context .lim.nsn
+.context @lim.nsn
+:nGrenzen von Namen, Zeichenfolgen und Zahlen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                             Maximum                  Minimum
+                             ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ L„nge von Variablennamen    40 Zeichen                1 Zeichen
+ L„nge von Zeichenfolgen     32 767 Zeichen            0 Zeichen
+ Ganzzahlen                  32 767                   -32 768
+ Lange Ganzzahlen            2 147 483 647            -2 147 483 648
+ Zahlen einfacher Genauigkeit
+   Positive                  3.402823E+38              2.802597E-45
+   Negative                 -2.802597E-45             -3.402823E+38
+ Zahlen doppelter Genauigkeit
+   Positive                  1.79769313486231D+308     4.940656458412465D-324
+   Negative                 -4.940656458412465D-324   -1.79769313486231D+308
+.context @lim.arr
+:nGrenzen von Datenfeldern
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                                      Maximum                Minimum
+                                      ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍ
+ Datenfeldgr”áe (alle Elemente):
+   Statisch                           65 535 Bytes (64 KB)   1 Byte
+   Dynamisch                          65 535 Bytes (64 KB)
+ Anzahl erlaubter Dimensionen         60                     1
+ Anzahl erlaubter Dimensionen, die    8                      1
+   nicht angegeben sind
+ Datenfeldindizes                     32 767                -32 768
+
+   Anmerkung: Der Bereich zwischen den Werten von Datenfeldindizes darf
+   maximal 32 767 betragen.
+.context @lim.pf
+:nGrenzen von Prozeduren und Dateien
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                               Maximum                 Minimum
+                               ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ
+ Prozedurgr”áe                 64 KB                   0
+ Anzahl bergebener Argumente  60                      0
+ Anzahl der Datendateien       255                     1
+ Anzahl der Datens„tze         2 147 483 647           1
+ Gr”áe der Datens„tze          32 KB                   1 Byte
+ Gr”áe der Datendateien        Verfgbarer Speicher    0
+ Pfadnamen                     127 Zeichen             1 Zeichen
+ Anzahl der Fehlermeldungen    255                     1
+.context @converting_BASIC
+:nKonvertierung von BASICA-Programmen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  Bedenken Sie die folgenden Dinge, wenn Sie BASICA-Programme in
+  QBASIC-Programme umwandeln:
+
+  ş Speichern Sie das BASICA-Programm im ASCII-Format. QBASIC kann
+    Programme, die im BASICA Format gespeichert worden sind, nicht verwenden.
+
+  ş Verwenden Sie die Befehlsoption /MBF bei Start von QBASIC. Die Option
+    /MBF erm”glicht QBASIC das Lesen und Schreiben von BASICA Datendateien.
+
+  ş Ver„ndern Sie alle CALL-Anweisungen in CALL ABSOLUTE. Die
+    BASICA-Anweisung CALL ist „quivalent zu der QBASIC Anweisung
+    CALL ABSOLUTE.
+
+  Auáerdem k”nnen Sie das Programm REMLINE.BAS verwenden, um die unn”tigen
+  Zeilennummern aus dem zu konvertierenden Programm zu entfernen. QBASIC
+  ben”tigt keine Zeilennummern und durch das Entfernen der Zeilennummern
+  wird die Lesbarkeit des Programms erh”ht.
+
+ Siehe auch    \i\p\aUnterschiede zu BASICA\v@basica.diffs\v\i\p
+               \i\p\aNicht untersttzte Schlsselw”rter\v@unsupported\v\i\p
+               \i\p\aUnterschiede von Versionen\v@vd\v\i\p
+.context beyqb
+.context @beyqb
+:nšber QBASIC hinaus
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ QBASIC ist eine leicht erlernbare Umgebung fr das Erstellen von BASIC-Pro-
+ grammen. Die folgende Tabelle zeigt Ihnen einige L”sungen fr Probleme, die
+ ber den Rahmen von QBASIC hinausgehen.
+
+ Ziel                            L”sungsvorschlag
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ     ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+ Schnelle Programmausfhrung     Verwenden Sie einen BASIC-Compiler (wie z.B.
+                                 Microsoft QuickBASIC oder das Microsoft
+                                 BASIC Professional Development System), um
+                                 Ihren BASIC-Code in Maschinensprache zu
+                                 kompilieren.
+
+ Schreiben von Programmen, die   Verwenden Sie eine BASIC-Entwicklungs-
+ mehr als 160 KB Speicher        umgebung, die das Erstellen von groáen
+ ben”tigen                       Programmen untersttzt.
+
+ Weitergeben Ihres Programms     Verwenden Sie einen BASIC-Compiler, um Ihren
+ an andere Benutzer              Code als selbst„ndig ausfhrbare Datei zu
+                                 kompilieren. Dies erlaubt Ihnen, Ihr
+                                 Programm weiterzugeben und es ohne QBASIC
+                                 auszufhren.
+
+ Erstellen eines Daten-          Verwenden Sie die integrierte sogenannte
+ verwaltungsprogramms            Indexed Sequential Access Method (ISAM) aus
+                                 dem Microsoft BASIC Professional Development
+                                 System, um Datenbank-Anwendungsprogramme
+                                 zu entwickeln.
+
+ Setzen Sie sich mit Ihrem Software-H„ndler in Verbindung, wenn Sie weitere
+ Informationen ber Produkte zum Programmieren in BASIC ben”tigen. Wenn Sie
+ mehr ber das Programmieren in BASIC lernen wollen, lesen Sie bitte in den
+ folgenden Microsoft Press-Bchern oder in anderen Bchern ber BASIC nach:
+
+ ş "Running QBasic", Michael Halvorson und David Rygmy, 1991.
+ ş "QBasic: Programmer's Quick Reference", Kris Jamsa, 1991.
+ ş "The Waite Group's QBasic Reference Plus", Waite, Prata, et al., 1991.
+ ş "The Waite Group's Microsoft QuickBASIC Bible", Waite, Prata, et al., 1990.
+ ş "The Waite Group's Microsoft QuickBASIC Primer Plus", Waite et al., 1990.
+ ş "Microsoft QuickBASIC Programmer's Toolbox", John Clark Craig, 1988.
+ ş "Microsoft QuickBASIC", Douglas Hergert, dritte Auflage, 1988.
+.context @unsupported
+.context ALIAS
+.context EVENT
+.context LOCAL
+.context BYVAL
+.context $INCLUDE
+.context SADD
+.context SETMEM
+.context CDECL
+.context Int86
+.context Interrupt
+.context SIGNAL
+.context COMMAND$
+.context Int86X
+.context InterruptX
+.context UEVENT
+.context AUTO
+.context NEW
+.context CONT
+.context LLIST
+.context RENUM
+.context LOAD
+.context SAVE
+.context DELETE
+.context MERGE
+.context USR
+.context EDIT
+.context MOTOR
+:nNicht untersttzte Schlsselw”rter
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Die folgenden QuickBASIC-Schlsselw”rter werden in QBASIC nicht untersttzt:
+
+     ALIAS       EVENT       LOCAL         SETMEM
+     BYVAL       $INCLUDE    SADD          SIGNAL
+     CDECL       Int86       Interrupt     UEVENT
+     COMMAND$    Int86X      InterruptX
+
+ Die folgenden GW-BASIC/BASICA-Schlsselw”rter werden in QBASIC nicht
+ untersttzt:
+
+     AUTO        EDIT        MERGE         RENUM
+     CONT        LIST        MOTOR         SAVE
+     DEF USR     LLIST       NEW           USR
+     DELETE      LOAD
+
+ Siehe auch    \i\p\aKonvertierung von BASICA-Programmen\v@converting_BASIC\v\i\p
+               \i\p\aUnterschiede zu BASICA\v@basica.diffs\v\i\p
+               \i\p\aUnterschiede von Versionen\v@vd\v\i\p
+.context @basica.diffs
+:nUnterschiede zu BASICA
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ DIe folgenden Schlsselw”rter verhalten sich in QBASIC anders als in BASICA:
+
+ \bBSAVE, BLOAD\p     QBASIC untersttzt nicht die Verwendung eines Kassetten-
+                  ger„ts mit den Befehlen BSAVE und BLOAD, und Speicherposi-
+                  tionen sind m”glicherweise anders.
+
+ \bCALL ABSOLUTE\p    Programme, die in Assembler geschrieben sind und von
+                  BASICA aufgerufen werden, mssen fr QBASIC umgeschrieben
+                  werden, wenn sie Zeichenfolgenargumente enthalten. Dies ist
+                  notwendig, weil Zeichenfolgendeskriptoren in QBASIC 4 Byte
+                  lang sind. Die 4 Byte sind das niederwertige und das h”her-
+                  wertige Byte der L„nge der Zeichenfolge sowie das nieder-
+                  wertige und h”herwertige Byte der Zeichenfolgen-Adresse.
+
+ \bCHAIN\p            QBASIC erlaubt Ihnen nicht, mit CHAIN Zeilennummern zu
+                  bestimmen und untersttzt nicht die BASICA-Optionen ALL,
+                  MERGE oder DELETE.
+
+ \bCOMMON,DECLARE\p   Bei QBASIC ist die Verwendung von ausfhrbaren
+                  Anweisungen vor den Anweisungen COMMON und DECLARE
+                  nicht zul„ssig.
+
+ \bDEFtype\p          Datentypen werden mit den Zeichen !, #, &, $ und %
+                  deklariert. Wenn BASICA auf eine Variable ohne ausdrcklich
+                  deklarierten Typ st”át, verwendet es den Standardtyp, der
+                  in der zuletzt verwendeten DEFtype-Anweisung festgelegt
+                  wurde. Im folgenden Code-Auszug wechselt beispielsweise
+                  der Datentyp der Variable IFLAG von Ganzzahl zu  Zahl mit
+                  einfacher Genauigkeit:
+
+                      10  DEFINT I
+                      20  PRINT IFLAG
+                      30  DEFSNG I
+                      40  GOTO 20
+
+                  In QBASIC kann der Typ einer Variable nicht ge„ndert
+                  werden, nachdem diese in einem Programm aufgetreten ist.
+
+ \bDIM\p              In BASICA sind all Datenfelder dynamisch, da BASICA
+                  Speicherplatz fr Datenfelder immer w„hrend der Programm-
+                  ausfhrung zuordnet.
+                  In QBASIC k”nnen Sie mit der Anweisung DIM sowohl statische
+                  als auch dynamische Datenfelder deklarieren.
+
+ \bDRAW, PLAY\p       Die Anweisungen DRAW und PLAY, die Variablen oder in ein-
+                  ander verschachtelte Befehlszeichenfolgen verwenden, mssen
+                  fr QBASIC umgeschrieben werden. Verwenden Sie die Funktion
+                  VARPTR$, die die Adresse einer Variable als Zeichenfolge
+                  zurckgibt:
+
+                  BASICA-Anweisung      QBASIC-Entsprechung
+                  ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                  DRAW "XBefehl$"       DRAW "X" + VARPTR$ (Befehl$)
+                  DRAW "TA = Winkel"    DRAW "TA =" + VARPTR$(Winkel)
+
+ \bEOF\p              Wenn Sie Daten direkt von einer Datei in ein BASICA-
+                  Programm eingeben, liefert EOF(0) den Wert Wahr am Ende
+                  der Eingabedatei.
+                  In QBasic liefert EOF(0) den Wert Wahr, nachdem der n„chste
+                  Datensatz hinter dem Ende der Eingabedatei gelesen wurde.
+                  Zum Beispiel kann das folgende Programm in BASICA ausge-
+                  fhrt werden, aber erzeugt in QBasic die Fehlermeldung
+                  "Eingabe nach Dateiende":
+
+                      5  WHILE NOT EOF(0)
+                      10 LINE INPUT ; A$
+                      15 WEND
+
+ \bFIELD\p	      Wenn in BASICA eine Direktzugriffsdatei mit der Anweisung
+                  CLOSE oder RESET geschlossen wird, behalten Feldvariablen
+                  den letzten Wert bei, der ihnen von einer GET-Anweisung
+                  zugewiesen wurde. In QBASIC werden alle Feldvariablen auf
+                  eine Nullzeichenfolge zurckgesetzt.
+
+ Siehe auch    \i\p\aKonvertierung von BASICA-Programmen\v@converting_BASIC\v\i\p
+               \i\p\aUnterschiede von Versionen\v@vd\v\i\p

@@ -1,0 +1,40 @@
+SUMMARY  fdelete
+
+#include <tools.h>
+
+int fdelete(pstrFile)
+char *pstrFile;
+
+DESCRIPTION
+
+fdelete deletes a file by indexing it into a separate directory, DELETED,
+and then renaming the file into that directory.
+
+RETURN VALUE
+
+0 if successful.
+1 if source file did not exist.
+2 if source was read-only or if the rename failed.
+3 if the index was not accessible.
+
+IMPLEMENTATION
+
+
+SEE ALSO  Commands: rm exp undel
+
+NOTE
+
+
+EXAMPLE
+
+#include <tools.h>
+
+main(c, argv)
+int c;
+char *argv[];
+{
+    int i;
+
+    if ((i = fdelete("temp.hlp")))
+	printf("Error: %d\n");
+}

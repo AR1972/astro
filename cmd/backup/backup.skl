@@ -1,0 +1,76 @@
+;==========================================================
+
+:util	BACKUP
+
+;---------
+:class	A
+;---------
+:use 1	 COMMON1                                      ;For "Incorrect DOS version
+:def 2	 CR,LF,"Insufficient memory",CR,LF              
+:def 6	 CR,LF,"Invalid drive specification",CR,LF      
+:use 7	 COMMON23                                     ;For "Invalid date"
+:use 8	 COMMON24                                     ;For "Invalid time"
+
+
+:use 11  COMMON25                                     ;For "Invalid path"
+
+:use 12  COMMON26                                     ;For "No source drive specified"
+:use 13  COMMON27                                     ;For "No target drive specified"
+:def 14  CR,LF,"Source and target drives are the same",CR,LF
+:def 15  CR,LF,"Error executing FORMAT",CR,LF
+:def 16  CR,LF,"Cannot find FORMAT.EXE",CR,LF
+:def 17  CR,LF,"Error opening logfile",CR,LF
+:def 18  CR,LF,"Logging to file %1",CR,LF
+:def 19  CR,LF,"Last backup diskette not inserted",CR,LF
+
+:def 20  CR,LF,"Warning! Files in the target drive",CR,LF 
+	 "%1:\ root directory will be erased",CR,LF       
+
+:def 21  CR,LF,"Warning! Files in the target drive",CR,LF 
+	 "%1:\BACKUP directory will be erased",CR,LF      
+
+:def 22  CR,LF,"*** Backing up files to drive %1: ***",CR,LF
+:def 23  "Diskette Number: %1",CR,LF                        
+:def 24  CR,LF,"Warning! No files were found to back up",CR,LF
+:def 25  CR,LF,"Insert backup source diskette in drive %1:",CR,LF
+
+:def 26  CR,LF,"Insert backup diskette %1 in drive %2:",CR,LF
+:def 27  CR,LF,"*** Not able to backup file ***",CR,LF            
+:def 28  CR,LF,"Insert last backup diskette in drive %1:",CR,LF   
+
+:def 29  CR,LF,"Target can not be used for backup",CR,LF          
+:def 30  CR,LF,"*** Last file not backed up ***",CR,LF            
+:def 31  CR,LF,"Fixed backup device %1: is full",CR,LF            
+
+:def 32  CR,LF,"Disk full error writing to BACKUP Log File",CR,LF 
+								  
+:use 33  COMMON28                                     ;For "Press any key to continue..."
+:def 34  CR,LF							  
+:def 35  CR,LF,"Cannot FORMAT nonremovable drive %1:",CR,LF       
+:def 40  CR, LF, "Because your source drive is either ASSIGNed, JOINed, or SUBSTed", CR, LF, "it is actually the same as the target drive", CR, LF
+:def 41  CR, LF, "Because your target drive is either ASSIGNed, JOINed, or SUBSTed", CR, LF, "it is actually the same as the source drive", CR, LF
+
+;;;; M011 Start
+:def 42  "Your target diskette is unformatted and "
+:def 43  "No FORMAT program was found.",CR,LF
+	 "Do you have another diskette with FORMAT on it (Y/N)? "
+:def 44  CR,LF,"Insert the diskette with FORMAT in drive A:",CR,LF
+:def 45  CR,LF,"Do you want to continue by inserting a new disk (Y/N)? "
+;;;; M011 End
+
+; 300 - 399 reserved for options help messages
+:def 300   BACKUP /?
+:def 301   BACKUP /?
+:def 302   BACKUP /?
+:def 303   BACKUP /?
+:def 304   BACKUP /?
+:def 305   BACKUP /?
+:def 306   BACKUP /?
+:def 307   BACKUP /?
+:def 308   BACKUP /?
+:def 309   BACKUP /?
+:def 310   BACKUP /?
+
+:end
+;==========================================================
+

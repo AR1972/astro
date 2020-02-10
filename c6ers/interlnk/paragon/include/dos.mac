@@ -1,0 +1,191 @@
+;***
+;* $Workfile:   dos.mac  $
+;* $Revision:   1.1  $
+;*   $Author:   Dave Sewell  $
+;*     $Date:   13 Oct 1989 11:33:12  $
+;*
+;* Various useful macros for assembly language programs.
+;*
+;* NOTE:  This file is identical for both XENIX and MSDOS assemblies, so it
+;* should be linked in "/usr/include" and "/usr/include/dos".
+;***
+
+; The following include file should have any macros, etc., which are different
+; for XENIX and MSDOS assemblies.  Unique copies should be maintained in
+; "/usr/include" for XENIX and "/usr/include/dos" for MSDOS.
+
+INCLUDE osdep.mac
+
+; IMPORTANT NOTE:  If the middle, compact, large, or huge memory model is being
+; used, the symbol "MMODEL", "CMODEL", "LMODEL", or "HMODEL" respectively, must
+; be defined on the command line when "masm" is invoked.  If none of the
+; symbols is defined, small model is assumed as the default.
+
+CONST	SEGMENT  WORD PUBLIC 'CONST'
+CONST	ENDS
+_BSS	SEGMENT  WORD PUBLIC 'BSS'
+_BSS	ENDS
+_DATA	SEGMENT  WORD PUBLIC 'DATA'
+_DATA	ENDS
+DGROUP	GROUP	CONST,	_BSS,	_DATA
+ASSUME	DS: DGROUP, SS: DGROUP, ES: DGROUP
+
+DATASEG MACRO
+_DATA	SEGMENT
+	ENDM
+
+DATAEND MACRO
+_DATA	ENDS
+	ENDM
+
+IFDEF	LMODEL
+	;*** Large model definitions ***
+	LPROG	EQU	1
+	LDATA	EQU	1
+ENDIF
+IFDEF	HMODEL
+	;*** Large model definitions ***
+	LPROG	EQU	1
+	LDATA	EQU	1
+ENDIF
+IFDEF	MMODEL
+	;*** Medium model definitions ***
+	LPROG	EQU	1
+	LDATA	EQU	0
+ENDIF
+IFDEF	CMODEL
+	;*** Medium model definitions ***
+	LPROG	EQU	0
+	LDATA	EQU	1
+ENDIF
+IFNDEF	LPROG
+	;*** Small model definitions ***
+	LPROG	EQU	0
+	LDATA	EQU	0
+ENDIF
+
+	IF  (LPROG EQ 0)
+
+TEXTSEG     MACRO
+_TEXT	    SEGMENT BYTE PUBLIC 'CODE'
+	    ASSUME CS:_TEXT
+	    ENDM
+
+TEXTEND     MACRO
+_TEXT	    ENDS
+	    ENDM
+
+PUBPROCDEF  MACRO   PROCNAME
+	    PUBLIC  _&PROCNAME
+_&PROCNAME  PROC    NEAR
+	    ENDM
+
+PASCALDEF   MACRO   PROCNAME
+	    PUBLIC  PROCNAME
+PROCNAME    PROC    NEAR
+	    ENDM
+
+LOCPROCDEF  MACRO   PROCNAME
+PROCNAME    PROC    NEAR
+	    ENDM
+
+	ELSE
+
+TEXTSEG     MACRO
+PARAGON_TEXT    SEGMENT BYTE PUBLIC 'CODE'
+	    ASSUME CS:PARAGON_TEXT
+	    ENDM
+
+TEXTEND     MACRO
+PARAGON_TEXT    ENDS
+	    ENDM
+
+PUBPROCDEF  MACRO   PROCNAME
+	    PUBLIC  _&PROCNAME
+_&PROCNAME  PROC    FAR
+	    ENDM
+
+PASCALDEF   MACRO   PROCNAME
+	    PUBLIC  PROCNAME
+PROCNAME    PROC    FAR
+	    ENDM
+
+	ENDIF
+
+PUBPROCEND  MACRO   PROCNAME
+_&PROCNAME  ENDP
+	    ENDM
+
+PASCALEND   MACRO   PROCNAME
+PROCNAME    ENDP
+	    ENDM
+
+;***
+;* The following macros may be useful in accessing stack arguments.
+;* Here 'X' defines the offset from BP where the first argument may be found.
+;* In the small code models, the offset is 4 (2 for the BP register saved
+;* on procedure entry and 2 for the return address).  In the large code models
+;* the offset is 6 because the return address takes up 4 bytes instead of two.
+;***
+
+	IF	LPROG
+X	EQU	6
+	ELSE
+X	EQU	4
+	ENDIF
+
+;***
+;* The following defines are used in conjunction with 'X' to access arguments
+;* after the first one:
+;*	I   = integer argument
+;*	L   = long argument
+;*	NDP = near data pointer argument
+;*	FDP = far data pointer argument
+;*	NCP = near code pointer argument
+;*	FCP = far code pointer argument
+;*	DP  = data pointer argument
+;*	CP  = code pointer argument
+;***
+
+I	EQU	2
+L	EQU	4
+NDP	EQU	2
+FDP	EQU	4
+NCP	EQU	2
+FCP	EQU	4
+
+	IF	LDATA
+DP	EQU	4
+	ELSE
+DP	EQU	2
+	ENDIF
+	IF	LPROG
+CP	EQU	4
+	ELSE
+CP	EQU	2
+	ENDIF
+
+procent     MACRO
+	    PUSH    BP
+	    MOV     BP, SP
+	    PUSH    DI
+	    PUSH    SI
+	    ENDM
+
+;Note: the procret macro accepts up to a maximum of seven args and plus signs.
+;If more are needed, take out white space between pluses and arguments.
+
+procret     MACRO   arg1,p1,arg2,p2,arg3,p4,arg4,p5,arg5,p6,arg6,p7,arg7
+	    POP     SI
+	    POP     DI
+	    POP     BP
+	    RET     arg1 p1 arg2 p2 arg3 p4 arg4 p5 arg5 p6 arg6 p7 arg7
+	    ENDM
+
+pubcall     MACRO   procname
+    IF	    LPROG
+	    call    FAR PTR _&procname
+    ELSE
+	    call    _&procname
+    ENDIF
+	    ENDM

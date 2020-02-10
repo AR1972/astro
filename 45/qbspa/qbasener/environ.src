@@ -1,0 +1,629 @@
+.comment ==============================================================
+.comment QBasic Environment Help
+.comment  This file contains Environment Help (for menus,
+.comment  dialog boxes, etc.). These are not error messages
+.comment ==============================================================
+.comment 7/29/90 Bethpr
+.comment Changed text, as appropriate, for BASIC language and products.
+.comment Changed Print dialog box help to "Selected Text Only" as per
+.comment upcoming change to UI in Rel.07.  Also changed Cut and Copy
+.comment commands help; edited out the line "The Clipboard can only
+.comment hold one item of text at a time" as it was redundant of the
+.comment line that followed it.  This keeps these help nodes from
+.comment scrolling by one line.
+.comment ==============================================================
+.comment 7/24/90 Bethpr
+.comment Instances where QBasic left as QBASIC are in Open Dialog and
+.comment Save As Dialog as a path name (\QBASIC), and in Help Path
+.comment Dialog and Help Path Command as a filename (QBASIC.HLP).
+.comment ==============================================================
+.comment 7/17/90 stevesau
+.comment Incorporated final QA/copy edits.
+.comment ==============================================================
+.comment 7/6/90 stevesau
+.comment Moved menu bar help from contents.src.
+.comment ==============================================================
+.comment 6/21/90 stevesau
+.comment Incorporated review comments and edits, revised and tightened.
+.comment ==============================================================
+.comment 6/15/90 stevesau
+.comment Added File Save context.
+.comment ==============================================================
+.comment 5/24/90 - Bethpr
+.comment Added info to Open command and Open dialog about use of
+.comment GW-BASIC/BASICA ,A switch.
+.comment ===================================================
+.comment 5/4/90 - Bethpr
+.comment Removed Shift+F8 and Shift+F10 history support, as per tomb;
+.comment reworded Split command to be more specific about closing a
+.comment second window.
+.comment ==============================================================
+.comment 4/13/90 Bethpr
+.comment The following nodes have been removed:
+.comment Add watch command, Break on errors command, Calls menu,
+.comment Calls menu commands, Create file command, Create file dialog,
+.comment Customize menu, customize menu command, Customize menu dialog,
+.comment Delete all watch command, Delete watch command,
+.comment Delete watch dialog, File load command, File load dialog,
+.comment File unload command, History on command, Included file command,
+.comment Included lines command, Instant watch command, 
+.comment Instant watch dialog, Label command, Make EXE command,
+.comment Make EXE dialog, Make library command, Make library dialog,
+.comment Merge command, Merge command dialog, Modify COMMAND$ command,
+.comment Modify COMMAND$ prompt, Module to unload prompt, Redo command,
+.comment Right mouse command, Right mouse dialog, Run DOS command,
+.comment Run DOS command dialog, Save all command, Save command,
+.comment Trace on command, Undo command, Utility menu,
+.comment Watch window expression prompt, Watchpoint command, 
+.comment Find and label dialog, Customize menu command
+.comment ==============================================================
+.context hidGreetingBox
+:nBienvenido a QBasic
+  ş Presione Esc para entrar al ambiente de programaci¢n
+    de QBasic.
+
+  ş Presione Entrar para examinar la Gu¡a de Referencia
+    B sica de QBasic la cual le indica c¢mo iniciar el
+    ambiente de QBasic y el sistema de Ayuda.
+.comment ------------------------------------------------
+.comment     Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context hidFileOpen
+:nAbrir, cuadro de di logo
+Se usa para abrir un archivo de programa presente.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄ Abrir ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                 ³  Escriba aqu¡ el nombre
+³ Archivo: ±±±±±±±± ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ del archivo, si est 
+³                                 ³  en el directorio actual
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ (indicado aqu¡),
+³                                 ³   - o bien -
+³    Archivos         Dirs/Unidad ³
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  Elija aqu¡ un archivo,
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  o un directorio o una
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  unidad si el archivo
+³                               ³  est  en otro lugar.
+³        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÀÄÄÄÄÄÄÄÄÄÄÄÙ
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Elija <SI>.
+
+Tambi‚n puede seleccionar una unidad nueva y directorio
+escribi‚ndolos en el cuadro de texto "Archivo".
+
+Si desea examinar el contenido de otras unidades y
+directorios, escriba un comod¡n como archivo (as¡, *.TXT)
+en el campo de texto "Archivo", y seleccione una unidad
+nueva o directorio.
+
+Nota: Para abrir un archivo creado en GW-BASIC o BASICA,
+      el archivo debe haberse guardado en GW-BASIC o BASICA
+      usando la opci¢n ,A.
+.context hidFileSave
+:nGuardar Como, cuadro de di logo
+Se usa para guardar y asignar un nombre al archivo actual.
+ÚÄÄÄÄÄÄÄÄÄÄÄ Guardar como ÄÄÄÄÄÄÄ¿
+³                                ³  Acepte este nombre o
+³ Archivo: ±±±±±±±±±±±±±±±± ÄÄÄÄÄÄ escriba otro nombre.
+³                                ³
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ El archivo se guardar 
+³                                ³  en este directorio.
+³           Dir/Unidad           ³
+³           ±±±±±±±±±±±  ÄÄÄÄÄÄÄÄÄ Use Dir/Unidad para
+³           ±±±±±±±±±±±          ³  guardar un archivo en
+³           ±±±±±±±±±±±          ³  una unidad o directorio
+³                                ³  diferente.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Elija <SI>.
+.context hidFilePrint
+:nImprimir, cuadro de di logo
+Se usa para imprimir un programa o tema de Ayuda, en forma
+parcial o completa. Aseg£rese de que la impresora est‚
+conectada a LPT1 en su computadora y que est‚ preparada
+para imprimir. Despu‚s, elija una de las siguientes
+opciones y presione la tecla Entrar:
+ÚÄÄÄÄÄÄÄÄÄ Imprimir ÄÄÄÄÄÄÄÄ¿
+³ ± Texto seleccionado ÄÄÄÄÄÄ Imprime texto seleccionado.
+³                           ³
+³ ± Imprime ventana ÄÄÄÄÄÄÄÄÄ Imprime un procedimiento o
+³                           ³  texto de la ventana activa.
+³ ± Todo el programa ÄÄÄÄÄÄÄÄ Imprime todo el programa
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  activo.
+
+La opci¢n "Todo el programa" no estar  disponible si ha
+elegido Imprimir con el cursor en la ventana de Ayuda.
+
+Info: Seleccione el texto en su programa o en la ventana
+      Ayuda antes de elegir el comando Imprimir. Coloque
+      el cursor al principio del texto que desee imprimir
+      y presione May£s+teclas de direcci¢n hasta resaltar
+      todo el texto y luego elija el comando Imprimir.
+.context hidNewProc
+:nNueva SUB o FUNCTION, cuadro de di logo
+Se usa para crear un nuevo procedimiento SUB o FUNCTION.
+Escriba el nombre del nuevo procedimiento (m ximo 40 ca-
+racteres) en el cuadro de texto y elija <SI>.
+
+Utilice un nombre descriptivo para recordar el prop¢sito
+del procedimiento y evitar que se repita el nombre de otro
+procedimiento o variable existente.
+.context hidViewSubs
+:nSUBs, cuadro de di logo
+Se usa para editar o eliminar procedimientos SUB y FUNCTION.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ SUBs ÄÄÄÄÄÄÄÄÄÄÄ¿
+³ Elija programa a editar:       ³  Seleccione aqu¡ un
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄ elemento. Nivel del
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±  ³  m¢dulo primero, en
+³ ±±±±±±±±±±±±±±±±±±±±±±±±±±±±±  ³  may£sculas; procedi-
+³                                ³  mientos sangrados.
+³ XXX es xxxxxxxxxxxxxxxx ÄÄÄÄÄÄÄÄ Describe el elemento
+³                                ³  seleccionado
+³<Editar en pantalla> <Eliminar>ÄÄ Elija si desea editar
+³                                ³  o eliminar elemento
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  elegido.
+
+Si elige <Editar en pantalla>, QBasic presentar  el
+procedimiento en la ventana activa.
+.context hidSearchFind
+:nBuscar, cuadro de di logo
+Se usa para encontrar una cadena de texto espec¡fica.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Buscar ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                   ³  Escriba una cadena
+³ Buscar: ±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄ o utilice ‚sta.
+³                                   ³
+³± May£s/min£s  ± Palabra completa ÄÄ Indique el tipo de
+³                                   ³  b£squeda.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Elija <SI>.
+
+Seleccione "May£s/min£s" para buscar la misma combinaci¢n
+o "Palabra completa" para excluir equivalencias dentro de
+palabras o cadenas de texto. "Palabra completa" reconoce
+equivalencias s¢lo cuando el texto buscado est  entre
+espacios, puntuaci¢n u otros caracteres especiales.
+El texto buscado puede tener hasta 127 caracteres.
+.context hidSearchChange
+:nCambiar, cuadro de di logo
+Se usa para reemplazar una cadena de texto con otra.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Cambiar ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                    ³  Escriba el texto o
+³    Buscar: ±±±±±±±±±±±±±±±±±±±± ÄÄÄÄ use el actual.
+³                                    ³
+³ Cambiar a: ±±±±±±±±±±±±±±±±±±±± ÄÄÄÄ Escriba reemplazo.
+³                                    ³
+³± May£s/min£s  ± Palabra completa ÄÄÄ Indique el tipo de
+³                                    ³  b£squeda.
+³<Buscar y verificar> <Cambiar todo>ÄÄ Indique si desea
+³                                    ³  revisar cada cambio
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  o hacerlos todos.
+
+Seleccione "May£s/min£s" para buscar la misma combinaci¢n
+o "Palabra completa" para excluir equivalencias dentro de
+palabras o cadenas de texto. "Palabra completa" reconoce
+equivalencias s¢lo cuando el texto buscado est  entre
+espacios, puntuaci¢n u otros caracteres especiales.
+El texto reemplazado puede tener hasta 127 caracteres.
+.context hidConfirm
+:nCambiar, cuadro de di logo
+Se ha encontrado texto que coincide con el buscado y ‚ste
+aparece resaltado en la ventana activa. Usted podr :
+  ş Elegir <Cambiar> para efectuar el reemplazo y seguir
+    buscando.
+  ş Elegir <Omitir> para dejar intacto el texto y seguir
+    buscando.
+  ş Elegir <Cancelar> para dejar el texto intacto y
+    suspender la b£squeda.
+.context hidOptnsDisplay
+:nPresentar, cuadro de di logo
+Se usa para personalizar la pantalla de QBasic.
+                 ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄPresentarÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+                 ³ ÚÄÄÄÄÄÄÄÄÄÄÄÄÄ Colores ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+                 ³                    1erPlano   Fondo    ³
+                 ³ ± Texto normal     ±±±±±±±±   ±±±±±±±± ³
+                 ³                    ±±±±±±±±   ±±±±±±±± ³
+Los colores   ÄÄÄÄ± Instrucci¢n      ±±±±±±±±   ±±±±±±±± ³
+indicados aqu¡   ³   activa                               ³
+resaltar n el  ÄÄÄ± Puntos de interrupci¢n               ³
+texto durante el ³                                        ³
+proceso de       ³ ÚÄÄÄÄÄ Opciones de presentaci¢n ÄÄÄÄÄÄ¿³
+depuraci¢n.      ³   ± Barras/desplaz.      Altos/tab: ±  ³
+                 ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+Presenta u oculta las³   Escriba el n£mero de espacios ³
+barras de desplaza-  ³   que Tab. avanzar  el cursor.ÄÄÙ
+miento en pantalla. ÄÙ
+
+Para establecer las opciones:
+  1. Presione la tecla Tab para mover el cursor al cuadro
+     de di logo Colores u Opciones de presentaci¢n.
+  2. Utilice las teclas de direcci¢n para seleccionar un
+     color o una opci¢n de presentaci¢n.
+  3. Elija <SI> o presione Entrar para guardar y hacer
+     efectivas las opciones seleccionadas.
+
+Las opciones elegidas ser n guardadas y permanecer n
+en vigencia la pr¢xima vez que inicie QBasic.
+.context MSG_SearchPathInterp
+:nRuta de Ayuda, cuadro de di logo
+QBasic busca el archivo de Ayuda QBASIC.HLP en los
+directorios que usted indique en este cuadro de di logo.
+No es necesario especificar la ruta de acceso a Ayuda si
+ya lo ha hecho usando la variable de ambiente PATH de DOS,
+o si QBASIC.HLP est  en el directorio actual.
+ÚÄÄÄÄÄÄÄ Ruta de acceso a Ayuda ÄÄÄÄÄÄ¿
+³                                     ³
+³ Lugar (ruta) del archivo QBASIC.HLP:³
+³                                     ³  Escriba la unidad,
+³     ±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄ y directorio donde
+³                                     ³  se encuentre el
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  archivo QBASIC.HLP.
+
+Info: Si QBasic no puede encontrar QBASIC.HLP, debe veri-
+      ficar la escritura correcta de dicho directorio.
+.comment ------------------------------------------------
+.comment   End of Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context m.f
+.context m.e
+.context m.v
+.context m.s
+.context m.r
+.context m.d
+.context m.o
+.context m.h
+:nBarra de men£s de QBasic
+Uso de los men£s y comandos de QBasic:
+
+  ş Para activar men£s y comandos, presione la letra
+    resaltada o use el Mouse en un men£ o comando.
+  ş Para pasar de un men£ y comando a otro, utilice
+    las teclas de direcci¢n o el Mouse.
+.comment ------------------------------------------------
+.comment   UI Help for Menu Commands and Dialog Support
+.comment ------------------------------------------------
+.context MSG_HelpFileNew
+:nNuevo, comando
+Se usa para crear un programa nuevo. Se presentar  un
+cuadro de di logo si ya tiene abierto un programa
+existente. Despu‚s podr :
+  ş Elegir <S¡> para guardar el programa existente.
+  ş Elegir <No> para cerrar el programa sin guardarlo.
+  ş Elegir <Cancelar> para anular el comando Nuevo y
+    regresar al programa existente.
+
+Info: Use el comando Abrir para cargar un programa existente.
+.context MSG_HelpFileOpen
+:nAbrir, comando
+Se usa para cargar un programa existente con el
+objeto de ejecutarlo o modificarlo.
+
+Use comando Nuevo para crear un programa nuevo.
+
+ Nota: Para abrir un archivo creado en GW-BASIC o BASICA,
+       ‚ste debe haberse guardado en GW-BASIC o BASICA con
+       la opci¢n ,A.
+.context MSG_HelpFileSave
+:nGuardar, comando
+Se usa para guardar la versi¢n actual del programa.
+
+QBasic le pedir  que escriba un nombre si el programa no
+se guard¢ anteriormente. Si un programa existente tiene
+el mismo nombre del que se est  guardando, el nuevo ser 
+escrito encima del programa existente.
+.context MSG_HelpFileSaveAs
+:nGuardar como, comando
+Se usa para guardar un programa como archivo. Si desea
+conservar la versi¢n anterior del programa, escriba un
+nombre nuevo en el cuadro de texto "Archivo".
+.context MSG_HelpFilePrint
+:nImprimir, comando
+Se usa para imprimir parte o todo un programa o tema
+de Ayuda.
+
+Es posible imprimir:
+  ş Texto seleccionado
+  ş Ventana de Ayuda
+  ş El programa completo (incluyendo procedimientos)
+
+QBasic enviar  la informaci¢n a la impresora que est‚
+conectada a LPT1 en su computadora.
+
+Info: Seleccione el texto en su programa o la ventana de
+      Ayuda antes de elegir el comando Imprimir. Coloque
+      el cursor al principio del texto que desee imprimir,
+      presione May£s+teclas de direcci¢n hasta seleccionar
+      todo el texto y despu‚s elija el comando Imprimir.
+.context MSG_HelpFileExit
+:nSalir, comando
+Se usa para salir del ambiente de QBasic.
+
+Si el programa ha sido modificado desde la £ltima vez que
+se guard¢, QBasic presentar  un cuadro de di logo.
+  ş Elija <S¡> para guardar el programa y sus cambios.
+  ş Elija <No> para descartar los cambios.
+  ş Elija <Cancelar> para anular el comando Salir y volver
+    al programa.
+.context MSG_HelpEditCut
+:nCortar, comando
+Use el comando Cortar (o May£s+Supr) para eliminar el texto
+seleccionado y copiarlo al Portapapeles, un lugar temporal
+de almacenamiento.
+
+Despu‚s, podr  usar el comando Pegar (o May£s+Ins) e
+insertar el texto a un lugar nuevo dentro de la ventana
+activa. Tambi‚n podr  abrir un archivo de programa
+nuevo o existente e insertar ah¡ el texto cortado.
+
+El texto permanecer  en el Portapapeles y podr  ser
+reinsertado. Cada vez que corte o copie un trozo de texto
+el nuevo texto reemplazar  el contenido del Portapapeles.
+
+Info: Para seleccionar texto, coloque el cursor al inicio
+      del texto y presione May£s+teclas de direcci¢n. Para
+      eliminarlo sin copiarlo al Portapapeles, presione la
+      tecla Supr.
+.context MSG_HelpEditCopy
+:nCopiar, comando
+Use el comando Copiar (o Ctrl+Insert) para copiar el texto
+seleccionado al Portapapeles. El texto original permanecer 
+intacto.
+
+Despu‚s podr  usar el comando Pegar (May£s+Ins) e insertar
+el texto a la ventana activa. Tambi‚n podr  abrir un nuevo
+archivo de programa o uno existente e insertar el texto ah¡.
+
+Info: Para seleccionar texto, coloque el cursor al inicio
+      del texto y presione May£s+teclas de direcci¢n.
+
+El texto permanecer  en el Portapapeles y podr  ser
+reinsertado. Cada vez que corte o copie un trozo de texto,
+el nuevo texto reemplazar  el contenido del Portapapeles.
+.context MSG_HelpEditPaste
+:nPegar, comando
+Use el comando Pegar (May£s+Ins) para insertar un bloque
+de texto desde el Portapapeles a cualquier parte de la
+ventana activa.
+
+Para insertar texto, coloque el cursor en el lugar donde
+desee hacer la inserci¢n del texto y elija Pegar.
+
+Para reemplazar un texto por otro, seleccione el texto
+que desee reemplazar y elija Pegar.
+
+Info: Para pasar el texto al Portapapeles, utilice Cortar
+      o Copiar. Despu‚s de insertar el texto usando Pegar,
+      el Portapapeles conservar  el texto y podr  volver
+      a insertarlo.
+.context MSG_HelpEditClear
+:nBorrar, comando
+Use el comando Borrar (o la tecla Supr) para borrar el
+texto seleccionado sin copiarlo al Portapapeles. El
+contenido del Portapapeles permanecer  intacto.
+.context MSG_HelpEditNewSub
+:nSUB nuevo, comando
+Se usa para crear un nuevo procedimiento SUB.
+
+Escriba un nombre para el procedimiento en el cuadro de
+di logo SUB nuevo. QBasic insertar  las instrucciones
+SUB y END SUB para el procedimiento y lo presentar 
+en la ventana Ver.
+
+Si desea ver o modificar otras partes del programa,
+utilice el comando SUBs del men£ Ver (o presione F2).
+
+Info: Tambi‚n podr  crear un subprocedimiento usando la
+      palabra clave SUB de QBasic.
+.context MSG_HelpEditNewFunc
+:nFUNCTION Nueva, comando
+Se usa para crear nuevo procedimiento FUNCTION.
+
+Escriba un nombre para el procedimiento en el cuadro de
+di logo FUNCTION Nueva. QBasic insertar  las instrucciones
+FUNCTION y END FUNCTION para el procedimiento y lo
+presentar  en la ventana Ver.
+
+Si desea ver o modificar otras partes del programa,
+utilice el comando SUBs del men£ Ver (o presione F2).
+
+Info: Tambi‚n podr  crear un procedimiento en forma de
+      funci¢n usando la palabra clave FUNCTION de QBasic.
+.context MSG_HelpViewSubs
+:nSUBs, comando
+Se usa para ver o modificar un procedimiento SUB o FUNCTION
+o para borrar un procedimiento.
+
+Info: Para ver o modificar dos diferentes procedimientos
+      SUB o FUNCTION al mismo tiempo, elija Dividir del
+      men£ Ver y despu‚s utilice el comando SUBs para
+      presentar los procedimientos en ambas ventanas.
+.context MSG_HelpViewSplit
+:nDividir, comando
+Se usa para dividir la ventana Ver horizontalmente y
+trabajar con dos partes del programa al mismo tiempo.
+
+Use F6 y May£s+F6 para pasar de una ventana a otra:
+  ş F6 mueve el cursor hacia abajo entre ventanas.
+  ş May£s+F6 mueve el cursor hacia arriba entre ventanas.
+
+Para cerrar una segunda ventana coloque el cursor en la
+ventana que desee mantener activa y elija Dividir otra vez.
+
+Para ajustar el tama¤o de la ventana activa usando el Mouse,
+arrastre el borde horizontal de la ventana arriba o abajo.
+
+Para ajustar el tama¤o de la ventana activa con el teclado,
+utilice:
+  ş Alt+M s(+)   para aumentar una l¡nea
+  ş Alt+Menos(-) para reducir una l¡nea
+  ş Ctrl+F10     para obtener una pantalla completa, o
+                 restablecer su tama¤o anterior.
+.context MSG_HelpViewOutputScreen
+:nInfo. en pantalla, comando
+Use este comando (o presione F4) para ver los resultados
+de su programa en pantalla. Info en pantalla presenta los
+resultados de un programa ejecutado en el ambiente QBasic.
+
+Presione cualquier tecla para volver a QBasic despu‚s
+de examinar la pantalla de salida.
+.context MSG_HelpSearchFind
+:nBuscar, comando
+Se usa para buscar una cadena de texto. Podr  buscar la
+combinaci¢n de may£sculas y min£sculas o s¢lo palabras
+completas.
+
+Use el comando Cambiar para cambiar una cadena.
+.context MSG_HelpSearchChange
+:nCambiar, comando
+Se usa para reemplazar una cadena de texto con otra.
+
+Es posible:
+  ş Buscar la misma combinaci¢n de may£sculas y
+    min£sculas o buscar s¢lo palabras completas.
+  ş Verificar cada reemplazo antes de efectuarlo.
+  ş Efecutar todos los reemplazos sin verificarlos.
+.context MSG_HelpSearchNext
+:nRepetir b£squeda, comando
+Use el comando Repetir b£squeda (o F3) para repetir la b£s-
+queda m s reciente hecha por el comando Buscar o Cambiar.
+
+Si no se ha ejecutado ning£n comando Buscar o Cambiar
+desde que se inici¢ QBasic, Repetir b£squeda buscar  la
+siguiente aparici¢n de:
+  ş La palabra en la que se encuentre el cursor
+  ş La palabra a la izquierda del cursor, si el cursor
+    no est  en una palabra
+.context MSG_HelpRunStart
+:nIniciar, comando
+Use el comando Iniciar (o presione May£s+F5) para comenzar
+a ejecutar un programa a partir de la primera instrucci¢n
+ejecutable situada en el m¢dulo principal.
+
+Si durante la ejecuci¢n de un programa lo suspende el comando
+Iniciar descartar  la informaci¢n introducida e iniciar  el
+programa desde su principio.
+.context MSG_HelpRunRestart
+:nReiniciar, comando
+Se usa para preparar un programa con el objeto de reini-
+ciarlo desde el principio. Este comando borrar  cualquier
+informaci¢n que se haya introducido al programa en ejecu-
+ci¢n y resaltar  la primera instrucci¢n ejecutable.
+.context MSG_HelpRunContinue
+:nContinuar, comando
+Use el comando Continuar (o presione F5) para reanudar
+la ejecuci¢n de un programa suspendido. Este comando
+no descartar  la informaci¢n introducida al programa
+en ejecuci¢n y reiniciar  el programa a partir de la
+£ltima instrucci¢n ejecutada, en lugar de reiniciarlo
+desde su principio.
+
+El comando Continuar se usa con frecuencia para reanudar la
+ejecuci¢n del programa despu‚s de un punto de interrupci¢n.
+.context MSG_HelpDebugStep
+:nPaso a paso, comando
+Use el comando Paso a paso (o F8) para ejecutar una sola
+instrucci¢n en su programa, ejecutar un programa paso a
+paso incluyendo sus procedimientos un paso a la vez.
+.context MSG_HelpDebugPStep
+:nPaso y procedimiento, comando
+Use el comando Paso y procedimiento (o presione F10) para
+ejecutar una sola instrucci¢n en su programa y ejecutar un
+llamado al procedimiento junto con el procedimiento llamado
+como una sola instrucci¢n.
+
+Este comando, como el comando Paso a paso, le permite
+revisar un programa un paso a la vez, sin necesidad de
+pasar por los procedimientos que funcionan correctamente.
+.context MSG_HelpDebugTraceOn
+:nRastreo, comando
+Se usa para resaltar cada instrucci¢n en su programa
+mientras se ejecuta. Esto le permite observar el flujo
+general del programa. Presione Ctrl+Inter para suspender
+la ejecuci¢n del programa.
+.context MSG_HelpDebugToggleBp
+:nAlternar Puntos de interrupci¢n, comando
+Use el comando Alternar puntos de interrupci¢n (o F9),
+para activarlos y desactivarlos. Los Puntos de interrupci¢n
+son marcadores colocados en instrucciones del programa.
+Al ejecutar el programa, ‚ste se detendr  al encontrar un
+punto de interrupci¢n. QBasic resalta la l¡nea en pantalla.
+
+Para activar y desactivar un punto de interrupci¢n:
+  1. Coloque el cursor en la l¡nea donde desee poner el
+     punto de interrupci¢n, o a una l¡nea resaltada
+     con un punto de interrupci¢n.
+  2. Elija Alternar Punto de interrupci¢n (o presione F9).
+
+Use puntos de interrupci¢n en su programa para hacer una
+pausa en el lugar donde se sospecha un error, y despu‚s:
+  ş Imprima los valores de las variables en la ventana
+    "Inmediata".
+  ş Ejecute el programa paso a paso a partir del punto
+    de interrupci¢n.
+.context MSG_HelpDebugClearAllBp
+:nBorrar puntos de interrupci¢n, comando
+Se usa para borrar los puntos de interrupci¢n del programa.
+
+Use Ptos. de interrupci¢n (o F9) para desactivar uno solo.
+.context MSG_HelpDebugSetNextStmt
+:nFijar siguiente instrucci¢n, comando
+Se usa para cambiar la secuencia de ejecuci¢n del programa
+de manera que, la posici¢n del cursor le indica que esta
+instrucci¢n ser  la siguiente en ejecutarse.
+.context MSG_HelpOptionsDisplay
+:nPresentar, Comando
+Se utiliza para ajustar:
+  ş Los colores de pantalla
+  ş Las barras de desplazamiento en las ventanas
+  ş El n£mero de espacios que Tabulaci¢n avanza el cursor
+
+Las opciones elegidas son guardadas y permanecen vigentes
+la pr¢xima vez que inicie QBasic.
+.context MSG_HelpOptionsPaths
+:nRuta de Ayuda, comando
+Se usa para cambiar el directorio donde QBasic busca
+el archivo de Ayuda, QBASIC.HLP.
+.context MSG_HelpOptionsSyntax
+:nVerificar sintaxis, comando
+Se usa para activar y desactivar la verificaci¢n de
+sintaxis. Al activarla, QBasic har  lo siguiente
+despu‚s de cada l¡nea de c¢digo que usted escriba:
+  1. Verificar  si hay errores de sintaxis en la l¡nea.
+  2. Dar  formato a la l¡nea.
+  3. Convertir  la l¡nea en una forma ejecutable si la
+     sintaxis es correcta.
+.context MSG_HelpHelpIndex
+:nIndice, comando
+Se usa para presentar el ¡ndice de Ayuda, una lista
+en orden alfab‚tico de los temas de ayuda, incluyendo
+las palabras clave del lenguaje Basic. Cada t‚rmino en
+el ¡ndice est  vinculado a una informaci¢n adicional.
+
+Para obtener Ayuda:
+  1. Elija el comando Indice del men£ Ayuda.
+  2. Presione la tecla correspondiente a la primera
+     letra del elemento.
+  3. Coloque el cursor sobre el elemento y presione F1.
+.context MSG_HelpHelpContents
+:nContenido, comando
+Se usa para presentar la tabla de contenido de Ayuda, una
+gu¡a organizada por temas sobre la informaci¢n incluida
+en el sistema de Ayuda de QBasic.
+
+Para obtener ayuda de cualquier elemento que figure
+en la tabla de contenido:
+  1. Elija el comando Contenido del men£ Ayuda.
+  2. Presione la tecla que corresponde a la primera letra
+     del elemento. Siga presionando la tecla hasta colocar
+     el cursor en el tema deseado.
+  3. Presione F1.
+.context MSG_HelpHelpSyntax
+:nTema, comando
+Se usa para presentar informaci¢n de un tema indicado por
+la posici¢n actual del cursor. El tema en el que se encuen-
+tre el cursor aparecer  como parte del comando.
+
+Tambi‚n es posible presentar un tema de Ayuda presionando
+F1 o haciendo clic con el bot¢n derecho del Mouse.
+.context MSG_HelpHelpHelp
+:nUso de la Ayuda, comando
+Se usa para presentar el tema "Usar la Ayuda", que describe
+c¢mo usar el Mouse o el teclado para obtener Ayuda sobre
+un elemento presentado en la pantalla de QBasic.
+.context MSG_HelpHelpAbout
+:nAcerca de, comando
+Se usa para presentar el n£mero de versi¢n y la informaci¢n
+sobre derechos de autor de QBasic.

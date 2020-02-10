@@ -1,0 +1,442 @@
+.comment ******************************************************************
+.comment *  Event Trapping Family - QBasic                                *
+.comment ******************************************************************
+.comment *  7/11/90 stevesau                                              *
+.comment *  Incorporated final QA/copy edits.                             *
+.comment ******************************************************************
+.comment *  6/22/90 stevesau                                              *
+.comment *  Incorporated final review edits/comments.                     *
+.comment ******************************************************************
+.comment *  6/8/90 stevesau                                               *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/9/90 stevesau                                               *
+.comment *  Deleted EVENT.                                                *
+.comment *  Added Declaring User-Defined Keys node (linked from KEY)      *
+.comment *  with Keyboard Flag Table info.                                *
+.comment *  Combined COM/ON COM, KEY/ON KEY, PEN/ON PEN, PLAY/ON PLAY,    *
+.comment *  STRIG/ON STRIG, TIMER/ON TIMER.                               *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  4/20/90 stevesau                                              *
+.comment *  Added action lines.                                           *
+.comment *  Deleted ON UEVENT, SetUEvent, UEVENT.			  *
+.comment *  Deleted OS/2 references (ON PEN, ON PLAY, ON STRIG, PEN,	  *
+.comment *  PLAY, STRIG).                                                 *
+.comment ******************************************************************
+.comment *  4/17/90 bethpr                                                *
+.comment *  Removed On Signal statement and Signal statements		  *
+.comment ******************************************************************
+.context COM
+.context @COM
+:nCOM-, ON COM-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+COM aktiviert, deaktiviert oder unterbricht die Ereignisverfolgung an
+der seriellen Schnittstelle. Ist die Ereignisverfolgung aktiviert,
+verzweigt ON COM jedesmal zu einem Unterprogramm, wenn ein Zeichen
+an der seriellen Schnittstelle empfangen wurde.
+
+\bCOM(n%) ON\p
+\bCOM(n%) OFF\p
+\bCOM(n%) STOP\p
+\bON COM(n%) GOSUB Zeile\p
+
+    ş \bn%\p		  Die Nummer der seriellen Schnittstelle (1 oder 2).
+    ş \bCOM(n%) ON\p	  Aktiviert die Ereignisverfolgung an der seriellen
+		      Schnittstelle.
+    ş \bCOM(n%) OFF\p	  Deaktiviert die Ereignisverfolgung an der seriellen
+		      Schnittstelle.
+    ş \bCOM(n%) STOP\p    Unterbricht die Ereignisverfolgung. Ereignisse
+		      werden ausgefhrt, sobald die Ereignisverfolgung
+		      durch COM ON aktiviert ist.
+    ş \bZeile\p 	  Die Marke oder Nummer der ersten Zeile des
+		      Unterprogramms zur Ereignisverfolgung.
+
+Beispiel:
+    COM(1) ON       'Aktiviert Ereignisverfolgung an Anschluá 1.
+    ON COM(1) GOSUB ComHandler
+    DO : LOOP WHILE INKEY$ = ""
+    COM(1) OFF
+    END
+
+    ComHandler:
+	PRINT "Etwas wurde an dem mit COM1 verbundenen Terminal getippt."
+	RETURN
+
+Siehe auch    \i\p\aOPEN COM\v@opcom\v\i\p
+.context .ketv
+.context @ketv
+:nKEY-, ON KEY-Anweisungen (Ereignisverfolgung)
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+KEY aktiviert, deaktiviert oder unterbricht die Ereignisverfolgung
+einer Taste. Ist die Ereignisverfolgung aktiviert, verzweigt KEY jedesmal
+zu einem Unterprogramm, wenn eine Taste gedrckt wurde.
+
+\bKEY(n%) ON\p
+\bKEY(n%) OFF\p
+\bKEY(n%) STOP\p
+\bON KEY(n%) GOSUB Zeile\p
+
+ ş \bn%\p              Ein Wert, der eine Funktionstaste, Richtungstaste
+                   oder benutzerdefinierte Taste angibt:
+
+                   n%        Taste
+                   ÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                   0         Alle hier aufgeflisteten Tasten (nur
+                             KEY(0) ON, KEY(0) OFF und KEY(0) STOP).
+                   1-10      Funktionstasten  F1-F10.
+                   11        NACH-OBEN-TASTE.
+                   12        NACH-LINKS-TASTE.
+                   13        NACH-RECHTS-TASTE.
+                   14        NACH-UNTEN-TASTE.
+                   15-25     Benutzerdefinierte Tasten. Fr mehr Information
+                             siehe \i\p\aDeklaration benutzerdefinierter Tasten\v@kbflags\v\i\p.
+                   30, 31    Funktionstasten F11 und F12.
+
+ ş \bKEY(n%) ON\p      Aktiviert die Ereignisverfolgung fr eine angegebene
+                   Taste.
+ ş \bKEY(n%) OFF\p     Deaktiviert die Ereignisverfolgung einer Taste.
+ ş \bKEY(n%) STOP\p    Unterbricht die Ereignisverfolgung. Ereignisse
+                   werden ausgefhrt, sobald die Verfolgung mit
+                   KEY ON aktiviert ist.
+ ş \bZeile\p           Die Marke oder die Nummer der ersten Zeile
+                   des Unterprogramms zur Ereignisverfolgung.
+
+Beispiel:
+    'Dieses Beispiel verlangt, daá die Tasten Caps- und Num Lock aus sind.
+    CONST ESC = 27
+    KEY 15, CHR$(&H4) + CHR$(&H1F)		'Setzt Ctrl+S als KEY 15.
+    ON KEY(15) GOSUB PauseHandler
+    KEY(15) ON
+    WHILE INKEY$ <> CHR$(ESC)
+	PRINT "Drcken Sie ESC um abzubrechen, Ctrl+S fr Pause."
+        PRINT
+    WEND
+    END
+
+    PauseHandler:
+        SLEEP 1
+        RETURN
+
+Siehe auch    \i\p\aKEY (Zuweisung)\v@KEY\v\i\p    \i\p\aDeklaration benutzerdefinierter Tasten\v@kbflags\v\i\p
+.context .kbflags
+.context @kbflags
+:nDeklaration benutzerdefinierter Tasten
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Um eine benutzerdefinierte Taste zu definieren, mssen Sie die folgende
+Variante der KEY-Anweisung verwenden.
+
+\bKEY n%, CHR$(Tastenkennzeichen%) + CHR$(Abfragecode%)\p
+
+    ş \bn%\p               Ein Wert zwischen 15 und 25, der die Taste
+                       identifiziert.
+    ş \bTastenkennzeichen%\p
+                       Einer der folgenden Werte oder eine Summe
+                       von Werten, die angeben, ob eine benutzerdefinierte
+		       Taste in Kombination mit der Umschalt-, der Strg-,
+		       der Alt-Taste, der Num-Feststelltaste oder der
+		       Feststelltaste oder erweiterten Tasten verwendet
+		       wird:
+
+		       Wert		Taste
+                       ÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+		       0		Kein Tastaturkennzeichen
+		       1 bis 3		Beide Umschalttasten (Shift)
+		       4		Strg-Taste
+		       8		Alt-Taste
+		       32		Num-Festelltaste
+		       64		Feststelltaste
+		       128		Erweiterte Tasten auf einer Tastatur
+					mit 101 Tasten
+
+		       Um Status von mehreren Tasten festzulegen, mssen
+		       Sie die Werte addieren. Beispielsweise gibt der
+		       Wert 12 an, daá die benutzerdefinierte Taste
+		       zusmammen  mit der Ctrl- und der Alt-Taste
+		       verwendet wird.
+
+    ş \bAbfragecode%\p     Der fr die Taste deklarierte Abfragecode.
+                       Siehe auch \i\p\aTastatur-Abfragecodes\v@kbsct\v\i\p.
+
+Siehe auch    \i\p\aKEY (Zuweisung)\v@KEY\v\i\p    \i\p\aKEY, ON KEY (Ereignisverfolgung)\v@ketv\v\i\p
+.context PEN
+.context @PEN
+:nPEN-, ON PEN-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PEN aktiviert, deaktiviert oder unterbricht die Ereignisverfolgung
+fr einen Lichtgriffel. Ist die Ereignisverfolgung aktiviert, verzweigt
+die ON PEN-Anweisung zu einem Unterprogramm, falls der Lichtgriffel
+aktiviert wird.
+
+\bPEN ON\p
+\bPEN OFF\p
+\bPEN STOP\p
+\bON PEN GOSUB Zeile\p
+
+    ş \bPEN ON\p      Aktiviert die Ereignisverfolgung fr den Lichtgriffel.
+    ş \bPEN OFF\p     Deaktiviert die Ereignisverfolgung fr den Lichtgriffel.
+    ş \bPEN STOP\p    Unterbricht die Ereignisverfolgung fr den Lichtgriffel.
+		  Ereignisse werden ausgefhrt, sobald die Ereignis-
+		  verfolgung mit PEN ON aktiviert wurde.
+    ş \bZeile\p       Die Marke oder Nummer der ersten Zeile, an der
+		  das Unterprogramm zur Ereignisverfolgung beginnt.
+
+Beispiel:
+    'Dieses Beispiel erfordert einen Lichtgriffel.
+    ON PEN GOSUB Handler
+    PEN ON
+    PRINT "Drcken Sie ESC, um abzubrechen."
+    DO UNTIL INKEY$ = CHR$(27): LOOP
+    END
+
+Handler:
+    PRINT "Lichtgriffel ist in Zeile"; PEN(6); ", Spalte"; PEN(7)
+    RETURN
+
+
+Siehe auch    \i\p\aPEN-Funktion\v@penf\v\i\p
+.context .playf
+.context @playf
+:nPLAY-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt die Anzahl der in der Warteschlange fr Musik enthaltenen Noten zurck.
+
+\bPLAY(n)\p
+
+    ş \bn\p    Jeder numerische Ausdruck.
+
+Beispiel:
+    Musik$ = "MBT180o2P2P8L8GGGL2E-P24P8L8FFFL2D"
+    PLAY Musik$
+    WHILE PLAY(0) > 5: WEND
+    PRINT "Gerade ausgefhrt!"
+
+Siehe auch    \i\p\aPLAY (Musik)\v@PLAY\v\i\p    \i\p\aPLAY, ON PLAY (Ereignisverfolgung)\v@playev\v\i\p
+.context .playev
+.context @playev
+:nPLAY-, ON PLAY-Anweisungen (Ereignisverfolgung)
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+PLAY aktiviert, deaktiviert oder unterbricht die PLAY-Ereingisverfolgung.
+Ist die Ereignisverfolgung aktiviert, verzweigt ON PLAY zu einem
+Unterprogramm jedesmal wenn der Musikpuffer weniger Noten enth„lt,
+als in dem Parameter angegeben wird.
+
+\bPLAY ON\p
+\bPLAY OFF\p
+\bPLAY STOP\p
+\bON PLAY(Begrenzung%) GOSUB Zeile\p
+
+    ş \bPLAY ON\p	 Aktiviert die PLAY-Ereignisverfolgung.
+    ş \bPLAY OFF\p	 Deaktiviert die PLAY-Ereignisverfolgung.
+    ş \bPLAY STOP\p      Unterbricht die PLAY-Ereignisverfolgung. Ereignisse
+		     werden ausgefhrt, sobald die Ereignisverfolgung
+		     mit ON PLAY aktiviert ist.
+    ş \bBegrenzung%\p	 Ein Wert zwischen 1 und 32. ON PLAY verzweigt zu
+                     einem Unterprogramm, wenn weniger Noten in Begrenzung%
+		     als in dem Musikpuffer vorhanden sind.
+    ş \bZeile\p 	 Die Marke oder die Nummer der ersten Zeile
+		     des Unterprogramms der Ereignisverfolgung.
+
+Beispiel:
+    ON PLAY(3) GOSUB Hintergrund
+    PLAY ON
+    Musik$ = "MBo3L8ED+ED+Eo2Bo3DCL2o2A"
+    PLAY Musik$
+    LOCATE 2, 1: PRINT "Beliebte Taste drcken, um abzubrechen.";
+    DO WHILE INKEY$ = "": LOOP
+    END
+
+    Hintergrund:
+        i% = i% + 1
+        LOCATE 1, 1: PRINT "Hintergrund "; i%; "mal aufgerufen.";
+	PLAY Musik$
+        RETURN
+
+Siehe auch    \i\p\aPLAY (Musik)\v@PLAY\v\i\p    \i\p\aPLAY-Funktion\v@playf\v\i\p
+.context .strigf
+.context @strigf
+:nSTRIG-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt den Status des Joystick-Schalters zurck.
+
+\bSTRIG(n%)\p
+
+    ş \bn%\p    Ein Wert, der die Statusbedingung des Jobsticks angibt.
+
+	    n%	  Bedingung
+            ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+	    0	  Unterer Schalter von Joystick A wurde seit dem letzten
+		  STRIG(0) gedrckt.
+	    1	  Unterer Schalter von Joystick A wird gerade gedrckt.
+	    2	  Unterer Schalter von Joystick B wurde seit dem letzten
+		  STRIG(2) gedrckt
+	    3	  Unterer Schalter von Joystick B wird gerade gedrckt.
+	    4	  Oberer Schalter von Joystick A wurde seit dem letzten
+		  STRIG(4) gedrckt.
+	    5	  Oberer Schalter von Joystick A wird gerade gedrckt.
+	    6	  Oberer Schalter von Joystick B wurde seit dem letzten
+		  STRIG(6) gedrckt.
+	    7	  Oberer Schalter von Joystick A wird gerade gedrckt.
+
+    ş STRIG gibt -1 zurck falls die Bedingung wahr ist, ansonsten 0.
+
+Bespiel:
+    PRINT "Drcken Sie ESC, um abzubrechen."
+    DO
+        IF STRIG(0) OR INKEY$ = CHR$(27) THEN EXIT DO
+    LOOP
+    DO
+	BEEP		      'BEEP w„hrend der Schalter gedrckt ist.
+    LOOP WHILE STRIG(1)
+
+Siehe auch    \i\p\aSTICK\v@STICK\v\i\p    \i\p\aSTRIG-, ON STRIG-Anweisungen\v@STRIG\v\i\p
+.context STRIG
+.context @STRIG
+:nSTRIG-, ON STRIG-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+STRIG aktiviert, deaktiviert oder unterbricht die Ereignisverfolgung des
+Joysticks. Ist die Ereignisverfolgung aktiviert, verzweigt ON STRIG zu
+einem Unterprogramm immer dann wenn der angegebene Schalter des Joysticks
+gedrckt ist.
+
+\bSTRIG(n%) ON\p
+\bSTRIG(n%) OFF\p
+\bSTRIG(n%) STOP\p
+\bON STRIG(n%) GOSUB Zeile\p
+
+    ş \bn%\p		    Ein Wert der den Schalter des Joysticks bestimmt.
+
+			n%    Schalter
+			ÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+			0     Unterer Schalter, Joystick A
+			2     Unterer Schalter, Joystick B
+			4     Oberer Schalter, Joystick A
+			6     Oberer Schalter, Joystick B
+
+    ş \bSTRIG(n%) ON\p	    Aktiviert die Ereignisverfolgung fr den Joystick.
+    ş \bSTRIG(n%) OFF\p     Deaktiviert die Ereingisverfolgung fr den Joystick.
+    ş \bSTRIG(n%) STOP\p    Unterbricht die Ereignisverfolgung fr den Joystick.
+			Ereignisse werden ausgefhrt, sobald die
+			Ereignisverfolgung mit STRIG ON aktiviert ist.
+    ş \bZeile\p 	    Die Marke oder Nummer der ersten Zeile des
+			Unterprogramms der Ereignisverfolgung.
+
+Beispiel:
+    'Dieses Beispiel erfordert einen Joystick.
+    ON STRIG(0) GOSUB Handler
+    STRIG(0) ON
+    PRINT "ESC drcken, um abzubrechen."
+    DO UNTIL INKEY$ = CHR$(27): LOOP
+    END
+
+Handler:
+    PRINT "Schalter am Joystick wird gedrckt."
+    RETURN
+
+Siehe auch    \i\p\aSTICK\v@STICK\v\i\p   \i\p\aSTRIG-Funktion\v@strigf\v\i\p
+.context .timerf
+.context @timerf
+:nTIMER-Funktion
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gibt Anzahl der seit Mitternacht vergangenen Sekunden zurck.
+
+\bTIMER\p
+
+    ş Verwenden Sie TIMER zur Zeitbehandlung in Programmen oder in
+      Programmteilen, oder mit der RANDOMIZE-Anweisung, um dem
+      Zufallsgenerator fr Zahlen zu setzen.
+
+Beispiel:
+    RANDOMIZE TIMER
+
+Siehe auch    \i\p\aRANDOMIZE, RND\v@randomize\v\i\p    \i\p\aTIMER-, ON TIMER-Anweisungen\v@TIMER\v\i\p
+.context TIMER
+.context @TIMER
+:nTIMER-, ON TIMER-Anweisungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+TIMER aktiviert, deaktiviert oder unterbricht die Ereignisverfolgung fr
+die Zeit. Ist die Ereignisverfolgung aktiviert, verzweigt ON TIMER zu
+einem Unterprogramm, wenn einen angegebenen Anzahl von Sekunden vergangen
+ist.
+
+\bTIMER ON\p
+\bTIMER OFF\p
+\bTIMER STOP\p
+\bON TIMER(n%) GOSUB Zeile\p
+
+    ş \bTIMER ON\p	Aktiviert die Timer-Ereignisverfolgung.
+    ş \bTIMER OFF\p	Deaktiviert die Timer-Ereignisverfolgung.
+    ş \bTIMER STOP\p	Unterbricht die Timer-Ereignisverfolgung. Ereignisse
+		    werden ausgefhrt, sobald die Ereignisverfolgung mit
+		    TIMER ON aktiviert ist.
+    ş \bn%\p		Die Anzahl von Sekunden, die vor dem verzweigen
+		    von ON TIMER in das Unterprogramm fr die Ereignis-
+		    verfolgung vergehen mssen; Ein Wert zwischen 1
+		    und 86.400 (24 Stunden).
+    ş \bZeile\p 	Die Marke oder Nummer der ersten Zeile des
+                    Unterprogramms zur Ereignisverfolgung.
+
+Beispiel:
+    ON TIMER(1) GOSUB ZeitUpdate
+    TIMER ON
+    CLS
+    PRINT "Zeit: "; TIME$
+    StartZeit = TIMER
+    WHILE VergangeZeitT < 10
+	VergangeneZeit = TIMER - StartZeit
+    WEND
+    END
+
+    ZeitUpdate:
+        LOCATE 1, 7: PRINT TIME$
+        RETURN
+
+Siehe auch    \i\p\aTIMER-Funktion\v@timerf\v\i\p
+.comment *******************************************************************
+.comment *  ON and OFF keyword screens follow.
+.comment *******************************************************************
+.context ON
+.context @ON
+:nON-Schlsselwort
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Fhrt verschiedene Aktionen als Bestandteil verschiedener Anweisungen aus:
+
+    ş Aktiviert Fehlerverfolgung, falls es mit der Anweisung ON ERROR
+      verwendet wird.
+    ş Aktiviert Ereignisverfolgung, falls es mit der Ereignis ON-Anweisung
+      verwendet wird (COM ON, KEY ON, PEN ON, PLAY ON, STRIG ON und
+      TIMER ON).
+    ş Gibt ein zu verfolgendes Ereignis an, falls mit der
+      ON-Ereignisanweisung verwendet wird (ON COM, ON KEY, ON PEN, ON PLAY,
+      ON STRING und ON TIMER).
+    ş Gibt einen auszuwertenden Ausdruck an, falls es mit den Anweisungen
+      ON...GOSUB und ON...GOTO verwendet wird.
+
+Siehe auch    \i\p\aCOM, ON COM\v@COM\v\i\p      \i\p\aKEY, ON KEY\v@ketv\v\i\p        \i\p\aON ERROR\v@onerr\v\i\p
+              \i\p\aON...GOSUB, ON...GOTO\v@ongo\v\i\p                 \i\p\aPEN, ON PEN\v@PEN\v\i\p
+              \i\p\aPLAY, ON PLAY\v@playev\v\i\p    \i\p\aSTRIG, ON STRIG\v@STRIG\v\i\p    \i\p\aTIMER, ON TIMER\v@TIMER\v\i\p
+.context OFF
+.context @OFF
+:nOFF-Schlsselwort - Unterschiedliche Anwendungen
+  \i\p\aInhalt\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aZurck\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Schaltet die Anzeige von Funktionstastenzuweisungen aus, falls es mit
+der Anweisung KEY (Zuweisung) verwendet wird, oder deaktiviert die
+Ereignisverfolgung, falls mit den OFF-Ereignisanweisungen (COM OFF, KEY OFF,
+PEN OFF, PLAY OFF, STRIG OFF und TIMER OFF verwendet wird).
+
+Siehe auch    \i\p\aCOM, ON COM\v@COM\v\i\p    \i\p\aKEY, ON KEY\v@ketv\v\i\p      \i\p\aKEY (Zuweisung)\v@KEY\v\i\p
+              \i\p\aPEN, ON PEN\v@PEN\v\i\p    \i\p\aPLAY, ON PLAY\v@playev\v\i\p    \i\p\aSTRIG, ON STRIG\v@STRIG\v\i\p
+              \i\p\aTIMER, ON TIMER\v@TIMER\v\i\p

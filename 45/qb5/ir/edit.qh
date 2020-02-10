@@ -1,0 +1,840 @@
+.comment ===================================================
+.comment MS-DOS Editor Help
+.comment ===================================================
+.comment  1/10/91 Cleaned comments.
+.comment     -- JeffWE
+.comment ===================================================
+.comment ------------------------------------------------
+.comment   Help for Menu titles
+.comment ------------------------------------------------
+.context hidGreetingBox
+.context h.pg1
+:nWelcome to the MS-DOS Editor
+  ş Press Esc to enter the MS-DOS Editor environment.
+
+  ş Press Enter to look at the MS-DOS Editor Survival
+    Guide. It shows you how to start using the MS-DOS
+    Editor and the MS-DOS Editor Help system.
+.comment ------------------------------------------------
+.comment     Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context hidFileOpen
+:nOpen Dialog
+Use to open an existing file for editing.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Open ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                 ³  Type the name of the
+³ File Name: ±±±±±±±± ÄÄÄÄÄÄÄÄÄÄÄÄÄ file here if it is in
+³                                 ³  the current directory
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ (shown here), or
+³                                 ³
+³      Files          Dirs/Drives ³
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  Select a file here,
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  or a directory or
+³ ±±±±±±±±±±±±±±±±    ±±±±±±±±±±± ³  drive if the file
+³                               ³  is located elsewhere.
+³        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÀÄÄÄÄÄÄÄÄÄÄÄÙ
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Then choose <OK>.
+
+You can also select a new drive and directory by typing
+them in the File Name text box.
+
+To browse the contents of other drives and directories,
+type a wildcard filename (such as *.TXT) in the File
+Name text box, and select a new drive or directory.
+.context hidFileSave
+:nSave As Dialog
+Use to save and name the current file.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄ Save As ÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                 ³  Accept this filename or
+³ File Name: ±±±±±±±± ÄÄÄÄÄÄÄÄÄÄÄÄÄ type a new name here.
+³                                 ³
+³ C:\\DOS ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ File will be saved in
+³                                 ³  this directory.
+³            Dirs/Drives          ³
+³            ±±±±±±±±±±±          ³  Use Dirs/Drives to
+³            ±±±±±±±±±±± ÄÄÄÄÄÄÄÄÄÄ save to a different
+³            ±±±±±±±±±±±          ³  directory or drive.
+³                                 ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Then choose <OK>.
+.context hidFilePrint
+:nPrint Dialog
+Use to print all or part of the document you are editing.
+ÚÄÄÄÄÄÄÄÄ Print ÄÄÄÄÄÄÄÄ¿
+³ ± Selected Text Only ÄÄ Prints selected text.
+³                       ³
+³ ± Complete Document ÄÄÄ Prints the entire document.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+If your cursor is in the Help window and you choose the
+Print command, you have the following options for printing.
+ÚÄÄÄÄÄÄÄÄ Print ÄÄÄÄÄÄÄÄ¿
+³ ± Selected Text Only ÄÄ Prints selected help text.
+³                       ³
+³ ± Current Window ÄÄÄÄÄÄ Prints the entire help topic.
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+The MS-DOS Editor prints to the printer connected to the
+LPT1 device on your computer.
+
+Tip: Select text in your document or the Help window
+     before you choose the Print command. Place the
+     cursor at the beginning of the text you want to
+     print, press Shift+direction keys until all the text
+     is highlighted, then choose the Print command.
+.context hidSearchFind
+:nFind Command Dialog
+Use to find a specific string of text.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Find ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                   ³  Enter string or use
+³ Find What: ±±±±±±±±±±±±±±±±±±±± ÄÄÄ string already here.
+³                                   ³
+³ ± Upper/Lowercase ± Whole Word ÄÄÄÄ Select search type.
+³                                   ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  Then choose <OK>.
+
+Select Upper/Lowercase for a case-sensitive match, or
+Whole Word to exclude matches within words or strings.
+Whole-word searches recognize a match only when the target
+text is surrounded by blanks, punctuation, or other special
+characters. The search string can be 127 characters long.
+.context hidSearchChange
+:nChange Dialog
+Use to replace one string of text with another.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Change ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                   ³  Enter string or use
+³ Find What: ±±±±±±±±±±±±±±±±±±±± ÄÄÄ string already here.
+³                                   ³
+³ Change To: ±±±±±±±±±±±±±±±±±±±± ÄÄÄ Enter replacement.
+³                                   ³
+³ ± Upper/Lowercase ± Whole Word ÄÄÄÄ Select search type.
+³                                   ³
+³ <Find and Verify>   <Change All> ÄÄ Choose whether to
+³                                   ³  review changes or
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  make all changes.
+
+Select Upper/Lowercase for a case-sensitive match,
+or Whole Word to exclude matches within words or strings.
+Whole-word searches recognize a match only when the target
+text is surrounded by blanks, punctuation, or other special
+characters. Replacement text can be 127 characters long.
+.context hidConfirm
+:nChange Dialog
+A match has been found and is highlighted in the current
+window. You can:
+  ş Choose <Change> to make the replacement and continue
+    searching.
+  ş Choose <Skip> to leave the text unchanged and continue
+    searching.
+  ş Choose <Cancel> or press Esc to leave the text unchanged
+    and stop searching.
+.context hidOptnsDisplay
+:nDisplay Dialog
+Use to customize the MS-DOS Editor screen.
+                 ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄDisplayÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+                 ³ ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Colors ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+Colors you pick  ³                     Foregrnd  Backgrnd ³
+here...ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ ±±±±±±±±  ±±±±±±±± ³
+                 ³ Set colors for the  ±±±±±±±±  ±±±±±±±± ³
+...are reflected ³ text editor window: ±±±±±±±±  ±±±±±±±± ³
+in this block of ³                    ±±±±±±±±  ±±±±±±±± ³
+text. ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ          ±±±±±±±±  ±±±±±±±± ³
+                 ³                                        ³
+                 ³ ÚÄÄÄÄÄÄÄÄÄÄDisplay OptionsÄÄÄÄÄÄÄÄÄÄÄÄ¿³
+                 ³   ± Scroll Bars          Tab Stops: ±  ³
+                 ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+Hides or displays    ³     Enter number of spaces you  ³
+scroll bars on       ³     want Tab to advance cursor.ÄÙ
+window display.ÄÄÄÄÄÄÙ
+
+To set options:
+  1. Press Tab to move the cursor to the Colors or Display
+     Options box.
+  2. Use the direction keys to select a color or display
+     option.
+  3. Choose <OK> or press Enter to save the options you
+     selected.
+
+Options settings are saved and remain in effect the next
+time you start the MS-DOS Editor.
+.context MSG_SearchPathEdit
+:nHelp Path Dialog
+The MS-DOS Editor searches for the help file EDIT.HLP in
+the directories you indicate in this dialog box. You don't
+need to set the Help path if you have done so with the PATH
+environment variable in DOS or if EDIT.HLP is in the
+current directory.
+ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ Help Path ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                                       ³
+³   Location (path) of EDIT.HLP file:   ³
+³                                       ³  Enter the drive
+³     ±±±±±±±±±±±±±±±±±±±±±±±±±±±± ÄÄÄÄÄÄ and directory
+³                                       ³  where EDIT.HLP
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  is located.
+
+Tip: If the MS-DOS Editor cannot find EDIT.HLP, check to
+     make sure that you entered the correct directory name.
+.comment ------------------------------------------------
+.comment   End of Dialog Box Help - UIHELPID.H,  900-921
+.comment ------------------------------------------------
+.context m.f
+.context m.e
+.context m.s
+.context m.o
+.context m.h
+:nMS-DOS Editor Menu Bar
+Using the MS-DOS Editor menus and commands:
+
+  ş To activate menus and commands, press the highlighted
+    letter or click a menu or command with the mouse.
+  ş To move between menus and commands, use the direction
+    keys or the mouse.
+.comment ------------------------------------------------
+.comment   UI Help for Menu Commands and Dialog Support
+.comment ------------------------------------------------
+.context MSG_HelpFileNew
+:nNew Command
+Use to create a new document. A dialog box will appear if
+you already have a document open. Then:
+  ş Choose <Yes> to save the existing document.
+  ş Choose <No> to close the document without saving it.
+  ş Choose <Cancel> to cancel the New command and return
+    to the existing document.
+
+Tip: Use the Open command to load an existing document.
+.context MSG_HelpFileOpen
+:nOpen Command
+Use to open an existing document so you can edit or
+print it.
+
+Tip: Use the New command to create a new document.
+.context MSG_HelpFileSave
+:nSave Command
+Use to save the current version of your document.
+
+The MS-DOS Editor asks you for a name if you haven't saved
+the document previously. If an existing document has the
+same name as the document being saved, the existing
+document is overwritten.
+.context MSG_HelpFileSaveAs
+:nSave As Command
+Use to save your document as a file. To preserve the
+previous version of your document, rename it in the
+File Name text box.
+.context MSG_HelpFilePrint
+:nPrint Command
+Use to print all or part of a document.
+
+You can print:
+  ş Selected text.
+  ş The contents of the Help window.
+  ş The entire current document.
+
+The MS-DOS Editor prints to the printer connected to the
+LPT1 device on your computer.
+
+Tip: Select text in your document or the Help window
+     before you choose the Print command. Place the
+     cursor at the beginning of the text you want to
+     print, press Shift+direction keys until all the text
+     is highlighted, then choose the Print command.
+.context MSG_HelpFileExit
+:nExit Command
+Use to leave the MS-DOS Editor environment.
+
+If your document has changed since you last saved it, the
+MS-DOS Editor displays a dialog box.
+  ş Choose <Yes> to save your document, including changes.
+  ş Choose <No> to discard your changes.
+  ş Choose <Cancel> to cancel the Exit command and return
+    to your document.
+.context MSG_HelpEditCut
+:nCut Command
+Use Cut (or press Shift+Del) to remove selected text and
+put it on the Clipboard, a temporary holding area.
+
+You can then use Paste (Shift+Ins) to insert the text at
+a new position. You can also open a new or existing
+document and insert the text.
+
+The text is still on the Clipboard and can be pasted again.
+Each time you cut or copy a piece of text, the new text
+replaces any text on the Clipboard.
+
+Tip: To select text, place the cursor at the beginning
+     of the text and press the Shift+direction keys.
+     To remove selected text without copying it to the
+     Clipboard, press Del.
+.context MSG_HelpEditCopy
+:nCopy Command
+Use Copy (or press Ctrl+Ins) to copy selected text to the
+Clipboard. The original text is unchanged.
+
+You can then use Paste (Shift+Ins) to insert the text
+at a new position. You can also open a new or existing
+document and insert the text.
+
+Tip: To select text, place the cursor at the beginning
+     of the text and press the Shift+direction keys.
+
+The text is still on the Clipboard and can be pasted again.
+Each time you cut or copy a piece of text, the new text
+replaces any text on the Clipboard.
+.context MSG_HelpEditPaste
+:nPaste Command
+Use Paste (or press Shift+Ins) to insert a block of text
+from the Clipboard at any point in a document.
+
+To insert text, place the cursor where you want the text
+to be inserted and choose Paste.
+
+To replace one piece of text with another, select the text
+to replace and choose Paste.
+
+Tip: To put text on the Clipboard, use Cut or Copy. After
+     you insert text using Paste, the Clipboard still
+     contains the text, and it can be pasted again.
+.context MSG_HelpEditClear
+:nClear Command
+Use Clear (or press Del) to delete selected text without
+copying it to the Clipboard. The Clipboard's contents are
+unchanged.
+.context MSG_HelpSearchFind
+:nFind Command
+Use to search for a text string. You can request a
+case-sensitive match or a whole-word match.
+
+To change a string, use the Change command.
+.context MSG_HelpSearchChange
+:nChange Command
+Use to replace one text string with another.
+
+You can:
+  ş Use a case-sensitive or whole-word search.
+  ş Check each replacement before the change is made.
+  ş Make all replacements without checking them.
+.context MSG_HelpSearchNext
+:nRepeat Last Find Command
+Use Repeat Last Find (or press F3) to repeat the search
+performed by the most recent Find or Change command.
+
+If no Find or Change command has been executed since you
+started the MS-DOS Editor, Repeat Last Find searches for
+the next occurrence of:
+  ş The word the cursor is on.
+  ş The word to the cursor's left, if the cursor isn't
+    on a word.
+.context MSG_HelpOptionsDisplay
+:nDisplay Command
+Use to control:
+  ş Screen colors.
+  ş Scroll bars in windows.
+  ş The number of spaces the Tab key advances the cursor.
+
+Display settings are saved and remain in effect the next
+time you start the MS-DOS Editor.
+.context MSG_HelpOptionsPaths
+:nHelp Path Command
+Use to change the directories that the MS-DOS Editor
+searches to find the MS-DOS Editor Help file, EDIT.HLP.
+.context MSG_HelpHelpStarted
+:nGetting Started Command
+Use to find out about:
+  ş Using the MS-DOS Editor menus, commands,
+    and dialog boxes.
+  ş Getting Help on using the MS-DOS Editor.
+  ş Using options when starting the MS-DOS Editor.
+  ş MS-DOS Editor copyright and trademarks.
+.context MSG_HelpHelpKeyboard
+:nKeyboard Command
+Use to find out about:
+  ş Keystrokes for performing tasks in the MS-DOS Editor.
+  ş WordStar keystrokes that can be used in the
+    MS-DOS Editor.
+.context MSG_HelpHelpAbout
+:nAbout Command
+Use to display the version number and copyright information
+for the MS-DOS Editor.
+.context helpSurvivalId
+:nSurvival Guide
+
+ \bUsing the MS-DOS Editor:\p
+
+   ş To activate the MS-DOS Editor menu bar, press Alt.
+   ş To activate menus and commands, press the highlighted letter.
+   ş To move between menus and commands, use the direction keys.
+   ş To get help on a selected menu, command, or dialog box, press F1.
+   ş To exit Help, press Esc.
+
+ \bBrowsing the MS-DOS Editor Help system:\p
+
+   ş To select one of the following topics, press the Tab key or the first
+     letter of the topic. Then press the Enter key to see information on:
+
+     \i\p\aGetting Started\vhelpStartedId\v\i\p  Loading and using the MS-DOS Editor and the
+                        MS-DOS Editor Help system
+     \i\p\aKeyboard\vhelpKeyboardId\v\i\p         Editing and navigating text and MS-DOS Editor Help
+
+ Tip: These topics are also available from the Help menu.
+.context helpEditorHelp
+.context helpStartedId
+:nGetting Started
+  \bGetting Started\p  \i\p\aKeyboard\vhelpKeyboardId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ This section helps you start and use the MS-DOS Editor.
+ Choose one of the following topics to see information on:
+
+   \i\p\aUsing Help\vhelpOnHelpId\v\i\p
+   \i\p\aUsing Menus and Commands\v@sg.men\v\i\p
+   \i\p\aUsing a Dialog Box\v@sg.dia\v\i\p
+   \i\p\aMS-DOS Editor Options\v@sg.opt\v\i\p
+   \i\p\aCopyright and Trademarks\v@cccp\v\i\p
+.context @sg.men
+:nUsing Menus and Commands
+  \i\p\aGetting Started\vhelpStartedId\v\i\p  \i\p\aKeyboard\vhelpKeyboardId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Use the menu bar at the top of the screen to select menus and commands.
+
+ Menu action          With a mouse...              With a keyboard...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Display a menu.      Move the mouse pointer to    Press Alt to highlight
+                      the menu name, then press    menu letters, then press
+                      and release ("click") the    the letter key for the
+                      mouse button.                menu you want to display.
+
+ Choose a command.    Click the command name.      Press the letter key that
+                                                   matches the highlighted
+                                                   letter on the command.
+
+ Cancel a command.    Click outside the menu.      Press Esc.
+
+ Tip: Check the reference bar at the bottom of the screen for help on your
+      current task. Choose any item in angle brackets by clicking the item.
+.context @sg.dia
+:nUsing a Dialog Box
+  \i\p\aGetting Started\vhelpStartedId\v\i\p  \i\p\aKeyboard\vhelpKeyboardId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ The MS-DOS Editor displays dialog boxes when you choose commands that have
+ options.
+
+ Dialog box action    With a mouse...              With a keyboard...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Select a text box    Move the mouse pointer to    Press Tab until the
+ for input.           the text box, then press     cursor is in the text
+                      and release ("click") the    box.
+                      mouse button.
+
+ Choose an item       Double-click the item.       Highlight the item by
+ from a list box.                                  pressing the direction
+                                                   keys, then press Enter.
+
+ Choose an option.    Click the option.            Move to an option with
+                                                   the direction keys.
+
+ Turn a check box     Click the check box.         Use Tab to move the
+ on or off.                                        cursor to the check box,
+                                                   then press the Spacebar.
+
+ Choose a command     Click the command button.    Use Tab to move the
+ button.                                           cursor to the command
+                                                   button, then press Enter.
+.context helpOnHelpId
+:nUsing Help
+  \i\p\aGetting Started\vhelpStartedId\v\i\p  \i\p\aKeyboard\vhelpKeyboardId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Using MS-DOS Editor Help:
+
+   ş To get help on an MS-DOS Editor menu, command, or dialog box, place
+     the cursor on the menu item or <Help> button and press F1.
+
+   ş To view MS-DOS Editor Help topics, press Alt+H, then press the
+     highlighted letter to choose the Getting Started command or
+     the Keyboard command.
+
+   ş To move the cursor into the Help window, press F6.
+
+   ş To scroll the help information, press PgDn or PgUp.
+
+   ş To move the cursor to a related topic, press Tab or the first letter of
+     the Help topic. Related topics are surrounded by highlighted arrowheads
+     (\i \p).
+
+   ş To display a related topic, place the cursor anywhere on the topic and
+     press F1 or click the right mouse button.
+
+   ş To close the Help window, press Esc.
+
+ The MS-DOS Editor saves the last 20 Help topics you viewed. To review them
+ press Alt+F1 or click the <Back> button repeatedly.
+.context EDIT.COM
+.context EDIT
+.context @sg.opt
+:nMS-DOS Editor Options
+  \i\p\aGetting Started\vhelpStartedId\v\i\p  \i\p\aKeyboard\vhelpKeyboardId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ The EDIT command runs the QBASIC.EXE file and the MS-DOS Editor environment
+ file, EDIT.COM. You can type the following command-line options after the
+ EDIT command to load a file or modify your hardware display:
+
+ \bEDIT [filename] [/B] [/G] [/H] [/NOHI]\p
+
+ Option      Description
+ ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ filename    Names the file to be loaded when the MS-DOS Editor starts.
+
+ /B          Allows the use of a composite (monochrome) monitor with a color
+             graphics card. The /B option displays the MS-DOS Editor in
+             monochrome if you have a color monitor.
+
+ /G          Sets the MS-DOS Editor to update a CGA screen as fast as
+             possible (works only with machines using CGA monitors). If you
+             see snow (dots flickering on the screen) when the MS-DOS Editor
+             updates your screen, your hardware cannot fully support this
+             option. If you prefer a clean screen, restart the MS-DOS Editor
+             without the /G option.
+
+ /H          Displays the maximum number of lines possible on your hardware.
+
+ /NOHI       Allows the use of a monitor that does not support high
+             intensity. Not for use with Compaq laptop computers.
+.context @cccp
+.context .cccp
+:nCopyright and Registered Trademarks
+  \i\p\aGetting Started\vhelpStartedId\v\i\p  \i\p\aKeyboard\vhelpKeyboardId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  Information in this document is subject to change without notice and does
+  not represent a commitment on the part of Microsoft Corporation. The
+  software and/or files described in this document are furnished under a
+  license agreement or nondisclosure agreement. The software and/or
+  files may be used or copied only in accordance with the terms of the
+  agreement. The purchaser may make one copy of the software for backup
+  purposes. No part of this online help system may be reproduced or
+  transmitted in any form or by any means, electronic or mechanical,
+  including photocopying, recording, or information storage and retrieval
+  systems, for any purpose, without the written permission of Microsoft
+  Corporation.
+
+  RESTRICTED RIGHTS. Use by the U.S. Government subject to restrictions of
+  (c) (1) (ii) of DFARS 252.227-7013.
+
+  (C) Copyright Microsoft Corporation, 1987-1992.
+      All rights reserved.
+
+  Microsoft, MS, and MS-DOS are registered trademarks.
+
+  Microsoft documentation uses the term "DOS" to refer to both the MS-DOS
+  and IBM Personal Computer DOS operating systems. The name of a specific
+  operating system is used when it is necessary to note features that are
+  unique to the system.
+
+  Compaq is a registered trademark of Compaq Computer Corporation.
+
+  IBM is a registered trademark of the International Business Machines
+  Corporation.
+
+  WordStar is a registered trademark of MicroPro International Corporation.
+.context helpKeyboardId
+:nKeyboard
+  \i\p\aGetting Started\vhelpStartedId\v\i\p  \bKeyboard\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ This section is designed to help you navigate and edit your text while
+ using the MS-DOS Editor.
+
+ Choose a topic below to see information on:
+
+     \i\p\aShortcut Keys\v@.sk\v\i\p           \i\p\aText-Selection Keys\v@sel.keys\v\i\p
+     \i\p\aHelp Keys\v@.hk\v\i\p               \i\p\aInsert and Copy Keys\v@i.keys\v\i\p
+     \i\p\aCursor-Movement Keys\v@m.keys\v\i\p    \i\p\aDelete Keys\v@d.keys\v\i\p
+     \i\p\aText-Scrolling Keys\v@s.keys\v\i\p     \i\p\aFind and Change Keys\v@fc.keys\v\i\p
+
+ The MS-DOS Editor recognizes keystroke combinations familiar to users of
+ other Microsoft programs (such as Microsoft Word) as well as WordStar key
+ combinations. WordStar keystrokes that can be used in the MS-DOS Editor are
+ listed in the right column of the three-column keystroke tables.
+.context @.sk
+:nShortcut Keys
+  \i\p\aGetting Started\vhelpStartedId\v\i\p  \i\p\aKeyboard\vhelpKeyboardId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  ÚÄInsertingÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÚÄCopyingÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Switch to insert/overtype    Ins ³ ³ To Clipboard            Ctrl+Ins ³
+  ³ Line above           Home,Ctrl+N ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ Line below             End+Enter ³ ÚÄFindingÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ From Clipboard         Shift+Ins ³ ³ Search for text         Ctrl+Q,F ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ Repeat find                   F3 ³
+  ÚÄSelectingÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ Characters/lines     Shift+Arrow ³ ÚÄDeletingÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Words           Shift+Ctrl+Arrow ³ ³ Cut current line          Ctrl+Y ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ Cut to end of line      Ctrl+Q,Y ³
+  ÚÄGetting HelpÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ³ Cut selected text      Shift+Del ³
+  ³ On menus and commands         F1 ³ ³ Erase selected text          Del ³
+  ³ Getting Started         Shift+F1 ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+.context @m.keys
+:nCursor-Movement Keys
+  \i\p\aGetting Started\vhelpStartedId\v\i\p  \i\p\aKeyboard\vhelpKeyboardId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Character left                             Left Arrow          Ctrl+S
+ Character right                            Right Arrow         Ctrl+D
+ Word left                                  Ctrl+Left Arrow     Ctrl+A
+ Word right                                 Ctrl+Right Arrow    Ctrl+F
+ Line up				    Up Arrow		Ctrl+E
+ Line down				    Down Arrow		Ctrl+X
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ First indentation level of current line    Home
+ Beginning of current line                                      Ctrl+Q,S
+ Beginning of next line                     Ctrl+Enter          Ctrl+J
+ End of line                                End                 Ctrl+Q,D
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Top of window                                                  Ctrl+Q,E
+ Bottom of window                                               Ctrl+Q,X
+ Move to next window			    F6
+ Increase size of current window            Alt+Plus
+ Decrease size of current window            Alt+Minus
+.context @s.keys
+:nText-Scrolling Keys
+  \i\p\aGetting Started\vhelpStartedId\v\i\p  \i\p\aKeyboard\vhelpKeyboardId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Line up                         Ctrl+Up Arrow      Ctrl+W
+ Line down                       Ctrl+Down Arrow    Ctrl+Z
+ Page up                         PgUp               Ctrl+R
+ Page down                       PgDn               Ctrl+C
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Left one window                 Ctrl+PgUp
+ Right one window                Ctrl+PgDn
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Set bookmarks (maximum of 4)    Ctrl+K,0-3
+ Go to set bookmarks             Ctrl+Q,0-3
+.context @sel.keys
+:nText-Selection Keys
+  \i\p\aGetting Started\vhelpStartedId\v\i\p  \i\p\aKeyboard\vhelpKeyboardId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Character left                Shift+Left Arrow
+ Character right               Shift+Right Arrow
+ Word left                     Shift+Ctrl+Left Arrow
+ Word right                    Shift+Ctrl+Right Arrow
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Current line                  Shift+Down Arrow
+ Line above                    Shift+Up Arrow
+ Screen up                     Shift+PgUp
+ Screen down                   Shift+PgDn
+ To beginning of file          Shift+Ctrl+Home
+ To end of file                Shift+Ctrl+End
+.context @i.keys
+:nInsert and Copy Keys
+  \i\p\aGetting Started\vhelpStartedId\v\i\p  \i\p\aKeyboard\vhelpKeyboardId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Switch between insert and overstrike modes           Ins         Ctrl+V
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Copy selected text to the Clipboard                  Ctrl+Ins
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Delete selected text and copy it to the Clipboard    Shift+Del
+ Delete current line and copy it to the Clipboard     Ctrl+Y
+ Delete to end of line and copy it to the Clipboard               Ctrl+Q,Y
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Paste the contents of the Clipboard                  Shift+Ins
+ Insert a blank line below the cursor position        End+Enter
+ Insert a blank line above the cursor position                    Home,Ctrl+N
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Insert special characters                            Ctrl+P,Ctrl+key
+.context @d.keys
+:nDelete Keys
+  \i\p\aGetting Started\vhelpStartedId\v\i\p  \i\p\aKeyboard\vhelpKeyboardId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Delete one character to left of the cursor      Backspace    Ctrl+H
+ Delete one character at the cursor              Del          Ctrl+G
+ Delete the rest of the word the cursor is on                 Ctrl+T
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Delete selected text                            Del          Ctrl+G
+ Delete leading spaces from selected lines       Shift+Tab
+.context @fc.keys
+:nFind and Change Keys
+  \i\p\aGetting Started\vhelpStartedId\v\i\p  \i\p\aKeyboard\vhelpKeyboardId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Repeat find for same text          Ctrl+L or F3
+ Search for text                    Ctrl+Q,F
+ Change text                        Ctrl+Q,A
+.context @.hk
+:nHelp Keys
+  \i\p\aGetting Started\vhelpStartedId\v\i\p  \i\p\aKeyboard\vhelpKeyboardId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ View Help on the MS-DOS Editor environment         F1 (or click the
+                                                     right mouse button)
+ Exit Help                                           Esc
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ View Getting Started                                Shift+F1
+ Display the Help menu                               Alt+H
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Move cursor to next Help topic                      Tab
+ Move cursor to previous Help topic                  Shift+Tab
+ Move cursor to next Help topic with starting        character
+ character
+ Move cursor to previous Help topic with starting    Shift+character
+ character
+ View previous Help topic (repeat up to 20 times)    Alt+F1 (or double-click
+                                                     the <Back> button)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ View the next topic in the Help file                Ctrl+F1
+ View the previous topic in the Help file            Shift+Ctrl+F1
+.context QB_ER_OM
+.context QB_ER_OS
+.context MSG_OutNearMem
+:nOut of Memory
+More memory was required than is available. To correct this:
+  ş Exit and reduce the number of your DOS buffers (BUFFERS=)
+    in your CONFIG.SYS file. Then reboot your computer.
+  ş Exit and reduce the number of memory-resident programs.
+  ş Exit and reduce the number of loaded device drivers.
+    Then reboot your computer.
+.context QB_ER_DF
+:nDevice Fault
+The MS-DOS Editor has detected a fault at the printer.
+Make sure that:
+  ş The printer is attached to the device LPT1.
+  ş The printer online indicator light is still on.
+  ş The printer power is still on.
+  ş The printer cable is securely connected to the
+    printer and the computer.
+.context QB_ER_DTO
+:nDevice Timeout
+The MS-DOS Editor did not receive information from a device
+(such as the printer) within a predetermined amount of time.
+If you are attempting to print a document, make sure the
+printer is attached to the device LPT1.
+.context QB_ER_OP
+:nOut of Paper
+The printer is out of paper, or it is not turned on.
+.context QB_ER_IER
+:nInternal Error
+An internal error occurred in the MS-DOS Editor that should
+be reported to Microsoft.
+.context QB_ER_FNF
+:nFile Not Found
+In the Open command dialog box, you specified a file
+that does not exist. Check to see that the filename is
+spelled correctly and that you chose the correct
+drive and directory.
+.context QB_ER_IOE
+:nDevice I/O Error
+You used the File menu's Print command and a printer error
+occurred. Check the printer.
+.context QB_ER_DFL
+:nDisk Full
+There isn't enough room on the specified disk to save the
+file you specified. Change disks or specify a different
+disk in the Dirs/Drives list box.
+.context QB_ER_IFN
+.context QB_ER_BFN
+:nBad File Name
+The filename you specified either contains too many
+characters or characters that are not allowed in filenames.
+.context QB_ER_DNA
+:nDevice Unavailable
+The device you attempted to access is not online or
+does not exist. Check to make sure the device is on and
+connected to your computer.
+.context QB_ER_PRM
+:nPermission Denied
+An attempt was made to write to a write-protected disk or
+to a read-only file.
+
+To avoid the read-only conflict, use a different filename.
+Remove the tab or use a different disk if a write-protect
+tab is present.
+.context QB_ER_DNR
+:nDisk Not Ready
+The disk-drive door is open, or no disk is in the drive.
+.context QB_ER_DME
+:nDisk-Media Error
+A physical flaw has been detected on the disk, or the
+MS-DOS Editor does not recognize the format of the disk
+it is attempting to use. Use a different disk or exit
+and reformat the current disk.
+.context QB_ER_TMF
+:nToo Many Files
+You have too many files located in your root directory.
+To solve this problem, exit and create a subdirectory,
+then place your document files in that subdirectory.
+.context QB_ER_PNF
+:nPath Not Found
+The MS-DOS Editor was unable to find the path you specified
+in the dialog box for the Open command or Save As command.
+Check that you typed the name of the path correctly.
+.context MSG_DocTooLarge
+:nDocument Too Large
+The MS-DOS Editor cannot load or copy a portion of a
+document that exceeds 32,700 lines in length.
+
+Use another editor to divide your document into multiple,
+smaller files. If this error occurs when using the Copy
+command, try copying and pasting smaller portions of text.
+.context MSG_NotBlock
+:nOperation Requires Disk
+You are attempting to load from, or save to, a nondisk
+device (such as the printer or keyboard).
+.context MSG_NoSearchString
+:nNo Search String
+The Find What text box was empty when you executed a
+Find or Change command. Return to the Find What text
+box and enter a text string before choosing <OK>.
+.context MSG_SwitchDisks
+:nInsert Diskette Prompt
+You have referred to your floppy disk drive as A: when it
+is named B:, or B: when it is named A:.
+
+Make sure the file you want this command to operate on is
+in the floppy disk drive, then choose <OK>. The MS-DOS
+Editor displays the new drive name for you.
+.context MSG_MatchNotFound
+:nMatch Not Found
+The MS-DOS Editor could not find the string specified.
+
+The cursor remains at the location where you started the
+search.
+.context MSG_ChangeComplete
+:nChange Complete
+The search-and-replace task is complete. The cursor is
+back at the point where the search started.
+.context MSG_CantSetTabs
+:nCannot Set Tabs
+When you have a file open that contains a previously set
+tab stop, it cannot be changed with the Tab Stops option
+from the Display command. Save your file, then use the
+New command to clear the MS-DOS Editor window. Use the
+Display command to set the tab stop and reopen your file.
+.context MSG_NotSavedAll
+.context MSG_NotSaved
+:nSave Loaded File?
+Your current document either has never been saved or has
+not been saved since it last changed. Either:
+  ş Choose <Yes> to save the document, including changes.
+    If the document is not named, you will be prompted to
+    give it a filename.
+  ş Choose <No> to discard your changes. If your document
+    is new and has never been saved, <No> will discard
+    the entire document.
+  ş Choose <Cancel> to cancel the command, and return to
+    your document.
+.context QB_ER_PAE
+:nPath/file access error
+Make sure the file specification you entered in the text
+box is formatted correctly. Any filename can contain a
+drive name and a full or partial path.
+
+This error can also occur when you try to save a file which
+would replace an existing read-only file.
+.context MSG_MustSpecifyName
+:nSpecify name
+You chose <OK> in a dialog box when the contents of the
+text box were blank. Clear this help dialog box and type
+a file specification or a text string in the text box.
+.context MSG_Overwrite
+.context h.pg$
+:nOverwrite Existing File?
+  ş Choose <Yes> only if you are sure that by overwriting
+    the contents of the document on disk with the contents
+    of the document in memory, you won't lose valuable
+    information.
+  ş Choose <No> to redisplay the dialog box and enter a
+    unique filename for saving the current document.
+  ş Choose <Cancel> to cancel the Save As or Exit command,
+    and return to your document.

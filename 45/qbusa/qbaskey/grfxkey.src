@@ -1,0 +1,582 @@
+.comment ******************************************************************
+.comment *  Graphics Family - QBasic                                      *
+.comment ******************************************************************
+.comment * 1/10/91 Cleaned up comments.
+.comment *   -- JeffWe
+.comment ******************************************************************
+.context CIRCLE
+.context @CIRCLE
+:nCIRCLE Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Draws a circle or ellipse on the screen.
+
+\bCIRCLE [STEP] (x!,y!),radius![,[color%] [,[start!] [,[end!] [,aspect!]]]]\p
+
+    ş \bSTEP\p       Specifies that coordinates are relative to the current
+                 graphics cursor position.
+    ş \b(x!,y!)\p    The coordinates for the center of the circle or ellipse.
+    ş \bradius!\p    The radius of the circle or ellipse in the units of the
+                 current coordinate system, determined by the most recent
+                 SCREEN, VIEW, and WINDOW statements.
+    ş \bcolor%\p     A color attribute that sets the circle's color. The
+                 available color attributes depend on your graphics adapter
+                 and the screen mode set by the most recent SCREEN statement.
+    ş \bstart!\p     The starting angle for the arc, in radians.
+    ş \bend!\p       The ending angle for the arc, in radians.
+    ş \baspect!\p    The ratio of the length of the y axis to the length of the
+                 x axis, used to draw ellipses.
+
+    ş To convert from degrees to radians, multiply degrees by (PI / 180).
+
+Example:
+    'This example requires a color graphics adapter.
+    SCREEN 2
+    CIRCLE (320, 100), 200
+    CIRCLE STEP (0,0), 100
+
+See Also    \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aColor Attributes and Values\v@color.table\v\i\p    \i\p\aScreen Modes\v@screen.modes\v\i\p
+.context COLOR
+.context @COLOR
+:nCOLOR Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sets the screen display colors.
+
+\bCOLOR [foreground%] [,[background%] [,border%]]\p    Screen mode 0 (text only)
+\bCOLOR [background%] [,palette%]\p                    Screen mode 1
+\bCOLOR [foreground%]\p                                Screen modes 4, 12, 13
+\bCOLOR [foreground%] [,background&]\p                 Screen modes 7-10
+
+    ş \bforeground%\p    A number that sets the foreground screen color. In
+      \bforeground&\p    screen mode 0, foreground% is a color attribute that
+                     sets the text color. In other screen modes, foreground%
+                     a color attribute or 4-bit color value (screen mode 4
+                     only) that sets the text and line-drawing color.
+    ş \bbackground%\p    A number that sets the background screen color. In
+      \bbackground&\p    screen mode 0, background% is a color attribute. In
+                     screen mode 1, background% is a 4-bit color value. In
+                     screen modes 7-10, background& is a color value.
+    ş \bborder%\p        A color attribute that sets the screen border color.
+    ş \bpalette%\p       A number (0 or 1) that specifies which of two sets
+                     of color attributes to use:
+
+                     palette%    Attribute 1    Attribute 2    Attribute 3
+                     ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍ
+                     0           Green          Red            Brown
+                     1           Cyan           Magenta        Bright white
+
+    ş The available color attributes and values depend on your graphics
+      adapter and the screen mode set by the most recent SCREEN statement.
+    ş If your system is equipped with an EGA, VGA, or MCGA adapter, use the
+      PALETTE statement to change the color assignments of color attributes.
+
+Example:
+    'This example requires a color graphics adapter.
+    SCREEN 7
+    FOR i% = 0 TO 15
+        COLOR i%
+        PRINT i%
+    NEXT i%
+
+See Also    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aPAINT\v@PAINT\v\i\p    \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aColor Attributes and Values\v@color.table\v\i\p    \i\p\aScreen Modes\v@screen.modes\v\i\p
+.context @color.table
+:nColor Attributes and Values
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+             \bColor monitor                      Monochrome monitor\p
+             ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ    ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bColor        Default          Displayed         Default       Displayed\p
+\battribute    color value\p(a)\b   color             color value   color\p
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+\bSCREEN Modes 0, 7, 8, 9\p(b)\b, 12, and 13\p
+0            0                Black             0(c)          Off
+1            1                Blue                            Underlined(d)
+2            2                Green             1(c)          On(d)
+3            3                Cyan              1(c)          On(d)
+4            4                Red               1(c)          On(d)
+5            5                Magenta           1(c)          On(d)
+6            6                Brown             1(c)          On(d)
+7            7                White             1(c)          On(d)
+8            8                Gray              0(c)          Off
+9            9                Light Blue                      High-intensity
+                                                              Underlined
+10           10               Light green       2(c)          High-intensity
+11           11               Light cyan        2(c)          High-intensity
+12           12               Light red         2(c)          High-intensity
+13           13               Light magenta     2(c)          High-intensity
+14           14               Yellow            2(c)          High-intensity
+15           15               High-intensity    0(c)          Off
+                              white
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bSCREEN Modes 1 and 9\p(e)
+
+0            0                Black             0             Off
+1            11               Light cyan        2             High-intensity
+2            13               Light magenta     2             High-intensity
+3            15               High-intensity    0             Off white
+                              white
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bSCREEN Modes 2 and 11\p
+0            0                Black             0             Off
+1            15               High-intensity    0             Off white
+                              white
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  (a)  EGA color numbers. VGA and MCGA use display-color values that produce
+       visually equivalent colors.
+  (b)  For VGA or EGA with video memory > 64K.
+  (c)  Only for mode 0.
+  (d)  Off when used for background.
+  (e)  EGA with video memory <= 64K.
+
+See Also    \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aScreen Modes\v@screen.modes\v\i\p
+.context DRAW
+.context @DRAW
+:nDRAW Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Draws an object.
+
+\bDRAW commandstring$\p
+
+    ş \bcommandstring$\p    A string expression that contains one or more of
+                        the following DRAW commands.
+
+      Line-drawing and cursor-movement commands:
+        D[n%]            Moves cursor down n% units.
+        E[n%]            Moves cursor up and right n% units.
+        F[n%]            Moves cursor down and right n% units.
+        G[n%]            Moves cursor down and left n% units.
+        H[n%]            Moves cursor up and left n% units.
+        L[n%]            Moves cursor left n% units.
+        M[{+|-}]x%,y%    Moves cursor to point x%,y%. If x% is preceded
+                         by + or -, moves relative to the current point.
+        R[n%]            Moves cursor right n% units.
+        U[n%]            Moves cursor up n% units.
+        [B]              Optional prefix that moves cursor without drawing.
+        [N]              Optional prefix that draws and returns cursor to
+                         its original position.
+
+      Color, rotation, and scale commands:
+        An%              Rotates an object n% * 90 degrees (n% can be 0, 1,
+                         2, or 3).
+        Cn%              Sets the drawing color (n% is a color attribute).
+        Pn1%,n2%         Sets the paint fill and border colors of an object
+                         (n1% is the fill-color attribute, n2% is the
+                         border-color attribute).
+        Sn%              Determines the drawing scale by setting the length
+                         of a unit of cursor movement. The default n% is 4,
+                         which is equivalent to 1 pixel.
+        TAn%             Turns an angle n% degrees (-360 through 360).
+
+    ş If you omit n% from line-drawing and cursor-movement commands, the
+      cursor moves 1 unit.
+    ş To execute a DRAW command substring from a DRAW command string, use
+      the "X" command:
+
+      DRAW "X"+ VARPTR$(commandstring$)
+
+Example:
+    'This example requires a color graphics adapter.
+    SCREEN 1
+    Triangle$ = "F60 L120 E60"
+    DRAW "C2 X" + VARPTR$(Triangle$)
+    DRAW "BD30 P1,2 C3 M-30,-30"
+
+See Also    \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p
+            \i\p\aColor Attributes and Values\v@color.table\v\i\p    \i\p\aDifferences from BASICA\v@basica.diffs\v\i\p
+.context .ggx
+.context @ggx
+.context .pgfx
+.context @pgfx
+:nGET, PUT Statements (Graphics)
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+GET captures a graphics screen image. PUT displays an image captured by GET.
+
+\bGET [STEP](x1!,y1!)-[STEP](x2!,y2!), arrayname[(index%)]\p
+\bPUT [STEP] (x1!,y1!), arrayname[(index%)] [,actionverb]\p
+
+    ş \bSTEP\p          Specifies that coordinates are relative to the current
+                    graphics cursor position.
+    ş \b(x1!,y1!)\p     The upper-left coordinates of the image captured by GET
+                    or of the screen location where PUT displays the image.
+    ş \b(x2!,y2!)\p     The lower-right coordinates of the captured image.
+    ş \barrayname\p     The name of the array where the image is stored.
+                    See \i\p\aScreen Image Arrays and Compatibility\v@ggx.arrays\v\i\p to determine
+                    the required size of the array.
+    ş \bindex%\p        The array index at which storage of the image begins.
+    ş \bactionverb\p    A keyword indicating how the image is displayed:
+
+                    Keyword    Action
+                    ÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                    AND        Merges stored image with an existing image.
+                    OR         Superimposes stored image on existing image.
+                    PSET       Draws stored image, erasing existing image.
+                    PRESET     Draws stored image in reverse colors, erasing
+                               existing image.
+                    XOR        Draws a stored image or erases a previously
+                               drawn image while preserving the background,
+                               producing animation effects.
+
+    ş A PUT statement should always be executed in the same screen mode as
+      the GET statement used to capture the image, or a compatible mode.
+      See \i\p\aScreen Image Arrays and Compatibility\v@ggx.arrays\v\i\p.
+
+Example:
+    'This example requires a color graphics adapter.
+    SCREEN 1
+    DIM Box%(1 TO 200)
+    x1% = 0: x2% = 10: y1% = 0: y2% = 10
+    LINE (x1%, y1%)-(x2%, y2%), 2, BF
+    GET (x1%, y1%)-(x2%, y2%), Box%
+    DO
+        PUT (x1%, y1%), Box%, XOR
+        x1% = RND * 300
+        y1% = RND * 180
+        PUT (x1%, y1%), Box%
+    LOOP WHILE INKEY$ = ""
+
+See Also    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aScreen Modes\v@screen.modes\v\i\p
+.context @ggx.arrays
+:nScreen Image Arrays and Compatibility
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Use bits-per-pixel-per-plane and planes values to determine the required size
+of the array that holds a graphics screen image. Bits-per-pixel-per-plane and
+planes values, along with the horizontal resolution, also determine which
+screen modes are compatibile:
+
+                                                                 Horizontal
+                                    Bits-per-pixel-              resolution
+    Screen mode                     per-plane          Planes    (in pixels)
+    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ
+    1                               2                  1         320
+    2, 4, 11                        1                  1         640
+    3                               1                  1         720
+    7                               1                  4         320
+    8, 9(> 64K video memory), 12    1                  4         640
+    9(64K video memory), 10         1                  2         640
+    13                              8                  1         320
+
+The following formula gives the required size, in bytes, of an array used
+to hold a captured image:
+
+size% = 4 + INT(((PMAP (x2!, 0) - PMAP (x1!, 0) + 1) *
+        (bits-per-pixel-per-plane%) + 7) / 8) * planes% *
+        (PMAP (y2!, 1) - PMAP (y1!, 1) + 1)
+
+GET and PUT operations are compatible in screen modes with the same
+horizontal resolution and bits-per-pixel-per-plane and planes values. For
+example, screen modes 2, 4, and 11 are compatible, and screen modes 8 and 12
+are compatible.
+
+See Also    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aScreen Modes\v@screen.modes\v\i\p
+.context LINE
+.context @LINE
+:nLINE Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Draws a line or rectangle on the screen.
+
+\bLINE [[STEP](x1!,y1!)]-[STEP](x2!,y2!) [,[color%] [,[B | BF] [,style%]]]\p
+
+    ş \bSTEP\p          Specifies that coordinates are relative to the current
+                    graphics cursor position.
+    ş \b(x1!,y1!)\p,    The screen coordinates of the start of the line and of
+      \b(x2!,y2!)\p     the end of the line.
+    ş \bcolor%\p        A color attribute that sets the color of the line or
+                    rectangle. The available color attributes depend on your
+                    graphics adapter and the screen mode set by the most
+                    recent SCREEN statement.
+    ş \bB\p             Draws a rectangle instead of a line.
+    ş \bBF\p            Draws a filled box.
+    ş \bstyle%\p        A 16-bit value whose bits set whether or not pixels are
+                    drawn. Use to draw dashed or dotted lines.
+
+Example:
+    'This example requires a color graphics adapter.
+    SCREEN 1
+    LINE (110, 70)-(190, 120), , B
+    LINE (0, 0)-(320, 200), 3, , &HFF00
+
+See Also    \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p    \i\p\aPRESET, PSET\v@PSET\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aColor Attributes and Values\v@color.table\v\i\p    \i\p\aScreen Modes\v@screen.modes\v\i\p
+.context PAINT
+.context @PAINT
+:nPAINT Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Fills a graphics area with a specified color or pattern.
+
+\bPAINT [STEP] (x!,y!)[,[{color% | tile$}] [,[bordercolor%] [,background$]]]\p
+
+    ş \bSTEP\p            Specifies that coordinates are relative to the current
+                      graphics cursor position.
+    ş \b(x!,y!)\p         The screen coordinates where painting begins.
+    ş \bcolor%\p          A color attribute that sets the fill color.
+    ş \btile$\p           A fill pattern that is 8 bits wide and up to 64 bytes
+                      long, defined as follows:
+
+                        tile$ = CHR$(arg1) + CHR$(arg2) + ... + CHR$(argn%)
+
+                      The arguments to CHR$ are numbers between 0 and 255.
+                      Each CHR$(argn%) defines a 1-byte, 8-pixel slice of
+                      the pattern based on the binary form of the number.
+    ş \bbordercolor%\p    A color attribute that specifies the color of the
+                      filled area's border. PAINT stops filling an area when
+                      it encounters a border of the specified color.
+    ş \bbackground$\p     A 1-byte, 8-pixel background tile slice. Specifying a
+                      background tile slice allows you to paint over an area
+                      that has already been painted.
+
+    ş The available color attributes depend on your graphics adapter and the
+      screen mode set by the most recent SCREEN statement.
+
+Example:
+    'This example requires a color graphics adapter.
+    SCREEN 1
+    CIRCLE (106, 100), 75, 1
+    LINE (138, 35)-(288, 165), 1, B
+    PAINT (160, 100), 2, 1
+
+See Also    \i\p\aASC, CHR$\v@CHR$\v\i\p    \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aColor Attributes and Values\v@color.table\v\i\p    \i\p\aScreen Modes\v@screen.modes\v\i\p
+.context PALETTE
+.context @PALETTE
+:nPALETTE, PALETTE USING Statements
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Change the color assignments of color attributes in the current screen mode.
+PALETTE and PALETTE USING work only on systems equipped with EGA, VGA, or
+MCGA adapters.
+
+\bPALETTE [attribute%,color&]\p
+\bPALETTE USING arrayname#[(index%)]\p
+
+    ş \battribute%\p    The color attribute to change.
+    ş \bcolor&\p        A color value to assign to an attribute.
+    ş \barrayname#\p    An array of color values to assign to the current screen
+                    mode's set of attributes. The array must be large enough
+                    to assign colors to all the attributes.
+    ş \bindex%\p        The index of the first array element to assign to an
+                    attribute.
+
+    ş The available color attributes and values depend on your graphics
+      adapter and the screen mode set by the most recent SCREEN statement.
+
+Example:
+    'This example requires a color graphics adapter.
+    PALETTE 0, 1
+    SCREEN 1
+    FOR i% = 0 TO 3: a%(i%) = i%: NEXT i%
+    LINE (138, 35)-(288, 165), 3, BF
+    LINE (20, 10)-(160, 100), 2, BF
+    DO
+        FOR i% = 0 TO 3
+            a%(i%) = (a%(i%) + 1) MOD 16
+        NEXT i%
+        PALETTE USING a%(0)
+    LOOP WHILE INKEY$ = ""
+
+See Also    \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aColor Attributes and Values\v@color.table\v\i\p    \i\p\aScreen Modes\v@screen.modes\v\i\p
+.context PCOPY
+.context @PCOPY
+:nPCOPY Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Copies one video memory page to another.
+
+\bPCOPY sourcepage%,destinationpage%\p
+
+    ş \bsourcepage%\p         The number of a video memory page to copy.
+    ş \bdestinationpage%\p    The number of the video memory page to copy to.
+
+    ş The value that identifies the video page is determined by the size
+      of video memory and the current screen mode.
+
+Example:
+    PCOPY 1, 3
+
+See Also    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aScreen Modes\v@screen.modes\v\i\p
+.context SCREEN
+.context @SCREEN
+:nSCREEN Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Sets the screen mode and other characteristics of your screen.
+
+\bSCREEN mode% [,[colorswitch%] [,[activepage%] [,visualpage%]]]\p
+
+    ş \bmode%\p           Sets the screen mode. See \i\p\aScreen Modes\v@screen.modes\v\i\p.
+    ş \bcolorswitch%\p    A value (0 or 1) that switches between color and
+                      monocolor display (modes 0 and 1 only):
+
+                      Mode    Value       Action
+                      ÍÍÍÍ    ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                      0       0           Disables color
+                      0       Nonzero     Enables color
+                      1       0           Enables color
+                      1       Nonzero     Disables color
+
+    ş \bactivepage%\p     The screen page that text or graphics output writes to.
+    ş \bvisualpage%\p     The screen page that is currently displayed on your
+                      screen.
+
+Example:
+    'This example requires a color graphics adapter.
+    SCREEN 1        '320 x 200 graphics
+    LINE (110, 70)-(190, 120), , B
+    LINE (0, 0)-(320, 200), 3, , &HFF00
+
+See Also    \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p      \i\p\aPAINT\v@PAINT\v\i\p
+            \i\p\aSCREEN Function\v@screenf\v\i\p      \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p    \i\p\aScreen Modes\v@screen.modes\v\i\p
+.context @screen.modes
+:nScreen Modes
+  \i\p\aContents\vhelpTableId\v\i\p  \i\p\aIndex\vhelpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+The following table summarizes screen modes:
+
+ÄÄÄÄÄÄÄÄÄÄMDPA, CGA, Hercules, Olivetti, EGA, VGA, or MCGA AdaptersÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 0: Text mode only
+    ş 40 x 25, 40 x 43, 40 x 50, 80 x 25, 80 x 43, or 80 x 50 text format,
+      8 x 8 character box (8 x 14, 9 x 14, or 9 x 16 with EGA or VGA)
+    ş 16 colors assigned to any of 16 attributes (with CGA or EGA)
+    ş 64 colors assigned to any of 16 attributes (with EGA or VGA)
+    ş Depending on the text resolution and adapter, 8 video memory pages
+      (0-7), 4 pages (0-3), 2 pages (0-1), or 1 page (0)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄCGA, EGA, VGA, or MCGA AdaptersÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 1: 320 x 200 graphics
+    ş 40 x 25 text format, 8 x 8 character box
+    ş 16 background colors and one of two sets of 3 foreground colors
+      assigned using COLOR statement with CGA
+    ş 16 colors assigned to 4 attributes with EGA or VGA
+    ş 1 video memory page (0)
+SCREEN 2: 640 x 200 graphics
+    ş 80 x 25 text format, 8 x 8 character box
+    ş 16 colors assigned to 2 attributes with EGA or VGA
+    ş 1 video memory page (0)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄHercules, Olivetti, or AT&T AdaptersÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 3: Hercules adapter required, monochrome monitor only
+    ş 720 x 348 graphics
+    ş 80 x 25 text format, 9 x 14 character box
+    ş Usually 2 video memory pages (0-1); 1 page (0) if a second color
+      display adapter is installed
+    ş PALETTE statement not supported
+    ş Invoke the Hercules driver MSHERC.COM before using screen mode 3
+SCREEN 4:
+    ş Supports Olivetti Personal Computers models M24, M240, M28, M280,
+      M380, M380/C, and M380/T and AT&T Personal Computers 6300 series
+    ş 640 x 400 graphics
+    ş 80 x 25 text format, 8 x 16 character box
+    ş 1 of 16 colors assigned as the foreground color (selected by the
+      COLOR statement); background is fixed at black
+    ş 1 video memory page (0)
+    ş PALETTE statement not supported
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄEGA or VGA AdaptersÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 7: 320 x 200 graphics
+    ş 40 x 25 text format, 8 x 8 character box
+    ş Assignment of 16 colors to any of 16 attributes
+    ş If 64K EGA adapter memory, 2 video memory pages (0-1); otherwise,
+      8 pages (0-7)
+SCREEN 8: 640 x 200 graphics
+    ş 80 x 25 text format, 8 x 8 character box
+    ş Assignment of 16 colors to any of 16 attributes
+    ş If 64K EGA adapter memory, 1 video memory page (0); otherwise,
+      4 pages (0-3)
+SCREEN 9: 640 x 350 graphics
+    ş 80 x 25 or 80 x 43 text format, 8 x 14 or 8 x 8 character box
+    ş 16 colors assigned to 4 attributes (64K adapter memory), or
+      64 colors assigned to 16 attributes (more than 64K adapter memory)
+    ş If 64K EGA adapter memory, 1 video memory page (0); otherwise,
+      2 pages (0-1)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄEGA or VGA Adapters, Monochrome Monitor OnlyÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+SCREEN 10: 640 x 350 graphics, monochrome monitor only
+    ş 80 x 25 or 80 x 43 text format, 8 x 14 or 8 x 8 character box
+    ş Up to 9 pseudocolors assigned to 4 attributes
+    ş 2 video memory pages (0-1), 256K adapter memory required
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄVGA or MCGA AdaptersÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Screen 11 (VGA or MCGA)
+    ş 640 x 480 graphics
+    ş 80 x 30 or 80 x 60 text format, 8 x 16 or 8 x 8 character box
+    ş Assignment of up to 256K colors to 2 attributes
+    ş 1 video memory page (0)
+Screen 12 (VGA)
+    ş 640 x 480 graphics
+    ş 80 x 30 or 80 x 60 text format, 8 x 16 or 8 x 8 character box
+    ş Assignment of up to 256K colors to 16 attributes
+    ş 1 video memory page (0)
+Screen 13 (VGA or MCGA)
+    ş 320 x 200 graphics
+    ş 40 x 25 text format, 8 x 8 character box
+    ş Assignment of up to 256K colors to 256 attributes
+    ş 1 video memory page (0)
+
+See Also    \i\p\aSCREEN Statement\v@SCREEN\v\i\p
+.context @screenf
+:nSCREEN Function
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Returns the ASCII value or color attribute of a character at a specified
+screen location.
+
+\bSCREEN (row%,column% [,colorflag%])\p
+
+    ş \brow%\p          The row coordinate of a character.
+    ş \bcolumn%\p       The column coordinate of a character.
+    ş \bcolorflag%\p    A value (0 or 1) that specifies what is returned.
+
+                    Value             Returns
+                    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                    0 (or omitted)    The character's ASCII code.
+                    1                 The character's color attribute.
+
+Example:
+    CLS
+    PRINT "Hello"
+    PRINT "The ASCII value of character at 1,1 is"; SCREEN(1, 1)
+
+See Also    \i\p\aPOINT\v@POINT\v\i\p    \i\p\aSCREEN Statement\v@SCREEN\v\i\p
+            \i\p\aASCII Character Codes\v@ac\v\i\p    \i\p\aColor Attributes and Values\v@color.table\v\i\p
+.context VIEW
+.context @VIEW
+:nVIEW Statement
+  \i\p\aContents\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBack\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Defines the size and location of a viewport where graphics can be displayed
+on the screen.
+
+\bVIEW [[SCREEN] (x1!,y1!)-(x2!,y2!) [,[color%] [,border%]]]\p
+
+    ş \bSCREEN\p                 Specifies that coordinates are relative to the
+                             screen rather than the viewport.
+    ş \b(x1!,y1!)-(x2!,y2!)\p    The coordinates of diagonally opposite corners
+                             of the viewport.
+    ş \bcolor%\p                 A color attribute that sets the viewport fill
+                             color.
+    ş \bborder%\p                A color attribute that sets the viewport border
+                             color.
+
+    ş If all arguments are omitted, the entire screen is the viewport.
+    ş The available color attributes depend on your graphics adapter and the
+      screen mode set by the most recent SCREEN statement.
+
+Example:
+    'This example requires a color graphics adapter.
+    SCREEN 1
+    VIEW (10, 10)-(300, 180), , 1
+    LOCATE 1, 11: PRINT "A big graphics viewport";
+    VIEW SCREEN (80, 80)-(200, 125), , 1
+    LOCATE 11, 11: PRINT "A small graphics viewport";
+
+See Also    \i\p\aCLS\v@CLS\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aColor Attributes and Values\v@color.table\v\i\p    \i\p\aScreen Modes\v@screen.modes\v\i\p

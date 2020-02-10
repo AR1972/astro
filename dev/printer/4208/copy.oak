@@ -1,0 +1,8 @@
+diris = printer\4208
+
+all:
+   del $(diris)\*.*                                < $(OAKDIR)\ycr.key
+   xcopy $(diris) $(OAKDIR)\dev\$(diris)           < $(OAKDIR)\d.key
+        del $(OAKDIR)\dev\$(diris)\copy.oak
+
+

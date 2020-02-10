@@ -1,0 +1,215 @@
+			OVERVIEW
+
+A wide variety of key events are reported to CW by the keyboard
+driver, including many not available through DOS or BIOS calls.  In
+general, any key when pressed sends a WM_CHAR message, and continues
+sending the same message at a rate specified by the wRateKeyRepeat
+parameter.  The spacebar also sends a WM_KEYUP message when released.
+Shift keys do not generally send a message; the exception to this is
+the Alt (or Menu) key when sends a WM_CHAR on first press (no repeat)
+and a WM_KEYUP upon release.  Shift key action (including Shift, Alt,
+Ctrl, and the 'Lock' keys) is reflected immediately in the current
+shift state, and CW is notified through the appropriate call-back
+(DoShift, maybe????).
+
+A key message includes the following information:
+
+message = WM_CHAR or WM_KEYUP, as noted above
+wParam = the ascii code for the key, or the VK if none exists
+vk = LOWORD(lParam) = the VK code for the key
+kk = HIWORD(lParam) = the shift state during the key event
+
+***************************************************************************
+
+		SHIFT STATES AND CORRESPONDING KEYS
+
+Key		Shift state	Note
+----		------------	-----
+Shift		KK_SHIFT	while held
+Ctrl		KK_CONTROL	while held
+Alt		KK_MENU		while held
+Caps Lock	KK_CAPLOCK	toggle
+Scroll Lock	KK_SCRLOCK	toggle
+Num Lock	KK_NUMLOCK	toggle
+(extended keys)	KK_EXTENDED	only on keydown (not really a state)
+
+***************************************************************************
+
+			KEY EVENTS
+
+Alt (menu) key:
+
+Description		wParam		vk 		kk = HIWORD(lParam)
+------------		-------		---		--------------------
+Alt down		VK_MENU		VK_MENU		KK_MENU
+Alt up			VK_MENU		VK_MENU
+Alt + any other shifts	VK_MENU		VK_MENU		(other KK_'s)
+(Note:	'Alt up' sends a WM_KEYUP message.
+	All other keys send WM_CHAR message.)
+------------------------
+
+Function keys:
+
+Description		wParam		vk 		kk = HIWORD(lParam)
+------------		-------		---		--------------------
+Fn (n = 1..12)		VK_Fn		VK_Fn
+Fn + any shift key(s)	VK_Fn		VK_Fn		(current KK_'s)
+(Note:	F11 and F12 appear only on RT and Tandy keyboards.)
+------------------------
+
+Main keyboard control keys:
+
+Description		wParam		vk 		kk = HIWORD(lParam)
+------------		-------		---		--------------------
+Esc			27		VK_ESCAPE			
+Esc + any shifts	27		VK_ESCAPE	(current KK_'s)
+Backspace		8		VK_BACK
+Backspace + any shifts	VK_BACK		VK_BACK		(current KK_'s)
+Tab			9		VK_TAB
+Tab + any shifts	VK_TAB		VK_TAB		(current KK_'s)
+Enter (main)		13		VK_ENTER
+Ctrl Enter		10		VK_ENTER	KK_CONTROL
+Enter + other shifts	VK_ENTER	VK_ENTER	(current KK_'s)
+Spacebar		32		VK_SPACE
+Spacebar + any shifts	32		VK_SPACE	(current KK_'s)
+Spacebar released	VK_SPACE	VK_SPACE	(current KK_'s)
+------------------------
+
+Main keyboard number keys:
+
+Description		wParam		vk 		kk = HIWORD(lParam)
+------------		-------		---		--------------------
+0..9			'0'..'9'	VK_0..VK_9
+Ctrl 0 .. Ctrl 9	VK_0 .. VK_9	VK_0..VK_9	KK_CONTROL
+Alt 0 .. Alt 9		VK_0 .. VK_9	VK_0..VK_9	KK_MENU
+!			'!'				KK_SHIFT
+@			'@'				KK_SHIFT
+#			'#'				KK_SHIFT
+$			'$'				KK_SHIFT
+%			'%'				KK_SHIFT
+^			'^'				KK_SHIFT
+&			'&'				KK_SHIFT
+*			'*'				KK_SHIFT
+(			'('				KK_SHIFT
+)			')'				KK_SHIFT
+------------------------
+
+Punctuation:
+
+Description		wParam		vk 		kk = HIWORD(lParam)
+------------		-------		---		--------------------
+`			'`'
+~			'~'				KK_SHIFT
+Ctrl `			'`'				KK_CONTROL
+-			'-'
+_			'_'				KK_SHIFT
+Ctrl -			'-'				KK_CONTROL
+Alt -			'-'				KK_MENU
+=			'='
++			'+'				KK_SHIFT
+Ctrl =			'='				KK_CONTROL
+Alt =			'='				KK_MENU
+[			'['
+{			'{'				KK_SHIFT
+Ctrl [			27				KK_CONTROL
+]			']'
+}			'}'				KK_SHIFT
+Ctrl ]			29				KK_CONTROL
+\			'\'
+|			'|'				KK_SHIFT
+Ctrl \			28				KK_CONTROL
+;			';'
+:			':'				KK_SHIFT
+Ctrl ;			';'				KK_CONTROL
+'			''' (39)
+"			'"' (34)			KK_SHIFT
+Ctrl '			''' (39)			KK_CONTROL
+,			','
+<			'<'				KK_SHIFT
+Ctrl ,			','				KK_CONTROL
+.			'.'
+>			'>'				KK_SHIFT
+Ctrl .			'.'				KK_CONTROL
+/			'/'
+?			'?'				KK_SHIFT
+Ctrl /			'/'				KK_CONTROL
+------------------------
+
+Alpha keys:
+
+Description		wParam		vk 		kk = HIWORD(lParam)
+------------		-------		---		--------------------
+A..Z			'a' .. 'z'	VK_A..VK_Z
+Shift A..Z		'A' .. 'Z'	ditto		KK_SHIFT
+CapLock A..Z		'A' .. 'Z'	ditto		KK_CAPLOCK
+Shift CapLock A..Z	'a' .. 'z'	ditto		KK_SHIFT | KK_CAPLOCK
+Ctrl A..Z		1 .. 26		ditto		KK_CONTROL
+Alt A..Z		VK_A..VK_Z	ditto		KK_MENU
+(Note:	Ctrl A..Z + any shifts other than Alt only changes kk.
+	Alt A..Z + any shifts only changes kk.)
+------------------------
+
+Grey keypad (between main keyboard and numpad, on RT keyboards only):
+
+Description		wParam		vk 		kk = HIWORD(lParam)
+------------		-------		---		--------------------
+Insert			VK_INSERT	VK_INSERT	KK_EXTENDED
+Home			VK_HOME		VK_HOME		KK_EXTENDED
+Page Up			VK_PRIOR	VK_PRIOR	KK_EXTENDED
+Delete			VK_DELETE	VK_DELETE	KK_EXTENDED
+End			VK_END		VK_END		KK_EXTENDED
+Page Down		VK_NEXT		VK_NEXT		KK_EXTENDED
+up			VK_UP		VK_UP		KK_EXTENDED
+left			VK_LEFT		VK_LEFT		KK_EXTENDED
+down			VK_DOWN		VK_DOWN		KK_EXTENDED
+right			VK_RIGHT	VK_RIGHT	KK_EXTENDED
+(Note:	Ctrl, Shift, and the Lock keys only affect kk.
+	Alt is not supported.)
+------------------------
+
+Numeric pad (on the far right on most keyboards):
+
+Description		wParam		vk 		kk = HIWORD(lParam)
+------------		-------		---		--------------------
+/			'/'		VK_DIVIDE	KK_EXTENDED
+Shift /			'/'		VK_DIVIDE	KK_EXTENDED | KK_SHIFT
+*			'*'		VK_MULTIPLY	KK_EXTENDED
+-			'-'		VK_SUBTRACT	KK_EXTENDED
+- and any shifts	'-'		VK_SUBTRACT	KK_EXTENDED | current KK_'s
++			'+'		VK_ADD		KK_EXTENDED
++ and any shifts	'+'		VK_ADD		KK_EXTENDED | current KK_'s
+Enter			13		VK_ENTER	KK_EXTENDED
+Shift Enter		13		VK_ENTER	KK_EXTENDED | KK_SHIFT
+Ctrl Enter		10		VK_ENTER	KK_EXTENDED | KK_CONTROL
+(Note:	The Lock keys only affect kk for the above.)
+
+7/Home			VK_HOME		VK_HOME
+8/up			VK_UP		VK_UP
+9/PgUp			VK_PRIOR	VK_PRIOR
+4/left			VK_LEFT		VK_LEFT
+5			VK_CLEAR	VK_CLEAR
+6/right			VK_RIGHT	VK_RIGHT
+1/End			VK_END		VK_END
+2/down			VK_DOWN		VK_DOWN
+3/PgDn			VK_NEXT		VK_NEXT
+0/Ins			VK_INSERT	VK_INSERT
+./Del			VK_DELETE	VK_DELETE
+(Note:	Shift and Ctrl only affect kk.
+	If NumLock is on, Shift and Ctrl are as above, with appropriately
+	altered KK_'s.
+	If NumLock is on without Shift or Ctrl, events are as follows.)
+
+NumLock 7/Home		'7'		VK_NUMPAD7	KK_EXTENDED
+NumLock 8/up		'8'		VK_NUMPAD8	KK_EXTENDED
+NumLock 9/PgUp		'9'		VK_NUMPAD9	KK_EXTENDED
+NumLock 4/left		'4'		VK_NUMPAD4	KK_EXTENDED
+NumLock 5		'5'		VK_NUMPAD5	KK_EXTENDED
+NumLock 6/right		'6'		VK_NUMPAD6	KK_EXTENDED
+NumLock 1/End		'1'		VK_NUMPAD1	KK_EXTENDED
+NumLock 2/down		'2'		VK_NUMPAD2	KK_EXTENDED
+NumLock 3/PgDn		'3'		VK_NUMPAD3	KK_EXTENDED
+NumLock 0/Ins		'0'		VK_NUMPAD0	KK_EXTENDED
+NumLock ./Del		'.'		VK_DECIMAL	KK_EXTENDED
+
+(Note:	Alt 0-9 on the numeric pad are special.
+	Alt . is not supported.)

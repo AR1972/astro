@@ -1,0 +1,643 @@
+.comment ******************************************************************
+.comment *  Graphics Family - QBasic                                      *
+.comment ******************************************************************
+.comment *  7/13/90 stevesau                                              *
+.comment *  Incorporated QA/copy edits.                                   *
+.comment ******************************************************************
+.comment *  6/28/90 stevesau                                              *
+.comment *  Incorporated final review comments/edits.                     *
+.comment *  Split up SCREEN function and statement.                       *
+.comment ******************************************************************
+.comment *  6/12/90 stevesau                                              *
+.comment *  Incorporated RonS comments.                                   *
+.comment ******************************************************************
+.comment *  5/11/90 stevesau                                              *
+.comment *  Replaced Attributes and Colors node with COLOR example        *
+.comment *  showing color codes.                                          *
+.comment *  Combined GET/PUT.                                             *
+.comment *  Incorporated review comments.                                 *
+.comment *  Completed second pass.                                        *
+.comment ******************************************************************
+.comment *  5/10/90 stevesau                                              *
+.comment *  Reinserted X command in DRAW.                                 *
+.comment *  Added Attributes and Colors node.                             *
+.comment ******************************************************************
+.comment *  5/4/90 stevesau                                               *
+.comment *  Combined SCREEN function and statement (from Dev I/O family). *
+.comment *  Created new Screen Modes topic.                               *
+.comment ******************************************************************
+.comment *  4/23/90 stevesau                                              *
+.comment *  Added action lines.						  *
+.comment *  Made COLOR Attributes link local.                             *
+.comment *  Deleted references to X command in DRAW.                      *
+.comment *  Added DRAW macro language screens, made links local.          *
+.comment *  Added DRAW - Differences from BASICA.                         *
+.comment ******************************************************************
+.context CIRCLE
+.context @CIRCLE
+:nHet statement CIRCLE
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Tekent een cirkel of ellips op het scherm.
+
+\bCIRCLE [STEP] (x!,y!),straal![,[kleur%] [,[begin!] [,[eind!] [,verh!]]]]\p
+
+    ş \bSTEP\p       Geeft aan dat de co”rdinaten relatief zijn ten
+                 opzichte van de grafische cursorpositie.
+    ş \b(x!,y!)\p    De co”rdinaten voor het midden van de cirkel of ellips.
+    ş \bstraal!\p    De straal van de cirkel of ellips in eenheden van
+                 het huidige co”rdinatensysteem dat bepaald werd in de
+                 meest recente statements SCREEN, VIEW en WINDOW.
+    ş \bkleur%\p     Een kleur die de kleur van de cirkel bepaalt. De
+                 beschikbare kleuren hangen af van uw grafische adapter
+                 en de schermmodus die is ingesteld met het meest recente
+                 statement SCREEN.
+    ş \bbegin!\p     De beginhoek voor de boog in radialen.
+    ş \beind!\p      De eindhoek voor de boog in radialen.
+    ş \bverh!\p      De verhouding van de lengte van de y-as tot de lengte
+                 van de x-as. Dit wordt gebruikt bij het tekenen van
+                 ellipsen.
+
+    ş Voor een conversie van graden naar radialen moet u de graden
+      vermenigvuldigen met (PI / 180).
+
+Voorbeeld:
+    'Dit voorbeeld vereist een grafische kleurenadapter.
+    SCREEN 2
+    CIRCLE (320, 100), 200
+    CIRCLE STEP (0,0), 100
+
+Zie ook     \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aKleuren en kleurwaarden\v@color.table\v\i\p      \i\p\aSchermmodi\v@screen.modes\v\i\p
+.context COLOR
+.context @COLOR
+:nHet statement COLOR
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Stelt de kleuren voor de schermweergave in.
+
+\bCOLOR [voorgrond%] [,[achtergrond%] [,rand%]]\p  Schermmodus 0 (alleen tekst)
+\bCOLOR [achtergrond%] [,palet%]\p                 Schermmodus 1
+\bCOLOR [voorgrond%]\p                             Schermmodi 4, 12, 13
+\bCOLOR [voorgrond%] [,achtergrond&]\p             Schermmodi 7-10
+
+    ş \bvoorgrond%\p     Een getal dat de voorgrondkleur instelt. In
+      \bvoorgrond&\p     schermmodus 0 is voorgrond% een kleur die de
+                     tekstkleur instelt. In andere schermmodi is voorgrond%
+                     een kleur of 4-bits kleurwaarde (alleen schermmodus 4)
+                     die zowel de tekstkleur als de omtrekkleur bepaalt.
+    ş \bachtergrond%\p   Een getal dat de achtergrondkleur instelt. In
+      \bachtergrond&\p   schermmodus 0 is achtergrond% een kleur. In
+                     schermmodus 1 is achtergrond% een 4-bits kleurwaarde. In
+                     schermmodi 7-10 is achtergrond& een kleurwaarde.
+    ş \brand%\p          Een waarde die de kleur van de schermrand bepaalt.
+    ş \bpalet%\p         Een getal (0 of 1) dat aangeeft welk kleurenpalet
+                     moet worden gebruikt:
+
+                     palet%      Kleur 1        Kleur 2        Kleur 3
+                     ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍ
+                     0           Groen          Rood           Bruin
+                     1           Cyaan          Magenta        Helwit
+
+    ş De beschikbare kleuren en kleurwaarden hangen af van uw grafische
+      adapter en de schermmodus die is ingesteld met het meest recente
+      statement SCREEN.
+    ş Als uw systeem beschikt over een EGA-, VGA- of MCGA-adapter, moet
+      u het statement PALETTE gebruiken om de kleurtoewijzigen te wijzigen.
+
+Voorbeeld:
+    'Dit voorbeeld vereist een grafische kleuren adapter.
+    SCREEN 7
+    FOR i% = 0 TO 15
+        COLOR i%
+        PRINT i%
+    NEXT i%
+
+Zie ook     \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aPAINT\v@PAINT\v\i\p    \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aKleuren en kleurwaarden\v@color.table\v\i\p    \i\p\aSchermmodi\v@screen.modes\v\i\p
+.context @color.table
+:nKleuren en kleurwaarden
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+             \b       Kleurenmonitor                  Monochrome monitor\p
+             ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ       ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bKleur-       Standaard       Weergegeven       Standaard     Weergegeven\p
+\battribuut    kleurwaarde\p(a)\b  kleur             kleurwaarde   kleur\p
+ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+\bSchermmodi 0, 7, 8, 9\p(b)\b, 12 en 13\p
+0            0               Zwart             0(c)          Uit
+1            1               Blauw                           Onderstreept(d)
+2            2               Green             1(c)          Aan(d)
+3            3               Cyaan             1(c)          Aan(d)
+4            4               Rood              1(c)          Aan(d)
+5            5               Magenta           1(c)          Aan(d)
+6            6               Bruin             1(c)          Aan(d)
+7            7               Wit               1(c)          Aan(d)
+8            8               Grijs             0(c)          Uit
+9            9               Lichtblauw                      Hoge intensiteit
+                                                             Underlined
+10           10              Lichtgroen        2(c)          Hoge intensiteit
+11           11              Lichtcyaan        2(c)          Hoge intensiteit
+12           12              Lichtrood         2(c)          Hoge intensiteit
+13           13              Lichtmagenta      2(c)          Hoge intensiteit
+14           14              Geel              2(c)          Hoge intensiteit
+15           15              Hoge intensiteit  0(c)          Uit
+                             wit
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bSchermmodi 1 en 9\p(e)
+
+0            0               Zwart             0             Uit
+1            11              Lichtcyaan        2             Hoge intensiteit
+2            13              Lichtmagenta      2             Hoge intensiteit
+3            15              Hoge intensiteit  0             Gebroken wit
+                             wit
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+\bSchermmodi 2 en 11\p
+0            0               Zwart             0             Uit
+1            15              Hoge intensiteit  0             Gebroken wit
+                             wit
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  (a)  EGA-kleurennummers. VGA en MCGA gebruiken kleurwaarden die een
+       visueel overeenkomstige kleur weergeven.
+  (b)  Voor VGA of EGA met beeldschermgeheugen > 64 kB.
+  (c)  Alleen voor schermmodus 0.
+  (d)  Uit wanneer gebruikt voor de achtergrond.
+  (e)  EGA met beeldschermgeheugen <= 64 kB.
+
+Zie ook     \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aSchermmodi\v@screen.modes\v\i\p
+.context DRAW
+.context @DRAW
+:nHet statement DRAW
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Tekent een object.
+
+\bDRAW opdrachtreeks$\p
+
+    ş \bopdrachtreeks$\p    Een tekenreeksuitdrukking die een of meer van
+                        de volgende DRAW-opdrachten omvat.
+
+      Opdrachten voor tekenen van lijnen en cursorverplaatsing:
+        D[n%]          Verplaatst de cursor n% eenheden omlaag.
+        E[n%]          Verplaatst de cursor n% eenheden rechts naar boven.
+        F[n%]          Verplaatst de cursor n% eenheden rechts naar beneden.
+        G[n%]          Verplaatst de cursor n% eenheden links naar beneden.
+        H[n%]          Verplaatst de cursor n% eenheden links naar boven.
+        L[n%]          Verplaatst de cursor n% eenheden naar links.
+        M[{+|-}]x%,y%  Verplaatst de cursor naar x%,y%. Als x% wordt
+                       voorafgegaan door + of - wordt de cursor verplaatst
+                       ten opzicht van de huidige positie.
+        R[n%]          Verplaatst de cursor n% eenheden naar rechts.
+        U[n%]          Verplaatst de cursor n% eenheden omhoog.
+        [B]            Optioneel voorvoegsel dat de cursor verplaatst
+                       zonder te tekenen.
+        [N]            Optioneel voorvoegsel dat de cursor na het tekenen
+                       terugbrengt naar de uitgangspositie.
+
+      Opdrachten voor kleur, rotatie en schaalverdeling:
+        An%            Roteert een object n% * 90 graden (n% kan 0, 1,
+                       2 of 3 zijn).
+        Cn%            Bepaalt de kleur van de tekening (n% is een kleur).
+        Pn1%,n2%       Stelt de vulkleur en omtrekkleur van een object in
+                       (n1% is de vulkleur, n2% is de omtrekkleur).
+        Sn%            Bepaalt de schaal van de tekening door de lengte
+                       van de cursorverplaatsingseenheid in te stellen.
+                       De standaardwaarde voor n% is 4, hetgeen overeenkomt
+                       met 1 pixel.
+        TAn%           Draait onder een hoek van n% graden (-360 t/m 360).
+
+    ş Als u n% weglaat in opdrachten voor tekenen van lijnen of
+      cursorverplaatsing, wordt de cursor 1 eenheid verplaatst.
+    ş U kunt binnen een DRAW-opdracht een DRAW-subopdracht uitvoeren
+      met behulp van de opdracht "X":
+
+      DRAW "X"+ VARPTR$(opdrachtreeks$)
+
+Voorbeeld:
+    'Dit voorbeeld vereist een grafische kleurenadapter.
+    SCREEN 1
+    Driehoek$ = "F60 L120 E60"
+    DRAW "C2 X" + VARPTR$(Driehoek$)
+    DRAW "BD30 P1,2 C3 M-30,-30"
+
+Zie ook     \i\p\aPALETTE, PALETTE USING\v@PALETTE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVARPTR$\v@VARPTR$\v\i\p
+            \i\p\aKleuren en kleurwaarden\v@color.table\v\i\p   \i\p\aVerschillen met BASICA\v@basica.diffs\v\i\p
+.context .ggx
+.context @ggx
+.context .pgfx
+.context @pgfx
+:nDe statements GET en PUT (grafisch)
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+GET kopieert een grafische afbeelding. PUT geeft een door GET gekopieerde
+grafische afbeelding weer.
+
+\bGET [STEP](x1!,y1!)-[STEP](x2!,y2!), arraynaam[(index%)]\p
+\bPUT [STEP] (x1!,y1!), arraynaam[(index%)] [,bewerking]\p
+
+    ş \bSTEP\p          Geeft aan dat de co”rdinaten relatief zijn ten
+                    opzichte van de huidige grafische cursorpositie.
+    ş \b(x1!,y1!)\p     De co”rdinaten voor de linkerbovenhoek van de door
+                    GET gekopieerde afbeelding of van de schermlocatie
+                    waar PUT de afbeelding weergeeft.
+    ş \b(x2!,y2!)\p     De co”rdinaten voor de rechterbenedenhoek van
+                    de gekopieerde afbeelding.
+    ş \barraynaam\p     De naam van de array waar de afbeelding wordt
+                    opgeslagen. Aan de hand van het gedeelte
+                    \i\p\aArrays voor afbeeldingen en compatibiliteit\v@ggx.arrays\v\i\p
+                    kunt u de benodigde grootte van de array bepalen.
+    ş \bindex%\p        De index van de array waar met opslag van de
+                    afbeelding wordt begonnen.
+    ş \bbewerking\p     Een trefwoord dat aangeeft hoe de afbeelding wordt
+                    weergegeven:
+
+                    Trefwoord  Bewerking
+                    ÍÍÍÍÍÍÍÍÍ  ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                    AND        Voegt opgeslagen afbeelding samen met een
+                               bestaande afbeelding.
+                    OR         Beeldt de opgeslagen afbeelding over de
+                               bestaande afbeelding af.
+                    PSET       Tekent de opgeslagen afbeelding waarbij
+                               de bestaande afbeelding wordt verwijderd.
+                    PRESET     Tekent de opgeslagen afbeelding in negatief
+                               beeld waarbij de bestaande afbeelding wordt
+                               verwijderd.
+                    XOR        Tekent de opgeslagen afbeelding of
+                               verwijdert de bestaande afbeelding waarbij
+                               de achtergrond behouden blijft. Dit geeft
+                               een animatie-effect.
+
+    ş Een PUT-statement moet altijd in dezelfde schermmodus worden
+      uitgevoerd als het GET-statement waarmee de afbeelding werd
+      gekopieerd, of in een daarmee compatibele modus.
+      Zie \i\p\aArrays voor afbeeldingen en compatibiliteit\v@ggx.arrays\v\i\p.
+
+Voorbeeld:
+    'Dit voorbeeld vereist een grafische kleurenadapter.
+    SCREEN 1
+    DIM Vak%(1 TO 200)
+    x1% = 0: x2% = 10: y1% = 0: y2% = 10
+    LINE (x1%, y1%)-(x2%, y2%), 2, BF
+    GET (x1%, y1%)-(x2%, y2%), Vak%
+    DO
+        PUT (x1%, y1%), Vak%, XOR
+        x1% = RND * 300
+        y1% = RND * 180
+        PUT (x1%, y1%), Vak%
+    LOOP WHILE INKEY$ = ""
+
+Zie ook     \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aSchermmodi\v@screen.modes\v\i\p
+.context @ggx.arrays
+:nArrays voor afbeeldingen en compatibiliteit
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Gebruik waarden voor bits-per-pixel-per-plane en voor planes om de benodigde
+grootte van de array te bepalen waar de grafische schermafbeelding wordt
+opgeslagen. De waarden voor bits-per-pixel-per-plane en voor planes bepalen
+in combinatie met de horizontale schermresolutie welke schermmodi compatibel
+zijn:
+
+                                                                 Horizontale
+                                    Bits-per-pixel-              resolutie
+    Schermmodus                     per-plane          Planes    (in pixels)
+    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ
+    1                               2                  1         320
+    2, 4, 11                        1                  1         640
+    3                               1                  1         720
+    7                               1                  4         320
+    8, 9 (> 64 kB beeldscherm-
+    geheugen), 12                   1                  4         640
+    9 (64 kB beeldscherm-
+    geheugen), 10                   1                  2         640
+    13                              8                  1         320
+
+De volgende formule levert de vereiste grootte in bytes voor een array
+die wordt gebruikt om een gekopieerde afbeelding op te slaan:
+
+size% = 4 + INT(((PMAP (x2!, 0) - PMAP (x1!, 0) + 1) *
+        (bits-per-pixel-per-plane%) + 7) / 8) * planes% *
+        (PMAP (y2!, 1) - PMAP (y1!, 1) + 1)
+
+GET- en PUT-bewerkingen zijn compatibel in schermmodi die dezelfde
+horizontale resolutie hebben en dezelfde waarden hebben voor
+bits-per-pixel-per-plane en voor planes. Schermmodi 2, 4 en 11 zijn
+bijvoorbeeld compatibel en schermmodi 8 en 12 zijn compatiebel.
+
+Zie ook     \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aSchermmodi\v@screen.modes\v\i\p
+.context LINE
+.context @LINE
+:nHet statement LINE
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Tekent een lijn of rechthoek op het scherm.
+
+\bLINE [[STEP](x1!,y1!)]-[STEP](x2!,y2!) [,[kleur%] [,[B | BF] [,stijl%]]]\p
+
+    ş \bSTEP\p          Geeft aan dat de co”rdinaten relatief zijn ten
+                    opzichte van de grafische cursorpositie.
+    ş \b(x1!,y1!)\p,    De schermco”rdinaten van het begin en van het eind
+      \b(x2!,y2!)\p     van de lijn.
+    ş \bkleur%\p        Bepaalt de kleur van de lijn of de rechthoek. De
+                    beschikbare kleuren hangen af van uw grafische adapter
+                    en de schermmodus die met het meest recente statement
+                    SCREEN werd ingesteld.
+    ş \bB\p             Tekent een rechthoek in plaats van een lijn.
+    ş \bBF\p            Tekent een opgevulde rechthoek.
+    ş \bstijl%\p        Een 16-bits waarde waarvan de bits bepalen welke
+                    pixels worden getekend. Gebruik dit voor het tekenen
+                    van stippellijnen of streepjeslijnen.
+
+Voorbeeld:
+    'Dit voorbeeld vereist een grafische kleurenadapter.
+    SCREEN 1
+    LINE (110, 70)-(190, 120), , B
+    LINE (0, 0)-(320, 200), 3, , &HFF00
+
+Zie ook     \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aINPUT, LINE INPUT\v@INPUT\v\i\p    \i\p\aPRESET, PSET\v@PSET\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aKleuren en kleurwaarden\v@color.table\v\i\p    \i\p\aSchermmodi\v@screen.modes\v\i\p
+.context PAINT
+.context @PAINT
+:nHet statement PAINT
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Kleurt een grafisch gebied in met een opgegeven kleur of patroon.
+
+\bPAINT [STEP] (x!,y!)[,[{kleur% | patroon$}] [,[rand%] [,achtergrond$]]]\p
+
+    ş \bSTEP\p            Geeft aan dat de co”rdinaten relatief zijn ten
+                      opzichte van de grafische cursorpositie.
+    ş \b(x!,y!)\p         De schermco”rdinaten waar met inkleuren wordt
+                      begonnen.
+    ş \bkleur%\p          De kleur waarmee wordt ingkleurd.
+    ş \bpatroon$\p        Een vulpatroon dat 8 bits breed is en maximaal
+                      64 bytes lang en als volgt wordt gedefinieerd:
+
+                      patroon$ = CHR$(arg1) + CHR$(arg2) + ... + CHR$(argn%)
+
+                      De argumenten voor CHR$ zijn getallen tussen 0 en 255.
+                      Elke CHR$(argn%) definieert een patroonvlak van
+                      1 byte bij 8 pixels gebaseerd op de binaire vorm
+                      van het getal.
+    ş \brand%\p           De kleur van de rand van het ingekleurde gebied.
+                      PAINT stopt met inkleuren wanneer een rand met een
+                      opgegeven kleur wordt aangetroffen.
+    ş \bachtergrond$\p    Een achtergrondvlak van 1 byte bij 8 pixels. Als
+                      u een achtergrondvlak opgeeft, kunt u een gebied
+                      bedekken dat reeds is ingekleurd.
+
+    ş De beschikbare kleuren hangen af van uw grafische adapter en de
+      schermmodus die werd ingesteld door het meest recente statement
+      SCREEN.
+
+Voorbeeld:
+    'Dit voorbeeld vereist een grafische kleurenadapter.
+    SCREEN 1
+    CIRCLE (106, 100), 75, 1
+    LINE (138, 35)-(288, 165), 1, B
+    PAINT (160, 100), 2, 1
+
+Zie ook     \i\p\aASC, CHR$\v@CHR$\v\i\p    \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aKleuren en kleurwaarden\v@color.table\v\i\p    \i\p\aSchermmodi\v@screen.modes\v\i\p
+.context PALETTE
+.context @PALETTE
+:nDe statements PALETTE en PALETTE USING
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Wijzigen de kleurtoewijzingen voor kleurattributen in de huidige schermmodus.
+PALETTE en PALETTE USING werken alleen met systemen die over EGA-, VGA- of
+MCGA-adapters beschikken.
+
+\bPALETTE [attribuut%,kleur&]\p
+\bPALETTE USING arraynaam#[(index%)]\p
+
+    ş \battribuut%\p    Het kleurattribuut dat moet worden gewijzigd.
+    ş \bkleur&\p        De nieuwe kleurwaarde voor het attribuut.
+    ş \barraynaam#\p    Een array met nieuwe kleurwaarden die aan de
+                    attributen voor de huidige schermmodus moeten worden
+                    toegewezen. De array moet groot genoeg zijn om kleuren
+                    aan alle kleurattributen toe te wijzen.
+    ş \bindex%\p        De index van het eertse array-element dat aan een
+                    attribuut moet worden toegewezen.
+
+    ş De beschikbare attributen en kleurwaarden hangen af van uw grafische
+      adapter en de schermmodus die met het meest recente statement SCREEN
+      werd ingesteld.
+
+Voorbeeld:
+    'Dit voorbeeld vereist een grafische kleurenadapter.
+    PALETTE 0, 1
+    SCREEN 1
+    FOR i% = 0 TO 3: a%(i%) = i%: NEXT i%
+    LINE (138, 35)-(288, 165), 3, BF
+    LINE (20, 10)-(160, 100), 2, BF
+    DO
+        FOR i% = 0 TO 3
+            a%(i%) = (a%(i%) + 1) MOD 16
+        NEXT i%
+        PALETTE USING a%(0)
+    LOOP WHILE INKEY$ = ""
+
+Zie ook     \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p
+            \i\p\aKleuren en kleurwaarden\v@color.table\v\i\p    \i\p\aSchermmodi\v@screen.modes\v\i\p
+.context PCOPY
+.context @PCOPY
+:nHet statement PCOPY
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Kopieert een schermpagina naar een andere schermpagina.
+
+\bPCOPY bronpagina%,doelpagina%\p
+
+    ş \bbronpagina%\p    Het nummer van de te kopi‰ren schermpagina.
+    ş \bdoelpagina%\p    Het nummer van de schermpagina waarnaar
+                         gekopieerd moet worden.
+
+    ş De waarde die de schermpagina aanduidt, wordt bepaald door de
+      grootte van het beeldschermgeheugen en de huidige schermmodus.
+
+Voorbeeld:
+    PCOPY 1, 3
+
+Zie ook     \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aSchermmodi\v@screen.modes\v\i\p
+.context SCREEN
+.context @SCREEN
+:nHet statement SCREEN
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Stelt de schermmodus en andere schermkenmerken in.
+
+\bSCREEN modus% [,[kleuroptie%] [,[actievepagina%] [,weergave%]]]\p
+
+    ş \bmodus%\p          Stel de schermmodus in. Zie \i\p\aSchermmodi\v@screen.modes\v\i\p.
+    ş \bkleuroptie%\p     Een waarde (0 of 1) die tussen kleurenweergave
+                      en monochrome weergave schakelt (alleen modus 0 en 1):
+
+                      Modus   Waarde      Handeling
+                      ÍÍÍÍÍ   ÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                      0       0           Deactiveert kleur
+                      0       Niet-nul    Activeert kleur
+                      1       0           Activeert kleur
+                      1       Niet-nul    Deactiveert kleur
+
+    ş \bactievepagina%\p  De schermpagina waarnaar tekst en grafische
+                      uitvoer wordt geschreven.
+    ş \bweergave%\p       De schermpagina die momenteel op uw scherm wordt
+                      weergegeven.
+
+Voorbeeld:
+    'Dit voorbeeld vereist een grafische kleurenadapter.
+    SCREEN 1        '320 x 200, grafisch
+    LINE (110, 70)-(190, 120), , B
+    LINE (0, 0)-(320, 200), 3, , &HFF00
+
+Zie ook     \i\p\aCIRCLE\v@CIRCLE\v\i\p    \i\p\aCOLOR\v@COLOR\v\i\p    \i\p\aDRAW\v@DRAW\v\i\p    \i\p\aLINE\v@LINE\v\i\p      \i\p\aPAINT\v@PAINT\v\i\p
+            \i\p\aDe functie SCREEN\v@screenf\v\i\p    \i\p\aVIEW\v@VIEW\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p    \i\p\aSchermmodi\v@screen.modes\v\i\p
+.context @screen.modes
+:nSchermmodi
+  \i\p\aInhoud\vhelpTableId\v\i\p  \i\p\aHelp-index\vhelpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+De volgende tabel bevat een samenvatting van schermmodi:
+
+ÄÄÄÄÄÄÄMDPA-, CGA-, Hercules-, Olivetti-, EGA-, VGA- of MCGA-adaptersÄÄÄÄÄÄÄÄÄ
+MODUS 0: Alleen tekstmodus
+    ş 40 x 25, 40 x 43, 40 x 50, 80 x 25, 80 x 43 of 80 x 50 tekstformaat,
+      8 x 8 tekens per vak (8 x 14, 9 x 14, or 9 x 16 met EGA of VGA)
+    ş 16 kleuren toegewezen aan elk van 16 attributen (met CGA of EGA)
+    ş 64 kleuren toegewezen aan elk van 16 attributen (met EGA of VGA)
+    ş Afhankelijk van de tekstresolutie en adapter, 8 schermpagina's
+      (0-7), 4 pagina's (0-3), 2 pagina's (0-1) of 1 pagina (0)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄCGA-, EGA-, VGA- of MCGA-adaptersÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MODUS 1: 320 x 200, grafisch
+    ş 40 x 25 tekstformaat, 8 x 8 tekens per vak
+    ş 16 achtergrondkleuren en ‚‚n set van 3 voorgrondkleuren
+      toegewezen met behulp van het statement COLOR met CGA
+    ş 16 kleuren toegewezen aan 4 attributen met EGA of VGA
+    ş 1 schermpagina (0)
+MODUS 2: 640 x 200, grafisch
+    ş 80 x 25 tekstformaat, 8 x 8 tekens per vak
+    ş 16 kleuren toegewezen aan 2 attributen met EGA of VGA
+    ş 1 schermpagina (0)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄHercules-, Olivetti- of AT&T-AdaptersÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MODUS 3: Hercules-adapter vereist, alleen monochrome monitor
+    ş 720 x 348, grafisch
+    ş 80 x 25 tekstformaat, 9 x 14 tekens per vak
+    ş Gewoonlijk 2 schermpagina's (0-1); 1 pagina (0) als er een tweede
+      kleurenadapter is ge‹nstalleerd
+    ş Het statement PALETTE wordt niet ondersteund
+    ş Roep het Hercules-stuurprogramma MSHERC.COM aan voordat u modus 3
+      gebruikt
+MODUS 4:
+    ş Ondersteunt Olivetti Personal Computers modellen M24, M240, M28, M280,
+      M380, M380/C en M380/T en AT&T Personal Computers uit de 6300-serie
+    ş 640 x 400, grafisch
+    ş 80 x 25 tekstformaat, 8 x 16 tekens per vak
+    ş 1 van 16 kleuren toegewezen als voorgrondkleur (geselecteerd met
+      het statement COLOR); de achtergrond is zwart
+    ş 1 schermpagina (0)
+    ş Het statement PALETTE wordt niet ondersteund
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄEGA- of VGA-adaptersÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MODUS 7: 320 x 200, grafisch
+    ş 40 x 25 tekstformaat, 8 x 8 tekens per vak
+    ş 16 kleuren toegewezen aan elk van 16 attributen
+    ş Indien 64 kB EGA-adaptergeheugen, 2 schermpagina's (0-1); anders
+      8 schermpagina's (0-7)
+MODUS 8: 640 x 200, grafisch
+    ş 80 x 25 tekstformaat, 8 x 8 tekens per vak
+    ş 16 kleuren toegewezen aan elk van 16 attributen
+    ş Indien 64 kB EGA-adaptergeheugen, 1 schermpagina (0); anders
+      4 schermpagina's (0-3)
+MODUS 9: 640 x 350, grafisch
+    ş 80 x 25 of 80 x 43 tekstformaat, 8 x 14 of 8 x 8 tekens per vak
+    ş 16 kleuren toegewezen aan 4 attributen (64 kB adaptergeheugen), of
+      64 kleuren toegewezen aan 16 attributen (meer dan 64 kB adaptergeheugen)
+    ş Indien 64 kB EGA-adaptergeheugen, 1 schermpagina (0); anders
+      2 schermpagina's (0-1)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄEGA- of VGA-adapters, alleen monochrome monitorÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MODUS 10: 640 x 350, grafisch; alleen monochrome monitor
+    ş 80 x 25 of 80 x 43 tekstformaat, 8 x 14 of 8 x 8 tekens per vak
+    ş Maximaal 9 pseudokleuren toegewezen aan 4 attributen
+    ş 2 schermpagina's (0-1), 256 kB adaptergeheugen vereist
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄVGA- of MCGA-adaptersÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+MODUS 11 (VGA of MCGA)
+    ş 640 x 480, grafisch
+    ş 80 x 30 of 80 x 60 tekstformaat, 8 x 16 of 8 x 8 tekens per vak
+    ş Maximaal 256 k kleuren toegewezen aan 2 attributen
+    ş 1 schermpagina (0)
+MODUS 12 (VGA)
+    ş 640 x 480, grafisch
+    ş 80 x 30 of 80 x 60 tekstformaat, 8 x 16 of 8 x 8 tekens per vak
+    ş Maximaal 256 k kleuren toegewezen aan 16 attributen
+    ş 1 schermpagina (0)
+MODUS 13 (VGA of MCGA)
+    ş 320 x 200, grafisch
+    ş 40 x 25 tekstformaat, 8 x 8 tekens per vak
+    ş Maximaal 256 k kleuren toegewezen aan 256 attributen
+    ş 1 schermpagina (0)
+
+Zie ook     \i\p\aHet statement SCREEN\v@SCREEN\v\i\p
+.context @screenf
+:nDe functie SCREEN
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Retourneert een ASCII-waarde of kleurattribuut van een teken op een
+bepaalde schermlocatie.
+
+\bSCREEN (rij%,kolom% [,kleur%])\p
+
+    ş \brij%\p        De rijco”rdinaat van het teken.
+    ş \bkolom%\p      De kolomco”rdinaat van het teken.
+    ş \bkleur%\p      Een waarde (0 of 1) die aangeeft wat wordt
+                  geretourneerd.
+
+                  Waarde              Retourneert
+                  ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+                  0 (of weggelaten)   De ASCII-code van het teken.
+                  1                   Het kleurattribuut van het teken.
+
+Voorbeeld:
+    CLS
+    PRINT "Hallo"
+    PRINT "De ASCII-waarde van het teken op positie 1,1 is"; SCREEN(1, 1)
+
+Zie ook     \i\p\aPOINT\v@POINT\v\i\p    \i\p\aHet statement SCREEN\v@SCREEN\v\i\p
+            \i\p\aASCII-codes\v@ac\v\i\p    \i\p\aKleuren en kleurwaarden\v@color.table\v\i\p
+.context VIEW
+.context @VIEW
+:nHet statement VIEW
+  \i\p\aInhoud\v@helpTableId\v\i\p  \i\p\aHelp-index\v@helpIndexId\v\i\p  \i\p\aTerug\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+Definieert de grootte en locatie van een uitvoervenster ('viewport') waar
+grafische uitvoer op het scherm kan worden weergegeven.
+
+\bVIEW [[SCREEN] (x1!,y1!)-(x2!,y2!) [,[kleur%] [,rand%]]]\p
+
+    ş \bSCREEN\p                 Geeft aan dat de co”rdinaten relatief
+                             zijn ten opzichte van het scherm.
+    ş \b(x1!,y1!)-(x2!,y2!)\p    De co”rdinaten van schuin tegenover elkaar
+                             liggende hoeken van het uitvoervenster.
+    ş \bkleur%\p                 De kleur waarmee het uitvoervenster wordt
+                             ingekleurd.
+    ş \brand%\p                  De kleur voor de rand van het
+                             uitvoervenster.
+
+    ş Als alle argumenten worden weggelaten, wordt het hele scherm als
+      uitvoervenster gebruikt.
+    ş De beschikbare kleuren hangen af van uw grafische adapter en de
+      schermmodus die met het meest recente statement SCREEN werd ingesteld.
+
+Voorbeeld:
+    'Dit voorbeeld vereist een grafische kleurenadapter.
+    SCREEN 1
+    VIEW (10, 10)-(300, 180), , 1
+    LOCATE 1, 11: PRINT "Een groot grafisch uitvoervenster";
+    VIEW SCREEN (80, 80)-(200, 125), , 1
+    LOCATE 11, 11: PRINT "Een klein grafisch uitvoervenster";
+
+Zie ook     \i\p\aCLS\v@CLS\v\i\p    \i\p\aSCREEN\v@SCREEN\v\i\p    \i\p\aVIEW PRINT\v@vupri\v\i\p    \i\p\aWINDOW\v@WINDOW\v\i\p
+            \i\p\aKleuren en kleurwaarden\v@color.table\v\i\p    \i\p\aSchermmodi\v@screen.modes\v\i\p

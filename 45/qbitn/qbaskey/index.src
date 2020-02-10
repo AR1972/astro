@@ -1,0 +1,205 @@
+.context @helpIndexId
+.context helpIndexId
+.context @a
+:nIndice della Guida in linea di QBASIC
+  \i\p\aSommario\v@helpTableId\v\i\p  \bIndice\p  \i\p\aPrecedente\v!B\v\i\p
+ฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
+Per avere informazioni su una parola chiave di QBASIC contenuta nell'elenco
+seguente, occorre:
+  1. Premere il tasto corrispondente alla prima lettera della parola chiave.
+  2. Usare i tasti di DIREZIONE per spostare il cursore sulla parola chiave.
+  3. Premere F1 per visualizzare il testo nella finestra della Guida.
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน A บ
+                                                                  ศอออผ
+  \aABS funzione\v@ABS\v                       \aAPPEND parola chiave\v@APPEND\v
+  \aABSOLUTE parola chiave\v@ABSOLUTE\v             \aAS parola chiave\v@AS\v
+  \aACCESS parola chiave\v@ACCESS\v               \aASC funzione\v@ASC\v
+  \aAND operatore\v@AND\v                      \aATN funzione\v@ATN\v
+  \aANY parola chiave\v@ANY\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน B บ
+                                                                  ศอออผ
+  \aBASE parola chiave\v@BASE\v                 \aBLOAD istruzione\v@BLOAD\v
+  \aBASIC set dei caratteri\v@fun.character.set\v            \aOperatori booleani\v@AND\v
+  \aBEEP istruzione\v@BEEP\v                    \aBSAVE istruzione\v@BSAVE\v
+  \aBINARY parola chiave\v@BINARY\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน C บ
+                                                                  ศอออผ
+  \aCALL istruzione\v@CALL\v                    \aCOLOR istruzione\v@COLOR\v
+  \aCALL ABSOLUTE istruzione\v@ABSOLUTE\v           \aCOM istruzione\v@COM\v
+  \aCASE parola chiave\v@SELECT\v                 \aCOMMON istruzione\v@COMMON\v
+  \aCDBL funzione\v@CDBL\v                      \aCONST istruzione\v@CONST\v
+  \aCHAIN istruzione\v@CHAIN\v                   \aCOS funzione\v@COS\v
+  \aCHDIR istruzione\v@CHDIR\v                   \aCSNG funzione\v@CSNG\v
+  \aCHR$ funzione\v@CHR$\v                      \aCSRLIN funzione\v@CSRLIN\v
+  \aCINT funzione\v@CINT\v                      \aCVD funzione\v@CVD\v
+  \aCIRCLE istruzione\v@CIRCLE\v                  \aCVDMBF funzione\v@CVDMBF\v
+  \aCLEAR istruzione\v@CLEAR\v                   \aCVI funzione\v@CVI\v
+  \aCLNG funzione\v@CLNG\v                      \aCVL funzione\v@CVL\v
+  \aCLOSE istruzione\v@CLOSE\v                   \aCVS funzione\v@CVS\v
+  \aCLS istruzione\v@CLS\v                     \aCVSMBF funzione\v@CVSMBF\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน D บ
+                                                                  ศอออผ
+  \aDATA istruzione\v@DATA\v                    \aDEFLNG istruzione\v@DEFLNG\v
+  \aParole chiave del tipo di dati\v@INTEGER\v     \aDEFSNG istruzione\v@DEFSNG\v\p
+  \aDATE$ funzione\v@datef\v                     \aDEFSTR istruzione\v@DEFSTR\v
+  \aDATE$ istruzione\v@DATE$\v                   \aDIM istruzione\v@DIM\v
+  \aDECLARE istruzione\v@DECLARE\v                 \aDO...LOOP istruzione\v@DO\v\p
+  \aDEF FN istruzione\v@DEF\v                  \aDOUBLE parola chiave\v@DOUBLE\v
+  \aDEF SEG istruzione\v@SEG\v                 \aDRAW istruzione\v@DRAW\v
+  \aDEFDBL istruzione\v@DEFDBL\v                  \a$DYNAMIC metacomando\v@$DYNAMIC\v
+  \aDEFINT istruzione\v@DEFINT\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน E บ
+                                                                  ศอออผ
+  \aELSE parola chiave\v@IF\v                 \aERDEV funzione\v@ERDEV\v
+  \aELSEIF parola chiave\v@IF\v               \aERDEV$ funzione\v@ERDEV$\v\p
+  \aEND istruzione\v@END\v                     \aERL funzione\v@ERL\v\p
+  \aENVIRON istruzione\v@ENVIRON\v                 \aERR funzione\v@ERR\v
+  \aENVIRON$ funzione\v@ENVIRON$\v                  \aERROR istruzione\v@ERROR\v
+  \aEOF funzione\v@EOF\v                       \aEXIT istruzione\v@EXIT\v
+  \aEQV operatore\v@EQV\v                      \aEXP funzione\v@EXP\v
+  \aERASE istruzione\v@ERASE\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน F บ
+                                                                  ศอออผ
+  \aFIELD istruzione\v@FIELD\v                   \aFOR...NEXT istruzione\v@FOR\v\p
+  \aFILEATTR funzione\v@FILEATTR\v                  \aFRE funzione\v@FRE\v
+  \aFILES istruzione\v@FILES\v                   \aFREEFILE funzione\v@FREEFILE\v
+  \aFIX funzione\v@FIX\v                       \aFUNCTION istruzione\v@FUNCTION\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน G บ
+                                                                  ศอออผ
+  \aGET (I/O di file) istruzione\v@GET\v       \aGOSUB istruzione\v@GOSUB\v
+  \aGET (Grafica) istruzione\v@ggx\v           \aGOTO istruzione\v@GOTO\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน H บ
+                                                                  ศอออผ
+  \aHEX$ funzione\v@HEX$\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน I บ
+                                                                  ศอออผ
+  \aIF...THEN...ELSE istruzione\v@IF\v        \aINSTR funzione\v@INSTR\v
+  \aIMP operatore\v@IMP\v                      \aINT funzione\v@INT\v
+  \aINKEY$ funzione\v@INKEY$\v                    \aINTEGER parola chiave\v@INTEGER\v
+  \aINP funzione\v@INP\v                       \aIOCTL istruzione\v@IOCTL\v
+  \aINPUT istruzione\v@INPUT\v                   \aIOCTL$ funzione\v@IOCTL$\v
+  \aINPUT$ funzione\v@INPUT$\v                    \aIS parola chiave\v@IS\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน K บ
+                                                                  ศอออผ
+  \aKEY (assegnazione) istruzione\v@KEY\v      \aKILL istruzione\v@KILL\v\p
+  \aKEY (gestione degli eventi) istruzione\v@ketv\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน L บ
+                                                                  ศอออผ
+  \aLBOUND funzione\v@LBOUND\v                    \aLOCK...UNLOCK istruzioni\v@LOCK\v\p
+  \aLCASE$ funzione\v@LCASE$\v                    \aLOF funzione\v@LOF\v\p
+  \aLEFT$ funzione\v@LEFT$\v                     \aLOG funzione\v@LOG\v\p
+  \aLEN funzione\v@LEN\v                       \aLONG parola chiave\v@LONG\v\p
+  \aLET istruzione\v@LET\v                     \aLOOP parola chiave\v@LOOP\v\p
+  \aLINE (Grafica) istruzione\v@LINE\v          \aLPOS funzione\v@LPOS\v\p
+  \aLINE INPUT istruzione\v@INPUT\v              \aLPRINT istruzione\v@LPRINT\v\p
+  \aLIST parola chiave\v@LIST\v                 \aLPRINT USING istruzione\v@lprintu\v
+  \aLOC funzione\v@LOC\v                       \aLSET istruzione\v@LSET\v\p
+  \aLOCATE istruzione\v@LOCATE\v                  \aLTRIM$ funzione\v@LTRIM$\v\p
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน M บ
+                                                                  ศอออผ
+  \aMID$ funzione\v@MID$\v                      \aMKI$ funzione\v@MKI$\v
+  \aMID$ istruzione\v@MID$\v                    \aMKL$ funzione\v@MKL$\v
+  \aMKD$ funzione\v@MKD$\v                      \aMKS$ funzione\v@MKS$\v
+  \aMKDIR istruzione\v@MKDIR\v                   \aMKSMBF$ funzione\v@MKSMBF$\v
+  \aMKDMBF$ funzione\v@MKDMBF$\v                   \aMOD operatore\v@MOD\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน N บ
+                                                                  ศอออผ
+  \aNAME istruzione\v@NAME\v                    \aNOT operatore\v@NOT\v
+  \aNEXT parola chiave\v@NEXT\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน O บ
+                                                                  ศอออผ
+  \aOCT$ funzione\v@HEX$\v                      \aON TIMER istruzione\v@TIMER\v
+  \aOFF parola chiave\v@OFF\v                  \aON...GOSUB istruzione\v@ongo\v\p
+  \aON COM istruzione\v@COM\v                  \aON...GOTO istruzione\v@ongo\v\p
+  \aON ERROR istruzione\v@onerr\v                \aOPEN istruzione\v@OPEN\v\p
+  \aON parola chiave\v@ON\v                   \aOPEN COM istruzione\v@opcom\v
+  \aON KEY istruzione\v@ketv\v                  \aOPTION BASE istruzione\v@BASE\v\p
+  \aON PEN istruzione\v@PEN\v                  \aOR operatore\v@OR\v
+  \aON PLAY istruzione\v@playev\v                 \aOUT istruzione\v@OUT\v
+  \aON STRIG istruzione\v@STRIG\v                \aOUTPUT parola chiave\v@OUTPUT\v\p
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน P บ
+                                                                  ศอออผ
+  \aPAINT istruzione\v@PAINT\v                   \aPMAP funzione\v@PMAP\v
+  \aPALETTE istruzioni\v@PALETTE\v                 \aPOINT funzione\v@POINT\v
+  \aPCOPY istruzione\v@PCOPY\v                   \aPOKE istruzione\v@POKE\v
+  \aPEEK funzione\v@PEEK\v                      \aPOS funzione\v@POS\v
+  \aPEN funzione\v@penf\v                       \aPRESET istruzione\v@PRESET\v
+  \aPEN istruzione\v@PEN\v                     \aPRINT istruzione\v@PRINT\v
+  \aPLAY funzione\v@playf\v                      \aPRINT USING istruzione\v@zpu\v
+  \aPLAY (musica) istruzione\v@PLAY\v           \aPSET istruzione\v@PSET\v
+  \aPLAY istruzioni\v@playev\v                    \aPUT (I/O di file) istruzione\v@PUT\v
+  \a (gestione degli eventi)\v@playev\v           \aPUT (grafica) istruzione\v@pgfx\v\p      
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน R บ
+                                                                  ศอออผ
+  \aRANDOM parola chiave\v@RANDOM\v               \aRETURN istruzione\v@RETURN\v
+  \aRANDOMIZE istruzione\v@RANDOMIZE\v               \aRIGHT$ funzione\v@RIGHT$\v
+  \aREAD istruzione\v@READ\v                    \aRMDIR istruzione\v@RMDIR\v
+  \aREDIM istruzione\v@REDIM\v                   \aRND funzione\v@RND\v
+  \aREM istruzione\v@REM\v                     \aRSET istruzione\v@RSET\v
+  \aRESET istruzione\v@RESET\v                   \aRTRIM$ funzione\v@RTRIM$\v
+  \aRESTORE istruzione\v@RESTORE\v                 \aRUN istruzione\v@RUN\v
+  \aRESUME istruzione\v@RESUME\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน S บ
+                                                                  ศอออผ
+  \aSCREEN funzione\v@screenf\v                    \aSQR funzione\v@SQR\v
+  \aSCREEN istruzione\v@SCREEN\v                  \aSTATIC istruzione\v@STATIC\v
+  \aSEEK funzione\v@SEEK\v                      \a$STATIC metacomando\v@$STATIC\v
+  \aSEEK istruzione\v@SEEK\v                    \aSTEP parola chiave\v@STEP\v
+  \aSELECT CASE istruzione\v@SELECT\v             \aSTICK funzione\v@STICK\v
+  \aSGN funzione\v@SGN\v                       \aSTOP istruzione\v@STOP\v
+  \aSHARED istruzione\v@SHARED\v                  \aSTR$ funzione\v@STR$\v
+  \aSHELL istruzione\v@SHELL\v                   \aSTRIG funzione\v@strigf\v
+  \aSIN funzione\v@SIN\v                       \aIstruzioni STRIG\v@STRIG\v
+  \aSINGLE parola chiave\v@SINGLE\v               \aSTRING parola chiave\v@STRING\v
+  \aSLEEP istruzione\v@SLEEP\v                   \aSTRING$ funzione\v@STRING$\v
+  \aSOUND istruzione\v@SOUND\v                   \aSUB istruzione\v@SUB\v
+  \aSPACE$ funzione\v@SPACE$\v                    \aSWAP istruzione\v@SWAP\v
+  \aSPC funzione\v@SPC\v                       \aSYSTEM istruzione\v@SYSTEM\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน T บ
+                                                                  ศอออผ
+  \aTAB funzione\v@TAB\v                       \aTIMER istruzioni\v@TIMER\v
+  \aTAN funzione\v@TAN\v                       \aTO parola chiave\v@TO\v
+  \aTHEN parola chiave\v@IF\v                 \aTROFF istruzione\v@TROFF\v
+  \aTIME$ funzione\v@tmf\v                     \aTRON istruzione\v@TRON\v
+  \aTIME$ istruzione\v@TIME$\v                   \aTYPE istruzione\v@TYPE\v
+  \aTIMER funzione\v@timerf\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน U บ
+                                                                  ศอออผ
+  \aUBOUND funzione\v@UBOUND\v                    \aUNTIL parola chiave\v@DO\v
+  \aUCASE$ funzione\v@UCASE$\v                    \aUSING parola chiave\v@USING\v
+  \aUNLOCK istruzione\v@UNLOCK\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน V บ
+                                                                  ศอออผ
+  \aVAL funzione\v@VAL\v                       \aVARSEG funzione\v@VARSEG\v
+  \aVARPTR funzione\v@VARPTR\v                    \aVIEW istruzione\v@VIEW\v
+  \aVARPTR$ funzione\v@VARPTR$\v                   \aVIEW PRINT istruzione\v@vupri\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน W บ
+                                                                  ศอออผ
+  \aWAIT istruzione\v@WAIT\v                    \aWIDTH istruzioni\v@WIDTH\v
+  \aWEND parola chiave\v@WEND\v                 \aWINDOW istruzione\v@WINDOW\v
+  \aWHILE...WEND istruzione\v@WEND\v            \aWRITE istruzione\v@WRITE\v
+                                                                  ษอออป
+ออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน X บ
+                                                                  ศอออผ
+  \aXOR operatore\v@XOR\v

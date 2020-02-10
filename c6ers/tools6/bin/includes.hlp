@@ -1,0 +1,86 @@
+Includes is a tool that automates the maintence of makefiles by creating
+a dependency list for object modules. Simply, it produces a list of all
+files (.h or .inc or user specified extension, see below) included by the
+source specified on the command line, and writes a line of the following
+form to stdout:
+
+foo.obj foo.lst: foo.c foo.h
+
+Errors (included file not found, or included twice) are written to stdout,
+and cause a non-zero exit code.
+
+ 
+usage: includes <options> source_files
+
+where source_files are .C or .ASM.
+
+option	    meaning
+
+-Dpath	    default search path for include file.  Up to 30 paths can
+	    be specified.
+
+-Ipath	    search path for include file.  Up to 30 paths can
+	    be specified.
+
+-i	    List include files from the default include directory.
+	    This is /usr/include for Xenix and the directory specified
+	    by the INCLUDE environment for DOS.
+
+-lsuffix    Replace the list file suffix with "suffix" in
+	    dependency lines. Up to 3 suffixes can be specified.
+		For example,
+		    includes -lv file.c
+		 allows
+		    file.obj file.lst: file.c depend1 depend2 ...
+		 to become
+		    file.obj file.v: file.c depend1 depend2 ...
+	    The list suffix is defaulted to "lst". -l by itself
+	    suppresses list file listing.
+
+-ssuffix    Replace the object file suffix with "suffix" in
+	    dependency lines. Up to 3 suffixes can be specified.
+		For example,
+		    includes -so file.c
+		 allows
+		    file.obj file.lst: file.c depend1 depend2 ...
+		 to become
+		    file.o file.lst: file.c depend1 depend2 ...
+	    suffix is defaulted to "obj".
+	    -s by itself is an error.
+
+-Sprefix    Prepend the following prefix to object files that
+	    are output as targets. Up to 3 prefixes can be specified.
+		For example,
+		    includes -S$(VER) *.c
+		 allows
+		    file.obj file.lst: file.c depend1 depend2 ...
+		 to become
+		    $(VER)/file.obj file.lst: file.c depend1 depend2 ...
+	    No prefix is the default.
+
+-Lprefix    Prepend the following prefix to lst files that
+	    are output as targets. Up to 3 prefixes can be specified.
+		For example,
+		    includes -L$(VER) *.c
+		 allows
+		    file.obj file.lst: file.c depend1 depend2 ...
+		 to become
+		    file.obj $(VER)/file.lst: file.c depend1 depend2 ...
+	    No prefix is the default.
+
+-Psymbolic=string
+	    Symbolic dependency. The allows makefiles to be
+	    directed to a path at execution time, e.g.:
+		    include -P$$(DOSROOT)=$(DOSROOT)
+	    in a makefile, produces
+		    file.obj: depend1 depend1 $(DOSROOT)\depend3
+	    instead of
+		    file.obj: depend1 depend2 ..\..\..\depend3
+	    As many -P  flags as desired can be used; substitutions will
+	    be performed in the order specified on the command line.
+
+-A=ext	    permit this user-defined extension of up to 3 characters
+	    for asm included files
+
+-C=ext	    permit this user-defined extension of up to 3 characters
+	    for C included files

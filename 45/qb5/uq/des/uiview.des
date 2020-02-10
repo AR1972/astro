@@ -1,0 +1,45 @@
+DESCRIPTION 
+GLOBAL_INFO 
+	{
+	CHARACTER 
+	NO_OVERLAP 
+	CC_COMPILED 
+	}
+
+MODULE uiview 
+	{
+
+	DIALOG dlgNewProc AT (21, 8, 38, 8) 
+	CAB_NAME CABNewProc 
+	HELP_ID hidNewProc 
+	TMC_INIT tmcNull 
+		{
+		TEXT "~Name:" AT (1, 1, 6, 1) 
+		EDIT AT (8, 1, 26, 1) ARG szProcName 
+
+		OK_BUTTON AT (2, 5, 6, 1) DISMISS_CAB DEFAULT 
+		CANCEL_BUTTON AT (12, 5, 10, 1) DISMISS 
+		PUSH_BUTTON "~Help" AT (26, 5, 8, 1) TMC_IMPORT tmcHelp ACTION 
+		GROUP_BOX "" AT (7, 0, 28, 3) 
+		}
+
+	DIALOG dlgViewSubs AT (3, 2, 74, 18) 
+	CAB_NAME CABViewSubs 
+	HELP_ID hidViewSubs 
+	DIALOG_PROC FDlgViewSubs 
+	TMC_INIT tmcNull 
+		{
+		TEXT "~Choose program item to edit" AT (1, 1, 28, 1) 
+		LIST_BOX AT (1, 2, 70, 11) TMC tmcListModulesAndSubs ACTION ARG oModuleOrSub 
+			LIST_BOX_PROC  WListProcModuleAndSub 
+		TRACKING_TEXT AT (1, 13, 47, 1) TMC tmcViewSubsDescription 
+		PUSH_BUTTON "Edit in ~Active" AT (5, 15, 18, 1) TMC tmcActiveWindow DISMISS DEFAULT 
+		PUSH_BUTTON "~Delete" AT (28, 15, 10, 1) TMC tmcDelete DISMISS 
+		CANCEL_BUTTON AT (44, 15, 10, 1) DISMISS 
+		PUSH_BUTTON "~Help" AT (59, 15, 8, 1) TMC_IMPORT tmcHelp 
+		}
+
+	}
+
+
+END_DESCRIPTION 

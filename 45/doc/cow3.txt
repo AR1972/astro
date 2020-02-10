@@ -1,0 +1,112 @@
+Introduction
+
+This document describes implementation details of modules of CW.
+Applications should not depend upon anything contained herein.
+
+
+SWAPPING
+--------
+
+The CODE SWAPPING/LRU scheme used by CW is significantly different than
+Windows.
+The concepts as used in CW are described below and notably how they differ
+from Windows.
+This is not an attempt to document the Windows system.
+
+THUNKS
+------
+
+The thunks used for CW are shorter (6 vs 10 bytes) than Windows,
+do not require the INT 3FH handler
+and implement a more efficient form of LRU.
+Noteably the SAR CS:[xxxx],1 instruction is not present in CW
+
+Thunks may take one of three forms:
+
+FORM 1 (ENTMOVE) : Resident code segment.
+	JMPF	seg:off
+	DB	segno
+  -- action of jumping to thunk:
+	jump to resident program
+
+FORM 2 (ENTMOVE1) : Resident 
+	CALLN	relative to JMPF RelruSegment
+	DW	offset
+	DB	segno
+  -- action of jumping to thunk:
+	update LRU for segment, change ENTMOVE1 -> ENTMOVE
+	then jump to resident program
+
+FORM 3 (ENTMOVE2) : Not-resident
+	CALLN	relative to JMPF RelruSegment
+	DW	offset
+	DB	segno
+  -- action of jumping to thunk:
+	load in segment, change ENTMOVE1 -> ENTMOVE
+	then jump to resident program
+
+
+
+LRU
+---
+
+LRU for discardable (i.e. moveable) code segments is defined completely
+by the segment reference bytes (1 per code segment).
+
+The following values for these bytes are used:
+	0	- Most recently used
+	1..0x7f	- less recently used
+	0x80	- non-resident (i.e. discarded) code segment
+	0xFF	- FIXED segment
+
+The "ReLru" process only occurs for resident segments (i.e. segrefbyte <= 0x7f).
+This consists of setting the proper segrefbyte to 0 indicating that this
+segment is the Most Recently Used segment. The "Relru" process is initiated
+by the program calling a thunk of FORM2.
+
+The "Sweep" process occurs periodically (currently about every 1/4 of a second)
+and asynchronously to the main program.
+The "Sweep" process consists of bumping the segref bytes in the range 0 .. 0x7e
+(this keeps 0x7f .. 0xff from being changed), and going through the entry
+table (i.e. the list of thunks) and changing ENTMOVE (FORM1) to ENTMOVE (FORM2)
+thunks.
+
+Question : Why are we doing this ?
+Answer : the Window's LRU system puts a SAR CS:[xxxx],1 instruction at the
+start of each thunk (requiring 31 cycles on an 8088 - more than tripling the
+time it takes for a thunk).
+
+So far all the changes in the LRU scheme have been improvements over the
+Windows LRU. The thing involved with LRU is the determination of which
+segments are the least recently used. This is where the CW system suffers
+(i.e. is less efficient than Windows). In windows (due to the fact Windows
+updates a linked LRU list) it is just a matter of removing the head item
+from the lru linked list. For CW the extra work of scanning the array
+of segref bytes is needed.
+This should happens relatively rarely (i.e. over a long session,
+each discard will correspond to re-reading in the code -
+making this an already slow process).
+
+
+RETURN THUNKS
+-------------
+
+Return thunks are also dissimilar from Windows.
+First, they are of a different form (ENTRET) :
+	CALLN relative to JMPF ReturnThunk
+	DB segno
+	DW offset
+
+Note : these are kept in a table (pretthunks). There is one per code segment
+(even for FIXED segments, in which case it is not used).
+
+The segno is the segment number (and is used since dividing by 5 is slow on
+the 8086).
+The offset is either -1 (0xffff) or a valid offset:
+	if offset == 0xffff then this means that either:
+		a) the segment is resident
+	   or   b) the segment is not resident, and there are no returns
+			to that segment on the stack.
+	if offset != 0xffff then this means that the segment IS NOT resident
+		AND the
+

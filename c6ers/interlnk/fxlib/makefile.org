@@ -1,0 +1,69 @@
+
+.SUFFIXES
+.PRECIOUS
+
+%if "$[u,$(CODEVIEW)]" == "ON"
+CODEVIEW  = ON
+ASM_FLAGS = /Zi
+C_FLAGS   = -Zi -Od -Oi -Gs
+%else
+ASM_FLAGS =
+C_FLAGS   = -Osleazrgi -Gs
+%endif
+
+RELEASE_DIR = release
+
+TARGET = fastlynx.lib
+
+.INIT:
+    @%setenv INCLUDE=$(INCLUDE)
+    %if "$(CODEVIEW)" == "ON"
+    @%echo
+    @%echo *** CODEVIEW is ON ***
+    @%echo
+    %endif
+
+.asm.obj:
+    *\masm60\bin\ml /c /nologo /W2 /Cp $(ASM_FLAGS) /Dmodel=MEDIUM /Dtext=FX_TEXT $<
+
+.c.obj:
+    *\c600\bin\cl -c -nologo -AS -NT FX_TEXT $(C_FLAGS) -Gr -W3 -Zl -Zp $<
+
+AOBJ1 = parallel.obj clonesub.obj listen.obj init.obj crctab.obj
+AOBJ2 = querybio.obj sendrecv.obj saveport.obj serial.obj loader.obj
+
+ASM_OBJ = $(AOBJ1) $(AOBJ2)
+C_OBJ = clone.obj
+
+$(TARGET): $(ASM_OBJ) $(C_OBJ)
+    *lib /NOLOGO <@<
+$@
+%if !%file($(TARGET))
+y
+%endif
+{
+%if %file($(TARGET))
+-+$?&
+%else
++$?&
+%endif
+}
+
+NUL
+
+<
+
+rel:
+    copy *.h $(RELEASE_DIR)
+    copy *.lib $(RELEASE_DIR)
+    copy example\makefile $(RELEASE_DIR)
+    copy example\*.asm $(RELEASE_DIR)
+    copy example\*.h $(RELEASE_DIR)
+    copy example\*.c $(RELEASE_DIR)
+    copy example\*.doc $(RELEASE_DIR)
+    copy example\example.exe $(RELEASE_DIR)
+    cd   $(RELEASE_DIR)
+    zip -a fxlib.zip *.*
+    cd   ..
+
+  

@@ -1,0 +1,905 @@
+.comment ******************************************************************
+.comment *  Contents family                                               *
+.comment ******************************************************************
+.comment 12/31/90 Added information on EOF(0) to version differences screen.
+.comment -- JeffWe (also, deleted comments history to date)
+.comment ******************************************************************
+.context h.pg1
+.context helpSurvivalId
+:nNyb”rjarhj„lp
+
+ \bAnv„nda QBasic:\p
+
+   ş Om du vill aktivera menyraden i QBasic, trycker du p† Alt-tangenten.
+   ş Om du vill aktivera menyer och kommandon, trycker du p† den
+     ljusmarkerade bokstaven.
+   ş Om du vill flytta mellan menyer och kommandon, anv„nder du
+     mark”rtangenterna.
+   ş Om du vill f† hj„lp om ett valt nyckelord, kommando, eller dialogruta,
+     trycker du p† F1.
+   ş Om du vill avluta Hj„lp, trycker du p† Esc-tangenten.
+
+ \bBl„ddra igenom Hj„lpsystemet i QBasic:\p
+
+   ş Om du vill v„lja ett av f”ljande avsnitt, trycker du p† Tabb eller f”rsta
+     bokstaven i avnsnittets namn. Tryck p† Retur f”r att se:
+
+     \i\p\aIndex\i\vhelpIndexId\v\p          Index f”r QBasic Hj„lp
+     \i\i\aInneh†ll\vhelpTableId\v\i\p       Inneh†llsf”rteckning f”r avsnitt i QBasic Hj„lp
+     \i\i\aAnv„nda Hj„lp\i\vhelpOnHelpId\v\p  Information om hur man anv„nder QBasic Hj„lp
+
+ Tips: De h„r avsnitten „r ocks† tillg„ngliga fr†n ?-menyn.
+.context helpOnHelpId
+:nAnv„nda Hj„lp
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Anv„nda QBasic Hj„lp:
+
+   ş Om du vill f† hj„lp om ett nyckelord i Basic, placerar du mark”ren p†
+     ordet och trycker p† F1 eller klickar p† h”gerknappen p† musen.
+
+   ş Om du vill f† hj„lp om en meny, ett kommando eller en dialogruta i
+     QBasic, placerar du mark”ren p† menyordet eller knappen <Hj„lp>, och
+     trycker p† F1.
+
+   ş Om du vill se QBasics Hj„lpavsnitt, trycker du f”rst p† Alt+? och
+     sedan p† den ljusmarkerade bokstaven f”r att v„lja ett kommando.
+
+   ş Om du vill flytta mark”ren till f”nstret Hj„lp, trycker du p† Skift+F6.
+
+   ş Om du vill rulla genom informationen i Hj„lp, trycker du p† PgDn eller
+     PgUp.
+
+   ş Om du vill kopiera informationen i Hj„lp (exempelvis ett programmerings-
+     exempel) till redigeringsf”nstret, anv„nder du kommandona i menyn
+     Redigera.
+
+   ş Om du vill st„nga ett Hj„lp-f”nster, trycker du p† Esc.
+
+ I f”nstret Hj„lp kan du se information om:
+
+   ş Hj„lpavsnitt (som k„nns igen p† de ljusmarkerade pilarna \i \p)
+
+   ş Nyckelord i Basic
+
+ Om du vill flytta mark”ren till ett hj„lpavsnitt, trycker du p† Tabb eller
+ den f”rsta bokstaven i hj„lpavsnittet. Om du vill se informationen om
+ avsnittet eller nyckelordet, placerar du mark”ren var som helst p† avsnittet
+ eller nyckelordet och trycker p† F1 eller klickar med h”gerknappen p† musen.
+
+ QBasic sparar de 20 senaste avsnitten i Hj„lp som du sett. Om du vill se
+ dem igen, trycker du p† Alt+F1 eller klickar p† knappen <Bak†t>.
+.context @helpTableId
+.context helpTableId
+:nInneh†llsf”rteckning
+  \bInneh†ll\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  ÚOrienteringÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÚTangenterÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ \i\p\aAnv„nda Hj„lp\vhelpOnHelpId\v\i\p                    ³ ³ \i\p\aSnabbtangenter\v@sk\v\i\p               ³
+  ³ \i\p\aAnv„nda menyer och kommandon\v@sg.men\v\i\p     ³ ³ \i\p\aRedigeringstangenter\v@me\v\i\p         ³
+  ³ \i\p\aAnv„nda en dialogruta\v@sg.dia\v\i\p            ³ ³ \i\p\aSe- och s”ktangenter\v@vk\v\i\p         ³
+  ³ \i\p\aSyntaxkonventioner\vUsingHelpSyntax\v\i\p               ³ ³ \i\p\aK”r- och fels”kningstangenter\v@dk\v\i\p³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ ³ \i\p\aHj„lptangenter\v@hk\v\i\p               ³
+  ÚAnv„nda QBasicÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ \i\p\aQBasic kommandorad\v@qbas.exe\v\i\p               ³ ÚSnabbreferensÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ \i\p\aTeckenupps„ttning i Basic\v@fun.character.set\v\i\p        ³ ³ \i\p\aASCII-teckenkoder\v@ac\v\i\p            ³
+  ³ \i\p\aNyckelord i uppgiftsordning\v@fk\v\i\p      ³ ³ \i\p\aTangentbordskoder\v@kbsct\v\i\p            ³
+  ³ \i\p\aBegr„nsningar i QBasic\v@lqb\v\i\p           ³ ³ \i\p\aFelkoder\v@rtect\v\i\p                     ³
+  ³ \i\p\aVersionsskillnader\v@vd\v\i\p               ³ ³ \i\p\aCopyright och varum„rken\v@cccp\v\i\p     ³
+  ³ \i\p\aAtt konvertera BASICA-program\v@converting_BASIC\v\i\p    ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ \i\p\aBortom QBasic\v@beyqb\v\i\p                    ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+.context @cccp
+.context .cccp
+:nCopyright och varum„rken
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+  Inneh†llet i detta dokument kan „ndras utan f”reg†ende meddelande och
+  utg”r inget bindande †tagande fr†n Microsoft Corporation. Den programvara
+  som beskrivs, st„lls till f”rfogande under licensavtal eller sekretessavtal.
+  Programvaran f†r endast anv„ndas eller kopieras i enlighet med avtalets
+  villkor. Det „r i lag f”rbjudet att kopiera programvaran till medium som
+  inte uttryckligen specificerats i licensavtalet eller i sekretessavtal.
+  Ingen del av denna dokumentation f†r †terges eller ”verf”ras i n†gon form
+  eller p† n†got s„tt, elektroniskt eller mekaniskt, inklusive fotokopiering
+  och inspelning, f”r n†got som helst „ndam†l utan uttryckligt skriftligt
+  medgivande fr†n Microsoft Corporation.
+
+  (C) Copyright Microsoft Corporation, 1987-1991.
+      Med ensamr„tt.
+
+  Microsoft, MS, MS-DOS, Microsoft Press och GW-BASIC „r registrerade
+  varum„rken.
+
+  I Microsofts dokumentation anv„nds termen "DOS" f”r att referera till b†de
+  MS-DOS och IBM PC-DOS. Namnet p† ett specifikt operativsystem anv„nds n„r
+  det „r n”dv„ndigt att referera till egenskaper som „r unika f”r systemet.
+
+  AT&T „r ett registrerat varum„rke som tillh”r American Telephone and
+  Telegraph Company.
+
+  Compaq „r ett registrerat varum„rke som tillh”r Compaq Computer Corporation.
+
+  Hercules „r ett registrerat varum„rke som tillh”r Hercules Computer
+  Technology.
+
+  IBM „r ett registrerat varum„rke som tillh”r the International Business
+  Machines Corporation.
+
+  Olivetti „r ett registrerat varum„rke som tillh”r Ing. C. Olivetti.
+
+  WordStar „r ett registrerat varum„rke som tillh”r MicroPro International
+  Corporation.
+.comment *********************************************************************
+.comment Orientation nodes
+.comment *********************************************************************
+.context UsingHelpSyntax
+.context @UsingHelpSyntax
+:nSyntaxkonventioner
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ NYCKELORD              Ord med versaler „r nyckelord i Basic. Nyckelord
+                        m†ste vara med i en sats, s†vida de inte st†r
+                        innanf”r hakparenteser.
+
+ platsh†llare           Element med gemener „r platsh†llare f”r information
+                        som du m†ste ha med i en sats (som t ex ett
+                        filnamn$). Syntaxen i QBasic anv„nder datatypssuffix
+                        f”r platsh†llare som m†ste vara av en specifik
+                        datatyp. Platsh†llare som kan vara av mer „n
+                        en datatyp har inte datatypssuffix.
+
+ [Valfritt element]     Element innanf”r hakparenteser „r valfria.
+
+ {val1 | val2}          Klammerparenteser och ett vertikalstreck betecknar ett
+                        val mellan tv† eller flera element. Du m†ste anv„nda
+                        ett av elementen i satsen, s†vida inte
+                        klammerparenteserna st†r innanf”r hakparenteser.
+
+ element, element, ...  Tre punkter efter varandra betyder att flera av
+                        de f”reg†ende elementen kan anv„ndas i en enradssats.
+
+ B”rjan nyckelord       Tre punkter under varandra anv„nds f”r att beskriva
+ .                      flerradiga satser (eller ett satsblock). Det betyder
+ .                      att andra satser kan anv„ndas mellan b”rjan och slutet
+ .                      av blocket.
+ Slut nyckelord
+.context @sg.men
+:nAnv„nda menyer och kommandon
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Anv„nd menyraden l„ngst upp p† sk„rmen f”r att v„lja menyer och kommandon.
+
+ tg„rd               Med en mus...                Med ett tangentbord...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Visa en meny.        Flytta pekaren till          Tryck p† Alt f”r att
+                      menynamnet, tryck sedan      ljusmarkera menynamnen,
+                      och sl„pp ("klicka")         tryck sedan p† den bokstav
+                      musknappen.                  som lyser i den ”nskade
+                                                   menyn.
+
+ V„lja ett kommando.  Klicka p† kommandonamnet.    Tryck p† den bokstav som
+                                                   motsvarar den
+                                                   ljusmarkerade bokstaven i
+                                                   kommandot.
+
+ Avbryta ett          Klicka utanf”r menyn.        Tryck p† Esc.
+ kommando.
+
+ Tips: Titta p† statusf„ltet l„ngst ner p† sk„rmen, f”r att f† hj„lp om den
+       †tg„rd du utf”r f”r tillf„llet. V„lj element inom vinkelparenteser
+       genom att klicka p† elementet.
+.context @sg.dia
+:nAnv„nda en dialogruta
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ QBasic visar dialogrutor n„r du v„ljer ett kommando som har tillval.
+
+ tg„rd               Med en mus...                Med ett tangentbord...
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Markera en           Flytta pekaren till          Tryck p† Tabb tills
+ textruta f”r         textrutan, tryck sedan       mark”ren „r i textrutan.
+ inmatning.           och sl„pp ("klicka")
+                      musknappen.
+
+ V„lja ett element    Dubbelklicka p† elementet.   Ljusmarkera elementet,
+ i en listruta.                                    genom att trycka p†
+                                                   mark”rtangenterna, och
+                                                   tryck p† Retur.
+
+ V„lja ett            Klicka p† alternativet.      Flytta till ett alternativ
+ alternativ.                                       med mark”rtangenterna.
+
+ St„nga av eller      Klicka i kryssrutan.         Anv„nd Tabb f”r att flytta
+ s„tta p† en                                       mark”ren till kryssrutan,
+ kryssruta.                                        och tryck p†
+                                                   blankslagstangenten.
+
+ V„lja en             Klicka p†                    Anv„nd Tabb f”r att flytta
+ kommandoknapp.       kommandoknappen.             mark”ren till
+                                                   kommandoknappen, och tryck
+                                                   p† Retur.
+.comment *********************************************************************
+.comment Command Line node
+.comment *********************************************************************
+.context qbas.exe
+.context @qbas.exe
+:nQBasic kommandorad
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ De h„r v„xlarna kan man skriva p† kommandoraden i DOS efter kommandot
+ QBasic:
+
+ \bQBASIC [/B] [/EDITOR] [/G] [/H] [/MBF] [/NOHI] [[/RUN] k„llfil]\p
+
+ V„xel              Beskrivning
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ /B                 F”r anv„ndning av en monokrom sk„rm med f„rggrafikkort.
+                    V„xeln /B visar QBasic monokromt om du har en
+                    f„rgsk„rm.
+
+ /EDITOR            Startar textredigeraren MS-DOS Editor. Kan f”rkortas /ED.
+
+ /G                 St„ller in QBasic att uppdatera en CGA-sk„rm s† fort
+                    som m”jligt (fungerar bara med maskiner som anv„nder
+                    CGA-sk„rmar). Om du f†r vitt flimmer n„r QBasic
+                    uppdaterar sk„rmen, beror det p† att h†rdvaran inte
+                    kan st”ja den h„r v„xeln. Om du f”redrar en ren sk„rm,
+                    starta QBasic utan v„xeln /G.
+
+ /H                 Visar det maximala antalet rader som din h†rdvara kan
+                    klara av.
+
+ /MBF               G”r att konverteringsfunktionerna i QBasic (CVS, CVD,
+                    MKS$, MKD$) behandlar tal p† IEEE-format som tal p†
+                    Microsoft-Binary-format.
+
+ /NOHI              F”r anv„ndning av sk„rmar som inte st”der h”g intensitet.
+                    Kan inte anv„ndas f”r Compaq laptop datorer.
+
+ k„llfil            Ger namnet p† den fil som ska laddas n„r QBasic startar.
+                    F”r att ladda en fil som skapats med GW-BASIC eller
+                    BASICA m†ste filen ha sparats i GW-BASIC eller BASICA med
+                    alternativet ,A.
+
+ /RUN k„llfil       G”r att QBasic laddar och k”r en programfil innan den
+                    visas.
+.context @fun.character.set
+.context .fun.character.set
+:nTeckenupps„ttning i Basic
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ I teckenupps„ttningen f”r Basic ing†r alfabetiska tecken (A-Z, a-z),
+ numeriska tecken (0-9 och A-F eller a-f f”r hexadecimala tal) och
+ specialtecken. En del tecken har speciell betydelse i Basic:
+
+   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄDatatypssuffixÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+   ³  !  Enkel precision                  %  Heltal                      ³
+   ³  #  Dubbel precision                 &  L†ngt heltal                ³
+   ³  $  Str„ng                                                          ³
+   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+   ÚÄÄÄÄÄMatematiska operatorerÄÄÄÄÄ¿  ÚÄÄÄÄÄÄÄÄÄÄSpecialteckenÄÄÄÄÄÄÄÄÄÄ¿
+   ³  *  Multiplikationstecken      ³  ³  '  Kommenterar rad (apostrof)  ³
+   ³  -  Minustecken                ³  ³  ;  Styr utdata fr†n satserna   ³
+   ³  /  Divisionstecken            ³  ³       PRINT och INPUT           ³
+   ³       (snedstreck)             ³  ³  ,  Styr utdata fr†n satserna   ³
+   ³  =  Relationsoperator eller    ³  ³       PRINT och INPUT           ³
+   ³       tilldelningssymbol       ³  ³  :  Skiljer satser som skrivs   ³
+   ³  >  St”rre „n                  ³  ³       p† samma rad              ³
+   ³  +  Plustecken		    ³  ³  ?  Prompt f”r INPUT-satser	 ³
+   ³  .  Decimalpunkt               ³  ³  _  Understrykningsstreck f”r   ³
+   ³  <  Mindre „n                  ³  ³       forts„ttning p† raden     ³
+   ³  \\  Heltalsdivisionssymbol     ³  ³       (reserverad f”r           ³
+   ³       (omv„nt snedstreck)      ³  ³       kompatibilitet med andra  ³
+   ³  ^  Exponentieringssymbol      ³  ³       versioner av Basic, st”ds ³
+   ³       (cirkumflex)             ³  ³       ej av QBasic)             ³
+   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+.comment *******************************************************************
+.comment Keys nodes
+.comment *******************************************************************
+.context .sk
+.context @sk
+:nSnabbtangenter
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  ÚMarkeringÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ÚRaderingÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Tecken/Rader           Skift+Pil ³  ³ Klipp ut aktuell rad      Ctrl+Y ³
+  ³ Ord               Skift+Ctrl+Pil ³  ³ Klipp ut till radslut   Ctrl+Q,Y ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³ Klipp ut markerad text Skift+Del ³
+  ÚInfogningÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³ Radera markerad text         Del ³
+  ³ Infogning/”verskrivning      Ins ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ³ Raden ovanf”r        Home,Ctrl+N ³  ÚKopieringÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ³ Raden under            End+Retur ³  ³ Till Urklipp            Ctrl+Ins ³
+  ³ Fr†n Urklipp           Skift+Ins ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ÚFels”kningÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+  ÚS”kningÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³ Se utdatask„rm                F4 ³
+  ³ S”k efter text          Ctrl+Q,F ³  ³ Forts„tt k”rning              F5 ³
+  ³ Upprepa s”kning               F3 ³  ³ Exekvera till mark”r          F7 ³
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³ Brytpunkt                     F9 ³
+  ÚHj„lpÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³ Stega                         F8 ³
+  ³ Om QBasic Hj„lp         Skift+F1 ³  ³ Procedurstega                F10 ³
+  ³ Om nyckelord eller avsnitt    F1 ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+.context .dk
+.context @dk
+:nK”r- och fels”kningstangenter
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Starta programexekvering fr†n b”rjan                 Skift+F5
+ Forts„tt programexekvering fr†n aktuell sats         F5
+ Exekvera programmet fr†n mark”rens placering         F7
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ K”r en enda sats                                     F8
+ K”r en enda sats, men inga proceduranrop             F10
+ ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ S„tt eller ta bort brytpunkter                       F9
+.context @vk
+.context .vk
+:nSe- och s”ktangenter
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ V„xla mellan utdatask„rm och redigeringsf”nster               F4
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Visa en lista ”ver laddade delprogram och funktioner          F2
+ Visa n„sta delprogram eller funktion                          Skift+F2
+ Visa f”reg†ende delprogram eller funktion                     Ctrl+F2
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ G”r n„sta f”nster till aktivt f”nster                         F6
+ G”r f”reg†ende f”nster till aktivt f”nster                    Skift+F6
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ V„xla mellan delad sk„rm och aktivt fullsk„rmsf”nster         Ctrl+F10
+ ™ka storleken p† det aktiva f”nstret                          Alt+Plus
+ Minska storleken p† det aktiva f”nstret                       Alt+Minus
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Upprepa s”kning                                               Ctrl+L eller F3
+ S”ka efter text                                               Ctrl+Q,F
+ S”ka efter och ers„tta text                                   Ctrl+Q,A
+.context @hk
+.context .hk
+:nHj„lptangenter
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Se hj„lp f”r det som finns vid mark”ren                  F1 (eller klicka p†
+                                                              h”gerknappen p†
+                                                              musen)
+ Avsluta Hj„lp                                            Esc
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Se Anv„nda Hj„lp                                         Skift+F1
+ Visa ?-menyn                                             Alt+?
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Flytta mark”ren till n„sta avsnitt i Hj„lp               Tab
+ Flytta mark”ren till f”reg†ende avsnitt i Hj„lp          Skift+Tab
+ Flytta mark”ren till n„sta avsnitt som b”rjar p†         bokstav
+ Flytta mark”ren till f”reg†ende avsnitt som b”rjar p†    Skift+bokstav
+ Se f”reg†ende avsnitt i Hj„lp (kan upprepas 20 g†nger)   Alt+F1 (eller
+                                                          klicka p† knappen
+                                                          <Bak†t>)
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Se n„sta avsnitt i Hj„lp                                 Ctrl+F1
+ Se f”reg†ende avsnitt i Hj„lp                            Skift+Ctrl+F1
+.context @me
+:nRedigeringstangenter
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+ \bTangenter f”r mark”rf”rflyttning                QBasic           WordStar\p
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Tecken till v„nster                             V„nsterpil       Ctrl+S
+ Tecken till h”ger                               H”gerpil         Ctrl+D
+ Ord till v„nster                                Ctrl+V„nsterpil  Ctrl+A
+ Ord till h”ger                                  Ctrl+H”gerpil    Ctrl+F
+ Rad upp†t                                       Uppil            Ctrl+E
+ Rad ned†t                                       Nedpil           Ctrl+X
+ F”rsta indenteringsniv†n p† nuvarande rad       Home
+ B”rjan p† nuvarande rad                                          Ctrl+Q,S
+ B”rjan p† n„sta rad                             Ctrl+Retur       Ctrl+J
+ Slutet p† raden                                 End              Ctrl+Q,D
+ H”gst upp i f”nstret                                             Ctrl+Q,E
+ L„ngst ned i f”nstret                                            Ctrl+Q,X
+ Flytta till n„sta f”nster                       F6
+ ™ka storleken p† det aktiva f”nstret            Alt+Plus
+ Minska storleken p† det aktiva f”nstret         Alt+Minus
+
+ \bTextrullningstangenter                          QBasic           WordStar\p
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Rad upp†t                                       Ctrl+Uppil       Ctrl+W
+ Rad ned†t                                       Ctrl+Nedpil      Ctrl+Z
+ Sida upp†t                                      PgUp             Ctrl+R
+ Sida ned†t                                      PgDn             Ctrl+C
+ Ett f”nster till v„nster                        Ctrl+PgUp
+ Ett f”nster till h”ger                          Ctrl+PgDn
+ S„tt bokm„rke (h”gst 4)                         Ctrl+K,0-3
+ G† till bokm„rke                                Ctrl+Q,0-3
+
+ \bTextmarkeringstangenter                         QBasic\p
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Tecken till v„nster                             Skift+V„nsterpil
+ Tecken till h”ger                               Skift+H”gerpil
+ Ord till v„nster                                Skift+Ctrl+V„nsterpil
+ Ord till h”ger                                  Skift+Ctrl+H”gerpil
+ Nuvarande rad                                   Skift+Nedpil
+ Raden ovanf”r                                   Skift+Uppil
+ Sk„rm upp†t                                     Skift+PgUp
+ Sk„rm ned†t                                     Skift+PgDn
+ Till b”rjan av filen                            Skift+Ctrl+Home
+ Till slutet av filen                            Skift+Ctrl+End
+
+ \bInfognings- och kopieringstangenter             QBasic           WordStar\p
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ V„xla mellan infognings- och ”verskrivningsl„ge Ins              Ctrl+V
+ Kopiera markerad text till Urklipp              Ctrl+Ins
+ Radera markerad text och kopiera till Urklipp   Skift+Del
+ Radera nuvarande rad och kopiera till Urklipp   Ctrl+Y
+ Radera till radslut och kopiera till Urklipp                     Ctrl+Q,Y
+ Klistra in inneh†llet i Urklipp                 Skift+Ins
+ Infoga en tom rad under mark”ren                End,Retur
+ Infoga en tom rad ovanf”r mark”ren                               Home,Ctrl+N
+ Infoga specialtecken                            Ctrl+P,Ctrl+key
+
+ \bRaderingstangenter                              QBasic           WordStar\p
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Radera ett tecken till v„nster om mark”ren      Backsteg         Ctrl+H
+ Radera det tecken d„r mark”ren „r placerad      Del              Ctrl+G
+ Radera resten av ordet d„r mark”ren „r placerad                  Ctrl+T
+ Radera markerad text                            Del              Ctrl+G
+ Radera inledande blanksteg fr†n markerade rader Skift+Tab
+.comment *******************************************************************
+.comment Quick Reference nodes
+.comment *******************************************************************
+.context .fk
+.context @fk
+:nNyckelord i uppgiftsordning
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+ Uppgift                              Nyckelord som ing†r i denna lista
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ Styra programfl”de                   DO...LOOP, END, EXIT, FOR...NEXT,
+				      IF...THEN...ELSE, GOSUB...RETURN,
+				      GOTO, ON...GOSUB, ON...GOTO,
+				      SELECT CASE, STOP, SYSTEM
+
+ Deklarera konstanter och variabler   CONST, DATA, DIM, ERASE, OPTION BASE,
+				      READ, REDIM, REM, RESTORE, SWAP,
+				      TYPE...END TYPE
+
+ Definiera och anropa procedurer      CALL, DECLARE, EXIT, FUNCTION, RUN,
+				      SHELL, SHARED, STATIC, SUB
+
+ Inmatning och utmatning (enheter)    CLS, CSRLIN, INKEY$, INP, INPUT,
+                                      KEY (tilldelning), LINE INPUT, LOCATE,
+				      LPOS, LPRINT, LPRINT USING, OPEN COM,
+				      OUT, POS, PRINT, PRINT USING, SPC,
+                                      SCREEN function, TAB, VIEW PRINT,
+				      WAIT, WIDTH
+
+ Se grafiska bilder                   CIRCLE, COLOR, GET (grafik), LINE,
+				      PAINT, PALETTE, PCOPY, PMAP, POINT,
+                                      PRESET, PSET, PUT (grafik),
+                                      SCREEN sats, VIEW, WINDOW
+
+ Kommandon i filsystemet i DOS        CHDIR, KILL, MKDIR, NAME, RMDIR
+
+ Inmatning och utmatning (filer)      CLOSE, EOF, FILEATTR, FREEFILE
+                                      GET (fil I/O), INPUT, INPUT$,
+				      LINE INPUT, LOC, LOCK, LOF, OPEN,
+                                      PUT (fil I/O), SEEK Funktion,
+                                      SEEK sats, UNLOCK, WRITE
+
+ Hantera minne                        CLEAR, FRE, PEEK, POKE
+
+ Manipulera str„ngar                  ASC, CHR$, HEX$, INSTR, LCASE$, LEFT$,
+                                      LEN, LSET, LTRIM$, MID$ funktion, MID$
+                                      sats, OCT$, RIGHT$, RSET, RTRIM$
+				      SPACE$, STR$, STRING$, UCASE$, VAL
+
+ Utf”ra matematiska ber„kningar       ABS, ASC, ATN, CDBL, CINT, CLNG, COS,
+				      CSNG, CVDMBF, CVSMBF, EXP, INT, LOG,
+				      RANDOMIZE, RND, SGN, SIN, SQR, TAN,
+                                      TIME$ funktion
+
+ F†nga h„ndelser och fel              COM, ERDEV, ERDEV$, ERL, ERR, ERROR,
+                                      KEY (h„ndelseinf†ngning), ON COM,
+                                      ON ERROR, ON KEY, ON PEN, ON PLAY,
+                                      ON STRIG, ON TIMER, PEN, PLAY
+                                      (h„ndelseinf†ngning), RESUME, RETURN,
+                                      STRIG, TIMER funktion, TIMER sats
+.context .vd
+.context @vd
+:nVersionsskillnader
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+					     BASICA/GW-BASIC    QBasic
+					     ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍ
+ Spr†kegenskaper
+
+     Radnummer                               Kr„vs              Valfritt
+     Block f”r IF/THEN/ELSE/END IF           Nej                Ja
+     Procedurblock (SUB och FUNCTION)        Nej                Ja
+     Anv„ndardefinierade typer (poster)      Nej                Ja
+     SELECT CASE                             Nej                Ja
+     DO WHILE/UNTIL, LOOP WHILE/UNTIL        Nej                Ja
+     L†nga (32-bitars) heltal                Nej                Ja
+     Tal p† IEEE-format                      Nej                Ja
+     Konstanter                              Nej                Ja
+     Str„ngar med fast l„ngd                 Nej                Ja
+     VGA sk„rml„ge                           Nej                Ja
+     St”der Hercules/Olivetti                Nej                Ja
+     Rekursion                               Nej                Ja
+     St”der kassettband                      Ja                 Nej
+     Kod + datakapacitet                     64K                160K
+
+ Fels”kning
+
+     Enkelstegning                           Nej                 Ja
+     Procedurstegning                        Nej                 Ja
+     Sp†rning                                Nej                 Ja
+     Brytpunkter                             Nej                 Ja
+     Redigera och forts„tta                  Nej                 Ja
+
+ Redigering
+
+     Direkt syntaxkontroll                   Nej                 Ja
+     Diagnostiska felmeddelanden             Nej                 Ja
+     Direkthj„lp vid fel                     Nej                 Ja
+     Flera f”nster                           Nej                 Ja
+     St”d f”r mus                            Nej                 Ja
+     Gr„nssnitt f”r menyer                   Nej                 Ja
+     Kompatibelt med Wordstar                Nej                 Ja
+     Kodorganisation                         Linj„r              Modul„r
+     Dokumentl„ge f”r textredigering         Nej                 Ja
+     S”k/ers„tt                              Nej                 Ja
+     Direktreferens                          Ingen               Full
+
+ Se „ven    \i\p\aSkillnader j„mf”rt med BASICA\v@basica.diffs\v\i\p    \i\p\aNyckelord som ej st”ds\v@unsupported\v\i\p
+.context @ac
+:nASCII-teckenkoder
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                \bVanlig ASCII-tabell (teckenkod 0 - 127)\p
+  000   (nul)   016  (dle)   032 sp   048 0   064 @   080 P   096 `   112 p
+  001  (soh)   017  (dc1)   033 !    049 1   065 A   081 Q   097 a   113 q
+  002  (stx)   018  (dc2)   034 "    050 2   066 B   082 R   098 b   114 r
+  003  (etx)   019  (dc3)   035 #    051 3   067 C   083 S   099 c   115 s
+  004  (eot)   020  (dc4)   036 $    052 4   068 D   084 T   100 d   116 t
+  005  (enq)   021  (nak)   037 %    053 5   069 E   085 U   101 e   117 u
+  006  (ack)   022  (syn)   038 &    054 6   070 F   086 V   102 f   118 v
+  007  (bel)   023  (etb)   039 '    055 7   071 G   087 W   103 g   119 w
+  008  (bs)    024  (can)   040 (    056 8   072 H   088 X   104 h   120 x
+  009   (tab)   025  (em)    041 )    057 9   073 I   089 Y   105 i   121 y
+  010   (lf)    026   (eof)   042 *    058 :   074 J   090 Z   106 j   122 z
+  011  (vt)    027  (esc)   043 +    059 ;   075 K   091 [   107 k   123 {
+  012  (np)    028  (fs)    044 ,    060 <   076 L   092 \\   108 l   124 |
+  013   (cr)    029  (gs)    045 -    061 =   077 M   093 ]   109 m   125 }
+  014  (so)    030  (rs)    046 .    062 >   078 N   094 ^   110 n   126 ~
+  015  (si)    031  (us)    047 /    063 ?   079 O   095 _   111 o   127 
+
+               \bUt”kad ASCII-tabell (teckenkod 128 - 255)\p
+    128 €   143    158    172 ¬   186 º   200 È   214 Ö   228 ä   242 ò
+    129    144    159 Ÿ   173 ­   187 »   201 É   215 ×   229 å   243 ó
+    130 ‚   145 ‘   160     174 ®   188 ¼   202 Ê   216 Ø   230 æ   244 ô
+    131 ƒ   146 ’   161 ¡   175 ¯   189 ½   203 Ë   217 Ù   231 ç   245 õ
+    132 „   147 “   162 ¢   176 °   190 ¾   204 Ì   218 Ú   232 è   246 ö
+    133 …   148 ”   163 £   177 ±   191 ¿   205 Í   219 Û   233 é   247 ÷
+    134 †   149 •   164 ¤   178 ²   192 À   206 Î   220 Ü   234 ê   248 ø
+    135 ‡   150 –   165 ¥   179 ³   193 Á   207 Ï   221 İ   235 ë   249 ù
+    136 ˆ   151 —   166 ¦   180 ´   194 Â   208 Ğ   222 Ş   236 ì   250 ú
+    137 ‰   152 ˜   167 §   181 µ   195 Ã   209 Ñ   223 ß   237 í   251 û
+    138 Š   153 ™   168 ¨   182 ¶   196 Ä   210 Ò   224 à   238 î   252 ü
+    139 ‹   154 š   169 ©   183 ·   197 Å   211 Ó   225 á   239 ï   253 ı
+    140 Œ   155 ›   170 ª   184 ¸   198 Æ   212 Ô   226 â   240 ğ   254 ş
+    141    156 œ   171 «   185 ¹   199 Ç   213 Õ   227 ã   241 ñ   255
+    142    157 
+
+.context .kbsct
+.context @kbsct
+:nTangentbordskoder
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+     \bTangent    Kod\p     º     \bTangent        Kod\p     º     \bTangent      Kod\p
+                        º                            º
+     Esc        1       º     A              30      º     Caps Lock    58
+     !, 1       2       º     S              31      º     F1           59
+     ", 2, @    3       º     D              32      º     F2           60
+     #, 3, œ    4       º     F              33      º     F3           61
+     Ï, 4, $    5       º     G              34      º     F4           62
+     %, 5       6       º     H              35      º     F5           63
+     &, 6       7       º     J              36      º     F6           64
+     /, 7, {    8       º     K              37      º     F7           65
+     (, 8, [    9       º     L              38      º     F8           66
+     ), 9, ]    10      º     ™              39      º     F9           67
+     =, 0, }    11      º                   40      º     F10          68
+     ?, +, \\    12      º     *, ',          41      º     F11          133
+     `, ï,      13      º     V„nster skift  42      º     F12          134
+     Backsteg   14      º     >, <, |        43      º     Num Lock     69
+     Tab        15      º     Z              44      º     Scroll Lock  70
+     Q          16      º     X              45      º     Home, 7      71
+     W          17      º     C              46      º     Uppil, 8     72
+     E          18      º     V              47      º     PgUp, 9      73
+     R          19      º     B              48      º     Num -        74
+     T          20      º     N              49      º     V„nsterpil,4 75
+     Y          21      º     M              50      º     Center, 5    76
+     U          22      º     ;, ,           51      º     H”gerpil, 6  77
+     I          23      º     :, .           52      º     Num +        78
+     O          24      º     _, -           53      º     End, 1       79
+     P          25      º     H”ger skift    54      º     Nedpil, 2    80
+               26      º     Print Scrn     55      º     PgDn, 3      81
+     ^, ù, ~    27      º     Alt            56      º     Ins, 0       82
+     Retur      28      º     Blanksteg      57      º     Del, ,       83
+     Ctrl       29      º                            º
+.context .rtect
+.context @rtect
+:nFelkoder
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ \bKod     Meddelande\p                 º  \bKod     Meddelande\p
+				    º
+ 1       NEXT utan FOR              º  37      Felaktigt antal argument
+ 2       Syntaxfel                  º  38      Matrisen inte definierad
+ 3       RETURN utan GOSUB          º  40      Variabel kr„vs
+ 4       Slut p† DATA               º  50      ™verskridning i FIELD-satsen
+ 5       Ogiltigt funktionsanrop    º  51      Internt fel
+ 6       ™verskridning              º  52      Felaktigt filnamn eller nummer
+ 7       Slut p† minnet             º  53      Fil saknas
+ 8       Etikett „r inte definierad º  54      Felaktigt fill„ge
+ 9       Index utanf”r intervallet  º  55      Filen redan ”ppen
+ 10      Definitionen finns redan   º  56      FIELD-sats aktiv
+ 11      Division med noll          º  57      Enhetsfel (I/O)
+ 12      Ogiltigt i direktl„get     º  58      Filen finns redan
+ 13      Olika typer                º  59      Felaktig postl„ngd
+ 14      Slut p† str„ngutrymme      º  61      Disken „r full
+ 16      Str„ngformeln f”r komplex  º  62      Inmatning efter filslut
+ 17      Kan inte forts„tta         º  63      Felaktigt postnummer
+ 18      Funktionen inte definierad º  64      Felaktigt filnamn
+ 19      RESUME finns inte          º  67      F”r m†nga filer
+ 20      RESUME utan fel            º  68      Enhet ej tillg„nglig
+ 24      Tiden ute f”r enheten      º  69      Kommunikationsbufferten full
+ 25      Enhetsfel                  º  70      Beh”righet saknas
+ 26      FOR utan NEXT              º  71      Disken „r inte klar
+ 27      Slut p† papper             º  72      Fel p† disken
+ 29      WHILE utan WEND            º  73      Egenskapen ej tillg„nglig
+ 30      WEND utan WHILE            º  74      Namnbyte till annan fil
+ 33      Etiketten finns redan      º  75      tkomstfel f”r s”kv„g/fil
+ 35      Delprogrammet ej definieratº  76      Kan inte hitta s”kv„gen
+.context .lqb
+.context @lqb
+:nBegr„nsningar i QBasic
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ Det h„r avnittet tar upp begr„nsningar f”r f”ljande i QBasic:
+
+   \i\p\aBegr„nsningar f”r namn, str„ngar och tal\v@lim.nsn\v\i\p
+   \i\p\aBegr„nsningar f”r matriser\v@lim.arr\v\i\p
+   \i\p\aBegr„nsningar f”r procedurer och filer\v@lim.pf\v\i\p
+
+ Se „ven    \i\p\aBortom QBasic\v@beyqb\v\i\p
+.context .lim.nsn
+.context @lim.nsn
+:nBegr„nsningar f”r namn, str„ngar och tal
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                             H”gst                    L„gst
+			     ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ   ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+ L„ngd p† variabelnamn       40 tecken                 1 tecken
+ L„ngd p† str„ngar           32 767 tecken             0 tecken
+ Heltal                      32 767                   -32 768
+ L†nga heltal                2 147 483 647            -2 147 483 648
+ Enkelprecisionstal:
+   Positiva                  3.402823E+38              2.802597E-45
+   Negativa                 -2.802597E-45             -3.402823E+38
+ Dubbelprecisionstal:
+   Positiva                  1.79769313486231D+308     4.940656458412465D-324
+   Negativa                 -4.940656458412465D-324   -1.79769313486231D+308
+.context @lim.arr
+:nBegr„sningar f”r matriser
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                                      H”gst                  L„gst
+				      ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍ
+ Matrisstorlek (alla element):
+   Statisk                            65 535 byte (64K)     1 byte
+   Dynamisk                           65 535 byte (64K)
+ Antal till†tna dimensioner           60                     1
+ Till†tna ospecificerade dimensioner  8                      1
+ V„rde p† matrisindex                 32 767                -32 768
+
+   Obs! Det maximala intervallet mellan v„rden p† matrisindex „r 32 767.
+.context @lim.pf
+:nBegr„nsningar f”r procedurer och filer
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                               H”gst                   L„gst
+			       ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍ
+ Procedurstorlek               64K                     0
+ Antal argument                60                      0
+ Datafilnummer                 255                     1
+ Datafilpost-nummer            2 147 483 647           1
+ Storlek p† datafilpost        32K                     1 byte
+ Storlek p† datafil            Tillg„ngligt filutrymme 0
+ S”kv„gsnamn                   127 tecken              1 tecken
+ Felmeddelandenummer           255                     1
+.context @converting_BASIC
+:nAtt konvertera BASICA-program
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+  T„nk p† f”ljande saker n„r du konverterar program fr†n BASICA till QBasic:
+
+  ş Spara BASICA-programmet i ASCII-format. QBasic kan inte anv„nda program
+    som sparats i bin„rformat i BASICA.
+
+  ş Anv„nd v„xeln /MBF n„r du startar QBasic. V„xeln /MBF g”r att QBasic kan
+    l„sa och skriva BASICA datafiler.
+
+  ş Byt ut CALL-satser till CALL ABSOLUTE. Satsen CALL i BASICA motsvarar
+    satsen CALL ABSOLUTE i QBasic.
+
+  Dessutom kan man anv„nda REMLINE.BAS f”r att ta bort on”diga radnummer ur
+  det program man konverterar. QBasic kr„ver inte radnummer, och genom att
+  ta bort dem kan man f”rb„ttra programmets l„sbarhet.
+
+ Se „ven    \i\p\aSkillnader j„mf”rt med BASICA\v@basica.diffs\v\i\p      \i\p\aNyckelord som ej st”ds\v@unsupported\v\i\p
+            \i\p\aVersionsskillnader\v@vd\v\i\p
+.context beyqb
+.context @beyqb
+:nBortom QBasic
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ QBasic „r en l„ttanv„nd milj” f”r att skapa Basic-program. F”ljande tabell
+ ger n†gra l”sningar om du beh”ver forts„tta bortom QBasic.
+
+ Om du beh”ver                   Kan du
+ ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ     ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+
+ Snabb programexekvering         Anv„nda en Basic-kompilator (t ex Microsoft
+                                 QuickBasic eller Microsoft Basic Professional
+                                 Development System) f”r att ”vers„tta din
+                                 Basic-kod till maskinkod.
+
+ Bygga program som kr„ver        Anv„nda en utvecklingsmilj” f”r Basic som
+ mer minne „n 160kb              st”der utveckling av stora program.
+
+ Distribuera dina program        Anv„nda en Basic-kompilator f”r att skapa
+                                 frist†ende program av din QBasic-kod. P† det
+                                 viset kan du distribuera dina program,
+                                 eftersom QBasic inte beh”ver f”lja med.
+
+ Skapa ett program f”r           Anv„nda Indexed Sequential Access
+ datahantering                   Method (ISAM), som ing†r i Microsoft Basic
+                                 Professional Development System, f”r att
+                                 utveckla databasprogram.
+
+ Kontakta din lokala Microsoft†terf”rs„ljare om du vill ha mer information om
+ produkter f”r Basic-programmering. Om du vill l„ra dig mer om programmering
+ i Basic kan du l„sa f”ljande b”cker fr†n Microsoft Press, eller andra
+ b”cker:
+
+   ş "Running QBasic" av Michael Halvorson och David Rygmyr (1991).
+   ş "QBasic: Programmer's Quick Reference" av Kris Jamsa (1991).
+   ş "The Waite Group's QBasic Reference Plus" av Waite, Prata, et al.
+     (1991).
+   ş "The Waite Group's Microsoft QuickBASIC Bible" av Waite, Prata, et al.
+     (1990).
+   ş "The Waite Group's Microsoft QuickBASIC Primer Plus" av Waite et al.
+     (1990).
+   ş "Microsoft QuickBASIC Programmer's Toolbox" av John Clark Craig (1988).
+   ş "Microsoft QuickBASIC" av Douglas Hergert (finns „ven p† svenska).
+.context @unsupported
+.context ALIAS
+.context EVENT
+.context LOCAL
+.context BYVAL
+.context $INCLUDE
+.context SADD
+.context SETMEM
+.context CDECL
+.context Int86
+.context Interrupt
+.context SIGNAL
+.context COMMAND$
+.context Int86X
+.context InterruptX
+.context UEVENT
+.context AUTO
+.context NEW
+.context CONT
+.context LLIST
+.context RENUM
+.context LOAD
+.context SAVE
+.context DELETE
+.context MERGE
+.context USR
+.context EDIT
+.context MOTOR
+:nNyckelord som ej st”ds
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ F”ljande nyckelord i QuickBasic st”ds inte i QBasic:
+
+     ALIAS       EVENT       LOCAL         SETMEM
+     BYVAL       $INCLUDE    SADD          SIGNAL
+     CDECL       Int86       Interrupt     UEVENT
+     COMMAND$    Int86X      InterruptX
+
+ F”ljande nyckelord i GW-BASIC/BASICA st”ds inte i QBasic:
+
+     AUTO        EDIT        MERGE         RENUM
+     CONT        LIST        MOTOR         SAVE
+     DEF USR     LLIST       NEW           USR
+     DELETE      LOAD
+
+ Se „ven    \i\p\aAtt konvertera BASICA-program\v@converting_BASIC\v\i\p   \i\p\aSkillnader j„mf”rt med BASICA\v@basica.diffs\v\i\p
+            \i\p\aVersionsskillnader\v@vd\v\i\p
+.context @basica.diffs
+:nSkillnader j„mf”rt med BASICA
+  \i\p\aInneh†ll\v@helpTableId\v\i\p  \i\p\aIndex\v@helpIndexId\v\i\p  \i\p\aBak†t\v!B\v\i\p
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ F”ljande nyckelord fungerar p† ett annat s„tt i QBasic „n i BASICA:
+
+ \bBSAVE, BLOAD\p     QBasic st”der inte kassettenheten med BSAVE och BLOAD,
+                  dessutom kan minnesplaceringarna vara olika.
+
+ \bCALL ABSOLUTE\p    Assemblerrutiner som anropas fr†n BASICA, och som har
+                  str„ngargument, m†ste skrivas om om de ska anropas fr†n
+                  QBasic, eftersom str„ngdeskriptorerna i QBasic har en
+                  l„ngd p† 2 ord (4 byte). De 2 orden best†r av
+                  str„ngl„ngdens mest signifikanta och minst signifikanta
+                  byte, f”ljt av str„ngadressens mest signifikanta och
+                  minst signifikanta byte.
+
+ \bCHAIN\p            Man kan inte specificera radnummer i QBasic med CHAIN
+                  och BASICA-alternativen ALL, MERGE och DELETE st”ds inte.
+
+ \bCOMMON, DECLARE\p  I QBasic kan man inte ha exekverbara satser framf”r
+                  satserna COMMON och DECLARE.
+
+ \bDEFtype\p          En variabel i BASICA som saknar en explicit typ (dvs
+                  att den varken har #, &, $ eller %), f†r en standardtyp som
+                  best„ms av den senaste DEFtype-satsen. I nedanst†ende
+                  exempel p† BASICA-kod visas hur variabeln IFLAG „ndras fr†n
+                  heltal till enkelprecisionstal:
+
+		      10  DEFINT I
+		      20  PRINT IFLAG
+		      30  DEFSNG I
+		      40  GOTO 20
+
+                  I QBasic kan en variabels typ inte „ndras n„r den har
+                  f”rekommit tidigare i programmet.
+
+ \bDIM\p              Alla matriser i BASICA „r dynamiska, eftersom BASICA alltid
+                  allokerar minne f”r matriser medan programmet k”rs. I QBasic
+                  kan man anv„nda DIM f”r att antingen deklarera en statisk
+                  eller en dynamiskt matris.
+
+ \bDRAW, PLAY\p       Satserna DRAW och PLAY i BASICA, som anv„nder variabler
+                  eller andra kommandostr„ngar inom kommandostr„ngar, m†ste
+                  skrivas om f”r QBasic. Anv„nd funktionen VARPTR$, som
+                  returnerar en str„ngrepresentation av variabelns adress:
+
+                  sats i BASICA         Motsvarighet i QBasic
+		  ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ    ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+		  DRAW "Xcmdstring$"    DRAW "X" + VARPTR$ (cmdstring$)
+		  DRAW "TA = angle"     DRAW "TA =" + VARPTR$(angle)
+
+ \bEOF\p              N„r du styr indata fr†n en fil till ett program i BASICA
+                  returnerar EOF(0) sant n„r slutet p† indatafilen har n†tts.
+                  I QBasic returnerar EOF(0) sant om man f”rs”ker l„sa fler
+                  poster „n vad som finns i indatafilen. F”ljande program
+                  fungerar i BASICA, men genererar felmeddelandet
+                  ZZ"Input past end of file" i QBasic:
+
+                      5  WHILE NOT EOF(0)
+                      10 LINE INPUT ; A$
+                      15 WEND
+
+ \bFIELD\p            N„r en direktfil st„ngs i BASICA med satsen CLOSE
+                  eller RESET beh†ller f„ltvariabler det senaste v„rdet
+                  som de tilldelats med satsen. I QBasic †terst„lls alla
+                  f„ltvariabler till tomma str„ngar.
+
+ Se „ven    \i\p\aAtt konvertera BASICA-program\v@converting_BASIC\v\i\p   \i\p\aNyckelord som ej st”ds\v@unsupported\v\i\p
+            \i\p\aVersionsskillnader\v@vd\v\i\p

@@ -1,0 +1,50 @@
+.asm.obj:
+	$(asm) -DMODEL_LARGE $(ainc) $(aflags) $*.asm,$*.obj;
+
+.c.obj:
+	$(cc) -AL $(cflags) -Fo$*.obj $*.c
+
+
+include	= ..\..\include
+extasw	= -I.. -I..\..
+extcsw	= -Os -Gs -I. -I$(include) -c
+
+
+hardware.lib:	cmos.obj     \
+		getcpu.obj   \
+		getemm.obj   \
+		getext.obj   \
+		getmodel.obj \
+		getmem.obj   \
+		himem.obj    \
+      ms_mice.obj  \
+		smartdrv.obj \
+		vfeat.obj    \
+		syquest.obj  \
+		ramdrv.obj
+	del hardware.lib
+	lib @libfile
+
+
+cmos.obj:	cmos.asm
+
+getcpu.obj:	getcpu.asm
+
+getemm.obj:	getemm.asm
+
+getext.obj:	getext.asm
+
+getmem.obj:	getmem.asm
+
+getmodel.obj:	getmodel.asm
+
+himem.obj:	himem.asm
+
+ms_mice.obj:    ms_mice.asm
+
+smartdrv.obj:	smartdrv.asm
+
+vfeat.obj:	vfeat.asm
+
+ramdrv.obj:	ramdrv.c $(include)\alias.h $(include)\disk_io.h
+

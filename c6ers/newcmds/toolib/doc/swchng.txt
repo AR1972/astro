@@ -1,0 +1,57 @@
+
+SUMMARY search and replace lines in tools.ini or similar file
+
+#include <tools.h>
+
+swchnglhs (strSwFile, strTag, strLHS, strRHS)
+char *strSwFile;
+char *strTag;
+char *strLHS;
+char *strRHS;
+
+flagType swchng (strSwFile, strTag, strLHS, strRHS, fNoUndel)
+char *strSwFile;
+char *strTag;
+char *strLHS;
+char *strRHS;
+flagType fNoUndel;
+
+flagType swchange ( char *strSwFile,
+		    char *strTag,
+		    char *strLHS,
+		    char *strRHS,
+		    flagType fNoUndel,
+		    flagType *pfError	)
+
+DESCRIPTION
+
+   Searchs the file strSwFile for
+       [strTag]
+           LHS=
+ 
+   and if strRHS is non-empty changes the right hand side to strRHS
+   else deletes the line LHS=
+ 
+   swchnglhs: The original file is fdeleted for recovery via UNDEL.
+   swchng   : if fNoUndel, then original file is deleted, no UNDEL possible
+              else fdeleted for recovery via UNDEL.
+ 
+   LHS=RHS is output right after the start of section and any later
+   instances of LHS are removed.  N.B. if RHS is "", no LHS= is output
+ 
+   If section doesn't exist in file, it is appended at end
+ 
+ 
+
+RETURN VALUE
+
+IMPLEMENTATION
+
+SEE ALSO   
+
+NOTE
+    swchng used to delete the .ini file if there was no space available.
+    This error status is returned by swchange in the pfError parameter,
+    and no change is made if the necessary disk space is not available.
+
+EXAMPLE
