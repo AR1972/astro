@@ -3,7 +3,7 @@ REM If %1 is not empty, set prompt to fun ANSI string
 rem
 rem Environment for compiling NEWCMDS (deltree, move, etc.)
 rem
-set root=c:\dos6
+set root=c:\astro
 set PATH=%root%\C6ERS\TOOLS6\BIN;%root%\tools\bin;%PATH%
 set INCLUDE=%root%\C6ERS\TOOLS6\INCLUDE
 set LIB=%root%\C6ERS\TOOLS6\LIB
