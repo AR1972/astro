@@ -1,0 +1,220 @@
+	cl -c -nologo -W3 -AS -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX  -Ox -Zp -I. -DZK1 -DJJJ1 sutkshar.c
+sutkshar.c
+sutkshar.c(35) : warning C4047: 'initializing' : different levels of indirection
+	cl -c -nologo -W3 -AS -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX  -Ox -Zp -I. -DZK1 -DJJJ1 sutkcomp.c
+sutkcomp.c
+sutkcomp.c(65) : warning C4203: 'CbWriteFileHeader' : function too large for global optimizations
+	cl -c -nologo -W3 -AS -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX  -Ox -Zp -I. -DZK1 -DJJJ1 sutkdeco.c
+sutkdeco.c
+	cl -c -nologo -W3 -AS -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX  -Ox -Zp -I. -DZK1 -DJJJ1 compress.c
+compress.c
+	masm /Mx fmemset;
+Microsoft (R) Macro Assembler Version 5.10A 
+Copyright (C) Microsoft Corp 1981, 1989.  All rights reserved.
+
+
+  47302 + 438326 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors
+	cd zk1
+	cl -c -nologo -W3 -AS -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX  -Ox -Zp -I.. zk1comp.c
+zk1comp.c
+	cd ..
+	cd zk1
+	cl -c -nologo -W3 -AS -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX  -Ox -Zp -I.. zk1deco.c
+zk1deco.c
+	cd ..
+	cd jjj1
+	cl -c -nologo -W3 -AS -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX  -Ox -Zp -I.. jjj1shar.c
+jjj1shar.c
+	cd ..
+	cd jjj1
+	cl -c -nologo -W3 -AS -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX  -Ox -Zp -I.. jjj1comp.c
+jjj1comp.c
+jjj1comp.c(714) : warning C4203: 'Lcb_JJJ1_CompressToFile' : function too large for global optimizations
+	cd ..
+	cd jjj1
+	cl -c -nologo -W3 -AS -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX  -Ox -Zp -I.. jjj1deco.c
+jjj1deco.c
+	cd ..
+	cd lzss
+	cl -c -nologo -W3 -AS -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX  -Ox -Zp -I.. lzshare.c
+lzshare.c
+	cd ..
+	cd lzss
+	cl -c -nologo -W3 -AS -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX  -Ox -Zp -I.. lzcomp.c
+lzcomp.c
+	cd ..
+	del comp.lib
+	lib comp.lib +sutkshar +sutkcomp +sutkdeco +compress +fmemset ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	lib comp.lib +zk1\zk1comp.obj +zk1\zk1deco.obj ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	lib comp.lib +jjj1\jjj1shar.obj +jjj1\jjj1comp.obj +jjj1\jjj1deco.obj ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	lib comp.lib +lzss\lzshare.obj +lzss\lzcomp.obj ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	copy comp.lib ScompR.lib
+        1 file(s) copied
+	del comp.bak
+	cd tools
+	cl -c -nologo -W3 -AS -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX  -Ox -Zp -I.. -DZK1 -DJJJ1 comptool.c
+comptool.c
+	cd ..
+	cd tools
+	cl -c -nologo -W3 -AS -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX  -Ox -Zp -I.. tlshare.c
+tlshare.c
+	cd ..
+	cd tools
+	link /NOL /EX /STACK:8192 comptool tlshare, compress.exe, , ..\comp Slibce /NOD;
+	cd ..
+	copy tools\compress.exe compress.exe
+        1 file(s) copied
+	cl -c -nologo -W3 -AS -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX  -Ox -Zp -I. -DZK1 -DJJJ1 decomp.c
+decomp.c
+	del decomp.lib
+	lib decomp.lib +sutkshar +sutkdeco +decomp +fmemset ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	lib decomp.lib +zk1\zk1deco.obj ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	lib decomp.lib +jjj1\jjj1shar.obj +jjj1\jjj1deco.obj ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	lib decomp.lib +lzss\lzshare.obj ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	copy decomp.lib SdecompR.lib
+        1 file(s) copied
+	del decomp.bak
+	cd tools
+	cl -c -nologo -W3 -AS -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX  -Ox -Zp -I.. decomptl.c
+decomptl.c
+	cd ..
+	cd tools
+	link /NOL /EX /STACK:8192 decomptl tlshare, decomp.exe, , ..\decomp Slibce /NOD;
+	cd ..
+	copy tools\decomp.exe decomp.exe
+        1 file(s) copied
+	cl -c -nologo -W3 -AL -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX -NT _COMPRESS -Ox -Zp -I. -DZK1 -DJJJ1 sutkshar.c
+sutkshar.c
+sutkshar.c(35) : warning C4047: 'initializing' : different levels of indirection
+	cl -c -nologo -W3 -AL -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX -NT _COMPRESS -Ox -Zp -I. -DZK1 -DJJJ1 sutkcomp.c
+sutkcomp.c
+sutkcomp.c(204) : warning C4203: 'CbWriteFileHeader' : function too large for global optimizations
+	cl -c -nologo -W3 -AL -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX -NT _COMPRESS -Ox -Zp -I. -DZK1 -DJJJ1 sutkdeco.c
+sutkdeco.c
+	cl -c -nologo -W3 -AL -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX -NT _COMPRESS -Ox -Zp -I. -DZK1 -DJJJ1 compress.c
+compress.c
+	masm /Mx fmemset;
+Microsoft (R) Macro Assembler Version 5.10A 
+Copyright (C) Microsoft Corp 1981, 1989.  All rights reserved.
+
+
+  47302 + 438326 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors
+	cd zk1
+	cl -c -nologo -W3 -AL -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX -NT _COMPRESS -Ox -Zp -I.. zk1comp.c
+zk1comp.c
+zk1comp.c(46) : warning C4203: 'Lcb_ZK1_CompressToFile' : function too large for global optimizations
+	cd ..
+	cd zk1
+	cl -c -nologo -W3 -AL -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX -NT _COMPRESS -Ox -Zp -I.. zk1deco.c
+zk1deco.c
+	cd ..
+	cd jjj1
+	cl -c -nologo -W3 -AL -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX -NT _COMPRESS -Ox -Zp -I.. jjj1shar.c
+jjj1shar.c
+	cd ..
+	cd jjj1
+	cl -c -nologo -W3 -AL -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX -NT _COMPRESS -Ox -Zp -I.. jjj1comp.c
+jjj1comp.c
+jjj1comp.c(714) : warning C4203: 'Lcb_JJJ1_CompressToFile' : function too large for global optimizations
+	cd ..
+	cd jjj1
+	cl -c -nologo -W3 -AL -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX -NT _COMPRESS -Ox -Zp -I.. jjj1deco.c
+jjj1deco.c
+jjj1deco.c(353) : warning C4203: 'UnpackJJJ1' : function too large for global optimizations
+	cd ..
+	cd lzss
+	cl -c -nologo -W3 -AL -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX -NT _COMPRESS -Ox -Zp -I.. lzshare.c
+lzshare.c
+	cd ..
+	cd lzss
+	cl -c -nologo -W3 -AL -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX -NT _COMPRESS -Ox -Zp -I.. lzcomp.c
+lzcomp.c
+	cd ..
+	del comp.lib
+	lib comp.lib +sutkshar +sutkcomp +sutkdeco +compress +fmemset ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	lib comp.lib +zk1\zk1comp.obj +zk1\zk1deco.obj ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	lib comp.lib +jjj1\jjj1shar.obj +jjj1\jjj1comp.obj +jjj1\jjj1deco.obj ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	lib comp.lib +lzss\lzshare.obj +lzss\lzcomp.obj ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	copy comp.lib LcompR.lib
+        1 file(s) copied
+	del comp.bak
+	cl -c -nologo -W3 -AL -DDOS_VER -DCOMPLEX -DDOLLAR_SUFFIX -NT _COMPRESS -Ox -Zp -I. -DZK1 -DJJJ1 decomp.c
+decomp.c
+	del decomp.lib
+	lib decomp.lib +sutkshar +sutkdeco +decomp +fmemset ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	lib decomp.lib +zk1\zk1deco.obj ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	lib decomp.lib +jjj1\jjj1shar.obj +jjj1\jjj1deco.obj ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	lib decomp.lib +lzss\lzshare.obj ;
+
+Microsoft (R) Library Manager  Version 3.17    
+Copyright (C) Microsoft Corp 1983-1990.  All rights reserved.
+
+	copy decomp.lib LdecompR.lib
+        1 file(s) copied
+	del decomp.bak

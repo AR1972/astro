@@ -1,0 +1,8 @@
+*.obj
+*.map
+*.res
+*.sym
+lib
+c6ers/*/*.exe
+c6ers/*/*.lib
+c6ers/*/*.out

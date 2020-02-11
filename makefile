@@ -2,9 +2,6 @@
 
 
 all:
-	cd tools\bin\source\buildmsg
-	$(MAKE)
-	cd ..\..\..\..
 	cd messages
         $(MAKE)
 	cd ..\boot

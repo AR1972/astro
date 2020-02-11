@@ -20,6 +20,7 @@ if "%1"=="" set oakdrive=C:
 if not "%1"=="" set oakdrive=%1
 
 set oakpath=%oakdrive%\astro
+set oakroot=%oakdrive%\astro
 
 
 set PATH=%oakpath%\c6ers\tools6\BIN;%PATH%
