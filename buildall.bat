@@ -7,7 +7,7 @@ REM You must specify a country variable at the command line.
 if "%1"=="" goto usage
 
 SET ROOT=c:\astro
-SET DOSMAKE=%ROOT%\TOOLS\BIN\NMAKE
+SET DOSMAKE=%ROOT%\c6ers\tools6\BIN\NMAKE
 SET CPRS=%ROOT%\compress
 SET BIN=%ROOT%\binaries
 SET TDSTAMP=/DATE:1993.03.09 /TIME:06.00.00
@@ -15,7 +15,7 @@ SET COUNTRY=%1
 SET LANG_SRC=%ROOT%\LANG
 SET PROJ=500
 SET BUILDER=YES
-SET INIT=%ROOT%\tools\bin
+SET INIT=%ROOT%\c6ers\tools6\bin
 
 echo ********************** building c6ers **********************************
 set savep=%path%
@@ -29,34 +29,34 @@ set include=.;%ROOT%\c6ers\tools6\include;..\toolsvr\inc
 	%DOSMAKE%
 	cd %ROOT%
 
-echo ********************** building magicdrve ###***************************
-set PATH=%root%\C6ERS\TOOLS6\BIN;%root%\tools\bin;%PATH%
-set INCLUDE=%root%\MAGICDRV\INC;%root%\C6ERS\TOOLS6\INCLUDE
-set LIB=%root%\MAGICDRV\LIB;%root%\C6ERS\TOOLS6\LIB
-	
-	cd magicdrv
-	call build.bat
-	cd driver
-	copy dblspace.bin %BIN%
-	copy dblspace.bin %CPRS%
-	copy dblspace.sys %BIN%
-	copy dblspace.sys %CPRS%
-	copy dsvxd.386 %BIN%
-	compress -f dsvxd.386 %CPRS%\dsvxd.38_
-	cd ..\setupman
-	copy dblspace.inf %BIN%
-	compress -f dblspace.inf %CPRS%\dblspace.in_
-	copy dblspace.hlp %BIN%
-	compress -f dblspace.hlp %CPRS%\dblspace.hl_
-	copy dblspace.exe %BIN%
-	compress -f dblspace.exe %CPRS%\dblspace.ex_
-	cd %ROOT%
-
+::echo ********************** building magicdrve ###***************************
+::set PATH=%root%\C6ERS\TOOLS6\BIN;%root%\c6ers\tools6\bin;%PATH%
+::set INCLUDE=%root%\MAGICDRV\INC;%root%\C6ERS\TOOLS6\INCLUDE
+::set LIB=%root%\MAGICDRV\LIB;%root%\C6ERS\TOOLS6\LIB
+::	
+::	cd magicdrv
+::	call build.bat
+::	cd driver
+::	copy dblspace.bin %BIN%
+::	copy dblspace.bin %CPRS%
+::	copy dblspace.sys %BIN%
+::	copy dblspace.sys %CPRS%
+::	copy dsvxd.386 %BIN%
+::	compress -f dsvxd.386 %CPRS%\dsvxd.38_
+::	cd ..\setupman
+::	copy dblspace.inf %BIN%
+::	compress -f dblspace.inf %CPRS%\dblspace.in_
+::	copy dblspace.hlp %BIN%
+::	compress -f dblspace.hlp %CPRS%\dblspace.hl_
+::	copy dblspace.exe %BIN%
+::	compress -f dblspace.exe %CPRS%\dblspace.ex_
+::	cd %ROOT%
+::
 echo ********************** building msdos60 base ***************************
-SET PATH=%ROOT%\TOOLS\BIN;%path%
-SET INIT=%ROOT%\tools\bin
-SET INCLUDE=%ROOT%\tools\include
-SET LIB=%ROOT%\tools\lib
+SET PATH=%ROOT%\c6ers\tools6\BIN;%path%
+SET INIT=%ROOT%\c6ers\tools6\bin
+SET INCLUDE=%ROOT%\c6ers\tools6\include
+SET LIB=%ROOT%\c6ers\tools6\lib
 
 	%DOSMAKE%
 	cd ..

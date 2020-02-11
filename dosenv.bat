@@ -22,16 +22,16 @@ if not "%1"=="" set oakdrive=%1
 set oakpath=%oakdrive%\astro
 
 
-set PATH=%oakpath%\TOOLS\BIN;%PATH%
+set PATH=%oakpath%\c6ers\tools6\BIN;%PATH%
 
 rem  If you have a RAM drive, it will probably speed up your system to
 rem  point these variables to a temporary directory there.
-set TEMP=%oakpath%\tools\tmp
-set TMP=%oakpath%\tools\tmp
+set TEMP=%oakpath%\c6ers\tools6\tmp
+set TMP=%oakpath%\c6ers\tools6\tmp
 
-set INIT=%oakpath%\tools\bin
-set INCLUDE=%oakpath%\tools\include
-set LIB=%oakpath%\tools\lib
+set INIT=%oakpath%\c6ers\tools6\bin
+set INCLUDE=%oakpath%\c6ers\tools6\include
+set LIB=%oakpath%\c6ers\tools6\lib
 set PROJ=500
 
 REM COUNTRY needs to be in CAPS....
