@@ -11,23 +11,10 @@ needed to complete the build of MSDOS.SYS
 */ 
 #include <stdio.h>
 #include <malloc.h>
-#include <string.h>
 #include <stdlib.h>
+
 #define	MAXLINE	200
 #define	MAXWORD	64
-
-//void strip_ext(char *fname)
-//{
-//   char *end = fname + strlen(fname);
-//
-//    while (end > fname && *end != '.') {
-//       --end;
-//    }
-//
-//    if (end > fname) {
-//        *end = '\0';
-//    }
-//}
 
 int main(int argc, char *argv[])
 {
@@ -38,7 +25,7 @@ int main(int argc, char *argv[])
 	int final_size = 0;
 	int position = 0;
 	int *buffer = 0;
-	int *filename = 0;
+	char *filename = 0;
 	
 	if( argc != 1)
 	{
@@ -60,34 +47,30 @@ int main(int argc, char *argv[])
 		fseek(fp1,0,SEEK_SET);
 		fseek(fp1,position,SEEK_SET);
 		buffer = malloc(final_size);
-		//filename = malloc(strlen(argv[1]));
-		//strip_ext(argv[1]);
-		//sprintf(filename,"%s.sys",argv[1]);
 		filename = argv[2];
 		if (buffer == NULL)
 		{
 			printf("stripz: out of memory");
 			exit(0);
 		}
-		if (filename == NULL)
-		{
-			printf("stripz: out of memory");
-			exit(0);
-		}
 		fread(buffer, 1, final_size, fp1);
 		fclose(fp1);
+		if ( (fp2 = fopen(filename, "r")) != NULL )
+		{
+			printf("stripz: deleting existing %s\n",filename);
+			fclose(fp2);
+			remove(filename);
+		}
 		printf("stripz: saving to %s\n",filename);
 		if ( (fp2 = fopen(filename, "wb")) == NULL )
 		{
 			printf("stripz: cannot open %s\n",filename);
 			free(buffer);
-			//free(filename);
 			exit(0);
 		}
 		fwrite(buffer, 1, final_size,fp2);
 		fclose(fp2);
 		free(buffer);
-		//free(filename);
 	}
 	else
 	{

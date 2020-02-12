@@ -9,13 +9,9 @@ $(bins)\$(dest): $(dest)
 			
 stipz.obj:    stripz.c                  \
               makefile                  \
-              comp.h                    \
-              $(hinc)\dos.h             \
-              $(hinc)\fcntl.h           \
               $(hinc)\stdlib.h          \
               $(hinc)\stdio.h           \
-              $(hinc)\malloc.h          \
-              $(hinc)\ctype.h
+              $(hinc)\malloc.h			
 			  
 $(dest):      stripz.obj
               link $(exelink) stripz;
