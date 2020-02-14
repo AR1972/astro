@@ -145,7 +145,7 @@ BiosSeg ends
 
 	include	himem.inc		; define structures, macros, open seg.
 	extrn	EndText:byte
-_text	ends
+;_text	ends
 
 funky	segment	para public 'funky'
 	assume	cs:funky
@@ -325,8 +325,8 @@ Interrupt   proc    far
 
 	lds	bx,[pReqHdr]		; ds:bx = Request Header
 
-	cmp	ds:[bx].Command,16	; legal DOS function?  (approx???)
-	mov	ds:[bx].Status,100h	; "Done" for healthy calls
+	cmp	word ptr ds:[bx].Command,16	; legal DOS function?  (approx???)
+	mov	word ptr ds:[bx].Status,100h	; "Done" for healthy calls
 	jbe	FuncOk
 	or	ds:[bx].Status,8003h	; Return "Unknown Command" error
 FuncOk:
