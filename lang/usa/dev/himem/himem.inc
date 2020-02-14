@@ -25,11 +25,16 @@ FLAGS = 0
 CLOCK = 0
 BASE = 0
 LEN = 0
-
-; unsure what this macro looked like setting
-; to nop will cause chaos, without a doubt
-popff macro
-	nop
+;-----------------------------
+;	this macro is used instead of the normal POPF instruction to help
+;	prevent a 286 bug from occurring
+popff	macro
+	local	myret
+	jmp	$+3
+myret	label	near
+	iret
+	push	cs
+	call	myret
 endm
 
 pusha macro
