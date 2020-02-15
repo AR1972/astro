@@ -1,0 +1,12 @@
+DOSSEG
+.MODEL	SMALL,C
+
+
+.DATA
+
+	PUBLIC chMessage
+chMessage	LABEL BYTE
+
+db	-1
+
+END

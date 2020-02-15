@@ -119,7 +119,8 @@ boot.cl1:     $(boot)\boot.skl          \
 
 format.ctl:   format.skl                \
 	      makefile                  \
-	      $(msg)\$(COUNTRY).msg
+	      $(msg)\$(COUNTRY)-ibm.msg
+		  buildmsg $(msg)\$(COUNTRY)-ibm format.skl
 
 forexec.obj:  forexec.asm               \
 	      forequ.inc                \

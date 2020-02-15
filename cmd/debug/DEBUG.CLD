@@ -1,0 +1,257 @@
+
+; ----------------------------------------------------------
+
+        PUBLIC  $M_CLS_4
+        IF1
+        %out    ... Including message Class D
+        ENDIF
+
+; ----------------------------------------------------------
+
+$M_CLASS_D_STRUC LABEL BYTE
+        $M_CLASS_ID <0FFH,EXPECTED_VERSION,Class_D_MessageCount>
+
+; ----------------------------------------------------------
+
+
+$M_D_00029H_STRUC LABEL BYTE
+        $M_ID   <00029H,$M_D_00029H_MSG-$M_D_00029H_STRUC>
+
+$M_D_0002AH_STRUC LABEL BYTE
+        $M_ID   <0002AH,$M_D_0002AH_MSG-$M_D_0002AH_STRUC>
+
+$M_D_0002CH_STRUC LABEL BYTE
+        $M_ID   <0002CH,$M_D_0002CH_MSG-$M_D_0002CH_STRUC>
+
+$M_D_0002EH_STRUC LABEL BYTE
+        $M_ID   <0002EH,$M_D_0002EH_MSG-$M_D_0002EH_STRUC>
+
+$M_D_0002FH_STRUC LABEL BYTE
+        $M_ID   <0002FH,$M_D_0002FH_MSG-$M_D_0002FH_STRUC>
+
+$M_D_00032H_STRUC LABEL BYTE
+        $M_ID   <00032H,$M_D_00032H_MSG-$M_D_00032H_STRUC>
+
+$M_D_00033H_STRUC LABEL BYTE
+        $M_ID   <00033H,$M_D_00033H_MSG-$M_D_00033H_STRUC>
+
+$M_D_00037H_STRUC LABEL BYTE
+        $M_ID   <00037H,$M_D_00037H_MSG-$M_D_00037H_STRUC>
+
+$M_D_00038H_STRUC LABEL BYTE
+        $M_ID   <00038H,$M_D_00038H_MSG-$M_D_00038H_STRUC>
+
+$M_D_00039H_STRUC LABEL BYTE
+        $M_ID   <00039H,$M_D_00039H_MSG-$M_D_00039H_STRUC>
+
+$M_D_0003AH_STRUC LABEL BYTE
+        $M_ID   <0003AH,$M_D_0003AH_MSG-$M_D_0003AH_STRUC>
+
+$M_D_0003BH_STRUC LABEL BYTE
+        $M_ID   <0003BH,$M_D_0003BH_MSG-$M_D_0003BH_STRUC>
+
+$M_D_0003CH_STRUC LABEL BYTE
+        $M_ID   <0003CH,$M_D_0003CH_MSG-$M_D_0003CH_STRUC>
+
+$M_D_0003DH_STRUC LABEL BYTE
+        $M_ID   <0003DH,$M_D_0003DH_MSG-$M_D_0003DH_STRUC>
+
+$M_D_0003EH_STRUC LABEL BYTE
+        $M_ID   <0003EH,$M_D_0003EH_MSG-$M_D_0003EH_STRUC>
+
+$M_D_0003FH_STRUC LABEL BYTE
+        $M_ID   <0003FH,$M_D_0003FH_MSG-$M_D_0003FH_STRUC>
+
+$M_D_00040H_STRUC LABEL BYTE
+        $M_ID   <00040H,$M_D_00040H_MSG-$M_D_00040H_STRUC>
+
+$M_D_00041H_STRUC LABEL BYTE
+        $M_ID   <00041H,$M_D_00041H_MSG-$M_D_00041H_STRUC>
+
+$M_D_00042H_STRUC LABEL BYTE
+        $M_ID   <00042H,$M_D_00042H_MSG-$M_D_00042H_STRUC>
+
+$M_D_00043H_STRUC LABEL BYTE
+        $M_ID   <00043H,$M_D_00043H_MSG-$M_D_00043H_STRUC>
+
+$M_D_00044H_STRUC LABEL BYTE
+        $M_ID   <00044H,$M_D_00044H_MSG-$M_D_00044H_STRUC>
+
+$M_D_00046H_STRUC LABEL BYTE
+        $M_ID   <00046H,$M_D_00046H_MSG-$M_D_00046H_STRUC>
+
+$M_D_00047H_STRUC LABEL BYTE
+        $M_ID   <00047H,$M_D_00047H_MSG-$M_D_00047H_STRUC>
+
+$M_D_00048H_STRUC LABEL BYTE
+        $M_ID   <00048H,$M_D_00048H_MSG-$M_D_00048H_STRUC>
+
+$M_D_0004BH_STRUC LABEL BYTE
+        $M_ID   <0004BH,$M_D_0004BH_MSG-$M_D_0004BH_STRUC>
+
+$M_D_0004CH_STRUC LABEL BYTE
+        $M_ID   <0004CH,$M_D_0004CH_MSG-$M_D_0004CH_STRUC>
+
+$M_D_0004EH_STRUC LABEL BYTE
+        $M_ID   <0004EH,$M_D_0004EH_MSG-$M_D_0004EH_STRUC>
+
+; ----------------------------------------------------------
+
+
+$M_D_00029H_MSG LABEL BYTE
+        DB      $M_D_00029H_END-$M_D_00029H_MSG-1
+        DB      "%1"
+$M_D_00029H_END LABEL BYTE
+  
+$M_D_0002AH_MSG LABEL BYTE
+        DB      $M_D_0002AH_END-$M_D_0002AH_MSG-1
+        DB      "%1:%2  %3  %4  %5:%6"
+$M_D_0002AH_END LABEL BYTE
+  
+$M_D_0002CH_MSG LABEL BYTE
+        DB      $M_D_0002CH_END-$M_D_0002CH_MSG-1
+        DB      32,8
+$M_D_0002CH_END LABEL BYTE
+  
+$M_D_0002EH_MSG LABEL BYTE
+        DB      $M_D_0002EH_END-$M_D_0002EH_MSG-1
+        DB      "%1"
+$M_D_0002EH_END LABEL BYTE
+  
+$M_D_0002FH_MSG LABEL BYTE
+        DB      $M_D_0002FH_END-$M_D_0002FH_MSG-1
+        DB      "%1"
+$M_D_0002FH_END LABEL BYTE
+  
+$M_D_00032H_MSG LABEL BYTE
+        DB      $M_D_00032H_END-$M_D_00032H_MSG-1
+        DB      "%1 of a total %2 EMS pages have been allocated",cr,lf
+$M_D_00032H_END LABEL BYTE
+  
+$M_D_00033H_MSG LABEL BYTE
+        DB      $M_D_00033H_END-$M_D_00033H_MSG-1
+        DB      "%1 of a total %2 EMS handles have been allocated",cr,lf
+$M_D_00033H_END LABEL BYTE
+  
+$M_D_00037H_MSG LABEL BYTE
+        DB      $M_D_00037H_END-$M_D_00037H_MSG-1
+        DB      "Handle created = %1 ",cr,lf
+$M_D_00037H_END LABEL BYTE
+  
+$M_D_00038H_MSG LABEL BYTE
+        DB      $M_D_00038H_END-$M_D_00038H_MSG-1
+        DB      "Logical page %1 mapped to physical page %2 ",cr,lf
+$M_D_00038H_END LABEL BYTE
+  
+$M_D_00039H_MSG LABEL BYTE
+        DB      $M_D_00039H_END-$M_D_00039H_MSG-1
+        DB      "EMS hardware/software failure",cr,lf
+$M_D_00039H_END LABEL BYTE
+  
+$M_D_0003AH_MSG LABEL BYTE
+        DB      $M_D_0003AH_END-$M_D_0003AH_MSG-1
+        DB      "Handle not found",cr,lf
+$M_D_0003AH_END LABEL BYTE
+  
+$M_D_0003BH_MSG LABEL BYTE
+        DB      $M_D_0003BH_END-$M_D_0003BH_MSG-1
+        DB      "Invalid function code",cr,lf
+$M_D_0003BH_END LABEL BYTE
+  
+$M_D_0003CH_MSG LABEL BYTE
+        DB      $M_D_0003CH_END-$M_D_0003CH_MSG-1
+        DB      "No free handles",cr,lf
+$M_D_0003CH_END LABEL BYTE
+  
+$M_D_0003DH_MSG LABEL BYTE
+        DB      $M_D_0003DH_END-$M_D_0003DH_MSG-1
+        DB      "Save/Restore error",cr,lf
+$M_D_0003DH_END LABEL BYTE
+  
+$M_D_0003EH_MSG LABEL BYTE
+        DB      $M_D_0003EH_END-$M_D_0003EH_MSG-1
+        DB      "Total pages exceeded",cr,lf
+$M_D_0003EH_END LABEL BYTE
+  
+$M_D_0003FH_MSG LABEL BYTE
+        DB      $M_D_0003FH_END-$M_D_0003FH_MSG-1
+        DB      "Free pages exceeded",cr,lf
+$M_D_0003FH_END LABEL BYTE
+  
+$M_D_00040H_MSG LABEL BYTE
+        DB      $M_D_00040H_END-$M_D_00040H_MSG-1
+        DB      "Parameter error",cr,lf
+$M_D_00040H_END LABEL BYTE
+  
+$M_D_00041H_MSG LABEL BYTE
+        DB      $M_D_00041H_END-$M_D_00041H_MSG-1
+        DB      "Logical Page out of range",cr,lf
+$M_D_00041H_END LABEL BYTE
+  
+$M_D_00042H_MSG LABEL BYTE
+        DB      $M_D_00042H_END-$M_D_00042H_MSG-1
+        DB      "Physical Page out of range",cr,lf
+$M_D_00042H_END LABEL BYTE
+  
+$M_D_00043H_MSG LABEL BYTE
+        DB      $M_D_00043H_END-$M_D_00043H_MSG-1
+        DB      "Save area already in use",cr,lf
+$M_D_00043H_END LABEL BYTE
+  
+$M_D_00044H_MSG LABEL BYTE
+        DB      $M_D_00044H_END-$M_D_00044H_MSG-1
+        DB      "Save area not in use",cr,lf
+$M_D_00044H_END LABEL BYTE
+  
+$M_D_00046H_MSG LABEL BYTE
+        DB      $M_D_00046H_END-$M_D_00046H_MSG-1
+        DB      "General EMS error",cr,lf
+$M_D_00046H_END LABEL BYTE
+  
+$M_D_00047H_MSG LABEL BYTE
+        DB      $M_D_00047H_END-$M_D_00047H_MSG-1
+        DB      "Missing or invalid EMS parameter",cr,lf
+$M_D_00047H_END LABEL BYTE
+  
+$M_D_00048H_MSG LABEL BYTE
+        DB      $M_D_00048H_END-$M_D_00048H_MSG-1
+        DB      "Handle %1 has %2 pages allocated",cr,lf
+$M_D_00048H_END LABEL BYTE
+  
+$M_D_0004BH_MSG LABEL BYTE
+        DB      $M_D_0004BH_END-$M_D_0004BH_MSG-1
+        DB      "Physical page %1 = Frame segment %2",cr,lf
+$M_D_0004BH_END LABEL BYTE
+  
+$M_D_0004CH_MSG LABEL BYTE
+        DB      $M_D_0004CH_END-$M_D_0004CH_MSG-1
+        DB      "Handle %1 deallocated",cr,lf
+$M_D_0004CH_END LABEL BYTE
+  
+$M_D_0004EH_MSG LABEL BYTE
+        DB      $M_D_0004EH_END-$M_D_0004EH_MSG-1
+        DB      "EMS not installed",cr,lf
+$M_D_0004EH_END LABEL BYTE
+  
+; ----------------------------------------------------------
+
+Class_D_MessageCount EQU     27
+
+; ----------------------------------------------------------
+
+        IF      FARmsg
+$M_CLS_4 PROC FAR
+        ELSE
+$M_CLS_4 PROC NEAR
+        ENDIF
+
+        PUSH    CS
+        POP     ES
+        LEA     DI,$M_CLASS_D_STRUC
+        ADD     CX,$-$M_CLASS_D_STRUC
+        RET
+
+$M_CLS_4 ENDP
+
+; ----------------------------------------------------------
+

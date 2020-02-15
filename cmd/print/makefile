@@ -49,7 +49,8 @@ $(cpr):       $(dest)
 !ENDIF
 
 
-print.ctl: print.skl $(msg)\$(COUNTRY).msg
+print.ctl: print.skl $(msg)\$(COUNTRY)-ibm.msg
+			buildmsg $(msg)\$(COUNTRY)-ibm print.skl
 
 print_r.obj: print_r.asm \
     pridefs.inc print.ctl \

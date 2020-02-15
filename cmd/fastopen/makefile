@@ -32,8 +32,8 @@ $(cpr):       $(dest)
 !ENDIF
 
 
-fastopen.ctl: fastopen.skl  makefile  $(msg)\$(COUNTRY).msg
-        buildmsg $(msg)\$(COUNTRY) fastopen.skl
+fastopen.ctl: fastopen.skl  makefile  $(msg)\$(COUNTRY)-ibm.msg
+        buildmsg $(msg)\$(COUNTRY)-ibm fastopen.skl
 
 fastopen.obj: fastopen.asm $(inc)\fastopen.inc \
 	makefile

@@ -13,9 +13,9 @@ all:
 	cd ..\ega
 	$(MAKE)
 	cd ..\emm386
-	$(MAKE)
+#	$(MAKE)
 	cd ..\himem
-	$(MAKE)
+#	$(MAKE)
 	cd ..\iceland
 	$(MAKE)
 	cd ..\keyboard
@@ -25,13 +25,13 @@ all:
 	$(MAKE)
 !ENDIF
 	cd ..\monoumb
-	$(MAKE)
+#	$(MAKE)
 	cd ..\mouse
 	$(MAKE)
 	cd ..\power
 	$(MAKE)
 	cd ..\printer
-#	$(MAKE)
+	$(MAKE)
 	cd ..\ramdrive
 	$(MAKE)
 	cd ..\smartdrv

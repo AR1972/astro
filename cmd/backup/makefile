@@ -43,6 +43,7 @@ _parse.obj:   _parse.asm                \
 
 backup.ctl:   backup.skl                \
               $(msg)\$(COUNTRY).MSG
+			  buildmsg $(msg)\$(COUNTRY)-ibm backup.skl
 
 _msgret.obj:  _msgret.asm               \
               backup.ctl                \

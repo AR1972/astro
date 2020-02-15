@@ -48,8 +48,9 @@ $(pkl):       $(dest)
 
 
 sys.ctl:      sys.skl                   \
-	      $(msg)\$(COUNTRY).msg     \
+	      $(msg)\$(COUNTRY)-ibm.msg     \
 	      makefile
+		  buildmsg $(msg)\$(COUNTRY)-ibm sys.skl
 
 sys1.obj:     sys1.asm                  \
 	      $(inc)\dossym.inc         \

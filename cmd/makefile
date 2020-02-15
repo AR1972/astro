@@ -11,7 +11,7 @@ all:
 	cd ..\assign
 #	$(MAKE)
 	cd ..\attrib
-	$(MAKE)
+#	$(MAKE)
 	cd ..\backup
 #	$(MAKE)
 
@@ -34,42 +34,42 @@ all:
 	cd ..\diskcopy
 	$(MAKE)
 	cd ..\doskey
-	$(MAKE)
+#	$(MAKE)
 	cd ..\edlin
-#	$(MAKE)
-	cd ..\exe2bin
-#	$(MAKE)
-	cd ..\expand
 	$(MAKE)
+	cd ..\exe2bin
+	$(MAKE)
+	cd ..\expand
+#	$(MAKE)
 	cd ..\fastopen
 	$(MAKE)
 	cd ..\fc
-	$(MAKE)
+#	$(MAKE)
 	cd ..\fdisk
-	$(MAKE)
+#	$(MAKE)
 	cd ..\find
 	$(MAKE)
 
 	cd ..\format
-	$(MAKE) /a BASE=
-	$(MAKE) /a
+#	$(MAKE) /a BASE=
+#	$(MAKE) /a
 
 	cd ..\graftabl
 #	$(MAKE)
 	cd ..\graphics
 	$(MAKE)
-	cd ..\help
+#	cd ..\help
 	$(MAKE)
 	cd ..\join
 #	$(MAKE)
 	cd ..\keyb
 	$(MAKE)
-	cd ..\label
+#	cd ..\label
 	$(MAKE)
 	cd ..\loadfix
 	$(MAKE)
 	cd ..\mem
-	$(MAKE)
+#	$(MAKE)
 	cd ..\mode
 	$(MAKE)
 	cd ..\more
@@ -85,24 +85,24 @@ all:
 	$(MAKE)
 !ENDIF
 	cd ..\recover
-#	$(MAKE)
+	$(MAKE)
 	cd ..\redir
 	$(MAKE)
 	cd ..\replace
-	$(MAKE)
+#	$(MAKE)     #mapper.lib missing
 	cd ..\restore
-	$(MAKE)
+#	$(MAKE)		#comsubs.lib missing
 
 	cd ..\setver
-	$(MAKE) /a BASE=
-	$(MAKE) /a
+#	$(MAKE) /a BASE= #needs strings added
+#	$(MAKE) /a
 
 	cd ..\share
-	$(MAKE)
+#	$(MAKE)		#needs strings
 	cd ..\sort
-	$(MAKE)
+#	$(MAKE)     #needs strings
 	cd ..\subst
-	$(MAKE)
+#	$(MAKE)		#libmapper missing
 
 	cd ..\sys
 	$(MAKE) /a BASE=

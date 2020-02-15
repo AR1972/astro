@@ -34,6 +34,7 @@ $(cpr):       $(dest)
 ansi.ctl:     ansi.skl                  \
               makefile                  \
               $(msg)\$(COUNTRY).msg
+			  buildmsg $(msg)\$(COUNTRY) ansi.skl
 
 ansi.obj:     ansi.asm                  \
               makefile                  \

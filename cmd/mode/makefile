@@ -39,7 +39,8 @@ $(cpr):       $(dest)
 
 mode.ctl:     mode.skl                  \
               makefile                  \
-              $(msg)\$(COUNTRY).msg
+              $(msg)\$(COUNTRY)-ibm.msg
+			  buildmsg $(msg)\$(COUNTRY)-ibm mode.skl
 
 
 main.obj:     main.asm                  \

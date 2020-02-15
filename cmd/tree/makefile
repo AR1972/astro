@@ -52,7 +52,8 @@ $(cpr):       $(dest)
 
 
 tree.ctl:     tree.skl                  \
-              $(msg)\$(COUNTRY).msg
+              $(msg)\$(COUNTRY)-ibm.msg
+			  buildmsg $(msg)\$(COUNTRY)-ibm tree.skl
 
 tree.obj:     tree.asm                  \
               treequ.inc

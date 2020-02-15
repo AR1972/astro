@@ -43,7 +43,8 @@ $(cpr2):       $(dest2)
 
 !ENDIF
 
-graphics.ctl: graphics.skl $(msg)\$(COUNTRY).msg
+graphics.ctl: graphics.skl $(msg)\$(COUNTRY)-ibm.msg
+				buildmsg $(msg)\$(COUNTRY)-ibm graphics.skl
 
 graphics.obj: graphics.asm  grinst.ext makefile
 

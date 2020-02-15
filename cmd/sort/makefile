@@ -42,8 +42,9 @@ $(cpr):       $(dest)
 
 
 sort.ctl: sort.skl              \
-        $(msg)\$(COUNTRY).msg   \
+        $(msg)\$(COUNTRY)-ibm.msg   \
         makefile
+		buildmsg $(msg)\$(COUNTRY)-ibm sort.skl
 
 sort.obj: sort.asm              \
           makefile              \

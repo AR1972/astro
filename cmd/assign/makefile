@@ -33,8 +33,9 @@ $(cpr):       $(dest)
 !ENDIF
 
 assign.ctl: assign.skl \
-	$(msg)\$(COUNTRY).msg \
+	$(msg)\$(COUNTRY)-ibm.msg \
 	makefile
+	buildmsg $(msg)\$(COUNTRY)-ibm assign.skl
 
 assgparm.obj: assgparm.asm \
         $(inc)\version.inc \

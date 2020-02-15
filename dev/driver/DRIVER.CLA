@@ -1,0 +1,65 @@
+
+; ----------------------------------------------------------
+
+        PUBLIC  $M_CLS_1
+        IF1
+        %out    ... Including message Class A
+        ENDIF
+
+; ----------------------------------------------------------
+
+$M_CLASS_A_STRUC LABEL BYTE
+        $M_CLASS_ID <0FFH,EXPECTED_VERSION,Class_A_MessageCount>
+
+; ----------------------------------------------------------
+
+
+$M_A_00001H_STRUC LABEL BYTE
+        $M_ID   <00001H,$M_A_00001H_MSG-$M_A_00001H_STRUC>
+
+$M_A_00002H_STRUC LABEL BYTE
+        $M_ID   <00002H,$M_A_00002H_MSG-$M_A_00002H_STRUC>
+
+$M_A_00003H_STRUC LABEL BYTE
+        $M_ID   <00003H,$M_A_00003H_MSG-$M_A_00003H_STRUC>
+
+; ----------------------------------------------------------
+
+
+$M_A_00001H_MSG LABEL BYTE
+        DB      $M_A_00001H_END-$M_A_00001H_MSG-1
+        DB      "Incorrect DOS version",CR,LF
+$M_A_00001H_END LABEL BYTE
+  
+$M_A_00002H_MSG LABEL BYTE
+        DB      $M_A_00002H_END-$M_A_00002H_MSG-1
+        DB      "No drive specified",CR,LF
+$M_A_00002H_END LABEL BYTE
+  
+$M_A_00003H_MSG LABEL BYTE
+        DB      $M_A_00003H_END-$M_A_00003H_MSG-1
+        DB      "Loaded External Disk Driver for Drive %1",CR,LF
+$M_A_00003H_END LABEL BYTE
+  
+; ----------------------------------------------------------
+
+Class_A_MessageCount EQU     3
+
+; ----------------------------------------------------------
+
+        IF      FARmsg
+$M_CLS_1 PROC FAR
+        ELSE
+$M_CLS_1 PROC NEAR
+        ENDIF
+
+        PUSH    CS
+        POP     ES
+        LEA     DI,$M_CLASS_A_STRUC
+        ADD     CX,$-$M_CLASS_A_STRUC
+        RET
+
+$M_CLS_1 ENDP
+
+; ----------------------------------------------------------
+

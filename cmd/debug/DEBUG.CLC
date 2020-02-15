@@ -1,0 +1,169 @@
+
+; ----------------------------------------------------------
+
+        PUBLIC  $M_CLS_3
+        IF1
+        %out    ... Including message Class C
+        ENDIF
+
+; ----------------------------------------------------------
+
+$M_CLASS_C_STRUC LABEL BYTE
+        $M_CLASS_ID <0FFH,EXPECTED_VERSION,Class_C_MessageCount>
+
+; ----------------------------------------------------------
+
+
+$M_C_00015H_STRUC LABEL BYTE
+        $M_ID   <00015H,$M_C_00015H_MSG-$M_C_00015H_STRUC>
+
+$M_C_00016H_STRUC LABEL BYTE
+        $M_ID   <00016H,$M_C_00016H_MSG-$M_C_00016H_STRUC>
+
+$M_C_00017H_STRUC LABEL BYTE
+        $M_ID   <00017H,$M_C_00017H_MSG-$M_C_00017H_STRUC>
+
+$M_C_00018H_STRUC LABEL BYTE
+        $M_ID   <00018H,$M_C_00018H_MSG-$M_C_00018H_STRUC>
+
+$M_C_00019H_STRUC LABEL BYTE
+        $M_ID   <00019H,$M_C_00019H_MSG-$M_C_00019H_STRUC>
+
+$M_C_0001AH_STRUC LABEL BYTE
+        $M_ID   <0001AH,$M_C_0001AH_MSG-$M_C_0001AH_STRUC>
+
+$M_C_0001BH_STRUC LABEL BYTE
+        $M_ID   <0001BH,$M_C_0001BH_MSG-$M_C_0001BH_STRUC>
+
+$M_C_00020H_STRUC LABEL BYTE
+        $M_ID   <00020H,$M_C_00020H_MSG-$M_C_00020H_STRUC>
+
+$M_C_00021H_STRUC LABEL BYTE
+        $M_ID   <00021H,$M_C_00021H_MSG-$M_C_00021H_STRUC>
+
+$M_C_00022H_STRUC LABEL BYTE
+        $M_ID   <00022H,$M_C_00022H_MSG-$M_C_00022H_STRUC>
+
+$M_C_00023H_STRUC LABEL BYTE
+        $M_ID   <00023H,$M_C_00023H_MSG-$M_C_00023H_STRUC>
+
+$M_C_00024H_STRUC LABEL BYTE
+        $M_ID   <00024H,$M_C_00024H_MSG-$M_C_00024H_STRUC>
+
+$M_C_00025H_STRUC LABEL BYTE
+        $M_ID   <00025H,$M_C_00025H_MSG-$M_C_00025H_STRUC>
+
+$M_C_00026H_STRUC LABEL BYTE
+        $M_ID   <00026H,$M_C_00026H_MSG-$M_C_00026H_STRUC>
+
+$M_C_00027H_STRUC LABEL BYTE
+        $M_ID   <00027H,$M_C_00027H_MSG-$M_C_00027H_STRUC>
+
+$M_C_00028H_STRUC LABEL BYTE
+        $M_ID   <00028H,$M_C_00028H_MSG-$M_C_00028H_STRUC>
+
+; ----------------------------------------------------------
+
+
+$M_C_00015H_MSG LABEL BYTE
+        DB      $M_C_00015H_END-$M_C_00015H_MSG-1
+        DB      "EXE and HEX files cannot be written",CR,LF
+$M_C_00015H_END LABEL BYTE
+  
+$M_C_00016H_MSG LABEL BYTE
+        DB      $M_C_00016H_END-$M_C_00016H_MSG-1
+        DB      "EXEC failure"
+$M_C_00016H_END LABEL BYTE
+  
+$M_C_00017H_MSG LABEL BYTE
+        DB      $M_C_00017H_END-$M_C_00017H_MSG-1
+        DB      "(W)rite error, no destination defined",CR,LF
+$M_C_00017H_END LABEL BYTE
+  
+$M_C_00018H_MSG LABEL BYTE
+        DB      $M_C_00018H_END-$M_C_00018H_MSG-1
+        DB      "Access denied",CR,LF
+$M_C_00018H_END LABEL BYTE
+  
+$M_C_00019H_MSG LABEL BYTE
+        DB      $M_C_00019H_END-$M_C_00019H_MSG-1
+        DB      "Parity error or nonexistent memory error detected"
+$M_C_00019H_END LABEL BYTE
+  
+$M_C_0001AH_MSG LABEL BYTE
+        DB      $M_C_0001AH_END-$M_C_0001AH_MSG-1
+        DB      "-"
+$M_C_0001AH_END LABEL BYTE
+  
+$M_C_0001BH_MSG LABEL BYTE
+        DB      $M_C_0001BH_END-$M_C_0001BH_MSG-1
+        DB      "%1 -"
+$M_C_0001BH_END LABEL BYTE
+  
+$M_C_00020H_MSG LABEL BYTE
+        DB      $M_C_00020H_END-$M_C_00020H_MSG-1
+        DB      "%1%2"
+$M_C_00020H_END LABEL BYTE
+  
+$M_C_00021H_MSG LABEL BYTE
+        DB      $M_C_00021H_END-$M_C_00021H_MSG-1
+        DB      "%1:%2 %3"
+$M_C_00021H_END LABEL BYTE
+  
+$M_C_00022H_MSG LABEL BYTE
+        DB      $M_C_00022H_END-$M_C_00022H_MSG-1
+        DB      "%1  %2"
+$M_C_00022H_END LABEL BYTE
+  
+$M_C_00023H_MSG LABEL BYTE
+        DB      $M_C_00023H_END-$M_C_00023H_MSG-1
+        DB      "%1 %2",CR,LF,":"
+$M_C_00023H_END LABEL BYTE
+  
+$M_C_00024H_MSG LABEL BYTE
+        DB      $M_C_00024H_END-$M_C_00024H_MSG-1
+        DB      "%1=%2  "
+$M_C_00024H_END LABEL BYTE
+  
+$M_C_00025H_MSG LABEL BYTE
+        DB      $M_C_00025H_END-$M_C_00025H_MSG-1
+        DB      "%1 Error"
+$M_C_00025H_END LABEL BYTE
+  
+$M_C_00026H_MSG LABEL BYTE
+        DB      $M_C_00026H_END-$M_C_00026H_MSG-1
+        DB      "Writing %1 bytes"
+$M_C_00026H_END LABEL BYTE
+  
+$M_C_00027H_MSG LABEL BYTE
+        DB      $M_C_00027H_END-$M_C_00027H_MSG-1
+        DB      "%1:%2="
+$M_C_00027H_END LABEL BYTE
+  
+$M_C_00028H_MSG LABEL BYTE
+        DB      $M_C_00028H_END-$M_C_00028H_MSG-1
+        DB      "%1"
+$M_C_00028H_END LABEL BYTE
+  
+; ----------------------------------------------------------
+
+Class_C_MessageCount EQU     16
+
+; ----------------------------------------------------------
+
+        IF      FARmsg
+$M_CLS_3 PROC FAR
+        ELSE
+$M_CLS_3 PROC NEAR
+        ENDIF
+
+        PUSH    CS
+        POP     ES
+        LEA     DI,$M_CLASS_C_STRUC
+        ADD     CX,$-$M_CLASS_C_STRUC
+        RET
+
+$M_CLS_3 ENDP
+
+; ----------------------------------------------------------
+

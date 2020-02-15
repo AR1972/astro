@@ -37,7 +37,9 @@ $(cpr):       $(dest)
 !ENDIF
 
 
-printer.ctl:	printer.skl $(msg)\$(COUNTRY).msg
+printer.ctl:	printer.skl \
+				$(msg)\$(COUNTRY)-ibm.msg
+				buildmsg $(msg)\$(COUNTRY)-ibm printer.skl
 
 cpspm10.obj:	cpspm10.asm cpspequ.inc
 

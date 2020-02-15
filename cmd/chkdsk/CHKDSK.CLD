@@ -1,0 +1,195 @@
+
+; ----------------------------------------------------------
+
+        PUBLIC  $M_CLS_4
+        IF1
+        %out    ... Including message Class D
+        ENDIF
+
+; ----------------------------------------------------------
+
+$M_CLASS_D_STRUC LABEL BYTE
+        $M_CLASS_ID <0FFH,EXPECTED_VERSION,Class_D_MessageCount>
+
+; ----------------------------------------------------------
+
+
+$M_D_0003DH_STRUC LABEL BYTE
+        $M_ID   <0003DH,$M_D_0003DH_MSG-$M_D_0003DH_STRUC>
+
+$M_D_0003EH_STRUC LABEL BYTE
+        $M_ID   <0003EH,$M_D_0003EH_MSG-$M_D_0003EH_STRUC>
+
+$M_D_0003FH_STRUC LABEL BYTE
+        $M_ID   <0003FH,$M_D_0003FH_MSG-$M_D_0003FH_STRUC>
+
+$M_D_00040H_STRUC LABEL BYTE
+        $M_ID   <00040H,$M_D_00040H_MSG-$M_D_00040H_STRUC>
+
+$M_D_00041H_STRUC LABEL BYTE
+        $M_ID   <00041H,$M_D_00041H_MSG-$M_D_00041H_STRUC>
+
+$M_D_00042H_STRUC LABEL BYTE
+        $M_ID   <00042H,$M_D_00042H_MSG-$M_D_00042H_STRUC>
+
+$M_D_00043H_STRUC LABEL BYTE
+        $M_ID   <00043H,$M_D_00043H_MSG-$M_D_00043H_STRUC>
+
+$M_D_00044H_STRUC LABEL BYTE
+        $M_ID   <00044H,$M_D_00044H_MSG-$M_D_00044H_STRUC>
+
+$M_D_00045H_STRUC LABEL BYTE
+        $M_ID   <00045H,$M_D_00045H_MSG-$M_D_00045H_STRUC>
+
+$M_D_00046H_STRUC LABEL BYTE
+        $M_ID   <00046H,$M_D_00046H_MSG-$M_D_00046H_STRUC>
+
+$M_D_00047H_STRUC LABEL BYTE
+        $M_ID   <00047H,$M_D_00047H_MSG-$M_D_00047H_STRUC>
+
+$M_D_00048H_STRUC LABEL BYTE
+        $M_ID   <00048H,$M_D_00048H_MSG-$M_D_00048H_STRUC>
+
+$M_D_00049H_STRUC LABEL BYTE
+        $M_ID   <00049H,$M_D_00049H_MSG-$M_D_00049H_STRUC>
+
+$M_D_0004AH_STRUC LABEL BYTE
+        $M_ID   <0004AH,$M_D_0004AH_MSG-$M_D_0004AH_STRUC>
+
+$M_D_0004BH_STRUC LABEL BYTE
+        $M_ID   <0004BH,$M_D_0004BH_MSG-$M_D_0004BH_STRUC>
+
+$M_D_0004CH_STRUC LABEL BYTE
+        $M_ID   <0004CH,$M_D_0004CH_MSG-$M_D_0004CH_STRUC>
+
+$M_D_0004DH_STRUC LABEL BYTE
+        $M_ID   <0004DH,$M_D_0004DH_MSG-$M_D_0004DH_STRUC>
+
+$M_D_0004EH_STRUC LABEL BYTE
+        $M_ID   <0004EH,$M_D_0004EH_MSG-$M_D_0004EH_STRUC>
+
+$M_D_0004FH_STRUC LABEL BYTE
+        $M_ID   <0004FH,$M_D_0004FH_MSG-$M_D_0004FH_STRUC>
+
+$M_D_00050H_STRUC LABEL BYTE
+        $M_ID   <00050H,$M_D_00050H_MSG-$M_D_00050H_STRUC>
+
+; ----------------------------------------------------------
+
+
+$M_D_0003DH_MSG LABEL BYTE
+        DB      $M_D_0003DH_END-$M_D_0003DH_MSG-1
+        DB      "   Disk error writing FAT %1"
+$M_D_0003DH_END LABEL BYTE
+  
+$M_D_0003EH_MSG LABEL BYTE
+        DB      $M_D_0003EH_END-$M_D_0003EH_MSG-1
+        DB      "        %1"
+$M_D_0003EH_END LABEL BYTE
+  
+$M_D_0003FH_MSG LABEL BYTE
+        DB      $M_D_0003FH_END-$M_D_0003FH_MSG-1
+        DB      "Invalid current directory"
+$M_D_0003FH_END LABEL BYTE
+  
+$M_D_00040H_MSG LABEL BYTE
+        DB      $M_D_00040H_END-$M_D_00040H_MSG-1
+        DB      "%1",CR,LF
+$M_D_00040H_END LABEL BYTE
+  
+$M_D_00041H_MSG LABEL BYTE
+        DB      $M_D_00041H_END-$M_D_00041H_MSG-1
+        DB      "   Insufficient room in root directory",CR,LF,"   Move files from root directory and repeat CHKDSK"
+$M_D_00041H_END LABEL BYTE
+  
+$M_D_00042H_MSG LABEL BYTE
+        DB      $M_D_00042H_END-$M_D_00042H_MSG-1
+        DB      "%1 %2 %3"
+$M_D_00042H_END LABEL BYTE
+  
+$M_D_00043H_MSG LABEL BYTE
+        DB      $M_D_00043H_END-$M_D_00043H_MSG-1
+        DB      "%1 %2, %3"
+$M_D_00043H_END LABEL BYTE
+  
+$M_D_00044H_MSG LABEL BYTE
+        DB      $M_D_00044H_END-$M_D_00044H_MSG-1
+        DB      "%1%2%3%4%5"
+$M_D_00044H_END LABEL BYTE
+  
+$M_D_00045H_MSG LABEL BYTE
+        DB      $M_D_00045H_END-$M_D_00045H_MSG-1
+        DB      "%1%2%3%4"
+$M_D_00045H_END LABEL BYTE
+  
+$M_D_00046H_MSG LABEL BYTE
+        DB      $M_D_00046H_END-$M_D_00046H_MSG-1
+        DB      "%1 available allocation units on disk"
+$M_D_00046H_END LABEL BYTE
+  
+$M_D_00047H_MSG LABEL BYTE
+        DB      $M_D_00047H_END-$M_D_00047H_MSG-1
+        DB      "Volume Serial Number is %1-%2",CR,LF
+$M_D_00047H_END LABEL BYTE
+  
+$M_D_00048H_MSG LABEL BYTE
+        DB      $M_D_00048H_END-$M_D_00048H_MSG-1
+        DB      "Insufficient memory",CR,LF
+$M_D_00048H_END LABEL BYTE
+  
+$M_D_00049H_MSG LABEL BYTE
+        DB      $M_D_00049H_END-$M_D_00049H_MSG-1
+        DB      "Invalid media type",CR,LF
+$M_D_00049H_END LABEL BYTE
+  
+$M_D_0004AH_MSG LABEL BYTE
+        DB      $M_D_0004AH_END-$M_D_0004AH_MSG-1
+        DB      "Write fault error",CR,LF
+$M_D_0004AH_END LABEL BYTE
+  
+$M_D_0004BH_MSG LABEL BYTE
+        DB      $M_D_0004BH_END-$M_D_0004BH_MSG-1
+$M_D_0004BH_END LABEL BYTE
+  
+$M_D_0004CH_MSG LABEL BYTE
+        DB      $M_D_0004CH_END-$M_D_0004CH_MSG-1
+$M_D_0004CH_END LABEL BYTE
+  
+$M_D_0004DH_MSG LABEL BYTE
+        DB      $M_D_0004DH_END-$M_D_0004DH_MSG-1
+$M_D_0004DH_END LABEL BYTE
+  
+$M_D_0004EH_MSG LABEL BYTE
+        DB      $M_D_0004EH_END-$M_D_0004EH_MSG-1
+$M_D_0004EH_END LABEL BYTE
+  
+$M_D_0004FH_MSG LABEL BYTE
+        DB      $M_D_0004FH_END-$M_D_0004FH_MSG-1
+$M_D_0004FH_END LABEL BYTE
+  
+$M_D_00050H_MSG LABEL BYTE
+        DB      $M_D_00050H_END-$M_D_00050H_MSG-1
+$M_D_00050H_END LABEL BYTE
+  
+; ----------------------------------------------------------
+
+Class_D_MessageCount EQU     20
+
+; ----------------------------------------------------------
+
+        IF      FARmsg
+$M_CLS_4 PROC FAR
+        ELSE
+$M_CLS_4 PROC NEAR
+        ENDIF
+
+        PUSH    CS
+        POP     ES
+        LEA     DI,$M_CLASS_D_STRUC
+        ADD     CX,$-$M_CLASS_D_STRUC
+        RET
+
+$M_CLS_4 ENDP
+
+; ----------------------------------------------------------
+

@@ -36,8 +36,9 @@ $(pkl):       $(dest)
 !ENDIF
 
 attrib.ctl: attrib.skl \
-	$(msg)\$(COUNTRY).msg \
+	$(msg)\$(COUNTRY)-ibm.msg \
 	makefile
+	buildmsg $(msg)\$(COUNTRY)-ibm attrib.skl
 
 _parse.obj: _parse.asm \
 	$(inc)\version.inc \

@@ -85,7 +85,7 @@ Copy.EM:
 
 command.ctl:   command.skl              \
 	       $(msg)\$(COUNTRY).msg
-#	       buildmsg.exe
+	       buildmsg $(msg)\$(COUNTRY) command.skl
 
 command1.obj:  command1.asm             \
 	       $(inc)\dossym.inc        \

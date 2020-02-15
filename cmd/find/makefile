@@ -32,8 +32,9 @@ $(cpr):       $(dest)
 !ENDIF
 
 find.ctl: find.skl              \
-          $(msg)\$(COUNTRY).msg \
+          $(msg)\$(COUNTRY)-ibm.msg \
           makefile
+		  buildmsg $(msg)\$(COUNTRY)-ibm find.skl
 
 find.obj: find.asm              \
           makefile              \

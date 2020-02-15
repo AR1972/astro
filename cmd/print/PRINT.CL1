@@ -1,0 +1,157 @@
+
+; ----------------------------------------------------------
+
+        PUBLIC  $M_MSGSERV_1
+        IF1
+        %out    ... Including message Class 1
+        ENDIF
+
+; ----------------------------------------------------------
+
+$M_CLASS_1_STRUC LABEL BYTE
+        $M_CLASS_ID <001H,EXPECTED_VERSION,Class_1_MessageCount>
+
+; ----------------------------------------------------------
+
+
+$M_1_00013H_STRUC LABEL BYTE
+        $M_ID   <00013H,$M_1_00013H_MSG-$M_1_00013H_STRUC>
+
+$M_1_00014H_STRUC LABEL BYTE
+        $M_ID   <00014H,$M_1_00014H_MSG-$M_1_00014H_STRUC>
+
+$M_1_00015H_STRUC LABEL BYTE
+        $M_ID   <00015H,$M_1_00015H_MSG-$M_1_00015H_STRUC>
+
+$M_1_00016H_STRUC LABEL BYTE
+        $M_ID   <00016H,$M_1_00016H_MSG-$M_1_00016H_STRUC>
+
+$M_1_00017H_STRUC LABEL BYTE
+        $M_ID   <00017H,$M_1_00017H_MSG-$M_1_00017H_STRUC>
+
+$M_1_00018H_STRUC LABEL BYTE
+        $M_ID   <00018H,$M_1_00018H_MSG-$M_1_00018H_STRUC>
+
+$M_1_00019H_STRUC LABEL BYTE
+        $M_ID   <00019H,$M_1_00019H_MSG-$M_1_00019H_STRUC>
+
+$M_1_0001AH_STRUC LABEL BYTE
+        $M_ID   <0001AH,$M_1_0001AH_MSG-$M_1_0001AH_STRUC>
+
+$M_1_0001BH_STRUC LABEL BYTE
+        $M_ID   <0001BH,$M_1_0001BH_MSG-$M_1_0001BH_STRUC>
+
+$M_1_0001CH_STRUC LABEL BYTE
+        $M_ID   <0001CH,$M_1_0001CH_MSG-$M_1_0001CH_STRUC>
+
+$M_1_0001DH_STRUC LABEL BYTE
+        $M_ID   <0001DH,$M_1_0001DH_MSG-$M_1_0001DH_STRUC>
+
+$M_1_0001EH_STRUC LABEL BYTE
+        $M_ID   <0001EH,$M_1_0001EH_MSG-$M_1_0001EH_STRUC>
+
+$M_1_0001FH_STRUC LABEL BYTE
+        $M_ID   <0001FH,$M_1_0001FH_MSG-$M_1_0001FH_STRUC>
+
+; ----------------------------------------------------------
+
+$M_1_FF_STRUC LABEL BYTE
+        $M_ID <0FFFFH,$M_1_FF_MSG-$M_1_FF_STRUC>
+
+; ----------------------------------------------------------
+
+
+$M_1_00013H_MSG LABEL BYTE
+        DB      $M_1_00013H_END-$M_1_00013H_MSG-1
+        DB      "Write protect error"
+$M_1_00013H_END LABEL BYTE
+  
+$M_1_00014H_MSG LABEL BYTE
+        DB      $M_1_00014H_END-$M_1_00014H_MSG-1
+        DB      "Invalid unit"
+$M_1_00014H_END LABEL BYTE
+  
+$M_1_00015H_MSG LABEL BYTE
+        DB      $M_1_00015H_END-$M_1_00015H_MSG-1
+        DB      "Not ready"
+$M_1_00015H_END LABEL BYTE
+  
+$M_1_00016H_MSG LABEL BYTE
+        DB      $M_1_00016H_END-$M_1_00016H_MSG-1
+        DB      "Invalid device request"
+$M_1_00016H_END LABEL BYTE
+  
+$M_1_00017H_MSG LABEL BYTE
+        DB      $M_1_00017H_END-$M_1_00017H_MSG-1
+        DB      "Data error"
+$M_1_00017H_END LABEL BYTE
+  
+$M_1_00018H_MSG LABEL BYTE
+        DB      $M_1_00018H_END-$M_1_00018H_MSG-1
+        DB      "Invalid device request parameters"
+$M_1_00018H_END LABEL BYTE
+  
+$M_1_00019H_MSG LABEL BYTE
+        DB      $M_1_00019H_END-$M_1_00019H_MSG-1
+        DB      "Seek error"
+$M_1_00019H_END LABEL BYTE
+  
+$M_1_0001AH_MSG LABEL BYTE
+        DB      $M_1_0001AH_END-$M_1_0001AH_MSG-1
+        DB      "Invalid media type"
+$M_1_0001AH_END LABEL BYTE
+  
+$M_1_0001BH_MSG LABEL BYTE
+        DB      $M_1_0001BH_END-$M_1_0001BH_MSG-1
+        DB      "Sector not found"
+$M_1_0001BH_END LABEL BYTE
+  
+$M_1_0001CH_MSG LABEL BYTE
+        DB      $M_1_0001CH_END-$M_1_0001CH_MSG-1
+        DB      "Printer out of paper error"
+$M_1_0001CH_END LABEL BYTE
+  
+$M_1_0001DH_MSG LABEL BYTE
+        DB      $M_1_0001DH_END-$M_1_0001DH_MSG-1
+        DB      "Write fault error"
+$M_1_0001DH_END LABEL BYTE
+  
+$M_1_0001EH_MSG LABEL BYTE
+        DB      $M_1_0001EH_END-$M_1_0001EH_MSG-1
+        DB      "Read fault error"
+$M_1_0001EH_END LABEL BYTE
+  
+$M_1_0001FH_MSG LABEL BYTE
+        DB      $M_1_0001FH_END-$M_1_0001FH_MSG-1
+        DB      "General failure"
+$M_1_0001FH_END LABEL BYTE
+  
+; ----------------------------------------------------------
+
+$M_1_FF_MSG LABEL BYTE
+        DB      $M_1_FF_END-$M_1_FF_MSG-1
+        DB      "Extended Error %1"
+$M_1_FF_END LABEL BYTE
+  
+; ----------------------------------------------------------
+
+Class_1_MessageCount EQU     14
+
+; ----------------------------------------------------------
+
+        IF      FARmsg
+$M_MSGSERV_1 PROC FAR
+        ELSE
+$M_MSGSERV_1 PROC NEAR
+        ENDIF
+
+        PUSH    CS
+        POP     ES
+        LEA     DI,$M_CLASS_1_STRUC
+        ADD     CX,$-$M_CLASS_1_STRUC
+        RET
+
+$M_MSGSERV_1 Endp
+
+; ----------------------------------------------------------
+

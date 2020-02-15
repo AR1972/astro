@@ -27,10 +27,10 @@ all: $(dest)
 all: $(dest) $(bins)\$(dest) $(cprs)\$(cpr)
 
 $(bins)\$(dest): $(pkl)
-	    copy $(pkl) $(bins)\$(dest)
+	    copy $(dest) $(bins)\$(dest)
 
-$(cprs)\$(cpr):  $(pkl)
-	    copy $(pkl) $(cprs)\$(dest)
+$(cprs)\$(cpr):  $(dest)
+	    copy $(dest) $(cprs)\$(dest)
 
 $(pkl):       $(dest)
 	    pklite -o $(dest) $(pkl)
@@ -39,8 +39,9 @@ $(pkl):       $(dest)
 
 
 more.ctl:     more.skl                  \
-	      $(msg)\$(COUNTRY).msg     \
+	      $(msg)\$(COUNTRY)-ibm.msg     \
 	      makefile
+		  buildmsg $(msg)\$(COUNTRY)-ibm more.skl
 
 more.obj:     more.asm                  \
 	      more.inc                  \

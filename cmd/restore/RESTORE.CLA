@@ -1,0 +1,374 @@
+
+; ----------------------------------------------------------
+
+        PUBLIC  $M_CLS_1
+        IF1
+        %out    ... Including message Class A
+        ENDIF
+
+; ----------------------------------------------------------
+
+$M_CLASS_A_STRUC LABEL BYTE
+        $M_CLASS_ID <0FFH,EXPECTED_VERSION,Class_A_MessageCount>
+
+; ----------------------------------------------------------
+
+
+$M_A_00001H_STRUC LABEL BYTE
+        $M_ID   <00001H,$M_A_00001H_MSG-$M_A_00001H_STRUC>
+
+$M_A_00002H_STRUC LABEL BYTE
+        $M_ID   <00002H,$M_A_00002H_MSG-$M_A_00002H_STRUC>
+
+$M_A_00003H_STRUC LABEL BYTE
+        $M_ID   <00003H,$M_A_00003H_MSG-$M_A_00003H_STRUC>
+
+$M_A_00005H_STRUC LABEL BYTE
+        $M_ID   <00005H,$M_A_00005H_MSG-$M_A_00005H_STRUC>
+
+$M_A_00006H_STRUC LABEL BYTE
+        $M_ID   <00006H,$M_A_00006H_MSG-$M_A_00006H_STRUC>
+
+$M_A_00007H_STRUC LABEL BYTE
+        $M_ID   <00007H,$M_A_00007H_MSG-$M_A_00007H_STRUC>
+
+$M_A_00008H_STRUC LABEL BYTE
+        $M_ID   <00008H,$M_A_00008H_MSG-$M_A_00008H_STRUC>
+
+$M_A_00009H_STRUC LABEL BYTE
+        $M_ID   <00009H,$M_A_00009H_MSG-$M_A_00009H_STRUC>
+
+$M_A_0000AH_STRUC LABEL BYTE
+        $M_ID   <0000AH,$M_A_0000AH_MSG-$M_A_0000AH_STRUC>
+
+$M_A_0000BH_STRUC LABEL BYTE
+        $M_ID   <0000BH,$M_A_0000BH_MSG-$M_A_0000BH_STRUC>
+
+$M_A_0000CH_STRUC LABEL BYTE
+        $M_ID   <0000CH,$M_A_0000CH_MSG-$M_A_0000CH_STRUC>
+
+$M_A_0000DH_STRUC LABEL BYTE
+        $M_ID   <0000DH,$M_A_0000DH_MSG-$M_A_0000DH_STRUC>
+
+$M_A_0000EH_STRUC LABEL BYTE
+        $M_ID   <0000EH,$M_A_0000EH_MSG-$M_A_0000EH_STRUC>
+
+$M_A_0000FH_STRUC LABEL BYTE
+        $M_ID   <0000FH,$M_A_0000FH_MSG-$M_A_0000FH_STRUC>
+
+$M_A_00010H_STRUC LABEL BYTE
+        $M_ID   <00010H,$M_A_00010H_MSG-$M_A_00010H_STRUC>
+
+$M_A_00011H_STRUC LABEL BYTE
+        $M_ID   <00011H,$M_A_00011H_MSG-$M_A_00011H_STRUC>
+
+$M_A_00012H_STRUC LABEL BYTE
+        $M_ID   <00012H,$M_A_00012H_MSG-$M_A_00012H_STRUC>
+
+$M_A_00013H_STRUC LABEL BYTE
+        $M_ID   <00013H,$M_A_00013H_MSG-$M_A_00013H_STRUC>
+
+$M_A_00014H_STRUC LABEL BYTE
+        $M_ID   <00014H,$M_A_00014H_MSG-$M_A_00014H_STRUC>
+
+$M_A_00015H_STRUC LABEL BYTE
+        $M_ID   <00015H,$M_A_00015H_MSG-$M_A_00015H_STRUC>
+
+$M_A_00016H_STRUC LABEL BYTE
+        $M_ID   <00016H,$M_A_00016H_MSG-$M_A_00016H_STRUC>
+
+$M_A_00017H_STRUC LABEL BYTE
+        $M_ID   <00017H,$M_A_00017H_MSG-$M_A_00017H_STRUC>
+
+$M_A_0001BH_STRUC LABEL BYTE
+        $M_ID   <0001BH,$M_A_0001BH_MSG-$M_A_0001BH_STRUC>
+
+$M_A_0001CH_STRUC LABEL BYTE
+        $M_ID   <0001CH,$M_A_0001CH_MSG-$M_A_0001CH_STRUC>
+
+$M_A_0001DH_STRUC LABEL BYTE
+        $M_ID   <0001DH,$M_A_0001DH_MSG-$M_A_0001DH_STRUC>
+
+$M_A_0001EH_STRUC LABEL BYTE
+        $M_ID   <0001EH,$M_A_0001EH_MSG-$M_A_0001EH_STRUC>
+
+$M_A_0001FH_STRUC LABEL BYTE
+        $M_ID   <0001FH,$M_A_0001FH_MSG-$M_A_0001FH_STRUC>
+
+$M_A_00020H_STRUC LABEL BYTE
+        $M_ID   <00020H,$M_A_00020H_MSG-$M_A_00020H_STRUC>
+
+$M_A_0012CH_STRUC LABEL BYTE
+        $M_ID   <0012CH,$M_A_0012CH_MSG-$M_A_0012CH_STRUC>
+
+$M_A_0012DH_STRUC LABEL BYTE
+        $M_ID   <0012DH,$M_A_0012DH_MSG-$M_A_0012DH_STRUC>
+
+$M_A_0012EH_STRUC LABEL BYTE
+        $M_ID   <0012EH,$M_A_0012EH_MSG-$M_A_0012EH_STRUC>
+
+$M_A_0012FH_STRUC LABEL BYTE
+        $M_ID   <0012FH,$M_A_0012FH_MSG-$M_A_0012FH_STRUC>
+
+$M_A_00130H_STRUC LABEL BYTE
+        $M_ID   <00130H,$M_A_00130H_MSG-$M_A_00130H_STRUC>
+
+$M_A_00131H_STRUC LABEL BYTE
+        $M_ID   <00131H,$M_A_00131H_MSG-$M_A_00131H_STRUC>
+
+$M_A_00132H_STRUC LABEL BYTE
+        $M_ID   <00132H,$M_A_00132H_MSG-$M_A_00132H_STRUC>
+
+$M_A_00133H_STRUC LABEL BYTE
+        $M_ID   <00133H,$M_A_00133H_MSG-$M_A_00133H_STRUC>
+
+$M_A_00134H_STRUC LABEL BYTE
+        $M_ID   <00134H,$M_A_00134H_MSG-$M_A_00134H_STRUC>
+
+$M_A_00135H_STRUC LABEL BYTE
+        $M_ID   <00135H,$M_A_00135H_MSG-$M_A_00135H_STRUC>
+
+$M_A_00136H_STRUC LABEL BYTE
+        $M_ID   <00136H,$M_A_00136H_MSG-$M_A_00136H_STRUC>
+
+$M_A_00137H_STRUC LABEL BYTE
+        $M_ID   <00137H,$M_A_00137H_MSG-$M_A_00137H_STRUC>
+
+$M_A_00138H_STRUC LABEL BYTE
+        $M_ID   <00138H,$M_A_00138H_MSG-$M_A_00138H_STRUC>
+
+$M_A_00139H_STRUC LABEL BYTE
+        $M_ID   <00139H,$M_A_00139H_MSG-$M_A_00139H_STRUC>
+
+$M_A_0013AH_STRUC LABEL BYTE
+        $M_ID   <0013AH,$M_A_0013AH_MSG-$M_A_0013AH_STRUC>
+
+; ----------------------------------------------------------
+
+
+$M_A_00001H_MSG LABEL BYTE
+        DB      $M_A_00001H_END-$M_A_00001H_MSG-1
+        DB      "Incorrect DOS version",CR,LF
+$M_A_00001H_END LABEL BYTE
+  
+$M_A_00002H_MSG LABEL BYTE
+        DB      $M_A_00002H_END-$M_A_00002H_MSG-1
+        DB      CR,LF,"Source and target drives are the same",CR,LF
+$M_A_00002H_END LABEL BYTE
+  
+$M_A_00003H_MSG LABEL BYTE
+        DB      $M_A_00003H_END-$M_A_00003H_MSG-1
+        DB      CR,LF,"Invalid number of parameters",CR,LF
+$M_A_00003H_END LABEL BYTE
+  
+$M_A_00005H_MSG LABEL BYTE
+        DB      $M_A_00005H_END-$M_A_00005H_MSG-1
+        DB      "Invalid path",CR,LF
+$M_A_00005H_END LABEL BYTE
+  
+$M_A_00006H_MSG LABEL BYTE
+        DB      $M_A_00006H_END-$M_A_00006H_MSG-1
+        DB      CR,LF,"Invalid drive specification",CR,LF
+$M_A_00006H_END LABEL BYTE
+  
+$M_A_00007H_MSG LABEL BYTE
+        DB      $M_A_00007H_END-$M_A_00007H_MSG-1
+        DB      CR,LF,"WARNING! No files were found to restore",CR,LF
+$M_A_00007H_END LABEL BYTE
+  
+$M_A_00008H_MSG LABEL BYTE
+        DB      $M_A_00008H_END-$M_A_00008H_MSG-1
+        DB      CR,LF,"Insert backup diskette %1 in drive %2:",CR,LF
+$M_A_00008H_END LABEL BYTE
+  
+$M_A_00009H_MSG LABEL BYTE
+        DB      $M_A_00009H_END-$M_A_00009H_MSG-1
+        DB      CR,LF,"Insert restore target in drive %1:",CR,LF
+$M_A_00009H_END LABEL BYTE
+  
+$M_A_0000AH_MSG LABEL BYTE
+        DB      $M_A_0000AH_END-$M_A_0000AH_MSG-1
+        DB      "Press any key to continue . . .",CR,LF
+$M_A_0000AH_END LABEL BYTE
+  
+$M_A_0000BH_MSG LABEL BYTE
+        DB      $M_A_0000BH_END-$M_A_0000BH_MSG-1
+        DB      CR,LF,"WARNING! Diskette is out of sequence",CR,LF
+        DB      	"Replace diskette or continue if OK",CR,LF
+$M_A_0000BH_END LABEL BYTE
+  
+$M_A_0000CH_MSG LABEL BYTE
+        DB      $M_A_0000CH_END-$M_A_0000CH_MSG-1
+        DB      CR,LF,"The last file was not restored",CR,LF
+$M_A_0000CH_END LABEL BYTE
+  
+$M_A_0000DH_MSG LABEL BYTE
+        DB      $M_A_0000DH_END-$M_A_0000DH_MSG-1
+        DB      CR,LF,"*** Files were backed up %1 ***",CR,LF
+$M_A_0000DH_END LABEL BYTE
+  
+$M_A_0000EH_MSG LABEL BYTE
+        DB      $M_A_0000EH_END-$M_A_0000EH_MSG-1
+        DB      CR,LF,"Source does not contain backup files",CR,LF
+$M_A_0000EH_END LABEL BYTE
+  
+$M_A_0000FH_MSG LABEL BYTE
+        DB      $M_A_0000FH_END-$M_A_0000FH_MSG-1
+        DB      CR,LF,"Insufficient memory",CR,LF
+$M_A_0000FH_END LABEL BYTE
+  
+$M_A_00010H_MSG LABEL BYTE
+        DB      $M_A_00010H_END-$M_A_00010H_MSG-1
+        DB      CR,LF,"WARNING! File %1",CR,LF
+        DB      	"is a read-only file",CR,LF
+        DB      	"Replace the file (Y/N)?",CR,LF
+$M_A_00010H_END LABEL BYTE
+  
+$M_A_00011H_MSG LABEL BYTE
+        DB      $M_A_00011H_END-$M_A_00011H_MSG-1
+        DB      CR,LF,"Restore file sequence error",CR,LF
+$M_A_00011H_END LABEL BYTE
+  
+$M_A_00012H_MSG LABEL BYTE
+        DB      $M_A_00012H_END-$M_A_00012H_MSG-1
+        DB      CR,LF,"File creation error",CR,LF
+$M_A_00012H_END LABEL BYTE
+  
+$M_A_00013H_MSG LABEL BYTE
+        DB      $M_A_00013H_END-$M_A_00013H_MSG-1
+        DB      CR,LF,"Insufficient disk space",CR,LF
+$M_A_00013H_END LABEL BYTE
+  
+$M_A_00014H_MSG LABEL BYTE
+        DB      $M_A_00014H_END-$M_A_00014H_MSG-1
+        DB      CR,LF,"*** Not able to restore file ***",CR,LF
+$M_A_00014H_END LABEL BYTE
+  
+$M_A_00015H_MSG LABEL BYTE
+        DB      $M_A_00015H_END-$M_A_00015H_MSG-1
+        DB      CR,LF,"*** Restoring files from drive %1: ***",CR,LF
+$M_A_00015H_END LABEL BYTE
+  
+$M_A_00016H_MSG LABEL BYTE
+        DB      $M_A_00016H_END-$M_A_00016H_MSG-1
+        DB      CR,LF,"WARNING! File %1",CR,LF
+        DB      	"was changed after it was backed up",CR,LF
+        DB      	"Replace the file (Y/N)?",CR,LF
+$M_A_00016H_END LABEL BYTE
+  
+$M_A_00017H_MSG LABEL BYTE
+        DB      $M_A_00017H_END-$M_A_00017H_MSG-1
+        DB      "Diskette: %1",CR,LF
+$M_A_00017H_END LABEL BYTE
+  
+$M_A_0001BH_MSG LABEL BYTE
+        DB      $M_A_0001BH_END-$M_A_0001BH_MSG-1
+        DB      "Invalid date",CR,LF
+$M_A_0001BH_END LABEL BYTE
+  
+$M_A_0001CH_MSG LABEL BYTE
+        DB      $M_A_0001CH_END-$M_A_0001CH_MSG-1
+        DB      "Invalid time",CR,LF
+$M_A_0001CH_END LABEL BYTE
+  
+$M_A_0001DH_MSG LABEL BYTE
+        DB      $M_A_0001DH_END-$M_A_0001DH_MSG-1
+        DB      "No source drive specified",CR,LF
+$M_A_0001DH_END LABEL BYTE
+  
+$M_A_0001EH_MSG LABEL BYTE
+        DB      $M_A_0001EH_END-$M_A_0001EH_MSG-1
+        DB      "No target drive specified",CR,LF
+$M_A_0001EH_END LABEL BYTE
+  
+$M_A_0001FH_MSG LABEL BYTE
+        DB      $M_A_0001FH_END-$M_A_0001FH_MSG-1
+        DB      CR,LF
+$M_A_0001FH_END LABEL BYTE
+  
+$M_A_00020H_MSG LABEL BYTE
+        DB      $M_A_00020H_END-$M_A_00020H_MSG-1
+$M_A_00020H_END LABEL BYTE
+  
+$M_A_0012CH_MSG LABEL BYTE
+        DB      $M_A_0012CH_END-$M_A_0012CH_MSG-1
+$M_A_0012CH_END LABEL BYTE
+  
+$M_A_0012DH_MSG LABEL BYTE
+        DB      $M_A_0012DH_END-$M_A_0012DH_MSG-1
+$M_A_0012DH_END LABEL BYTE
+  
+$M_A_0012EH_MSG LABEL BYTE
+        DB      $M_A_0012EH_END-$M_A_0012EH_MSG-1
+$M_A_0012EH_END LABEL BYTE
+  
+$M_A_0012FH_MSG LABEL BYTE
+        DB      $M_A_0012FH_END-$M_A_0012FH_MSG-1
+$M_A_0012FH_END LABEL BYTE
+  
+$M_A_00130H_MSG LABEL BYTE
+        DB      $M_A_00130H_END-$M_A_00130H_MSG-1
+$M_A_00130H_END LABEL BYTE
+  
+$M_A_00131H_MSG LABEL BYTE
+        DB      $M_A_00131H_END-$M_A_00131H_MSG-1
+$M_A_00131H_END LABEL BYTE
+  
+$M_A_00132H_MSG LABEL BYTE
+        DB      $M_A_00132H_END-$M_A_00132H_MSG-1
+$M_A_00132H_END LABEL BYTE
+  
+$M_A_00133H_MSG LABEL BYTE
+        DB      $M_A_00133H_END-$M_A_00133H_MSG-1
+$M_A_00133H_END LABEL BYTE
+  
+$M_A_00134H_MSG LABEL BYTE
+        DB      $M_A_00134H_END-$M_A_00134H_MSG-1
+$M_A_00134H_END LABEL BYTE
+  
+$M_A_00135H_MSG LABEL BYTE
+        DB      $M_A_00135H_END-$M_A_00135H_MSG-1
+$M_A_00135H_END LABEL BYTE
+  
+$M_A_00136H_MSG LABEL BYTE
+        DB      $M_A_00136H_END-$M_A_00136H_MSG-1
+$M_A_00136H_END LABEL BYTE
+  
+$M_A_00137H_MSG LABEL BYTE
+        DB      $M_A_00137H_END-$M_A_00137H_MSG-1
+$M_A_00137H_END LABEL BYTE
+  
+$M_A_00138H_MSG LABEL BYTE
+        DB      $M_A_00138H_END-$M_A_00138H_MSG-1
+$M_A_00138H_END LABEL BYTE
+  
+$M_A_00139H_MSG LABEL BYTE
+        DB      $M_A_00139H_END-$M_A_00139H_MSG-1
+$M_A_00139H_END LABEL BYTE
+  
+$M_A_0013AH_MSG LABEL BYTE
+        DB      $M_A_0013AH_END-$M_A_0013AH_MSG-1
+$M_A_0013AH_END LABEL BYTE
+  
+; ----------------------------------------------------------
+
+Class_A_MessageCount EQU     43
+
+; ----------------------------------------------------------
+
+        IF      FARmsg
+$M_CLS_1 PROC FAR
+        ELSE
+$M_CLS_1 PROC NEAR
+        ENDIF
+
+        PUSH    CS
+        POP     ES
+        LEA     DI,$M_CLASS_A_STRUC
+        ADD     CX,$-$M_CLASS_A_STRUC
+        RET
+
+$M_CLS_1 ENDP
+
+; ----------------------------------------------------------
+

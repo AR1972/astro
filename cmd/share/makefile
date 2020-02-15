@@ -84,8 +84,9 @@ msdos.cl1:    $(dos)\msdos.skl          \
 
 
 share.ctl:    share.skl                 \
-              $(msg)\$(COUNTRY).msg     \
+              $(msg)\$(COUNTRY)-ibm.msg     \
               makefile
+			  buildmsg $(msg)\$(COUNTRY)-ibm share.skl
 
 gshare.obj:   gshare.asm                \
               $(inc)\dossym.inc         \
