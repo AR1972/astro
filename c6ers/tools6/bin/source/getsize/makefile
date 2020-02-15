@@ -3,7 +3,4 @@
 # file to this component.  This file merely indirects to the real make file
 # that is shared by all the components of NT OS/2
 #
-# stripz.exe is a utility used by DOSEm to create memory image of
-# ntdos.sys.
-
 !INCLUDE $(NTMAKEENV)\maketool.def

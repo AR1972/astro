@@ -9,9 +9,6 @@ $(bins)\$(dest): $(dest)
 			
 buildmsg.obj: buildmsg.c                  \
               makefile                  \
-              $(hinc)\stdlib.h          \
-              $(hinc)\stdio.h           \
-              $(hinc)\malloc.h			
 			  
 $(dest):      buildmsg.obj
               link $(exelink) buildmsg;

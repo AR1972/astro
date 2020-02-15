@@ -63,35 +63,35 @@ $(cpr):       $(dest)
 !ENDIF
 
 
-himem.obj: himem.asm $(MSG_DIR)\himem.inc
+himem.obj: himem.asm himem.inc
 
-himem1.obj: himem1.asm $(MSG_DIR)\himem.inc
+himem1.obj: himem1.asm himem.inc
 
-himem2.obj: himem2.asm $(MSG_DIR)\himem.inc
+himem2.obj: himem2.asm himem.inc
 
-messages.obj: $(MSG_DIR)\messages.asm $(MSG_DIR)\himem.inc
+messages.obj: $(MSG_DIR)\messages.asm himem.inc
    masm $(asmsw) $(MSG_DIR)\$*;
 
-himem4.obj: himem4.asm himem4a.asm himem4b.asm $(MSG_DIR)\himem.inc
+himem4.obj: himem4.asm himem4a.asm himem4b.asm himem.inc
 
-himem5.obj: himem5.asm $(MSG_DIR)\himem.inc
+himem5.obj: himem5.asm himem.inc
 
-dhimem.obj: himem.asm $(MSG_DIR)\himem.inc
+dhimem.obj: himem.asm himem.inc
     masm $(asmsw) -ddebug_tsr himem,dhimem;
 
-dhimem1.obj: himem1.asm $(MSG_DIR)\himem.inc
+dhimem1.obj: himem1.asm himem.inc
     masm $(asmsw) -ddebug_tsr himem1,dhimem1;
 
-dhimem2.obj: himem2.asm $(MSG_DIR)\himem.inc
+dhimem2.obj: himem2.asm himem.inc
     masm $(asmsw) -ddebug_tsr himem2,dhimem2;
 
-dmessage.obj: $(MSG_DIR)\messages.asm $(MSG_DIR)\himem.inc
+dmessage.obj: $(MSG_DIR)\messages.asm himem.inc
     masm $(asmsw) -ddebug_tsr messages,dmessage;
 
-dhimem4.obj: himem4.asm $(MSG_DIR)\himem.inc
+dhimem4.obj: himem4.asm himem.inc
     masm $(asmsw) -ddebug_tsr himem4,dhimem4;
 
-dhimem5.obj: himem5.asm $(MSG_DIR)\himem.inc
+dhimem5.obj: himem5.asm himem.inc
     masm $(asmsw) -ddebug_tsr himem5,dhimem5;
 
 himem.exe: himem.obj himem1.obj himem2.obj messages.obj himem4.obj himem5.obj

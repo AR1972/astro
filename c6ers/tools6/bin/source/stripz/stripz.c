@@ -1,81 +1,71 @@
-//
-/* This program is free software. It comes without any warranty, to
-* the extent permitted by applicable law. You can redistribute it
-* and/or modify it under the terms of the Do What The Fuck You Want
-* To Public License, Version 2, as published by Sam Hocevar. See
-* http://sam.zoy.org/wtfpl/COPYING for more details. */
-//
-/*recration of the utility stripz. strips number of bytes from the 
-beginning of a file as defined by the first two bytes of the file
-needed to complete the build of MSDOS.SYS
-*/ 
+/*
+ *	Stripz.c - Strip the header off of a .SYS file
+ *
+ *	I don't know what this is for, but this program reads a file
+ *	of the format
+ *
+ *	DW	<len>
+ *	DB	<len-2> dup (0)
+ *	DB	N bytes of data to keep
+ *
+ *	This program copies argv[1] to argv[2], striping off those leading
+ *	bytes of zero and the length word.
+ *
+ *	We don't check to see if they're really zero, we just discard
+ *	the first <len> bytes of argv[1].
+ */
+
 #include <stdio.h>
-#include <malloc.h>
-#include <stdlib.h>
+#include <fcntl.h>
+#include <sys\types.h>
+#include	<sys\stat.h>
+#include	<io.h>
 
-#define	MAXLINE	200
-#define	MAXWORD	64
+char buf[16384];
+unsigned int pos;
+int rdcnt;
+int srcfile, tgtfile ;
 
-int main(int argc, char *argv[])
+main(argc, argv)
+int	argc ;
+char	*argv[] ;
 {
-	FILE *fp1;
-	FILE *fp2;
-	unsigned char *trim[2];
-	int size = 0;
-	int final_size = 0;
-	int position = 0;
-	int *buffer = 0;
-	char *filename = 0;
-	
-	if( argc != 1)
-	{
-		if ( (fp1 = fopen(argv[1], "rb")) == NULL )
-		{
-			printf("stripz: cannot open %s\n", argv[1]);
-			exit(0);
-		}
-		printf("stripz: processing file %s\n", argv[1]);
-		fseek(fp1,0,SEEK_SET);
-		fseek(fp1,0, SEEK_END);
-		size = (int)ftell(fp1);
-		fseek(fp1,0,SEEK_SET);
-		fread(&trim,1,2,fp1);
-		position = (int)trim[0];
-		final_size = size - position;
-		printf("stripz: trimming 0x%X bytes from beginning of file\n", position);
-		printf("strpiz: file size is 0x%X size after trim is 0x%X\n",size, final_size);
-		fseek(fp1,0,SEEK_SET);
-		fseek(fp1,position,SEEK_SET);
-		buffer = malloc(final_size);
-		filename = argv[2];
-		if (buffer == NULL)
-		{
-			printf("stripz: out of memory");
-			exit(0);
-		}
-		fread(buffer, 1, final_size, fp1);
-		fclose(fp1);
-		if ( (fp2 = fopen(filename, "r")) != NULL )
-		{
-			printf("stripz: deleting existing %s\n",filename);
-			fclose(fp2);
-			remove(filename);
-		}
-		printf("stripz: saving to %s\n",filename);
-		if ( (fp2 = fopen(filename, "wb")) == NULL )
-		{
-			printf("stripz: cannot open %s\n",filename);
-			free(buffer);
-			exit(0);
-		}
-		fwrite(buffer, 1, final_size,fp2);
-		fclose(fp2);
-		free(buffer);
+	if ( argc != 3 ) {
+		fprintf (stderr, "Usage : stripz src_file trgt_file\n") ;
+		exit (1) ;
 	}
-	else
-	{
-		printf("stripz: supply a file to process\n");
-		exit(0);
+
+	if ((srcfile = open(argv[1], (O_BINARY | O_RDONLY))) == -1) {
+		fprintf (stderr, "Error opening %s\n", argv[1]) ;
+		exit (1) ;
 	}
-	return(0);
+
+	rdcnt = read (srcfile, buf, 2);
+	if (rdcnt != 2) {
+		fprintf (stderr, "Can't read %s\n", argv[1]);
+		exit(1);
+	}
+
+	pos = lseek (srcfile, 0L, SEEK_END ) ;
+	if ( (long)(*(unsigned int *)buf) > pos ) {
+		fprintf (stderr, "File too short or improper format.\n");
+		exit(1);
+	}
+
+	lseek(srcfile, (long)(*(unsigned int *)buf), SEEK_SET ) ;
+
+	if ( (tgtfile = open(argv[2], (O_BINARY|O_WRONLY|O_CREAT|O_TRUNC),
+											(S_IREAD|S_IWRITE))) == -1) {
+		printf ("Error creating %s\n", argv[2]) ;
+		close (srcfile) ;
+		exit (1) ;
+	}
+
+	while ( (rdcnt = read (srcfile, buf, sizeof buf)) > 0)
+		write (tgtfile, buf, rdcnt);
+
+	close (srcfile) ;
+	close (tgtfile) ;
+
+	return ( 0 ) ;
 }

@@ -1,5 +1,5 @@
 hinc    =..\..\h
-dest    =buildmsg.exe
+dest    =stripz.exe
 bins    =..\..\
 
 all: $(dest) $(bins)\$(dest)
@@ -7,12 +7,12 @@ all: $(dest) $(bins)\$(dest)
 $(bins)\$(dest): $(dest)
             copy $(dest) $(bins)
 			
-buildmsg.obj: buildmsg.c                  \
+stipz.obj:    stripz.c                  \
               makefile                  \
-              $(hinc)\stdlib.h          \
+			  $(hinc)\stdlib.h          \
               $(hinc)\stdio.h           \
-              $(hinc)\malloc.h			
+              $(hinc)\malloc.h	
 			  
-$(dest):      buildmsg.obj
-              link $(exelink) buildmsg;
+$(dest):      stripz.obj
+              link $(exelink) stripz;
 
