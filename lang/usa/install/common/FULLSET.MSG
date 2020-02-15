@@ -1,0 +1,42 @@
+[CopyWait]
+Now is a great time to fill out your registration card. When 
+you send it in, Microsoft will:
+
+   þ Keep you up to date on the latest product improvements.
+   þ Let you know about related Microsoft products.
+
+[CopyWait]
+Double your hard disk with DoubleSpace.  MS-DOS 6 gives 
+you a safe, easy way to increase your disk capacity by 
+integrating data compression into the operating system.  
+
+You can double your hard disk by typing DBLSPACE at the 
+command prompt as soon as you complete this setup program.
+
+[CopyWait]
+MS-DOS 6 delivers new, advanced memory management 
+features, including an easy-to-use memory optimizer named
+MemMaker.  
+
+If you have a 386 or higher processor, optimize your PC 
+memory by typing MEMMAKER at the command prompt.
+
+[CopyWait]
+Protect your data!
+
+   þ Anti-Virus detects and removes computer viruses.
+   þ Backup safeguards your files.
+   þ Improved Undelete provides three levels of undelete security. 
+
+MS-DOS 6 includes both MS-DOS and Windows versions of these 
+three data-protecting features.
+
+[CopyWait]
+And Remember...
+
+Type DBLSPACE at the command prompt to increase your hard
+disk space.
+
+For PCs with a 386 or higher processor, type MEMMAKER at the
+command prompt to optimize your PC's memory.
+

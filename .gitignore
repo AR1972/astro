@@ -21,5 +21,4 @@ c6ers/*/*.lib
 c6ers/*/*.out
 c6ers/*/*.OUT
 c6ers/*/MAKE.OUT
-inc/bdsize.inc
 dos/DISKOBJS
