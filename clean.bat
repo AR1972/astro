@@ -11,6 +11,8 @@ cd %OAKROOT%
 
 echo Y | del %OAKROOT%\BINARIES\*.*
 echo Y | del %OAKROOT%\COMPRESS\*.*
+echo . > %OAKROOT%\BINARIES\.gitkeep
+echo . > %OAKROOT%\COMPRESS\.gitkeep
 
 del %OAKROOT%\BIOS\*.OBJ
 del %OAKROOT%\BIOS\MSBIO.CL?
