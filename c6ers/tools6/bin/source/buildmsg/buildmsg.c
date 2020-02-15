@@ -33,7 +33,7 @@
 
 /* -------------------------------------------------------------------------- */
 
-#define ParseOrExtend ((!_strnicmp(USEstring,"PARSE\n",5) ) || (!_strnicmp(USEstring,"EXTEND\0",5) ) )
+#define ParseOrExtend ((!strnicmp(USEstring,"PARSE\n",5) ) || (!strnicmp(USEstring,"EXTEND\0",5) ) )
 #define IsReserved(c)	( (c == '1') || (c == '2') )
 
 /* -------------------------------------------------------------------------- */
@@ -159,7 +159,7 @@ char	*argv[];
 	/* get the skeleton file name (2nd Parm) to be processed */
 
 	strcpy(CountryName, argv[1]);
-	_strupr(CountryName);
+	strupr(CountryName);
 	strcpy(CountryIdx,CountryName);
 	strcat(CountryIdx, ".IDX");
 	strcpy(CountryMsg,CountryName);
@@ -176,7 +176,7 @@ char	*argv[];
 		EofFlags[i] = TRUE;
 		}
 
-	if ( (argc > 3) && (_strnicmp(argv[3],"/D",2) == 0) ) Debugging = TRUE;
+	if ( (argc > 3) && (strnicmp(argv[3],"/D",2) == 0) ) Debugging = TRUE;
 
 	InRegs.x.ax = 0x6200;
 	intdos(&InRegs, &OutRegs);
@@ -275,7 +275,7 @@ char	*FileName;
 			sscanf(&CurrentRecord[0]," %s ",&RecordTypeText[0]);
 			i = strlen(RecordTypeText);
 
-			_strupr(RecordTypeText);
+			strupr(RecordTypeText);
 
 			if (RecordTypeText[0] == (char) ':') Processed = FALSE;
 						       else  Processed = TRUE;
@@ -348,7 +348,7 @@ char	*Record;
 
 	sscanf(Record," %s ",UtilityName);
 
-	_strupr(UtilityName);
+	strupr(UtilityName);
 
 	if (Pass == 1)
 	      {
@@ -596,9 +596,9 @@ char	*Record;
 
 		strcpy(USEstring, "empty\0");
 
-		if (_strnicmp(TextPtr,"PARSE",5) == 0)  { strcpy(USEstring, "PARSE\0");  i = 5; j = 1; }
-		if (_strnicmp(TextPtr,"COMMON",6) == 0) { i = 6; j = 2; }
-		if (_strnicmp(TextPtr,"EXTEND",6) == 0) { strcpy(USEstring, "EXTEND\0"); i = 6; j = 3; }
+		if (strnicmp(TextPtr,"PARSE",5) == 0)  { strcpy(USEstring, "PARSE\0");  i = 5; j = 1; }
+		if (strnicmp(TextPtr,"COMMON",6) == 0) { i = 6; j = 2; }
+		if (strnicmp(TextPtr,"EXTEND",6) == 0) { strcpy(USEstring, "EXTEND\0"); i = 6; j = 3; }
 
 		NumberPtr = TextPtr + i;
 		sscanf(NumberPtr," %d ",&TempNumber);
@@ -642,9 +642,9 @@ char	*Record;
 		strcpy(USEstring, "empty\0");
 
 		TextPtr = NumberPtr;
-		if (_strnicmp(TextPtr,"PARSE",5) == 0)  { strcpy(USEstring, "PARSE\0"); i = 5; j = 1; }
-		if (_strnicmp(TextPtr,"COMMON",6) == 0) { i = 6; j = 2; }
-		if (_strnicmp(TextPtr,"EXTEND",6) == 0) { strcpy(USEstring, "PARSE\0"); i = 6; j = 3; }
+		if (strnicmp(TextPtr,"PARSE",5) == 0)  { strcpy(USEstring, "PARSE\0"); i = 5; j = 1; }
+		if (strnicmp(TextPtr,"COMMON",6) == 0) { i = 6; j = 2; }
+		if (strnicmp(TextPtr,"EXTEND",6) == 0) { strcpy(USEstring, "PARSE\0"); i = 6; j = 3; }
 
 		NumberPtr += i;
 		sscanf(NumberPtr," %d ",&CurrentMessageNumber);
@@ -714,7 +714,7 @@ char	*Record;
 	    }
 	  else
 	    {
-	    if ( !_strnicmp( Is_Utility_Command, UtilityName, 5) )
+	    if ( !strnicmp( Is_Utility_Command, UtilityName, 5) )
 	      {
 	      if ( ( CurrentClass != 67 ) && ( CurrentClass != 68 ) &&
 		   ( CurrentClass != 69 ) && ( CurrentClass != '1') &&
@@ -1321,7 +1321,7 @@ void ReadCommon()
 			IdxComponentName, &MsgOffset, &MsgCount);
 		if (Debugging) printf("---> [%s] %04lX %04d<---\n",IdxComponentName, MsgOffset, MsgCount);
 
-		_strupr(IdxComponentName);
+		strupr(IdxComponentName);
 
 		if (strcmp(IdxComponentName,"COMMON")  == 0)
 		      {
