@@ -35,6 +35,7 @@ $(cpr):       $(dest)
 graftabl.ctl: graftabl.skl              \
 	      $(msg)\$(COUNTRY).msg     \
 	      makefile
+		  buildmsg ..\..\messages\usa-ibm graftabl.skl
 
 grtab.obj:    grtab.asm                 \
 	      makefile
@@ -95,4 +96,15 @@ graftabl.exc: grtab.obj                 \
 	      link @graftabl.lnk
 
 $(dest):      graftabl.exc
+
+clean:
+	-del *.obj
+	-del *.exc
+	-del *.com
+	-del *.co_
+	-del *.cl1
+	-del *.cl2
+	-del *.cla
+	-del *.ctl
+	
 

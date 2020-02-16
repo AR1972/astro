@@ -55,16 +55,16 @@ all:
 	$(MAKE) /a
 
 	cd ..\graftabl
-#	$(MAKE)
+	$(MAKE)
 	cd ..\graphics
 	$(MAKE)
-#	cd ..\help
+	cd ..\help
 	$(MAKE)
 	cd ..\join
-#	$(MAKE)
+#	$(MAKE) # missing lib\mapper.lib
 	cd ..\keyb
 	$(MAKE)
-#	cd ..\label
+	cd ..\label
 	$(MAKE)
 	cd ..\loadfix
 	$(MAKE)
