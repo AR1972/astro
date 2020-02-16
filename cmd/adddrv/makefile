@@ -118,7 +118,7 @@ exehigh.exe: exehigh.obj
 	link /m/l/noi exehigh;
 
 
-cleanup:
+clean:
 	del deldrv.exe   
 	del deldrv.obj   
 	del adddrv.exe   
