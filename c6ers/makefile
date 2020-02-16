@@ -12,20 +12,20 @@ all:
         compress -f smartmon.exe ..\..\compress\smartmon.ex_
         compress -f smartmon.hlp ..\..\compress\smartmon.hl_
         cd ..\choice
-        $(MAKE)
+#        $(MAKE)
         cd ..\newcmds
-        $(MAKE)
-        copy deltree.exe ..\..\binaries
-        copy move.exe ..\..\binaries
-        compress -f deltree.exe ..\..\compress\deltree.ex_
-        compress -f move.exe ..\..\compress\move.ex_
+#        $(MAKE)
+#        copy deltree.exe ..\..\binaries
+#        copy move.exe ..\..\binaries
+#        compress -f deltree.exe ..\..\compress\deltree.ex_
+#        compress -f move.exe ..\..\compress\move.ex_
 	cd ..\interlnk\paragon\lib
-	$(MAKE)
+#	$(MAKE)
 	cd ..\..\fxlib
-	$(MAKE)
+#	$(MAKE)
 	cd ..\driver
-	$(MAKE)
+#	$(MAKE)
 	cd ..
-	$(MAKE)
+#	$(MAKE)
 
 	cd ..

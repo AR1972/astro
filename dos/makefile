@@ -454,3 +454,13 @@ msdos.bin: msdos.cl1 msdos.cl2 dosprint.obj exepatch.obj \
 
 $(dest): msdos.bin
 	stripz msdos.bin $(dest)
+	
+clean:
+	-del *.obj
+	-del *.bin
+	-del *.exe
+	-del *.cl*
+	-del *.map
+	-del *.sys
+	-del DISKOBJS
+	

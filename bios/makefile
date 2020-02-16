@@ -388,4 +388,13 @@ $(dest): msbio.bin
 	del file.out
 
 !ENDIF
+
+clean:
+	-del *.obj
+	-del *.sys
+	-del *.cl*
+	-del *.map
+	-del *.com
+	-del *.bin
+
 

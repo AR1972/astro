@@ -1,0 +1,11 @@
+	copy intersvr.exe ..\..\binaries
+        1 file(s) copied
+	compress intersvr.exe intersvr.ex_
+Microsoft (R) Compression Utility - Version 1.11
+Copyright (c) Microsoft Corp 1989 - 1992.  All rights reserved.
+
+intersvr.exe
+      Wrote  23604 bytes to output file 'intersvr.ex_'
+   33122 bytes compresses to 23604 bytes,  Savings: 29 percent
+	copy intersvr.ex_ ..\..\compress
+        1 file(s) copied

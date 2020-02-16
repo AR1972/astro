@@ -1,0 +1,78 @@
+	del msg.obj
+	del msg.asm
+	copy c:\astro\LANG\usa\c6ers\interlnk\driver\msg.asm
+        1 file(s) copied
+	ml /c /nologo -W2 /DMAJOR_VER=1 /DMINOR_VER=00 /Cp  /DVERSION_NUM=\"1.00\" msg.asm
+ Assembling: msg.asm
+	link /nologo core+block+serial+printer+init+drmain+msg+parallel,interdos/noi;
+
+init.obj(init.asm) : error L2029: 'm_prn_se_letter' : unresolved external
+drmain.obj(drmain.asm) : error L2029: 'm_client_letter' : unresolved external
+init.obj(init.asm) : error L2029: 'm_client_letter' : unresolved external
+init.obj(init.asm) : error L2029: 'baud_msg' : unresolved external
+drmain.obj(drmain.asm) : error L2029: 'm_not_installed' : unresolved external
+init.obj(init.asm) : error L2029: 'par_port_name' : unresolved external
+drmain.obj(drmain.asm) : error L2029: 'm_drive_syntax' : unresolved external
+init.obj(init.asm) : error L2029: 'm_map_header' : unresolved external
+init.obj(init.asm) : error L2029: 'signon_ndrives' : unresolved external
+init.obj(init.asm) : error L2029: 'printer_default' : unresolved external
+init.obj(init.asm) : error L2029: 'msg_no_ports' : unresolved external
+drmain.obj(drmain.asm) : error L2029: 'doslink_help' : unresolved external
+init.obj(init.asm) : error L2029: 'printer_paren' : unresolved external
+init.obj(init.asm) : error L2029: 'ser_port_name' : unresolved external
+init.obj(init.asm) : error L2029: 'm_bad_bios_par' : unresolved external
+init.obj(init.asm) : error L2029: 'm_bad_bios_ser' : unresolved external
+init.obj(init.asm) : error L2029: 'too_big' : unresolved external
+init.obj(init.asm) : error L2029: 'msg_no_devices' : unresolved external
+init.obj(init.asm) : error L2029: 'm_too_many_par' : unresolved external
+init.obj(init.asm) : error L2029: 'm_connect_ok' : unresolved external
+init.obj(init.asm) : error L2029: 'none_str' : unresolved external
+init.obj(init.asm) : error L2029: 'm_prn_map' : unresolved external
+init.obj(init.asm) : error L2029: 'product_name' : unresolved external
+init.obj(init.asm) : error L2029: 'm_too_many_ser' : unresolved external
+init.obj(init.asm) : error L2029: 'irq_loc' : unresolved external
+init.obj(init.asm) : error L2029: 'm_no_driver' : unresolved external
+init.obj(init.asm) : error L2029: 'signon_paren' : unresolved external
+init.obj(init.asm) : error L2029: 'm_connect_try' : unresolved external
+init.obj(init.asm) : error L2029: 'm_com_bad' : unresolved external
+init.obj(init.asm) : error L2029: 'printer_ndrives' : unresolved external
+init.obj(init.asm) : error L2029: 'no_drives' : unresolved external
+init.obj(init.asm) : error L2029: 'm_max_baud' : unresolved external
+drmain.obj(drmain.asm) : error L2029: 'm_dl_ver_mismatch' : unresolved external
+init.obj(init.asm) : error L2029: 'm_connect_fail' : unresolved external
+init.obj(init.asm) : error L2029: 'irq_msg' : unresolved external
+init.obj(init.asm) : error L2029: 'm_prn_cl_letter' : unresolved external
+init.obj(init.asm) : error L2029: 'auto_str' : unresolved external
+init.obj(init.asm) : error L2029: 'signon_dfirst' : unresolved external
+drmain.obj(drmain.asm) : error L2029: 'm_server_letter' : unresolved external
+init.obj(init.asm) : error L2029: 'm_server_letter' : unresolved external
+drmain.obj(drmain.asm) : error L2029: 'requires_dos3' : unresolved external
+init.obj(init.asm) : error L2029: 'signon_dlast' : unresolved external
+init.obj(init.asm) : error L2029: 'comma_space' : unresolved external
+init.obj(init.asm) : error L2029: 'no_printers' : unresolved external
+drmain.obj(drmain.asm) : error L2029: 'm_drive_map' : unresolved external
+init.obj(init.asm) : error L2029: 'm_drive_map' : unresolved external
+drmain.obj(drmain.asm) : error L2029: 'invalid_switch' : unresolved external
+init.obj(init.asm) : error L2029: 'invalid_switch' : unresolved external
+init.obj(init.asm) : error L2029: 'signon_default' : unresolved external
+init.obj(init.asm) : error L2029: 'printer_signon' : unresolved external
+init.obj(init.asm) : error L2029: 'm_baud_error' : unresolved external
+init.obj(init.asm) : error L2029: 'port_address_loc' : unresolved external
+init.obj(init.asm) : error L2029: 'cr_lf' : unresolved external
+drmain.obj(drmain.asm) : error L2029: 'm_lost_connect' : unresolved external
+init.obj(init.asm) : error L2029: 'm_lost_connect' : unresolved external
+init.obj(init.asm) : error L2029: 'printer_dfirst' : unresolved external
+init.obj(init.asm) : error L2029: 'spaces_str' : unresolved external
+init.obj(init.asm) : error L2029: 'm_lpt_bad' : unresolved external
+init.obj(init.asm) : error L2029: 'printer_dlast' : unresolved external
+init.obj(init.asm) : error L2029: 'par_port_number' : unresolved external
+init.obj(init.asm) : error L2029: 'm_bad_par_addr' : unresolved external
+init.obj(init.asm) : error L2029: 'drives_error' : unresolved external
+init.obj(init.asm) : error L2029: 'baud_loc' : unresolved external
+drmain.obj(drmain.asm) : error L2029: 'm_not_connected' : unresolved external
+init.obj(init.asm) : error L2029: 'port_address_msg' : unresolved external
+init.obj(init.asm) : error L2029: 'ser_port_number' : unresolved external
+init.obj(init.asm) : error L2029: 'm_bad_ser_addr' : unresolved external
+
+
+There were 62 errors detected
