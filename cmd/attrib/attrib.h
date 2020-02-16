@@ -5,9 +5,9 @@
 ; *                      All Rights Reserved.
 ; */
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ?/    */
 /* All defines for attrib.c                                                */
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ?/    */
 
 #define FALSE      0                    /*;AN000;*/
 #define TRUE       !FALSE               /*;AN000;*/
@@ -84,9 +84,9 @@
 #define GET_TIME     2                  /*;AN000;*/
 
 #define INACTIVE     0x7fff             /*;AN000;*/
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ?/    */
 /* All structures defined for attrib.c                                     */
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ?/    */
 
 struct p_null {                        /*;AN000;  a null value list for parser */
     unsigned char null;                /*;AN000;*/
@@ -141,9 +141,9 @@ union eav_union {                      /*;AN000;*/
     DWORD    ea_time;                  /*;AN000;*/
     DWORD    ea_date;                  /*;AN000;*/
     };                                 /*;AN000;*/
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ?/   */
 /* All global variables for attrib.c                                       */
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ?/    */
 struct spl_list specials[MAX_SPL] = {  /*;AN000;*/
    "FILESIZE", A_FILESIZE,             /*;AN000;*/
    "DATE",     A_DATE,                 /*;AN000;*/
@@ -411,7 +411,7 @@ struct m_sublist msg_str2 =            /*;AN000; describes substitutions   */
        sf_left | sf_char | sf_asciiz,  /*;AN000;  string                   */
        0,                              /*;AN000;  null string              */
        0,                              /*;AN000;                           */
-       (BYTE)" " };                    /*;AN000;                           */
+       (BYTE) ' ' };                    /*;AN000;                           */
 struct m_sublist msg_dword =           /*;AN000; describes substitutions   */
      { 48,                             /*;AN000;   for parm one of message */
        0,                              /*;AN000;                           */
@@ -451,7 +451,7 @@ struct m_sublist msg_str =             /*;AN000; describes substitutions   */
        sf_left | sf_char | sf_asciiz,  /*;AN000;  string                   */
        9,                              /*;AN000;  null string              */
        9,                              /*;AN000;                           */
-       (BYTE)" " };                    /*;AN000;                           */
+       (BYTE) ' ' };                    /*;AN000;                           */
 struct m_sublist msg_str1 =            /*;AN000; describes substitutions   */
      { 12,                             /*;AN000;   for parm two of message */
        0,                              /*;AN000;                           */
@@ -461,7 +461,7 @@ struct m_sublist msg_str1 =            /*;AN000; describes substitutions   */
        sf_left | sf_char | sf_asciiz,  /*;AN000;  string                   */
        0,                              /*;AN000;  null string              */
        0,                              /*;AN000;                           */
-       (BYTE)" " };                    /*;AN000;                           */
+       (BYTE) ' ' };                    /*;AN000;                           */
 struct m_sublist msg_error =           /*;AN000; describes substitutions   */
      { 12,                             /*;AN000;   for extended error messages*/
        0,                              /*;AN000;                           */
@@ -471,7 +471,7 @@ struct m_sublist msg_error =           /*;AN000; describes substitutions   */
        sf_left | sf_char | sf_asciiz,  /*;AN000;  string                   */
        0,                              /*;AN000;  null string              */
        0,                              /*;AN000;                           */
-       (BYTE)" " };                    /*;AN000;                           */
+       (BYTE) ' ' };                    /*;AN000;                           */
 
 /* misc. variables */
 union REGS       inregs,               /*;AN000;  Registers */

@@ -11,7 +11,7 @@ all:
 	cd ..\assign
 #	$(MAKE)
 	cd ..\attrib
-#	$(MAKE)
+	$(MAKE)
 	cd ..\backup
 #	$(MAKE)
 

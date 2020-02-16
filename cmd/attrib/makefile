@@ -67,3 +67,14 @@ $(dest):    attrib.obj \
 	    _msgret.obj \
 	    attrib.lnk
       link $(exelink) @attrib.lnk
+
+clean:
+	-del *.obj
+	-del *.map
+	-del *.pkl
+	-del *.cl1
+	-del *.cl2
+	-del *.cla
+	-del *.clb
+	-del *.ctl
+	-del *.exe
