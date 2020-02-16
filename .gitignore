@@ -16,6 +16,9 @@
 *.HL_
 *.SYS
 *.SY_
+*.CL*
+*.CTL
+*.PKL
 c6ers/*/*.exe
 c6ers/*/*.lib
 c6ers/*/*.out
