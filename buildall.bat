@@ -119,7 +119,8 @@ SET UJANUS=
 	pklite -o setup.exe
 	copy SETUP.exe %CPRS%\setup.oem
 	copy SETUP.exe %BIN%\setup.oem
-	cd ..\..
+::	cd ..\..
+	cd ..\
 
 SET OEMBASE=TRUE
 
@@ -127,7 +128,8 @@ SET OEMBASE=TRUE
 	%DOSMAKE% /a
 	copy %LANG_SRC%\%COUNTRY%\install\common\BASESET.MSG %BIN%
 	copy %LANG_SRC%\%COUNTRY%\install\common\BASESET.MSG %CPRS%
-	cd ..\..
+::	cd ..\..
+	cd ..\
 
 	
 SET OEMBASE=

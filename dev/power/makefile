@@ -56,7 +56,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) /y $(dest) $(cpr)
 
 !ENDIF
 .\powermsg.inc:
