@@ -148,6 +148,7 @@ echo.
 
 :END
 
+cd %ROOT%
 set path=%savep%
 set savep=
 SET ROOT=

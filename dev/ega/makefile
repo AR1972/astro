@@ -17,7 +17,7 @@ $(bins)\ega.sys: ega.sys
                     copy ega.sys $(bins)
 
 ega.sy_:         ega.sys
-                    $(compress) ega.sys ega.sy_
+                    $(compress) /y ega.sys ega.sy_
 
 $(cprs)\ega.sy_: ega.sy_
                     copy ega.sy_ $(cprs)
