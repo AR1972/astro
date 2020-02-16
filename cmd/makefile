@@ -59,17 +59,17 @@ all:
 	cd ..\graphics
 	$(MAKE)
 	cd ..\help
-	$(MAKE)
+#	$(MAKE) # needs strings
 	cd ..\join
 #	$(MAKE) # missing lib\mapper.lib
 	cd ..\keyb
 	$(MAKE)
 	cd ..\label
-	$(MAKE)
+#	$(MAKE) # needs strings
 	cd ..\loadfix
 	$(MAKE)
 	cd ..\mem
-#	$(MAKE)
+#	$(MAKE) # needs strings
 	cd ..\mode
 	$(MAKE)
 	cd ..\more
