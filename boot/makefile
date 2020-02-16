@@ -20,3 +20,10 @@ msboot.bin:   msboot.obj
               link msboot;
               reloc msboot.exe msboot.bin
               dbof msboot.bin boot.inc 7c00 200
+			  
+clean:
+	-del boot.cl1
+	-del boot.inc
+	-del msboot.bin
+	-del msboot.exe
+	-del msboot.obj
