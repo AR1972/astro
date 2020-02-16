@@ -1,5 +1,5 @@
 hinc    =..\..\h
-dest    =stripdd.exe
+dest    =h2inc.exe
 bins    =..\..\
 
 all: $(dest) $(bins)\$(dest)
@@ -7,11 +7,11 @@ all: $(dest) $(bins)\$(dest)
 $(bins)\$(dest): $(dest)
             copy $(dest) $(bins)
 			
-stipz.obj:    stripdd.c                \
+stipz.obj:    h2inc.c                \
               makefile                  
 			  
-$(dest):      stripdd.obj
-              link $(exelink) /stack:4096 stripdd;
+$(dest):      h2inc.obj
+              link $(exelink) /stack:4096 h2inc;
 			  
 clean:
 	-del *.exe
