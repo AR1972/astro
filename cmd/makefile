@@ -9,11 +9,11 @@ all:
 	cd append
 	$(MAKE)
 	cd ..\assign
-#	$(MAKE)
+	$(MAKE)
 	cd ..\attrib
 	$(MAKE)
 	cd ..\backup
-#	$(MAKE)
+#	$(MAKE) #missing lib\mapper.lib
 
 	cd ..\chkdsk
 	$(MAKE) /a BASE=
@@ -24,7 +24,7 @@ all:
 	$(MAKE) /a
 
 	cd ..\comp
-#	$(MAKE)
+#	$(MAKE) #needs strings
 	cd ..\cps
 	$(MAKE)
         cd ..\debug
@@ -34,7 +34,7 @@ all:
 	cd ..\diskcopy
 	$(MAKE)
 	cd ..\doskey
-#	$(MAKE)
+	$(MAKE)
 	cd ..\edlin
 	$(MAKE)
 	cd ..\exe2bin

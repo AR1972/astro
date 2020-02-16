@@ -24,7 +24,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -69,4 +69,13 @@ doskey.exc:   doskey.obj                \
               link @doskey.lnk
 
 $(dest):      doskey.exc
+
+clean:
+	-del *.obj
+	-del *.com
+	-del *.exc
+	-del *.co_
+	-del *.cl1
+	-del *.cl2
+
 
