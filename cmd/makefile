@@ -51,8 +51,8 @@ all:
 	$(MAKE)
 
 	cd ..\format
-#	$(MAKE) /a BASE=
-#	$(MAKE) /a
+	$(MAKE) /a BASE=
+	$(MAKE) /a
 
 	cd ..\graftabl
 #	$(MAKE)
