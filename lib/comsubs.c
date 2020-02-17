@@ -13,25 +13,28 @@ char *com_strchr( unsigned char *,   /* source string */
 unsigned char *com_strrchr( unsigned char *,   /* source string */
                                    unsigned char );   /* target string */
 
-//int main(int argc, char ** argv);
 
-int com_toupper (unsigned char ch ) {
-	return('A');
+int com_toupper (unsigned char c ) {
+	return c + 32;
 }
 
-char *com_strchr( unsigned char* str, unsigned char ch) {
-	char *retval = "abcdef";
-	return(retval);
+char *com_strchr( unsigned char* s, unsigned char c) {
+ do {
+    if (*s == c)
+      {
+	return (char*)s;
+      }
+  } while (*s++);
+  return (0);
 }
 
-unsigned char *com_strrchr(unsigned char* str, unsigned char ch) {
-	unsigned char* retval = "abcdef";
-	return(retval);
+unsigned char *com_strrchr(unsigned char* s, unsigned char c)
+{
+  char *rtnval = 0;
+  
+  do {
+    if (*s == c)
+      rtnval = (char*) s;
+  } while (*s++);
+  return (rtnval);
 }
-/*
-int main(int argc, char ** argv) {
-	
-	return(0);
-
-}
-*/
