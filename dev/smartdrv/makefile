@@ -50,7 +50,7 @@ $(cprs)\$(cpr):  $(cpr)
 	    copy $(cpr) $(cprs)
 
 $(cpr):          $(dest)
-		 $(compress) /y $(dest) $(cpr)
+		 $(compress) -f $(dest) $(cpr)
 !ENDIF
 
 .c.obj:
