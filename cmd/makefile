@@ -13,16 +13,13 @@ all:
 	cd ..\attrib
 	$(MAKE)
 	cd ..\backup
-#	$(MAKE) #missing lib\mapper.lib
-
+#	$(MAKE) #missing mapper.lib
 	cd ..\chkdsk
 	$(MAKE) /a BASE=
 	$(MAKE) /a
-
 	cd ..\command
 	$(MAKE) /a BASE=
 	$(MAKE) /a
-
 	cd ..\comp
 #	$(MAKE) #needs strings
 	cd ..\cps
@@ -40,20 +37,18 @@ all:
 	cd ..\exe2bin
 	$(MAKE)
 	cd ..\expand
-#	$(MAKE)
+#	$(MAKE) #needs strings
 	cd ..\fastopen
 	$(MAKE)
 	cd ..\fc
-#	$(MAKE)
+#	$(MAKE) #needs strings
 	cd ..\fdisk
-#	$(MAKE)
+#	$(MAKE) # broken probably a missing ;
 	cd ..\find
 	$(MAKE)
-
 	cd ..\format
 	$(MAKE) /a BASE=
 	$(MAKE) /a
-
 	cd ..\graftabl
 	$(MAKE)
 	cd ..\graphics
@@ -61,7 +56,7 @@ all:
 	cd ..\help
 #	$(MAKE) # needs strings
 	cd ..\join
-#	$(MAKE) # missing lib\mapper.lib
+#	$(MAKE) # missing lib\master.lib
 	cd ..\keyb
 	$(MAKE)
 	cd ..\label
@@ -92,22 +87,18 @@ all:
 	$(MAKE)
 	cd ..\restore
 #	$(MAKE)		#mapper.lib missing
-
 	cd ..\setver
 #	$(MAKE) /a BASE= #needs strings added
 #	$(MAKE) /a
-
 	cd ..\share
 #	$(MAKE)		#needs strings
 	cd ..\sort
 #	$(MAKE)     #needs strings
 	cd ..\subst
-#	$(MAKE)		#libmapper missing
-
+#	$(MAKE)		#master.lib missing
 	cd ..\sys
 	$(MAKE) /a BASE=
 	$(MAKE) /a
-
 	cd ..\tree
 	$(MAKE)
 	cd ..\wina20

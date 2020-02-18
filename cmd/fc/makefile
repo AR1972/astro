@@ -82,4 +82,9 @@ update.obj:   update.c tools.h ttypes.h
 
 $(dest): $(OBJ) fc.lnk
         $(link) $(exelink) @fc.lnk;
+		
+clean:
+	-del *.obj
+	-del *.exe
+	
 

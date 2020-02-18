@@ -42,9 +42,10 @@ $(cpr):       $(dest)
 
 
 subst.ctl:    subst.skl                 \
-              $(msg)\$(COUNTRY).msg     \
+              $(msg)\$(COUNTRY)-ibm.msg     \
               makefile
-
+              buildmsg $(msg)\$(COUNTRY)-ibm subst.skl
+			  
 _msgret.obj:  _msgret.asm               \
               makefile                  \
               $(inc)\msgserv.asm        \
@@ -74,5 +75,11 @@ $(dest):      subst.obj                 \
               _parse.obj                \
               subst.lnk
               link $(exelink) @subst.lnk
-
+			  
+clean:
+	-del *.exe
+	-del *.obj
+	-del *.ctl
+	-del *.cl*
+
 

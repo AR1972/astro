@@ -51,49 +51,49 @@ fdisk5.cl1 : fdisk5.skl $(msg)\$(COUNTRY).msg
 fdisk.ctl : fdisk.skl $(msg)\$(COUNTRY).msg
 
 main.obj : main.c \
-           $(MSG_DIR)\fdisk.h subtype.h extern.h fdiskmsg.h msgret.h doscall.h
+           fdisk.h subtype.h extern.h fdiskmsg.h msgret.h doscall.h
 
 fdisk.obj : fdisk.c \
-            $(MSG_DIR)\fdisk.h subtype.h extern.h fdiskmsg.h doscall.h msgret.h
+            fdisk.h subtype.h extern.h fdiskmsg.h doscall.h msgret.h
 
-mainmenu.obj : mainmenu.c $(MSG_DIR)\fdisk.h subtype.h extern.h fdiskmsg.h
+mainmenu.obj : mainmenu.c fdisk.h subtype.h extern.h fdiskmsg.h
 
 display.obj : display.c \
-              $(MSG_DIR)\fdisk.h subtype.h extern.h fdiskmsg.h doscall.h
+              fdisk.h subtype.h extern.h fdiskmsg.h doscall.h
 
-d_menus.obj : d_menus.c $(MSG_DIR)\fdisk.h subtype.h extern.h fdiskmsg.h
+d_menus.obj : d_menus.c fdisk.h subtype.h extern.h fdiskmsg.h
 
-c_menus.obj : c_menus.c $(MSG_DIR)\fdisk.h subtype.h extern.h fdiskmsg.h
+c_menus.obj : c_menus.c fdisk.h subtype.h extern.h fdiskmsg.h
 
-input.obj : input.c $(MSG_DIR)\fdisk.h subtype.h extern.h fdiskmsg.h doscall.h
+input.obj : input.c fdisk.h subtype.h extern.h fdiskmsg.h doscall.h
 
-tdisplay.obj : tdisplay.c $(MSG_DIR)\fdisk.h subtype.h extern.h fdiskmsg.h
+tdisplay.obj : tdisplay.c fdisk.h subtype.h extern.h fdiskmsg.h
 
-vdisplay.obj : vdisplay.c $(MSG_DIR)\fdisk.h subtype.h extern.h fdiskmsg.h
+vdisplay.obj : vdisplay.c fdisk.h subtype.h extern.h fdiskmsg.h
 
-space.obj : space.c $(MSG_DIR)\fdisk.h subtype.h extern.h
+space.obj : space.c fdisk.h subtype.h extern.h
 
-partinfo.obj : partinfo.c $(MSG_DIR)\fdisk.h subtype.h extern.h
+partinfo.obj : partinfo.c fdisk.h subtype.h extern.h
 
-makepart.obj : makepart.c $(MSG_DIR)\fdisk.h subtype.h extern.h
+makepart.obj : makepart.c fdisk.h subtype.h extern.h
 
-rempart.obj : rempart.c $(MSG_DIR)\fdisk.h subtype.h extern.h
+rempart.obj : rempart.c fdisk.h subtype.h extern.h
 
-video.obj : video.c $(MSG_DIR)\fdisk.h extern.h subtype.h fdiskmsg.h doscall.h
+video.obj : video.c fdisk.h extern.h subtype.h fdiskmsg.h doscall.h
 
-int13.obj : int13.c $(MSG_DIR)\fdisk.h subtype.h extern.h fdiskmsg.h
+int13.obj : int13.c fdisk.h subtype.h extern.h fdiskmsg.h
 
-diskout.obj : diskout.c $(MSG_DIR)\fdisk.h subtype.h extern.h
+diskout.obj : diskout.c fdisk.h subtype.h extern.h
 
-fdparse.obj : fdparse.c $(MSG_DIR)\fdisk.h subtype.h extern.h parse.h msgret.h
+fdparse.obj : fdparse.c fdisk.h subtype.h extern.h parse.h msgret.h
 
-convert.obj : convert.c $(MSG_DIR)\fdisk.h subtype.h extern.h
+convert.obj : convert.c fdisk.h subtype.h extern.h
 
-global.obj : global.c $(MSG_DIR)\fdisk.h makefile
+global.obj : global.c fdisk.h makefile
 
 fdiskm.obj : fdiskm.c
 
-messages.obj : messages.c msgret.h extern.h subtype.h $(MSG_DIR)\fdisk.h
+messages.obj : messages.c msgret.h extern.h subtype.h fdisk.h
 
 
 # Handle the FDISK MASM source
