@@ -32,7 +32,7 @@ LOCALINCS = $(LOCALINCS) -I$(SOURCES)
 !ENDIF
 
 !IFNDEF TOOLS
-TOOLS   = ..\..\tools\bin
+TOOLS   = ..\..\c6ers\tools6\bin
 !ENDIF
 !IFDEF LOCALINCS
 INC     = $(LOCALINCS) -I$(ROOT)\include -I$(ROOT)\dosinc

@@ -27,6 +27,12 @@ cpr     =monoumb.38_
 #
 ####################### Dependencies Begin Here ##########################
 #
+clean:
+	-del *.sym
+	-del *.map
+	-del *.obj
+	-del *.386
+	-del *.38_
 
 all: $(dest) $(bins)\$(dest) $(cprs)\$(cpr)
 
