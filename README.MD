@@ -10,7 +10,7 @@ work for so long?
 /*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴*/				
 
 The pourpose of this project is to reconstruct the missing bits of the source<br>
-tree and get this tree to build. Most of the important bit compile, but the<br>
+tree and get this tree to build. Most of the important bits compile, but the<br>
 strings will need to be copy/paste from MS-DOS 6.0 compiled binaries, some<br>
 important defines are missing and a few libaries are missing and will have<br>
 to be rewritten from scratch.
