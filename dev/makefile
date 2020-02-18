@@ -25,7 +25,7 @@ all:
 	$(MAKE)
 !ENDIF
 	cd ..\monoumb
-#	$(MAKE)
+	$(MAKE)
 	cd ..\mouse
 	$(MAKE)
 	cd ..\power

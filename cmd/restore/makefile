@@ -64,7 +64,6 @@ restore.obj:  restore.c                 \
               rt2.h                     \
               restpars.h                \
               makefile                  \
-              $(hinc)\comsub.h          \
               $(hinc)\doscalls.h        \
               $(hinc)\error.h
 
@@ -74,7 +73,6 @@ rtt1.obj:     rtt1.c                    \
               rt2.h                     \
               restpars.h                \
               makefile                  \
-              $(hinc)\comsub.h          \
               $(hinc)\doscalls.h        \
               $(hinc)\error.h
 
@@ -84,7 +82,6 @@ rtt3.obj:     rtt3.c                    \
               rt2.h                     \
               restpars.h                \
               makefile                  \
-              $(hinc)\comsub.h          \
               $(hinc)\doscalls.h        \
               $(hinc)\error.h
 
@@ -94,7 +91,6 @@ rtdo.obj:     rtdo.c                    \
               rt2.h                     \
               restpars.h                \
               makefile                  \
-              $(hinc)\comsub.h          \
               $(hinc)\doscalls.h        \
               $(hinc)\error.h
 
@@ -104,7 +100,6 @@ rtdo1.obj:    rtdo1.c                   \
               rt2.h                     \
               restpars.h                \
               makefile                  \
-              $(hinc)\comsub.h          \
               $(hinc)\doscalls.h        \
               $(hinc)\error.h
 
@@ -114,7 +109,6 @@ rtnew.obj:    rtnew.c                   \
               rt2.h                     \
               restpars.h                \
               makefile                  \
-              $(hinc)\comsub.h          \
               $(hinc)\doscalls.h        \
               $(hinc)\error.h
 
@@ -124,7 +118,6 @@ rtnew1.obj:   rtnew1.c                  \
               rt2.h                     \
               restpars.h                \
               makefile                  \
-              $(hinc)\comsub.h          \
               $(hinc)\doscalls.h        \
               $(hinc)\error.h
 
@@ -134,7 +127,6 @@ rtold.obj:    rtold.c                   \
               rt2.h                     \
               restpars.h                \
               makefile                  \
-              $(hinc)\comsub.h          \
               $(hinc)\doscalls.h        \
               $(hinc)\error.h
 
@@ -144,7 +136,6 @@ rtold1.obj:   rtold1.c                  \
               rt2.h                     \
               restpars.h                \
               makefile                  \
-              $(hinc)\comsub.h          \
               $(hinc)\doscalls.h        \
               $(hinc)\error.h
 
@@ -154,7 +145,6 @@ rtfile.obj:   rtfile.c                  \
               rt2.h                     \
               restpars.h                \
               makefile                  \
-              $(hinc)\comsub.h          \
               $(hinc)\doscalls.h        \
               $(hinc)\error.h
 
@@ -164,7 +154,6 @@ rtfile1.obj:  rtfile1.c                 \
               rt2.h                     \
               restpars.h                \
               makefile                  \
-              $(hinc)\comsub.h          \
               $(hinc)\doscalls.h        \
               $(hinc)\error.h
 
@@ -174,7 +163,6 @@ restpars.obj: restpars.c                \
               rt2.h                     \
               restpars.h                \
               makefile                  \
-              $(hinc)\comsub.h          \
               $(hinc)\doscalls.h        \
               $(hinc)\error.h
 
@@ -193,7 +181,12 @@ $(dest):      restore.obj               \
               restore.lnk               \
               _msgret.obj               \
               _parse.obj                \
-              $(doslib)\comsubs.lib     \
               $(doslib)\mapper.lib
               link $(exelink) @restore.lnk
+			  
+clean:
+	-del *.obj
+	-del *.exe
+	-del *.ctl
+	-del *.cl*
 
