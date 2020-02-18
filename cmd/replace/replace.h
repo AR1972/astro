@@ -373,7 +373,7 @@ extern  void sysloadmsg(union REGS *, union REGS *);
     char *backptr;                       /* pointer to backslash */          \
                                                                              \
     /* If no backslash, then add backslash to end */                         \
-    if ((backptr = com_strrchr(pszStore,'\\')) == NULL)                      \
+    if ((backptr = strrchr(pszStore,'\\')) == NULL)                      \
       strcat(pszStore,"\\");                                                 \
     else                                                                     \
     {                                                                        \

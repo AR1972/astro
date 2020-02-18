@@ -77,7 +77,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "comsub.h"                    /* DBCS functions */
+//#include "comsub.h"                    /* DBCS functions */
 #include "dos.h"                       /* Used for the REGS union */
 #include "replacep.h"                  /* Parser structures */
 #include "io.h"
@@ -122,8 +122,8 @@ int  argc ;
 char *argv[] ;
 {
   /*  Forward declarations */
-  char *com_strchr();                       /* To search for DBCS "\\" */
-  unsigned char *com_strrchr();             /* To search for DBCS "\\" */
+  //char *strchr();                       /* To search for DBCS "\\" */
+  //unsigned char *strrchr();             /* To search for DBCS "\\" */
   
   /*  Local variables */
   int index;                                /* Forming string for parser */
@@ -542,7 +542,7 @@ char *source;
     {
       dbcs_search[0] = source[i-1];        /* Copy char to srch for DBCS */
       dbcs_search[1] = source[i];          /* Copy char to srch for DBCS */
-      if (com_strchr(dbcs_search,'\\') != NULL)
+      if (strchr(dbcs_search,'\\') != NULL)
       {
         /* If there is a pointer, then backslash exists */
         backslash_char = TRUE;
@@ -565,7 +565,7 @@ char *source;
   }
   dbcs_search[0] = source[i-1];
   dbcs_search[1] = source[i];
-  if ( ((com_strchr(dbcs_search,'\\'))!= NULL) || (source[i] == ':') )
+  if ( ((strchr(dbcs_search,'\\'))!= NULL) || (source[i] == ':') )
     source[i+1] = NULL;
 }
 
@@ -625,7 +625,7 @@ char *target;                              /* target pathname */
   /* Copy chars to search for DBCS */
   dbcs_search[0] = target[strlen(target)-2];
   dbcs_search[1] = target[strlen(target)-1];
-  if ( ((com_strchr(dbcs_search,'\\')) != &dbcs_search[1]) &&
+  if ( ((strchr(dbcs_search,'\\')) != &dbcs_search[1]) &&
        (rstatus == NOERROR) )
     strcat(target,"\\");
 }
@@ -670,7 +670,7 @@ char *save;
          *  delete cur dir name from path
          */
         target[strlen(target) - 1] = NULL;
-        *((unsigned char *)com_strrchr(target,'\\') + 1) = NULL;
+        *((unsigned char *)strrchr(target,'\\') + 1) = NULL;
         posptr += 3;
       }
       else                             /* current directory */
@@ -682,7 +682,7 @@ char *save;
     else                               /* directory name */
     {
       /* Have a directory name, so copy it over to target string */
-      if ((nextptr = com_strchr(posptr,'.')) == NULL)
+      if ((nextptr = strchr(posptr,'.')) == NULL)
         nextptr = endptr;
       catlen = (int)nextptr - (int)posptr;
       strncat(target,posptr,catlen);

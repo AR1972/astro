@@ -89,7 +89,7 @@ all:
 	cd ..\redir
 	$(MAKE)
 	cd ..\replace
-#	$(MAKE)     #mapper.lib missing
+	$(MAKE)
 	cd ..\restore
 #	$(MAKE)		#comsubs.lib missing
 

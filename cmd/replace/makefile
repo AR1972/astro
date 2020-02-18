@@ -43,8 +43,9 @@ $(cpr):       $(dest)
 
 
 replace.ctl:  replace.skl               \
-              $(msg)\$(COUNTRY).msg     \
+              $(msg)\$(COUNTRY)-ibm.msg     \
               makefile
+			  buildmsg $(msg)\$(COUNTRY)-ibm replace.skl
 
 _msgret.obj:  _msgret.asm               \
               $(inc)\msgserv.asm        \
@@ -65,16 +66,20 @@ _replace.obj: _replace.asm              \
 replace.obj:  replace.c                 \
               makefile                  \
               replacep.h                \
-              $(hinc)\comsub.h          \
               replace.h
 
 $(dest):      replace.obj               \
               _replace.obj              \
-              $(doslib)\mapper.lib      \
-              $(doslib)\comsubs.lib     \
               _msgret.obj               \
               _parse.obj                \
               replace.lnk
               link $(exelink) @replace.lnk
-
+
+clean:
+	-del *.exe
+	-del *.ex_
+	-del *.obj
+	-del *.ctl
+	-del *.cl*
+
 
