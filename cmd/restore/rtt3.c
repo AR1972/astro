@@ -16,7 +16,7 @@
 #include "direct.h"
 #include "string.h"
 #include "dos.h"                                                      /*;AN000;2*/
-#include "comsub.h"             /* common subroutine def'n */
+//#include "comsub.h"             /* common subroutine def'n */
 #include "doscalls.h"
 #include "error.h"
 #include "process.h"                                                  /*;AN000;p972*/
@@ -513,7 +513,7 @@ WORD retcode;
    return;
 
 }
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ */
 /*									     */
 /*     Subroutine Name:      chek_DBCS()				     */
 /*									     */
@@ -529,7 +529,7 @@ WORD retcode;
 /*			array[position] == character.			     */
 /*	      FALSE - otherwise 					     */
 /*									     */
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ */
 WORD chek_DBCS(array,position,character)			       /*;AN005;*/
 char *array;							       /*;AN005;*/
 WORD position;							       /*;AN005;*/
@@ -575,14 +575,14 @@ char character; 						       /*;AN005;*/
       return (FFALSE);						       /*;AN005;*/
 }								       /*;AN005;*/
 
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 /*									     */
 /*     Subroutine Name:     Get_DBCS_vector()				     */
 /*									     */
 /*     Subroutine Function:						     */
 /*	  Gets the double-byte table vector.				     */
 /*	  Puts it in global variable DBCS_ptr				     */
-/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
+/*ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ*/
 void Get_DBCS_vector()						       /*;AN005;*/
 {								       /*;AN005;*/
     union REGS inregs,outregs;					       /*;AN005;*/

@@ -91,7 +91,7 @@ all:
 	cd ..\replace
 	$(MAKE)
 	cd ..\restore
-#	$(MAKE)		#comsubs.lib missing
+#	$(MAKE)		#mapper.lib missing
 
 	cd ..\setver
 #	$(MAKE) /a BASE= #needs strings added

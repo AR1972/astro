@@ -27,7 +27,7 @@
 #include "string.h"
 #include "ctype.h"
 #include "dos.h"                                                      /*;AN000;2*/
-#include "comsub.h"             /* common subroutine def'n */
+//#include "comsub.h"             /* common subroutine def'n */
 #include "doscalls.h"
 #include "error.h"
 
@@ -119,7 +119,7 @@ char	*argv[];						      /*;AN000;4 */
 	 }							      /*;AC000;4*/
 
 		/* Check for same source and target drive */
-	if (com_toupper(*argv[1]) == com_toupper(*argv[2])	      /*;AN000;4*/
+	if (toupper(*argv[1]) == toupper(*argv[2])	      /*;AN000;4*/
 	    && (BYTE)*(argv[1]+1) == ':'                              /*;AN000;4*/
 	    && (BYTE)*(argv[1]+2) == NUL			      /*;AN000;4*/
 	    && (BYTE)*(argv[2]+1) == ':'                              /*;AN000;4*/
@@ -564,7 +564,7 @@ char	*argv[];				/*;AN000;4*/
 	union REGS qregs;					      /*;AN000;8*/
 	union REGS reg;
 
-	*argv[1]=(BYTE)com_toupper(*argv[1]);			      /*;AN000;4*/
+	*argv[1]=(BYTE)toupper(*argv[1]);			      /*;AN000;4*/
 
 	if (							      /*;AN000;4*/
 	     *argv[1] < 'A'    ||                                     /*;AN000;4*/
