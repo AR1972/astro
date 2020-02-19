@@ -1,0 +1,12 @@
+void fGetCDS() {return;}
+void PutVars() {return;}
+void fNet() {return;}
+void fPhysical() {return;}
+void getdrv() {return;}
+void fPathErr() {return;}
+void ffirst() {return;}
+void fPutCDS() {return;}
+void rootpath() {return;}
+void GetVars() {return;}
+void fShared() {return;}
+void strbscan() {return;}
