@@ -74,7 +74,7 @@ all:
 	cd ..\print
 	$(MAKE)
 	cd ..\printfix
-#	$(MAKE)
+	$(MAKE)
 !IF "$(COUNTRY)" != "JAPAN" && "$(COUNTRY)" != "japan"
 	cd ..\qbasic
 	$(MAKE)

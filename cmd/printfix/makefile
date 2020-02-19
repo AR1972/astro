@@ -33,3 +33,7 @@ printfix.exc: printfix.obj
 
 $(dest): printfix.exc
 
+clean:
+	-del *.com
+	-del *.exc
+	-del *.obj
