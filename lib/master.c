@@ -10,3 +10,4 @@ void rootpath() {return;}
 void GetVars() {return;}
 void fShared() {return;}
 void strbscan() {return;}
+void GetDPB() {return;}
