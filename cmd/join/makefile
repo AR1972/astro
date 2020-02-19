@@ -67,4 +67,12 @@ $(dest):      join.obj                  \
               _parse.obj                \
               join.lnk
               link $(exelink) @join.lnk
+			  
+clean:
+	-del *.obj
+	-del *.exe
+	-del *.ex_
+	-del *.ctl
+	-del *.cl*
+	
 
