@@ -81,5 +81,6 @@ clean:
 	-del *.obj
 	-del *.ctl
 	-del *.cl*
+	-del *.ex_
 
 
