@@ -13,4 +13,4 @@ rtfile	   +
 rtfile1    +
 _parse	   +
 _msgret
-restore.exe,,..\..\lib\mapper;
+restore.exe,,..\..\lib\doscalls.lib;

@@ -13,7 +13,7 @@ all:
 	cd ..\attrib
 	$(MAKE)
 	cd ..\backup
-#	$(MAKE) #missing mapper.lib
+	$(MAKE)
 	cd ..\chkdsk
 	$(MAKE) /a BASE=
 	$(MAKE) /a
@@ -86,7 +86,7 @@ all:
 	cd ..\replace
 	$(MAKE)
 	cd ..\restore
-#	$(MAKE)		#mapper.lib missing
+	$(MAKE)
 	cd ..\setver
 #	$(MAKE) /a BASE= #needs strings added
 #	$(MAKE) /a

@@ -231,7 +231,7 @@ void main(argc,argv)  /* wrw! */
 /*********************************/
 /*   Take control of Hard Errors */
 /*********************************/
-    set_int24_vector(); 			/*;AN000; Set Critical error vector (int 24h) */
+    //set_int24_vector(); 			/*;AN000; Set Critical error vector (int 24h) */
 
 
    /************************************************************/

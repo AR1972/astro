@@ -508,7 +508,8 @@ void com_msg(retcode)
 WORD retcode;
 {
 	/* Was IF CPDOS */
-   display_it(rctomid(retcode),STND_ERR_DEV,0,NO_RESPTYPE,(BYTE)UTIL_MSG);  /*;AN000;6*/
+   //display_it(rctomid(retcode),STND_ERR_DEV,0,NO_RESPTYPE,(BYTE)UTIL_MSG);  /*;AN000;6*/
+   display_it(retcode,STND_ERR_DEV,0,NO_RESPTYPE,(BYTE)UTIL_MSG);
 
    return;
 

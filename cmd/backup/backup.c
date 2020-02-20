@@ -869,7 +869,7 @@ void check_drive_validity(int argc, char *argv[])
   /*
    *  Verify the source.
    */
-  *argv[1] = (BYTE)com_toupper(*argv[1]);
+  *argv[1] = (BYTE)toupper(*argv[1]);
   t = argv[1];
   t++;
   if (*t == ':')                  /* check specified source drive */
@@ -889,7 +889,7 @@ void check_drive_validity(int argc, char *argv[])
   if (argc < 3)
     error_exit(NO_TARGET);
 
-  *argv[2] = (BYTE)com_toupper(*argv[2]);
+  *argv[2] = (BYTE)toupper(*argv[2]);
 
   if (*argv[2] < 'A')
     error_exit(INV_DRIVE);
@@ -969,7 +969,7 @@ void check_for_device_names(char *argv[])
     t = &target[0];
   else
   {
-    temp_ptr = com_strrchr(target, BACKSLASH);   /* DBCS ?? */
+    temp_ptr = strrchr(target, BACKSLASH);   /* DBCS ?? */
     if (temp_ptr == NUL)
       return;
     if ((target + pathlen - temp_ptr) > 6)
@@ -1068,10 +1068,10 @@ void check_path_validity(char *argv[])
   }
 
   /* See if there are global characters specified */
-  if (com_strchr(src_drive_path_fn, '?') != NUL)
+  if (strchr(src_drive_path_fn, '?') != NUL)
     globals = TRUE;
   else
-    if (com_strchr(src_drive_path_fn, '*') != NUL)
+    if (strchr(src_drive_path_fn, '*') != NUL)
       globals = TRUE;
 
   if (src_drive_path_fn[3] == BACKSLASH)     /*	don't let user enter d:\\ */
@@ -1145,7 +1145,7 @@ void check_path_validity(char *argv[])
   strcpy(src_drive_path, src_drive_path_fn);
 
   /* Remove last BACKSLASH to get the pathname */
-  foo = com_strrchr(src_drive_path, BACKSLASH);
+  foo = strrchr(src_drive_path, BACKSLASH);
 
   if (foo != NUL)
   {
@@ -1161,7 +1161,7 @@ void check_path_validity(char *argv[])
   /*
    *  Build src_fn.
    */
-  foo = com_strrchr(src_drive_path_fn, BACKSLASH);
+  foo = strrchr(src_drive_path_fn, BACKSLASH);
   if (foo == NUL)
     foo = &src_drive_path_fn[2];
   else
@@ -1329,7 +1329,7 @@ void set_vectors()
 
   setsignal(ACTIONHOOK, CTRLC);        /* handle CTRL_C */
   setsignal(ACTIONHOOK, CTRLBREAK);    /* handle CTRL_BREAK */
-  (void)set_int24_vector(NULL);        /* set critical error vector (int 24h) */
+  //(void)set_int24_vector(NULL);        /* set critical error vector (int 24h) */
 }
 
 
@@ -2272,7 +2272,7 @@ void set_default_dir()
    *  If there IS a backslash and if length is greater than 3, 
    *  then change dir to there.
    */
-  if (com_strchr(src_drive_path, BACKSLASH) != NUL)
+  if (strchr(src_drive_path, BACKSLASH) != NUL)
   {
     if (strlen(src_drive_path) >= 3)
     {

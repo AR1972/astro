@@ -62,9 +62,7 @@ backup.obj:   backup.c                  \
 $(dest):      backup.obj                \
               _parse.obj                \
               _msgret.obj               \
-			  ..\..\c6ers\tools6\lib\api.lib \
-              $(doslib)\mapper.lib      \
-              $(doslib)\comsubs.lib
+              $(doslib)\doscalls.lib
               link $(exelink) @backup.lnk
 			  
 clean:
