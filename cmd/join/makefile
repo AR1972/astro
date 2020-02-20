@@ -60,9 +60,7 @@ join.obj:     join.c                    \
               join.h
 
 $(dest):      join.obj                  \
-              $(doslib)\mapper.lib      \
               $(doslib)\master.lib      \
-              $(doslib)\comsubs.lib     \
               _msgret.obj               \
               _parse.obj                \
               join.lnk
