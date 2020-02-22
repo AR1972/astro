@@ -12,7 +12,7 @@ all:
         compress -f smartmon.exe ..\..\compress\smartmon.ex_
         compress -f smartmon.hlp ..\..\compress\smartmon.hl_
         cd ..\choice
-#        $(MAKE)
+        $(MAKE)
         cd ..\newcmds
 #        $(MAKE)
 #        copy deltree.exe ..\..\binaries
