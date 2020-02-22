@@ -9,8 +9,8 @@ HELPMSG1 db '/C[:]choices Specifies allowable keys. Default is YN',13,10,
 'ERRORLEVEL is set to offset of key user presses in choices.',13,10,13,10,0
 BADSWITCHMSG db 'Invalid switch on command line. Expected form:',13,10,'    ',0
 NEEDCHOICE db 'CHOICE: invalid choice switch syntax. Expected form: /C[:]choices',13,10,0
-BADTIMEOUTCHARMSG db 'CHOICE: Incorrect timeout syntax.  Expected form Tc,nn or T:c,nn',13,10,0
-BADTIMEOUTMSG db 'CHOICE: Timeout default not in specified (or default) choices.',13,10,0
+BADTIMEOUTMSG db 'CHOICE: Incorrect timeout syntax.  Expected form Tc,nn or T:c,nn',13,10,0
+BADTIMEOUTCHARMSG db 'CHOICE: Timeout default not in specified (or default) choices.',13,10,0
 MULTPROMPTERRMSG db 'CHOICE: only one prompt string allowed. Expected Form:',13,10,'    ',0
 BADVERMSG db 'CHOICE: requires MS-DOS version 4.0 or later.',13,10,0,0
 LastSecs db 00h
@@ -33,7 +33,7 @@ NUL equ 00h
 TAB equ 09h
 QUOTE equ '"'
 SWITCHCHAR equ '/'
-CHOICEDELIM equ ':'
+CHOICEDELIM equ ','
 HELPSWITCH equ '?'
 CHOICESWITCH equ 'C'
 DISPLAYSWITCH equ 'N'
