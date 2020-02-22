@@ -26,8 +26,8 @@ BLANK equ 20h
 CHOICEBEG equ '['
 CHOICEEND equ ']'
 QUESTION equ '?'
-CR equ 13h
-LF equ 10h
+CR equ 0Dh
+LF equ 0Ah
 BEL equ 07h
 NUL equ 00h
 TAB equ 09h
@@ -46,12 +46,6 @@ TRUE equ 01h
 TIMEDEFDELIM equ ','
 MAXPROMPT equ 80h
 GETUPPERTABLE equ 6502h
-
-strout MACRO strptr
-	mov ah, 09h
-	lea dx, strptr
-	int 21h
-ENDM
 
 putchr MACRO ch
 	mov ah, 02h
