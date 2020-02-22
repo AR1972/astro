@@ -24,4 +24,9 @@ $(dest):        choice.obj
 
 choice.obj:     choice.asm $(MSG_DIR)\choice.inc
 	ml /c /AT /I$(MSG_DIR) choice.asm  
+	
+clean:
+	-del *.com
+	-del *.obj
+	
 
