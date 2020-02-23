@@ -108,5 +108,12 @@ himem.bin: himem.exe
 
 $(dest): himem.bin
     stripdd himem.bin $(dest)
-
+	
+clean:
+	-del *.obj
+	-del *.map
+	-del *.bin
+	-del *.exe
+	-del *.sys
+	-del *.sy_
 
