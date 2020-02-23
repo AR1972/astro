@@ -68,9 +68,6 @@ subst.obj:    subst.c                   \
               subst.h
 
 $(dest):      subst.obj                 \
-              $(doslib)\mapper.lib      \
-              $(doslib)\master.lib      \
-              $(doslib)\comsubs.lib     \
               _msgret.obj               \
               _parse.obj                \
               subst.lnk
