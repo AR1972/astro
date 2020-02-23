@@ -157,4 +157,47 @@ MoveExtendedStruc struc
     DestHandle	dw	?	; Handle for destination
     DestOffset	dd	?	; Offset into destination
 MoveExtendedStruc ends
+
+; added #######################################################################
+; one should be extreamly skeptical, all these are guesses.
+; TODO: read 80286 programmer's reference manual for GDT entry format
+
+BIGISA_START    equ 16384
+
+myLEN struc
+    hi dw ?
+    lo dw ?
+myLEN ends
+
+SEGREG_DESCRIPTOR struc
+    SEG_BASE_LO dw ?
+    SEG_BASE_HI db ?
+SEGREG_DESCRIPTOR ends
+
+DTR_DESCRIPTOR struc
+    A_286 dw ?
+    B_286 db ?
+    C_286 db ?
+    D_286 dw ?
+DTR_DESCRIPTOR ends
+
+LODAL286 Macro
+    mov ax, 80h
+ENDM
+
+DESC386 struc
+    A_386 dd ?
+	B_386 db ?
+	C_386 db ?
+	LO_apDesc386 db ?
+	MID_apDesc386 db ?
+	HI_apDesc386 db ?
+DESC386 ends
+	
+GDT386 struc
+	A_GDT386 db ?    ;GDTLen
+	LO_apBaseGdt db ?
+	HI_apBaseGdt db ?
+GDT386 ends
+
 
