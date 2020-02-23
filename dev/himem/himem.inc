@@ -185,19 +185,21 @@ LODAL286 Macro
     mov ax, 80h
 ENDM
 
-DESC386 struc
-    A_386 dd ?
-	B_386 db ?
-	C_386 db ?
-	LO_apDesc386 db ?
-	MID_apDesc386 db ?
-	HI_apDesc386 db ?
-DESC386 ends
-	
-GDT386 struc
-	A_GDT386 db ?    ;GDTLen
-	LO_apBaseGdt db ?
-	HI_apBaseGdt db ?
-GDT386 ends
+;*	* 386 Descriptor template
+
+DESC386	STRUC
+    limDesc386      dw  0       ; limit bits (0..15)
+    LO_apDesc386    dw  0       ; base bits (0..15)
+    MID_apDesc386   db  0       ; base bits (16..23)
+    accessDesc386   db  0       ; accessDesc386 byte
+    granDesc386     db  0       ; granularity byte
+    HI_apDesc386    db  0       ; base bits (24..31)
+DESC386	ENDS
+
+GDT386	STRUC
+   limitGdt      dw ?
+   LO_apBaseGdt  dw ?
+   HI_apBaseGdt  dw ?
+GDT386	ENDS
 
 
