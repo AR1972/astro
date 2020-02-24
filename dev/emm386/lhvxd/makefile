@@ -71,4 +71,10 @@ LoadHi.map
 LoadHi.def
 <<
         addhdr ..\EMM386NW.exe
+		
+clean:
+	-del *.exe
+	-del *.map
+	-del *.obj
+
 

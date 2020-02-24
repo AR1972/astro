@@ -83,89 +83,87 @@ PUBLIC InitMessage
 PUBLIC ISizeMess
 PUBLIC OF_won_err
 
-;##############################################################################
-
-ActiveMess
-Adj_Size
-Already_Inst
-Any_key
-AutoMess
-AvailHanMess
-AvailPagesMess
-bad_mc_state
-BadXMM
-DMAMODE_Len
-DMAMODE_Mess
-DMAMODE_Num
-DMASIZE_Len
-DMASIZE_Mess
-DMASIZE_Num
-DriverVersion
-EXCPE_Len
-EXCPE_Mess
-EXCPE_Num
-HMAonMsg
-InactiveMess
-Incorrect_DOS
-Incorrect_PRT
-InsfMem
-InstallMess
-InvMRA
-InvParm
-InvPFBA
-LIMVerMess
-MajVer
-MemSizeMess
-MinVer1
-MinVer2
-NoEMSmess
-No_PF_Avail
-NoWeitek
-NoXMM
-OF_aerr
-OF_amode
-OFFMess
-OF_inaccess
-OF_invparm
-OF_not_there
-OF_parmerr
-OF_proterr
-OF_rerr
-OF_rmode
-OF_verror
-OF_vmode
-OF_w_inaccess
-OF_w_not_inst
-OF_woff_err
-OF_woff_mode
-OF_won_mode
-OtherEMM
-OverlapWarn
-PEN_Len
-PEN_Mess
-PEN_Num
-PFBAMess
-PF_not_3_2
-PFWarning
-POE_Len
-POE_Mess
-POE_Num
-StatusMess
-TotalHanMess
-TotalPagesMess
-UMBavail
-UMBlargest
-UMBmemMsg
-UMBstart
-UMBstatusMess
-UserAbortMsg
-WeitekNAMess
-WeitekOFFMess
-WeitekONMess
-WinBackfillMess db 'WinBackfillMess'
-WINEMM_Mess
-WinInvPathMess
-Inv_DOS_msg 
-InitMessage
-ISizeMess
-OF_won_err
+ActiveMess       db 'ActiveMess'
+Adj_Size         db 'Adj_Size'
+Already_Inst     db 'Already_Inst'
+Any_key          db 'Any_Key'
+AutoMess         db 'AutoMess'
+AvailHanMess     db 'AvailHanMess'
+AvailPagesMess   db 'AvailPagesMess'
+bad_mc_state     db 'bad_mc_state'
+BadXMM           db 'BadXMM'
+DMAMODE_Len      db 'DMAMODE_Len'
+DMAMODE_Mess     db 'DMAMODE_Mess'
+DMAMODE_Num      db 'DMAMODE_Num'
+DMASIZE_Len      db 'DMASIZE_Len'
+DMASIZE_Mess     db 'DMASIZE_Mess'
+DMASIZE_Num      db 'DMASIZE_Num'
+DriverVersion    db 'DriverVersion'
+EXCPE_Len        db 'EXCPE_Len'
+EXCPE_Mess       db 'EXCPE_Mess'
+EXCPE_Num        db 'EXCPE_Num'
+HMAonMsg         db 'HMAonMsg'
+InactiveMess     db 'InactiveMess'
+Incorrect_DOS    db 'Incorrect_DOS'
+Incorrect_PRT    db 'Incorrect_PRT'
+InsfMem          db 'InsfMem'
+InstallMess      db 'InstallMess'
+InvMRA           db 'InvMRA'
+InvParm          db 'InvParm'
+InvPFBA          db 'InvPFBA'
+LIMVerMess       db 'LIMVerMess'
+MajVer           db 'MajVer'
+MemSizeMess      db 'MemSizeMess'
+MinVer1          db 'MinVer1'
+MinVer2          db 'MinVer2'
+NoEMSmess        db 'NoEMSmess'
+No_PF_Avail      db 'No_PF_Avail'
+NoWeitek         db 'NoWeitek'
+NoXMM            db 'NoXMM'
+OF_aerr          db 'OF_aerr'
+OF_amode         db 'OF_amode'
+OFFMess          db 'OFFMess'
+OF_inaccess      db 'OF_inaccess'
+OF_invparm       db 'OF_invparm'
+OF_not_there     db 'OF_not_there'
+OF_parmerr       db 'OF_parmerr'
+OF_proterr       db 'OF_proterr'
+OF_rerr          db 'OF_rerr'
+OF_rmode         db 'OF_rmode'
+OF_verror        db 'OF_verror'
+OF_vmode         db 'OF_vmode'
+OF_w_inaccess    db 'OF_w_inaccess'
+OF_w_not_inst    db 'OF_w_not_inst'
+OF_woff_err      db 'OF_woff_err'
+OF_woff_mode     db 'OF_woff_mode'
+OF_won_mode      db 'OF_won_mode'
+OtherEMM         db 'OtherEMM'
+OverlapWarn      db 'OverlapWarn'
+PEN_Len          db 'PEN_Len'
+PEN_Mess         db 'PEN_Mess'
+PEN_Num          db 'PEN_Num'
+PFBAMess         db 'PFBAMess'
+PF_not_3_2       db 'PF_not_3_2'
+PFWarning        db 'PFWarning'
+POE_Len          db 'POE_Len'
+POE_Mess         db 'POE_Mess'
+POE_Num          db 'POE_Num'
+StatusMess       db 'StatusMess'
+TotalHanMess     db 'TotalHanMess'
+TotalPagesMess   db 'TotalPagesMess'
+UMBavail         db 'UMBavail'
+UMBlargest       db 'UMBlargest'
+UMBmemMsg        db 'UMBmemMsg'
+UMBstart         db 'UMBstart'
+UMBstatusMess    db 'UMBstatusMess'
+UserAbortMsg     db 'UserAbortMsg'
+WeitekNAMess     db 'WeitekNAMess'
+WeitekOFFMess    db 'WeitekOFFMess'
+WeitekONMess     db 'WeitekONMess'
+WinBackfillMess  db 'WinBackfillMess'
+WINEMM_Mess      db 'WINEMM_Mess'
+WinInvPathMess   db 'WinInvPathMess'
+Inv_DOS_msg      db 'Inv_DOS_msg'
+InitMessage      db 'InitMessage'
+ISizeMess        db 'ISizeMess'
+OF_won_err       db 'OF_won_err'
