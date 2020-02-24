@@ -144,7 +144,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -378,6 +378,10 @@ emmdata.obj : emmdata.asm $(MEMMINC)
 
 winemm.obj : winemm.asm $(MEMMINC) 
 	$(ASM) $(AFLAGS) winemm.asm;
-
-
+	
+clean:
+	-del *.obj
+	-del *.exe
+	-del *.map
+
 
