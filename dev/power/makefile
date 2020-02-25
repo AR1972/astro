@@ -84,4 +84,12 @@ uldiv.obj uldiv.lst: uldiv.asm mm.inc
 
 $(dest):        power.obj ptime.obj lpc.obj lmul.obj uldiv.obj xtoa.obj
         $(link) $(link_opts) power ptime lpc lmul uldiv xtoa,$(dest);
+		
+clean:
+	-del *.exe
+	-del *.ex_
+	-del *.obj
+	-del *.map
+	-del POWERMSG.INC
+
 
