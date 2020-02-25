@@ -17,7 +17,7 @@ $(bins)\ega.sys: ega.sys
                     copy ega.sys $(bins)
 
 ega.sy_:         ega.sys
-                    $(compress) /y ega.sys ega.sy_
+                    $(compress) -f ega.sys ega.sy_
 
 $(cprs)\ega.sy_: ega.sy_
                     copy ega.sy_ $(cprs)
@@ -35,4 +35,10 @@ ega.exs:      ega.obj
         link ega,ega.exs;
 
 ega.sys:      ega.exs
+
+clean:
+	-del *.exs
+	-del *.obj
+	-del *.sys
+
 
