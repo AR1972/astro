@@ -34,7 +34,14 @@ CRLF_MSG            db 13,10,'$'
 OPEN_FAILED_MSG     db 13,10,"Power Manager (POWER.EXE) not installed.",13,10,10,'$'
 STATS_FAILED_MSG    db "Error accessing power manager.",13,10,'$'
 BADDOSMSG           db "Incorrect DOS version",13,10,'$'
-TOKEN_TABLE         db 'TOKEN_TABLE',0
+TOKEN_TABLE         db 07,00           ; number of tokens in table
+                    db 09,07,"adv:max" ; token value, token len, token
+                    db 08,07,"adv:reg"
+                    db 05,07,"adv:min"
+                    db 08,03,"adv"
+                    db 02,03,"std"
+                    db 01,03,"off"
+                    db 0Ah,04,"/low"
 ACLINE_STAT1        db 13,10,"AC Line Status : $"
 ACLINE_STAT2        db 13,10,'$'
 AC_OFFLINE_STR      db "OFFLINE$"
@@ -46,6 +53,7 @@ BATTERY_LOW         db "Low$"
 BATTERY_CRITICAL    db "Critical$"
 BATTERY_CHARGING    db "Charging$"
 BATTERY_LIFE_STR1   db 13,10,"Battery life (%) : ",13,10,'$'
+BATTERY_LIFE_STR2   equ CRLF_MSG
 CPU_IDLE_MSG1       db "CPU: idle $"
 CPU_IDLE_MSG2       db "% of time.",13,10,'$'
 POWER_STAT1_MSG     db 13,10,"Power Management Status",13,10,"-----------------------",13,10,"Setting =  $"
@@ -55,7 +63,6 @@ POWER_ADVREG_MSG    db "ADV: REG$"
 POWER_ADVMIN_MSG    db "ADV: MIN$"
 POWER_OFF_MSG       db "OFF$"
 POWER_NOID_MSG      db "STD$"
-BATTERY_LIFE_STR2   equ CRLF_MSG
 HELP_TEXT           db "Reduces power used by your computer.",13,10,13,10
                     db "POWER [ADV[:MAX | REG | MIN] | STD | OFF]",13,10,13,10
                     db "  ADV[:MAX | REG | MIN] --  Reduces power by  monitoring applications",13,10
