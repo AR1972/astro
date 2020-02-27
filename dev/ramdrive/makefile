@@ -66,4 +66,11 @@ $(dest):       ramdrive.exs
 iclean:
 	del messages.asm
 	del messages.obj
+	
+clean:
+	-del *.obj
+	-del *.sys
+	-del *.sy_
+	-del *.exs
+	-del messages.asm
 

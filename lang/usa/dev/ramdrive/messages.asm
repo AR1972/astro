@@ -1,4 +1,3 @@
-;
 PUBLIC INIT_IO_ERR
 PUBLIC SECT_ADJ
 PUBLIC HEADERMES
@@ -19,22 +18,25 @@ PUBLIC PATCH2X
 PUBLIC DOS_DRV
 PUBLIC BAD_ABOVE
 
-INIT_IO_ERR		db 'INIT_IO_ERR',0
-SECT_ADJ		db 'SECT_ADJ',0
-HEADERMES		db 'HEADERMES',0
-BADVERMES		db 'BADVERMES',0
-ERRXMM			db 'ERRXMM',0
-STATMES1		db 'STATMES1',0
-STATMES2		db 'STATMES2',0
-STATMES3		db 'STATMES3',0
-STATMES4		db 'STATMES4',0
-STATMES5		db 'STATMES5',0
-XMMCHAIN		db 'XMMCHAIN',0
-NO_MEM			db 'NO_MEM',0
-NO_ABOVE		db 'NO_ABOVE',0
-ERRMSG1			db 'ERRMSG1',0
-NOXMM			db 'NOXMM',0
-ERRMSG2			db 'ERRMSG2',0
-PATCH2X			db 'PATCH2X',0
-DOS_DRV			db 'DOS_DRV',0
-BAD_ABOVE		db 'BAD_ABOVE',0
+_msg segment public
+NO_ABOVE      db "RAMDrive: Expanded Memory Manager not present",13,10,'$'
+BAD_ABOVE     db "RAMDrive: Expanded Memory Status shows error",13,10,'$'
+NO_MEM        db "RAMDrive: No extended memory available",13,10,'$'
+NOXMM         db "RAMDrive: Extended Memory Manager not present",13,10,'$'
+XMMCHAIN      db "RAMDrive: Bad Extended Memory Manager control chain",13,10,'$'
+ERRXMM        db "RAMDrive: Error in extended memory allocation",13,10,'$'
+ERRMSG1       db "RAMDrive: Invalid parameter",13,10,'$'
+ERRMSG2       db "RAMDrive: Insufficient memory",13,10,'$'
+INIT_IO_ERR   db "RAMDrive: I/O error accessing drive memory",13,10,'$'
+BADVERMES     db "RAMDrive: Incorrect DOS version",13,10,'$'
+SECT_ADJ      db "RAMDrive: Incompatible parameters: sector size adjusted",13,10,'$'
+HEADERMES     db 13,10,"Microsoft RAMDrive version 3.07"
+PATCH2X       db " virtual disk "
+DOS_DRV       db "A:",13,10,'$'
+STATMES1      db "    Disk size: $"
+STATMES2      db "k",13,10,"    Sector size: $"
+STATMES3      db " bytes",13,10,"    Allocation unit: $"
+STATMES4      db " sectors",13,10,"    Directory entries: $"
+STATMES5      db 13,10,'$'
+_msg ends
+end
