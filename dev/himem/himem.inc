@@ -24,9 +24,9 @@ debug_vers	=	00000h
 tdump		=	00000h		; display the handle table on each call
 keep_cs 	=	00000h		; keep track of allocator's cs:
 
-XMSVersion	equ	0200h
-HimemVersion	equ	0200h+77h
-DATE_String	equ	'02/27/91'
+XMSVersion	equ	0300h
+HimemVersion	equ	0300h+09h
+DATE_String	equ	'02/23/93'
 
 INT2F_ID	equ	043h		; XMS Int 2Fh multiplex ID
 INT2F_INS_CHK	equ	000h		;     driver installation check
@@ -163,6 +163,8 @@ MoveExtendedStruc ends
 ; TODO: read 80286 programmer's reference manual for GDT entry format
 
 BIGISA_START    equ 16384
+DEF_ACCESS	EQU	92H
+DEF_LIMIT	EQU	0FFFFH
 
 myLEN struc
     hi dw ?
@@ -172,13 +174,15 @@ myLEN ends
 SEGREG_DESCRIPTOR struc
     SEG_BASE_LO dw ?
     SEG_BASE_HI db ?
+    SEG_ACCESS	DB	DEF_ACCESS
+    SEG_LIMIT	DW	DEF_LIMIT
 SEGREG_DESCRIPTOR ends
 
 DTR_DESCRIPTOR struc
-    A_286 dw ?
-    B_286 db ?
-    C_286 db ?
-    D_286 dw ?
+DTR_BASE	DW	?
+		DB	?
+		DB	0
+DTR_LIMIT	DW	?
 DTR_DESCRIPTOR ends
 
 LODAL286 Macro

@@ -55,8 +55,9 @@ SignOnMsg db	13,10,'HIMEM: DOS XMS Driver, Version '
 	db	'0' + ((HimemVersion and 0ffh) mod 16)
 	db	' - '
 	db	DATE_String
-	db	13,10,'XMS Specification Version 2.0'
-	db	13,10,'Copyright 1988-1991 Microsoft Corp.'
+	db	13,10,'Extended Memory Specification (XMS) Version '
+	db  '0' + (XMSVersion shr 8),'.0'
+	db	13,10,'Copyright 1988-1993 Microsoft Corp.'
 	db	13,10,'$'
 
 ROMDisabledMsg	  db	13,10,	'Shadow RAM disabled.$'
@@ -65,7 +66,7 @@ UnsupportedROMMsg db	13,10,'WARNING: Shadow RAM disable not supported '
 ROMHookedMsg	  db	13,10,'WARNING: Shadow RAM is in use and can''t '
 		  db		'be disabled.$'
 
-BadDOSMsg	db	13,10,'ERROR: This HIMEM.SYS is for Windows NT.$'
+BadDOSMsg	db	13,10,'ERROR: HIMEM.SYS requires DOS 3.00 or higher.$'
 NowInMsg	db	13,10,'ERROR: An Extended Memory Manager is already installed.$'
 On8086Msg	db	13,10,'ERROR: HIMEM.SYS requires an 80x86-based machine.$'
 NoExtMemMsg	db	13,10,'ERROR: No available extended memory was found.$'
