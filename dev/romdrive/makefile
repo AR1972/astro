@@ -34,7 +34,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -65,4 +65,13 @@ romdrive.exs:  romdrive.obj             \
                link /map romdrive romrd romdinit romdmsg,romdrive.exs;
 
 $(dest):       romdrive.exs
+
+clean:
+	del *.obj
+	del *.sys
+	del *.sy_
+	del *.map
+	del *.exs
+	del *.exe
+
 

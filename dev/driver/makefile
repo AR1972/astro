@@ -57,4 +57,13 @@ driver.exs:   driver.obj                \
               link @driver.lnk
 
 $(dest):      driver.exs
+
+clean:
+    del *.ctl
+	del *.cl*
+	del *.obj
+	del *.sys
+	del *.sy_
+	del *.exs
+
 

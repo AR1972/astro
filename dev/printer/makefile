@@ -32,7 +32,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -70,4 +70,13 @@ cpi:
         cd ..\5202
         $(MAKE)
         cd ..
+		
+clean:
+    del *.ctl
+	del *.cl*
+	del *.obj
+	del *.sys
+	del *.sy_
+	del *.map
+
 

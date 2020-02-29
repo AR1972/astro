@@ -41,4 +41,9 @@ country.exe: country.obj
 country.sys: country.exe
 	exe2bin country.exe country.sys
 
+clean:
+    del *.exe
+	del *.obj
+	del *.sys
+	
 

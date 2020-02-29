@@ -43,7 +43,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 
 #******************************************************************************
@@ -66,3 +66,4 @@ MonoUMB.map
 MonoUMB.def
 <<
 	.\addhdr /v:0300 $(ROOT)\MonoUMB.386
+	

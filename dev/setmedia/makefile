@@ -29,5 +29,12 @@ $(NAME).com: $(NAME).exe
 $(NAME).sys: $(NAME).com
 	del $(NAME).sys
 	ren $(NAME).com $(NAME).sys
+	
+clean:
+	del *.obj
+	del *.sys
+	del *.map
+	del *.exe
+	del *.lst
 
 

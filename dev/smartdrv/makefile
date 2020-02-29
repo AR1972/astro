@@ -105,13 +105,12 @@ iclean:
 #        exe2bin $(NAME).exc $(NAME).com
 
 clean:
-	del $(NAME).exe
-	del $(NAME).exc
-	del $(NAME).dos
+	del *.exe
+	del *.ex_
 	del *.obj
 	del *.map
-	del *.sym
-	del *.bak
+	del RTEXT.ASM
+	del TEXT.ASM
 
 depend:
 	mv makefile makefile.old

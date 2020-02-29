@@ -27,7 +27,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -73,4 +73,14 @@ ansi.exs:     ansi.obj                  \
               link @ansi.lnk
 
 $(dest):      ansi.exs
+
+clean:
+    del *.ctl
+	del *.cl*
+	del *.obj
+	del *.sys
+	del *.sy_
+	del *.map
+	del *.exs
+
 

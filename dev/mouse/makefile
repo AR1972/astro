@@ -15,9 +15,12 @@ $(bins)\mouse.com: mouse.com
                     copy mouse.com $(bins)
 
 mouse.co_:         mouse.com
-                    $(compress) mouse.com mouse.co_
+                    $(compress) -f mouse.com mouse.co_
 
 $(cprs)\mouse.co_: mouse.co_
                     copy mouse.co_ $(cprs)
+					
+clean:
+    del *.co_
 
 !ENDIF

@@ -76,3 +76,10 @@ cpi:
         cd ..\lcd
 #        $(MAKE)
 	cd ..
+	
+clean:
+    del *.ctl
+	del *.cl*
+	del *.obj
+	del *.sys
+	del *.sy_

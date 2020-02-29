@@ -24,7 +24,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -43,4 +43,11 @@ $(dest):       kkcfunc.exe
                exe2bin kkcfunc $(dest)
 
 !ENDIF
+
+clean:
+	del *.obj
+	del *.sys
+	del *.sy_
+	del *.map
+
 

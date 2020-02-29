@@ -102,5 +102,11 @@ KEYBOARD.exs: KDFSP.OBJ KDFPO.OBJ KDFFR120.OBJ KDFFR189.OBJ KDFDK.OBJ \
 	      LINK @keyboard.lnk
 
 $(dest):      Keyboard.exs
-
+
+clean:
+	del *.obj
+	del *.sys
+	del *.map
+	del *.exs
+
 

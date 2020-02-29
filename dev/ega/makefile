@@ -37,8 +37,9 @@ ega.exs:      ega.obj
 ega.sys:      ega.exs
 
 clean:
-	-del *.exs
-	-del *.obj
-	-del *.sys
+	del *.exs
+	del *.obj
+	del *.sys
+	del *.sy_
 
 
