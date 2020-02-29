@@ -46,4 +46,11 @@ comp.obj:     comp.c                    \
 
 $(dest):      comp.obj
               link $(exelink) comp;
+			  
+clean:
+    del messages.h
+	del *.obj
+	del *.exe
+	del *.ex_
+
 

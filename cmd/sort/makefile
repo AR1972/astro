@@ -35,7 +35,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -70,4 +70,12 @@ $(dest):  sort.obj sortmes.obj
 iclean:
 	del sortmes.asm
 	del sortmes.obj
+
+clean:
+	del *.obj
+	del *.cl*
+	del *.ctl
+	del *.exe
+	del sortmes.asm
+
 

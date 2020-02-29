@@ -134,3 +134,7 @@ fdisk.exe:    fdisk.obj reboot.obj bootrec.obj fdboot.obj \
               $(doslib)\mapper.lib makefile fdisk.lnk fdisk.ctl _parse.obj \
               $(doslib)\comsubs.lib
               link @fdisk.lnk
+clean:
+    del *.obj
+	del *.pkl
+	del fdisk.exe

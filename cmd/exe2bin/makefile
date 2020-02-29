@@ -28,12 +28,13 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
 exe2bin.ctl:  exe2bin.skl makefile      \
-              $(msg)\$(COUNTRY).msg
+              $(msg)\$(COUNTRY)-ibm.msg
+			  buildmsg $(msg)\$(COUNTRY)-ibm exe2bin.skl
 
 e2binit.obj:  e2binit.asm               \
               $(inc)\syscall.inc        \
@@ -73,4 +74,13 @@ $(dest):      display.obj               \
               makefile                  \
               exe2bin.lnk
               link $(exelink) @exe2bin.lnk
+
+clean:
+	del *.obj
+	del *.cl*
+	del *.ctl
+	del *.exe
+	del *.ex_
+	del *.map
+
 

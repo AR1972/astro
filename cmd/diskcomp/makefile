@@ -27,15 +27,16 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
 
 diskcomp.ctl: diskcomp.skl              \
-              $(msg)\$(COUNTRY).msg     \
+              $(msg)\$(COUNTRY)-ibm.msg     \
               makefile
-
+              buildmsg $(msg)\$(COUNTRY)-ibm diskcomp.skl
+			  
 diskcomp.obj: diskcomp.asm              \
               makefile                  \
               dcmpmacr.inc              \
@@ -75,4 +76,13 @@ diskcomp.exc: diskcomp.obj              \
               link @diskcomp.lnk
 
 $(dest):      diskcomp.exc
+
+clean:
+	del *.obj
+	del *.ctl
+	del *.cl*
+	del *.com
+	del *.exc
+	del *.co_
+	
 

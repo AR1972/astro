@@ -39,7 +39,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):     $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 $(bins)\$(hlp): $(hlp)
             copy $(hlp) $(bins)
@@ -48,7 +48,7 @@ $(cprs)\$(hlpcpr):  $(hlpcpr)
             copy $(hlpcpr) $(cprs)
 
 $(hlpcpr):  $(hlp)
-            $(compress) $(hlp) $(hlpcpr)
+            $(compress) -f $(hlp) $(hlpcpr)
 
 
 $(bins)\$(basehlp): $(basehlp)
@@ -58,7 +58,7 @@ $(cprs)\$(basecpr):  $(basecpr)
             copy $(basecpr) $(cprs)
 
 $(basecpr):  $(basehlp)
-            $(compress) $(basehlp) $(basecpr)
+            $(compress) -f $(basehlp) $(basecpr)
 
 !ENDIF
 
@@ -79,5 +79,8 @@ $(dest):      help.obj                  \
               helper.obj
               link help+helper,$(dest);
 
-
+clean:
+	del *.obj
+	del *.exe
+
 

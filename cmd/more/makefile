@@ -60,3 +60,10 @@ more.exc:     more.obj                  \
 	      link @more.lnk
 
 $(dest):      more.exc
+
+clean:
+	del *.obj
+	del *.cl*
+	del *.ctl
+	del *.com
+	del *.exc

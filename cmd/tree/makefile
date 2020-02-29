@@ -45,7 +45,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -113,5 +113,12 @@ test.exe: test.obj
 test.obj: test.asm
    masm $(extasw) test.asm;
 
-
+clean:
+	del *.obj
+	del *.cl*
+	del *.ctl
+	del *.com
+	del *.exc
+    del *.co_
+
 

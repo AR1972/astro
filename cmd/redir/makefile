@@ -161,3 +161,6 @@ $(cpr13):       $(dest13)
             $(compress) $(dest13) $(cpr13)
 
 !ENDIF
+
+clean:
+

@@ -30,7 +30,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -42,4 +42,10 @@ label.obj:    label.c			\
 
 $(dest):      label.obj
                 link $(exelink) label.obj;
+
+clean:
+	del *.obj
+	del *.exe
+	del *.ex_
+	
 

@@ -40,8 +40,9 @@ $(pkl):       $(dest)
 !ENDIF
 
 chkdsk.ctl:   chkdsk.skl                \
-	      $(msg)\$(COUNTRY).msg     \
+	      $(msg)\$(COUNTRY)-ibm.msg     \
 	      makefile
+		  buildmsg $(msg)\$(COUNTRY)-ibm chkdsk.skl
 
 chkinit.obj:  chkinit.asm               \
 	      chkequ.inc                \
@@ -204,4 +205,13 @@ $(dest):      chkdsk1.obj               \
 	      chkdsk.lnk                \
 	      makefile
 	      link $(exelink) @chkdsk.lnk
+		  
+clean:
+	del *.ctl
+	del *.cl*
+	del *.obj
+	del *.exe
+	del *.pkl
+	del *.map
+		  
 

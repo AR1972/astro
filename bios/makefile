@@ -390,11 +390,11 @@ $(dest): msbio.bin
 !ENDIF
 
 clean:
-	-del *.obj
-	-del *.sys
-	-del *.cl*
-	-del *.map
-	-del *.com
-	-del *.bin
+	del *.obj
+	del *.sys
+	del *.cl*
+	del *.map
+	del *.com
+	del *.bin
 
 

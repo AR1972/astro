@@ -38,7 +38,7 @@ $(cprs)\$(cpr):  $(cpr)
 	    copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-	    $(compress) $(dest) $(cpr)
+	    $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -109,3 +109,8 @@ $(dest):      woamgr.obj          \
 	      woastk.obj          \
 	      dosswap.lnk
 	      link $(exelink) @dosswap.lnk
+
+clean:
+    del *.exe
+	del *.ex_
+	del *.obj

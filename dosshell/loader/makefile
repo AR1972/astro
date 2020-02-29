@@ -100,7 +100,7 @@ $(cprs)\$(cpr):  $(cpr)
 	    copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-	    $(compress) $(dest) $(cpr)
+	    $(compress) -f $(dest) $(cpr)
 
 
 !ENDIF
@@ -137,3 +137,7 @@ qloader.obj:    loader.asm swtch_re.inc swtch_tr.inc
 $(dest):        qloader.exe
 		reloc qloader.exe $(dest)
 		
+clean:
+    del *.obj
+	del *.com
+	del *.co_

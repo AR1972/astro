@@ -689,6 +689,13 @@ rescom.16:     command.com command.map
 	       del command.tmp
 
 !ENDIF
-
-
+
+clean:
+    del *.ctl
+	del *.cl*
+	del *.obj
+	del *.com
+	del *.exc
+	del *.map
+	
 

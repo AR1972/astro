@@ -30,7 +30,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -91,4 +91,11 @@ $(dest):        mem.obj _msgret.obj memex.obj submsg.obj membase.obj \
 		mem.lnk chkvdisk.obj memctrlc.obj lines.obj xms.obj \
 		emm386.obj wintest.obj
                 link $(exelink) @mem.lnk
+
+clean:
+	del *.obj
+	del *.cl*
+	del *.ctl
+	del *.exe
+	del *.ex_
 

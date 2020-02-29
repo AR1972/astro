@@ -40,13 +40,15 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
 
 xcopy.ctl: xcopy.skl \
-   $(msg)\$(COUNTRY).msg
+   $(msg)\$(COUNTRY)-ibm.msg \
+   makefile
+   buildmsg $(msg)\$(COUNTRY)-ibm xcopy.skl
 
 xcopy.obj: xcopy.asm \
    $(inc)\versiona.inc \
@@ -78,5 +80,12 @@ $(dest): xcopy.obj \
         cvpack -p $(dest)
         msym xcopy
 !endif
-
+
+clean:
+	del *.obj
+	del *.cl*
+	del *.ctl
+	del *.exe
+	del *.ex_
+
 

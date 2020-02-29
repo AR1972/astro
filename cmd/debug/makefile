@@ -34,9 +34,9 @@ $(pkl):       $(dest)
 
 
 debug.ctl:    debug.skl                 \
-	      $(msg)\$(COUNTRY).msg     \
+	      $(msg)\$(COUNTRY)-ibm.msg     \
 	      makefile
-
+          buildmsg $(msg)\$(COUNTRY)-ibm debug.skl 
 debug.obj:    debug.asm                 \
 	      $(inc)\dossym.inc         \
 	      $(inc)\dosmac.inc         \
@@ -261,3 +261,10 @@ $(dest):      debug.obj                 \
 	      debug.lnk                 \
 	      makefile
 	      link $(exelink) @debug.lnk
+
+clean:
+    del *.obj
+	del *.ctl
+	del *.cl*
+	del *.exe
+    del *.pkl

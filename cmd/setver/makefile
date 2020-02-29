@@ -76,4 +76,10 @@ dos.obj:	dos.asm
 device.obj:	device.asm
 
 data.obj:	data.asm
+
+clean:
+	del *.exe
+	del *.ex_
+	del *.obj
+
 

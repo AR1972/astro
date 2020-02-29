@@ -27,7 +27,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -60,4 +60,12 @@ $(dest): fastopen.obj \
          fastp.obj \
          fastsm.obj
          link $(exelink) @fastopen.lnk
+clean:
+	del *.obj
+	del *.exe
+	del *.ex_
+	del *.ctl
+	del *.cl*
+	del *.map
+	
 

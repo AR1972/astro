@@ -30,7 +30,7 @@ $(cprs)\$(cpr1):  $(cpr1)
             copy $(cpr1) $(cprs)
 
 $(cpr1):       $(dest1)
-            $(compress) $(dest1) $(cpr1)
+            $(compress) -f $(dest1) $(cpr1)
 
 $(bins)\$(dest2): $(dest2)
             copy $(dest2) $(bins)
@@ -92,4 +92,14 @@ graphics.exc: graphics.obj grint2fh.obj grpattrn.obj grctrl.obj grcpsd.obj \
               link @graphics.lnk
 
 $(dest1):     graphics.exc
+
+clean:
+	del *.obj
+	del *.cl*
+	del *.ctl
+	del *.exc
+	del *.com
+	del *.co_
+	del *.pr_
+
 

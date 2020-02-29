@@ -36,7 +36,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -162,5 +162,12 @@ $(dest):      share.ctl                 \
               sharelnk.obj              \
               share.lnk
               link $(exelink) @share.lnk
-
+
+clean:
+	del *.obj
+	del *.cl*
+	del *.ctl
+	del *.exe
+	del *.ex_
+
 

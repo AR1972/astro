@@ -44,7 +44,7 @@ $(cprs)\$(inc1):  $(inc1)
             copy $(inc1) $(cprs)
 
 $(inc1):       $(ind1)
-            $(compress) $(ind1) $(inc1)
+            $(compress) -f $(ind1) $(inc1)
 
 
 $(bins)\$(ind2): $(ind2)
@@ -54,7 +54,7 @@ $(cprs)\$(inc2):  $(inc2)
             copy $(inc2) $(cprs)
 
 $(inc2):       $(ind2)
-            $(compress) $(ind2) $(inc2)
+            $(compress) -f $(ind2) $(inc2)
 
 
 $(bins)\$(ind3): $(ind3)
@@ -64,7 +64,7 @@ $(cprs)\$(inc3):  $(inc3)
             copy $(inc3) $(cprs)
 
 $(inc3):       $(ind3)
-            $(compress) $(ind3) $(inc3)
+            $(compress) -f $(ind3) $(inc3)
 
 
 !IF "$(COUNTRY)" == "JAPAN" || "$(COUNTRY)" == "japan"
@@ -75,7 +75,10 @@ $(cprs)\$(inc4):  $(inc4)
             copy $(inc4) $(cprs)
 
 $(inc4):       $(ind4)
-            $(compress) $(ind4) $(inc4)
+            $(compress) -f $(ind4) $(inc4)
 !ENDIF
 
 !ENDIF
+
+clean:
+

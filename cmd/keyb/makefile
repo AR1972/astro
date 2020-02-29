@@ -101,5 +101,13 @@ KEYB.exc: keyb.obj     \
     LINK @keyb.lnk
 
 $(dest):      keyb.exc
-
+
+clean:
+	del *.obj
+	del *.cl*
+	del *.ctl
+	del *.exc
+	del *.com
+	del *.map
+	
 

@@ -36,7 +36,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -46,3 +46,10 @@ loadfix.exc: loadfix.obj
         $(link)  $(exelink) loadfix,loadfix.exc;
 
 loadfix.obj: loadfix.asm $(msg)\loadmsg.msg
+
+clean:
+	del *.obj
+	del *.map
+	del *.exc
+	del *.com
+	del *.co_

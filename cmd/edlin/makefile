@@ -27,14 +27,15 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
 
 edlin.ctl:    edlin.skl                 \
-              $(msg)\$(COUNTRY).msg     \
+              $(msg)\$(COUNTRY)-ibm.msg     \
               makefile
+			  buildmsg $(msg)\$(COUNTRY)-ibm edlin.skl
 
 
 edlin.obj:    edlin.asm                 \
@@ -120,3 +121,10 @@ $(dest):      edlin.obj                 \
               edlin.lnk                 \
               makefile
               link $(exelink) @edlin.lnk
+
+clean:
+	del *.obj
+	del *.cl*
+	del *.ctl
+	del *.exe
+	del *.ex_

@@ -1,20 +1,41 @@
 all:
-        cd inc
+    cd inc
         $(MAKE)
-        cd ..\loader
+    cd ..\loader
         $(MAKE)
-        cd ..\iniparse
+    cd ..\iniparse
         $(MAKE)
-        cd ..\shell
+    cd ..\shell
         $(MAKE)
-        cd ..\swapper
+    cd ..\swapper
         $(MAKE)
-        cd ..\vids
+    cd ..\vids
         $(MAKE)
-        cd ..\inis
+    cd ..\inis
         $(MAKE)
-        cd ..\grbs
+    cd ..\grbs
         $(MAKE)
-        cd ..\hlps
+    cd ..\hlps
         $(MAKE)
-        cd ..
+    cd ..
+
+clean:
+    cd inc
+        nmake clean
+    cd ..\loader
+        nmake clean
+    cd ..\iniparse
+        nmake clean
+    cd ..\shell
+        nmake clean
+    cd ..\swapper
+        nmake clean
+    cd ..\vids
+        nmake clean
+    cd ..\inis
+        nmake clean
+    cd ..\grbs
+        nmake clean
+    cd ..\hlps
+        nmake clean
+    cd ..

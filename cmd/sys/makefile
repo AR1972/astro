@@ -122,4 +122,14 @@ sys.exc:      sys.ctl                   \
 	      link @sys.lnk
 
 $(dest):      sys.exc
+
+clean:
+	del *.obj
+	del *.cl*
+	del *.ctl
+	del *.com
+	del *.exc
+	del *.map
+	del *.pkl
+
 

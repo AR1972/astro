@@ -45,7 +45,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -120,3 +120,11 @@ $(dest):      recover.obj               \
               recover.lnk               \
               makefile
               link $(exelink) @recover.lnk
+
+clean:
+	del *.obj
+	del *.cl*
+	del *.ctl
+	del *.exe
+	del *.ex_
+	del *.map

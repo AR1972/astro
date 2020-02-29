@@ -28,6 +28,9 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(MSG_DIR)\$(dest)
-            $(compress) $(MSG_DIR)\$(dest) $(cpr)
+            $(compress) -f $(MSG_DIR)\$(dest) $(cpr)
 
 !ENDIF
+
+clean:
+    del dosshell.hl_

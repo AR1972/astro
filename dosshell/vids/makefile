@@ -49,7 +49,7 @@ $(cprs)\$(vic1):  $(vic1)
             copy $(vic1) $(cprs)
 
 $(vic1):       $(vin1)
-            $(compress) $(vin1) $(vic1)
+            $(compress) -f $(vin1) $(vic1)
 
 
 $(bins)\$(vid2): $(vin2)
@@ -59,7 +59,7 @@ $(cprs)\$(vic2):  $(vic2)
             copy $(vic2) $(cprs)
 
 $(vic2):       $(vin2)
-            $(compress) $(vin2) $(vic2)
+            $(compress) -f $(vin2) $(vic2)
 
 
 $(bins)\$(vid3): $(vin3)
@@ -69,7 +69,7 @@ $(cprs)\$(vic3):  $(vic3)
             copy $(vic3) $(cprs)
 
 $(vic3):       $(vin3)
-            $(compress) $(vin3) $(vic3)
+            $(compress) -f $(vin3) $(vic3)
 
 
 $(bins)\$(vid4): $(vin4)
@@ -79,7 +79,7 @@ $(cprs)\$(vic4):  $(vic4)
             copy $(vic4) $(cprs)
 
 $(vic4):       $(vin4)
-            $(compress) $(vin4) $(vic4)
+            $(compress) -f $(vin4) $(vic4)
 
 !IF "$(COUNTRY)" == "JAPAN" || "$(COUNTRY)" == "japan"
 $(bins)\$(vid5): $(vin5)
@@ -89,7 +89,7 @@ $(cprs)\$(vic5):  $(vic5)
             copy $(vic5) $(cprs)
 
 $(vic5):       $(vin5)
-            $(compress) $(vin5) $(vic5)
+            $(compress) -f $(vin5) $(vic5)
 !ENDIF
 $(bins)\$(vid6): $(vin6)
             copy $(vin6) $(bins)\$(vid6)
@@ -98,8 +98,10 @@ $(cprs)\$(vic6):  $(vic6)
             copy $(vic6) $(cprs)
 
 $(vic6):       $(vin6)
-            $(compress) $(vin6) $(vic6)
+            $(compress) -f $(vin6) $(vic6)
 
 
 !ENDIF
 
+clean:
+    

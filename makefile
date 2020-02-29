@@ -30,4 +30,10 @@ clean:
         nmake clean
     cd ..\dev
         nmake clean
-	cd ..
+	cd ..\bios
+        nmake clean
+    cd ..\dosshell
+        nmake clean
+    cd ..\mkimage
+        nmake clean
+    cd ..

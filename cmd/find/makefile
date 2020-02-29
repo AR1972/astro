@@ -27,7 +27,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -51,4 +51,12 @@ findmes.obj: findmes.asm
 
 $(dest): find.obj findmes.obj find.lnk
         link $(exelink) @find.lnk
+
+clean:
+	del *.exe
+	del *.ex_
+	del *.obj
+	del *.cl*
+	del *.ctl
+
 

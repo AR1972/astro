@@ -38,7 +38,7 @@ $(bins)\cga.grb: cga.grb
               copy cga.grb $(bins)
 
 cga.gr_:       cga.grb
-              $(compress) cga.grb cga.gr_
+              $(compress) -f cga.grb cga.gr_
 
 $(cprs)\cga.gr_:  cga.gr_
               copy cga.gr_ $(cprs)
@@ -48,7 +48,7 @@ $(bins)\ega.grb: ega.grb
               copy ega.grb $(bins)
 
 ega.gr_:       ega.grb
-              $(compress) ega.grb ega.gr_
+              $(compress) -f ega.grb ega.gr_
 
 $(cprs)\ega.gr_:  ega.gr_
               copy ega.gr_ $(cprs)
@@ -58,7 +58,7 @@ $(bins)\egamono.grb: egamono.grb
               copy egamono.grb $(bins)
 
 egamono.gr_:       egamono.grb
-              $(compress) egamono.grb egamono.gr_
+              $(compress) -f egamono.grb egamono.gr_
 
 $(cprs)\egamono.gr_:  egamono.gr_
               copy egamono.gr_ $(cprs)
@@ -68,7 +68,7 @@ $(bins)\vga.grb: vga.grb
               copy vga.grb $(bins)
 
 vga.gr_:       vga.grb
-              $(compress) vga.grb vga.gr_
+              $(compress) -f vga.grb vga.gr_
 
 $(cprs)\vga.gr_:  vga.gr_
               copy vga.gr_ $(cprs)
@@ -78,7 +78,7 @@ $(bins)\vgamono.grb: vgamono.grb
               copy vgamono.grb $(bins)
 
 vgamono.gr_:       vgamono.grb
-              $(compress) vgamono.grb vgamono.gr_
+              $(compress) -f vgamono.grb vgamono.gr_
 
 $(cprs)\vgamono.gr_:  vgamono.gr_
               copy vgamono.gr_ $(cprs)
@@ -88,7 +88,7 @@ $(bins)\herc.grb: herc.grb
               copy herc.grb $(bins)
 
 herc.gr_:       herc.grb
-              $(compress) herc.grb herc.gr_
+              $(compress) -f herc.grb herc.gr_
 
 $(cprs)\herc.gr_:  herc.gr_
               copy herc.gr_ $(cprs)
@@ -103,3 +103,6 @@ mono.grb:     mono.obj
               link mono;
               reloc mono mono.grb
               del mono.exe
+
+clean:
+

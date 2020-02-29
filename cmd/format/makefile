@@ -249,4 +249,14 @@ mir_main.obj: $(mirror)\mir_main.asm    \
 	      copy $(mirror)\mir_main.asm
 	      $(asm) $(ainc) $(aflags) -I$(MIR_MSG) $*.asm;
 # M027
+
+clean:
+	del *.obj
+	del *.cl*
+	del *.ctl
+	del *.exe
+	del *.map
+	del *.com
+	del MIR_MAIN.ASM
+
 

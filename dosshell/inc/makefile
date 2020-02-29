@@ -45,4 +45,10 @@ dfiles:
 	del *.hs
 	del *.sdm
 	copy $(MSG_DIR)\*.* 
+	
+clean:
+	del *.des
+	del *.hs
+	del *.sdm
+	copy $(MSG_DIR)\*.* 
 

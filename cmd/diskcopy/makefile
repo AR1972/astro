@@ -27,7 +27,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -51,8 +51,9 @@ diskcopy.skl: message.skl               \
 
 
 diskcopy.ctl: diskcopy.skl              \
-              $(msg)\$(COUNTRY).msg     \
+              $(msg)\$(COUNTRY)-ibm.msg     \
               makefile
+			  buildmsg $(msg)\$(COUNTRY)-ibm diskcopy.skl
 
 diskcopy.obj: diskcopy.asm              \
               makefile                  \
@@ -92,4 +93,14 @@ diskcopy.exc: diskcopy.obj              \
               link @diskcopy.lnk
 
 $(dest):      diskcopy.exc
+
+clean: 
+    del *.ctl
+	del *.cl*
+	del *.exc
+	del *.com
+	del *.co_
+	del *.obj
+	del diskcopy.skl
+	
 

@@ -80,5 +80,5 @@ goal:  iniparse.obj  lex.obj symbols.obj
 symbols.obj:    $(MSG_DIR)\symbols.c  
 		$(CC) $(MSG_DIR)\symbols.c 
 
-
-
+clean:
+    del *.obj

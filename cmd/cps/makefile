@@ -8,3 +8,5 @@ all:
 #    cd ..\undelete
 #    build
     cd ..
+	
+clean:

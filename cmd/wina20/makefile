@@ -27,9 +27,12 @@ $(bins)\wina20.386: wina20.386
                     copy wina20.386 $(bins)
 
 wina20.38_:         wina20.386
-                    $(compress) wina20.386 wina20.38_
+                    $(compress) -f wina20.386 wina20.38_
 
 $(cprs)\wina20.38_: wina20.38_
                     copy wina20.38_ $(cprs)
 
 !ENDIF
+
+clean:
+    del wina20.38_

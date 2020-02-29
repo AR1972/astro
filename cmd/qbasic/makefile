@@ -141,3 +141,6 @@ $(cprs)\help.oe_: help.oe_
 
 
 !ENDIF
+
+clean:
+

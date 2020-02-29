@@ -67,4 +67,11 @@ nlsparm.obj:  nlsparm.asm               \
 nlsfunc.exe:  nlsfunc.obj               \
               nlsparm.obj
               link $(exelink) nlsfunc+nlsparm;
+
+clean:
+	del *.obj
+	del *.cl*
+	del *.ctl
+	del *.exe
+	
 

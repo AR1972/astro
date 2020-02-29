@@ -119,3 +119,7 @@ expand.obj: expand.c dosdir.pro doslzexp.h doslzexp.pro expand.h \
 dosdir.obj: dosdir.asm cmacros.inc ioctl.inc
 
 # END Dependencies 
+
+clean:
+	del *.obj
+	del *.exe

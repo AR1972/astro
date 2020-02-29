@@ -28,7 +28,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -61,5 +61,13 @@ assign.exc: assgmain.obj assgparm.obj
         link assgmain.obj+assgparm.obj,assign.exc;
 
 $(dest):   assign.exc
+
+clean:
+	del *.ctl
+	del *.cl*
+	del *.obj
+	del *.com
+	del *.co_
+	del *.exc
 
 

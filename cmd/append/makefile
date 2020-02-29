@@ -28,13 +28,14 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
 append.ctl: append.skl \
             makefile   \
-            $(msg)\$(COUNTRY).msg
+            $(msg)\$(COUNTRY)-ibm.msg
+			buildmsg $(msg)\$(COUNTRY)-ibm append.skl
 
 append.obj: append.asm \
             appendp.inc \
@@ -45,4 +46,12 @@ append.obj: append.asm \
 $(dest):    append.obj \
             makefile
         link $(exelink) append;
+		
+clean:
+	del *.ctl
+	del *.cl*
+	del *.obj
+	del *.exe
+	del *.ex_
+
 

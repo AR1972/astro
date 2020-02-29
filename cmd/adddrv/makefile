@@ -116,7 +116,7 @@ exehigh.obj:	init.i exehigh.c
 
 exehigh.exe: exehigh.obj
 	link /m/l/noi exehigh;
-
+!ENDIF
 
 clean:
 	del deldrv.exe   
@@ -143,5 +143,5 @@ clean:
 	del bin2txt.exe  
 	del bin2txt.obj  
 	del keys.obj
-!ENDIF
+
 

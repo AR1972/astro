@@ -33,7 +33,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -154,4 +154,14 @@ mode.exc:     main.obj                  \
               link @mode.lnk
 
 $(dest):      mode.exc
+
+clean:
+	del *.obj
+	del *.cl*
+	del *.ctl
+	del *.com
+	del *.exc
+	del *.map
+	del *.co_
+	
 
