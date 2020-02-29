@@ -2,19 +2,32 @@
 
 
 all:
-	cd messages
+    cd messages
         $(MAKE)
-	cd ..\boot
+    cd ..\boot
         $(MAKE)
-        cd ..\dos
+    cd ..\dos
         $(MAKE)
         makedos
-        cd ..\cmd
+    cd ..\cmd
         $(MAKE)
-        cd ..\dev
+    cd ..\dev
         $(MAKE)
-        cd ..\dosshell
-        $(MAKE)
-        cd ..\mkimage
-        $(MAKE)
-        cd ..
+    cd ..\dosshell
+#        $(MAKE)
+    cd ..\mkimage
+#        $(MAKE)
+    cd ..
+	
+clean:
+    cd messages
+        nmake clean
+    cd ..\boot
+        nmake clean
+    cd ..\dos
+        nmake clean
+	cd ..\cmd
+        nmake clean
+    cd ..\dev
+        nmake clean
+	cd ..

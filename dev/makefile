@@ -15,7 +15,7 @@ all:
 	cd ..\emm386
 #	$(MAKE)
 	cd ..\himem
-#	$(MAKE)
+	$(MAKE)
 	cd ..\iceland
 	$(MAKE)
 	cd ..\keyboard
@@ -43,3 +43,41 @@ all:
 !endif
 !endif
 	cd ..
+	
+clean:
+	cd ansi
+	nmake clean
+	cd ..\country
+	nmake clean
+	cd ..\display
+	nmake clean
+	cd ..\driver
+	nmake clean
+	cd ..\ega
+	nmake clean
+	cd ..\emm386
+	nmake clean
+	cd ..\himem
+	nmake clean
+	cd ..\iceland
+	nmake clean
+	cd ..\keyboard
+	nmake clean
+	cd ..\kkcfunc
+	nmake clean
+	cd ..\monoumb
+	nmake clean
+	cd ..\mouse
+	nmake clean
+	cd ..\power
+	nmake clean
+	cd ..\printer
+	nmake clean
+	cd ..\ramdrive
+	nmake clean
+	cd ..\smartdrv
+	nmake clean
+	cd ..\romdrive
+	nmake clean
+	cd ..
+
