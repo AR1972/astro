@@ -3689,11 +3689,11 @@ ENDIF           ; INCL_APM
 
 Power_Init      endp
 
-;INIT_MSG db "MS-DOS Power Monitor Extension Version 1.00",10,13
-;         db "    Copyright (C) 1990-1991 Microsoft Corp.",10,13,"$"
+INIT_MSG db "MS-DOS Power Monitor Extension Version 1.00",10,13
+         db "    Copyright (C) 1990-1991 Microsoft Corp.",10,13,"$"
 
-INIT_MSG:
-include msbio.cl9
+;INIT_MSG:
+;include msbio.cl9
 
 ; void XVECT( ds:[si].vecp, ax.vec#,dx.Bios_Code_Seg)
 ; purpose: xchange a vector with vector pointed to by ds:si
