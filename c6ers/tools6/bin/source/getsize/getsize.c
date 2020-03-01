@@ -90,15 +90,15 @@ void main()
 
 	int	len, scanres, changed = 0;
 
-	if ( (fp1	= fopen("ntdos.map", "r")) == NULL )
+	if ( (fp1	= fopen("msdos.map", "r")) == NULL )
 		{
-			printf("getsize: cannot open ntdos.map\n");
+			printf("getsize: cannot open msdos.map\n");
 			exit(0);
 		}
 
-	if ( (fp2 = fopen("..\\bios\\ntio.map", "r")) == NULL )
+	if ( (fp2 = fopen("..\\bios\\msbio.map", "r")) == NULL )
 		{
-			printf("getsize: cannot open ntio.map\n");
+			printf("getsize: cannot open msbio.map\n");
 			exit(0);
 		}
 
@@ -149,7 +149,7 @@ void main()
 	fclose(fp1);	
 	fclose(fp2);
 
-	if ( (fp1 = fopen("..\\..\\inc\\bdsize.inc", "r")) == NULL )
+	if ( (fp1 = fopen("..\\inc\\bdsize.inc", "r")) == NULL )
 		{
 			printf("getsize: cannot open origin.inc\n");
 			exit(0);
