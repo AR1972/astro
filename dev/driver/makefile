@@ -32,7 +32,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
