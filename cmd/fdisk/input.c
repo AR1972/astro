@@ -355,9 +355,9 @@ END
 
 
 
-XFLOAT get_large_num_input(input_default,max_num,max_percent,input_message,prompt_location,error_message)
+XFLOAT _get_large_num_input(input_default,max_num,max_percent,input_message,prompt_location,error_message)
 
-unsigned    input_default;                                              /* AC000 */
+unsigned input_default;                                              /* AC000 */
 unsigned    max_num;
 unsigned    max_percent;
 char far   *input_message;
@@ -460,7 +460,7 @@ BEGIN
                     PercentFlag = (FLAG)TRUE;                       /* AN000 */
                     /* Round down if > 999.9 */
                     if (large_input > u(999))                       /* AN000 */
-                        large_input = (large_input%1000);           /* AN000 */
+                        large_input = u(large_input)%1000;          /* AN000 */
                     sprintf(&insert[prompt_location],"%3.0d%%",large_input);  /* AN000 */
                     /* Indicate that we are not using the default */
                     default_used = FALSE;                           /* AN000 */

@@ -227,9 +227,9 @@ BEGIN
 
 
 
-    input = c(NUL);
+    input = (char) NUL;
     /* Clear screen */
-    clear_screen(u(0),u(0),u(24),u(79));                                /* AC000 */
+    clear_screen((unsigned) 0,(unsigned) 0,(unsigned) 24,(unsigned) 79);                                /* AC000 */
 
     /* Display header */
     display(menu_23);
@@ -242,7 +242,7 @@ BEGIN
 /*C17    display(menu_11); */
 
     /* Only allow active partitions on the first (and bootable) disk */
-    if (cur_disk == c(0))                                               /* AC000 */
+    if (cur_disk == (char) 0)                                               /* AC000 */
 
        BEGIN
 	/* Display partition info and see if any partitions exist*/
@@ -250,13 +250,13 @@ BEGIN
 
 	   BEGIN
 	    /* See if active partition is bootable */
-	    for (i=u(0); i < u(4); i++)                                 /* AC000 */
+	    for (i=(unsigned) 0; i < (unsigned)4; i++)                                 /* AC000 */
 	       BEGIN
-		if (part_table[cur_disk][i].sys_id != uc(0) &&
-		    part_table[cur_disk][i].boot_ind == uc(0x80))  /* AC000 */
+		if ((part_table[cur_disk][i].sys_id != (unsigned char) 0) &&
+		    (part_table[cur_disk][i].boot_ind == (unsigned char) 0x80))  /* AC000 */
 		   BEGIN
-		    if ((part_table[cur_disk][i].sys_id == uc(BAD_BLOCK)) ||
-			(part_table[cur_disk][i].sys_id==uc(EXTENDED)))  /* AC000 */
+		    if ((part_table[cur_disk][i].sys_id == (unsigned char)BAD_BLOCK) ||
+			(part_table[cur_disk][i].sys_id==(unsigned char)EXTENDED)) /* AC000 */
 		       BEGIN
 			/* The active partition is not bootable, so warn user */
 			display(error_24);
@@ -265,35 +265,35 @@ BEGIN
 	       END
 
 	    /* Check to see if only one partition */
-	    num_partitions = c(0) ;                                     /* AC000 */
-	    num_of_bootable_partitions = c(0);                          /* AC000 */
-	    for (i=u(0); i < u(4); i++)                                 /* AC000 */
+	    num_partitions = (char)0 ;                                     /* AC000 */
+	    num_of_bootable_partitions = (char)0;                          /* AC000 */
+	    for (i=(unsigned)0; i < (unsigned)4; i++)                                 /* AC000 */
 
 	       BEGIN
-		if (part_table[cur_disk][i].sys_id != uc(0))                   /* AC000 */
+		if (part_table[cur_disk][i].sys_id != (unsigned char)0)                   /* AC000 */
 		   BEGIN
 		    /* Get a count of partitions */
 		    num_partitions++;
 
 		    /* Get a count of the number of defined partitions but don't*/
 		    /* count those we know aren't bootable */
-		    if ((part_table[cur_disk][i].sys_id != uc(BAD_BLOCK)) &&
-			(part_table[cur_disk][i].sys_id != uc(EXTENDED)))  /* AC000 */
+		    if ((part_table[cur_disk][i].sys_id != (unsigned char)BAD_BLOCK) &&
+			(part_table[cur_disk][i].sys_id != (unsigned char)EXTENDED))  /* AC000 */
 		       BEGIN
 			num_of_bootable_partitions++;
 		       END
 		   END
 	       END
 	    /* If only one partition found, see if it is active already */
-	    if (num_of_bootable_partitions == c(1))                     /* AC000 */
+	    if (num_of_bootable_partitions == (char)1)                     /* AC000 */
 	       BEGIN
 
 		/* Find the partition and see if it is already active */
-		for (i=u(0); i < u(4); i++)                             /* AC000 */
+		for (i=(unsigned)0; i < (unsigned)4; i++)                             /* AC000 */
 
 		   BEGIN
-		    if (part_table[cur_disk][i].sys_id !=uc(0) &&
-			part_table[cur_disk][i].boot_ind == uc(0x80))  /* AC000 */
+		    if (part_table[cur_disk][i].sys_id !=(unsigned char)0 &&
+			part_table[cur_disk][i].boot_ind == (unsigned char)0x80)  /* AC000 */
 
 		       BEGIN
 			/* Make sure it is not unbootable partition again*/
