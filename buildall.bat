@@ -17,18 +17,18 @@ SET PROJ=500
 SET BUILDER=YES
 SET INIT=%ROOT%\c6ers\tools6\bin
 
-echo ********************** building c6ers **********************************
-set savep=%path%
-set PATH=%ROOT%\c6ers\tools6\bin
-set lib=%ROOT%\c6ers\tools6\lib;%ROOT%\c6ers\toolsvr\lib
-set include=.;%ROOT%\c6ers\tools6\include;..\toolsvr\inc
-
-	cd c6ers\appcomp
-	call makeit
-	cd ..
-	%DOSMAKE%
-	cd %ROOT%
-
+::echo ********************** building c6ers **********************************
+set SAVEP=%PATH%
+::set PATH=%ROOT%\c6ers\tools6\bin
+::set lib=%ROOT%\c6ers\tools6\lib;%ROOT%\c6ers\toolsvr\lib
+::set include=.;%ROOT%\c6ers\tools6\include;..\toolsvr\inc
+::
+::	cd c6ers\appcomp
+::	call makeit
+::	cd ..
+::	%DOSMAKE%
+::	cd %ROOT%
+::
 ::echo ********************** building magicdrve ###***************************
 ::set PATH=%root%\C6ERS\TOOLS6\BIN;%root%\c6ers\tools6\bin;%PATH%
 ::set INCLUDE=%root%\MAGICDRV\INC;%root%\C6ERS\TOOLS6\INCLUDE
@@ -53,7 +53,7 @@ set include=.;%ROOT%\c6ers\tools6\include;..\toolsvr\inc
 ::	cd %ROOT%
 ::
 echo ********************** building msdos60 base ***************************
-SET PATH=%ROOT%\c6ers\tools6\BIN;%path%
+SET PATH=%ROOT%\c6ers\tools6\BIN;%PATH%
 SET INIT=%ROOT%\c6ers\tools6\bin
 SET INCLUDE=%ROOT%\c6ers\tools6\include
 SET LIB=%ROOT%\c6ers\tools6\lib
@@ -61,78 +61,78 @@ SET LIB=%ROOT%\c6ers\tools6\lib
 	%DOSMAKE%
 	cd ..
 
-echo ********************** building install ********************************
-SET PROJ=JANUS
-SET UJANUS=1
-SET OEMBASE=
+::echo ********************** building install ********************************
+::SET PROJ=JANUS
+::SET UJANUS=1
+::SET OEMBASE=
+::
+::	cd install\lib
+::	%DOSMAKE%
+::	cd ..\..
+::
+::	cd install\oem
+::	%DOSMAKE%
+::	cd ..\..
+::
+::	cd install\retail
+::	%DOSMAKE%
+::	copy %LANG_SRC%\%COUNTRY%\install\common\FULLSET.MSG %BIN%\SETUP.MSG
+::	copy %LANG_SRC%\%COUNTRY%\install\common\FULLSET.MSG %CPRS%\SETUP.MSG
+::	cd ..\..
+::
+::	cd install\recover
+::	%DOSMAKE%
+::	cd ..\..
+::
+::	cd install\cleanup
+::	%DOSMAKE%
+::	cd ..\..
+::
+::	cd install\dosdata\12
+::	%DOSMAKE%
+::	copy %CPRS%\SETUP12.UPG %CPRS%\DOSSETUP.INI
+::	cd ..\..\..
+::		
+::	cd install\dosdata\144
+::	%DOSMAKE%
+::	cd ..\..\..
+::
+::	cd install\oemdata\12
+::	%DOSMAKE%
+::	cd ..\144
+::	%DOSMAKE%
+::	cd ..\..\..
+::
+::	cd install\basedata\12
+::	%DOSMAKE%
+::	cd ..\144
+::	%DOSMAKE%
+::
+::	
+::	cd %ROOT%
+::
+::
+::SET UJANUS=
+::
+::	cd install\oem
+::	%DOSMAKE% /a
+::	pklite -o setup.exe
+::	copy SETUP.exe %CPRS%\setup.oem
+::	copy SETUP.exe %BIN%\setup.oem
+::	cd ..\..
+::	cd ..\
 
-	cd install\lib
-	%DOSMAKE%
-	cd ..\..
-
-	cd install\oem
-	%DOSMAKE%
-	cd ..\..
-
-	cd install\retail
-	%DOSMAKE%
-	copy %LANG_SRC%\%COUNTRY%\install\common\FULLSET.MSG %BIN%\SETUP.MSG
-	copy %LANG_SRC%\%COUNTRY%\install\common\FULLSET.MSG %CPRS%\SETUP.MSG
-	cd ..\..
-
-	cd install\recover
-	%DOSMAKE%
-	cd ..\..
-
-	cd install\cleanup
-	%DOSMAKE%
-	cd ..\..
-
-	cd install\dosdata\12
-	%DOSMAKE%
-	copy %CPRS%\SETUP12.UPG %CPRS%\DOSSETUP.INI
-	cd ..\..\..
-		
-	cd install\dosdata\144
-	%DOSMAKE%
-	cd ..\..\..
-
-	cd install\oemdata\12
-	%DOSMAKE%
-	cd ..\144
-	%DOSMAKE%
-	cd ..\..\..
-
-	cd install\basedata\12
-	%DOSMAKE%
-	cd ..\144
-	%DOSMAKE%
+::SET OEMBASE=TRUE
+::
+::	cd install\oem
+::	%DOSMAKE% /a
+::	copy %LANG_SRC%\%COUNTRY%\install\common\BASESET.MSG %BIN%
+::	copy %LANG_SRC%\%COUNTRY%\install\common\BASESET.MSG %CPRS%
+::	cd ..\..
+::	cd ..\
 
 	
-	cd %ROOT%
-
-
-SET UJANUS=
-
-	cd install\oem
-	%DOSMAKE% /a
-	pklite -o setup.exe
-	copy SETUP.exe %CPRS%\setup.oem
-	copy SETUP.exe %BIN%\setup.oem
-::	cd ..\..
-	cd ..\
-
-SET OEMBASE=TRUE
-
-	cd install\oem
-	%DOSMAKE% /a
-	copy %LANG_SRC%\%COUNTRY%\install\common\BASESET.MSG %BIN%
-	copy %LANG_SRC%\%COUNTRY%\install\common\BASESET.MSG %CPRS%
-::	cd ..\..
-	cd ..\
-
-	
-SET OEMBASE=
+::SET OEMBASE=
 
 goto end
 
@@ -149,8 +149,8 @@ echo.
 :END
 
 cd %ROOT%
-set path=%savep%
-set savep=
+set path=%SAVEP%
+set SAVEP=
 SET ROOT=
 SET DOSMAKE=
 SET CPRS=
