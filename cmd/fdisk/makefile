@@ -143,3 +143,5 @@ clean:
 	del *.cl*
 	del fdboot.bin
 	del fdboot.inc
+    del *.map
+	del fdiskm.c

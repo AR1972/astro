@@ -1,6 +1,5 @@
 //fdisk.h 
 #define MAX_HDISK 8
-#define FLAG int
 #define BEGIN {
 #define END }
 #define NUL 0x20
@@ -40,6 +39,7 @@
 #define NETWORK_IOCTL 0 // ?
 #define ERR_LEVEL_0 0 // ?
 #define ERR_LEVEL_1 1 // ?
+#define ERR_LEVEL_2 2 //?
 #define c(x) (char)x
 #define uc(x) (unsigned char)x
 #define u(x) (unsigned)x
@@ -51,35 +51,103 @@
 #define GRAY_ON_BLACK 8 
 #define WHITE_ON_BLUE 9
 
-typedef float XFLOAT;
+#define PRIMARY 1
+#define MAX_PART_SIZE 32
+#define NOT_FOUND 0
+#define ACTIVE 0x80
+#define INVALID 0x00
+#define CURRENT_VIDEO_STATE 1
+#define VIDEO 1
+#define Color80_25 1
+#define MONO80_25 1
+#define MONO80_25A 1
+#define BW80_25 1
+#define SET_MODE 1
+#define SET_ACTIVE_DISPLAY_PAGE 1
+#define SET_PAGE 1
+#define CURRENT_VIDEO_ATTRIBUTE 1
 
-typedef struct entry
+#define WRITE_DISK 1
+#define SYSTEM_FILE_SECTORS 1
+#define VERIFY_DISK 1
+#define DISK_INFO 1
+#define DISK 1
+#define READ_DISK 1
+#define CARRY_FLAG 1
+
+#define NOERROR 0
+#define SEMICOLON ':'
+
+#define DOS_MAX 8
+#define ONE_MEG 1024
+#define CAPCHAR 1
+#define INT21 24
+#define CAP_YN 1
+#define NO_GOOD 0
+#define GENERIC_IOCTL 10
+#define ZERO '0'
+#define GET_MEDIA_ID 9
+#define FILE_NAME 2
+#define FIND_FIRST_MATCH 1
+#define VOL_LABEL 0x20
+#define PERIOD '.'
+#define SPECIAL_FUNCTION 0x65
+
+#define DELETED 1
+
+typedef unsigned XFLOAT;
+typedef unsigned char FLAG;
+
+struct entry
 {
-    unsigned char boot_ind;
-	unsigned char start_head;
-	unsigned char start_sector;
-	unsigned start_cyl;
-	unsigned char sys_id;
-	unsigned char end_head;
-	unsigned char end_sector;
-	unsigned end_cyl;
-	unsigned long  rel_sec;
-	unsigned long num_sec;
-	float mbytes_used;
-	unsigned percent_used;
-	int changed;
-	char drive_letter;
-	char file_system[8];
-	char system[8];
-	char vol_label[8];
-} entry;
+    unsigned char    boot_ind;
+	unsigned char    start_head;
+	unsigned char    start_sector;
+	unsigned         start_cyl;
+	unsigned char    sys_id;
+	unsigned char    end_head;
+	unsigned char    end_sector;
+	unsigned         end_cyl;
+	unsigned long    rel_sec;
+	unsigned long    num_sec;
+	float            mbytes_used;
+	unsigned         percent_used;
+	unsigned char    changed;
+	char             drive_letter;
+	char             system[8];
+	char             vol_label[8];
+};
 
-typedef struct dx_buffer_ioctl
+struct freespace
+{
+	unsigned    space;
+    unsigned    start;
+    unsigned    end;
+    float       mbytes_unused;
+    unsigned    percent_unused; 
+};
+
+struct sublistx
+{
+	unsigned value;
+	unsigned size;
+    unsigned char reserved;
+    unsigned char id;
+    unsigned char flags;
+    unsigned char max_width;
+    unsigned char min_width;
+    unsigned char pad_char;
+};
+
+struct dx_buffer_ioctl
 {
 	char file_system[8];
-} dx_buffer_ioctl;
+};
 
-
+struct diskaccess
+{
+	unsigned char dac_access_flag;
+};
 
 
 
