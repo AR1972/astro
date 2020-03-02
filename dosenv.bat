@@ -1,5 +1,5 @@
 @echo off
-
+mode 160
 rem SYNTAX: dosenv [drive:]
 rem where "drive" is the drive the build tree resides in.
 
