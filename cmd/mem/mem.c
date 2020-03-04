@@ -256,8 +256,8 @@ char far *Pointer;
  *
  */
 
-void
-init_data ()
+
+void init_data ()
 {
    int   i;
 
