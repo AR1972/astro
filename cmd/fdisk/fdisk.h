@@ -2,13 +2,13 @@
 #define MAX_HDISK 8
 #define BEGIN {
 #define END }
-#define NUL 0x20
+#define NUL	 (char) '\0'
 #define ESC 0x1B
 #define ESC_FLAG 0x1B
-#define TRUE 1
-#define FALSE 0
-#define CR 0x13
-#define LF 0x10
+#define FALSE	 (char)(1==0)
+#define TRUE	 !(FALSE)
+#define CR	 '\x0d'
+#define LF	 '\x0a'
 #define BACKSPACE 0x66
 #define PERCENT 0x06
 // partition types
@@ -127,17 +127,16 @@ struct freespace
     unsigned    percent_unused; 
 };
 
-struct sublistx
-{
-	unsigned value;
-	unsigned size;
-    unsigned char reserved;
-    unsigned char id;
-    unsigned char flags;
-    unsigned char max_width;
-    unsigned char min_width;
-    unsigned char pad_char;
-};
+struct sublistx {
+	 unsigned char size;	       /* sublist size			       */
+	 unsigned char reserved;       /* reserved for future growth	       */
+	 unsigned far *value;	       /* pointer to replaceable parm	       */
+	 unsigned char id;	       /* type of replaceable parm	       */
+	 unsigned char flags;	       /* how parm is to be displayed	       */
+	 unsigned char max_width;      /* max width of replaceable field       */
+	 unsigned char min_width;      /* min width of replaceable field       */
+	 unsigned char pad_char;       /* pad character for replaceable field  */
+	};
 
 struct dx_buffer_ioctl
 {
