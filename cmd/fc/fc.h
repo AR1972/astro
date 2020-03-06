@@ -70,6 +70,7 @@ extern char *strstr();
 extern char *strrchr();
 extern char *strupr();
 
+typedef int Boolean;
 
 /*
  *  Forward Declarations
