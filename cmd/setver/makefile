@@ -56,7 +56,7 @@ $(cprs)\$(cpr2):  $(cpr)
             copy $(cpr) $(cprs)\$(cpr2)
 
 $(cpr):       $(dest)
-            $(compress) $(dest) $(cpr)
+            $(compress) -f $(dest) $(cpr)
 
 !ENDIF
 
@@ -81,5 +81,6 @@ clean:
 	del *.exe
 	del *.ex_
 	del *.obj
+	del *.map
 
 

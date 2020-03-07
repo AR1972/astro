@@ -88,8 +88,8 @@ all:
     cd ..\restore
         $(MAKE)
     cd ..\setver
-#        $(MAKE) /a BASE= #needs strings added
-#        $(MAKE) /a
+        $(MAKE) /a BASE=
+        $(MAKE) /a
     cd ..\share
 #        $(MAKE)		#needs strings
     cd ..\sort
