@@ -60,7 +60,7 @@ all:
     cd ..\keyb
         $(MAKE)
     cd ..\label
-#        $(MAKE) # needs strings
+        $(MAKE)
     cd ..\loadfix
         $(MAKE)
     cd ..\mem
