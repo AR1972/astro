@@ -37,7 +37,7 @@ all:
     cd ..\exe2bin
         $(MAKE)
     cd ..\expand
-#        $(MAKE) #needs strings
+        $(MAKE)
     cd ..\fastopen
         $(MAKE)
     cd ..\fc

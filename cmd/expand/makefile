@@ -123,3 +123,5 @@ dosdir.obj: dosdir.asm cmacros.inc ioctl.inc
 clean:
 	del *.obj
 	del *.exe
+	del *.pkl
+	del *.map
