@@ -54,7 +54,7 @@ all:
     cd ..\graphics
         $(MAKE)
     cd ..\help
-#        $(MAKE) # needs strings
+        $(MAKE)
     cd ..\join
 #        $(MAKE) # missing lib\master.lib
     cd ..\keyb

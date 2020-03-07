@@ -82,5 +82,8 @@ $(dest):      help.obj                  \
 clean:
 	del *.obj
 	del *.exe
+	del *.ex_
+	del *.hl_
+	del *.bs_
 
 
