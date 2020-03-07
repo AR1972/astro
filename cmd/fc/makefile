@@ -84,7 +84,8 @@ $(dest): $(OBJ) fc.lnk
         $(link) $(exelink) @fc.lnk;
 		
 clean:
-	-del *.obj
-	-del *.exe
+	del *.obj
+	del *.exe
+	del *.ex_
 	
 
