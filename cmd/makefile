@@ -41,7 +41,7 @@ all:
     cd ..\fastopen
         $(MAKE)
     cd ..\fc
-#        $(MAKE) #needs strings
+        $(MAKE)
     cd ..\fdisk
 #        $(MAKE) # broken probably a missing ;
     cd ..\find
