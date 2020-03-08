@@ -91,7 +91,7 @@ all:
         $(MAKE) /a BASE=
         $(MAKE) /a
     cd ..\share
-#        $(MAKE)		#needs strings
+        $(MAKE)
     cd ..\sort
 #        $(MAKE)     #needs strings
     cd ..\subst

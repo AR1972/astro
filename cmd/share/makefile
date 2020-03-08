@@ -169,5 +169,6 @@ clean:
 	del *.ctl
 	del *.exe
 	del *.ex_
+	del *.map
 
 
