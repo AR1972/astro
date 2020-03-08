@@ -7,13 +7,13 @@ all: $(dest) $(bins)\$(dest)
 $(bins)\$(dest): $(dest)
             copy $(dest) $(bins)
 			
-stipz.obj:    stripz.c                  \
-              makefile                  \
+stipz.obj:  stripz.c                  \
+            makefile                  
 			  
-$(dest):      stripz.obj
-              link $(exelink) /stack:4096 stripz;
+$(dest):    stripz.obj
+            link $(exelink) /stack:4096 stripz;
 			  
 clean:
-	-del *.exe
-	-del *.obj
+	del *.exe
+	del *.obj
 

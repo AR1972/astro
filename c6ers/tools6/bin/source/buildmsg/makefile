@@ -7,7 +7,7 @@ all: $(dest) $(bins)\$(dest)
 $(bins)\$(dest): $(dest)
             copy $(dest) $(bins)
 			
-stipz.obj:    buildmsg.c                \
+buildmsg.obj: buildmsg.c                \
 			  buildmsg.h				\
               makefile                  
 			  
@@ -15,6 +15,6 @@ $(dest):      buildmsg.obj
               link $(exelink) /stack:4096 buildmsg;
 			  
 clean:
-	-del *.exe
-	-del *.obj
+	del *.exe
+	del *.obj
 
