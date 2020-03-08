@@ -18,6 +18,10 @@
 #define EMS 4
 #define GET_VECT 6
 #define DOSEMSVER 4
+#define toK(x) (x/1024)
+
+static const char SumFormat[] = "%10ld%8c";
+static const char MemFormat[] = "%10ld%8c";
 
 struct files
 {
@@ -48,7 +52,7 @@ struct mem_classif
 	unsigned long ems_free;
     unsigned long int_15h;
 	unsigned long conv_large;
-    unsigned int hma;
+    int hma;
 	unsigned long rom_ttl;
     char noof_progs;
 	char noof_umbs;
@@ -117,9 +121,17 @@ struct	ARENA	 {
 	char	 OwnerName[8];
 	};
 
-////////////////////////////////////////////////////////////////////
+enum {
+	p_not_in_key,
+	p_too_many,
+	p_not_in_sw,
+	p_op_missing
+};
+
+///////////////////////////////////////////////////////////////////////////////
+
 void init_data ();
-void Parse_Message (int, char far *);
+void Parse_Message (int, char*);
 void GetEMS();
 void GetXMS();
 char EMSInstalled();
@@ -132,12 +144,21 @@ void GetFromArgvZero(unsigned, unsigned far *);
 char *TypeOf();
 unsigned int AddMem_to_Table(unsigned int, unsigned long, unsigned long, unsigned long);
 void DoMainLine(int, unsigned long int*, int, unsigned long int*, int, unsigned long int*);
+void mainline(unsigned long int *,int,unsigned long int *,int,unsigned long int *);
 void DoMainLine_a(int, unsigned long int*, char*, unsigned long int*, char*, unsigned long int*);
-void estrip(char far*);
-char *DriverData(char far*);
+void mainline_a(unsigned long int *,char *,unsigned long int *,char *,unsigned long int *);
+void estrip(char far *);
+char *DriverData(void far *);
 unsigned int GetDDriverPSP();
-unsigned int IsDDriverAround(char *);
-/////////////////////////////////////////////////////////////////////////
+unsigned int IsDDriverAround(char*);
+void mprintf();
+char *GetDeviceDriver(void far *);
+unsigned long AddressOf(char far *);
+void GetExtraMemory();
+int fIsPooled();
+
+//////////////////////////////////////////////////////////////////////////////
+
 extern GetExtended;
 extern EMSGetFreePgs;
 extern EMSGetVer;
@@ -152,12 +173,6 @@ extern unsigned LastPSP;
 extern char UseArgvZero;
 extern char EMSInstalledFlag;
 extern int NoCR;
-extern char p_not_in_key;
-extern char p_too_many;
-extern char p_op_missing;
-extern char p_not_in_sw;
-extern char MemFormat;
-extern char SumFormat;
 extern struct sublistx sublist[];
 extern struct SYSIVAR far *SysVarsPtr;
 extern char ddrivername[MAX_DDRIVER_REP][9];
