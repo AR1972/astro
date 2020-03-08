@@ -7,9 +7,9 @@ all: $(dest) $(bins)\$(dest)
 $(bins)\$(dest): $(dest)
             copy $(dest) $(bins)
 			
-h2inc.obj:    h2inc.c                \
-              makefile                  
-			  
+h2inc.obj:    h2inc.c                 \
+              makefile
+
 $(dest):      h2inc.obj
               link $(exelink) /stack:4096 h2inc;
 			  

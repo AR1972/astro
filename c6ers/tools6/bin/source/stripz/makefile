@@ -8,8 +8,8 @@ $(bins)\$(dest): $(dest)
             copy $(dest) $(bins)
 			
 stipz.obj:  stripz.c                  \
-            makefile                  
-			  
+            makefile
+
 $(dest):    stripz.obj
             link $(exelink) /stack:4096 stripz;
 			  

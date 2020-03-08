@@ -7,10 +7,10 @@ all: $(dest) $(bins)\$(dest)
 $(bins)\$(dest): $(dest)
             copy $(dest) $(bins)
 			
-buildmsg.obj: buildmsg.c                \
-			  buildmsg.h				\
-              makefile                  
-			  
+buildmsg.obj: buildmsg.c              \
+			  buildmsg.h              \
+              makefile
+
 $(dest):      buildmsg.obj
               link $(exelink) /stack:4096 buildmsg;
 			  
