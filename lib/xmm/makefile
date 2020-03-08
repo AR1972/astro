@@ -17,9 +17,7 @@ doslib  =..
 
 all:	      $(doslib)\xmm.lib
 
-clean: cleanup
-
-cleanup:
+clean:
 	if exist *.obj	     del *.obj
 	if exist *.exe	     del *.exe
 	if exist *.map	     del *.map
