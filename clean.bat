@@ -14,6 +14,8 @@ echo Y | del %OAKROOT%\COMPRESS\*.*
 echo . > %OAKROOT%\BINARIES\.gitkeep
 echo . > %OAKROOT%\COMPRESS\.gitkeep
 
+nmake clean
+
 del %OAKROOT%\BIOS\*.OBJ
 del %OAKROOT%\BIOS\MSBIO.CL?
 del %OAKROOT%\BIOS\MSLOAD.MAP

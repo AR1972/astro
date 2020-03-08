@@ -26,3 +26,4 @@ c6ers/*/*.OUT
 c6ers/*/MAKE.OUT
 dos/DISKOBJS
 inc/bdsize.inc
+c6ers/tools6/tmp/*
