@@ -77,5 +77,6 @@ clean:
 	del *.ctl
 	del *.exe
 	del sortmes.asm
+	del *.ex_
 
 

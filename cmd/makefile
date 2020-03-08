@@ -93,7 +93,7 @@ all:
     cd ..\share
         $(MAKE)
     cd ..\sort
-#        $(MAKE)     #needs strings
+        $(MAKE)
     cd ..\subst
 #        $(MAKE)		#master.lib missing
     cd ..\sys
