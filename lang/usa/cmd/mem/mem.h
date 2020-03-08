@@ -1,17 +1,30 @@
 #define MAX_DDRIVER_REP 3
-#define TRUE 1
-#define FALSE 0
 #define GET_UMB_LINK_STATE 1
 #define SET_UMB_LINK_STATE 2
 #define UNLINK_UMBS 3
 #define LINK_UMBS 4
-#define MAX_CLDATA_INDEX 5
+#define FALSE	 (char)(1==0)
+#define TRUE	 !(FALSE)
+#define CR	 '\x0d'
+#define LF	 '\x0a'
+#define NUL	 (char) '\0'
+#define TAB	 '\x09'
+#define BLANK	' '
+#define	MAX_CLDATA_INDEX	100
+/* defines used by total memory determination */
+#define GET_PSP 	(unsigned char ) 0x62		 /* get PSP function call */
+#define MEMORY_DET	0x12		/* BIOS interrupt used to get total memory size */
+#define CASSETTE 8
+#define EMS 4
+#define GET_VECT 6
+#define DOSEMSVER 4
 
 struct files
 {
     char psp_addr;
     long conv_ttl;
     long umb_ttl;
+	char driveridx;
 };
 
 struct umbs
@@ -28,6 +41,7 @@ struct mem_classif
     unsigned long conv_free;
     unsigned long umb_ttl;
     unsigned long umb_free;
+	unsigned long umb_large;
     unsigned long xms_ttl;
     unsigned long xms_free;
     unsigned long ems_ttl;
@@ -35,6 +49,7 @@ struct mem_classif
     unsigned long int_15h;
 	unsigned long conv_large;
     unsigned int hma;
+	unsigned long rom_ttl;
     char noof_progs;
 	char noof_umbs;
     char xmsMvers;
@@ -47,25 +62,117 @@ struct mem_classif
 	struct umbs umbs[MAX_CLDATA_INDEX];
 };
 
-struct mem_classif mem_table;
+struct	DEVICEHEADER {
+	struct DEVICEHEADER far *NextDeviceHeader;
+	unsigned		Attributes;
+	unsigned		Strategy;
+	unsigned		Interrupt;
+	char			Name[8];
+	};
+	
+struct	SYSIVAR {
+	char far *DpbChain;
+	char far *SftChain;
+	char far *Clock;
+	char far *Con;
+	unsigned  MaxSectorSize;
+	char far *BufferChain;
+	char far *CdsList;
+	char far *FcbChain;
+	unsigned  FcbKeepCount;
+	unsigned char BlockDeviceCount;
+	char	  CdsCount;
+	struct DEVICEHEADER far *DeviceDriverChain;
+	unsigned  NullDeviceAttributes;
+	unsigned  NullDeviceStrategyEntryPoint;
+	unsigned  NullDeviceInterruptEntryPoint;
+	char	  NullDeviceName[8];
+	char	  SpliceIndicator;
+	unsigned  DosParagraphs;
+	char far *DosServiceRntryPoint;
+	char far *IfsChain;
+	unsigned  BufferValues;
+	unsigned  LastDriveValue;
+	char	  BootDrive;
+	char	  MoveType;
+	unsigned  ExtendedMemory;
+	};
 
-struct sublistx
-{
-    unsigned far * value;
-    char size; 
-    char reserved;      
-    char id;            
-    char flags;
-    char max_width;
-    char min_width;
-    char pad_char; 
-};
+struct sublistx {
+	 unsigned char size;	       /* sublist size			       */
+	 unsigned char reserved;       /* reserved for future growth	       */
+	 unsigned far *value;	       /* pointer to replaceable parm	       */
+	 unsigned char id;	       /* type of replaceable parm	       */
+	 unsigned char flags;	       /* how parm is to be displayed	       */
+	 unsigned char max_width;      /* max width of replaceable field       */
+	 unsigned char min_width;      /* min width of replaceable field       */
+	 unsigned char pad_char;       /* pad character for replaceable field  */
+	};
 
-char p_not_in_key[] = "p_not_in_key";
-char p_too_many[] = "p_too_many";
-char p_op_missing[] = "p_op_missing";
-char p_not_in_sw[] = "p_not_in_sw";
+struct	ARENA	 {
+	char	 Signature;
+	unsigned Owner;
+	unsigned Paragraphs;
+	char	 Dummy[3];
+	char	 OwnerName[8];
+	};
 
+////////////////////////////////////////////////////////////////////
 void init_data ();
 void Parse_Message (int, char far *);
+void GetEMS();
+void GetXMS();
+char EMSInstalled();
+void Correct_Total_XMS();
+void check_screen ();
+void DisplayFree ();
+char *GetDeviceDriver();
+char *OwnerOf();
+void GetFromArgvZero(unsigned, unsigned far *);
+char *TypeOf();
+unsigned int AddMem_to_Table(unsigned int, unsigned long, unsigned long, unsigned long);
+void DoMainLine(int, unsigned long int*, int, unsigned long int*, int, unsigned long int*);
+void DoMainLine_a(int, unsigned long int*, char*, unsigned long int*, char*, unsigned long int*);
+void estrip(char far*);
+char *DriverData(char far*);
+unsigned int GetDDriverPSP();
+unsigned int IsDDriverAround(char *);
+/////////////////////////////////////////////////////////////////////////
+extern GetExtended;
+extern EMSGetFreePgs;
+extern EMSGetVer;
+extern EMSGetStat;
+extern char *SingleDrive;
+extern char *MultipleDrives;
+extern char *UnOwned;
+extern char *Ibmbio;
+extern char *Ibmdos;
+extern int ddriveridx;
+extern unsigned LastPSP;
+extern char UseArgvZero;
+extern char EMSInstalledFlag;
+extern int NoCR;
+extern char p_not_in_key;
+extern char p_too_many;
+extern char p_op_missing;
+extern char p_not_in_sw;
+extern char MemFormat;
+extern char SumFormat;
+extern struct sublistx sublist[];
+extern struct SYSIVAR far *SysVarsPtr;
+extern char ddrivername[MAX_DDRIVER_REP][9];
+extern unsigned far *ArenaHeadPtr;
+extern char OwnerName[];
+extern char TypeText[];
+extern char cmd_line[];
+extern unsigned long UMB_Head;
+extern union REGS InRegs;
+extern union REGS OutRegs;
+extern struct SREGS SegRegs;
+extern int BlockDeviceNumber;
+extern int DataLevel;
+extern int PageBreak;
+extern int num_lines;
+extern char ModName[];
+extern struct mem_classif mem_table;
 
