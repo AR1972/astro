@@ -1,8 +1,9 @@
+#include "stdarg.h"
 #define MAX_DDRIVER_REP 3
-#define GET_UMB_LINK_STATE 1
-#define SET_UMB_LINK_STATE 2
-#define UNLINK_UMBS 3
-#define LINK_UMBS 4
+#define GET_UMB_LINK_STATE 0x5802
+#define SET_UMB_LINK_STATE 0x5803
+#define UNLINK_UMBS 0x0000
+#define LINK_UMBS 0x0001
 #define FALSE	 (char)(1==0)
 #define TRUE	 !(FALSE)
 #define CR	 '\x0d'
@@ -14,11 +15,16 @@
 /* defines used by total memory determination */
 #define GET_PSP 	(unsigned char ) 0x62		 /* get PSP function call */
 #define MEMORY_DET	0x12		/* BIOS interrupt used to get total memory size */
-#define CASSETTE 8
-#define EMS 4
-#define GET_VECT 6
-#define DOSEMSVER 4
-#define toK(x) (x/1024)
+#define CASSETTE 0x15 // interupt 15
+#define EMS 0x67
+#define GET_VECT 0x35
+#define DOSEMSVER 0x40
+#define toK(x) (((x)/1024))
+#define GetExtended 0x8800
+#define EMSGetVer 0x4600
+#define EMSGetFreePgs 0x4200
+#define EMSGetStat 0x4000
+#define toK(x) ((x)/1024)
 
 static const char SumFormat[] = "%10ld%8c";
 static const char MemFormat[] = "%10ld%8c";
@@ -159,10 +165,6 @@ int fIsPooled();
 
 //////////////////////////////////////////////////////////////////////////////
 
-extern GetExtended;
-extern EMSGetFreePgs;
-extern EMSGetVer;
-extern EMSGetStat;
 extern char *SingleDrive;
 extern char *MultipleDrives;
 extern char *UnOwned;
@@ -173,13 +175,13 @@ extern unsigned LastPSP;
 extern char UseArgvZero;
 extern char EMSInstalledFlag;
 extern int NoCR;
-extern struct sublistx sublist[];
+extern struct sublistx sublist[10];
 extern struct SYSIVAR far *SysVarsPtr;
 extern char ddrivername[MAX_DDRIVER_REP][9];
 extern unsigned far *ArenaHeadPtr;
-extern char OwnerName[];
-extern char TypeText[];
-extern char cmd_line[];
+extern char OwnerName[128];
+extern char TypeText[128];
+extern char cmd_line[128];
 extern unsigned long UMB_Head;
 extern union REGS InRegs;
 extern union REGS OutRegs;
@@ -188,6 +190,6 @@ extern int BlockDeviceNumber;
 extern int DataLevel;
 extern int PageBreak;
 extern int num_lines;
-extern char ModName[];
+extern char ModName[40];
 extern struct mem_classif mem_table;
 
