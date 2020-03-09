@@ -37,8 +37,8 @@ $(cpr):       $(dest)
 
 
 mem.ctl:        mem.skl                         \
-                $(msg)\$(COUNTRY)-ibm.msg makefile
-				buildmsg $(msg)\$(COUNTRY)-ibm mem.skl
+                $(msg)\$(COUNTRY).msg makefile
+				buildmsg $(msg)\$(COUNTRY) mem.skl
 
 _msgret.obj:    _msgret.asm                     \
                 makefile                         \

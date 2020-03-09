@@ -11,4 +11,4 @@ wintest+
 xms
 
 
-..\..\lib\xmm ..\..\lib\mem;
+..\..\lib\xmm;

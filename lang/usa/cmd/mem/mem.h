@@ -19,19 +19,18 @@
 #define EMS 0x67
 #define GET_VECT 0x35
 #define DOSEMSVER 0x40
-#define toK(x) (((x)/1024))
 #define GetExtended 0x8800
 #define EMSGetVer 0x4600
 #define EMSGetFreePgs 0x4200
 #define EMSGetStat 0x4000
-#define toK(x) ((x)/1024)
-
+#define toK(x) ((x)>>10)
+#undef IBMCOPYRIGHT
 static const char SumFormat[] = "%10ld%8c";
 static const char MemFormat[] = "%10ld%8c";
 
 struct files
 {
-    char psp_addr;
+    unsigned char psp_addr;
     long conv_ttl;
     long umb_ttl;
 	char driveridx;
@@ -41,8 +40,8 @@ struct umbs
 {
     long umb_free;
     long umb_ttl;
-    long umb_addr;
-    long umb_large;
+    unsigned long umb_addr;
+    unsigned long umb_large;
 };
 
 struct mem_classif
@@ -136,18 +135,17 @@ enum {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-void init_data ();
+void init_data(void);
 void Parse_Message (int, char*);
-void GetEMS();
-void GetXMS();
-char EMSInstalled();
-void Correct_Total_XMS();
-void check_screen ();
-void DisplayFree ();
-char *GetDeviceDriver();
-char *OwnerOf();
+void GetEMS(void);
+void GetXMS(void);
+char EMSInstalled(void);
+void Correct_Total_XMS(void);
+void check_screen(void);
+void DisplayFree(void);
+char *OwnerOf(struct ARENA far *);
 void GetFromArgvZero(unsigned, unsigned far *);
-char *TypeOf();
+char *TypeOf(struct ARENA far *);
 unsigned int AddMem_to_Table(unsigned int, unsigned long, unsigned long, unsigned long);
 void DoMainLine(int, unsigned long int*, int, unsigned long int*, int, unsigned long int*);
 void mainline(unsigned long int *,int,unsigned long int *,int,unsigned long int *);
@@ -155,13 +153,22 @@ void DoMainLine_a(int, unsigned long int*, char*, unsigned long int*, char*, uns
 void mainline_a(unsigned long int *,char *,unsigned long int *,char *,unsigned long int *);
 void estrip(char far *);
 char *DriverData(void far *);
-unsigned int GetDDriverPSP();
+unsigned int GetDDriverPSP(void);
 unsigned int IsDDriverAround(char*);
 void mprintf();
-char *GetDeviceDriver(void far *);
 unsigned long AddressOf(char far *);
-void GetExtraMemory();
-int fIsPooled();
+void GetExtraMemory(void);
+int fIsPooled(void);
+long XMSVersion(int far *);
+long XMSDriver(int far *);
+long CheckVDisk(void);
+int IsPre286(void);
+char *GetDeviceDriver(void far *);
+
+extern void sysloadmsg(union REGS *, union REGS *);
+extern void sysdispmsg(union REGS *, union REGS *);
+extern void sysgetmsg(union REGS *, struct SREGS *, union REGS *);
+extern void parse(union REGS *, union REGS *);
 
 //////////////////////////////////////////////////////////////////////////////
 
