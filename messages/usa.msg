@@ -1,4 +1,4 @@
-0419
+0432
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -647,7 +647,7 @@ KEYB     00007b18 0023
 0304 U 0000 "  [drive:][path]filename  Specifies the keyboard definition file.",CR,LF
 0305 U 0000 "  /E                      Specifies that an enhanced keyboard is installed.",CR,LF
 0306 U 0000 "  /ID:nnn                 Specifies the keyboard in use.",CR,LF
-MEM      0000814f 0066
+MEM      0000814f 0072
 0010 U 0000  CR,LF
 0011 U 0000  "  Address     Name          Size       Type ",CR,LF
 0012 U 0000  "  -------     --------     ------     ------",CR,LF
@@ -691,24 +691,30 @@ MEM      0000814f 0066
 0050 U 0000  "Environment",0
 0051 U 0000  "Data",0
 0052 N 0000  "%1 bytes available XMS memory",CR,LF
-0053 N 0000  "           64Kb High Memory Area available",CR,LF
-0054 N 0000  "           High Memory Area in use",CR,LF
-0055 N 0000  "           MS-DOS resident in High Memory Area",CR,LF
-0056 U 0000  "IBMBIO",0                                                 ;*EGH
-0057 U 0000  "IBMDOS",0                                                 ;*EGH
-0058 N 0000  "           MS-DOS resident in ROM using High Memory Area",CR,LF
-0059 U 0000  "Conventional Memory :",CR,LF
-0060 U 0000  "Upper Memory :",CR,LF
-0061 U 0000  "Total  FREE :   %1     %2 ",CR,LF
-0062 U 0000  "FREE",0
-0063 U 0000  "  Name                Size in Decimal       Size in Hex",CR,LF
-0064 U 0000  "-------------      ---------------------   -------------",CR,LF
-0065 U 0000  "Total bytes available to programs (Conventional+Upper) :  %1  %2",CR,LF
-0066 U 0000  "Largest executable program size :                         %1  %2",CR,LF
-0067 U 0000  "Largest available upper memory block :                    %1  %2",CR,LF
-0068 U 0000  "Too much of memory fragmentation; MEM /C cannot be done",CR,LF
-0069 U 0000  "SYSTEM",0
-0070 U 0000  "Total bytes available to programs :                       %1  %2",CR,LF
+0053 U 0000  "The high memory area is available.",CR,LF
+0054 U 0000  "The high memory area is not available.",CR,LF
+0055 U 0000  "MS-DOS is resident in the high memory area.",CR,LF
+0058 U 0000  "MS-DOS is resident in ROM using the high memory area.",CR,LF
+0060 U 0000  "FREE",0
+0086 U 0000  "Memory Type        Total =  Used  +  Free",CR,LF
+0087 U 0000  "----------------  ------   ------   ------",CR,LF
+0088 U 0000  "%1  %2   %3   %4",CR,LF
+0089 U 0000  "Largest executable program size     %1 %2",CR,LF
+0090 U 0000  "Largest free upper memory block     %1 %2",CR,LF
+0091 U 0000  "Conventional",0
+0092 U 0000  "Upper",0
+0093 U 0000  "Extended (XMS)",0
+0094 U 0000  "Expanded (EMS)",0
+0095 U 0000  "Total memory",0
+0096 U 0000  "Total under 1 MB",0
+0105 U 0000  "Adapter RAM/ROM"
+0108 U 0000  "Total Expanded (EMS)                %1 %2",CR,LF
+0110 U 0000  "bytes",0
+0111 U 0000  "Free Expanded (EMS)                 %1 %2",CR,LF
+0112 U 0000  "Extended (XMS)*",0
+0113 U 0000  "Free Expanded (EMS)*                %1 %2",CR,LF
+0114 U 0000  "* EMM386 is using XMS memory to simulate EMS memory as needed.",CR,LF
+0115 U 0000  "  Free EMS memory may change as free XMS memory changes.",CR,LF
 0300 U 0000  "Displays the amount of used and free memory in your system.",CR,LF,CR,LF
 0301 U 0000 "MEM [/PROGRAM | /DEBUG | /CLASSIFY]",CR,LF,CR,LF
 0302 U 0000 "  /PROGRAM or /P   Displays status of programs currently loaded in memory.",CR,LF
@@ -717,7 +723,7 @@ MEM      0000814f 0066
 0304 U 0000 "  /CLASSIFY or /C  Classifies programs by memory usage. Lists the size of",CR,LF
 	"                   programs, provides a summary of memory in use, and lists",CR,LF
 	"                   largest memory block available.",CR,LF
-MSBIO    00008f0b 0023
+MSBIO    00008f22 0023
 0003 U 0000 13,10,"Unrecognized command in CONFIG.SYS"
 0004 U 0000 13,10,"$"
 0005 U 0000 13,10,"Sector size too large in file $"
@@ -742,7 +748,7 @@ MSBIO    00008f0b 0023
 0023 U 0000 "Fatal Error:Cannot allocate Memory for DOS", 13, 10, "$"
 0024 U 0000 "WARNING! Logical drives past Z: exist and will be ignored",13,10,"$"
 0025 U 0000 "This version of DOS will boot only on IBM machines",13,10,0
-MSDOS    0000945b 0007
+MSDOS    00009472 0007
 0001 U 0001 13,10,"Divide overflow",13,10
 0002 U 0002 "y"
 0003 U 0002 "n"
@@ -751,12 +757,12 @@ MSDOS    0000945b 0007
 0006 U 0000 "N"
 0007 U 0000 "You must have the file WINA20.386 in the root of your boot drive",13,10
 	"to run Windows in Enhanced Mode",13,10
-NLSFUNC  00009594 0003
+NLSFUNC  000095ab 0003
 0300 U 0000 "Loads country-specific information.",CR,LF,CR,LF
 0301 U 0000 "NLSFUNC [[drive:][path]filename]",CR,LF,CR,LF
 0302 U 0000 "  [drive:][path]filename   Specifies the file containing country-specific",CR,LF
 	"                           information.",CR,LF
-SHARE    000096b8 0005
+SHARE    000096cf 0005
 0003 U 0000 "SHARE cannot be installed under DOSSHELL.",CR,LF
 0300 U 0000 "Installs file-sharing and locking capabilities on your hard disk.",CR,LF,CR,LF
 0301 U 0000 "SHARE [/F:space] [/L:locks]",CR,LF,CR,LF

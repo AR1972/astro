@@ -25,8 +25,8 @@
 #define EMSGetStat 0x4000
 #define toK(x) ((x)>>10)
 #undef IBMCOPYRIGHT
-static const char SumFormat[] = "%10ld%8c";
-static const char MemFormat[] = "%10ld%8c";
+static const char SumFormat[] = "%5lx%3ld%8ld%7c";
+static const char MemFormat[] = "%-16m%6c%6c%6c";
 
 struct files
 {
