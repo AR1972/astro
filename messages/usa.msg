@@ -1,4 +1,4 @@
-0432
+0434
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -647,21 +647,21 @@ KEYB     00007b18 0023
 0304 U 0000 "  [drive:][path]filename  Specifies the keyboard definition file.",CR,LF
 0305 U 0000 "  /E                      Specifies that an enhanced keyboard is installed.",CR,LF
 0306 U 0000 "  /ID:nnn                 Specifies the keyboard in use.",CR,LF
-MEM      0000814f 0072
+MEM      0000814f 0113
 0010 U 0000  CR,LF
-0011 U 0000  "  Address     Name          Size       Type ",CR,LF
-0012 U 0000  "  -------     --------     ------     ------",CR,LF
+0011 U 0000  "  Segment               Total        Name         Type",CR,LF
+0012 U 0000  "  -------          ----------------  -----------  --------",CR,LF
 0013 U 0000  "  Handle      EMS Name      Size   ",CR,LF
 0014 U 0000  "  -------     --------     ------  ",CR,LF
-0015 U 0000  "  %1      %2     %3     %4",CR,LF
-0016 U 0000  "                %1   %2      %3 ",CR,LF
-0017 U 0000  "                  %1              %2 ",CR,LF
-0018 U 0000  "%1 bytes total conventional memory",CR,LF
-0019 U 0000  "%1 bytes available to MS-DOS",CR,LF
-0020 U 0000  "%1 largest executable program size",CR,LF
-0021 U 0000  "%1 bytes total EMS memory",CR,LF
-0022 U 0000  "%1 bytes free EMS memory",CR,LF
-0023 U 0000  "%1 bytes total contiguous extended memory",CR,LF
+0015 U 0000  "   %1           %2 %3  %4     %5",CR,LF
+0016 U 0000  "                   %1 %2     %3  %4%5",CR,LF
+0017 U 0000  "                                        %1  %2",CR,LF
+0018 U 0000  "Memory accessible using Int 15h     %1 %2",CR,LF
+0019 U 0000  "  "
+0020 U 0000  "  XMS version %1; driver version %2",CR,LF
+0021 U 0000  "  EMS version %1",CR,LF
+0022 U 0000  "LOADHIGH",0
+0023 U 0000  "Temporarily Restricted",0
 0024 U 0000  "Interrupt Vector",0
 0025 U 0000  "ROM Communication Area",0
 0026 U 0000  "DOS Communication Area",0
@@ -670,7 +670,7 @@ MEM      0000814f 0072
 0029 U 0000  "System Data",0
 0030 U 0000  "System Program",0
 0031 U 0000  "System Device Driver",0
-0032 U 0000  "Installed Device Driver",0
+0032 U 0000  "Installed Device=",0
 0033 U 0000  "%1:",0
 0034 U 0000  "%1: - %2:",0
 0035 U 0000  "BUFFERS=",0
@@ -694,8 +694,36 @@ MEM      0000814f 0072
 0053 U 0000  "The high memory area is available.",CR,LF
 0054 U 0000  "The high memory area is not available.",CR,LF
 0055 U 0000  "MS-DOS is resident in the high memory area.",CR,LF
+0056 U 0000  "IBMBIO",0
+0057 U 0000  "IBMDOS",0
 0058 U 0000  "MS-DOS is resident in ROM using the high memory area.",CR,LF
-0060 U 0000  "FREE",0
+0059 U 0000  "Modules using memory below 1 MB:",CR,LF
+0060 U 0000  "%1 is using the following memory:",CR,LF
+0061 U 0000  "Free Conventional Memory:",CR,LF
+0062 U 0000  "Free",0
+0063 U 0000  "  Name           Total       =   Conventional   +   Upper Memory",CR,LF
+0064 U 0000  "  --------  ----------------   ----------------   ----------------",CR,LF
+0065 U 0000  "  Segment        Total",CR,LF
+0066 U 0000  "  -------   ----------------",CR,LF
+0067 U 0000  "   %1    %2 %3",CR,LF
+0068 U 0000  "Too much of memory fragmentation; MEM cannot work properly.",CR,LF
+0069 U 0000  "SYSTEM",0
+0070 U 0000  "  Total Free:%1 %2",CR,LF
+0071 U 0000  "%1 is not currently in memory.",CR,LF
+0072 U 0000  "   %1           %2 %3  %4",CR,LF
+0073 U 0000  "                   ----------------",CR,LF
+0074 U 0000  "  Total Size:      %1 %2",CR,LF
+0075 U 0000  "  Segment  Region       Total        Type",CR,LF
+0076 U 0000  "  -------  ------  ----------------  --------",CR,LF
+0077 U 0000  "   %1     %2   %3 %4  %5",CR,LF
+0078 U 0000  "  %1  %2 %3   %4 %5   %6 %7",CR,LF
+0079 U 0000  "   %1     %2   %3 %4  %5     %6",CR,LF
+0080 U 0000  "Press any key to continue . . ."
+0081 U 0000  "No upper memory available",CR,LF
+0082 U 0000  "  Segment  Region       Total        Name         Type",CR,LF
+0083 U 0000  "  -------  ------  ----------------  -----------  --------",CR,LF
+0084 U 0000  "Conventional Memory Detail:",CR,LF
+0085 U 0000  "Upper Memory Detail:",CR,LF
 0086 U 0000  "Memory Type        Total =  Used  +  Free",CR,LF
 0087 U 0000  "----------------  ------   ------   ------",CR,LF
 0088 U 0000  "%1  %2   %3   %4",CR,LF
@@ -707,8 +735,19 @@ MEM      0000814f 0072
 0094 U 0000  "Expanded (EMS)",0
 0095 U 0000  "Total memory",0
 0096 U 0000  "Total under 1 MB",0
-0105 U 0000  "Adapter RAM/ROM"
+0097 U 0000  "Free Upper Memory:",CR,LF
+0098 U 0000  "  Region   Largest Free     Total Free      Total Size",CR,LF
+0099 U 0000  "  ------  --------------  --------------  --------------",CR,LF
+0100 U 0000  "    %1   %2 %3  %4 %5  %6 %7",CR,LF
+0101 U 0000  "Memory Summary:",CR,LF
+0102 U 0000  "  Type of Memory          Total       =       Used        +       Free",CR,LF
+0103 U 0000  "  ----------------  -----------------   -----------------   -----------------",CR,LF
+0104 U 0000  "  %1  %2 %3   %4 %5   %6 %7",CR,LF
+0105 U 0000  "Adapter RAM/ROM",0
+0106 U 0000  "   %1           %2 %3  %4%5",CR,LF
+0107 U 0000  "   %1     %2   %3 %4  %5%6",CR,LF
 0108 U 0000  "Total Expanded (EMS)                %1 %2",CR,LF
+0109 U 0000  "module name",0
 0110 U 0000  "bytes",0
 0111 U 0000  "Free Expanded (EMS)                 %1 %2",CR,LF
 0112 U 0000  "Extended (XMS)*",0
@@ -716,14 +755,19 @@ MEM      0000814f 0072
 0114 U 0000  "* EMM386 is using XMS memory to simulate EMS memory as needed.",CR,LF
 0115 U 0000  "  Free EMS memory may change as free XMS memory changes.",CR,LF
 0300 U 0000  "Displays the amount of used and free memory in your system.",CR,LF,CR,LF
-0301 U 0000 "MEM [/PROGRAM | /DEBUG | /CLASSIFY]",CR,LF,CR,LF
-0302 U 0000 "  /PROGRAM or /P   Displays status of programs currently loaded in memory.",CR,LF
-0303 U 0000 "  /DEBUG or /D     Displays status of programs, internal drivers, and other",CR,LF
-	"                   information.",CR,LF
-0304 U 0000 "  /CLASSIFY or /C  Classifies programs by memory usage. Lists the size of",CR,LF
+0301 U 0000  "MEM [/CLASSIFY | /DEBUG | /FREE | /MODULE modulename] [/PAGE]",CR,LF,CR,LF
+0302 U 0000  "  /CLASSIFY or /C  Classifies programs by memory usage. Lists the size of",CR,LF
 	"                   programs, provides a summary of memory in use, and lists",CR,LF
 	"                   largest memory block available.",CR,LF
-MSBIO    00008f22 0023
+0303 U 0000  "  /DEBUG or /D     Displays status of programs, internal drivers, and other",CR,LF
+	"                   information.",CR,LF
+0304 U 0000  "  /FREE or /F      Displays information about the amount of free memory left",CR,LF
+	"                   in both conventional and upper memory.",CR,LF
+0305 U 0000  "  /MODULE or /M    Displays a detailed listing of a module's memory use.",CR,LF
+	"                   This option must be followed by the name of a module,",CR,LF
+	"                   optionally separated from /M by a colon.",CR,LF
+0306 U 0000  "  /PAGE or /P      Pauses after each screenful of information.",CR,LF
+MSBIO    0000991f 0023
 0003 U 0000 13,10,"Unrecognized command in CONFIG.SYS"
 0004 U 0000 13,10,"$"
 0005 U 0000 13,10,"Sector size too large in file $"
@@ -748,7 +792,7 @@ MSBIO    00008f22 0023
 0023 U 0000 "Fatal Error:Cannot allocate Memory for DOS", 13, 10, "$"
 0024 U 0000 "WARNING! Logical drives past Z: exist and will be ignored",13,10,"$"
 0025 U 0000 "This version of DOS will boot only on IBM machines",13,10,0
-MSDOS    00009472 0007
+MSDOS    00009e6f 0007
 0001 U 0001 13,10,"Divide overflow",13,10
 0002 U 0002 "y"
 0003 U 0002 "n"
@@ -757,12 +801,12 @@ MSDOS    00009472 0007
 0006 U 0000 "N"
 0007 U 0000 "You must have the file WINA20.386 in the root of your boot drive",13,10
 	"to run Windows in Enhanced Mode",13,10
-NLSFUNC  000095ab 0003
+NLSFUNC  00009fa8 0003
 0300 U 0000 "Loads country-specific information.",CR,LF,CR,LF
 0301 U 0000 "NLSFUNC [[drive:][path]filename]",CR,LF,CR,LF
 0302 U 0000 "  [drive:][path]filename   Specifies the file containing country-specific",CR,LF
 	"                           information.",CR,LF
-SHARE    000096cf 0005
+SHARE    0000a0cc 0005
 0003 U 0000 "SHARE cannot be installed under DOSSHELL.",CR,LF
 0300 U 0000 "Installs file-sharing and locking capabilities on your hard disk.",CR,LF,CR,LF
 0301 U 0000 "SHARE [/F:space] [/L:locks]",CR,LF,CR,LF
