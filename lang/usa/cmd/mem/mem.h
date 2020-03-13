@@ -27,7 +27,6 @@
 #define p_op_missing         2
 #define p_not_in_sw          3
 #define p_not_in_key         4
-#undef IBMCOPYRIGHT
 
 static const char SumFormat[] = "%-16m%8ld%8c%8ld%8c%8ld%8c";
 static const char MemFormat[] = "%-16m%6c%6c%6c";
@@ -161,6 +160,13 @@ long XMSDriver(int far *);
 long CheckVDisk(void);
 int IsPre286(void);
 char *GetDeviceDriver(void far *);
+int parse_cmd(int, char**);
+int get_lines(void);
+unsigned int DisplayBaseDetail(void);
+void GetSummary(void);
+void DispMEMSummary(void);
+void DisplayClassification(void);
+void DisplaySummary(void);
 
 extern void sysloadmsg(union REGS *, union REGS *);
 extern void sysdispmsg(union REGS *, union REGS *);
