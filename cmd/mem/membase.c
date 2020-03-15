@@ -17,31 +17,31 @@
 #include "version.h"
 #include "mem.h"
 
-#define EMSGetHandleName 0x5300 	/* get handle name function */
-#define EMSGetHandlePages 0x4c00	/* get handle name function */
-#define EMSCODE_83	0x83		/* handle not found error */
-#define EMSMaxHandles	256		/* max number handles */
+#define EMSGetHandleName 0x5300     /* get handle name function */
+#define EMSGetHandlePages 0x4c00    /* get handle name function */
+#define EMSCODE_83  0x83        /* handle not found error */
+#define EMSMaxHandles   256     /* max number handles */
 
 /*---------------------------------------------------------------------------*/
 
-	    /*
-	     * DataLevel:  0 -     Print nothing here
-	     *             1 - /C: Print nothing here
-	     *             2 - /D: Print everything available
-	     *             3 - /F: Print any line with Owner == 0
-	     *             4 - /M: Print any line with OwnerName == ModName
-	     *
-	     * modulesize, below, is only used with options /F and /M.
-	     *
-	     */
+        /*
+         * DataLevel:  0 -     Print nothing here
+         *             1 - /C: Print nothing here
+         *             2 - /D: Print everything available
+         *             3 - /F: Print any line with Owner == 0
+         *             4 - /M: Print any line with OwnerName == ModName
+         *
+         * modulesize, below, is only used with options /F and /M.
+         *
+         */
 
 long   modulesize = 0L;            /* Increases... 0== haven't started. */
 char  *gpszDevDriver = NULL;
 char   Out_Str1[64];
 char   Out_Str2[64];
 extern unsigned int MaxMin[2];
-int   HandleIndex;		      /* used to step through emm386 handles */
-char  HandleName[9];		      /* save area for emm386 handle name */
+int   HandleIndex;            /* used to step through emm386 handles */
+char  HandleName[9];              /* save area for emm386 handle name */
 
 #define K384   (long)(393216)  // 384k, the size of the upper-memory segment
 #define ONEMEG (long)(1048576) // 1MB
@@ -57,7 +57,7 @@ unsigned int DisplayBaseDetail()
    struct DEVICEHEADER far *ThisDeviceDriver;
 
    int   SystemDataType;
-   char	 SystemDataOwner[64];
+   char  SystemDataOwner[64];
 
    unsigned long far *UMB_Head_ptr;
    unsigned far *EnvironmentSegmentPtr;
@@ -74,7 +74,7 @@ unsigned int DisplayBaseDetail()
    FP_SEG(SysVarsPtr)   = FP_SEG(UMB_Head_ptr) = SegRegs.es;
    FP_OFF(SysVarsPtr)   = OutRegs.x.bx;
 
-   FP_OFF(UMB_Head_ptr) = 0x8c;          /* ptr to UMB_HEAD in DOS Data */ 
+   FP_OFF(UMB_Head_ptr) = 0x8c;          /* ptr to UMB_HEAD in DOS Data */
    UMB_Head = (*UMB_Head_ptr) & 0xFFFF;
 
    if (DataLevel == 2)
@@ -108,7 +108,7 @@ unsigned int DisplayBaseDetail()
       UseArgvZero = FALSE;
       }
 
-		       /* Display stuff below DOS  */
+               /* Display stuff below DOS  */
 
    Out_Var1 = 0l;
    Out_Var2 = 0x3FFl;
@@ -125,14 +125,14 @@ unsigned int DisplayBaseDetail()
    if (AddMem_to_Table (8, Out_Var1, umb_numb, Out_Var2-16))  return 1;
    DoMainLine(8,&Out_Var1,BlankMsg,&Out_Var2,DOSCommunicationAreaMsg,&umb_numb);
 
-	      /* Display the BIO data location and size */
+          /* Display the BIO data location and size */
 
    Out_Var1 = 0x70l;
    Out_Var2 = (long) (FP_SEG(SysVarsPtr) - 0x70)*16L - 16L;
    if (AddMem_to_Table (8, Out_Var1, umb_numb, Out_Var2))  return 1;
    DoMainLine (8, &Out_Var1, IbmbioMsg, &Out_Var2, SystemDataMsg, &umb_numb);
 
-	  /* Display the Base Device Driver Locations and Sizes */
+      /* Display the Base Device Driver Locations and Sizes */
 
      /*********************************************************************/
      /* to do this get the starting address of the internal driver header */
@@ -149,18 +149,18 @@ unsigned int DisplayBaseDetail()
    if (DataLevel == 2)
       {
       for (ThisDeviceDriver = SysVarsPtr->DeviceDriverChain;
-	   (FP_OFF(ThisDeviceDriver) != 0xFFFF);
-	   ThisDeviceDriver = ThisDeviceDriver->NextDeviceHeader)
-	 {
-	 if ( FP_SEG(ThisDeviceDriver) < FP_SEG(SysVarsPtr) )
-	    {
-	    strcpy (temp, GetDeviceDriver (ThisDeviceDriver));
-	    mprintf (DeviceLineMsg, "%-8c%-m", temp, SystemDeviceDriverMsg);
-	    }
-	 }
+       (FP_OFF(ThisDeviceDriver) != 0xFFFF);
+       ThisDeviceDriver = ThisDeviceDriver->NextDeviceHeader)
+     {
+     if ( FP_SEG(ThisDeviceDriver) < FP_SEG(SysVarsPtr) )
+        {
+        strcpy (temp, GetDeviceDriver (ThisDeviceDriver));
+        mprintf (DeviceLineMsg, "%-8c%-m", temp, SystemDeviceDriverMsg);
+        }
+     }
       }
 
-	      /* Display the DOS data location and size */
+          /* Display the DOS data location and size */
 
    FP_SEG(ArenaHeadPtr) = FP_SEG(SysVarsPtr);         /* ;an004; */
    FP_OFF(ArenaHeadPtr) = FP_OFF(SysVarsPtr) - 2;     /* ;an004; */
@@ -172,7 +172,7 @@ unsigned int DisplayBaseDetail()
    if (AddMem_to_Table (8, Out_Var1, umb_numb, Out_Var2))  return (1);
    DoMainLine (8, &Out_Var1, IbmdosMsg, &Out_Var2, SystemDataMsg, &umb_numb);
 
-		    /* Display the memory data */
+            /* Display the memory data */
 
 /******************************************************************************
 /*
@@ -217,21 +217,21 @@ unsigned int DisplayBaseDetail()
 /*                                           |                 |
 /*                                           -------------------
 /*
-/* For DOS 5.0, there are some additions to the above.	Basically, we have
+/* For DOS 5.0, there are some additions to the above.  Basically, we have
 /* three possible memory maps, to wit:
 /*
-/*    DOS Loads Low			     DOS loads high
-/*    70:0 - BIOS data			     70:0 - BIOS data
-/*	     DOS data				    DOS data
-/*	     BIOS + DOS code			    Sysinit data (arena name SD)
-/*	       (arena owner 8, name "SC")	    VDisk header (arena name SC)
-/*	     Sysinit data (arean owner 8, name SD)
+/*    DOS Loads Low              DOS loads high
+/*    70:0 - BIOS data               70:0 - BIOS data
+/*       DOS data                   DOS data
+/*       BIOS + DOS code                Sysinit data (arena name SD)
+/*         (arena owner 8, name "SC")       VDisk header (arena name SC)
+/*       Sysinit data (arean owner 8, name SD)
 /*
 /*    DOS tries to load high but fails
 /*    70:0 - BIOS data
-/*	     DOS data
-/*	     Sysinit data (arena name SD)
-/*	     DOS + BIOS code (arena name SC)
+/*       DOS data
+/*       Sysinit data (arena name SD)
+/*       DOS + BIOS code (arena name SC)
 /*
 /*    We have to detect the special arena ownership marks and display them
 /*    correctly.  Everything after DOS and BIOS data should have an arena header
@@ -245,49 +245,49 @@ unsigned int DisplayBaseDetail()
 #else
       if (ThisArenaPtr->Owner == 8)
 #endif
-	 {
+     {
 
-	 FP_SEG(NextArenaPtr)=FP_SEG(ThisArenaPtr) +ThisArenaPtr->Paragraphs +1;
-	 FP_OFF(NextArenaPtr)=0;
+     FP_SEG(NextArenaPtr)=FP_SEG(ThisArenaPtr) +ThisArenaPtr->Paragraphs +1;
+     FP_OFF(NextArenaPtr)=0;
 
-	 Out_Var1 = AddressOf((char far *)ThisArenaPtr);
-	 Out_Var2 = (long) (ThisArenaPtr -> Paragraphs) * 16l;
-	 if (ThisArenaPtr->OwnerName[0] == 'S' &&
-	     ThisArenaPtr->OwnerName[1] == 'C')
-	    {
-	            /* display message for BIOS and DOS code */
+     Out_Var1 = AddressOf((char far *)ThisArenaPtr);
+     Out_Var2 = (long) (ThisArenaPtr -> Paragraphs) * 16l;
+     if (ThisArenaPtr->OwnerName[0] == 'S' &&
+         ThisArenaPtr->OwnerName[1] == 'C')
+        {
+                /* display message for BIOS and DOS code */
 
-	    if ((long)FP_SEG (ThisArenaPtr) >= (long)UMB_Head)
-	       {
-	       umb_numb++;
+        if ((long)FP_SEG (ThisArenaPtr) >= (long)UMB_Head)
+           {
+           umb_numb++;
 
-	       if (DataLevel == 2)
-		  {
-		  mprintf (NewLineMsg, "");
+           if (DataLevel == 2)
+          {
+          mprintf (NewLineMsg, "");
 
-	          if (umb_numb == 1)
-		     {
-		     mprintf(UpperMemDet, "");
-		     mprintf(NewLineMsg,  "");
-		     mprintf(Title1AMsg,  "");
-		     mprintf(Title2AMsg,  "");
-		     }
+              if (umb_numb == 1)
+             {
+             mprintf(UpperMemDet, "");
+             mprintf(NewLineMsg,  "");
+             mprintf(Title1AMsg,  "");
+             mprintf(Title2AMsg,  "");
+             }
                   }
-	       }
-	    else
-	       {
-	       if (AddMem_to_Table (8,Out_Var1,umb_numb,Out_Var2))
-	          return(1);
+           }
+        else
+           {
+           if (AddMem_to_Table (8,Out_Var1,umb_numb,Out_Var2))
+              return(1);
 
-	       DoMainLine (8, &Out_Var1, IbmdosMsg, &Out_Var2,
-		              SystemProgramMsg, &umb_numb);
-	       }
-	    }
-	 else if (ThisArenaPtr->OwnerName[0] == 'H')
-	    {
+           DoMainLine (8, &Out_Var1, IbmdosMsg, &Out_Var2,
+                      SystemProgramMsg, &umb_numb);
+           }
+        }
+     else if (ThisArenaPtr->OwnerName[0] == 'H')
+        {
 
-	    if (AddMem_to_Table (0, Out_Var1, umb_numb, Out_Var2))
-	       return(1);
+        if (AddMem_to_Table (0, Out_Var1, umb_numb, Out_Var2))
+           return(1);
 
 /*
  * this block has been hidden via loadhigh for loading mem ... display it as
@@ -299,11 +299,11 @@ unsigned int DisplayBaseDetail()
  *
  */
 
-            DoMainLine (0,&Out_Var1,LoadHighMsg,&Out_Var2,FreeMsg,&umb_numb); 
+            DoMainLine (0,&Out_Var1,LoadHighMsg,&Out_Var2,FreeMsg,&umb_numb);
 
-	    }
-	 else
-	    {
+        }
+     else
+        {
 
 /*
  * display message for data (8+SD)
@@ -313,123 +313,123 @@ unsigned int DisplayBaseDetail()
             Org_IOaddr = Out_Var1;
             Org_IOsize = Out_Var2;
 
-	    DoMainLine(8,&Out_Var1,IbmbioMsg,&Out_Var2,SystemDataMsg,&umb_numb);
+        DoMainLine(8,&Out_Var1,IbmbioMsg,&Out_Var2,SystemDataMsg,&umb_numb);
 
-	    FP_SEG(ThisConfigArenaPtr) = FP_SEG(ThisArenaPtr) +1;
-	    FP_OFF(ThisConfigArenaPtr) = 0;
+        FP_SEG(ThisConfigArenaPtr) = FP_SEG(ThisArenaPtr) +1;
+        FP_OFF(ThisConfigArenaPtr) = 0;
 
-	    while ( (FP_SEG(ThisConfigArenaPtr) > FP_SEG(ThisArenaPtr)) &&
-		    (FP_SEG(ThisConfigArenaPtr) < FP_SEG(NextArenaPtr)))
-	       {
+        while ( (FP_SEG(ThisConfigArenaPtr) > FP_SEG(ThisArenaPtr)) &&
+            (FP_SEG(ThisConfigArenaPtr) < FP_SEG(NextArenaPtr)))
+           {
 
-	       if (ThisConfigArenaPtr->Signature=='D' ||
-	           ThisConfigArenaPtr->Signature=='I')
-		  {
-		  strcpy (SystemDataOwner, OwnerOf (ThisConfigArenaPtr));
-		  }
-	       else
-		  {
-		  strcpy (SystemDataOwner, " ");
-		  }
+           if (ThisConfigArenaPtr->Signature=='D' ||
+               ThisConfigArenaPtr->Signature=='I')
+          {
+          strcpy (SystemDataOwner, OwnerOf (ThisConfigArenaPtr));
+          }
+           else
+          {
+          strcpy (SystemDataOwner, " ");
+          }
 
-	       switch (ThisConfigArenaPtr->Signature)
-		  {
-		  case 'B':  SystemDataType = ConfigBuffersMsg;          break;
-		  case 'D':  SystemDataType = InstalledDeviceDriverMsg;  break;
-		  case 'F':  SystemDataType = ConfigFilesMsg;            break;
-		  case 'I':  SystemDataType = ConfigIFSMsg;              break;
-		  case 'L':  SystemDataType = ConfigLastDriveMsg;        break;
-		  case 'S':  SystemDataType = ConfigStacksMsg;           break;
-		  case 'T':  SystemDataType = ConfigInstallMsg;          break;
-		  case 'X':  SystemDataType = ConfigFcbsMsg;             break;
-		  default:   SystemDataType = BlankMsg;                  break;
-		  }
+           switch (ThisConfigArenaPtr->Signature)
+          {
+          case 'B':  SystemDataType = ConfigBuffersMsg;          break;
+          case 'D':  SystemDataType = InstalledDeviceDriverMsg;  break;
+          case 'F':  SystemDataType = ConfigFilesMsg;            break;
+          case 'I':  SystemDataType = ConfigIFSMsg;              break;
+          case 'L':  SystemDataType = ConfigLastDriveMsg;        break;
+          case 'S':  SystemDataType = ConfigStacksMsg;           break;
+          case 'T':  SystemDataType = ConfigInstallMsg;          break;
+          case 'X':  SystemDataType = ConfigFcbsMsg;             break;
+          default:   SystemDataType = BlankMsg;                  break;
+          }
 
 /*
  *  Found one, now display the owner name and size
  *
  */
 
-	       if (SystemDataType != BlankMsg)
-		  {
-		  Out_Var1 = ((long) ThisConfigArenaPtr -> Paragraphs) * 16l;
-		  sprintf (temp, "(%ldK)", toK(Out_Var1));
-		  NextConfigArenaPtr = ThisConfigArenaPtr;
-		  FP_SEG(NextConfigArenaPtr)+=NextConfigArenaPtr->Paragraphs+1;
-		  if (ThisConfigArenaPtr->Signature == (char)'D')
-		     {
-		     FP_SEG(ThisDeviceDriver) = FP_SEG(ThisConfigArenaPtr) + 1;
-		     FP_OFF(ThisDeviceDriver) = 0;
+           if (SystemDataType != BlankMsg)
+          {
+          Out_Var1 = ((long) ThisConfigArenaPtr -> Paragraphs) * 16l;
+          sprintf (temp, "(%ldK)", toK(Out_Var1));
+          NextConfigArenaPtr = ThisConfigArenaPtr;
+          FP_SEG(NextConfigArenaPtr)+=NextConfigArenaPtr->Paragraphs+1;
+          if (ThisConfigArenaPtr->Signature == (char)'D')
+             {
+             FP_SEG(ThisDeviceDriver) = FP_SEG(ThisConfigArenaPtr) + 1;
+             FP_OFF(ThisDeviceDriver) = 0;
 
-		     strcpy (t2, GetDeviceDriver (ThisDeviceDriver));
+             strcpy (t2, GetDeviceDriver (ThisDeviceDriver));
 
-		     ThisDeviceDriver = ThisDeviceDriver->NextDeviceHeader;
-		     }
-		  else
-		     {
-		     strcpy (SystemDataOwner, DriverData (ThisConfigArenaPtr));
+             ThisDeviceDriver = ThisDeviceDriver->NextDeviceHeader;
+             }
+          else
+             {
+             strcpy (SystemDataOwner, DriverData (ThisConfigArenaPtr));
                      strcpy (t2,              " ");
-		     }
+             }
 
-		 if (ThisConfigArenaPtr->Signature=='D' ||
-		     ThisConfigArenaPtr->Signature=='I')
-		     {
-		     Org_IOsize -= Out_Var1;
-		     gpszDevDriver = SystemDataOwner;
-		     AddMem_to_Table (7, Org_IOaddr, umb_numb, Out_Var1);
-		     DoMainLine (7, &Org_IOaddr, 0, &Out_Var1,
-		                 SystemDataType, &umb_numb);
-		     }
+         if (ThisConfigArenaPtr->Signature=='D' ||
+             ThisConfigArenaPtr->Signature=='I')
+             {
+             Org_IOsize -= Out_Var1;
+             gpszDevDriver = SystemDataOwner;
+             AddMem_to_Table (7, Org_IOaddr, umb_numb, Out_Var1);
+             DoMainLine (7, &Org_IOaddr, 0, &Out_Var1,
+                         SystemDataType, &umb_numb);
+             }
 
-		  if (DataLevel == 2)
-		     {
-		     mprintf (DriverLineMsg, "%8ld%7c%-8c%-m%-c",
-			&Out_Var1, temp, t2, SystemDataType, SystemDataOwner);
-		     }
-		  }
+          if (DataLevel == 2)
+             {
+             mprintf (DriverLineMsg, "%8ld%7c%-8c%-m%-c",
+            &Out_Var1, temp, t2, SystemDataType, SystemDataOwner);
+             }
+          }
 
-	       FP_SEG(ThisConfigArenaPtr) += ThisConfigArenaPtr->Paragraphs +1;
-	       }
+           FP_SEG(ThisConfigArenaPtr) += ThisConfigArenaPtr->Paragraphs +1;
+           }
 
 /*
  * Now that we've added memory for each device driver, add whatever's left.
  *
  */
 
-	    AddMem_to_Table (8, Org_IOaddr, umb_numb, Org_IOsize);
-	    }
-	 }
+        AddMem_to_Table (8, Org_IOaddr, umb_numb, Org_IOsize);
+        }
+     }
       else
          {
 
  /****************************************************************************/
- /* If not BIOS table, it is a program like MEM, etc.			    */
+ /* If not BIOS table, it is a program like MEM, etc.               */
  /* calculate the size of the block occupied by the program and display prog */
  /* name and size                                                            */
  /****************************************************************************/
 
-	 Out_Var1 = AddressOf((char far *)ThisArenaPtr);
-	 Out_Var2 = ((long) (ThisArenaPtr -> Paragraphs)) * 16l;
-	 strcpy(Out_Str1,OwnerOf(ThisArenaPtr));
-	 strcpy(Out_Str2,TypeOf(ThisArenaPtr));
-	 gpszDevDriver = Out_Str1;
+     Out_Var1 = AddressOf((char far *)ThisArenaPtr);
+     Out_Var2 = ((long) (ThisArenaPtr -> Paragraphs)) * 16l;
+     strcpy(Out_Str1,OwnerOf(ThisArenaPtr));
+     strcpy(Out_Str2,TypeOf(ThisArenaPtr));
+     gpszDevDriver = Out_Str1;
 
-	 /* We don't want to include mem's environment space into the
-	  * computations. Since this environment space is allocated to
-	  * running other programs, it really isn't part of free memory.
-	  */
+     /* We don't want to include mem's environment space into the
+      * computations. Since this environment space is allocated to
+      * running other programs, it really isn't part of free memory.
+      */
 
-	  FP_SEG(EnvironmentSegmentPtr) = ThisArenaPtr->Owner;
-	  FP_OFF(EnvironmentSegmentPtr) = 44;
+      FP_SEG(EnvironmentSegmentPtr) = ThisArenaPtr->Owner;
+      FP_OFF(EnvironmentSegmentPtr) = 44;
 
-	  if (!((_psp == ThisArenaPtr->Owner) &&
-		(*EnvironmentSegmentPtr == FP_SEG(ThisArenaPtr)+1) ))
-	     if (AddMem_to_Table (ThisArenaPtr->Owner,Out_Var1,umb_numb,Out_Var2))
-		return(1);
+      if (!((_psp == ThisArenaPtr->Owner) &&
+        (*EnvironmentSegmentPtr == FP_SEG(ThisArenaPtr)+1) ))
+         if (AddMem_to_Table (ThisArenaPtr->Owner,Out_Var1,umb_numb,Out_Var2))
+        return(1);
 
-	 DoMainLine_a (ThisArenaPtr->Owner, &Out_Var1, Out_Str1,
-	               &Out_Var2, Out_Str2, &umb_numb); 
-	 }
+     DoMainLine_a (ThisArenaPtr->Owner, &Out_Var1, Out_Str1,
+                   &Out_Var2, Out_Str2, &umb_numb);
+     }
 
       if (ThisArenaPtr->Signature == (char)'Z')
          break;
@@ -442,13 +442,13 @@ unsigned int DisplayBaseDetail()
       if (! modulesize)
          {
          mprintf (ModNoneMsg, "%-c", ModName);
-	 }
+     }
       else
          {
-	 mprintf (ModBarMsg, "");
-	 sprintf (temp, "(%ldK)", toK(modulesize));
-	 mprintf (ModSumMsg, "%8ld%7c", &modulesize, temp);
-	 }
+     mprintf (ModBarMsg, "");
+     sprintf (temp, "(%ldK)", toK(modulesize));
+     mprintf (ModSumMsg, "%8ld%7c", &modulesize, temp);
+     }
       }
 
    if (DataLevel == 3)
@@ -513,12 +513,12 @@ struct DEVICEHEADER far  *ThisDeviceDriver;
       {
       if ((int)ThisDeviceDriver->Name[0] == 1)
          {
-	 sprintf (&LocalDeviceName[0], SingleDrive, 'A'+BlockDeviceNumber);
+     sprintf (&LocalDeviceName[0], SingleDrive, 'A'+BlockDeviceNumber);
          }
       else
          {
          sprintf (&LocalDeviceName[0], MultipleDrives, 'A'+BlockDeviceNumber,
-	       'A'+BlockDeviceNumber + ((int)ThisDeviceDriver->Name[0]) -1);
+           'A'+BlockDeviceNumber + ((int)ThisDeviceDriver->Name[0]) -1);
          }
 
       BlockDeviceNumber += (int)(ThisDeviceDriver->Name[0]);
@@ -534,11 +534,11 @@ void GetSummary()
    long    extra;
    long    total_mem;
 
-   char	far *CarvedPtr;
+   char far *CarvedPtr;
    struct PSP_STRUC
       {
-      unsigned int	int_20;
-      unsigned int	top_of_memory;
+      unsigned int  int_20;
+      unsigned int  top_of_memory;
       };
    struct PSP_STRUC far *PSPptr;
 
@@ -554,10 +554,10 @@ void GetSummary()
       {
       if (mem_table.conv_ttl == (unsigned long)((long)SegRegs.es) * 16l)
          {
-	 FP_SEG(CarvedPtr) = SegRegs.es;
-	 FP_OFF(CarvedPtr) = 0;
-	 mem_table.conv_ttl += ((unsigned long int)(*CarvedPtr) * 1024l);
-	 }
+     FP_SEG(CarvedPtr) = SegRegs.es;
+     FP_OFF(CarvedPtr) = 0;
+     mem_table.conv_ttl += ((unsigned long int)(*CarvedPtr) * 1024l);
+     }
       }
 
    InRegs.h.ah = GET_PSP;
@@ -566,7 +566,7 @@ void GetSummary()
    FP_SEG(PSPptr) = OutRegs.x.bx;
    FP_OFF(PSPptr) = 0;
 
-	       /* Get total memory in system */
+           /* Get total memory in system */
 
    int86 (MEMORY_DET,&InRegs,&OutRegs);
 
@@ -580,9 +580,9 @@ void GetSummary()
       total_mem = mem_table.conv_ttl + mem_table.umb_ttl + mem_table.xms_ttl;
 
       if ((extra = ONEMEG - (total_mem % ONEMEG)) <= K384)
-	 {
-	 mem_table.rom_ttl = extra;
-	 }
+     {
+     mem_table.rom_ttl = extra;
+     }
       }
 }
 
@@ -591,7 +591,7 @@ void DispMEMSummary()
    char      temp1[40], temp2[40], temp3[40];
    char      far *fpBytes;
    long      used, t_used, t_ttl, t_free, c_used;
-   int	     fPooled;
+   int       fPooled;
 
    // EMS is 'pooled' with XMS if this is a recent enough version of
    // EMM386 (fIsPooled) and the min and max EMS pool sizes are different.
@@ -639,9 +639,9 @@ void DispMEMSummary()
    mprintf (MemSumm2Msg, "");
 
    t_ttl  = mem_table.conv_ttl  + mem_table.umb_ttl  + mem_table.rom_ttl +
-	    + mem_table.xms_ttl;
+        + mem_table.xms_ttl;
    t_free = mem_table.conv_free + mem_table.umb_free +
-	    + mem_table.xms_free ;
+        + mem_table.xms_free ;
    sprintf (temp1, "%ldK", toK (t_ttl));
    sprintf (temp2, "%ldK", toK (t_used));
    sprintf (temp3, "%ldK", toK (t_free));
@@ -695,11 +695,11 @@ void DispMEMSummary()
 
    switch (mem_table.hma)
       {
-      case -2:	break;		 /* HMA doesn't exist, don't print anything */
-      case -1:	mprintf (HMANotAvlMsg, "");  break; /* exists, but used */
-      case  0:	mprintf (HMAAvlMsg,    "");  break; /* exists and free */
-      case  1:	mprintf (HMADOSMsg,    "");  break; /* in use by MSDOS */
-      default:	mprintf (ROMDOSMsg,    "");  break; /* in use by ROM DOS */
+      case -2:  break;       /* HMA doesn't exist, don't print anything */
+      case -1:  mprintf (HMANotAvlMsg, "");  break; /* exists, but used */
+      case  0:  mprintf (HMAAvlMsg,    "");  break; /* exists and free */
+      case  1:  mprintf (HMADOSMsg,    "");  break; /* in use by MSDOS */
+      default:  mprintf (ROMDOSMsg,    "");  break; /* in use by ROM DOS */
       }
 
    return;
@@ -707,8 +707,8 @@ void DispMEMSummary()
 
 void DisplaySummary()
 {
-   unsigned long int HandleMem; 	 /* memory associated w/handle */
-   char  TitlesPrinted = FALSE; 	 /* flag for printing titles */
+   unsigned long int HandleMem;      /* memory associated w/handle */
+   char  TitlesPrinted = FALSE;      /* flag for printing titles */
 
    char  temp1[40], temp2[40], temp3[40];
    long  used, t_used, t_ttl, t_free, c_used;
@@ -763,19 +763,19 @@ void DisplaySummary()
    sprintf (temp3, "(%ldK)", toK (mem_table.xms_free));
    if (fPooled)
       mprintf (SumLineMsg, SumFormat, XMSMsgPool,
-	       &mem_table.xms_ttl, temp1, &used, temp2,
-	       &mem_table.xms_free, temp3);
+           &mem_table.xms_ttl, temp1, &used, temp2,
+           &mem_table.xms_free, temp3);
    else
       mprintf (SumLineMsg, SumFormat, XMSMsg,
-	       &mem_table.xms_ttl, temp1, &used, temp2,
-	       &mem_table.xms_free, temp3);
+           &mem_table.xms_ttl, temp1, &used, temp2,
+           &mem_table.xms_free, temp3);
 
    mprintf (SumUScoreMsg, "");
 
    t_ttl  = mem_table.conv_ttl  + mem_table.umb_ttl  + mem_table.rom_ttl +
-	    + mem_table.xms_ttl;
+        + mem_table.xms_ttl;
    t_free = mem_table.conv_free + mem_table.umb_free +
-	    + mem_table.xms_free ;
+        + mem_table.xms_free ;
    sprintf (temp1, "(%ldK)", toK (t_ttl));
    sprintf (temp2, "(%ldK)", toK (t_used));
    sprintf (temp3, "(%ldK)", toK (t_free));
@@ -794,7 +794,7 @@ void DisplaySummary()
 
    /* if ems is install or no NOEMS, then display the handles */
    if (EMSInstalled() && (DataLevel == 2)) {
-       HandleName[0] = NUL;	      /* initialize the array	      */
+       HandleName[0] = NUL;       /* initialize the array         */
 
        mprintf (NewLineMsg,   "");
 
@@ -805,33 +805,33 @@ void DisplaySummary()
        for (HandleIndex = 0; HandleIndex < EMSMaxHandles; HandleIndex++)
        {
 
-	   InRegs.x.ax = EMSGetHandleName;     /* get handle name */
-	   InRegs.x.dx = HandleIndex;	       /* handle in question */
-	   InRegs.x.di = (unsigned int) HandleName;    /* point to handle name */
-	   int86x(EMS, &InRegs, &OutRegs, &SegRegs);
+       InRegs.x.ax = EMSGetHandleName;     /* get handle name */
+       InRegs.x.dx = HandleIndex;          /* handle in question */
+       InRegs.x.di = (unsigned int) HandleName;    /* point to handle name */
+       int86x(EMS, &InRegs, &OutRegs, &SegRegs);
 
-	   HandleName[8] = NUL; 	       /* make sure terminated w/nul */
+       HandleName[8] = NUL;            /* make sure terminated w/nul */
 
-	   if (OutRegs.h.ah != EMSCODE_83)
-	   {
-	       InRegs.x.ax = EMSGetHandlePages;  /* get pages assoc w/this handle */
-	       InRegs.x.dx = HandleIndex;
-	       int86x(EMS, &InRegs, &OutRegs, &SegRegs);
-	       HandleMem = OutRegs.x.bx;
-	       HandleMem *= (long) (16l*1024l);
+       if (OutRegs.h.ah != EMSCODE_83)
+       {
+           InRegs.x.ax = EMSGetHandlePages;  /* get pages assoc w/this handle */
+           InRegs.x.dx = HandleIndex;
+           int86x(EMS, &InRegs, &OutRegs, &SegRegs);
+           HandleMem = OutRegs.x.bx;
+           HandleMem *= (long) (16l*1024l);
 
-	       if (!TitlesPrinted)
-	       {
-		   mprintf (Title3Msg,	 "");
-		   mprintf (Title4Msg,	 "");
-		   TitlesPrinted = TRUE;
-	       }
+           if (!TitlesPrinted)
+           {
+           mprintf (Title3Msg,   "");
+           mprintf (Title4Msg,   "");
+           TitlesPrinted = TRUE;
+           }
 
-	       if (HandleName[0] == NUL)
-		   strcpy(HandleName,"        ");
+           if (HandleName[0] == NUL)
+           strcpy(HandleName,"        ");
 
-	       mprintf (HandleMsg, "%4d%8c%6lx", &HandleIndex, HandleName, &HandleMem);
-	   }
+           mprintf (HandleMsg, "%4d%8c%6lx", &HandleIndex, HandleName, &HandleMem);
+       }
        }  /* end   for (HandleIndex = 0; HandleIndex < EMSMaxHandles;HandleIndex++) */
 
        mprintf (NewLineMsg,   "");
@@ -895,7 +895,7 @@ void DisplaySummary()
    NoCR = 1;  mprintf (SpaceOverMsg, "");
    switch (mem_table.hma)
       {
-      case -2:	break;
+      case -2:  break;
       case -1:  mprintf (HMANotAvlMsg, "");  break;
       case  0:  mprintf (HMAAvlMsg,    "");  break;
       case  1:  mprintf (HMADOSMsg,    "");  break;
@@ -907,18 +907,18 @@ void DisplaySummary()
       used = 0;  /* Okay, a second use for this thing... */
       if (mem_table.xmsMvers != 0)
          {
-	 mprintf (NewLineMsg, "");
-	 sprintf (temp1, "%d.%02d", mem_table.xmsMvers, mem_table.xmsmvers);
-	 sprintf (temp2, "%d.%02d", mem_table.xmsMdrvr, mem_table.xmsmdrvr);
-	 mprintf (XMSVersionMsg, "%5c%5c", temp1, temp2);
-	 used = 1;
-	 }
+     mprintf (NewLineMsg, "");
+     sprintf (temp1, "%d.%02d", mem_table.xmsMvers, mem_table.xmsmvers);
+     sprintf (temp2, "%d.%02d", mem_table.xmsMdrvr, mem_table.xmsmdrvr);
+     mprintf (XMSVersionMsg, "%5c%5c", temp1, temp2);
+     used = 1;
+     }
       if (mem_table.emsMvers != 0)
          {
-	 if (! used)  mprintf (NewLineMsg, "");
-	 sprintf (temp1, "%d.%02d", mem_table.emsMvers, mem_table.emsmvers);
-	 mprintf (EMSVersionMsg, "%5c", temp1);
-	 }
+     if (! used)  mprintf (NewLineMsg, "");
+     sprintf (temp1, "%d.%02d", mem_table.emsMvers, mem_table.emsmvers);
+     mprintf (EMSVersionMsg, "%5c", temp1);
+     }
       }
 
    return;
@@ -930,10 +930,10 @@ char *OwnerOf    (ArenaPtr)
 struct ARENA far *ArenaPtr;
 {
    char        far *StringPtr;
-   char	           *o;
+   char            *o;
    unsigned    far *EnvironmentSegmentPtr;
    unsigned         PspSegment;
-   int	            i, fPrintable;
+   int              i, fPrintable;
 
     o = &OwnerName[0];
    *o = NUL;
@@ -945,42 +945,42 @@ struct ARENA far *ArenaPtr;
       sprintf(o,Ibmdos);
    else
       if (PspSegment == 8)
-	 sprintf (o, Ibmbio);
+     sprintf (o, Ibmbio);
       else
-	 {
-	 FP_SEG(ArenaPtr) = PspSegment-1;   /* Arena is 16 bytes before PSP */
-	 StringPtr = (char far *) &(ArenaPtr -> OwnerName[0]);
+     {
+     FP_SEG(ArenaPtr) = PspSegment-1;   /* Arena is 16 bytes before PSP */
+     StringPtr = (char far *) &(ArenaPtr -> OwnerName[0]);
 
-	 /* M002 BEGIN
-	  * Chars below 0x20 (Space) and char 0x7f are not printable in US
-	  * and European Code pages.  The following code checks for them and
-	  * does not print such names.  - Nagara 11/20/90
-	  */
+     /* M002 BEGIN
+      * Chars below 0x20 (Space) and char 0x7f are not printable in US
+      * and European Code pages.  The following code checks for them and
+      * does not print such names.  - Nagara 11/20/90
+      */
 
-	 fPrintable = TRUE;
+     fPrintable = TRUE;
 
 #ifndef DBCS
-	 for (i = 0; i < 8;i++,StringPtr++)
-	    {
-	    if ((*StringPtr < 0x20) | (*StringPtr == 0x7f))
-	       {  
-		      /* unprintable char ? */	
-	       if (*StringPtr)  fPrintable = FALSE;	
-	       break;
-	       }
-	    }
+     for (i = 0; i < 8;i++,StringPtr++)
+        {
+        if ((*StringPtr < 0x20) | (*StringPtr == 0x7f))
+           {
+              /* unprintable char ? */
+           if (*StringPtr)  fPrintable = FALSE;
+           break;
+           }
+        }
 #endif
 
-	 if (fPrintable)
-	    {
-	    StringPtr = (char far *) &(ArenaPtr->OwnerName[0]);
-	    for (i = 0; i < 8;i++)
-	       *o++ = *StringPtr++;
-	    *o = NUL;
-	    }
-	 /* M002 END */
+     if (fPrintable)
+        {
+        StringPtr = (char far *) &(ArenaPtr->OwnerName[0]);
+        for (i = 0; i < 8;i++)
+           *o++ = *StringPtr++;
+        *o = NUL;
+        }
+     /* M002 END */
 
-	 }
+     }
 
    if (UseArgvZero)  GetFromArgvZero (PspSegment, EnvironmentSegmentPtr);
 
@@ -993,8 +993,8 @@ void GetFromArgvZero (PspSegment, EnvironmentSegmentPtr)
 unsigned              PspSegment;
 unsigned                     far *EnvironmentSegmentPtr;
 {
-   char	    far *StringPtr;
-   char	        *OutputPtr;
+   char     far *StringPtr;
+   char         *OutputPtr;
    unsigned far *WordPtr;
 
    OutputPtr = &OwnerName[0];
@@ -1002,44 +1002,44 @@ unsigned                     far *EnvironmentSegmentPtr;
    if (UseArgvZero)
       {
       if (PspSegment < FP_SEG(ArenaHeadPtr))
-	 {
-	 if (*OutputPtr == NUL)  sprintf (OutputPtr,Ibmdos);
-	 }
+     {
+     if (*OutputPtr == NUL)  sprintf (OutputPtr,Ibmdos);
+     }
       else
-	 {
-	 FP_SEG(EnvironmentSegmentPtr) = PspSegment;
-	 FP_OFF(EnvironmentSegmentPtr) = 44;
+     {
+     FP_SEG(EnvironmentSegmentPtr) = PspSegment;
+     FP_OFF(EnvironmentSegmentPtr) = 44;
 
-	      /*  FP_SEG(StringPtr) = *EnvironmentSegmentPtr; */
+          /*  FP_SEG(StringPtr) = *EnvironmentSegmentPtr; */
 
-	 FP_SEG(StringPtr) = FP_SEG(EnvironmentSegmentPtr);
-	 FP_OFF(StringPtr) = 0;
+     FP_SEG(StringPtr) = FP_SEG(EnvironmentSegmentPtr);
+     FP_OFF(StringPtr) = 0;
 
-	 while ((*StringPtr != NUL) || (*(StringPtr+1) != NUL))  StringPtr++;
+     while ((*StringPtr != NUL) || (*(StringPtr+1) != NUL))  StringPtr++;
 
-	 StringPtr += 2;
-	 WordPtr    = (unsigned far *)StringPtr;
+     StringPtr += 2;
+     WordPtr    = (unsigned far *)StringPtr;
 
-	 if (*WordPtr == 1)
-	    {
-	    StringPtr += 2;
-	    while (*StringPtr != NUL)
-	       *OutputPtr++ = *StringPtr++;
-	    *OutputPtr++ = NUL;
+     if (*WordPtr == 1)
+        {
+        StringPtr += 2;
+        while (*StringPtr != NUL)
+           *OutputPtr++ = *StringPtr++;
+        *OutputPtr++ = NUL;
 
-	    while (OutputPtr > &OwnerName[0])
-	       {
-	       if (*OutputPtr == (char) '.')
-	          *OutputPtr = NUL;
-	       if ((*OutputPtr == (char) '\\') || (*OutputPtr == (char) ':'))
-		  {
-		  OutputPtr++;
-		  break;
-		  }
-	       OutputPtr--;
-	       }
-	    }
-	 }
+        while (OutputPtr > &OwnerName[0])
+           {
+           if (*OutputPtr == (char) '.')
+              *OutputPtr = NUL;
+           if ((*OutputPtr == (char) '\\') || (*OutputPtr == (char) ':'))
+          {
+          OutputPtr++;
+          break;
+          }
+           OutputPtr--;
+           }
+        }
+     }
       }
 
    strcpy (&OwnerName[0], OutputPtr);
@@ -1052,7 +1052,7 @@ unsigned                     far *EnvironmentSegmentPtr;
 char *TypeOf     (Header)
 struct ARENA far *Header;
 {
-   char	        *t;
+   char         *t;
    unsigned      PspSegment;
    unsigned far *EnvironmentSegmentPtr;
    unsigned int  Message_Number;
@@ -1077,12 +1077,12 @@ struct ARENA far *Header;
       FP_OFF(EnvironmentSegmentPtr) = 44;
 
       if (PspSegment == FP_SEG(Header)+1)
-	 Message_Number = ProgramMsg;
+     Message_Number = ProgramMsg;
       else
          if (*EnvironmentSegmentPtr == FP_SEG(Header)+1)
-	    Message_Number = EnvironMsg;
-	 else
-	    Message_Number = DataMsg;
+        Message_Number = EnvironMsg;
+     else
+        Message_Number = DataMsg;
       }
 
    InRegs.x.ax = Message_Number;
@@ -1101,19 +1101,19 @@ struct ARENA far *Header;
 }
 
 /************************************************************************/
-/* DisplayClassification						*/
-/*	Main display proc for /C switch 				*/
-/*									*/	
-/* ENTRY:	none							*/
-/*									*/	
-/* EXIT:	none 							*/
-/*									*/
-/*									*/
-/* CAVEATS:								*/
-/*	Arenas owned by MEM are marked as FREE				*/	
-/*									*/	
-/*	display memory break up for conventional and upper memory	*/
-/*									*/	
+/* DisplayClassification                        */
+/*  Main display proc for /C switch                 */
+/*                                  */
+/* ENTRY:   none                            */
+/*                                  */
+/* EXIT:    none                            */
+/*                                  */
+/*                                  */
+/* CAVEATS:                             */
+/*  Arenas owned by MEM are marked as FREE              */
+/*                                  */
+/*  display memory break up for conventional and upper memory   */
+/*                                  */
 /************************************************************************/
 
 void DisplayClassification()
@@ -1138,15 +1138,15 @@ void DisplayClassification()
          {
          if ((dd = mem_table.files[i].driveridx) == MAX_DDRIVER_REP)
             {
-	    continue;
-	    }
-	 }
+        continue;
+        }
+     }
 
       msgtype = 0;
       if (mem_table.files[i].psp_addr == 8)
-	 {
-	 msgtype = (mem_table.files[i].umb_ttl) ? SystemMsg : IbmdosMsg;
-	 }
+     {
+     msgtype = (mem_table.files[i].umb_ttl) ? SystemMsg : IbmdosMsg;
+     }
 
       memsize = mem_table.files[i].conv_ttl + mem_table.files[i].umb_ttl;
       sprintf (temp1, "(%ldK)", toK (mem_table.files[i].conv_ttl));
@@ -1155,27 +1155,27 @@ void DisplayClassification()
 
       if (msgtype)
          {
-	 mprintf (MainCLineMsg, "%-8m%8ld%7c%8ld%7c%8ld%7c", msgtype,
-	      &memsize, temp3, &mem_table.files[i].conv_ttl, temp1,
-	                        &mem_table.files[i].umb_ttl, temp2);
-	 }
+     mprintf (MainCLineMsg, "%-8m%8ld%7c%8ld%7c%8ld%7c", msgtype,
+          &memsize, temp3, &mem_table.files[i].conv_ttl, temp1,
+                            &mem_table.files[i].umb_ttl, temp2);
+     }
       else
-	 {
-	 if (mem_table.files[i].psp_addr == 7)
-	    {
-	    nameptr = ddrivername[dd];
-	    }
-	 else
-	    {
-	    FP_SEG(ArenaPtr) = mem_table.files[i].psp_addr -1;
-	    FP_OFF(ArenaPtr) = 0;
-	    nameptr = OwnerOf(ArenaPtr);
+     {
+     if (mem_table.files[i].psp_addr == 7)
+        {
+        nameptr = ddrivername[dd];
+        }
+     else
+        {
+        FP_SEG(ArenaPtr) = mem_table.files[i].psp_addr -1;
+        FP_OFF(ArenaPtr) = 0;
+        nameptr = OwnerOf(ArenaPtr);
             }
 
-	 mprintf (MainCLineMsg, "%-8c%8ld%7c%8ld%7c%8ld%7c", nameptr,
-	      &memsize, temp3, &mem_table.files[i].conv_ttl, temp1,
-	                        &mem_table.files[i].umb_ttl, temp2);
-	 }
+     mprintf (MainCLineMsg, "%-8c%8ld%7c%8ld%7c%8ld%7c", nameptr,
+          &memsize, temp3, &mem_table.files[i].conv_ttl, temp1,
+                            &mem_table.files[i].umb_ttl, temp2);
+     }
       }
 
    for (i = 0; i < mem_table.noof_progs; i++)  /* There should be only 1 */
@@ -1188,42 +1188,42 @@ void DisplayClassification()
       sprintf (temp3, "(%ldK)", toK (memsize));
 
       mprintf (MainCLineMsg, "%-8m%8ld%7c%8ld%7c%8ld%7c", CFreeMsg,
-	   &memsize, temp3, &mem_table.files[i].conv_ttl, temp1,
-	                    &mem_table.files[i].umb_ttl,  temp2);
+       &memsize, temp3, &mem_table.files[i].conv_ttl, temp1,
+                        &mem_table.files[i].umb_ttl,  temp2);
       }
 }
 
 /*----------------------------------------------------------------------*/
-/*  AddMem_to_Table						        */
-/*	Entry:	PSP_ADDR	(to which this mem. should be added)	*/
-/*		ARENA_START_ADDR					*/
-/*		Region of arena (0 == conv, 1 == UMB#1, 2 == UMB#2...)	*/
-/*		Length_of_Arena						*/
-/*	Exit:	mem_table updated.			      		*/
-/*		returns 1 if more than MAX_CL_ENTRIES in mem_table	*/
-/*		   else 0						*/
-/*									*/
-/* CAVEATS:						  		*/
-/* --------								*/
-/* 1. any system area (BIOS,SYSINIT,DOS ) code/data is listed as	*/
-/*    to PSP 8.							        */
-/*									*/
+/*  AddMem_to_Table                             */
+/*  Entry:  PSP_ADDR    (to which this mem. should be added)    */
+/*      ARENA_START_ADDR                    */
+/*      Region of arena (0 == conv, 1 == UMB#1, 2 == UMB#2...)  */
+/*      Length_of_Arena                     */
+/*  Exit:   mem_table updated.                      */
+/*      returns 1 if more than MAX_CL_ENTRIES in mem_table  */
+/*         else 0                       */
+/*                                  */
+/* CAVEATS:                             */
+/* --------                             */
+/* 1. any system area (BIOS,SYSINIT,DOS ) code/data is listed as    */
+/*    to PSP 8.                                 */
+/*                                  */
 /* 2. We look at the UMB_HEAD in DOS DATA to determine whether an arena */
 /*    is in UMB or not; For the Arena at the UMB boundary, we add one   */
-/*    para to conv. and remaining to UMB portion of that PSP	        */
-/*									*/
+/*    para to conv. and remaining to UMB portion of that PSP            */
+/*                                  */
 /* 3. Any free memory is always added as a new entry in the mem_table   */
 /*    instead of just adding the sizes to an existing FREE entry        */
 /*    Free memory gets added to the previous free memory if they are    */
-/*    contiguous							*/
-/*									*/
-/* 4. The no of programs/free arenas cannot exceed a max of (100)	*/
-/*    (defined by MAX_CLDATA_INDEX )       				*/
+/*    contiguous                            */
+/*                                  */
+/* 4. The no of programs/free arenas cannot exceed a max of (100)   */
+/*    (defined by MAX_CLDATA_INDEX )                    */
 /*    If the memory is fragmented and a lot of small TSRs loaded such   */
-/*    that we exceed this limit, we TERMINATE				*/
-/*									*/
-/* 5. Mem occupied by this MEM are also reported as FREE mem		*/
-/*									*/
+/*    that we exceed this limit, we TERMINATE               */
+/*                                  */
+/* 5. Mem occupied by this MEM are also reported as FREE mem        */
+/*                                  */
 /*----------------------------------------------------------------------*/
 
 /*
@@ -1271,8 +1271,8 @@ unsigned long                      addr, region, size;
       {
       if (wasfree && region == 0L)
          {
-	 memsize += wasfree;
-	 }
+     memsize += wasfree;
+     }
 
       psp = 0;  /* treat MEM's arenas as FREE */
       ismem = 1;
@@ -1284,25 +1284,25 @@ unsigned long                      addr, region, size;
    for (i = 0; i < mem_table.noof_progs; i++)
       if (mem_table.files[i].psp_addr == psp)
          {
-	 if ((psp != 7) || mem_table.files[i].driveridx == dd)
-	    break;
-	 }
+     if ((psp != 7) || mem_table.files[i].driveridx == dd)
+        break;
+     }
 
-	   /* if psp is not already listed in the table, add it */
+       /* if psp is not already listed in the table, add it */
 
    if (i == mem_table.noof_progs)
       {
       if (mem_table.noof_progs == MAX_CLDATA_INDEX)
-	 {
-	 mprintf(CMemFragMsg, "");
-	 return(1);
-	 }
+     {
+     mprintf(CMemFragMsg, "");
+     return(1);
+     }
       mem_table.files[i].psp_addr  = psp;
       mem_table.files[i].driveridx = dd;
       mem_table.noof_progs ++;
       }
 
-		 /* add the memory to the table entry */
+         /* add the memory to the table entry */
 
    if (ismem && region==0L)
       memsize += size;
@@ -1327,7 +1327,7 @@ unsigned long                      addr, region, size;
 
       mem_table.files[i].umb_ttl += size;
       if (psp == 0 && size > mem_table.umb_large)
-	mem_table.umb_large = size;
+    mem_table.umb_large = size;
       }
 
    if (region == 0L)  return 0;
@@ -1337,7 +1337,7 @@ unsigned long                      addr, region, size;
       {
       mem_table.umbs[(int)region-1].umb_free += size;
       if (size > mem_table.umbs[(int)region-1].umb_large)
-	 mem_table.umbs[(int)region-1].umb_large = size;
+     mem_table.umbs[(int)region-1].umb_large = size;
       }
    if (mem_table.umbs[(int)region-1].umb_addr == 0L ||
        addr < mem_table.umbs[(int)region-1].umb_addr)
@@ -1384,16 +1384,16 @@ unsigned long int        *Address,      *Size,      *Region;
       {
       if (Owner == 7)
          {
-	 strcpy (temp2, gpszDevDriver);
-	 ptr = temp2;
-	 }
+     strcpy (temp2, gpszDevDriver);
+     ptr = temp2;
+     }
       else
-	 {
-	 InRegs.x.ax = Name;
-	 InRegs.h.dh = Utility_Msg_Class;
-	 sysgetmsg(&InRegs,&SegRegs,&OutRegs);
-	 FP_OFF(ptr) = OutRegs.x.si;
-	 FP_SEG(ptr) = SegRegs.ds;
+     {
+     InRegs.x.ax = Name;
+     InRegs.h.dh = Utility_Msg_Class;
+     sysgetmsg(&InRegs,&SegRegs,&OutRegs);
+     FP_OFF(ptr) = OutRegs.x.si;
+     FP_SEG(ptr) = SegRegs.ds;
          }
 
       estrip (ptr);
@@ -1401,37 +1401,37 @@ unsigned long int        *Address,      *Size,      *Region;
 
       if (! modulesize)
          {
-	 mprintf (NewLineMsg,   "");
-	 mprintf (ModUseMsg,    "%-c", ModName);
-	 mprintf (NewLineMsg,   "");
-	 mprintf (ModTitleMsg,  "");
-	 mprintf (ModUScoreMsg, "");
-	 }
+     mprintf (NewLineMsg,   "");
+     mprintf (ModUseMsg,    "%-c", ModName);
+     mprintf (NewLineMsg,   "");
+     mprintf (ModTitleMsg,  "");
+     mprintf (ModUScoreMsg, "");
+     }
       sprintf (temp, "(%ldK)", toK (*Size));
       if (*Region == 0L)
          {
-	 if (Owner != 7)
-	    {
-	    mprintf (MainMLineMsg, "%5lx%8ld%7c%-m", Address,Size,temp,Type);
-	    }
-	 else
-	    {
-	    mprintf (MainMDLineMsg, "%5lx%8ld%7c%-m%-c", Address, Size,
-	                            temp, Type, ptr);
-	    }
+     if (Owner != 7)
+        {
+        mprintf (MainMLineMsg, "%5lx%8ld%7c%-m", Address,Size,temp,Type);
+        }
+     else
+        {
+        mprintf (MainMDLineMsg, "%5lx%8ld%7c%-m%-c", Address, Size,
+                                temp, Type, ptr);
+        }
          }
       else
          {
-	 if (Owner != 7)
-	    {
-	    mprintf (MainMXLineMsg, "%5lx%3ld%8ld%7c%-m", Address, Region,
-		     Size, temp, Type);
-	    }
-	 else
-	    {
-	    mprintf (MainMDXLineMsg, "%5lx%3ld%8ld%7c%-m%-c", Address, Region,
-		     Size, temp, Type, ptr);
-	    }
+     if (Owner != 7)
+        {
+        mprintf (MainMXLineMsg, "%5lx%3ld%8ld%7c%-m", Address, Region,
+             Size, temp, Type);
+        }
+     else
+        {
+        mprintf (MainMDXLineMsg, "%5lx%3ld%8ld%7c%-m%-c", Address, Region,
+             Size, temp, Type, ptr);
+        }
          }
       modulesize += *Size;
       }
@@ -1462,19 +1462,19 @@ unsigned long int        *Address,      *Size,      *Region;
 
       if (! modulesize)
          {
-	 mprintf (NewLineMsg,   "");
-	 mprintf (ModUseMsg,    "%-c", ModName);
-	 mprintf (NewLineMsg,   "");
-	 mprintf (ModTitleMsg,  "");
-	 mprintf (ModUScoreMsg, "");
-	 }
+     mprintf (NewLineMsg,   "");
+     mprintf (ModUseMsg,    "%-c", ModName);
+     mprintf (NewLineMsg,   "");
+     mprintf (ModTitleMsg,  "");
+     mprintf (ModUScoreMsg, "");
+     }
       sprintf (temp, "(%ldK)", toK (*Size));
       if (*Region == 0L)
          mprintf (MainMLineMsg, "%5lx%8ld%7c%-c", Address,
-		  Size, temp, Type);
+          Size, temp, Type);
       else
          mprintf (MainMXLineMsg, "%5lx%3ld%8ld%7c%-c", Address, Region,
-		  Size, temp, Type);
+          Size, temp, Type);
       modulesize += *Size;
       }
    *Size -= 16;
@@ -1521,17 +1521,17 @@ struct ARENA far *ptr;
    switch (ptr->Signature)
       {
       case 'F':  sprintf (buf, "%d", *(short far *)tmp +5);
-		break;
+        break;
       case 'X':  sprintf (buf, "%d", *(short far *)tmp);
-		break;
+        break;
       case 'B':  if (! buffer_n)  sprintf (buf, "%d", buffer_m);
                  else             sprintf (buf, "%d,%d", buffer_m, buffer_n);
-		break;
+        break;
       case 'L':  sprintf (buf, "%c", ('A'-1) +SysVarsPtr->CdsCount);
-		break;
+        break;
       case 'S':  FP_OFF(tmp) = 2L;
                  sprintf (buf, "%d,%d", *(short far *)tmp, *(short far *)tmp2);
-		break;
+        break;
       }
    return buf;
 }
@@ -1543,7 +1543,7 @@ unsigned int GetDDriverPSP ()
    for (i = 0; i < ddriveridx; i++)
       {
       if (! strcmp (ddrivername[i], gpszDevDriver))
-	 break;
+     break;
       }
    if (i >= MAX_DDRIVER_REP)
       {

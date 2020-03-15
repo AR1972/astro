@@ -10,7 +10,7 @@
   *
   */
 
-#include "conio.h"			/* need for getchar prototype */
+#include "conio.h"          /* need for getchar prototype */
 #include "stdio.h"
 #include "string.h"
 #include "stdlib.h"
@@ -57,8 +57,8 @@ mprintf (int msgnum, char *fmt, ... )
       if (*ptr == '-')                 { argt |= 1; ptr++; }  /* Left-just   */
       for ( ; isdigit (*ptr); ptr++)
          {
-	 wid *= 10;  wid += (*ptr - '0');
-	 }
+     wid *= 10;  wid += (*ptr - '0');
+     }
       if (*ptr == 'l' || *ptr == 'L')  { argt |=  2; ptr++; } /* Dword       */
       if (*ptr == 'x' || *ptr == 'X')  { argt |=  4; ptr++; } /* Hexadecimal */
       if (*ptr == 'd' || *ptr == 'D')  {             ptr++; } /* Decimal #   */
@@ -76,44 +76,44 @@ mprintf (int msgnum, char *fmt, ... )
 
       if (argt & 16)
          {
-	 argt |= 8;
-	 InRegs.x.ax = va_arg (arg, int);
-	 InRegs.h.dh = Utility_Msg_Class;
-	 sysgetmsg(&InRegs,&SegRegs,&OutRegs);
-	 FP_OFF(sublist[count].value) = OutRegs.x.si;
-	 FP_SEG(sublist[count].value) = SegRegs.ds;
-	 sublist[count].pad_char = Blank;
+     argt |= 8;
+     InRegs.x.ax = va_arg (arg, int);
+     InRegs.h.dh = Utility_Msg_Class;
+     sysgetmsg(&InRegs,&SegRegs,&OutRegs);
+     FP_OFF(sublist[count].value) = OutRegs.x.si;
+     FP_SEG(sublist[count].value) = SegRegs.ds;
+     sublist[count].pad_char = Blank;
          }
       else if (argt & 8)
-	 {
-	 sublist[count].value    = (unsigned far *)va_arg (arg, char *);
-	 sublist[count].pad_char = Blank;
-	 }
+     {
+     sublist[count].value    = (unsigned far *)va_arg (arg, char *);
+     sublist[count].pad_char = Blank;
+     }
       else if (argt & 2)
-	 {
-	 sublist[count].value    = (unsigned far *)va_arg (arg, long *);
-	 }
+     {
+     sublist[count].value    = (unsigned far *)va_arg (arg, long *);
+     }
       else
-	 {
-	 sublist[count].value    = (unsigned far *)va_arg (arg, short *);
-	 }
+     {
+     sublist[count].value    = (unsigned far *)va_arg (arg, short *);
+     }
 
       if (argt & 8)
-	 {
-	 sublist[count].flags = Char_Field_ASCIIZ;
-	 }
+     {
+     sublist[count].flags = Char_Field_ASCIIZ;
+     }
       else if (argt & 4)
-	 {
-	 sublist[count].pad_char = '0';
-	 if (argt & 2)  sublist[count].flags = Bin_Hex_DWord;
-	 else           sublist[count].flags = Bin_Hex_Word;
-	 }
+     {
+     sublist[count].pad_char = '0';
+     if (argt & 2)  sublist[count].flags = Bin_Hex_DWord;
+     else           sublist[count].flags = Bin_Hex_Word;
+     }
       else
-	 {
-	 sublist[count].pad_char = Blank;
-	 if (argt & 2)  sublist[count].flags = Unsgn_Bin_DWord;
-	 else           sublist[count].flags = Unsgn_Bin_Word;
-	 }
+     {
+     sublist[count].pad_char = Blank;
+     if (argt & 2)  sublist[count].flags = Unsgn_Bin_DWord;
+     else           sublist[count].flags = Unsgn_Bin_Word;
+     }
 
       sublist[count].flags += (char)((argt & 1) ? Left_Align : Right_Align);
       }
@@ -140,7 +140,7 @@ unsigned long int *Address,      *Size,      *Region;
    char Desc[20];
    sprintf (Desc, "(%ldK)", toK(*Size));
    if (*Region == 0L)
-      mprintf (MainLineMsg, "%5lx%8ld%7c%-8m%-m", Address, 
+      mprintf (MainLineMsg, "%5lx%8ld%7c%-8m%-m", Address,
                Size, Desc, Name, Type);
    else
       mprintf (MainXLineMsg, "%5lx%3ld%8ld%7c%-8m%-m", Address, Region,
@@ -155,7 +155,7 @@ unsigned long int   *Address,      *Size,      *Region;
    char Desc[20];
    sprintf (Desc, "(%ldK)", toK(*Size));
    if (*Region == 0L)
-      mprintf (MainLineMsg, "%5lx%8ld%7c%-8c%-c", Address, 
+      mprintf (MainLineMsg, "%5lx%8ld%7c%-8c%-c", Address,
                Size, Desc, Name, Type);
    else
       mprintf (MainXLineMsg, "%5lx%3ld%8ld%7c%-8c%-c", Address, Region,

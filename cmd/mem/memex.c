@@ -11,13 +11,13 @@
 
 #include "bios.h"
 #include "ctype.h"
-#include "conio.h"			/* need for kbhit prototype */
+#include "conio.h"          /* need for kbhit prototype */
 #include "stdio.h"
 #include "dos.h"
 #include "string.h"
 #include "stdlib.h"
 #include "msgdef.h"
-#include "version.h"			/* MSKK02 07/18/89 */
+#include "version.h"            /* MSKK02 07/18/89 */
 #include "mem.h"
 #include "xmm.h"
 #include "versionc.h"
@@ -37,7 +37,7 @@ GetXMS()
    int far *ptr;
    long a, b;
 
-   mem_table.hma = -2;	/* Does not exist by default */
+   mem_table.hma = -2;  /* Does not exist by default */
 
    if (IsPre286())
       {
@@ -131,27 +131,27 @@ GetXMS()
 
       if (XMM_Installed())
          {
-	 mem_table.xms_free = XMM_QueryTotalFree() * 1024L;
+     mem_table.xms_free = XMM_QueryTotalFree() * 1024L;
 
-	 if (!IsWindowsRunning())
-	    Correct_Total_XMS ();
+     if (!IsWindowsRunning())
+        Correct_Total_XMS ();
 
-	 mem_table.xms_ttl -= mem_table.umb_ttl;
+     mem_table.xms_ttl -= mem_table.umb_ttl;
 
-         InRegs.x.ax = 0x3306;		/* get DOS version info */
-         intdos(&InRegs, &OutRegs);	/* call DOS */
+         InRegs.x.ax = 0x3306;      /* get DOS version info */
+         intdos(&InRegs, &OutRegs); /* call DOS */
 
          mem_table.hma = (OutRegs.h.dh == DOSHMA) + 2*(OutRegs.h.dh == DOSROM);
 
          if (! mem_table.hma)
-	    {
-	    mem_table.hma = XMM_RequestHMA(0xffff) ? -1 : 0;
-	    if (! mem_table.hma)
-	       {
-	       XMM_ReleaseHMA();
-	       }
-	    }
-	 }
+        {
+        mem_table.hma = XMM_RequestHMA(0xffff) ? -1 : 0;
+        if (! mem_table.hma)
+           {
+           XMM_ReleaseHMA();
+           }
+        }
+     }
       }
 }
 
@@ -174,11 +174,11 @@ GetEMS ()
 
 char EMSInstalled()
 {
-   unsigned int	EMSStatus;
-   unsigned int	EMSVersion;
+   unsigned int EMSStatus;
+   unsigned int EMSVersion;
 
-   char		EmsName[8];
-   void far	*EmsNameP;
+   char     EmsName[8];
+   void far *EmsNameP;
 
    InRegs.h.ah = GET_VECT;
    InRegs.h.al = EMS;
@@ -189,18 +189,18 @@ char EMSInstalled()
       EmsNameP = EmsName;
       movedata(SegRegs.es, 0x000a, FP_SEG(EmsNameP), FP_OFF(EmsNameP), 8);
       if (strncmp(EmsName, "EMMXXXX0", 8))
-	 return FALSE;
+     return FALSE;
 
-      InRegs.x.ax = EMSGetStat;	 	  		/* get EMS status    */
+      InRegs.x.ax = EMSGetStat;             /* get EMS status    */
       int86x(EMS, &InRegs, &OutRegs, &SegRegs);
-      EMSStatus = OutRegs.h.ah; 		  	/* EMS status in AH  */
+      EMSStatus = OutRegs.h.ah;             /* EMS status in AH  */
 
-      InRegs.x.ax = EMSGetVer;		  		/* get EMS version   */
+      InRegs.x.ax = EMSGetVer;              /* get EMS version   */
       int86x(EMS, &InRegs, &OutRegs, &SegRegs);
-      EMSVersion = OutRegs.h.al;		  	/* EMS version in AL */
+      EMSVersion = OutRegs.h.al;            /* EMS version in AL */
 
       if ((EMSStatus == 0) && (EMSVersion >= DOSEMSVER))
-	 return TRUE;
+     return TRUE;
       }
 
    return FALSE;

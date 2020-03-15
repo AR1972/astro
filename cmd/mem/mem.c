@@ -27,9 +27,9 @@
 |                                                                       |
 |               MEM /MODULE                                             |
 |                       - Details a single module's memory use.         |
-|                           						|
+|                                                                       |
 |=======================================================================|
-|   				Revision History                  	|   
+|                                   Revision History                    |
 |=======================================================================|
 |                                                                       |
 |       AN001 - PTM P2914 -> This PTM relates to MEM's ability to report|
@@ -54,12 +54,12 @@
 |                            programs loaded into high memory.          |
 |                                                                       |
 |               Date: 6/07/88                                           |
-|									|
-|   M000   SR   8/27/90   Added new Ctrl-C handler to delink UMBs	|
-|									|
-|   M003  NSM  12/28/90   Added a New switch /Classify which groups	|
-|         			groups programs in conv and UMB and 	|
-|				gives sizes in decimal and hex.         |
+|                                                                       |
+|   M000   SR   8/27/90   Added new Ctrl-C handler to delink UMBs       |
+|                                                                       |
+|   M003  NSM  12/28/90   Added a New switch /Classify which groups     |
+|                   groups programs in conv and UMB and                 |
+|                               gives sizes in decimal and hex.         |
 |                                                                       |
 |   T-RICHJ     5/27/92   Rewrote 70% or so; different options, added   |
 |                         mprintf(), reworked internal memory           |
@@ -90,8 +90,8 @@
         char    *Ibmbio = "IBMBIO";                                     /*EGH*/
         char    *Ibmdos = "IBMDOS";                                     /*EGH*/
 #else                                                                   /*EGH*/
-        char    *Ibmbio = "IO    "; 
-        char    *Ibmdos = "MSDOS "; 
+        char    *Ibmbio = "IO    ";
+        char    *Ibmdos = "MSDOS ";
 #endif                                                                  /*EGH*/
 
    char  LinkedIn = 0;   /* Flag set when mem links in UMBs :M000 */
@@ -179,7 +179,7 @@ char      **argv;
     * Ctrl-C handler :M000
     */
 
-   OldCtrlc = _dos_getvect( 0x23 ); /* M000 */
+   OldCtrlc = _dos_getvect( 0x23 );  /* M000 */
    _dos_setvect( 0x23, MemCtrlc );   /* M000 */
 
    /*
@@ -201,8 +201,8 @@ char      **argv;
       }
 
    rc = DisplayBaseDetail();      /* go show the memory state, and    */
-				  /* restore original UMB link state: */
-   if (!UMB_Linkage)      /* weren't linked originally */
+                                  /* restore original UMB link state: */
+   if (!UMB_Linkage)              /* weren't linked originally */
       {
       InRegs.x.ax = SET_UMB_LINK_STATE;
       InRegs.x.bx = UNLINK_UMBS;
@@ -212,8 +212,8 @@ char      **argv;
 
    _dos_setvect (0x23, OldCtrlc);   /* M000 */
 
-		/* if no error in DisplayBaseDetail,    */
-		/* go display other things as necessary */
+        /* if no error in DisplayBaseDetail,    */
+        /* go display other things as necessary */
 
    if (!rc)
       {
@@ -221,12 +221,12 @@ char      **argv;
 
       switch (DataLevel)
          {
-	 case  0:  DispMEMSummary();
-	          break;
-	          break;
+     case  0:  DispMEMSummary();
+              break;
+              break;
          case  1:  DisplayClassification();
          case  2:  DisplaySummary();
-	          break;
+              break;
          }
       }
 
@@ -353,101 +353,101 @@ char          **agv;
 
       if (*ArgPos != SWITCHCHAR)
          {
-	 for (i = ArgPos - cmdline; i >= 0; i--)
-	    if (cmdline[i] == SWITCHCHAR)  break;
-	 i = max (i, 0);
-	 for ( ; *ArgPos; ArgPos++)
-	    if (strchr (" /\t", *ArgPos))  break;
-	 *ArgPos = 0;          /* Null-terminate after this option...      */
-	 ArgPos = &cmdline[i]; /* ...and point to the start of the option. */
-	 return p_not_in_key;  /* They've given "MEM garbage" or something */
-	 }
+     for (i = ArgPos - cmdline; i >= 0; i--)
+        if (cmdline[i] == SWITCHCHAR)  break;
+     i = max (i, 0);
+     for ( ; *ArgPos; ArgPos++)
+        if (strchr (" /\t", *ArgPos))  break;
+     *ArgPos = 0;          /* Null-terminate after this option...      */
+     ArgPos = &cmdline[i]; /* ...and point to the start of the option. */
+     return p_not_in_key;  /* They've given "MEM garbage" or something */
+     }
       switch (*(ArgPos+1))
          {
-	 case 'C':  if (DataLevel != 0)
-	               {
-		       *(ArgPos+2) = 0;
-		       return p_too_many;
-	               }
-		    DataLevel = 1;
-		    ArgPos += (! strncmp (ArgPos+1, "CLASSIFY", 8)) ? 9 : 2;
-		   break;
-	 case 'D':  if (DataLevel != 0)
-	               {
-		       *(ArgPos+2) = 0;
-		       return p_too_many;
-	               }
-		    DataLevel = 2;
-		    ArgPos += (! strncmp (ArgPos+1, "DEBUG", 5)) ? 6 : 2;
-		   break;
-	 case 'F':  if (DataLevel != 0)
-	               {
-		       *(ArgPos+2) = 0;
-		       return p_too_many;
-	               }
-		    DataLevel = 3;
-		    ArgPos += (! strncmp (ArgPos+1, "FREE", 4)) ? 5 : 2;
-		   break;
+     case 'C':  if (DataLevel != 0)
+                   {
+               *(ArgPos+2) = 0;
+               return p_too_many;
+                   }
+            DataLevel = 1;
+            ArgPos += (! strncmp (ArgPos+1, "CLASSIFY", 8)) ? 9 : 2;
+           break;
+     case 'D':  if (DataLevel != 0)
+                   {
+               *(ArgPos+2) = 0;
+               return p_too_many;
+                   }
+            DataLevel = 2;
+            ArgPos += (! strncmp (ArgPos+1, "DEBUG", 5)) ? 6 : 2;
+           break;
+     case 'F':  if (DataLevel != 0)
+                   {
+               *(ArgPos+2) = 0;
+               return p_too_many;
+                   }
+            DataLevel = 3;
+            ArgPos += (! strncmp (ArgPos+1, "FREE", 4)) ? 5 : 2;
+           break;
 
-	 case 'P':  if (PageBreak != 0)
-	               {
-		       *(ArgPos+2) = 0;
-		       return p_too_many;
-	               }
-		    PageBreak = 3;
-		    ArgPos += (! strncmp (ArgPos+1, "PAGE", 4)) ? 5 : 2;
-		   break;
+     case 'P':  if (PageBreak != 0)
+                   {
+               *(ArgPos+2) = 0;
+               return p_too_many;
+                   }
+            PageBreak = 3;
+            ArgPos += (! strncmp (ArgPos+1, "PAGE", 4)) ? 5 : 2;
+           break;
 
-	 case 'M':  if (DataLevel != 0)
-	               {
-		       *(ArgPos+2) = 0;
-		       return p_too_many;
-	               }
-		    ptr = ArgPos;   /* Remember where we are, in case of err */
-		    DataLevel = 4;
-		    ArgPos += (! strncmp (ArgPos+1, "MODULE", 6)) ? 7 : 2;
+     case 'M':  if (DataLevel != 0)
+                   {
+               *(ArgPos+2) = 0;
+               return p_too_many;
+                   }
+            ptr = ArgPos;   /* Remember where we are, in case of err */
+            DataLevel = 4;
+            ArgPos += (! strncmp (ArgPos+1, "MODULE", 6)) ? 7 : 2;
 
-		    while (*ArgPos && strchr (" :\t", *ArgPos))
-		       ArgPos++;                       /* Skip delimiters  */
+            while (*ArgPos && strchr (" :\t", *ArgPos))
+               ArgPos++;                       /* Skip delimiters  */
 
-		    i = 0;
-		    while (*ArgPos && !strchr (" /\t", *ArgPos))
-		       {
-		       ModName[i] = *ArgPos;
-		       ArgPos++;  i++;
-		       }
-		    ModName[i] = 0;         /* Terminate the name */
-		    if (i == 0)  /* They didn't give a module name */
-		       {
-		       InRegs.x.ax = ModuleName;
-		       InRegs.h.dh = Utility_Msg_Class;
-		       sysgetmsg(&InRegs,&SegRegs,&OutRegs);
-		       FP_OFF(fptr) = OutRegs.x.si;
-		       FP_SEG(fptr) = SegRegs.ds;
+            i = 0;
+            while (*ArgPos && !strchr (" /\t", *ArgPos))
+               {
+               ModName[i] = *ArgPos;
+               ArgPos++;  i++;
+               }
+            ModName[i] = 0;         /* Terminate the name */
+            if (i == 0)  /* They didn't give a module name */
+               {
+               InRegs.x.ax = ModuleName;
+               InRegs.h.dh = Utility_Msg_Class;
+               sysgetmsg(&InRegs,&SegRegs,&OutRegs);
+               FP_OFF(fptr) = OutRegs.x.si;
+               FP_SEG(fptr) = SegRegs.ds;
 
-		       for (ptr = cmdline; *fptr; ptr++, fptr++)
-		          *ptr = *fptr;
-		       *ptr = 0;
+               for (ptr = cmdline; *fptr; ptr++, fptr++)
+                  *ptr = *fptr;
+               *ptr = 0;
 
-		       ArgPos = cmdline;    /* So complain, and list the */
-		                            /* paramter as missing from  */
-		       return p_op_missing; /* the option "/MODULE".     */
-		       }
-		   break;
+               ArgPos = cmdline;    /* So complain, and list the */
+                                    /* paramter as missing from  */
+               return p_op_missing; /* the option "/MODULE".     */
+               }
+           break;
 
-	 case 'H':
-	 case '?':  if (DataLevel != 0 || PageBreak != 0)
-	               {
-		       *(ArgPos+2) = 0;
-		       return p_too_many;
-	               }
-		     for (i = MSG_OPTIONS_FIRST; i <= MSG_OPTIONS_LAST; i++)
-			mprintf (i, "");
-		     exit (0);
-		   break;
+    case 'H':
+     case '?':  if (DataLevel != 0 || PageBreak != 0)
+                   {
+               *(ArgPos+2) = 0;
+               return p_too_many;
+                   }
+            for (i = MSG_OPTIONS_FIRST; i <= MSG_OPTIONS_LAST; i++)
+            mprintf (i, "");
+            exit (0);
+           break;
 
-	 default:   *(ArgPos+2) = 0;
-	            return p_not_in_sw;
+     default:   *(ArgPos+2) = 0;
+                return p_not_in_sw;
          }
       }
 
@@ -470,32 +470,32 @@ char          **agv;
 
 void
 Parse_Message (Msg_Num, parse_ptr)
-int            Msg_Num;  
+int            Msg_Num;
 char               far *parse_ptr;
-{                          
-   if (! parse_ptr)
-      InRegs.x.cx = 0;    
-   else
-      {
-      sublist[1].value     = (unsigned far *)parse_ptr;
-      sublist[1].size      = Sublist_Length; 
-      sublist[1].reserved  = Reserved;      
-      sublist[1].id        = 0;            
-      sublist[1].flags     = Char_Field_ASCIIZ+Left_Align;
-      sublist[1].max_width = 40;
-      sublist[1].min_width = 01;
-      sublist[1].pad_char  = Blank; 
+{
+    if (! parse_ptr)
+        InRegs.x.cx = 0;
+    else
+    {
+        sublist[1].value     = (unsigned far *)parse_ptr;
+        sublist[1].size      = Sublist_Length;
+        sublist[1].reserved  = Reserved;
+        sublist[1].id        = 0;
+        sublist[1].flags     = Char_Field_ASCIIZ+Left_Align;
+        sublist[1].max_width = 40;
+        sublist[1].min_width = 01;
+        sublist[1].pad_char  = Blank;
 
-      InRegs.x.cx = 1;
-      }
+        InRegs.x.cx = 1;
+    }
 
-   InRegs.x.ax = Msg_Num;      
-   InRegs.x.bx = STDERR;      
-   InRegs.h.dl = No_Input;  
-   InRegs.h.dh = Parse_Err_Class; 
-   InRegs.x.si = (unsigned int)&sublist[1]; 
-   sysdispmsg(&InRegs,&OutRegs); 
-}                                  
+    InRegs.x.ax = Msg_Num;
+    InRegs.x.bx = STDERR;
+    InRegs.h.dl = No_Input;
+    InRegs.h.dh = Parse_Err_Class;
+    InRegs.x.si = (unsigned int)&sublist[1];
+    sysdispmsg(&InRegs,&OutRegs);
+}
 
 /* M003 END */
 

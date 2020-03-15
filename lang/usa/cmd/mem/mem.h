@@ -6,11 +6,7 @@
 #define LINK_UMBS            0x0001
 #define FALSE                (char)(1==0)
 #define TRUE                 !(FALSE)
-#define CR                   '\x0d'
-#define LF                   '\x0a'
 #define NUL                  (char) '\0'
-#define TAB                  '\x09'
-#define BLANK                ' '
 #define	MAX_CLDATA_INDEX     100
 #define GET_PSP              (unsigned char ) 0x62 /* get PSP function call */
 #define MEMORY_DET           0x12                  /* BIOS interrupt used to get total memory size */
