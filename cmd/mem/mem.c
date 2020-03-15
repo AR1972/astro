@@ -165,7 +165,7 @@ char      **argv;
 
    if ((rc = parse_cmd (argc, argv)) != 0)
       {
-      Parse_Message (rc, (char far *)ArgPos);
+      Parse_Message (rc, ArgPos);
       exit (1);
       }
 
@@ -471,7 +471,7 @@ char          **agv;
 void
 Parse_Message (Msg_Num, parse_ptr)
 int            Msg_Num;
-char               far *parse_ptr;
+char                   *parse_ptr;
 {
     if (! parse_ptr)
         InRegs.x.cx = 0;

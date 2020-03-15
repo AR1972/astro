@@ -64,7 +64,7 @@ all:
     cd ..\loadfix
         $(MAKE)
     cd ..\mem
-#        $(MAKE) # needs strings
+        $(MAKE)
     cd ..\mode
         $(MAKE)
     cd ..\more
