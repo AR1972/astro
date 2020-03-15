@@ -7,7 +7,7 @@
 #define FALSE                (char)(1==0)
 #define TRUE                 !(FALSE)
 #define NUL                  (char) '\0'
-#define	MAX_CLDATA_INDEX     100
+#define MAX_CLDATA_INDEX     100
 #define GET_PSP              (unsigned char ) 0x62 /* get PSP function call */
 #define MEMORY_DET           0x12                  /* BIOS interrupt used to get total memory size */
 #define CASSETTE             0x15                  /* interupt 15 */
@@ -18,14 +18,14 @@
 #define EMSGetVer            0x4600
 #define EMSGetFreePgs        0x4200
 #define EMSGetStat           0x4000
-#define toK(x)               ((x)>>10)
+#define toK(x)               ((unsigned long)(x)>>10)
 #define p_too_many           1
 #define p_op_missing         2
 #define p_not_in_sw          3
 #define p_not_in_key         4
 
-static const char SumFormat[] = "%-16m%8ld%8c%8ld%8c%8ld%8c";
-static const char MemFormat[] = "%-16m%6c%6c%6c";
+static char SumFormat[] = "%-16m%8ld%8c%8ld%8c%8ld%8c";
+static char MemFormat[] = "%-16m%6c%6c%6c";
 
 struct files
 {
@@ -70,15 +70,17 @@ struct mem_classif
     struct umbs umbs[MAX_CLDATA_INDEX];
 };
 
-struct	DEVICEHEADER {
+struct  DEVICEHEADER
+{
     struct DEVICEHEADER far *NextDeviceHeader;
     unsigned    Attributes;
     unsigned    Strategy;
     unsigned    Interrupt;
     char        Name[8];
-	};
-	
-struct	SYSIVAR {
+};
+
+struct  SYSIVAR
+{
     char far *DpbChain;
     char far *SftChain;
     char far *Clock;
@@ -104,26 +106,28 @@ struct	SYSIVAR {
     char      BootDrive;
     char      MoveType;
     unsigned  ExtendedMemory;
-	};
+};
 
-struct sublistx {
-	 unsigned char size;	       /* sublist size                         */
-	 unsigned char reserved;       /* reserved for future growth           */
-	 unsigned far *value;	       /* pointer to replaceable parm          */
-	 unsigned char id;             /* type of replaceable parm             */
-	 unsigned char flags;	       /* how parm is to be displayed          */
-	 unsigned char max_width;      /* max width of replaceable field       */
-	 unsigned char min_width;      /* min width of replaceable field       */
-	 unsigned char pad_char;       /* pad character for replaceable field  */
-	};
+struct sublistx
+{
+     unsigned char size;           /* sublist size                         */
+     unsigned char reserved;       /* reserved for future growth           */
+     unsigned far *value;          /* pointer to replaceable parm          */
+     unsigned char id;             /* type of replaceable parm             */
+     unsigned char flags;          /* how parm is to be displayed          */
+     unsigned char max_width;      /* max width of replaceable field       */
+     unsigned char min_width;      /* min width of replaceable field       */
+     unsigned char pad_char;       /* pad character for replaceable field  */
+};
 
-struct	ARENA	 {
-	char     Signature;
-	unsigned Owner;
-	unsigned Paragraphs;
-	char     Dummy[3];
-	char     OwnerName[8];
-	};
+struct  ARENA
+{
+    char     Signature;
+    unsigned Owner;
+    unsigned Paragraphs;
+    char     Dummy[3];
+    char     OwnerName[8];
+};
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -147,7 +151,7 @@ void estrip(char far *);
 char *DriverData(void far *);
 unsigned int GetDDriverPSP(void);
 unsigned int IsDDriverAround(char*);
-void mprintf();
+void mprintf(int, char *, ...);
 unsigned long AddressOf(char far *);
 void GetExtraMemory(void);
 int fIsPooled(void);
