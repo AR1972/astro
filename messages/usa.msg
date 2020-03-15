@@ -1,4 +1,4 @@
-0438
+0002
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -167,7 +167,7 @@ COMMAND  000014d4 0147
 1037 U 0000 "Enter new time: "
 1038 U 0000 ",    Delete (Y/N)?"
 1039 U 0000 "All files in directory will be deleted!",CR,LF,"Are you sure (Y/N)?"
-1040 U 0000 "MS-DOS Version %1.%2.500"
+1040 U 0000 "MS-DOS Version %1.%2"
 1044 U 0000 "Invalid directory",CR,LF
 1046 U 0000 "Invalid path, not directory,",CR,LF,"or directory not empty",CR,LF
 1047 U 0000 "Must specify ON or OFF",CR,LF
@@ -374,9 +374,9 @@ COMMAND  000014d4 0147
 	"LH [drive:][path]filename [parameters]",CR,LF,CR,LF
 1922 U 0000 "  parameters   Specifies any command-line information required by the",CR,LF
 	"               program you want to load.",CR,LF
-ANSI     000046c4 0001
+ANSI     000046c0 0001
 0010 U 0000 "Invalid parameter - %1",CR,LF
-APPEND   00004708 0026
+APPEND   00004704 0026
 0001 U 0000 "Incorrect APPEND version",CR,LF
 0002 U 0000 "Invalid path",CR,LF
 0003 U 0000 "Invalid parameter",CR,LF
@@ -403,7 +403,7 @@ APPEND   00004708 0026
 0314 U 0000 "               you use APPEND after starting your system.",CR,LF,CR,LF
 0315 U 0000 "Type APPEND ; to clear the appended directory list.",CR,LF
 0316 U 0000 "Type APPEND without parameters to display the appended directory list.",CR,LF
-BACKUP   00004df6 0040
+BACKUP   00004df2 0040
 0002 U 0000 CR,LF,"Insufficient memory",CR,LF
 0006 U 0000 CR,LF,"Invalid drive specification",CR,LF
 0014 U 0000 CR,LF,"Source and target drives are the same",CR,LF
@@ -453,7 +453,7 @@ BACKUP   00004df6 0040
 0310 U 0000 "  /L[:[drive:][path]logfile]",CR,LF
 	"                     Creates a log file and entry to record the backup",CR,LF
 	"                     operation.",CR,LF
-DEBUG    00005ace 0068
+DEBUG    00005aca 0068
 0004 U 0000 "Allocation failed or specified buffer too small",CR,LF
 0006 U 0000 "Bad device name"
 0007 U 0000 "Cannot open list device PRN",CR,LF
@@ -541,7 +541,7 @@ DEBUG    00005ace 0068
 	"deallocate expanded memory      XD [handle]",CR,LF
 	"map expanded memory pages       XM [Lpage] [Ppage] [handle]",CR,LF
 	"display expanded memory status  XS",CR,LF
-EDLIN    00006a38 0035
+EDLIN    00006a34 0035
 0006 U 0000 "*"
 0007 U 0000 "Invalid drive or file name",CR,LF
 0008 U 0000 "File name must be specified",CR,LF
@@ -586,7 +586,7 @@ EDLIN    00006a38 0035
 	"Search                      [startline][,endline][?]Stext",CR,LF
 0307 U 0000 "Transfer                    [toline]T[drive:][path]filename",CR,LF
 	"Write                       [#lines]W",CR,LF
-EXE2BIN  0000727c 0012
+EXE2BIN  00007278 0012
 0002 U 0000 "Insufficient memory",CR,LF
 0003 U 0000 "Cannot find messages",CR,LF
 0004 U 0000 "Access denied",CR,LF
@@ -599,7 +599,7 @@ EXE2BIN  0000727c 0012
 0301 U 0000 "EXE2BIN [drive1:][path1]input-file [[drive2:][path2]output-file]",CR,LF,CR,LF
 0302 U 0000 "  input-file   Specifies the .EXE file to be converted.",CR,LF
 0303 U 0000 "  output-file  Specifies the binary file to be created.",CR,LF
-GRAPHICS 0000752e 0020
+GRAPHICS 0000752a 0020
 0005 U 0000 "Invalid parameter:  %1",CR,LF
 0007 U 0000 "Duplicate parameters not allowed",CR,LF
 0009 U 0000 "Cannot find GRAPHICS profile",CR,LF
@@ -623,7 +623,7 @@ GRAPHICS 0000752e 0020
 0306 U 0000 "  /LCD         Prints using LCD aspect ratio.",CR,LF
 0307 U 0000 "  /PRINTBOX:STD | /PRINTBOX:LCD",CR,LF
 	"               Specifies the print-box size, either STD or LCD.",CR,LF
-KEYB     00007b18 0023
+KEYB     00007b14 0023
 0002 U 0000 "Current keyboard code: %1"
 0003 U 0000 "Current keyboard ID: %1"
 0004 U 0000 "  code page: %1",CR,LF
@@ -647,7 +647,7 @@ KEYB     00007b18 0023
 0304 U 0000 "  [drive:][path]filename  Specifies the keyboard definition file.",CR,LF
 0305 U 0000 "  /E                      Specifies that an enhanced keyboard is installed.",CR,LF
 0306 U 0000 "  /ID:nnn                 Specifies the keyboard in use.",CR,LF
-MEM      0000814f 0113
+MEM      0000814b 0113
 0010 U 0000  CR,LF
 0011 U 0000  "  Segment               Total        Name         Type",CR,LF
 0012 U 0000  "  -------          ----------------  -----------  --------",CR,LF
@@ -767,7 +767,7 @@ MEM      0000814f 0113
 	"                   This option must be followed by the name of a module,",CR,LF
 	"                   optionally separated from /M by a colon.",CR,LF
 0306 U 0000  "  /PAGE or /P      Pauses after each screenful of information.",CR,LF
-MSBIO    0000991f 0023
+MSBIO    0000991b 0023
 0003 U 0000 13,10,"Unrecognized command in CONFIG.SYS"
 0004 U 0000 13,10,"$"
 0005 U 0000 13,10,"Sector size too large in file $"
@@ -792,7 +792,7 @@ MSBIO    0000991f 0023
 0023 U 0000 "Fatal Error:Cannot allocate Memory for DOS", 13, 10, "$"
 0024 U 0000 "WARNING! Logical drives past Z: exist and will be ignored",13,10,"$"
 0025 U 0000 "This version of DOS will boot only on IBM machines",13,10,0
-MSDOS    00009e6f 0007
+MSDOS    00009e6b 0007
 0001 U 0001 13,10,"Divide overflow",13,10
 0002 U 0002 "y"
 0003 U 0002 "n"
@@ -801,12 +801,12 @@ MSDOS    00009e6f 0007
 0006 U 0000 "N"
 0007 U 0000 "You must have the file WINA20.386 in the root of your boot drive",13,10
 	"to run Windows in Enhanced Mode",13,10
-NLSFUNC  00009fa8 0003
+NLSFUNC  00009fa4 0003
 0300 U 0000 "Loads country-specific information.",CR,LF,CR,LF
 0301 U 0000 "NLSFUNC [[drive:][path]filename]",CR,LF,CR,LF
 0302 U 0000 "  [drive:][path]filename   Specifies the file containing country-specific",CR,LF
 	"                           information.",CR,LF
-SHARE    0000a0cc 0005
+SHARE    0000a0c8 0005
 0003 U 0000 "SHARE cannot be installed under DOSSHELL.",CR,LF
 0300 U 0000 "Installs file-sharing and locking capabilities on your hard disk.",CR,LF,CR,LF
 0301 U 0000 "SHARE [/F:space] [/L:locks]",CR,LF,CR,LF
