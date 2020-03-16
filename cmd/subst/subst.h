@@ -40,7 +40,7 @@
 #define MSG_INUSE	  7
 
 #define MSG_OPTIONS_FIRST 300
-#define MSG_OPTIONS_LAST  306
+#define MSG_OPTIONS_LAST  307
 
 #define BLNK              ' '               /* For sublist.pad_char */
 #define CARRY             0x0001            /* To test carry from msg hndlr */

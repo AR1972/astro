@@ -42,9 +42,9 @@ $(cpr):       $(dest)
 
 
 subst.ctl:    subst.skl                 \
-              $(msg)\$(COUNTRY)-ibm.msg     \
+              $(msg)\$(COUNTRY).msg     \
               makefile
-              buildmsg $(msg)\$(COUNTRY)-ibm subst.skl
+              buildmsg $(msg)\$(COUNTRY) subst.skl
 			  
 _msgret.obj:  _msgret.asm               \
               makefile                  \

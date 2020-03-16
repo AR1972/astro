@@ -35,6 +35,7 @@
 :def 304  SUBST /?
 :def 305  SUBST /?
 :def 306  SUBST /?
+:def 307  SUBST /?
 
 :end                                                   ;END UTIL        ;AN000;
 

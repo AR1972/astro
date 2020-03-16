@@ -1,4 +1,4 @@
-0002
+0007
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -812,3 +812,14 @@ SHARE    0000a0c8 0005
 0301 U 0000 "SHARE [/F:space] [/L:locks]",CR,LF,CR,LF
 0302 U 0000 "  /F:space   Allocates file space (in bytes) for file-sharing information.",CR,LF
 0303 U 0000 "  /L:locks   Sets the number of files that can be locked at one time.",CR,LF
+SUBST    0000a26e 0010
+0002 U 0000 "Incorrect number of parameters",CR,LF
+0005 U 0000 "Drive already SUBSTed",CR,LF
+0300 U 0000 "Associates a path with a drive letter.",CR,LF,CR,LF
+0301 U 0000 "SUBST [drive1: [drive2:]path]",CR,LF
+0302 U 0000 "SUBST drive1: /D",CR,LF,CR,LF
+0303 U 0000 "  drive1:        Specifies a virtual drive to which you want to assign a path.",CR,LF
+0304 U 0000 "  [drive:2]path  Specifies a physical drive and path you want to assign to",CR,LF
+0305 U 0000 "                 a virtual drive.",CR,LF
+0306 U 0000 "  /D             Deletes a substituted (virtual) drive.",CR,LF,CR,LF
+0307 U 0000 "Type SUBST with no parameters to display a list of current virtual drives.",CR,LF
