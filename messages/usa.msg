@@ -1,4 +1,4 @@
-0007
+0008
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -823,3 +823,31 @@ SUBST    0000a26e 0010
 0305 U 0000 "                 a virtual drive.",CR,LF
 0306 U 0000 "  /D             Deletes a substituted (virtual) drive.",CR,LF,CR,LF
 0307 U 0000 "Type SUBST with no parameters to display a list of current virtual drives.",CR,LF
+ATTRIB   0000a534 0027
+0004 U 0000 "Invalid number of parameters",CR,LF
+0005 U 0000 "Invalid path or file not found",CR,LF
+0006 U 0000 "Syntax error",CR,LF
+0008 U 0000 "  %1"
+0009 U 0000 "%1    %2",CR,LF
+0010 U 0000 "%1",CR,LF,"%2",CR,LF
+0011 U 0000 "%1, Code page mismatch",CR,LF,"Are you sure (Y/N)?"
+0012 U 0000 "%1",CR,LF
+0014 U 0000 CR,LF
+0015 U 0000 "Invalid file type value",CR,LF
+0199 U 0000 "Extended attribute error",CR,LF
+0201 U 0000 "Extended attribute name not found",CR,LF
+0204 U 0000 "Extended attribute name cannot be set",CR,LF
+0205 U 0000 "Extended attribute name known to this file system but not supported",CR,LF
+0206 U 0000 "Extended attribute type mismatch",CR,LF
+0208 U 0000 "Extended attribute value not supported",CR,LF
+0216 U 0000 "Not resetting system file %1",CR,LF
+0217 U 0000 "Not resetting hidden file %1",CR,LF
+0300 U 0000 "Displays or changes file attributes.",CR,LF,CR,LF
+0301 U 0000 "ATTRIB [+R | -R] [+A | -A] [+S | -S] [+H | -H] [[drive:][path]filename] [/S]",CR,LF,CR,LF
+0302 U 0000 "  +   Sets an attribute.",CR,LF
+0303 U 0000 "  -   Clears an attribute.",CR,LF
+0304 U 0000 "  R   Read-only file attribute.",CR,LF
+0305 U 0000 "  A   Archive file attribute.",CR,LF
+0306 U 0000 "  S   System file attribute.",CR,LF
+0307 U 0000 "  H   Hidden file attribute.",CR,LF
+0308 U 0000 "  /S  Processes files in all directories in the specified path.",CR,LF
