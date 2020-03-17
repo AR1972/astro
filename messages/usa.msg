@@ -1,4 +1,4 @@
-0008
+0009
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -851,3 +851,11 @@ ATTRIB   0000a534 0027
 0306 U 0000 "  S   System file attribute.",CR,LF
 0307 U 0000 "  H   Hidden file attribute.",CR,LF
 0308 U 0000 "  /S  Processes files in all directories in the specified path.",CR,LF
+ASSIGN   0000aab9 0007
+0002 U 0000 "Original %1: set to %2:",CR,LF
+0300 U 0000 "Redirects requests for disk operations on one drive to a different drive.",CR,LF,CR,LF
+0301 U 0000 "ASSIGN [x[:]=y[:][...]]",CR,LF,"ASSIGN /STATUS",CR,LF,CR,LF
+0302 U 0000 "  x        Specifies the drive letter to reassign.",CR,LF
+0303 U 0000 "  y        Specifies the drive that x: will be assigned to.",CR,LF
+0304 U 0000 "  /STATUS  Displays current drive assignments.",CR,LF,CR,LF
+0305 U 0000 "Type ASSIGN without parameters to reset all drive letters to original",CR,LF,"assignments.",CR,LF
