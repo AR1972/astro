@@ -46,9 +46,9 @@ $(cpr):       $(dest)
 
 
 xcopy.ctl: xcopy.skl \
-   $(msg)\$(COUNTRY)-ibm.msg \
+   $(msg)\$(COUNTRY).msg \
    makefile
-   buildmsg $(msg)\$(COUNTRY)-ibm xcopy.skl
+   buildmsg $(msg)\$(COUNTRY) xcopy.skl
 
 xcopy.obj: xcopy.asm \
    $(inc)\versiona.inc \

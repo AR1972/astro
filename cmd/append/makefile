@@ -34,8 +34,8 @@ $(cpr):       $(dest)
 
 append.ctl: append.skl \
             makefile   \
-            $(msg)\$(COUNTRY)-ibm.msg
-			buildmsg $(msg)\$(COUNTRY)-ibm append.skl
+            $(msg)\$(COUNTRY).msg
+			buildmsg $(msg)\$(COUNTRY) append.skl
 
 append.obj: append.asm \
             appendp.inc \

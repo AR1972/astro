@@ -1,4 +1,4 @@
-0010
+0014
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -936,3 +936,38 @@ CHKDSK   0000ad00 0076
 0304 U 0000 "  /F              Fixes errors on the disk.",CR,LF
 0305 U 0000 "  /V              Displays the full path and name of every file on the disk.",CR,LF,CR,LF
 0306 U 0000 "Type CHKDSK without parameters to check the current disk.",CR,LF
+XCOPY    0000bc13 0032
+0004 U 0000 "Does %1 specify a file name",CR,LF
+	"or directory name on the target",CR,LF
+	"(F = file, D = directory)?"
+0005 U 0000 "Press any key to begin copying file(s)"
+0006 U 0000 "Path too long",CR,LF
+0008 U 0000 "Cannot perform a cyclic copy",CR,LF
+0012 U 0000 "Cannot XCOPY from a reserved device",CR,LF
+0021 U 0000 "Invalid number of parameters",CR,LF
+0022 U 0000 "Cannot XCOPY to a reserved device",CR,LF
+0024 U 0000 "File creation error",CR,LF
+0025 U 0000 "Reading source file(s)...",CR,LF
+0026 U 0000 CR,LF
+0027 U 0000 "%1 File(s) copied",CR,LF
+0029 U 0000 "F D "
+0030 U 0000 "%1%2",CR,LF
+0031 U 0000 "%1\%2",CR,LF
+0032 U 0000 "%1",CR,LF
+0033 U 0000 "%1%2 (Y/N)?"
+0034 U 0000 "%1\%2 (Y/N)?"
+0036 U 0000 "Invalid path, not all directories/files copied",CR,LF
+0300 U 0000 "Copies files (except hidden and system files) and directory trees.",CR,LF,CR,LF
+0301 U 0000 "XCOPY source [destination] [/A | /M] [/D:date] [/P] [/S [/E]] [/V] [/W]",CR,LF,CR,LF
+0302 U 0000 "  source       Specifies the file(s) to copy.",CR,LF
+0303 U 0000 "  destination  Specifies the location and/or name of new files.",CR,LF
+0304 U 0000 "  /A           Copies files with the archive attribute set,",CR,LF
+0305 U 0000 "               doesn't change the attribute.",CR,LF
+0306 U 0000 "  /M           Copies files with the archive attribute set,",CR,LF
+0307 U 0000 "               turns off the archive attribute.",CR,LF
+0308 U 0000 "  /D:date      Copies files changed on or after the specified date.",CR,LF
+0309 U 0000 "  /P           Prompts you before creating each destination file.",CR,LF
+0310 U 0000 "  /S           Copies directories and subdirectories except empty ones.",CR,LF
+0311 U 0000 "  /E           Copies any subdirectories, even if empty.",CR,LF
+0312 U 0000 "  /V           Verifies each new file.",CR,LF
+0313 U 0000 "  /W           Prompts you to press a key before copying.",CR,LF
