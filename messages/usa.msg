@@ -1,4 +1,4 @@
-0014
+0017
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -971,3 +971,20 @@ XCOPY    0000bc13 0032
 0311 U 0000 "  /E           Copies any subdirectories, even if empty.",CR,LF
 0312 U 0000 "  /V           Verifies each new file.",CR,LF
 0313 U 0000 "  /W           Prompts you to press a key before copying.",CR,LF
+SYS      0000c3a8 0016
+0007 U 0000 "No room for system on destination disk",CR,LF
+0008 U 0001 "Incompatible system size",CR,LF
+0010 U 0000 "No system on default drive",CR,LF
+0011 U 0000 "Can not specify default drive",CR,LF
+0012 U 0000 "Write failure, diskette unusable",CR,LF 
+0014 U 0000 "Insert system disk in drive %1",CR,LF 
+0016 U 0000 "Not able to SYS to %1 file system",CR,LF
+0018 U 0000 "Source path and target drive cannot be the same"
+0020 U 0000 "Error reading system files from source",CR,LF
+0021 U 0000 "SYS can not operate on target drive",CR,LF
+0025 U 0000 CR,LF,"Could not copy COMMAND.COM onto target disk",CR,LF
+0026 U 0000 "Insufficient memory",CR,LF
+0300 U 0000 "Copies MS-DOS system files and command interperter to a disk you specify.",CR,LF,CR,LF
+0301 U 0000 "SYS [drive1:][path] drive2:",CR,LF,CR,LF
+0302 U 0000 "  [drive1:][path] Specifies the location of the system files.",CR,LF
+0303 U 0000 "  drive2:         Specifies the drive the files are to be coppied to.",CR,LF
