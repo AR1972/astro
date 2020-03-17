@@ -34,9 +34,9 @@ $(pkl):       $(dest)
 
 
 debug.ctl:    debug.skl                 \
-	      $(msg)\$(COUNTRY)-ibm.msg     \
+	      $(msg)\$(COUNTRY).msg     \
 	      makefile
-          buildmsg $(msg)\$(COUNTRY)-ibm debug.skl 
+          buildmsg $(msg)\$(COUNTRY) debug.skl 
 debug.obj:    debug.asm                 \
 	      $(inc)\dossym.inc         \
 	      $(inc)\dosmac.inc         \
