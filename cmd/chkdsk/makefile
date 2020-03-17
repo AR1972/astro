@@ -40,9 +40,9 @@ $(pkl):       $(dest)
 !ENDIF
 
 chkdsk.ctl:   chkdsk.skl                \
-	      $(msg)\$(COUNTRY)-ibm.msg     \
+	      $(msg)\$(COUNTRY).msg     \
 	      makefile
-		  buildmsg $(msg)\$(COUNTRY)-ibm chkdsk.skl
+		  buildmsg $(msg)\$(COUNTRY) chkdsk.skl
 
 chkinit.obj:  chkinit.asm               \
 	      chkequ.inc                \

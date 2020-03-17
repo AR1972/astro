@@ -1,4 +1,4 @@
-0009
+0010
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -859,3 +859,80 @@ ASSIGN   0000aab9 0007
 0303 U 0000 "  y        Specifies the drive that x: will be assigned to.",CR,LF
 0304 U 0000 "  /STATUS  Displays current drive assignments.",CR,LF,CR,LF
 0305 U 0000 "Type ASSIGN without parameters to reset all drive letters to original",CR,LF,"assignments.",CR,LF
+CHKDSK   0000ad00 0076
+0003 U 0000 "Convert lost chains to files (Y/N)?"
+0004 U 0000 "Unrecoverable error in directory"
+0005 U 0000 "Convert directory to file (Y/N)?"
+0007 U 0000 "%1 bytes total disk space"
+0008 U 0000 "%1 bytes in bad sectors"
+0009 U 0000 "%1 bytes in %2 hidden files"
+0010 U 0000 "%1 bytes in %2 directories"
+0011 U 0000 "%1 bytes in %2 user files"
+0012 U 0000 "%1 bytes in %2 recovered files"
+0013 U 0000 "%1 bytes would be in %2 recovered files"
+0014 U 0000 "%1 bytes available on disk"
+0015 U 0000 "%1 total bytes memory"
+0016 U 0000 "%1 bytes free"
+0017 U 0000 "Cannot CHKDSK a network drive"
+0018 U 0000 "Cannot CHKDSK a SUBSTed or ASSIGNed drive"
+0019 U 0000 "Probable non-DOS disk",CR,LF,"Continue (Y/N)?"
+0020 U 0000 "Disk error reading FAT %1",CR,LF
+0021 U 0000 "Directory %1"
+0022 U 0000 "%1 Contains %2 non-contiguous blocks"
+0023 U 0000 "All specified file(s) are contiguous"
+0024 U 0000 "Errors found, F parameter not specified",CR,LF,"Corrections will not be written to disk"
+0025 U 0000 "   Processing cannot continue %1%2"
+0026 U 0000 "   File allocation table bad, drive %1"
+0029 U 0000 "   CHDIR .. failed, trying alternate method"
+0030 U 0001 "   Has invalid allocation unit, file truncated"
+0031 U 0000 "   Invalid sub-directory entry"
+0032 U 0000 "   Does not exist"
+0033 U 0001 "   First allocation unit is invalid, entry truncated"
+0034 U 0000 "   Allocation error, size adjusted"
+0035 U 0000 "   Cannot recover .. entry, processing continued"
+0036 U 0000 "   Directory is totally empty, no . or .."
+0037 U 0000 "   Directory is joined"
+0038 U 0000 "   Cannot recover .. entry"
+0039 U 0000 "   Entry has a bad link"
+0040 U 0000 "   Entry has a bad attribute"
+0041 U 0000 "   Entry has a bad size"
+0042 U 0001 "   Is cross linked on allocation unit %1"
+0043 U 0000 "   Cannot CHDIR to %1,",CR,LF,"tree past this point not processed"
+0044 U 0000 "   tree past this point not processed"
+0045 U 0000 "%1 bytes disk space freed"
+0046 U 0000 "%1 bytes disk space would be freed"
+0047 U 0000 "Volume %1 created %2 %3",CR,LF
+0048 U 0000 "%1 total allocation units on disk"
+0049 U 0000 "%1 bytes in each allocation unit"
+0050 U 0000 "CHKDSK not available on drive %1"
+0051 U 0001 "   Extended Attributes has invalid allocation units, attributes truncated"
+0052 U 0000 "   Extended Attributes allocation error , attributes truncated"
+0053 U 0000 "Invalid parameter"
+0055 U 0000 "Path not found"
+0056 U 0000 "File not found"
+0058 U 0001 "   %1 lost allocation units found in %2 chains."
+0059 U 0000 CR,LF
+0060 U 0000 "   Cannot CHDIR to root",CR,LF
+0061 U 0000 "   Disk error writing FAT %1"
+0062 U 0000 "        %1"
+0063 U 0000 "Invalid current directory"
+0064 U 0000 "%1",CR,LF
+0065 U 0000 "   Insufficient room in root directory",CR,LF,"   Move files from root directory and repeat CHKDSK"
+0066 U 0000 "%1 %2 %3"
+0067 U 0000 "%1 %2, %3"
+0068 U 0000 "%1%2%3%4%5"
+0069 U 0000 "%1%2%3%4"
+0070 U 0000 "%1 available allocation units on disk"
+0075 U 0000 "Quit Windows and try again"
+0076 U 0000 " - Insufficient Memory"
+0077 U 0000 "File allocation table bad"
+0078 U 0000 "CHKDSK cannot check the validity of this drive..."
+0079 U 0000 "%1"
+0080 U 0000 "To run CHKDSK, the drive must not contain..."
+0300 U 0000 "Checks a disk and displays a status report.",CR,LF,CR,LF
+0301 U 0000 "CHKDSK [drive:][[path]filename] [/F] [/V]",CR,LF,CR,LF
+0302 U 0000 "  [drive:][path]  Specifies the drive and directory to check.",CR,LF
+0303 U 0000 "  filename        Specifies the file(s) to check for fragmentation.",CR,LF
+0304 U 0000 "  /F              Fixes errors on the disk.",CR,LF
+0305 U 0000 "  /V              Displays the full path and name of every file on the disk.",CR,LF,CR,LF
+0306 U 0000 "Type CHKDSK without parameters to check the current disk.",CR,LF
