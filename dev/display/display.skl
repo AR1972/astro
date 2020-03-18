@@ -14,7 +14,7 @@
 :class A
 :use 1  COMMON1
 :def 2  "%1 code page driver cannot be initialized",CR,LF,BELL
-:def 8  "Too many code pages specified" ,CR,LF,BELL
+:def 8  "Too many code pages specified",CR,LF,BELL
 :def 12 "Invalid syntax on DISPLAY.SYS code page driver",CR,LF,BELL
 
 :end

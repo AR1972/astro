@@ -38,8 +38,8 @@ $(cpr):       $(dest)
 
 
 printer.ctl:	printer.skl \
-				$(msg)\$(COUNTRY)-ibm.msg
-				buildmsg $(msg)\$(COUNTRY)-ibm printer.skl
+				$(msg)\$(COUNTRY).msg
+				buildmsg $(msg)\$(COUNTRY) printer.skl
 
 cpspm10.obj:	cpspm10.asm cpspequ.inc
 

@@ -1,4 +1,4 @@
-0044
+0045
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -1233,3 +1233,10 @@ RESTORE  0000f19d 0035
 DRIVER   0000fc42 0002
 0002 U 0000 "No drive specified",CR,LF
 0003 U 0000 "Loaded External Disk Driver for Drive %1",CR,LF
+DISPLAY  0000fcc0 0003
+0002 U 0000 "%1 code page driver cannot be initialized",CR,LF,BELL
+0008 U 0000 "Too many code pages specified",CR,LF,BELL
+0012 U 0000 "Invalid syntax on DISPLAY.SYS code page driver",CR,LF,BELL
+PRINTER  0000fd9d 0002
+0002 U 0000 "%1 code page driver cannot be initialized",CR,LF,BELL
+0012 U 0000 "Invalid syntax on PRINTER.SYS code page driver",CR,LF,BELL

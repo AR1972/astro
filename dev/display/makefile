@@ -38,8 +38,8 @@ $(cpr):       $(dest)
 !ENDIF
 
 display.ctl:    display.skl \
-				$(msg)\$(COUNTRY)-ibm.msg
-				buildmsg $(msg)\$(COUNTRY)-ibm display.skl
+				$(msg)\$(COUNTRY).msg
+				buildmsg $(msg)\$(COUNTRY) display.skl
 
 display.obj: display.asm makefile \
         macros.inc  \
