@@ -1,4 +1,4 @@
-0021
+0027
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -1077,3 +1077,39 @@ MODE     0000c969 0079
 0309 U 0000 "Display mode:      MODE [display-adapter][,n]",CR,LF
 	"                   MODE CON[:] [COLS=c] [LINES=n]",CR,LF
 0310 U 0000 "Typematic rate:    MODE CON[:] [RATE=r DELAY=d]",CR,LF
+DISKCOPY 0000d8da 0026
+0002 U 0000 CR,LF
+0004 U 0000 "Do not specify filename(s)",CR,LF
+	"Command Format: DISKCOPY [drive1: [drive2:]] [/1] [/V]",CR,LF
+0005 U 0000 CR,LF,"Invalid drive specification",CR,LF
+	"Specified drive does not exist",CR,LF
+	"or is non-removable",CR,LF
+0006 U 0000 CR,LF,"Cannot DISKCOPY to or from",CR,LF
+	"a network drive",CR,LF
+0007 U 0000 CR,LF,"Formatting while copying",CR,LF
+0008 U 0000 CR,LF,"Insert SOURCE diskette in drive %1:",CR,LF
+0009 U 0000 CR,LF,"Insert TARGET diskette in drive %1:",CR,LF
+0010 U 0000 "Make sure a diskette is inserted into",CR,LF
+	"the drive and the door is closed",CR,LF
+0011 U 0000 CR,LF,"Target diskette may be unusable",CR,LF
+0012 U 0000 CR,LF,"Target diskette unusable",CR,LF
+0016 U 0000 CR,LF,"Copy another diskette (Y/N)? "
+0017 U 0000 CR,LF,"Copying %1 tracks",CR,LF
+	"%2 Sectors per Track, %3 Side(s)",CR,LF
+0018 U 0000 CR,LF,"Drive types or diskette types",CR,LF
+	"not compatible",CR,LF
+0019 U 0000 CR,LF,"Unrecoverable read error on drive %1",CR,LF
+	"Side %2, track %3",CR,LF
+0020 U 0000 CR,LF,"Unrecoverable write error on drive %1",CR,LF
+	"Side %2, track %3",CR,LF
+0021 U 0000 CR,LF,"Copy process ended",CR,LF
+0022 U 0000 CR,LF,"SOURCE diskette bad or incompatible"
+0023 U 0000 CR,LF,"TARGET diskette bad or incompatible"
+0030 U 0000 CR,LF,"TARGET media has lower capacity than SOURCE",CR,LF,"Continue anyway (Y/N)?"
+0031 U 0000 CR,LF,"Press CTRL+C to abort,",CR,LF,"or correct this problem and press any other key to continue . . .",CR,LF
+0300 U 0000 "Copies the contents of one floppy disk to another.",CR,LF,CR,LF
+0301 U 0000 "DISKCOPY [drive1: [drive2:]] [/1] [/V]",CR,LF,CR,LF
+0302 U 0000 "  /1   Copies only the first side of the disk.",CR,LF
+0303 U 0000 "  /V   Verifies that the information is copied correctly.",CR,LF,CR,LF
+0304 U 0000 "The two floppy disks must be the same type.",CR,LF,"You may specify the same drive for drive1 and drive2.",CR,LF
+0032 U 0000 CR,LF,"DISKCOPY cannot copy memory card (CMCDD) devices.",CR,LF

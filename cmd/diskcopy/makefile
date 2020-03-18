@@ -51,9 +51,9 @@ diskcopy.skl: message.skl               \
 
 
 diskcopy.ctl: diskcopy.skl              \
-              $(msg)\$(COUNTRY)-ibm.msg     \
+              $(msg)\$(COUNTRY).msg     \
               makefile
-			  buildmsg $(msg)\$(COUNTRY)-ibm diskcopy.skl
+			  buildmsg $(msg)\$(COUNTRY) diskcopy.skl
 
 diskcopy.obj: diskcopy.asm              \
               makefile                  \
