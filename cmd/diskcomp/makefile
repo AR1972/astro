@@ -33,9 +33,9 @@ $(cpr):       $(dest)
 
 
 diskcomp.ctl: diskcomp.skl              \
-              $(msg)\$(COUNTRY)-ibm.msg     \
+              $(msg)\$(COUNTRY).msg     \
               makefile
-              buildmsg $(msg)\$(COUNTRY)-ibm diskcomp.skl
+              buildmsg $(msg)\$(COUNTRY) diskcomp.skl
 			  
 diskcomp.obj: diskcomp.asm              \
               makefile                  \

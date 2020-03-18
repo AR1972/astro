@@ -1,4 +1,4 @@
-0034
+0036
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -1122,3 +1122,32 @@ TREE     0000e0d2 0008
 0301 U 0000 "TREE [drive:][path] [/F] [/A]",CR,LF,CR,LF
 0302 U 0000 "  /F   Displays the names of the files in each directory.",CR,LF
 0303 U 0000 "  /A   Uses ASCII instead of extended characters.",CR,LF
+DISKCOMP 0000e2c0 0020
+0004 U 0000 "Do not specify filename(s)",CR,LF
+	"Command format: DISKCOMP [drive1: [drive2:]] [/1] [/8]",LF,CR
+0005 U 0000 CR,LF,"Invalid drive specification",CR,LF
+	"Specified drive does not exist",CR,LF
+	"or is non-removable",CR,LF
+0006 U 0000 CR,LF,"Cannot DISKCOMP to or from",CR,LF
+	"a network drive",CR,LF
+0007 U 0000 CR,LF,"Insert FIRST diskette in drive %1:",CR,LF
+0008 U 0000 CR,LF,"Insert SECOND diskette in drive %1:",CR,LF
+0009 U 0000 CR,LF,"FIRST diskette bad or incompatible",CR,LF
+0010 U 0000 CR,LF,"SECOND diskette bad or incompatible",CR,LF
+0014 U 0000 CR,LF,"Compare another diskette (Y/N) ?"
+0015 U 0000 CR,LF,"Comparing %1 tracks",CR,LF
+	"%2 sectors per track, %3 side(s)",CR,LF
+0016 U 0000 CR,LF,"Drive types or diskette types",CR,LF
+	"not compatible",CR,LF
+0017 U 0000 CR,LF,"Unrecoverable read error on drive %2",CR,LF
+	"side %3, track %4",CR,LF
+0018 U 0000 CR,LF,"Compare error on",CR,LF,"side %3, track %4",CR,LF
+0019 U 0000 "Make sure a diskette is inserted into",CR,LF
+	"the drive and the door is closed",CR,LF
+0020 U 0000 CR,LF,"Compare process ended",CR,LF
+0021 U 0000 CR,LF,"Compare OK",CR,LF
+0022 U 0000 CR,LF
+0300 U 0000 "Compares the contents of two floppy disks.",CR,LF,CR,LF
+0301 U 0000 "DISKCOMP [drive1: [drive2:]] [/1] [/8]",CR,LF,CR,LF
+0302 U 0000 "  /1   Compares the first side of the disks.",CR,LF
+0303 U 0000 "  /8   Compares only the first eight sectors of each track.",CR,LF
