@@ -36,9 +36,9 @@ $(cpr):       $(dest)
 
 
 join.ctl:     join.skl                  \
-              $(msg)\$(COUNTRY)-ibm.msg     \
+              $(msg)\$(COUNTRY).msg     \
               makefile
-			  buildmsg $(msg)\$(COUNTRY)-ibm join.skl
+			  buildmsg $(msg)\$(COUNTRY) join.skl
 
 _msgret.obj:  _msgret.asm               \
               $(inc)\msgserv.asm        \

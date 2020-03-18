@@ -1,4 +1,4 @@
-0038
+0041
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -1175,3 +1175,15 @@ GRAPHICS 0000e880 0020
 0016 U 0000 "Printer type not in GRAPHICS profile",CR,LF
 0017 U 0000 "/B invalid with a black and white printer",CR,LF
 0018 U 0000 "Unable to reload with profile supplied",CR,LF
+JOIN     0000ee6a 0009
+0002 U 0001 "Directory not empty",CR,LF
+0300 U 0000 "Joins a disk drive to a directory on another drive.",CR,LF,CR,LF
+0301 U 0000 "JOIN [drive1: [drive2:]path]",CR,LF
+0302 U 0000 "JOIN drive1: /D",CR,LF,CR,LF
+0303 U 0000 "  drive1:        Specifies a disk drive that will appear as a directory on",CR,LF
+	"                 drive2.",CR,LF
+0304 U 0000 "  drive2:        Specifies a drive to which you want to join drive1.",CR,LF
+0305 U 0000 "  path           Specifies the directory to which you want to join drive1. It",CR,LF
+	"                 must be empty and cannot be the root directory.",CR,LF
+0306 U 0000 "  /D             Cancels any previous JOIN commands for the specified drive.",CR,LF,CR,LF
+0307 U 0000 "Type JOIN without parameters to list currently joined drives.",CR,LF
