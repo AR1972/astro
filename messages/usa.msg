@@ -1,4 +1,4 @@
-0027
+0029
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -956,7 +956,7 @@ XCOPY    0000bc13 0032
 0032 U 0000 "%1",CR,LF
 0033 U 0000 "%1%2 (Y/N)?"
 0034 U 0000 "%1\%2 (Y/N)?"
-0036 U 0000 "Invalid path, not all directories/files copied",CR,LF
+0036 U 0000 "Invalid Path, not all directories/files copied",CR,LF
 0300 U 0000 "Copies files (except hidden and system files) and directory trees.",CR,LF,CR,LF
 0301 U 0000 "XCOPY source [destination] [/A | /M] [/D:date] [/P] [/S [/E]] [/V] [/W]",CR,LF,CR,LF
 0302 U 0000 "  source       Specifies the file(s) to copy.",CR,LF
