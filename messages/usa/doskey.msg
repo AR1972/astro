@@ -1,6 +1,6 @@
-01: 07,"An incompatible DOSKey is already installed.$",07
+01: 07,"An incompatible DOSKey is already installed.$"
 
-02: "Cannot change BUFSIZE.$"
+02: 07,"Cannot change BUFSIZE.$"
 
 03: "DOSKey installed.$"
 
