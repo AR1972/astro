@@ -38,8 +38,8 @@ $(cpr):       $(dest)
 
 driver.ctl:   driver.skl                \
               makefile                  \
-              $(msg)\$(COUNTRY)-ibm.msg
-			  buildmsg $(msg)\$(COUNTRY)-ibm driver.skl
+              $(msg)\$(COUNTRY).msg
+			  buildmsg $(msg)\$(COUNTRY) driver.skl
 
 driver.obj:   driver.asm                \
               makefile                  \

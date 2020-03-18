@@ -1,4 +1,4 @@
-0043
+0044
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -1230,3 +1230,6 @@ RESTORE  0000f19d 0035
 0312 U 0000 "  /M       Restores only files changed since the last backup.",CR,LF
 0313 U 0000 "  /N       Restores only files that no longer exist on the destination disk.",CR,LF
 0314 U 0000 "  /D       Displays files on the backup disk that match specifications.",CR,LF
+DRIVER   0000fc42 0002
+0002 U 0000 "No drive specified",CR,LF
+0003 U 0000 "Loaded External Disk Driver for Drive %1",CR,LF
