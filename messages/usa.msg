@@ -1,4 +1,4 @@
-0032
+0034
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -1095,7 +1095,7 @@ DISKCOPY 0000d8da 0026
 0012 U 0000 CR,LF,"Target diskette unusable",CR,LF
 0016 U 0000 CR,LF,"Copy another diskette (Y/N)? "
 0017 U 0000 CR,LF,"Copying %1 tracks",CR,LF
-	"%2 Sectors per Track, %3 Side(s)",CR,LF
+	"%2 sectors per track, %3 side(s)",CR,LF
 0018 U 0000 CR,LF,"Drive types or diskette types",CR,LF
 	"not compatible",CR,LF
 0019 U 0000 CR,LF,"Unrecoverable read error on drive %1",CR,LF
