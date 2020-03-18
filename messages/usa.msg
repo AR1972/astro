@@ -1,4 +1,4 @@
-0029
+0032
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -1113,3 +1113,12 @@ DISKCOPY 0000d8da 0026
 0303 U 0000 "  /V   Verifies that the information is copied correctly.",CR,LF,CR,LF
 0304 U 0000 "The two floppy disks must be the same type.",CR,LF,"You may specify the same drive for drive1 and drive2.",CR,LF
 0032 U 0000 CR,LF,"DISKCOPY cannot copy memory card (CMCDD) devices.",CR,LF
+TREE     0000e0d2 0008
+0002 U 0000 "Directory PATH listing for Volume %1",CR,LF
+0003 U 0000 "Directory PATH listing",CR,LF
+0004 U 0000 "No sub-directories exist",CR,LF,LF
+0007 U 0000 "юдцЁ"
+0300 U 0000 "Graphically displays the directory structure of a drive or path.",CR,LF,CR,LF
+0301 U 0000 "TREE [drive:][path] [/F] [/A]",CR,LF,CR,LF
+0302 U 0000 "  /F   Displays the names of the files in each directory.",CR,LF
+0303 U 0000 "  /A   Uses ASCII instead of extended characters.",CR,LF
