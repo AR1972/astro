@@ -1,4 +1,4 @@
-0036
+0038
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -1151,3 +1151,27 @@ DISKCOMP 0000e2c0 0020
 0301 U 0000 "DISKCOMP [drive1: [drive2:]] [/1] [/8]",CR,LF,CR,LF
 0302 U 0000 "  /1   Compares the first side of the disks.",CR,LF
 0303 U 0000 "  /8   Compares only the first eight sectors of each track.",CR,LF
+GRAPHICS 0000e880 0020
+0300 U 0000 "Loads a program that can print graphics.",CR,LF,CR,LF
+0301 U 0000 "GRAPHICS [type] [[drive:][path]filename] [/R] [/B] [/LCD]",CR,LF
+	"  [/PRINTBOX:STD | /PRINTBOX:LCD]",CR,LF,CR,LF
+0302 U 0000 "  type         Specifies a printer type (see User's Guide and Reference).",CR,LF
+0303 U 0000 "  [drive:][path]filename",CR,LF
+	"               Specifies the file containing information on supported printers.",CR,LF
+0304 U 0000 "  /R           Prints white on black as seen on the screen.",CR,LF
+0305 U 0000 "  /B           Prints the background in color for COLOR4 and COLOR8 printers.",CR,LF
+0306 U 0000 "  /LCD         Prints using LCD aspect ratio.",CR,LF
+0307 U 0000 "  /PRINTBOX:STD | /PRINTBOX:LCD",CR,LF
+	"               Specifies the print-box size, either STD or LCD.",CR,LF
+0005 U 0000 "Invalid parameter:  %1",CR,LF
+0007 U 0000 "Duplicate parameters not allowed",CR,LF
+0009 U 0000 "Cannot find GRAPHICS profile",CR,LF
+0010 U 0000 "Required profile statement missing before line %1",CR,LF
+0011 U 0000 "Invalid profile statement on line %1",CR,LF
+0012 U 0000 "Profile statement out of sequence on line %1",CR,LF
+0013 U 0000 "Error reading GRAPHICS profile",CR,LF
+0014 U 0000 "Syntax errors in GRAPHICS profile",CR,LF
+0015 U 0000 "Printbox ID not in GRAPHICS profile",CR,LF
+0016 U 0000 "Printer type not in GRAPHICS profile",CR,LF
+0017 U 0000 "/B invalid with a black and white printer",CR,LF
+0018 U 0000 "Unable to reload with profile supplied",CR,LF
