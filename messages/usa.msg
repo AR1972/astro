@@ -1,4 +1,4 @@
-0019
+0021
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -996,3 +996,84 @@ MORE     0000c79e 0007
 0302 U 0000 "command-name | MORE",CR,LF,CR,LF
 0303 U 0000 "  [drive:][path]filename  Specifies a file to display one screen at a time.",CR,LF
 0304 U 0000 "  command-name            Specifies a command whose output will be displayed.",CR,LF
+MODE     0000c969 0079
+0003 U 0000 CR,LF,"Must specify COM1, COM2, COM3 or COM4",CR,LF
+0004 U 0000 CR,LF,"Resident portion of MODE loaded",CR,LF
+0005 U 0000 CR,LF,"Illegal device name",CR,LF
+0006 U 0000 CR,LF,"Printer error",CR,LF
+0007 U 0000 CR,LF,"LPT%1: set for 80",CR,LF
+0008 U 0000 CR,LF,"LPT%1: set for 132",CR,LF
+0009 U 0000 CR,LF,"Printer lines per inch set",CR,LF
+0010 U 0000 CR,LF,"Invalid baud rate specified",CR,LF
+0011 U 0000 CR,LF,"COM%1: %2,%3,%4,%5,%6",CR,LF
+0012 U 0000 "0123456789"
+0013 U 0001 CR,LF,"Do you see the %1? (Y/N) "
+0015 U 0000 "LPT%1: rerouted to COM%2:",CR,LF
+0016 U 0000 "LPT%1: not rerouted",CR,LF
+0017 U 0000 CR,LF,"%1 retry on parallel printer time-out",CR,LF
+0018 U 0000 CR,LF,"      Unable to shift screen %1",CR,LF
+0020 U 0000 CR,LF,"Invalid number of parameters",CR,LF
+0021 U 0000 CR,LF,"NET 042: Unable to do requested command",CR,LF
+0022 U 0001 CR,LF,"Infinite retry not supported on network printer",CR,LF
+0023 U 0001 CR,LF,"Failure to access code page font file",cr,lf
+0024 U 0000 CR,LF,"Failure to access device: %1",CR,LF
+0025 U 0001 CR,LF,"Device or code page missing from font file",CR,LF
+0026 U 0000 CR,LF,"Font file contents invalid",CR,LF
+0027 U 0001 CR,LF,"Previously prepared code page replaced",CR,LF
+0028 U 0001 CR,LF,"Active code page for device %1 is %2",CR,LF
+0029 U 0000 CR,LF,"Device %1 not prepared",CR,LF
+0030 U 0001 "%1 code pages:",CR,LF
+0031 U 0001 "  code page %1",CR,LF
+0032 U 0001 CR,LF,"MODE %1 code page function completed",CR,LF
+0033 U 0002 CR,LF,"Current code page settings:",CR,LF
+0034 U 0002 "   %1 - %2 code page",CR,LF
+0035 U 0002 "  code page not prepared",CR,LF
+0036 U 0002 "Code page operation not supported on this device",CR,LF
+0037 U 0002 "No code page has been selected",cr,lf
+0038 U 0002 "Device error during %1",CR,LF
+0039 U 0002 "Code page not prepared",CR,LF
+0040 U 0002 CR,LF,"Current keyboard does not support this code page",CR,LF
+0041 U 0002 CR,LF,"Error during read of font file",CR,LF
+0042 U 0002 CR,LF,"Unable to perform refresh operation",CR,LF
+0043 U 0002 CR,LF
+0044 U 0002 CR,LF,"Status for device %1:",CR,LF
+0045 U 0002 "------------------"
+0046 U 0002 "----",CR,LF
+0047 U 0002 "-----",CR,LF
+0048 U 0002 "LINES=%1",CR,LF
+0049 U 0002 "COLUMNS=%1",CR,LF
+0050 U 0002 CR,LF,"RATE and DELAY must be specified together",CR,LF
+0051 U 0002 "RATE=%1",CR,LF
+0052 U 0002 "DELAY=%1",CR,LF
+0053 U 0002 CR,LF,"Function not supported on this computer - %1",CR,LF
+0054 U 0002 CR,LF,"Required font not loaded",CR,LF
+0055 U 0002 CR,LF,"ANSI.SYS must be installed to perform requested function",CR,LF
+0056 U 0002 CR,LF,"Baud rate required",CR,LF
+0057 U 0002 "RETRY=%1",CR,LF
+0059 U 0002 "rightmost 9",0
+0060 U 0002 "leftmost 0",0
+0061 U 0002 "No",0
+0062 U 0002 "Infinite",0
+0063 U 0002 "left",0
+0064 U 0002 "right",0
+0065 U 0002 "Hardware",0
+0066 U 0002 "Prepared",0
+0067 U 0002 "status",0
+0068 U 0002 "prepare",0
+0069 U 0002 "select",0
+0070 U 0002 "refresh",0
+0071 U 0002 "write of font file to device",0
+0072 U 0002 "selected",0
+0073 U 0002 "system",0
+0300 U 0000 "Configures system devices.",CR,LF,CR,LF
+0301 U 0000 "Printer port:      MODE LPTn[:] [COLS=c] [LINES=l] [RETRY=r]",CR,LF
+0302 U 0000 "Serial port:       MODE COMm[:] [BAUD=b] [PARITY=p] [DATA=d] [STOP=s] [RETRY=r]",CR,LF
+0303 U 0000 "Device Status:     MODE [device] [/STATUS]",CR,LF
+0304 U 0000 "Redirect printing: MODE LPTn[:]=COMm[:]",CR,LF
+0305 U 0000 "Prepare code page: MODE device CP PREPARE=((yyy[...]) [drive:][path]filename)",CR,LF
+0306 U 0000 "Select code page:  MODE device CP SELECT=yyy",CR,LF
+0307 U 0000 "Refresh code page: MODE device CP REFRESH",CR,LF
+0308 U 0000 "Code page status:  MODE device CP [/STATUS]",CR,LF
+0309 U 0000 "Display mode:      MODE [display-adapter][,n]",CR,LF
+	"                   MODE CON[:] [COLS=c] [LINES=n]",CR,LF
+0310 U 0000 "Typematic rate:    MODE CON[:] [RATE=r DELAY=d]",CR,LF
