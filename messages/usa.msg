@@ -1,4 +1,4 @@
-0017
+0019
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -988,3 +988,11 @@ SYS      0000c3a8 0016
 0301 U 0000 "SYS [drive1:][path] drive2:",CR,LF,CR,LF
 0302 U 0000 "  [drive1:][path] Specifies the location of the system files.",CR,LF
 0303 U 0000 "  drive2:         Specifies the drive the files are to be coppied to.",CR,LF
+MORE     0000c79e 0007
+0002 U 0000 "-- More --"
+0003 U 0000 "Too many arguments in command line"
+0300 U 0000 "Displays output one screen at a time.",CR,LF,CR,LF
+0301 U 0000 "MORE < [drive:][path]filename",CR,LF
+0302 U 0000 "command-name | MORE",CR,LF,CR,LF
+0303 U 0000 "  [drive:][path]filename  Specifies a file to display one screen at a time.",CR,LF
+0304 U 0000 "  command-name            Specifies a command whose output will be displayed.",CR,LF

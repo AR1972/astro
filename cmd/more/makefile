@@ -39,9 +39,9 @@ $(pkl):       $(dest)
 
 
 more.ctl:     more.skl                  \
-	      $(msg)\$(COUNTRY)-ibm.msg     \
+	      $(msg)\$(COUNTRY).msg     \
 	      makefile
-		  buildmsg $(msg)\$(COUNTRY)-ibm more.skl
+		  buildmsg $(msg)\$(COUNTRY) more.skl
 
 more.obj:     more.asm                  \
 	      more.inc                  \
