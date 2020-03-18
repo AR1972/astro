@@ -1,4 +1,4 @@
-0041
+0043
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -1187,3 +1187,46 @@ JOIN     0000ee6a 0009
 	"                 must be empty and cannot be the root directory.",CR,LF
 0306 U 0000 "  /D             Cancels any previous JOIN commands for the specified drive.",CR,LF,CR,LF
 0307 U 0000 "Type JOIN without parameters to list currently joined drives.",CR,LF
+RESTORE  0000f19d 0035
+0002 U 0000 CR,LF,"Source and target drives are the same",CR,LF
+0003 U 0000 CR,LF,"Invalid number of parameters",CR,LF
+0006 U 0000 CR,LF,"Invalid drive specification",CR,LF
+0007 U 0000 CR,LF,"WARNING! No files were found to restore",CR,LF
+0008 U 0000 CR,LF,"Insert backup diskette %1 in drive %2:",CR,LF
+0009 U 0000 CR,LF,"Insert restore target in drive %1:",CR,LF
+0011 U 0000 CR,LF,"WARNING! Diskette is out of sequence",CR,LF
+	"Replace diskette or continue if OK",CR,LF
+0012 U 0000 CR,LF,"The last file was not restored",CR,LF
+0013 U 0000 CR,LF,"*** Files were backed up %1 ***",CR,LF
+0014 U 0000 CR,LF,"Source does not contain backup files",CR,LF
+0015 U 0000 CR,LF,"Insufficient memory",CR,LF
+0016 U 0000 CR,LF,"WARNING! File %1",CR,LF
+	"is a read-only file",CR,LF
+	"Replace the file (Y/N)?",CR,LF
+0017 U 0000 CR,LF,"Restore file sequence error",CR,LF
+0018 U 0000 CR,LF,"File creation error",CR,LF
+0019 U 0000 CR,LF,"Insufficient disk space",CR,LF
+0020 U 0000 CR,LF,"*** Not able to restore file ***",CR,LF
+0021 U 0000 CR,LF,"*** Restoring files from drive %1: ***",CR,LF
+0022 U 0000 CR,LF,"WARNING! File %1",CR,LF
+	"was changed after it was backed up",CR,LF
+	"Replace the file (Y/N)?",CR,LF
+0023 U 0000 "Diskette: %1",CR,LF
+0032 U 0000 CR,LF,"*** Listing files on drive %1: ***",CR,LF
+0300 U 0000 "Restores files that were backed up by using the BACKUP command.",CR,LF,CR,LF
+0301 U 0000 "RESTORE drive1: drive2:[path[filename]] [/S] [/P] [/B:date] [/A:date] [/E:time]",CR,LF
+0302 U 0000 "  [/L:time] [/M] [/N] [/D]",CR,LF,CR,LF
+0303 U 0000 "  drive1:  Specifies the drive on which the backup files are stored.",CR,LF
+0304 U 0000 "  drive2:[path[filename]]",CR,LF
+	"           Specifies the file(s) to restore.",CR,LF
+0305 U 0000 "  /S       Restores files in all subdirectories in the path.",CR,LF
+0306 U 0000 "  /P       Prompts before restoring read-only files or files changed since",CR,LF
+0307 U 0000 "           the last backup (if appropriate attributes are set).",CR,LF
+0308 U 0000 "  /B       Restores only files last changed on or before the specified date.",CR,LF
+0309 U 0000 "  /A       Restores only files changed on or after the specified date.",CR,LF
+	"  /E       Restores only files last changed at or earlier than the specified",CR,LF
+0310 U 0000 "           time.",CR,LF
+0311 U 0000 "  /L       Restores only files changed at or later than the specified time.",CR,LF
+0312 U 0000 "  /M       Restores only files changed since the last backup.",CR,LF
+0313 U 0000 "  /N       Restores only files that no longer exist on the destination disk.",CR,LF
+0314 U 0000 "  /D       Displays files on the backup disk that match specifications.",CR,LF

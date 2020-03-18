@@ -49,8 +49,8 @@ _parse.obj :  _parse.asm                \
 
 restore.ctl:  restore.skl               \
               makefile                  \
-              $(msg)\$(COUNTRY)-ibm.msg
-			  buildmsg $(msg)\$(COUNTRY)-ibm restore.skl
+              $(msg)\$(COUNTRY).msg
+			  buildmsg $(msg)\$(COUNTRY) restore.skl
 
 _msgret.obj:  _msgret.asm               \
               makefile                  \
