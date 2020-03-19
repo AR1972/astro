@@ -26,7 +26,7 @@ char *msg_tbl[] = {
 };
 
 enum{
-	BAD_DOS_VERSION,
+	BAD_DOS_VERSION = 1,
 	TRANSLATED_DRIVE,
 	LABEL_SYNTAX_ERR,
 	HAS_NO_LABEL,
