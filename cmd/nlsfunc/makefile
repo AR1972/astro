@@ -37,9 +37,9 @@ $(cprs)\$(dest): $(dest)
 
 
 nlsfunc.ctl:  nlsfunc.skl               \
-              $(msg)\$(COUNTRY)-ibm.msg     \
+              $(msg)\$(COUNTRY).msg     \
               makefile
-			  buildmsg $(msg)\$(COUNTRY)-ibm nlsfunc.skl
+			  buildmsg $(msg)\$(COUNTRY) nlsfunc.skl
 
 
 nlsfunc.obj:  nlsfunc.asm               \

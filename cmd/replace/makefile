@@ -43,9 +43,9 @@ $(cpr):       $(dest)
 
 
 replace.ctl:  replace.skl               \
-              $(msg)\$(COUNTRY)-ibm.msg     \
+              $(msg)\$(COUNTRY).msg     \
               makefile
-			  buildmsg $(msg)\$(COUNTRY)-ibm replace.skl
+			  buildmsg $(msg)\$(COUNTRY) replace.skl
 
 _msgret.obj:  _msgret.asm               \
               $(inc)\msgserv.asm        \

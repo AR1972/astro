@@ -1,4 +1,4 @@
-0045
+0069
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -1240,3 +1240,427 @@ DISPLAY  0000fcc0 0003
 PRINTER  0000fd9d 0002
 0002 U 0000 "%1 code page driver cannot be initialized",CR,LF,BELL
 0012 U 0000 "Invalid syntax on PRINTER.SYS code page driver",CR,LF,BELL
+RECOVER  0000fe42 0017
+0002 U 0000 CR,LF,"File not found",CR,LF
+0003 U 0000 CR,LF,"Cannot RECOVER an ASSIGNed or SUBSTed drive",CR,LF
+0004 U 0000 CR,LF,"Invalid drive or file name",CR,LF
+0005 U 0000 CR,LF,"WARNING - directory full",CR,LF
+0006 U 0000 CR,LF,"Cannot RECOVER a network drive", CR,LF
+0008 U 0000 CR,LF,"%1 file(s) recovered",CR,LF
+0009 U 0000 CR,LF,"%1 of %2 bytes recovered",CR,LF
+0010 U 0000 CR,LF,"Press any key to begin recovery of the",CR,LF,"file(s) on drive %1",CR,LF,CR,LF
+0011 U 0000 CR,LF,"Cannot read file allocation table",CR,LF
+0012 U 0000 CR,LF,"Cannot write file allocation table",CR,LF
+0013 U 0000 CR,LF
+0300 U 0000 "Recovers readable information from a bad or defective disk.",CR,LF,CR,LF
+0301 U 0000 "RECOVER [drive:][path]filename",CR,LF
+0302 U 0000 "RECOVER drive:",CR,LF,CR,LF
+0303 U 0000 "Consult your DOS documentation before using the RECOVER command.",CR,LF
+0400 U 0000 "All files in directory will be reconstructed", CR, LF, "Are  you sure (Y/N)? "
+0401 U 0000 "The entire drive will be reconstructed", CR, LF, "Are  you sure (Y/N)? "
+EXE2BIN  00010285 0012
+0002 U 0000 "Insufficient memory",CR,LF
+0003 U 0000 "Cannot find messages",CR,LF
+0004 U 0000 "Access denied",CR,LF
+0005 U 0000 "File cannot be converted",CR,LF
+0006 U 0000 "File not found",CR,LF
+0007 U 0000 "File creation error",CR,LF
+0008 U 0000 "Fix-ups needed - base segment (hex):"
+0012 U 0000 "File name must be specified",CR,LF
+0300 U 0000 "Converts .EXE (executable) files to binary format.",CR,LF,CR,LF
+0301 U 0000 "EXE2BIN [drive1:][path1]input-file [[drive2:][path2]output-file]",CR,LF,CR,LF"
+0302 U 0000 "  input-file   Specifies the .EXE file to be converted.",CR,LF
+0303 U 0000 "  output-file  Specifies the binary file to be created.",CR,LF
+NLSFUNC  00010538 0003
+0300 U 0000 "Loads country-specific information.",CR,LF,CR,LF
+0301 U 0000 "NLSFUNC [[drive:][path]filename]",CR,LF,CR,LF
+0302 U 0000 "  [drive:][path]filename   Specifies the file containing country-specific",CR,LF
+	"                           information.",CR,LF
+SHARE    0001065c 0005
+0300 U 0000 "Installs file-sharing and locking capabilities on your hard disk.",CR,LF,CR,LF
+0301 U 0000 "SHARE [/F:space] [/L:locks]",CR,LF,CR,LF
+0302 U 0000 "  /F:space   Allocates file space (in bytes) for file-sharing information.",CR,LF
+0303 U 0000 "  /L:locks   Sets the number of files that can be locked at one time.",CR,LF
+0003 U 0000 "SHARE cannot be installed under DOSSHELL."
+REPLACE  000107fc 0019
+0003 U 0000 CR,LF,"No files replaced",CR,LF
+0004 U 0000 CR,LF,"No files added",CR,LF
+0013 U 0000 CR,LF,"Replacing %1",CR,LF
+0014 U 0000 CR,LF,"Adding %1",CR,LF
+0015 U 0000 CR,LF,"%1 file(s) replaced",CR,LF
+0016 U 0000 CR,LF,"%1 file(s) added",CR,LF
+0017 U 0000 CR,LF,"No files found - %1",CR,LF
+0022 U 0000 CR,LF,"Replace %1? (Y/N)"
+0023 U 0000 CR,LF,"Add %1? (Y/N)"
+0300 U 0000 "Replaces files.",CR,LF,CR,LF
+0301 U 0000 "REPLACE [drive1:][path1]filename [drive2:][path2] [/A] [/P] [/R] [/W]",CR,LF
+	"REPLACE [drive1:][path1]filename [drive2:][path2] [/P] [/R] [/S] [/W] [/U]",CR,LF,CR,LF
+0302 U 0000 "  [drive1:][path1]filename Specifies the source file or files.",CR,LF
+0303 U 0000 "  [drive2:][path2]         Specifies the directory where files are to be",CR,LF
+	"                           replaced.",CR,LF
+0304 U 0000 "  /A                       Adds new files to destination directory. Cannot",CR,LF
+	"                           use with /S or /U switches.",CR,LF
+0305 U 0000 "  /P                       Prompts for confirmation before replacing a file or",CR,LF
+	"                           adding a source file.",CR,LF
+0306 U 0000 "  /R                       Replaces read-only files as well as unprotected",CR,LF
+	"                           files.",CR,LF
+0307 U 0000 "  /S                       Replaces files in all subdirectories of the",CR,LF
+	"                           destination directory. Cannot use with the /A",CR,LF
+	"                           switch.",CR,LF
+0308 U 0000 "  /W                       Waits for you to insert a disk before beginning.",CR,LF
+0309 U 0000 "  /U                       Replaces (updates) only files that are older than",CR,LF
+	"                           source files. Cannot use with the /A switch.",CR,LF
+PRINT    00010f0b 0034
+0002 U 0000 CR,LF
+0006 U 0000 " error reading file",CR,LF,"$"
+0007 U 0000 "File not found",CR,LF,"$"
+0008 U 0000 CR,LF,LF,"File $"
+0009 U 0000 " canceled by operator$"
+0010 U 0000 CR,LF,LF,"All files canceled by operator$"
+0011 U 0000 "File allocation table bad drive "
+0012 U 0000 "A.",CR,LF,"$"
+0013 U 0000 "List output is not assigned to a device",CR,LF
+0014 U 0000 "Resident part of PRINT installed",CR,LF
+0015 U 0000 "Cannot use PRINT - Use NET PRINT",CR,LF
+0017 U 0000 "PRINT queue is full",CR,LF
+0018 U 0000 "PRINT queue is empty",CR,LF
+0019 U 0000 "Access denied",CR,LF
+0020 U 0000 "Invalid drive specification",CR,LF
+0021 U 0000 "Errors on list device indicate that it",CR,LF
+	"may be off-line. Please check it.",CR,LF
+0022 U 0000 CR,LF,LF,"  %1 is currently being printed",CR,LF
+0023 U 0000 "  %1 is in queue",CR,LF
+0025 U 0001 "Pathname too long",CR,LF
+0026 U 0001 "File not in PRINT queue",CR,LF
+0027 U 0000 "Name of list device [PRN]: "
+0300 U 0000 "Prints a text file while you are using other MS-DOS commands.",CR,LF,CR,LF
+0301 U 0000 "PRINT [/D:device] [/B:size] [/U:ticks1] [/M:ticks2] [/S:ticks3]",CR,LF
+0302 U 0000 "      [/Q:qsize] [/T] [[drive:][path]filename[ ...]] [/C] [/P]",CR,LF,CR,LF
+0303 U 0000 "  /D:device   Specifies a print device.",CR,LF
+0304 U 0000 "  /B:size     Sets the internal buffer size, in bytes.",CR,LF
+0305 U 0000 "  /U:ticks1   Waits the specified maximum number of clock ticks for the printer",CR,LF
+	"              to be available.",CR,LF
+0306 U 0000 "  /M:ticks2   Specifies the maximum number of clock ticks it takes to print a",CR,LF
+	"              character.",CR,LF
+0307 U 0000 "  /S:ticks3   Allocates the scheduler the specified number of clock ticks for",CR,LF
+	"              background printing.",CR,LF
+0308 U 0000 "  /Q:qsize    Specifies the maximum number of files allowed in the print queue.",CR,LF
+0309 U 0000 "  /T          Removes all files from the print queue.",CR,LF
+0310 U 0000 "  /C          Cancels printing of the preceding filename and subsequent",CR,LF
+	"              filenames.",CR,LF
+0311 U 0000 "  /P          Adds the preceding filename and subsequent filenames to the print",CR,LF
+	"              queue.",CR,LF,CR,LF
+0312 U 0000 "Type PRINT without parameters to display the contents of the print queue.",CR,LF
+FORMAT   0001183d 0084
+0002 U 0000 CR,"%1 percent of disk formatted                                        ",CR
+0004 U 0003 CR,"Format complete                                                     ",CR,LF
+0007 U 0000 "Insert new diskette for drive %1:",CR,LF
+0009 U 0000 "Re-insert diskette for drive %1:",CR,LF
+0011 U 0000 CR,"Format not supported on drive %1:", CR,LF
+0012 U 0000 CR,"Invalid device parameters from device driver",CR,LF
+0013 U 0000 CR,"Error in IOCTL call         ",CR,LF
+0014 U 0000 CR,"Not a block device          ",CR,LF
+0015 U 0000 CR,"Error writing FAT           ",CR,LF
+0016 U 0000 CR,"Error writing directory",CR,LF
+0017 U 0000 CR,"Cannot format an ASSIGNed or SUBSTed drive. ",CR,LF
+0018 U 0000 CR,"Cannot find System Files",CR,LF
+0019 U 0000 CR,"Cannot FORMAT a network drive",CR,LF
+0021 U 0000 CR,"Parameters not supported",CR,LF
+0022 U 0003 CR,"Format terminated                                                   ",CR,LF
+0023 U 0000 CR,"Disk unsuitable for system disk",CR,LF
+0024 U 0000 CR,"Invalid media or Track 0 bad - disk unusable",CR,LF
+0025 U 0000 CR,"Unable to write BOOT                        ",CR,LF
+0026 U 0000 CR,"Error reading directory",CR,LF
+0028 U 0000 CR,"and press ENTER when ready..."
+0029 U 0000 CR,"Invalid Volume ID                           ",CR,LF
+0031 U 0000 CR,"Enter current volume label for drive %1: "
+0032 U 0000 CR,"Parameters not compatible",CR,LF,"with fixed disk",CR,LF
+0035 U 0000 CR,"Error reading partition table",CR,LF
+0037 U 0000 CR,"Format broken",CR,LF
+0038 U 0000 CR,"Format not available on drive %1",CR,LF
+0039 U 0000 CR,"Non-System disk or disk error",CR,LF
+0040 U 0000 CR,"Bad Partition Table        ",CR,LF
+0041 U 0000 CR,"Parameters not supported by drive",CR,LF
+0042 U 0000 CR,LF
+0043 U 0000 CR,LF,LF
+0044 U 0000 CR,"Insert DOS disk in drive %1:",CR,LF
+0045 U 0000 CR,LF,"WARNING, ALL DATA ON NON-REMOVABLE DISK",CR,LF
+	"DRIVE %1: WILL BE LOST!",CR,LF
+	"Proceed with Format (Y/N)?"
+0046 U 0000 CR,"Format another (Y/N)?"
+0047 U 0000 CR,"Error reading partition table",CR,LF
+0048 U 0000 CR,"Error writing partition table",CR,LF
+0049 U 0000 CR,"Parameters not compatible", CR,LF
+0050 U 0000 "%1 allocation units available on disk",CR,LF
+0051 U 0000 "%1 bytes in each allocation unit",CR,LF
+0052 U 0000 CR, "Error writing partition table",CR,LF
+0053 U 0000 CR,"Same parameter entered twice",CR,LF
+0054 U 0000 CR,"Must enter both /T and /N parameters",CR,LF
+0055 U 0000 CR,"Attempting to recover allocation unit %1                          ",CR
+0056 U 0000 CR,"There is not enough room to create a restore file",CR,LF
+	"You will not be able to use the unformat utility",CR,LF
+	"Proceed with Format (Y/N)?"
+0057 U 0000 CR,"There is not enough disk space for system files ",CR,LF
+0058 U 0000 CR,"Disk was formatted under a different version of DOS",CR,LF
+	"This disk cannot be unformatted",CR,LF
+	"Proceed with Format (Y/N)?"
+0059 U 0000 CR,"There was an error creating the format recovery file",CR,LF
+	"This disk cannot be unformatted",CR,LF
+	"Proceed with Format (Y/N)?"
+0060 U 0000 CR,"Volume label is not supported with /8 parameter",CR,LF
+0070 U 0000 CR,"Insufficient memory to load system files",CR,LF
+0071 U 0000 CR,"Insufficient memory",CR,LF
+0075 U 0000 CR,"QuickFormat another (Y/N)?"
+0076 U 0000 CR,"Existing format differs from that specified",CR,LF
+	"This disk cannot be unformatted",CR,LF
+	"Proceed with Format (Y/N)?"
+0077 U 0000 CR,"Invalid existing format",CR,LF
+	"This disk cannot be QuickFormatted",CR,LF
+	"Proceed with Unconditional Format (Y/N)?"
+0078 U 0000 CR,"Formatting %1K",CR,LF
+0079 U 0000 CR,"Formatting %1M",CR,LF
+0080 U 0000 CR,"Formatting %1.%2M",CR,LF
+0081 U 0000 CR,"WARNING: This disk cannot be unformatted if system files are transferred",CR,LF
+	"Proceed with system transfer anyway (Y/N)?"
+0082 U 0000 CR,"Verifying %1K",CR,LF
+0083 U 0000 CR,"Verifying %1M",CR,LF
+0084 U 0000 CR,"Verifying %1.%2M",CR,LF
+0085 U 0000 CR,"Saving UNFORMAT information",CR,LF
+0086 U 0000 CR,"Checking existing disk format",CR,LF
+0087 U 0000 CR,"QuickFormatting %1K",CR,LF
+0088 U 0000 CR,"QuickFormatting %1M",CR,LF
+0089 U 0000 CR,"QuickFormatting %1.%2M",CR,LF
+0090 U 0000 'You must use "DBLSPACE/FORMAT %1:" to format that drive',CR,LF,0
+0091 U 0000 CR,"WARNING:  Disk %1: is a host drive, format (Y/N)?"
+0300 U 0000 "Formats a disk for use with MS-DOS.",CR,LF,CR,LF
+0301 U 0000 "FORMAT drive: [/V[:label]] [/Q] [/U] [/F:size] [/B | /S]",CR,LF
+0302 U 0000 "FORMAT drive: [/V[:label]] [/Q] [/U] [/T:tracks /N:sectors] [/B | /S]",CR,LF
+0303 U 0000 "FORMAT drive: [/V[:label]] [/Q] [/U] [/1] [/4] [/B | /S]",CR,LF
+0304 U 0000 "FORMAT drive: [/Q] [/U] [/1] [/4] [/8] [/B | /S]",CR,LF,CR,LF
+0305 U 0000 "  /V[:label]  Specifies the volume label.",CR,LF
+0306 U 0000 "  /Q          Performs a quick format.",CR,LF
+0307 U 0000 "  /U          Performs an unconditional format.",CR,LF
+0308 U 0000 "  /F:size     Specifies the size of the floppy disk to format (such ",CR,LF
+0309 U 0000 "              as 160, 180, 320, 360, 720, 1.2, 1.44, 2.88).",CR,LF
+0310 U 0000 "  /B          Allocates space on the formatted disk for system files.",CR,LF
+0311 U 0000 "  /S          Copies system files to the formatted disk.",CR,LF
+0312 U 0000 "  /T:tracks   Specifies the number of tracks per disk side.",CR,LF
+0313 U 0000 "  /N:sectors  Specifies the number of sectors per track.",CR,LF
+0314 U 0000 "  /1          Formats a single side of a floppy disk.",CR,LF
+0315 U 0000 "  /4          Formats a 5.25-inch 360K floppy disk in a high-density drive.",CR,LF
+0316 U 0000 "  /8          Formats eight sectors per track.",CR,LF
+FIND     00012e7a 0012
+0004 U 0000 "FIND: "
+0300 U 0000 "Searches for a text string in a file or files.",CR,LF,CR,LF
+0301 U 0000 'FIND [/V] [/C] [/N] [/I] "string" [[drive:][path]filename[ ...]]',CR,LF,CR,LF
+0302 U 0000 "  /V        Displays all lines NOT containing the specified string.",CR,LF
+0303 U 0000 "  /C        Displays only the count of lines containing the string.",CR,LF
+0304 U 0000 "  /N        Displays line numbers with the displayed lines.",CR,LF
+0305 U 0000 "  /I        Ignores the case of characters when searching for the string.",CR,LF
+0306 U 0000 '  "string"  Specifies the text string to find.',CR,LF
+0307 U 0000 "  [drive:][path]filename",CR,LF
+0308 U 0000 "            Specifies a file or files to search.",CR,LF,CR,LF
+0309 U 0000 "If a pathname is not specified, FIND searches the text typed at the prompt",CR,LF
+0310 U 0000 "or piped from another command.",CR,LF
+EDLIN    00013202 0035
+0006 U 0000 "*"
+0007 U 0000 "Invalid drive or file name",CR,LF
+0008 U 0000 "File name must be specified",CR,LF
+0010 U 0000 "File is READ-ONLY",CR,LF
+0011 U 0000 "File Creation Error",CR,LF
+0012 U 0000 "Too many files open",CR,LF
+0013 U 0000 "Read error in:",CR,LF,"%1",CR,LF
+0014 U 0000 "Cannot edit .BAK file--rename file",CR,LF
+0015 U 0000 "No room in directory for file",CR,LF
+0016 U 0000 "Disk full. Edits lost.",CR,LF
+0017 U 0000 "File not found",CR,LF
+0018 U 0000 "Entry error",CR,LF
+0019 U 0000 "New file",CR,LF
+0020 U 0000 "Not found",CR,LF
+0021 U 0000 "O.K.? "
+0022 U 0000 "Line too long",CR,LF
+0023 U 0000 "End of input file",CR,LF
+0024 U 0000 "Abort edit (Y/N)? "
+0025 U 0000 "Must specify destination line number",CR,LF
+0026 U 0000 "Not enough room to merge the entire file",CR,LF
+0027 U 0000 CR,LF
+0028 U 0000 LF
+0029 U 0000 "Continue (Y/N)?"
+0030 U 0000 "Unable to print message",CR,LF
+0031 U 0000 "%1"
+0032 U 0000 "%1:%2"
+0033 U 0000 "Cannot merge - code page mismatch",CR,LF
+0300 U 0000 "Starts Edlin, a line-oriented text editor.",CR,LF,CR,LF
+	"EDLIN [drive:][path]filename [/B]",CR,LF,CR,LF
+	"  /B   Ignores end-of-file (CTRL+Z) characters.",CR,LF
+0301 U 0000 "Edit line                   line#",CR,LF
+	"Append                      [#lines]A",CR,LF
+0302 U 0000 "Copy                        [startline],[endline],toline[,times]C",CR,LF
+	"Delete                      [startline][,endline]D",CR,LF
+0303 U 0000 "End (save file)             E",CR,LF
+	"Insert                      [line]I",CR,LF
+0304 U 0000 "List                        [startline][,endline]L",CR,LF
+	"Move                        [startline],[endline],tolineM",CR,LF
+0305 U 0000 "Page                        [startline][,endline]P",CR,LF
+	"Quit (throw away changes)   Q",CR,LF			
+0306 U 0000 "Replace                     [startline][,endline][?]R[oldtext][CTRL+Znewtext]",CR,LF
+	"Search                      [startline][,endline][?]Stext",CR,LF
+0307 U 0000 "Transfer                    [toline]T[drive:][path]filename",CR,LF
+	"Write                       [#lines]W",CR,LF
+SORT     00013a49 0009
+0005 U 0000 "SORT: "
+0300 U 0000 "Sorts input and writes results to the screen, a file, or another device.",CR,LF,CR,LF
+0301 U 0000 "SORT [/R] [/+n] < [drive1:][path1]filename1 [> [drive2:][path2]filename2]",CR,LF
+0302 U 0000 "[command |] SORT [/R] [/+n] [> [drive2:][path2]filename2]",CR,LF,CR,LF
+0303 U 0000 "  /R                         Reverses the sort order; that is, sorts Z to A,",CR,LF,"                             then 9 to 0.",CR,LF
+0304 U 0000 "  /+n                        Sorts the file according to characters in",CR,LF,"                             column n.",CR,LF
+0305 U 0000 "  [drive1:][path1]filename1  Specifies a file to be sorted.",CR,LF
+0306 U 0000 "  [drive2:][path2]filename2  Specifies a file where the sorted input is to be ",CR,LF,"                             stored.",CR,LF
+0307 U 0000 "  command                    Specifies a command whose output is to be sorted.",CR,LF
+FASTOPEN 00013df4 0019
+0004 U 0000 CR,LF,"FASTOPEN installed",CR,LF
+0005 U 0000 CR,LF,"FASTOPEN already installed",CR,LF
+0007 U 0000 CR,LF,"Too many drive entries",CR,LF
+0008 U 0000 CR,LF,"Same drive specified more than once",CR,LF
+0009 U 0000 CR,LF,"Invalid parameter",CR,LF
+0012 U 0001 CR,LF,"Invalid number of file/directory entries",CR,LF
+0013 U 0000 CR,LF,"Cannot setup expanded memory",CR,LF
+0014 U 0000 CR,LF,"Expanded memory not available",CR,LF
+0015 U 0000 CR,LF,"Invalid drive specification %1",CR,LF
+0016 U 0002 CR,LF,"FASTOPEN EMS entry count exceeded.  Use fewer entries",CR,LF
+0017 U 0000 CR,LF,"Cannot use FASTOPEN for drive %1",CR,LF
+0019 U 0000 CR,LF,"Too many file/directory entries",CR,LF
+0020 U 0000 CR,LF,"FASTOPEN cannot be installed under DosShell",CR,LF
+0300 U 0000 "Decreases the amount of time needed to open frequently used files",CR,LF
+0301 U 0000 "and directories.",CR,LF,CR,LF
+0302 U 0000 "FASTOPEN drive:[[=]n] [drive:[[=]n][ ...]] [/X]",CR,LF,CR,LF
+0303 U 0000 "  drive:  Specifies the hard disk drive you want Fastopen to work with.",CR,LF
+0304 U 0000 "  n       Specifies the maximum number of file locations Fastopen retains",CR,LF
+	"          in its filename cache.",CR,LF
+0305 U 0000 "  /X      Creates the filename cache in expanded memory.",CR,LF
+FDISK    0001430f 0125
+0004 U 0000 "Cannot FDISK with network loaded",CR,LF
+0005 U 0000 "No fixed disks present",CR,LF
+0006 U 0000 "Error reading fixed disk",CR,LF
+0007 U 0000 "Error writing fixed disk",CR,LF
+0009 U 0003 "Y",0
+0010 U 0003 "N",0
+0011 U 0000 "The Master boot code has NOT been updated.",CR,LF
+0300 U 0000 "Configures a hard disk for use with MS-DOS.",CR,LF,CR,LF
+0301 U 0000  "FDISK",CR,LF
+1001 U 0000 "IBM DOS Version 4.00"
+1002 U 0000 "Fixed Disk Setup Program"
+1003 U 0000 "(C)Copyright IBM Corp. 1983, 1988"
+1004 U 0000 "FDISK Options"
+1005 U 0000 "1. <R>Create DOS Partition or Logical DOS Drive"
+1006 U 0000 "2. <R>Set active partition"
+1007 U 0000 "3. <R>Delete DOS Partition or Logical DOS Drive"
+1008 U 0000 "4. <R>Display partition information"
+1009 U 0000 "Press <H>Esc<R> to exit FDISK"
+1010 U 0000 "Choose one of the following:"
+1011 U 0000 "5. <R>Select next fixed disk drive"
+1012 U 0000 "Current fixed disk drive: <H><I>"
+1013 U 0000 "WARNING! <R>No partitions are set active - disk 1 is not startable unless"
+1014 U 0000 "a partition is set active"
+1015 U 0000 "Enter choice: [<S> ]"
+1016 U 0000 "Create DOS Partition or Logical DOS Drive"
+1017 U 0000 "1. <R>Create Primary DOS Partition"
+1018 U 0000 "2. <R>Create Extended DOS Partition"
+1019 U 0000 "3. <R>Create Logical DOS Drive(s) in the Extended DOS Partition"
+1020 U 0000 "Press <H>Esc<R> to return to FDISK Options"
+1021 U 0000 "Create Primary DOS Partition"
+1022 U 0000 "Do you wish to use the maximum available size for a Primary DOS Partition"
+1023 U 0000 "and make the partition active (<Y>/<N>).....................? <H>[<S> ]"
+1024 U 0000 "(<Y>/<N>)...................................................? <H>[<S> ]"
+1025 U 0000 "Partition Status   Type    Size in Mbytes   Percentage of Disk Used"
+1026 U 0000 "Total disk space is <HIIIIR> Mbytes (1 Mbyte = 1048576 bytes)"
+1027 U 0000 "Maximum space available for partition is <HIIIIR> Mbytes (<HIIIIR>)"
+1028 U 0000 "Enter partition size in Mbytes or percent of disk space (%) to"
+1029 U 0000 "create a Primary DOS Partition.................................: <H>[<IIISI>]"
+1030 U 0000 "Create Extended DOS Partition"
+1031 U 0000 "create an Extended DOS Partition..............................: <H>[<IIISI>]"
+1032 U 0000 "Press <H>Esc<R> to continue"
+1033 U 0000 "Create Logical DOS Drive(s) in the Extended DOS Partition"
+1034 U 0000 "Drv Volume Label  Mbytes  System  Usage"
+1035 U 0000 "Total Extended DOS Partition size is <HIIIIR> Mbytes (1 MByte = 1048576 bytes)"
+1036 U 0000 "Maximum space available for logical drive is <HIIIIR> Mbytes <H>(<IIII>)"
+1037 U 0000 "Enter logical drive size in Mbytes or percent of disk space (%)...<H>[<IIISI>]"
+1038 U 0000 "Set Active Partition"
+1039 U 0000 "Enter the number of the partition you want to make active...........: <H>[<S> ]"
+1040 U 0000 "Delete DOS Partition or Logical DOS Drive"
+1041 U 0000 "1.  <R>Delete Primary DOS Partition"
+1042 U 0000 "2.  <R>Delete Extended DOS Partition"
+1043 U 0000 "3.  <R>Delete Logical DOS Drive(s) in the Extended DOS Partition"
+1044 U 0000 "Delete Primary DOS Partition"
+1045 U 0000 "WARNING! <OR>Data in the deleted Primary DOS Partition will be lost."
+1046 U 0000 "Do you wish to continue (<Y>/<N>).................? <H>[<S> ]"
+1047 U 0000 "Delete Extended DOS Partition"
+1048 U 0000 "WARNING! <OR>Data in the deleted Extended DOS Partition will be lost."
+1049 U 0000 "Do you wish to continue (<Y>/<N>).................? <H>[<S> ]"
+1050 U 0000 "Delete Logical DOS Drive(s) in the Extended DOS Partition"
+1051 U 0000 "WARNING! <OR>Data in a deleted Logical DOS Drive will be lost."
+1052 U 0000 "What drive do you want to delete...............................? <H>[<S> ]"
+1053 U 0000 "Are you sure (<Y>/<N>)..............................? <H>[<S> ]"
+1054 U 0000 "Enter Volume Label..............................? <H>[<S>           ]"
+1055 U 0000 "Display Partition Information"
+1056 U 0000 "The Extended DOS Partition contains Logical DOS Drives."
+1057 U 0000 "Do you want to display the logical drive information (<Y>/<N>)......?<H>[<S> ]"
+1058 U 0000 "Display Logical DOS Drive Information"
+1059 U 0000 "System will now restart"
+1060 U 0001 "Insert DOS Install diskette in drive A:"
+1061 U 0000 "Press any key when ready . . .<S>"
+1062 U 0000 "Primary DOS Partition deleted"
+1063 U 0000 "Extended DOS Partition deleted"
+1064 U 0000 "Drive deleted"
+1065 U 0000 "Partition <I> made active"
+1066 U 0000 "Primary DOS Partition created"
+1067 U 0000 "Extended DOS Partition created"
+1068 U 0000 "Logical DOS Drive created, drive letters changed or added<W>"
+1069 U 0000 "No partitions defined"
+1070 U 0000 "No logical drives defined"
+1071 U 0000 "Drive letters have been changed or deleted<W>"
+1072 U 0000 "Drive redirected"
+1073 U 0000 "Primary DOS Partition created, drive letters changed or added"
+1074 U 0000 "No fixed disks present."
+1075 U 0000 "Error reading fixed disk."
+1076 U 0000 "Error writing fixed disk."
+1077 U 0000 "Incorrect DOS version."
+1078 U 0000 "Cannot FDISK with network loaded."
+1079 U 0000 "No Primary DOS Partition to delete."
+1080 U 0000 "No Extended DOS Partition to delete."
+1081 U 0000 "Primary DOS Partition already exists."
+1082 U 0000 "Extended DOS Partition already exists."
+1083 U 0000 "No space to create a DOS partition."
+1084 U 0000 "Requested logical drive size exceeds the maximum available space.<W>"
+1085 U 0000 "Requested partition size exceeds the maximum available space.<W>"
+1086 U 0000 "No partitions to delete."
+1087 U 0000 "The only startable partition on Drive 1 is already set active.<W>"
+1088 U 0000 "No partitions to make active."
+1089 U 0000 "Partition selected (<I>) is not startable, active partition not changed.<W>"
+1090 U 0000 "Cannot create Extended DOS Partition without"
+1091 U 0000 "Primary DOS Partition on disk 1.<W>"
+1092 U 0000 "All available space in the Extended DOS Partition"
+1093 U 0000 "is assigned to logical drives.<W>"
+1094 U 0000 "Cannot delete Extended DOS Partition while logical drives exist.<W>"
+1095 U 0000 "All logical drives deleted in the Extended DOS Partition.<W>"
+1096 U 0000 " is not a choice. Please enter <III>.<W>"
+1097 U 0000 "WARNING! The partition set active is not startable.<W>"
+1098 U 0000 " Only non-startable partitions exist."
+1099 U 0000 "Only partitions on Drive 1 can be made active.<W>"
+1100 U 0000 "Maximum number of Logical DOS Drives installed.<W>"
+1101 U 0000 "Cannot create a zero size partition."
+1102 U 0000 "Drive <II> already deleted."
+1103 U 0000 "Unable to access Drive <I>.<OW>"
+1104 U 0000 "Invalid entry, please enter <III>.<W>"
+1105 U 0000 "Cannot delete Primary DOS Partition on drive 1 "
+1106 U 0000 "when an Extended DOS Partition exists.<W>"
+1107 U 0000 "Invalid entry, please press Enter.<W>"
+1108 U 0000 "Volume label does not match.<W>"
+1109 U 0000 "Cannot create Logical DOS Drive without"
+1110 U 0000 "an Extended DOS Partition on the current drive.<W>"
+1111 U 0000 "No Logical DOS Drive(s) to delete."
+1112 U 0000 "Message string error <I>. See header of FDISKC.MSG for error definition"
+1113 U 0000 "Internal error"
+1114 U 0001 "Invalid partition table",0
+1115 U 0001 "Error loading operating system",0
+1116 U 0001 "Missing operating system",0

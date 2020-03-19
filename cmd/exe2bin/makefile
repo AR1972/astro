@@ -33,8 +33,8 @@ $(cpr):       $(dest)
 !ENDIF
 
 exe2bin.ctl:  exe2bin.skl makefile      \
-              $(msg)\$(COUNTRY)-ibm.msg
-			  buildmsg $(msg)\$(COUNTRY)-ibm exe2bin.skl
+              $(msg)\$(COUNTRY).msg
+			  buildmsg $(msg)\$(COUNTRY) exe2bin.skl
 
 e2binit.obj:  e2binit.asm               \
               $(inc)\syscall.inc        \

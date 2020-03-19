@@ -44,12 +44,12 @@ $(pkl): $(dest)
 # Handle the FDISK 'C' source compilations first
 
 fdiskm.c  : $(msg)\$(COUNTRY).msg fdisk.msg
-        menubld fdisk.msg  $(msg)\$(COUNTRY)-ibm.MSG
+        menubld fdisk.msg  $(msg)\$(COUNTRY).MSG
 
-fdisk5.cl1 : fdisk5.skl $(msg)\$(COUNTRY)-ibm.msg
+fdisk5.cl1 : fdisk5.skl $(msg)\$(COUNTRY).msg
 
-fdisk.ctl : fdisk.skl $(msg)\$(COUNTRY)-ibm.msg
-			 buildmsg $(msg)\$(COUNTRY)-ibm fdisk.skl
+fdisk.ctl : fdisk.skl $(msg)\$(COUNTRY).msg
+			 buildmsg $(msg)\$(COUNTRY) fdisk.skl
 
 main.obj : main.c \
            fdisk.h subtype.h extern.h fdiskmsg.h msgret.h doscall.h

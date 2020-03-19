@@ -51,9 +51,9 @@ $(cpr):       $(dest)
 
 
 recover.ctl:  recover.skl               \
-              $(msg)\$(COUNTRY)-ibm.msg     \
+              $(msg)\$(COUNTRY).msg     \
               makefile
-			  buildmsg $(msg)\$(COUNTRY)-ibm recover.skl
+			  buildmsg $(msg)\$(COUNTRY) recover.skl
 
 recover.obj:  recover.asm               \
               recequ.inc                \

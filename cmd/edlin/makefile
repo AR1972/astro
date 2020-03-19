@@ -33,9 +33,9 @@ $(cpr):       $(dest)
 
 
 edlin.ctl:    edlin.skl                 \
-              $(msg)\$(COUNTRY)-ibm.msg     \
+              $(msg)\$(COUNTRY).msg     \
               makefile
-			  buildmsg $(msg)\$(COUNTRY)-ibm edlin.skl
+			  buildmsg $(msg)\$(COUNTRY) edlin.skl
 
 
 edlin.obj:    edlin.asm                 \
