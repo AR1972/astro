@@ -2,7 +2,9 @@
 
 
 all:
-    cd messages
+    cd c6ers
+	    $(MAKE)
+    cd ..\messages
         $(MAKE)
     cd ..\boot
         $(MAKE)

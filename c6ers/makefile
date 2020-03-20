@@ -1,7 +1,14 @@
 #************************** C6ers Root level Makefile ***********************
 
 all:
-	cd msd200a
+    cd appcomp
+	nmake /a MODEL=S /a OS=DOS /a DECOMP=COMPLEX /a OSLET=R /a DEBUG=NO -f mkfile2
+	nmake /a MODEL=M /a OS=DOS /a DECOMP=COMPLEX /a OSLET=R /a DEBUG=NO -f mkfile2
+	nmake /a MODEL=L /a OS=DOS /a DECOMP=COMPLEX /a OSLET=R /a DEBUG=NO -f mkfile2
+    copy ldecompr.lib ..\..\lib
+	copy mdecompr.lib ..\..\lib
+	copy sdecompr.lib ..\..\lib	
+	cd ..\msd200a
 	$(MAKE)
         copy msd.exe ..\..\binaries
         copy msd.exe ..\..\compress
