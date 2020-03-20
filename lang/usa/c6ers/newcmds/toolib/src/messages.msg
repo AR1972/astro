@@ -1,4 +1,3 @@
-char szErrUnableToDelete[] = "Unable to delete destination";
-char pszMsgRunChkDsk[] = "pzMsgRunChkDsk";
-
+extern char szErrUnableToDelete;
+extern char pszMsgRunChkDsk;
 

@@ -66,6 +66,9 @@ clean:
 	- $(DEL) cobjr\*.obj
 	- $(DEL) mobjr\*.obj
 	- $(DEL) lobjr\*.obj
+    - $(DEL) src\FCOPYTXT.H
+    - $(DEL) src\MESSAGES.MSG
+    - $(DEL) src\SYSERR.MSG
 
 clobber: clean
 	- $(DEL) lib\*.lib

@@ -24,7 +24,7 @@ CVFLAGS  = /50 /F
 BRFLAGS  = /o $(PROJ).bsc /Iu
 BROWSE  = 0
 
-OBJS_EXT  = DROP.OBJ CHIPS.OBJ IS386.OBJ VIDEOID.OBJ MD.OBJ PROCLANG.OBJ
+OBJS_EXT  = lib\DROP.OBJ lib\CHIPS.OBJ lib\IS386.OBJ lib\VIDEOID.OBJ lib\MD.OBJ lib\PROCLANG.OBJ
 OBJS  = MSD.obj GETINFO.obj SPRNINFO.obj RPTINFO.obj MSDSYS.obj CUSTINFO.obj\
         SHOWINFO.obj MENU.obj SUMMARY.obj DEVTAB.obj TSRLIST.obj COMPUTER.obj\
         VIDEO.obj OSINFO.obj LPTINFO.obj COMINFO.obj MOUSINFO.obj IRQINFO.obj\
@@ -335,3 +335,9 @@ run: $(PROJ).exe
 
 debug: $(PROJ).exe
         CV $(CVFLAGS) $(PROJ).exe $(RUNFLAGS)
+        
+clean:
+    del *.obj
+    del *.map
+    del msd.exe
+

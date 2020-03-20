@@ -95,3 +95,12 @@ move.obj:         move.c move.msg
 
 move.msg: $(MSG_DIR)\move.msg
         copy $(MSG_DIR)\move.msg
+        
+clean:
+    del *.exe
+    del *.obj
+    del *.map
+    del *.msg
+    cd toolib
+    nmake clobber
+    

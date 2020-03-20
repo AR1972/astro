@@ -36,4 +36,6 @@ clean:
         nmake clean
     cd ..\mkimage
         nmake clean
+    cd ..\c6ers
+        nmake clean
     cd ..

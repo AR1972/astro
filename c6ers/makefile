@@ -11,14 +11,14 @@ all:
         copy smartmon.hlp ..\..\binaries
         compress -f smartmon.exe ..\..\compress\smartmon.ex_
         compress -f smartmon.hlp ..\..\compress\smartmon.hl_
-        cd ..\choice
-        $(MAKE)
-        cd ..\newcmds
-#        $(MAKE)
-#        copy deltree.exe ..\..\binaries
-#        copy move.exe ..\..\binaries
-#        compress -f deltree.exe ..\..\compress\deltree.ex_
-#        compress -f move.exe ..\..\compress\move.ex_
+    cd ..\choice
+    $(MAKE)
+    cd ..\newcmds
+    $(MAKE)
+        copy deltree.exe ..\..\binaries
+        copy move.exe ..\..\binaries
+        compress -f deltree.exe ..\..\compress\deltree.ex_
+        compress -f move.exe ..\..\compress\move.ex_
 	cd ..\interlnk\paragon\lib
 #	$(MAKE)
 	cd ..\..\fxlib
@@ -27,5 +27,15 @@ all:
 #	$(MAKE)
 	cd ..
 #	$(MAKE)
-
 	cd ..
+
+clean:
+    cd msd200a
+    nmake clean
+    cd ..\smartmon
+    nmake clean
+    cd ..\choice
+    nmake clean
+    cd ..\newcmds
+    nmake clean
+    cd ..

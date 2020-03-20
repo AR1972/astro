@@ -19,15 +19,15 @@ SET INIT=%ROOT%\c6ers\tools6\bin
 
 ::echo ********************** building c6ers **********************************
 set SAVEP=%PATH%
-::set PATH=%ROOT%\c6ers\tools6\bin
-::set lib=%ROOT%\c6ers\tools6\lib;%ROOT%\c6ers\toolsvr\lib
-::set include=.;%ROOT%\c6ers\tools6\include;..\toolsvr\inc
+set PATH=%ROOT%\c6ers\tools6\bin
+set lib=%ROOT%\c6ers\tools6\lib;%ROOT%\c6ers\toolsvr\lib
+set include=.;%ROOT%\c6ers\tools6\include;..\toolsvr\inc
 ::
-::	cd c6ers\appcomp
-::	call makeit
-::	cd ..
-::	%DOSMAKE%
-::	cd %ROOT%
+	cd c6ers\appcomp
+	call makeit
+	cd ..
+	%DOSMAKE%
+	cd %ROOT%
 ::
 ::echo ********************** building magicdrve ###***************************
 ::set PATH=%root%\C6ERS\TOOLS6\BIN;%root%\c6ers\tools6\bin;%PATH%

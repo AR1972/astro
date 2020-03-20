@@ -8,6 +8,6 @@
 #define CANT_GET_SRC_ATTR 8
 #define CANT_SET_DEST_ATTR 9
 
-
-
-
+char szErrUnableToDelete[] = "Unable to delete destination";
+char stardotstar[] = "*.*";
+char pszMsgRunChkDsk[] = "\nDELTREE has found an error in your directory structure. Run Chkdsk /F to repair.\n";
