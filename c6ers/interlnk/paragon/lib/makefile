@@ -17,6 +17,22 @@ $(dest):        bioskybd.obj            \
                 loadherc.obj            \
                 screen.obj              \
                 scrsave.obj             \
+                INITSCR.OBJ             \
+                SCRMEM.OBJ              \
+                READTICK.OBJ            \
+                FSTRCPY.OBJ             \
+                PSTRLEN.OBJ             \
+                SETCBRK.OBJ             \
+                HTOI.OBJ                \
+                FMEMCMPF.OBJ            \
+                STRTCPYF.OBJ            \
+                STRLENF.OBJ             \
+                STRREPC.OBJ             \
+                MEMCPYF.OBJ             \
+                BIOSTICK.OBJ            \
+                B_KEYBRD.OBJ            \
+                STRTCPY.OBJ             \
+                NULLPROC.OBJ            \
                 makefile                \
                 plibs.lrf
                 del plibs.lib
@@ -25,7 +41,7 @@ $(dest):        bioskybd.obj            \
 
 bioskybd.obj:   bioskybd.c              \
                 $(incs)\bioskybd.h      \
-	        $(incs)\osdep.h         \
+                $(incs)\osdep.h         \
                 $(incs)\umfunc.h        \
                 makefile
                 cl $(csw) bioskybd.c
@@ -144,4 +160,8 @@ strtcpyf.obj:   strtcpyf.asm           \
                 $(incs)\osdep.mac      \
                 makefile
                 masm $(asw) strtcpyf.asm;
+
+clean:
+   - del *.obj
+   - del *.lib
 

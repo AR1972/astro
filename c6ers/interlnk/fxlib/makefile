@@ -82,3 +82,8 @@ fastlynx.lib:   parallel.obj            \
                 fastlynx.lrf
                 del fastlynx.lib
                 lib @fastlynx.lrf
+
+clean:
+    del *.obj
+    del *.lib
+

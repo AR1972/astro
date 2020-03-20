@@ -34,7 +34,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):          $(dest)
-                 $(compress) $(dest) $(cpr)
+                 $(compress) -f $(dest) $(cpr)
 !ENDIF
 
 .asm.obj:
@@ -112,6 +112,13 @@ serial.obj:     serial.asm              \
 
 #International Modifications
 iclean:
-		del msg.obj
-		del msg.asm
+    del msg.obj
+    del msg.asm
+
+clean:
+    del *.obj
+    del msg.asm
+    del *.exe
+    del *.ex_
+    del *.map
 

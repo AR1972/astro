@@ -27,13 +27,13 @@ all:
         compress -f deltree.exe ..\..\compress\deltree.ex_
         compress -f move.exe ..\..\compress\move.ex_
 	cd ..\interlnk\paragon\lib
-#	$(MAKE)
+	$(MAKE)
 	cd ..\..\fxlib
-#	$(MAKE)
+	$(MAKE)
 	cd ..\driver
-#	$(MAKE)
+	$(MAKE)
 	cd ..
-#	$(MAKE)
+	$(MAKE)
 	cd ..
 
 clean:
@@ -47,4 +47,6 @@ clean:
     nmake clean
     cd ..\appcomp
     nmake -f mkfile2 clean
+    cd ..\interlnk
+    nmake clean
     cd ..

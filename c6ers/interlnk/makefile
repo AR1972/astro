@@ -59,7 +59,7 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):          $(dest)
-                 $(compress) $(dest) $(cpr)
+                 $(compress) -f $(dest) $(cpr)
 !ENDIF         
 
 paragon\lib\plibs.lib:
@@ -260,3 +260,15 @@ intersvr.exe:   bell.obj                \
                 intersvr.lnk            \
                 $(libs)
                 link $(LINKFLAGS) @intersvr.lnk 
+
+clean:
+    del *.obj
+    del *.exe
+    del *.map
+    cd driver
+    nmake clean
+    cd ..\fxlib
+    nmake clean
+    cd ..\paragon\lib
+    nmake clean
+    cd ..
