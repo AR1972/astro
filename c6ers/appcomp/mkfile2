@@ -232,9 +232,10 @@ test\example2.obj: test\example2.c
 clean:
     -del *.obj
     -del *.lib
-#   -del *.exe
+    -del *.exe
     -del tools\*.obj
     -del tools\*.exe
+    -del tools\*.map
     -del zk1\*.obj
     -del jjj1\*.obj
     -del lzss\*.obj

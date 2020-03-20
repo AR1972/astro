@@ -38,4 +38,6 @@ clean:
     nmake clean
     cd ..\newcmds
     nmake clean
+    cd ..\appcomp
+    nmake -f mkfile2 clean
     cd ..
