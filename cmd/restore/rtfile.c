@@ -17,7 +17,7 @@
 #include "string.h"
 #include "stdio.h"
 #include "dos.h"                                                      /*;AN000;2*/
-#include "comsub.h"             /* common subroutine def'n */
+//#include "comsub.h"             /* common subroutine def'n */
 #include "doscalls.h"
 #include "error.h"
 

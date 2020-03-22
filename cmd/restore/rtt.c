@@ -12,7 +12,7 @@ static char *SCCSID = "@(#)rtt.c        8.1 86/09/20";
 #include "rt.h"
 #include "rt1.h"
 #include "rt2.h"
-#include <comsub.h>			/* common subroutine def'n */
+//#include <comsub.h>			/* common subroutine def'n */
 #include <doscalls.h>
 #include <basemid.h>
 #include <wrwdefs.h>		   /* wrw! */
