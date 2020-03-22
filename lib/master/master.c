@@ -4,21 +4,8 @@
 #include "dos.h"
 #include "stdio.h"
 #include "sysvar.h"
-#include "jointype.h"
-
-char fGetCDS(int, struct CDSType *);
-char fPutCDS(int, struct CDSType *);
-void  PutVars(struct sysVarsType *);
-void  GetVars(struct sysVarsType *);
-int   ffirst(char *, unsigned int, struct findType *);
-int   fShared(int);
-int   fNet(int);
-int   fPhysical(int);
-int   fPathErr(char *);
-void  rootpath(char *, char *);
-int   getdrv(void);
-char  *strbscan(char *, char *);        
-long GetDPB(int);
+#include "types.h"
+#include "master.h"
 
 char fGetCDS(int n, struct CDSType *T) {
 	return (char) 0;
@@ -27,7 +14,7 @@ char fGetCDS(int n, struct CDSType *T) {
 char fPutCDS(int n, struct CDSType *T) {
 	return (char) 0;
 }
-
+git 
 void PutVars(struct sysVarsType *T) {
 	return;
 }
