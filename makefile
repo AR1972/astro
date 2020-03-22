@@ -1,10 +1,11 @@
 #************************* Root level Makefile *************************
 
-
 all:
     cd c6ers
-	    $(MAKE)
+        $(MAKE)
     cd ..\messages
+        $(MAKE)
+    cd ..\lib
         $(MAKE)
     cd ..\boot
         $(MAKE)
@@ -20,24 +21,26 @@ all:
     cd ..\mkimage
 #        $(MAKE)
     cd ..
-	
+
 clean:
     cd messages
-        nmake clean
+        $(MAKE) clean
     cd ..\boot
-        nmake clean
+        $(MAKE) clean
     cd ..\dos
-        nmake clean
-	cd ..\cmd
-        nmake clean
+        $(MAKE) clean
+    cd ..\cmd
+        $(MAKE) clean
     cd ..\dev
-        nmake clean
-	cd ..\bios
-        nmake clean
+        $(MAKE) clean
+    cd ..\bios
+        $(MAKE) clean
     cd ..\dosshell
-        nmake clean
+        $(MAKE) clean
     cd ..\mkimage
-        nmake clean
+        $(MAKE) clean
     cd ..\c6ers
-        nmake clean
+        $(MAKE) clean
+    cd ..\lib
+        $(MAKE) clean
     cd ..

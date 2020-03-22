@@ -1,36 +1,33 @@
-
-msg	=..\messages
-inc	=..\inc
-hinc =..\h
-extasw =-I$(inc) -D$(COUNTRY)
-extcsw =-I$(hinc)
-
-all:            comsubs.lib               \
-                master.lib                \
-			    mapper.lib 
-	
-comsubs.obj:    comsubs.c
-
-master.obj:	    master.c                  \
-                makefile                  \
-                $(hinc)\cds.h             \
-                $(hinc)\jointype.h        \
-                $(hinc)\sysvar.h          \
-
-mapper.obj:	    mapper.c
-
-comsubs.lib:    comsubs.obj
-                del comsubs.lib
-                lib comsubs.lib +comsubs.obj;
-				
-mapper.lib:		mapper.obj
-                del mapper.lib
-				lib mapper.lib +mapper.obj;
-				
-master.lib:		master.obj
-                del master.lib
-				lib master.lib +master.obj;
+all:
+    cd comsubs
+    $(MAKE)
+    cd ..\mapper
+    $(MAKE)
+    cd ..\master
+    $(MAKE)
+    cd ..\mem
+    $(MAKE)
+    cd ..\xmm
+    $(MAKE)
+    cd ..
 
 clean:
-	-del *.obj
-
+    if exist comsubs.lib    del comsubs.lib
+    if exist mapper.lib     del mapper.lib
+    if exist master.lib     del master.lib
+    if exist mem.lib        del mem.lib
+    if exist xmm.lib        del xmm.lib
+    if exist ldecompr.lib   del ldecompr.lib
+    if exist mdecompr.lib   del mdecompr.lib
+    if exist sdecompr.lib   del sdecompr.lib
+    cd comsubs
+    $(MAKE) clean
+    cd ..\mapper
+    $(MAKE) clean
+    cd ..\master
+    $(MAKE) clean
+    cd ..\mem
+    $(MAKE) clean
+    cd ..\xmm
+    $(MAKE) clean
+    cd ..
