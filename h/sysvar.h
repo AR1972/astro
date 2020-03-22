@@ -33,4 +33,4 @@ struct sysVarsType
         char    boot_drive ;    /* ;AN000; boot drive A=1 B=2...           */
         char    dwmove ;        /* ;AN000; 1 if 386 machine                */
 } ;
-
+

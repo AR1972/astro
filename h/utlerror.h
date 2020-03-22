@@ -4,7 +4,7 @@
  *                      All Rights Reserved.
  */
 
-/*      SCCSID = @(#)utlerror.h	8.7 87/03/09 */
+/*      SCCSID = @(#)utlerror.h 8.7 87/03/09 */
 /* */
 /* error codes for utilities */
 /* */
@@ -96,4 +96,4 @@
 #define ERROR_HELP_NO_HELP              1092      /* error in message file dbcs */
 #define ERROR_SORT_RCD_SIZE_EXCEED      1093      /* sort record size exceeded */
 #define ERROR_CM_EOF_REDIRECT           1094      /* eof found on redr input */
-
+

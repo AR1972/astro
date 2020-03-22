@@ -64,4 +64,4 @@ extern unsigned char _NEAR _CDECL _ctype[];
 
 #define iscsymf(c)      (isalpha(c) || ((c) == '_'))
 #define iscsym(c)       (isalnum(c) || ((c) == '_'))
-
+

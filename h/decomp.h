@@ -7,22 +7,22 @@
 typedef int (far * PFNWFROMW)(int);
 
 typedef  unsigned char  BYTE;
-#define  BOOL  int
-#undef TRUE
-#define  TRUE  ~0
-#undef LONG
-typedef  long		LONG;
+#define  BOOL   int
+#undef   TRUE
+#define  TRUE   ~0
+#undef   LONG
+typedef  long   LONG;
 #define  FALSE  0
-#ifndef NULL
+#ifndef  NULL
 #define  NULL   0
 #endif
 typedef  int            SHORT;
 typedef  unsigned int   USHORT;
 typedef  unsigned long  ULONG;
-typedef  char		CHAR;
-typedef  unsigned char	UCHAR;
+typedef  char           CHAR;
+typedef  unsigned char  UCHAR;
 
-#define  LCBNIL 	(-1L)
+#define  LCBNIL         (-1L)
 typedef  CHAR *         SZ;
 
 extern BOOL FTerminateDecomp(void);
@@ -86,3 +86,4 @@ extern  USHORT  vcbText;
 #define  wAlgTypeNil             (-1)    /* no algorithm type (never found) */
 #define  wAlgTypeZK1               2     /* Steve Zeck compression algorithm */
 #define  wAlgTypeJJJ1              3     /* Jeff J. Johnson algorithm */
+

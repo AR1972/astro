@@ -67,11 +67,11 @@ typedef struct {
  * note that the sizes include space for 0-terminator
  */
 
-#define _MAX_PATH      144      /* max. length of full pathname */
-#define _MAX_DRIVE   3      /* max. length of drive component */
-#define _MAX_DIR       130      /* max. length of path component */
-#define _MAX_FNAME   9      /* max. length of file name component */
-#define _MAX_EXT     5      /* max. length of extension component */
+#define _MAX_PATH    144      /* max. length of full pathname */
+#define _MAX_DRIVE     3      /* max. length of drive component */
+#define _MAX_DIR     130      /* max. length of path component */
+#define _MAX_FNAME     9      /* max. length of file name component */
+#define _MAX_EXT       5      /* max. length of extension component */
 
 /* external variable declarations */
 
@@ -149,4 +149,4 @@ int _CDECL tolower(int);
 #ifndef toupper         /* toupper has been undefined - use function */
 int    _CDECL toupper(int);
 #endif  /* toupper */
-
+

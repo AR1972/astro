@@ -1,13 +1,13 @@
 /***
 *dos.h - definitions for MS-DOS interface routines
 *
-*	Copyright (c) 1985-1991, Microsoft Corporation.  All rights reserved.
+*   Copyright (c) 1985-1991, Microsoft Corporation.  All rights reserved.
 *
 *Purpose:
-*	Defines the structs and unions used for the direct DOS interface
-*	routines; includes macros to access the segment and offset
-*	values of far pointers, so that they may be used by the routines; and
-*	provides function prototypes for direct DOS interface functions.
+*   Defines the structs and unions used for the direct DOS interface
+*   routines; includes macros to access the segment and offset
+*   values of far pointers, so that they may be used by the routines; and
+*   provides function prototypes for direct DOS interface functions.
 *
 ****/
 
@@ -17,24 +17,24 @@
 /* word registers */
 
 struct WORDREGS {
-	unsigned int ax;
-	unsigned int bx;
-	unsigned int cx;
-	unsigned int dx;
-	unsigned int si;
-	unsigned int di;
-	unsigned int cflag;
-	};
+    unsigned int ax;
+    unsigned int bx;
+    unsigned int cx;
+    unsigned int dx;
+    unsigned int si;
+    unsigned int di;
+    unsigned int cflag;
+    };
 
 
 /* byte registers */
 
 struct BYTEREGS {
-	unsigned char al, ah;
-	unsigned char bl, bh;
-	unsigned char cl, ch;
-	unsigned char dl, dh;
-	};
+    unsigned char al, ah;
+    unsigned char bl, bh;
+    unsigned char cl, ch;
+    unsigned char dl, dh;
+    };
 
 
 /* general purpose registers union -
@@ -42,19 +42,19 @@ struct BYTEREGS {
  */
 
 union REGS {
-	struct WORDREGS x;
-	struct BYTEREGS h;
-	};
+    struct WORDREGS x;
+    struct BYTEREGS h;
+    };
 
 
 /* segment registers */
 
 struct SREGS {
-	unsigned int es;
-	unsigned int cs;
-	unsigned int ss;
-	unsigned int ds;
-	};
+    unsigned int es;
+    unsigned int cs;
+    unsigned int ss;
+    unsigned int ds;
+    };
 
 #define _REGS_DEFINED
 
@@ -66,11 +66,11 @@ struct SREGS {
 #ifndef _DOSERROR_DEFINED
 
 struct DOSERROR {
-	int exterror;
-	char class;
-	char action;
-	char locus;
-	};
+    int exterror;
+    char class;
+    char action;
+    char locus;
+    };
 
 #define _DOSERROR_DEFINED
 
@@ -82,13 +82,13 @@ struct DOSERROR {
 #ifndef _FIND_T_DEFINED
 
 struct find_t {
-	char reserved[21];
-	char attrib;
-	unsigned wr_time;
-	unsigned wr_date;
-	long size;
-	char name[13];
-	};
+    char reserved[21];
+    char attrib;
+    unsigned wr_time;
+    unsigned wr_date;
+    long size;
+    char name[13];
+    };
 
 #define _FIND_T_DEFINED
 
@@ -100,18 +100,18 @@ struct find_t {
 #ifndef _DATETIME_T_DEFINED
 
 struct dosdate_t {
-	unsigned char day;		/* 1-31 */
-	unsigned char month;		/* 1-12 */
-	unsigned int year;		/* 1980-2099 */
-	unsigned char dayofweek;	/* 0-6, 0=Sunday */
-	};
+    unsigned char day;          /* 1-31 */
+    unsigned char month;        /* 1-12 */
+    unsigned int year;          /* 1980-2099 */
+    unsigned char dayofweek;    /* 0-6, 0=Sunday */
+    };
 
 struct dostime_t {
-	unsigned char hour;	/* 0-23 */
-	unsigned char minute;	/* 0-59 */
-	unsigned char second;	/* 0-59 */
-	unsigned char hsecond;	/* 0-99 */
-	};
+    unsigned char hour;     /* 0-23 */
+    unsigned char minute;   /* 0-59 */
+    unsigned char second;   /* 0-59 */
+    unsigned char hsecond;  /* 0-99 */
+    };
 
 #define _DATETIME_T_DEFINED
 
@@ -123,11 +123,11 @@ struct dostime_t {
 #ifndef _DISKFREE_T_DEFINED
 
 struct diskfree_t {
-	unsigned total_clusters;
-	unsigned avail_clusters;
-	unsigned sectors_per_cluster;
-	unsigned bytes_per_sector;
-	};
+    unsigned total_clusters;
+    unsigned avail_clusters;
+    unsigned sectors_per_cluster;
+    unsigned bytes_per_sector;
+    };
 
 #define _DISKFREE_T_DEFINED
 
@@ -136,21 +136,21 @@ struct diskfree_t {
 
 /* manifest constants for _hardresume result parameter */
 
-#define _HARDERR_IGNORE 	0	/* Ignore the error */
-#define _HARDERR_RETRY		1	/* Retry the operation */
-#define _HARDERR_ABORT		2	/* Abort program issuing Interrupt 23h */
-#define _HARDERR_FAIL		3	/* Fail the system call in progress */
-					/* _HARDERR_FAIL is not supported on DOS 2.x */
+#define _HARDERR_IGNORE     0   /* Ignore the error */
+#define _HARDERR_RETRY      1   /* Retry the operation */
+#define _HARDERR_ABORT      2   /* Abort program issuing Interrupt 23h */
+#define _HARDERR_FAIL       3   /* Fail the system call in progress */
+                    /* _HARDERR_FAIL is not supported on DOS 2.x */
 
 /* File attribute constants */
 
-#define _A_NORMAL	0x00	/* Normal file - No read/write restrictions */
-#define _A_RDONLY	0x01	/* Read only file */
-#define _A_HIDDEN	0x02	/* Hidden file */
-#define _A_SYSTEM	0x04	/* System file */
-#define _A_VOLID	0x08	/* Volume ID file */
-#define _A_SUBDIR	0x10	/* Subdirectory */
-#define _A_ARCH 	0x20	/* Archive file */
+#define _A_NORMAL   0x00    /* Normal file - No read/write restrictions */
+#define _A_RDONLY   0x01    /* Read only file */
+#define _A_HIDDEN   0x02    /* Hidden file */
+#define _A_SYSTEM   0x04    /* System file */
+#define _A_VOLID    0x08    /* Volume ID file */
+#define _A_SUBDIR   0x10    /* Subdirectory */
+#define _A_ARCH     0x20    /* Archive file */
 
 /* macros to break C "far" pointers into their segment and offset components
  */
@@ -207,4 +207,4 @@ int _cdecl int86x(int, union REGS *, union REGS *, struct SREGS *);
 #endif /* _MT */
 
 void _cdecl segread(struct SREGS *);
-
+
