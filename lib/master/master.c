@@ -14,7 +14,7 @@ char fGetCDS(int n, struct CDSType *T) {
 char fPutCDS(int n, struct CDSType *T) {
 	return (char) 0;
 }
-git 
+
 void PutVars(struct sysVarsType *T) {
 	return;
 }
