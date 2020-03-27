@@ -27,6 +27,4 @@
  fdiskm.obj
 fdisk.exe,
 fdisk.map,
-..\..\lib\MAPPER.lib +
-..\..\lib\comsubs.lib +
-..\..\lib\doscalls.lib;
+..\..\lib\MAPPER.lib;

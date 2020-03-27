@@ -62,7 +62,7 @@ backup.obj:   backup.c                  \
 $(dest):      backup.obj                \
               _parse.obj                \
               _msgret.obj               \
-              $(doslib)\doscalls.lib
+              $(doslib)\mapper.lib
               link $(exelink) @backup.lnk
 			  
 clean:

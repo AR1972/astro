@@ -1329,7 +1329,7 @@ void set_vectors()
 
   setsignal(ACTIONHOOK, CTRLC);        /* handle CTRL_C */
   setsignal(ACTIONHOOK, CTRLBREAK);    /* handle CTRL_BREAK */
-  //(void)set_int24_vector(NULL);        /* set critical error vector (int 24h) */
+  (void)set_int24_vector(NULL);        /* set critical error vector (int 24h) */
 }
 
 

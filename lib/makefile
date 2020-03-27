@@ -1,6 +1,6 @@
 all:
     cd comsubs
-    $(MAKE)
+#    $(MAKE)
     cd ..\mapper
     $(MAKE)
     cd ..\master
