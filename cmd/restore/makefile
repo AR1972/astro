@@ -181,7 +181,7 @@ $(dest):      restore.obj               \
               restore.lnk               \
               _msgret.obj               \
               _parse.obj                \
-              $(doslib)\doscalls.lib
+              $(doslib)\mapper.lib
               link $(exelink) @restore.lnk
 			  
 clean:

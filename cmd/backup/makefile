@@ -43,7 +43,7 @@ _parse.obj:   _parse.asm                \
 
 backup.ctl:   backup.skl                \
               $(msg)\$(COUNTRY).MSG
-			  buildmsg $(msg)\$(COUNTRY)-ibm backup.skl
+              buildmsg $(msg)\$(COUNTRY) backup.skl
 
 _msgret.obj:  _msgret.asm               \
               backup.ctl                \
@@ -62,7 +62,7 @@ backup.obj:   backup.c                  \
 $(dest):      backup.obj                \
               _parse.obj                \
               _msgret.obj               \
-              $(doslib)\doscalls.lib
+              $(doslib)\mapper.lib
               link $(exelink) @backup.lnk
 			  
 clean:

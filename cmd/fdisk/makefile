@@ -132,8 +132,7 @@ fdisk.exe:    fdisk.obj reboot.obj bootrec.obj fdboot.obj \
               int13.obj diskout.obj messages.obj fdparse.obj \
               convert.obj global.obj fdiskm.obj main.obj \
               c_menus.obj d_menus.obj mainmenu.obj _msgret.obj  \
-              $(doslib)\mapper.lib makefile fdisk.lnk fdisk.ctl _parse.obj \
-              $(doslib)\comsubs.lib
+              $(doslib)\mapper.lib makefile fdisk.lnk fdisk.ctl _parse.obj
               link @fdisk.lnk
 clean:
     del *.obj
