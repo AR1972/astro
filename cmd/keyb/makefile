@@ -36,8 +36,8 @@ $(cpr):       $(dest)
 
 
 
-KEYB.CTL: KEYB.SKL $(msg)\$(COUNTRY)-ibm.MSG
-			buildmsg $(msg)\$(COUNTRY)-ibm keyb.skl
+KEYB.CTL: KEYB.SKL $(msg)\$(COUNTRY).MSG
+                   buildmsg $(msg)\$(COUNTRY) keyb.skl
 
 KEYBCMD.OBJ:   KEYBCMD.ASM \
               $(com)\STRUC.INC \
