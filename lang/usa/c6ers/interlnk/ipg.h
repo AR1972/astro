@@ -1,4 +1,4 @@
 // dummy file
 
-char KBSTRING[] = "KBSTRING";
-char MBSTRING[] = "MBSTRING";
+char KBSTRING[] = "(%dKb)";
+char MBSTRING[] = "(%dMb)";
