@@ -7,9 +7,9 @@ void far pascal SET_INT24_VECTOR(unsigned vect){
     return;
 }
 
-void far pascal DOSEXIT(unsigned a, unsigned b){
-    return;
-}
+//void far pascal DOSEXIT(unsigned a, unsigned b){
+//    return;
+//}
 
 unsigned far pascal DOSSETFSINFO(unsigned a, unsigned b, char far *c, unsigned d ){
     return (unsigned)0;
@@ -96,22 +96,22 @@ unsigned far pascal DOSQFILEINFO(unsigned a, unsigned b, char far *c, unsigned d
     return (unsigned)0;
 }
 
-unsigned far pascal DOSBEEP(unsigned a, unsigned b){
-    return (unsigned)0;
-}
+//unsigned far pascal DOSBEEP(unsigned a, unsigned b){
+//    return (unsigned)0;
+//}
 
 /////////////////subcalls.h
 
-unsigned far pascal VIOSCROLLUP(unsigned a, unsigned b, unsigned c, unsigned d,
-                                unsigned e, char far *f, unsigned g){
-    return (unsigned)0;
-}
+//unsigned far pascal VIOSCROLLUP(unsigned a, unsigned b, unsigned c, unsigned d,
+//                                unsigned e, char far *f, unsigned g){
+//    return (unsigned)0;
+//}
 
-unsigned far pascal VIOSETCURPOS(unsigned a, unsigned b, unsigned c){
-    return (unsigned)0;
-}
+//unsigned far pascal VIOSETCURPOS(unsigned a, unsigned b, unsigned c){
+//    return (unsigned)0;
+//}
 
-unsigned far pascal VIOWRTCHARSTRATT(char far *a, unsigned b, unsigned c, unsigned d, char far *e, unsigned f){
-    return (unsigned)0;
-}
+//unsigned far pascal VIOWRTCHARSTRATT(char far *a, unsigned b, unsigned c, unsigned d, char far *e, unsigned f){
+//    return (unsigned)0;
+//}
 
