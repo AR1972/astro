@@ -1,5 +1,7 @@
 public VIOWRTCHARSTRATT
-
+.xlist
+include macros.inc
+.list
 .286p
 .MODEL small
 .CODE
@@ -11,17 +13,7 @@ arg_8 = word ptr  0Eh
 arg_A = word ptr  10h
 arg_C = dword ptr  12h
 
-        push    bp
-        mov bp, sp
-        push    bx
-        push    cx
-        push    dx
-        push    si
-        push    di
-        push    ds
-        push    es
-        push    ss
-        push    bp
+        pushall
         sub bh, bh
         sub ax, ax
         mov dx, [bp+arg_6]
@@ -124,18 +116,9 @@ loc_1B7:
 loc_1D4:
         mov ax, 2
 loc_1D7:
-        pop bp
-        pop ss
-        pop es
-        pop ds
-        pop di
-        pop si
-        pop dx
-        pop cx
-        pop bx
-        mov sp, bp
-        pop bp
+        popall
         retf 10h
 
 VIOWRTCHARSTRATT ENDP
 END
+

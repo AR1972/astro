@@ -1,5 +1,7 @@
 public DOSBEEP
-
+.xlist
+include macros.inc
+.list
 .286p
 .MODEL small
 .CODE
@@ -8,17 +10,7 @@ DOSBEEP PROC FAR PASCAL
 arg_2 = word ptr 6
 arg_4 = word ptr 8
 
-        push    bp
-        mov bp, sp
-        push    bx
-        push    cx
-        push    dx
-        push    si
-        push    di
-        push    ds
-        push    es
-        push    ss
-        push    bp
+        pushall
         mov al, 0B6h      ; ERROR_INVALID_FEQUENCY
         out 43h, al     ; Timer 8253-5 (AT: 8254.2).
         mov dx, 12h
@@ -73,18 +65,9 @@ loc_3C:
 loc_4A:
         mov ax, 2
 loc_4D:
-        pop bp
-        pop ss
-        pop es
-        pop ds
-        pop di
-        pop si
-        pop dx
-        pop cx
-        pop bx
-        mov sp, bp
-        pop bp
+        popall
         retf 4
 
 DOSBEEP ENDP
 END
+

@@ -1,5 +1,7 @@
 public VIOSETCURPOS
-
+.xlist
+include macros.inc
+.list
 .286p
 .MODEL small
 .CODE
@@ -12,17 +14,7 @@ arg_A = word ptr 10h
 arg_C = word ptr 12h
 arg_E = word ptr 14h
 
-        push    bp
-        mov bp, sp
-        push    bx
-        push    cx
-        push    dx
-        push    si
-        push    di
-        push    ds
-        push    es
-        push    ss
-        push    bp
+        pushall
         mov bx, [bp+arg_6]
         cmp bl, 19h
         jg  short loc_130
@@ -74,18 +66,9 @@ loc_F0:
 loc_130:
         mov ax, 2
 loc_133:
-        pop bp
-        pop ss
-        pop es
-        pop ds
-        pop di
-        pop si
-        pop dx
-        pop cx
-        pop bx
-        mov sp, bp
-        pop bp
+        popall
         retf 10h
 
 VIOSETCURPOS ENDP
 END
+
