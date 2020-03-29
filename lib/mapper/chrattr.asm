@@ -5,46 +5,30 @@ include macros.inc
 .286p
 .MODEL small
 .CODE
-VIOWRTCHARSTRATT PROC FAR PASCAL
+VIOWRTCHARSTRATT   PROC FAR PASCAL
 
-arg_2 = dword ptr  8
-arg_6 = word ptr  0Ch
-arg_8 = word ptr  0Eh
-arg_A = word ptr  10h
-arg_C = dword ptr  12h
+arg_2 = dword ptr 8
+arg_6 = word  ptr 0Ch
+arg_8 = word  ptr 0Eh
+arg_A = word  ptr 10h
+arg_C = dword ptr 12h
 
         pushall
         sub bh, bh
         sub ax, ax
         mov dx, [bp+arg_6]
-        cmp dl, 50h ; 'P'
+        cmp dl, 50h
         jg  short loc_1D4
         mov ax, [bp+arg_8]
         cmp al, 19h
         jg  short loc_1D4
         mov dh, al
         mov ah, 2
-        push    bx
-        push    cx
-        push    dx
-        push    si
-        push    di
-        push    ds
-        push    es
-        push    ss
-        push    bp
+        bios_pushall
         int 10h     ; - VIDEO - SET CURSOR POSITION
                     ; DH,DL = row, column (0,0 = upper left)
                     ; BH = page number
-        pop bp
-        pop ss
-        pop es
-        pop ds
-        pop di
-        pop si
-        pop dx
-        pop cx
-        pop bx
+        bios_popall
         lds si, [bp+arg_2]
         mov bl, [si]
         lds si, [bp+arg_C]
@@ -53,32 +37,16 @@ loc_184:
         mov al, [si]
         mov ah, 9
         mov cx, 1
-        push    bx
-        push    cx
-        push    dx
-        push    si
-        push    di
-        push    ds
-        push    es
-        push    ss
-        push    bp
+        bios_pushall
         int 10h     ; - VIDEO - WRITE ATTRIBUTES/CHARACTERS AT CURSOR POSITION
                     ; AL = character, BH = display page
                     ; BL = attributes of character (alpha modes) or color (graphics modes)
                     ; CX = number of times to write character
-        pop bp
-        pop ss
-        pop es
-        pop ds
-        pop di
-        pop si
-        pop dx
-        pop cx
-        pop bx
+        bios_popall
         inc si
         dec di
         inc dl
-        cmp dl, 50h ; 'P'
+        cmp dl, 50h
         jnz short loc_1B7
         inc dh
         mov dl, 0
@@ -89,27 +57,11 @@ loc_184:
         nop
 loc_1B7:
         mov ah, 2
-        push    bx
-        push    cx
-        push    dx
-        push    si
-        push    di
-        push    ds
-        push    es
-        push    ss
-        push    bp
+        bios_pushall
         int 10h     ; - VIDEO - SET CURSOR POSITION
                     ; DH,DL = row, column (0,0 = upper left)
                     ; BH = page number
-        pop bp
-        pop ss
-        pop es
-        pop ds
-        pop di
-        pop si
-        pop dx
-        pop cx
-        pop bx
+        bios_popall
         cmp di, 0
         jnz short loc_184
         sub ax, ax

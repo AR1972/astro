@@ -7,15 +7,15 @@ include macros.inc
 .CODE
 DOSBEEP PROC FAR PASCAL
 
-arg_2 = word ptr 6
-arg_4 = word ptr 8
+Duration  = word ptr 6
+Frequency = word ptr 8
 
         pushall
-        mov al, 0B6h      ; ERROR_INVALID_FEQUENCY
+        mov al, 0B6h
         out 43h, al     ; Timer 8253-5 (AT: 8254.2).
         mov dx, 12h
         mov ax, 2970h
-        mov cx, [bp+arg_4]
+        mov cx, [bp+Frequency]
         mov bx, 25h          ;LOWEST_FREQUENCY
         cmp cx, bx
         jl  short loc_4A
@@ -44,7 +44,7 @@ arg_4 = word ptr 8
                     ; 5: 0=enable I/O channel check
                     ; 6: 0=hold keyboard clock low
                     ; 7: 0=enable kbrd
-        mov cx, [bp+arg_2]
+        mov cx, [bp+Duration]
 loc_39:
         mov bx, 0C4h
 loc_3C:

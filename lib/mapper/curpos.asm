@@ -5,69 +5,35 @@ include macros.inc
 .286p
 .MODEL small
 .CODE
-VIOSETCURPOS PROC FAR PASCAL
+VIOSETCURPOS       PROC FAR PASCAL
 
-arg_2 = dword ptr 8
-arg_6 = word ptr 0Ch
-arg_8 = word ptr 0Eh
-arg_A = word ptr 10h
-arg_C = word ptr 12h
-arg_E = word ptr 14h
+arg_2 = word ptr  8
+arg_4 = word ptr  0Ah
 
         pushall
-        mov bx, [bp+arg_6]
-        cmp bl, 19h
-        jg  short loc_130
-        mov al, bl
-        jmp short loc_F0
-        mov al, 0
-loc_F0:
-        mov ah, 6
-        mov bx, [bp+arg_8]
-        cmp bl, 50h ; 'P'
-        jg  short loc_130
-        mov dl, bl
-        mov bx, [bp+arg_A]
-        cmp bl, 19h
-        jg  short loc_130
-        mov dh, bl
-        mov bx, [bp+arg_C]
-        mov cl, bl
-        mov bx, [bp+arg_E]
-        mov ch, bl
-        lds si, [bp+arg_2]
-        mov bx, [si]
-        mov bh, bl
-        push    bx
-        push    cx
-        push    dx
-        push    si
-        push    di
-        push    ds
-        push    es
-        push    ss
-        push    bp
-        int 10h     ; - VIDEO - SCROLL PAGE UP
-                    ; AL = number of lines to scroll window (0 = blank whole window)
-                    ; BH = attributes to be used on blanked lines
-                    ; CH,CL = row,column of upper left corner of window to scroll
-                    ; DH,DL = row,column of lower right corner of window
-        pop bp
-        pop ss
-        pop es
-        pop ds
-        pop di
-        pop si
-        pop dx
-        pop cx
-        pop bx
+        mov bh, 0
+        mov ax, [bp+arg_4]
+        cmp al, 19h
+        jg  short loc_B9
+        mov dh, al
+        mov ax, [bp+arg_2]
+        cmp al, 50h
+        jg  short loc_B9
+        mov dl, al
+        mov ah, 2
+        bios_pushall
+        int 10h     ; - VIDEO - SET CURSOR POSITION
+                    ; DH,DL = row, column (0,0 = upper left)
+                    ; BH = page number
+        bios_popall
         sub ax, ax
-        jmp short loc_133
-loc_130:
+        jmp short loc_BC
+        nop
+loc_B9:
         mov ax, 2
-loc_133:
+loc_BC:
         popall
-        retf 10h
+        retf 6
 
 VIOSETCURPOS ENDP
 END

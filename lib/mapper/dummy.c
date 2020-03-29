@@ -15,9 +15,9 @@ unsigned far pascal DOSSETFSINFO(unsigned a, unsigned b, char far *c, unsigned d
     return (unsigned)0;
 }
 
-unsigned far pascal DOSCLOSE(unsigned a){
-    return (unsigned)0;
-}
+//unsigned far pascal DOSCLOSE(unsigned a){
+//    return (unsigned)0;
+//}
 
 unsigned far pascal DOSQCURDISK(unsigned far *a, unsigned long far *b){
     return (unsigned)0;
@@ -27,9 +27,9 @@ unsigned far pascal DOSERROR(unsigned a){
     return (unsigned)0;
 }
 
-unsigned far pascal DOSWRITE(unsigned a, char far *b, unsigned c, unsigned far *d){
-    return (unsigned)0;
-}
+//unsigned far pascal DOSWRITE(unsigned a, char far *b, unsigned c, unsigned far *d){
+//    return (unsigned)0;
+//}
 
 unsigned far pascal DOSFINDCLOSE(unsigned a){
     return(unsigned)0;
@@ -39,26 +39,26 @@ unsigned far pascal DOSSETSIGHANDLER(void (far pascal * a)(),unsigned long far *
     return (unsigned)0;
 }
 
-unsigned far pascal DOSFINDFIRST(char far *a, unsigned far *b, unsigned c, struct FileFindBuf far *d, unsigned e, unsigned far *f, unsigned long g){
-    return (unsigned)0;
-}
+//unsigned far pascal DOSFINDFIRST(char far *a, unsigned far *b, unsigned c, struct FileFindBuf far *d, unsigned e, unsigned far *f, unsigned long g){
+//    return (unsigned)0;
+//}
 
-unsigned far pascal DOSDELETE(char far *a, unsigned long b){
-    return (unsigned)0;
-}
+//unsigned far pascal DOSDELETE(char far *a, unsigned long b){
+//    return (unsigned)0;
+//}
 
 unsigned far pascal DOSQFSINFO(unsigned a, unsigned b, char far *c, unsigned d){
     return (unsigned)0;
 }
 
-unsigned far pascal DOSSETFILEMODE(char far *a, unsigned b, unsigned long c){
-    return (unsigned)0;
-}
+//unsigned far pascal DOSSETFILEMODE(char far *a, unsigned b, unsigned long c){
+//    return (unsigned)0;
+//}
 
-unsigned far pascal DOSOPEN(char far *a, unsigned far *b, unsigned far *c, unsigned long d,
-                            unsigned e, unsigned f, unsigned g, unsigned long h){
-    return (unsigned)0;
-}
+//unsigned far pascal DOSOPEN(char far *a, unsigned far *b, unsigned far *c, unsigned long d,
+//                            unsigned e, unsigned f, unsigned g, unsigned long h){
+//    return (unsigned)0;
+//}
 
 unsigned far pascal DOSSELECTDISK(unsigned a){
     return (unsigned)0;
@@ -68,29 +68,29 @@ unsigned far pascal DOSGETCTRYINFO(unsigned a, struct countrycode far *b, char f
     return (unsigned)0;
 }
 
-unsigned far pascal DOSQCURDIR(unsigned a, char far *b, unsigned far *c){
-    return (unsigned)0;
-}
+//unsigned far pascal DOSQCURDIR(unsigned a, char far *b, unsigned far *c){
+//    return (unsigned)0;
+//}
 
-unsigned far pascal DOSCHGFILEPTR(unsigned a, long b, unsigned c, unsigned long far *d){
-    return (unsigned)0;
-}
+//unsigned far pascal DOSCHGFILEPTR(unsigned a, long b, unsigned c, unsigned long far *d){
+//    return (unsigned)0;
+//}
 
-unsigned far pascal DOSQFILEMODE(char far *a, unsigned far *b, unsigned long d){
-    return (unsigned)0;
-}
+//unsigned far pascal DOSQFILEMODE(char far *a, unsigned far *b, unsigned long d){
+//    return (unsigned)0;
+//}
 
-unsigned far pascal DOSFINDNEXT(unsigned a, struct FileFindBuf far *b, unsigned c, unsigned far *d ){
-    return (unsigned)0;
-}
+//unsigned far pascal DOSFINDNEXT(unsigned a, struct FileFindBuf far *b, unsigned c, unsigned far *d ){
+//    return (unsigned)0;
+//}
 
-unsigned far pascal DOSSETFILEINFO(unsigned a, unsigned b, char far *c, unsigned d){
-    return (unsigned)0;
-}
+//unsigned far pascal DOSSETFILEINFO(unsigned a, unsigned b, char far *c, unsigned d){
+//    return (unsigned)0;
+//}
 
-unsigned far pascal DOSALLOCSEG(unsigned a, unsigned far *b, unsigned c){
-    return (unsigned)0;
-}
+//unsigned far pascal DOSALLOCSEG(unsigned a, unsigned far *b, unsigned c){
+//    return (unsigned)0;
+//}
 
 unsigned far pascal DOSQFILEINFO(unsigned a, unsigned b, char far *c, unsigned d){
     return (unsigned)0;
