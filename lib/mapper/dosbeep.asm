@@ -8,6 +8,7 @@ DOSBEEP PROC FAR PASCAL
 arg_2 = word ptr 6
 arg_4 = word ptr 8
 
+        push    bp
         mov bp, sp
         push    bx
         push    cx
