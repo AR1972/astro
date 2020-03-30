@@ -65,4 +65,7 @@ ALL:
 	$(MAKE)
 	cd ..
 	$(MAKE) $(ModelType) -f LIBUILD
-	
+
+clean:
+    del *.lib
+

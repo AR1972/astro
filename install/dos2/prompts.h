@@ -31,4 +31,3 @@ extern void 	FmtStat( unsigned uTrack, unsigned uHead );
 extern void		ProcessDiskError(int ErrorType);
 extern void 	Error(char * *ErrorString);
 
-
