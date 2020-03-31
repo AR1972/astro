@@ -7,15 +7,14 @@ extcsw =-I$(hinc)
 
 OBJECTS= beep.obj exit.obj chrattr.obj curpos.obj pageup.obj delete.obj \
          ffirst.obj open.obj write.obj curdir.obj fmode.obj sfmode.obj \
-         chfptr.obj sfinfo.obj close.obj alocseg.obj fnext.obj \
-         dummy.obj
+         chfptr.obj sfinfo.obj close.obj alocseg.obj fnext.obj seldsk.obj \
+         gcntinfo.obj sint24.obj sfsinfo.obj curdsk.obj error.obj fndclo.obj\
+         sighndlr.obj fsinfo.obj fileinfo.obj
 
 all:            $(doslib)\mapper.lib 
 
 {}.asm{}.obj: 
          ml /c /Cp $< $@;
-
-dummy.obj:      dummy.c
 
 mapper.lib:     $(OBJECTS)
                 if exist mapper.lib del mapper.lib
