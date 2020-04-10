@@ -46,10 +46,10 @@
 #define f(x) (float)x
 #define ul(x) (unsigned long)x
 
-#define HIWHITE_ON_BLACK 6
-#define HIWHITE_ON_BLUE 3
-#define GRAY_ON_BLACK 8 
-#define WHITE_ON_BLUE 9
+#define HIWHITE_ON_BLACK 0xF
+#define HIWHITE_ON_BLUE 0xF
+#define GRAY_ON_BLACK 0x07
+#define WHITE_ON_BLUE 0x07
 
 #define PRIMARY 1
 #define MAX_PART_SIZE 32
@@ -63,8 +63,8 @@
 #define MONO80_25A 1
 #define BW80_25 1
 #define SET_MODE 1
-#define SET_ACTIVE_DISPLAY_PAGE 1
-#define SET_PAGE 1
+#define SET_ACTIVE_DISPLAY_PAGE 0
+#define SET_PAGE 0
 #define CURRENT_VIDEO_ATTRIBUTE 1
 
 #define WRITE_DISK 1
