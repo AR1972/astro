@@ -21,7 +21,8 @@ all:
         $(MAKE) /a BASE=
         $(MAKE) /a
     cd ..\comp
-#        $(MAKE) #needs strings
+#needs strings
+        $(MAKE)
     cd ..\cps
         $(MAKE)
         cd ..\debug
@@ -43,7 +44,8 @@ all:
     cd ..\fc
         $(MAKE)
     cd ..\fdisk
-#        $(MAKE) # broken probably a missing ;
+# dumpster fire
+        $(MAKE)
     cd ..\find
         $(MAKE)
     cd ..\format
@@ -56,7 +58,8 @@ all:
     cd ..\help
         $(MAKE)
     cd ..\join
-#        $(MAKE) # missing lib\master.lib
+# master.lib
+        $(MAKE)
     cd ..\keyb
         $(MAKE)
     cd ..\label
@@ -95,7 +98,8 @@ all:
     cd ..\sort
         $(MAKE)
     cd ..\subst
-#        $(MAKE)		#master.lib missing
+# master.lib
+        $(MAKE) 
     cd ..\sys
         $(MAKE) /a BASE=
         $(MAKE) /a
