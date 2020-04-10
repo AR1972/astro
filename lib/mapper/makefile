@@ -32,4 +32,5 @@ clean:
     if exist *.obj    del *.obj
     if exist *.lib    del *.lib
     if exist *.map    del *.map
+    if exist *.crf    del *.crf
 
