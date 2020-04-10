@@ -1,8 +1,9 @@
 #************************** makefile for doskey ***************************
 
-inc     =..\..\inc
-msg     =..\..\messages
-extasw  =-I$(inc) -D$(COUNTRY)
+inc	=..\..\inc
+msg	=..\..\messages
+
+extasw	=-I$(inc) -D$(COUNTRY)
 bins    =..\..\binaries
 cprs    =..\..\compress
 dest    =doskey.com
@@ -23,13 +24,19 @@ $(cprs)\$(cpr):  $(cpr)
             copy $(cpr) $(cprs)
 
 $(cpr):       $(dest)
-            $(compress) -f $(dest) $(cpr)
+            $(compress) $(dest) $(cpr)
 
 !ENDIF
 
-doskey.cl1:   doskey.skl                \
-              $(msg)\$(COUNTRY)\doskey.msg
-              nosrv $(msg)\$(COUNTRY) doskey
+
+
+doskey.cl1: doskey.skl $(msg)\$(COUNTRY).msg
+            nosrvbld doskey.skl $(msg)\$(COUNTRY).msg
+
+# no default rule exists for making .cl2, so for precision's sake, make
+#  the rule explicit
+doskey.cl2: doskey.skl $(msg)\$(COUNTRY).msg
+            nosrvbld doskey.skl $(msg)\$(COUNTRY).msg
 
 doskey.obj:   doskey.asm                \
               gendef.inc                \
@@ -65,11 +72,11 @@ doskey.exc:   doskey.obj                \
 $(dest):      doskey.exc
 
 clean:
-    -del *.obj
-    -del *.com
-    -del *.exc
-    -del *.co_
-    -del *.cl1
-    -del *.cl2
-
-
+    del *.obj
+    del *.exc
+    del *.com
+    del *.co_
+    del *.cl2
+    del *.cl1
+    
+    
