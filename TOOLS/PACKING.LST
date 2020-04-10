@@ -1,0 +1,139 @@
+
+The following documentation pieces are provided	with the Macro
+Assembler:
+
+  Microsoft(R) Editor User's Guide
+  Microsoft CodeView(R) and Utilities Update
+  Macro Assembler Version 5.10 Update
+  Macro	Assembler Programmer's Guide
+  Macro	Assembler Reference
+  Microsoft CodeView and Utilities manual
+  Mixed-Language Programming Guide
+
+Executable files on the 5 disks are one of the following types:
+
+DOS		Runs in real mode under DOS 2.1 or above
+OS/2		Runs in protected mode of OS/2 1.0
+Bound		Runs in either real or protected mode
+
+
+The following files are provided with the Macro Assembler:
+
+Disk 1, Root
+
+SETUP.SUS	Setup Script File used by Setup.EXE
+RUNME.EXE	Setup Script File interpreter (Bound)
+SETUP.BAT	Batch file specifying RUNME.EXE be used for setup
+README.DOC      Supplemental information
+PACKING.LST     List of disk contents
+MASM.EXE	Macro Assembler executable file (DOS)
+CREF.EXE	Cross-reference utility (Bound)
+SHOW.EXE	Sample program executable (Bound)
+\MIXED
+
+Disk 1, Directory MIXED
+
+BA.ASM        BASIC-to-assembly sample source
+CA.ASM        C-to-assembly sample source
+FA.ASM        FORTRAN-to-assembly sample source
+PA.ASM        Pascal-to-assembly sample source
+MIXED.DOC     Information on mixed-language macros
+POWER2.ASM    Assembly sample source 
+BAMAIN.BAS    BASIC main program sample source
+CAMAIN.C      C main program sample source
+FAMAIN.FOR    FORTRAN main program sample source
+PAMAIN.PAS    Pascal main program sample source
+MIXED.INC     Include file for mixed-language macros
+
+Disk 2
+
+CVPACK.EXE    Debugging information packing utility (Bound)
+LIB.EXE       Library Manager (Bound)
+LINK.EXE      Microsoft Overlay Linker (DOS)
+EXEHDR.EXE    Segmented EXE File Header Utility (Bound)
+MAKE.EXE      Program Maintenance Utility (Bound)
+SETENV.EXE    Environment Expansion Utility (DOS)
+ERROUT.EXE    STDERR Redirection Utility (DOS)
+EXEMOD.EXE    EXE File Header Utility (DOS)
+EXEPACK.EXE   EXE File Compression Utility (DOS)
+MOUSE.COM     Mouse driver
+
+
+Disk 3
+
+MACRO.DOC     Information on macros
+BIOS.INC      Include file for BIOS calls
+DOS.INC       Include file for DOS calls
+E_AUTO.CV     Tutorial script file
+M_AUTO.CV     Tutorial script file
+Q_AUTO.CV     Tutorial script file
+U_AUTO.CV     Tutorial script file
+W_AUTO.CV     Tutorial script file
+SHOWR.ASM     Sample program source
+SHOWR.EXE     Sample program (DOS)
+PAGERR.ASM    Sample program source (real mode)
+CV.HLP	      Microsoft CodeView Help file
+CV.EXE	      Microsoft CodeView debugger (DOS)
+SETUP.SUS     Demonstration script file
+DEMO.EXE      Demonstration program for CodeView (DOS)
+
+
+Disk 4, Root
+
+CALLTREE.EXE  Function labeling utility (Bound)
+M.EXE	      Real-mode Microsoft Editor (DOS)
+RM.EXE	      File removing utility (Bound)
+MEGREP.EXE    Pattern searching utility (Bound)
+UNDEL.EXE     Undeletion utility (used with RM) (Bound)
+ECH.EXE       File used by M.EXE to echo characters (Bound)
+EXP.EXE       Expunge utility (used with RM) (Bound)
+FIXSHIFT.COM  Utility to adjust keyboard behavior
+\EXT
+\INI
+
+Disk 4, Directory EXT  (for use with Microsoft Editor)
+
+EXTHDR.OBJ      Prolog object file for real-mode extensions
+EXTHDRP.OBJ     Prolog object file for protected-mode extensions
+EXT.DOC 	Documentation on low-level editing functions
+EXT.H           Include file for ME extensions
+SKEL.C          Sample extension source code
+SKEL.DEF        Module-definition file for use with SKEL.C
+
+Disk 4, Directory INI  (for use with Microsoft Editor)
+
+QUICK.INI       Quick-product initialization file
+EPSILON.INI     EPSILON initialization file
+BRIEF.INI       BRIEF initialization file
+WS.ZXT          WordStar DOS extension
+WS.DLL          WordStar protected-mode extension
+
+Disk 5
+
+ILINK.EXE	   Incremental linker (Bound)
+IMPLIB.EXE	   Import library creation utility (Bound)
+CVP.EXE 	   Protected-mode CodeView debugger (OS/2)
+CVP.HLP            Protected-mode CodeView Help file
+API.LIB            Family-API emulation library
+APILMR.OBJ         64K stack object file (for use with BIND)
+DOSCALLS.LIB       Import library for API
+BIND.EXE	   Dual-mode binding utility (Bound)
+EXEC.EXE	   File used by ILINK to invoke LINK (DOS)
+OS2.INC 	   Root include file for OS/2 calls
+OS2.DOC 	   Description of macros and include files
+OS2DEF.INC	   OS/2 common definitions
+LINK.EXE	   Segmented executable linker (Bound)
+BSEDOS.INC	   Base include file for DOSCALLS
+BSEERR.INC	   Base include file for errors
+BSESUB.INC	   Base include file for video, keyboard, & mouse
+BSE.INC 	   Base include file for OS/2 calls
+MAKESHOW.BAT	   SHOW-program-creation batch file
+MAKESHOW.CMD	   SHOW-program-creation protected-mode command file
+MASM.EXE	   Protected-mode assembler (OS/2)
+MEP.EXE 	   Protected-mode Microsoft Editor (OS/2)
+PAGERP.ASM	   Demonstration source file
+SHOWP.ASM	   Protected-mode source file
+SHOWS.DEF	   Module-definition file for SHOW stub file
+SHOW		   Make file for creating SHOW program
+PTRACE87.PAT	   Patch to debugger's "7" command
+OS2PATCH.EXE	   Executable file which executes patch (OS/2)
