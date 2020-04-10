@@ -1,0 +1,11 @@
+
+	INTERFACE TO INTEGER*2 FUNCTION POWER2(A,B)
+	INTEGER*2 A,B
+	END
+C
+	INTEGER*2 POWER2
+	INTEGER*2 A,B
+	A = 3
+	B = 5
+	WRITE (*,*) '3 times 2 to the power of 5 is ',POWER2(A,B)
+	END
