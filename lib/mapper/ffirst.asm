@@ -1,11 +1,17 @@
+
+?PLM=1      ; PASCAL Calling convention is DEFAULT
+?WIN=0      ; Windows calling convention
+?386=0      ; Use 386 code?
+
 public DOSFINDFIRST
 .xlist
 include macros.inc
+include cmacros.inc
 .list
 .286p
 .MODEL small
 .CODE
-DOSFINDFIRST        PROC FAR PASCAL
+DOSFINDFIRST        PROC FAR
 
 arg_4       = dword ptr  0Ah
 arg_8       = word ptr  0Eh

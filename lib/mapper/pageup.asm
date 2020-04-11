@@ -1,11 +1,17 @@
+
+?PLM=1      ; PASCAL Calling convention is DEFAULT
+?WIN=0      ; Windows calling convention
+?386=0      ; Use 386 code?
+
 public VIOSCROLLUP
 .xlist
 include macros.inc
+include cmacros.inc
 .list
 .286p
 .MODEL small
 .CODE
-VIOSCROLLUP        PROC FAR PASCAL
+VIOSCROLLUP        PROC FAR
 
 arg_2 = dword ptr 8
 arg_6 = word  ptr 0Ch

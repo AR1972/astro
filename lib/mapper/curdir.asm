@@ -1,11 +1,17 @@
+
+?PLM=1      ; PASCAL Calling convention is DEFAULT
+?WIN=0      ; Windows calling convention
+?386=0      ; Use 386 code?
+
 public DOSQCURDIR
 .xlist
 include macros.inc
+include cmacros.inc
 .list
 .286p
 .MODEL small
 .CODE
-DOSQCURDIR        PROC FAR PASCAL
+DOSQCURDIR        PROC FAR
 
 arg_0       = dword ptr  6
 arg_4       = dword ptr  0Ah

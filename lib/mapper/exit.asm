@@ -1,6 +1,12 @@
+
+?PLM=1      ; PASCAL Calling convention is DEFAULT
+?WIN=0      ; Windows calling convention
+?386=0      ; Use 386 code?
+
 public DOSEXIT
 .xlist
 include macros.inc
+include cmacros.inc
 .list
 .286p
 .MODEL small
@@ -11,7 +17,7 @@ include macros.inc
 ;                      is the last thread, the process is ended.
 ; 1      EXIT_PROCESS  The process and all threads in it is ended.
 ; =============================================================================
-DOSEXIT PROC FAR PASCAL
+DOSEXIT PROC FAR
 
 Result = word ptr 6
 Action = word ptr 8

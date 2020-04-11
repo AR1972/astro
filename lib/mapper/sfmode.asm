@@ -1,11 +1,17 @@
+
+?PLM=1      ; PASCAL Calling convention is DEFAULT
+?WIN=0      ; Windows calling convention
+?386=0      ; Use 386 code?
+
 public DOSSETFILEMODE
 .xlist
 include macros.inc
+include cmacros.inc
 .list
 .286p
 .MODEL small
 .CODE
-DOSSETFILEMODE        PROC FAR PASCAL
+DOSSETFILEMODE        PROC FAR
 
 arg_4       = word ptr  0Ah
 arg_6       = dword ptr  0Ch

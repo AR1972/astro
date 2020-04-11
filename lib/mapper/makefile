@@ -14,7 +14,7 @@ OBJECTS= beep.obj exit.obj chrattr.obj curpos.obj pageup.obj delete.obj \
 all:            $(doslib)\mapper.lib 
 
 {}.asm{}.obj: 
-         ml /c /Cp $< $@;
+         masm $< $@;
 
 mapper.lib:     $(OBJECTS)
                 if exist mapper.lib del mapper.lib
