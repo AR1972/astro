@@ -4,6 +4,7 @@ rem Deletes all files created during a build - a required step before
 rem building the OAK in a different language.
 rem
 
+SET OAKROOT="%~dp0"
 if "%OAKROOT%"=="" goto error
 
 cd %OAKROOT%

@@ -39,7 +39,7 @@ $(bins)\keyboard.ice: keyboard.ice
 $(cprs)\keyboard.ic_: keyboard.ice
                     compress -f keyboard.ice $(cprs)
 
+!ENDIF
+
 clean:
 
-
-!ENDIF

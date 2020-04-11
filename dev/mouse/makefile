@@ -19,8 +19,9 @@ mouse.co_:         mouse.com
 
 $(cprs)\mouse.co_: mouse.co_
                     copy mouse.co_ $(cprs)
-					
+
+!ENDIF
+
 clean:
     del *.co_
 
-!ENDIF
