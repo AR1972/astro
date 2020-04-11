@@ -1,4 +1,4 @@
-0120
+0001
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -1713,3 +1713,17 @@ DOSKEY   00016598 0010
 0008 U 0000 13,10,"$"
 0020 U 0000 13,10,"-- More --",0
 0021 U 0000 "Line number: ",0
+GRAFTABL 00016c9b 0009
+0002 U 0000 "Active Code Page: %1",CR,LF
+0003 U 0000 "Previous Code Page: %1",CR,LF
+0004 U 0000 "None",NULL
+0005 U 0000 "Non-standard",NULL
+0006 U 0002 CR,LF,"DOS command line parameters supported",COLON,CR,LF,LF
+0007 U 0002 "    /STA - Request Status only",CR,LF
+	"    ?    - Display this summary of parameters",CR,LF,CR,LF
+0008 U 0002 "    Code Pages available",COLON,CR,LF
+	"    437  - USA Graphic Character Set",CR,LF
+0009 U 0002 "    850  - Multi-lingual Graphic Character Set",CR,LF
+	"    860  - Portuguese Graphic Character Set",CR,LF
+0010 U 0002 "    863  - Canadian French Graphic Character Set",CR,LF
+	"    865  - Nordic Graphic Character Set",CR,LF

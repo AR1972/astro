@@ -35,7 +35,7 @@ $(cpr):       $(dest)
 graftabl.ctl: graftabl.skl              \
 	      $(msg)\$(COUNTRY).msg     \
 	      makefile
-		  buildmsg ..\..\messages\usa-ibm graftabl.skl
+		  buildmsg $(msg)\$(COUNTRY) graftabl.skl
 
 grtab.obj:    grtab.asm                 \
 	      makefile

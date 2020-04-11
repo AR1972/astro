@@ -8,14 +8,11 @@ COUNTRY =usa
 #######################	dependencies begin here. #########################
 #
 
-all: $(COUNTRY).idx $(COUNTRY)-ibm.idx
+all: $(COUNTRY).idx
 
 $(COUNTRY).idx: $(COUNTRY).msg
-    c:\astro\c6ers\tools6\bin\buildidx $(COUNTRY).msg
-	
-$(COUNTRY)-ibm.idx: $(COUNTRY)-ibm.msg
-    c:\astro\c6ers\tools6\bin\buildidx $(COUNTRY)-ibm.msg
-	
+                buildidx $(COUNTRY).msg
+
 clean:
-	del $(COUNTRY).idx
-	del $(COUNTRY)-ibm.idx
+
+
