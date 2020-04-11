@@ -47,7 +47,7 @@ fdiskm.c  : $(msg)\$(COUNTRY).msg fdisk.msg
             menubld fdisk.msg  $(msg)\$(COUNTRY).MSG
 
 fdisk5.cl1 : fdisk5.skl $(msg)\$(COUNTRY).msg
-             nosrv $(msg)\$(COUNTRY)\ fdisk5
+             nosrv $(msg)\$(COUNTRY) fdisk5
 
 fdisk.ctl : fdisk.skl $(msg)\$(COUNTRY).msg
             buildmsg $(msg)\$(COUNTRY) fdisk.skl
