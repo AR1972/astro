@@ -33,12 +33,17 @@ assumes DS,DATA
 
 ;=============================================================================
 
-;DosExit( ulAction, ulResult );
+;void far pascal DOSEXIT (
+;    unsigned Action,
+;    unsigned Result );
 
 cProc DosExit, <FAR, PUBLIC>
+
 ParmW   action
 ParmW   result
+
 cBegin
+
         pushall
         mov ax, word ptr action
         cmp ax, 1
@@ -47,18 +52,26 @@ cBegin
         mov ah, 4Ch
         int 21h
         xor ax, ax
+
 Done:
+
     popall
+
 cEnd
 
 ;=============================================================================
 
-;DosBeep( ulFrequency, ulDuration );
+;unsigned far pascal DOSBEEP (
+;    unsigned Frequency,
+;    unsigned Duration );
 
 cProc DosBeep, <FAR, PUBLIC>
+
 ParmW frequency
 ParmW duration
+
 cBegin
+
         pushall
         mov al, 0B6h
         out 43h, al     ; Timer 8253-5 (AT: 8254.2).
@@ -94,9 +107,13 @@ cBegin
                         ; 6: 0=hold keyboard clock low
                         ; 7: 0=enable kbrd
         mov cx, word ptr duration
+
 loc_39:
+
         mov bx, 0C4h
+
 loc_3C:
+
         dec bx
         jnz loc_3C
         loop    loc_39
@@ -111,15 +128,26 @@ loc_3C:
                         ; 7: 0=enable kbrd
         sub ax, ax
         jmp loc_4D
+
 loc_4A:
+
         mov ax, 2
+
 loc_4D:
+
         popall
+
 cEnd
 
 ;=============================================================================
 
-;VioWrtCharStrAtt (CharStr, Length, Row, Column, Attr, VioHandle);
+;unsigned far pascal VIOWRTCHARSTRATT (
+;    char far * Str,
+;    unsigned Length,
+;    unsigned Row,
+;    unsigned Column,
+;    char far * Attr,
+;    unsigned VioHandle );
 
 cProc VioWrtCharStrAtt, <FAR, PUBLIC>
 
@@ -131,8 +159,8 @@ ParmD attr
 ParmW handle
 
 cBegin
+
         pushall
-        ;mov dx, word ptr handle
         sub bh, bh
         sub ax, ax
         mov dx, word ptr col
@@ -152,7 +180,9 @@ cBegin
         mov bl, [si]
         lds si, dword ptr chr
         mov di, word ptr len
+
 loc_184:
+
         mov al, [si]
         mov ah, 9
         mov cx, 1
@@ -173,6 +203,7 @@ loc_184:
         jnz loc_1B7
         mov ax, 1
         jmp loc_1D7
+
 loc_1B7:
 
         mov ah, 2
@@ -184,15 +215,27 @@ loc_1B7:
         cmp di, 0
         jnz loc_184
         sub ax, ax
+
 loc_1D4:
+
         mov ax, 2
+
 loc_1D7:
+
         popall
+
 cEnd
 
 ;=============================================================================
 
-;VioScrollUp(TopRow, LeftCol, BotRow, RightCol, Lines, Cell, VioHandle);
+;unsigned far pascal VIOSCROLLUP (
+;    unsigned TopRow,
+;    unsigned LeftCol,
+;    unsigned BotRow,
+;    unsigned RightCol,
+;    unsigned Lines,
+;    char far * Cell,
+;    unsigned VioHandle );
 
 cProc VioScrollUp, <FAR, PUBLIC>
 
@@ -205,6 +248,7 @@ ParmD cell
 ParmW handle
 
 cBegin
+
         pushall
         mov bx, word ptr lines
         cmp bl, 19h
@@ -212,7 +256,9 @@ cBegin
         mov al, bl
         jmp loc_F0
         mov al, 0
+
 loc_F0:
+
         mov ah, 6
         mov bx, word ptr rightcol
         cmp bl, 50h
@@ -238,15 +284,23 @@ loc_F0:
         bios_popall
         sub ax, ax
         jmp loc_133
+
 loc_130:
+
         mov ax, 2
+
 loc_133:
+
         popall
+
 cEnd
 
 ;=============================================================================
 
-;VioSetCurPos(Row, Column, VioHandle);
+;unsigned far pascal VIOSETCURPOS (
+;    unsigned Row,
+;    unsigned Column,
+;    unsigned VioHandle );
 
 cProc VioSetCurPos, <FAR, PUBLIC>
 
@@ -255,6 +309,7 @@ ParmW col
 ParmW handle
 
 cBegin
+
         pushall
         mov bh, 0
         mov ax, word ptr row
@@ -273,15 +328,22 @@ cBegin
         bios_popall
         sub ax, ax
         jmp loc_BC
+
 loc_B9:
+
         mov ax, 2
+
 loc_BC:
+
         popall
+
 cEnd
 
 ;=============================================================================
 
-;DosDelete (FileName, Reserved);
+;unsigned far pascal DOSDELETE (
+;    char far * FileName,
+;    unsigned long Reserved );
 
 cProc DosDelete, <FAR, PUBLIC>
 
@@ -289,6 +351,7 @@ ParmD fname
 ParmD res
 
 cBegin
+
         pushall
         lds dx, dword ptr fname
         mov ah, 41h
@@ -296,13 +359,24 @@ cBegin
                     ; DS:DX -> ASCIZ pathname of file to delete (no wildcards allowed)
         jb  loc_1CD
         sub ax, ax
+
 loc_1CD:
+
         popall
+
 cEnd
 
 ;=============================================================================
 
-;DosOpen(pszFileName, pHf, pulAction, cbFile, ulAttribute, fsOpenFlags, fsOpenMode, peaop2);
+;unsigned far pascal DOSOPEN (
+;    char far * FileName,
+;    unsigned far * Handle,
+;    unsigned far * Action,
+;    unsigned long File,
+;    unsigned Attribute,
+;    unsigned OpenFlags,
+;    unsigned OpenMode,
+;    unsigned long eaop2 );
 
 cProc DosOpen, <FAR, PUBLIC>
 
@@ -314,8 +388,10 @@ arg_A       = dword ptr  10h
 arg_E       = dword ptr  14h
 arg_12      = dword ptr  18h
 arg_16      = dword ptr  1Ch
+ParmW eaop2
 
 cBegin
+
         pushall
         sub sp, 2
         test    [bp+arg_4], 8000h
@@ -329,6 +405,7 @@ cBegin
         add al, 0E0h
 
 loc_23E:
+
         sub al, 41h
         jb  loc_254
         cmp al, 1Bh
@@ -342,10 +419,12 @@ loc_23E:
         jmp loc_31F
 
 loc_254:
+
         mov ax, 3
         jmp loc_321
 
 loc_25A:
+
         lds dx, [bp+arg_16]
         mov ax, 4300h
         int 21h     ; DOS - 2+ - GET FILE ATTRIBUTES
@@ -357,6 +436,7 @@ loc_25A:
         jmp loc_321
 
 loc_26C:
+
         mov [bp+var_2], cx
         lds si, [bp+arg_E]
         mov word ptr [si], 1
@@ -370,10 +450,12 @@ loc_26C:
         jz  loc_2BD
 
 loc_28B:
+
         mov ax, 0Ch
         jmp loc_321
 
 loc_291:
+
         lds si, [bp+arg_E]
         mov word ptr [si], 0
         lds dx, [bp+arg_16]
@@ -389,6 +471,7 @@ loc_291:
         jmp loc_30F
 
 loc_2AC:
+
         mov ax, [bp+arg_6]
         and ax, 10h
         cmp ax, 10h
@@ -397,6 +480,7 @@ loc_2AC:
         jmp loc_321
 
 loc_2BD:
+
         lds si, [bp+arg_E]
         mov word ptr [si], 2
         lds dx, [bp+arg_16]
@@ -441,6 +525,7 @@ loc_2BD:
         mov [si], ax
 
 loc_30F:
+
         mov bx, ax
         add bx, bx
         mov ax, 8D3h
@@ -450,16 +535,23 @@ loc_30F:
         mov [bx+4], ax
 
 loc_31F:
+
         sub ax, ax
 
 loc_321:
+
         add sp, 2
         popall
+
 cEnd
 
 ;=============================================================================
 
-;DosWrite (hFile, pBuffer, cbWrite, pcbActual);
+;unsigned far pascal DOSWRITE (
+;    unsigned Handle,
+;    char far * Buffer,
+;    unsigned Write,
+;    unsigned far * Actual );
 
 cProc DosWrite, <FAR, PUBLIC>
 
@@ -469,6 +561,7 @@ ParmW nwrite
 ParmD actual
 
 cBegin
+
         pushall
         mov bx, word ptr file
         lds dx, dword ptr buffer
@@ -480,19 +573,24 @@ cBegin
         lds si, dword ptr actual
         mov [si], ax
         sub ax, ax
+
 loc_1A7:
+
         popall
+
 cEnd
 
 ;=============================================================================
 
-;DosClose (hFile);
+;unsigned far pascal DosClose (
+;    unsigned File );
 
 cProc DosClose, <FAR, PUBLIC>
 
 ParmW file
 
 cBegin
+
         pushall
         mov bx, word ptr file
         mov ax, bx
@@ -502,22 +600,30 @@ cBegin
         int 21h     ; DOS - 2+ - CLOSE A FILE WITH HANDLE
                     ; BX = file handle
         jb  loc_534
+
 loc_532:
+
         sub ax, ax
+
 loc_534:
+
         popall
+
 cEnd
 
 ;=============================================================================
 
-;DosQCurDisk ();
+;unsigned far pascal DosQCurDisk (
+;    unsigned far *DriveNumber,
+;    unsigned long far * LogicalDriveMap );
 
 cProc DosQCurDisk, <FAR, PUBLIC>
 
-arg_0           = dword ptr  6
-arg_4           = dword ptr  0Ah
+ParmD DriveNumber
+ParmD LogicalDriveMap
 
 cBegin
+
         pushall
         xor al, al
         mov ah, 33h
@@ -532,11 +638,12 @@ cBegin
         int 21h     ; DOS -
 
 loc_10025:
+
         mov ah, 19h
         int 21h     ; DOS - GET DEFAULT DISK NUMBER
         mov ah, bl
         mov es, ax
-        lds bx, [bp+arg_4]
+        lds bx, dword ptr LogicalDriveMap
         xor ah, ah
         inc ax
         mov [bx], ax
@@ -554,16 +661,19 @@ loc_10025:
         nop
 
 loc_1004D:
+
         sub cl, 10h
         rol bx, cl
         or  di, bx
 
 loc_10054:
+
         xor dl, dl
         mov bx, 1
         mov cx, 10h
 
 loc_1005C:
+
         mov ah, 0Eh
         int 21h     ; DOS - SELECT DISK
                     ; DL = new default drive number (0 = A, 1 = B, etc.)
@@ -576,6 +686,7 @@ loc_1005C:
         or  si, bx
 
 loc_1006C:
+
         inc dl
         rol bx, 1
         loop    loc_1005C
@@ -583,6 +694,7 @@ loc_1006C:
         mov cx, 0Ah
 
 loc_10078:
+
         mov ah, 0Eh
         int 21h     ; DOS - SELECT DISK
                     ; DL = new default drive number (0 = A, 1 = B, etc.)
@@ -595,10 +707,11 @@ loc_10078:
         or  di, bx
 
 loc_10088:
+
         inc dl
         rol bx, 1
         loop    loc_10078
-        lds bx, [bp+arg_0]
+        lds bx, dword ptr DriveNumber
         mov [bx], si
         mov [bx+2], di
         mov ax, es
@@ -618,104 +731,129 @@ loc_10088:
                     ; DL = 00h for OFF or 01h for ON
 
 loc_100AC:
+
         xor ax, ax
         popall
+
 cEnd
 
 ;=============================================================================
 
-;DosQCurDir ();
+;unsigned far pascal DosQCurDir (
+;    unsigned DriveNumber,
+;    char far * DirPath,
+;    unsigned far * DirPathLen );
 
 cProc DosQCurDir, <FAR, PUBLIC>
 
-arg_0       = dword ptr  6
-arg_4       = dword ptr  0Ah
-arg_8       = word ptr  0Eh
+Parmw DriveNumber
+ParmD DirPath
+ParmD DirPathLen
 
 cBegin
+
         pushall
-        mov ax, 8DFh
+        mov ax, 82Fh
         mov ds, ax
-        assume ds:nothing
-        mov si, 0Ch
-        mov dx, [bp+arg_8]
+        mov si, 6
+        mov dx, word ptr DriveNumber
         mov ah, 47h
         int 21h     ; DOS - 2+ - GET CURRENT DIRECTORY
                     ; DL = drive (0=default, 1=A, etc.)
                     ; DS:SI points to 64-byte buffer area
-        jb  loc_383
+        jb  loc_17AF4
         mov di, ds
         mov es, di
-        assume es:nothing
-        mov di, 0Ch
+        mov di, 6
         mov cx, 80h
         mov al, 0
         cld
         repne scasb
         mov dx, 80h
         sub dx, cx
-        les di, [bp+arg_0]
-        assume es:nothing
+        les di, dword ptr DirPathLen
         mov cx, es:[di]
         cmp cx, dx
-        jnb loc_374
+        jnb loc_17AE5
         mov ax, 8
-        jmp loc_383
-loc_374:
+        jmp loc_17AF4
+
+loc_17AE5:
+
         mov cx, dx
         mov es:[di], dx
-        les di, [bp+arg_4]
-        mov si, 0Ch
+        les di, dword ptr DirPath
+        mov si, 6
         rep movsb
         sub ax, ax
-loc_383:
+
+loc_17AF4:
+
         popall
+
 cEnd
 
 ;=============================================================================
 
-;DosQFileMode ();
+;unsigned far pascal DosQFileMode (
+;    char far * FilePathName,
+;    unsigned far * CurrentAttribute,
+;    unsigned long Reserved );
 
 cProc DosQFileMode, <FAR, PUBLIC>
 
-arg_4       = dword ptr  0Ah
-arg_8       = dword ptr  0Eh
+ParmD FilePathName
+ParmD CurAttribute
+ParmD Reserved
 
 cBegin
+
         pushall
-        lds dx, [bp+arg_8]
+        lds dx, dword ptr FilePathName
         mov ax, 4300h
         int 21h     ; DOS - 2+ - GET FILE ATTRIBUTES
                     ; DS:DX -> ASCIZ file name or directory
                     ; name without trailing slash
         jb  loc_470
-        lds si, [bp+arg_4]
+        lds si, dword ptr CurAttribute
         mov [si], cx
         sub ax, ax
         jmp loc_473
+
 loc_470:
+
         mov ax, 2
+
 loc_473:
+
         popall
+
 cEnd
 
 ;=============================================================================
 
-;DosAllocSeg ();
+;unsigned far pascal DosAllocSeg (
+;    unsigned Size,
+;    unsigned far * Selector,
+;    unsigned Flags );
 
 cProc DosAllocSeg, <FAR, PUBLIC>
 
-arg_2       = dword ptr  8
-arg_6       = word ptr  0Ch
+arg_2       = dword ptr  8 ;size
+arg_6       = word ptr  0Ch ;selector
+
 
 cBegin
+
         pushall
         mov bx, [bp+arg_6]
         test    bx, 0Fh
         jz  loc_55E
         and bx, 0FFF0h
         add bx, 10h
+
 loc_55E:
+
         cmp bx, 0
         jz  loc_56E
         shr bx, 1
@@ -723,10 +861,13 @@ loc_55E:
         shr bx, 1
         shr bx, 1
         jmp loc_571
-        nop
+
 loc_56E:
+
         mov bx, 1000h
+
 loc_571:
+
         mov ah, 48h
         int 21h     ; DOS - 2+ - ALLOCATE MEMORY
                     ; BX = number of 16-byte paragraphs desired
@@ -734,22 +875,30 @@ loc_571:
         lds si, [bp+arg_2]
         mov [si], ax
         sub ax, ax
+
 loc_57E:
+
         popall
+
 cEnd
 
 ;=============================================================================
 
-;DosChgFilePtr ();
+;unsigned far pascal DosChgFilePtr (
+;   unsigned FileHandle, 
+;   long Distance,
+;   unsigned MoveType,
+;   unsigned long far * NewPointer );
 
 cProc DosChgFilePtr, <FAR, PUBLIC>
 
-arg_0       = dword ptr  6
-arg_4       = word ptr  0Ah
-arg_6       = dword ptr  0Ch
-arg_A       = word ptr  10h
+arg_0       = dword ptr  6   ;FileHandle
+arg_4       = word ptr  0Ah  ;Distance
+arg_6       = dword ptr  0Ch ;MoveType
+arg_A       = word ptr  10h  ;NewPointer
 
 cBegin
+
         pushall
         les dx, [bp+arg_6]
         mov cx, es
@@ -765,13 +914,20 @@ cBegin
         mov [si], ax
         mov [si+2], dx
         sub ax, ax
+
 loc_4D7:
+
         popall
+
 cEnd
 
 ;=============================================================================
 
-;DosSetFileInfo ();
+;unsigned far DosSetFileInfo (
+;    unsigned handle,
+;    unsigned InfoLevel,
+;    char far * pInfoBuf,
+;    unsigned cbInfoBuf );
 
 cProc DosSetFileInfo, <FAR, PUBLIC>
 
@@ -779,6 +935,7 @@ arg_2       = dword ptr  8
 arg_8       = word ptr  0Eh
 
 cBegin
+
         pushall
         mov bx, [bp+arg_8]
         lds si, [bp+arg_2]
@@ -790,13 +947,19 @@ cBegin
                     ; DX = date to be set
         jb  loc_507
         sub ax, ax
+
 loc_507:
+
         popall
+
 cEnd
 
 ;=============================================================================
 
-;DosSetFileMode ();
+;unsigned far pascal DosSetFileMode (
+;    char far * FileName,
+;    unsigned NewAttribute,
+;    unsigned long Reserved );
 
 cProc DosSetFileMode, <FAR, PUBLIC>
 
@@ -804,6 +967,7 @@ arg_4       = word ptr  0Ah
 arg_6       = dword ptr  0Ch
 
 cBegin
+
         pushall
         lds dx, [bp+arg_6]
         mov cx, [bp+arg_4]
@@ -814,13 +978,23 @@ cBegin
         jb  loc_49F
         xor ax, ax
         jmp short $+2
+
 loc_49F:
+
         popall
+
 cEnd
 
 ;=============================================================================
 
-;DosFindFirst ();
+;unsigned far pascal DOSFINDFIRST (
+;    char far * pszFileSpec,
+;    unsigned far * phdir,
+;    unsigned flAttribute,
+;    struct FileFindBuf far * pfindbuf,
+;    unsigned cbBuf,
+;    unsigned far * pcFileNames,
+;    unsigned long ulInfoLevel );
 
 cProc DosFindFirst, <FAR, PUBLIC>
 
@@ -832,6 +1006,7 @@ arg_10      = dword ptr  16h
 arg_14      = dword ptr  1Ah
 
 cBegin
+
         pushall
         mov ax, 81Ch
         mov ds, ax
@@ -849,19 +1024,24 @@ cBegin
         jnz loc_4AA
         mov ax, 6
         jmp loc_15B
+
 loc_35:
+
         add si, 2
         dec cx
 
 loop_39:
+
         test    word ptr [si], 8000h
         jz  loc_4AA
         add si, 2
         loop    loop_39
 
 loc_44:
+
         mov ax, 4
         jmp loc_15B
+
 loc_4AA:
 
         mov ax, [si]
@@ -887,7 +1067,9 @@ loc_4AA:
         cmp ax, 0
         jnz loc_8B
         jmp loc_159
+
 loc_8B:
+
         lds dx, [bp+arg_14]
         assume ds:nothing
         mov cx, [bp+arg_E]
@@ -898,7 +1080,9 @@ loc_8B:
                     ; (drive, path, and wildcards allowed)
         jnb loc_9B
         jmp loc_15B
+
 loc_9B:
+
         mov ax, 81Ch
         mov ds, ax
         assume ds:nothing
@@ -907,12 +1091,16 @@ loc_9B:
         les di, [bp+arg_A]
         mov ds:2, di
         mov word ptr ds:4, es
+
 loc_B1:
+
         sub word ptr ds:8, 23h
         jnb loc_BE
         mov ax, 8
         jmp loc_15B
+
 loc_BE:
+
         mov si, ds:6
         les di, ds:2
         mov ax, [si+18h]
@@ -933,20 +1121,26 @@ loc_BE:
         jz  loc_10D
         and word ptr es:[di+10h], 0FE00h
         add word ptr es:[di+10h], 200h
+
 loc_10D:
+
         xor ax, ax
         mov al, [si+15h]
         mov es:[di+14h], ax
         mov cx, 0Ch
         mov bx, 0
+
 loc_11C:
+
         mov al, [bx+si+1Eh]
         cmp al, 0
         jz  loc_12A
         mov es:[bx+di+17h], al
         inc bx
         loop    loc_11C
+
 loc_12A:
+
         mov byte ptr es:[bx+di+17h], 0
         mov ax, bx
         mov es:[di+16h], al
@@ -964,9 +1158,13 @@ loc_12A:
         jb  loc_15B
         les di, ds:2
         jmp loc_B1
+
 loc_159:
+
         sub ax, ax
+
 loc_15B:
+
         push    ax
         mov ax, 81Ch
         mov ds, ax
@@ -978,13 +1176,20 @@ loc_15B:
         mov ah, 1Ah
         int 21h     ; DOS - SET DISK TRANSFER AREA ADDRESS
                     ; DS:DX -> disk transfer buffer
+
 loc_175:
+
         popall
+
 cEnd
 
 ;=============================================================================
 
-;DosFindNext ();
+;extern unsigned far pascal DOSFINDNEXT (
+;    unsigned hDir,
+;    struct FileFindBuf far * pfindbuf,
+;    unsigned cbfindbuf,
+;    unsigned far * pcFilenames );
 
 cProc DosFindNext, <FAR, PUBLIC>
 
@@ -994,6 +1199,7 @@ arg_6       = dword ptr  0Ch
 arg_A       = word ptr  10h
 
 cBegin
+
         pushall
         mov ax, 81Ch
         mov ds, ax
@@ -1004,12 +1210,14 @@ cBegin
         mov si, 167h
 
 loc_647:
+
         test    word ptr [si], 8000h
         jnz loc_653
         mov ax, 6
         jmp loc_746
 
 loc_653:
+
         mov si, [si]
         and si, 7FFFh
         mov ds:6, si
@@ -1032,6 +1240,7 @@ loc_653:
         jmp loc_744
 
 loc_68C:
+
         mov ax, [bp+arg_4]
         mov ds:8, ax
         les di, [bp+arg_6]
@@ -1039,6 +1248,7 @@ loc_68C:
         mov word ptr ds:4, es
 
 loc_69D:
+
         mov ax, 4F00h
         int 21h     ; DOS - 2+ - FIND NEXT ASCIZ (FINDNEXT)
                     ; [DTA] = data block from
@@ -1047,12 +1257,14 @@ loc_69D:
         jmp loc_746
 
 loc_6A7:
+
         sub word ptr ds:8, 23h
         jnb loc_6B4
         mov ax, 8
         jmp loc_746
 
 loc_6B4:
+
         mov si, ds:6
         les di, ds:2
         mov ax, [si+18h]
@@ -1075,6 +1287,7 @@ loc_6B4:
         add word ptr es:[di+10h], 200h
 
 loc_703:
+
         xor ax, ax
         mov al, [si+15h]
         mov es:[di+14h], ax
@@ -1082,6 +1295,7 @@ loc_703:
         mov bx, 0
 
 loc_712:
+
         mov al, [bx+si+1Eh]
         cmp al, 0
         jz  loc_720
@@ -1090,6 +1304,7 @@ loc_712:
         loop    loc_712
 
 loc_720:
+
         mov byte ptr es:[bx+di+17h], 0
         mov ax, bx
         mov es:[di+16h], al
@@ -1103,9 +1318,11 @@ loc_720:
         jmp loc_69D
 
 loc_744:
+
         sub ax, ax
 
 loc_746:
+
         push    ax
         mov ax, 81Ch
         mov ds, ax
@@ -1119,115 +1336,191 @@ loc_746:
                     ; DS:DX -> disk transfer buffer
 
 loc_760:
+
         popall
+
 cEnd
 
 ;=============================================================================
 
-;DosQFileInfo ();
+;unsigned far pascal DOSQFILEINFO (
+;    unsigned FileHandle,
+;    unsigned FileInfoLevel,
+;    char far * FileInfoBuf,
+;    unsigned FileInfoBufSize );
 
 cProc DosQFileInfo, <FAR, PUBLIC>
 
 cBegin
+
     pushall
     xor ax, ax
     popall
+
 cEnd
 
 ;=============================================================================
 
-;DosError ();
+;unsigned far pascal DosError (
+;    unsigned error );
 
 cProc DosError, <FAR, PUBLIC>
 
+ParmW err
+
 cBegin
+
     pushall
     xor ax, ax
     popall
+
 cEnd
 
 ;=============================================================================
 
-;DosGetCtryInfo ();
+;unsigned far DosGetCtryInfo (
+;    unsigned Length,
+;    struct countrycode far * Country,
+;    char far * MemoryBuffer,
+;    unsigned far * DataLength );
 
 cProc DosGetCtryInfo, <FAR, PUBLIC>
 
 cBegin
+
     pushall
     xor ax, ax
     popall
+
 cEnd
 
 ;=============================================================================
 
-;DosQFsInfo ();
+;unsigned far pascal DosQFSInfo (
+;    unsigned DriveNumber,
+;    unsigned FSInfoLevel,
+;    char far * FSInfoBuf,
+;    unsigned FSInfoBufSize );
 
-cProc DosQFsInfo, <FAR, PUBLIC>
+cProc DosQFSInfo, <FAR, PUBLIC>
 
 cBegin
+
     pushall
     xor ax, ax
     popall
+
 cEnd
 
 ;=============================================================================
 
-;DosFindClose ();
+;unsigned far pascal DosFindClose (
+;    unsigned hDir );
 
 cProc DosFindClose, <FAR, PUBLIC>
 
 cBegin
+
     pushall
     xor ax, ax
     popall
+
 cEnd
 
 ;=============================================================================
 
-;DosSetFsInfo ();
+;unsigned far pascal DosSetFSInfo (
+;    unsigned disknum,
+;    unsigned infolevel,
+;    char far * pBuf,
+;    unsigned cbBuf);
 
-cProc DosSetFsInfo, <FAR, PUBLIC>
+cProc DosSetFSInfo, <FAR, PUBLIC>
 
 cBegin
+
     pushall
     xor ax, ax
     popall
+
 cEnd
 
 ;=============================================================================
 
-;DosSelectDisk ();
+;unsigned far pascal DosSelectDisk (
+;    unsigned DriveNumber );
 
 cProc DosSelectDisk, <FAR, PUBLIC>
 
+ParmW drivenumber
+
 cBegin
-    pushall
-    xor ax, ax
-    popall
+
+        pushall
+        mov ah, 19h
+        int 21h     ; DOS - GET DEFAULT DISK NUMBER
+        mov cl, al
+        mov dx, word ptr drivenumber
+        or  dh, dh
+        jnz loc_10033
+        dec dl
+        mov ah, 0Eh
+        int 21h     ; DOS - SELECT DISK
+                    ; DL = new default drive number (0 = A, 1 = B, etc.)
+                    ; Return: AL = number of logical drives
+        mov ah, 19h
+        int 21h     ; DOS - GET DEFAULT DISK NUMBER
+        cmp al, dl
+        jnz loc_10033
+        xor ax, ax
+        jmp loc_1003C
+
+loc_10033:
+
+        mov dl, cl
+        mov ah, 0Eh
+        int 21h     ; DOS - SELECT DISK
+                    ; DL = new default drive number (0 = A, 1 = B, etc.)
+                    ; Return: AL = number of logical drives
+        mov ax, 0Fh
+
+loc_1003C:
+
+        popall
+
 cEnd
 
 ;=============================================================================
 
-;Set_Int24_Vector ();
+;void far pascal Set_Int24_Vector ( VOID );
 
 cProc Set_Int24_Vector, <FAR, PUBLIC>
 
 cBegin
+
     pushall
     xor ax, ax
     popall
+
 cEnd
 
 ;=============================================================================
 
-;DosSetSigHandler ();
+;unsigned far pascal DOSSETSIGHANDLER (
+;    void (far pascal *)() Routine,
+;    unsigned long far * PrevAddress,
+;    unsigned far * PrevAction,
+;    unsigned Action,
+;    unsigned SigNumber );
 
 cProc DosSetSigHandler, <FAR, PUBLIC>
 
 cBegin
+
     pushall
     xor ax, ax
     popall
+
 cEnd
 
 ;##############################################################################
