@@ -609,14 +609,14 @@ void DispMEMSummary()
    sprintf (temp1, "%ldK", toK (mem_table.conv_ttl));
    sprintf (temp2, "%ldK", toK (used));
    sprintf (temp3, "%ldK", toK (mem_table.conv_free));
-   mprintf (MemLineMsg, MemFormat, ConvMsg, temp1, temp2, temp3);
+   mprintf (MemLineMsg, "%-16m%6c%6c%6c", ConvMsg, temp1, temp2, temp3);
 
    used = mem_table.umb_ttl - mem_table.umb_free;
    t_used += used;
    sprintf (temp1, "%ldK", toK (mem_table.umb_ttl));
    sprintf (temp2, "%ldK", toK (used));
    sprintf (temp3, "%ldK", toK (mem_table.umb_free));
-   mprintf (MemLineMsg, MemFormat, UpperMsg, temp1, temp2, temp3);
+   mprintf (MemLineMsg, "%-16m%6c%6c%6c", UpperMsg, temp1, temp2, temp3);
 
    c_used = t_used;
    used = mem_table.rom_ttl;
@@ -624,7 +624,7 @@ void DispMEMSummary()
    sprintf (temp1, "%ldK", toK (mem_table.rom_ttl));
    sprintf (temp2, "%ldK", toK (mem_table.rom_ttl));
    sprintf (temp3, "%ldK", toK (0L));
-   mprintf (MemLineMsg, MemFormat, AdaptMsg, temp1, temp2, temp3);
+   mprintf (MemLineMsg, "%-16m%6c%6c%6c", AdaptMsg, temp1, temp2, temp3);
 
    used = mem_table.xms_ttl - mem_table.xms_free;
    t_used += used;
@@ -632,9 +632,9 @@ void DispMEMSummary()
    sprintf (temp2, "%ldK", toK (used));
    sprintf (temp3, "%ldK", toK (mem_table.xms_free));
    if (fPooled)
-      mprintf (MemLineMsg, MemFormat, XMSMsgPool, temp1, temp2, temp3);
+      mprintf (MemLineMsg, "%-16m%6c%6c%6c", XMSMsgPool, temp1, temp2, temp3);
    else
-      mprintf (MemLineMsg, MemFormat, XMSMsg, temp1, temp2, temp3);
+      mprintf (MemLineMsg, "%-16m%6c%6c%6c", XMSMsg, temp1, temp2, temp3);
 
    mprintf (MemSumm2Msg, "");
 
@@ -645,7 +645,7 @@ void DispMEMSummary()
    sprintf (temp1, "%ldK", toK (t_ttl));
    sprintf (temp2, "%ldK", toK (t_used));
    sprintf (temp3, "%ldK", toK (t_free));
-   mprintf (MemLineMsg, MemFormat, TotalMsg, temp1, temp2, temp3);
+   mprintf (MemLineMsg, "%-16m%6c%6c%6c", TotalMsg, temp1, temp2, temp3);
 
    mprintf (NewLineMsg, "");
    t_ttl  = mem_table.conv_ttl  + mem_table.umb_ttl;
@@ -653,7 +653,7 @@ void DispMEMSummary()
    sprintf (temp1, "%ldK", toK (t_ttl));
    sprintf (temp2, "%ldK", toK (c_used));
    sprintf (temp3, "%ldK", toK (t_free));
-   mprintf (MemLineMsg, MemFormat, TtlConvMsg, temp1, temp2, temp3);
+   mprintf (MemLineMsg, "%-16m%6c%6c%6c", TtlConvMsg, temp1, temp2, temp3);
 
    mem_table.conv_large -= 16;  /* They can't use the header area */
 
@@ -732,7 +732,7 @@ void DisplaySummary()
    sprintf (temp1, "(%ldK)", toK (mem_table.conv_ttl));
    sprintf (temp2, "(%ldK)", toK (used));
    sprintf (temp3, "(%ldK)", toK (mem_table.conv_free));
-   mprintf (SumLineMsg, SumFormat, ConvMsg,
+   mprintf (SumLineMsg, "%-16m%8ld%8c%8ld%8c%8ld%8c", ConvMsg,
             &mem_table.conv_ttl, temp1, &used, temp2,
             &mem_table.conv_free, temp3);
 
@@ -741,7 +741,7 @@ void DisplaySummary()
    sprintf (temp1, "(%ldK)", toK (mem_table.umb_ttl));
    sprintf (temp2, "(%ldK)", toK (used));
    sprintf (temp3, "(%ldK)", toK (mem_table.umb_free));
-   mprintf (SumLineMsg, SumFormat, UpperMsg,
+   mprintf (SumLineMsg, "%-16m%8ld%8c%8ld%8c%8ld%8c", UpperMsg,
             &mem_table.umb_ttl, temp1, &used, temp2,
             &mem_table.umb_free, temp3);
 
@@ -752,7 +752,7 @@ void DisplaySummary()
    sprintf (temp1, "(%ldK)", toK (mem_table.rom_ttl));
    sprintf (temp2, "(%ldK)", toK (mem_table.rom_ttl));
    sprintf (temp3, "(%ldK)", toK (0L));
-   mprintf (SumLineMsg, SumFormat, AdaptMsg,
+   mprintf (SumLineMsg, "%-16m%8ld%8c%8ld%8c%8ld%8c", AdaptMsg,
             &mem_table.rom_ttl, temp1, &mem_table.rom_ttl, temp2,
             &used, temp3);
 
@@ -762,11 +762,11 @@ void DisplaySummary()
    sprintf (temp2, "(%ldK)", toK (used));
    sprintf (temp3, "(%ldK)", toK (mem_table.xms_free));
    if (fPooled)
-      mprintf (SumLineMsg, SumFormat, XMSMsgPool,
+      mprintf (SumLineMsg, "%-16m%8ld%8c%8ld%8c%8ld%8c", XMSMsgPool,
            &mem_table.xms_ttl, temp1, &used, temp2,
            &mem_table.xms_free, temp3);
    else
-      mprintf (SumLineMsg, SumFormat, XMSMsg,
+      mprintf (SumLineMsg, "%-16m%8ld%8c%8ld%8c%8ld%8c", XMSMsg,
            &mem_table.xms_ttl, temp1, &used, temp2,
            &mem_table.xms_free, temp3);
 
@@ -779,7 +779,7 @@ void DisplaySummary()
    sprintf (temp1, "(%ldK)", toK (t_ttl));
    sprintf (temp2, "(%ldK)", toK (t_used));
    sprintf (temp3, "(%ldK)", toK (t_free));
-   mprintf (SumLineMsg, SumFormat, TotalMsg,
+   mprintf (SumLineMsg, "%-16m%8ld%8c%8ld%8c%8ld%8c", TotalMsg,
                  &t_ttl, temp1, &t_used, temp2, &t_free, temp3);
 
    mprintf (NewLineMsg, "");
@@ -788,7 +788,7 @@ void DisplaySummary()
    sprintf (temp1, "(%ldK)", toK (t_ttl));
    sprintf (temp2, "(%ldK)", toK (c_used));
    sprintf (temp3, "(%ldK)", toK (t_free));
-   mprintf (SumLineMsg, SumFormat, TtlConvMsg,
+   mprintf (SumLineMsg, "%-16m%8ld%8c%8ld%8c%8ld%8c", TtlConvMsg,
                  &t_ttl, temp1, &c_used, temp2, &t_free, temp3);
    mprintf (NewLineMsg, "");
 

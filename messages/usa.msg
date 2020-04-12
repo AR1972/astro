@@ -703,7 +703,7 @@ MEM      00008733 0113
 0041 U 0000  "LASTDRIVE=",0
 0042 U 0000  "----------",0
 0043 U 0000  " ",0
-0044 U 0000  "     %1      %2     %3",CR,LF
+0044 U 0000  "     %1     %2     %3",CR,LF
 0045 U 0001  "INSTALL=",0
 0046 U 0001  "%1 bytes available contiguous extended memory",CR,LF
 0047 U 0000  "System Stacks",0
@@ -780,8 +780,8 @@ MEM      00008733 0113
 0302 U 0000  "  /CLASSIFY or /C  Classifies programs by memory usage. Lists the size of",CR,LF
 	"                   programs, provides a summary of memory in use, and lists",CR,LF
 	"                   largest memory block available.",CR,LF
-0303 U 0000  "  /DEBUG or /D     Displays status of programs, internal drivers, and other",CR,LF
-	"                   information.",CR,LF
+0303 U 0000  "  /DEBUG or /D     Displays status of all modules in memory, internal drivers,",CR,LF
+	"                   and other information.",CR,LF
 0304 U 0000  "  /FREE or /F      Displays information about the amount of free memory left",CR,LF
 	"                   in both conventional and upper memory.",CR,LF
 0305 U 0000  "  /MODULE or /M    Displays a detailed listing of a module's memory use.",CR,LF

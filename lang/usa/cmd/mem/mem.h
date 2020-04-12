@@ -24,8 +24,8 @@
 #define p_not_in_sw          3
 #define p_not_in_key         4
 
-static char SumFormat[] = "%-16m%8ld%8c%8ld%8c%8ld%8c";
-static char MemFormat[] = "%-16m%6c%6c%6c";
+//static char SumFormat[] = "%-16m%8ld%8c%8ld%8c%8ld%8c";
+//static char MemFormat[] = "%-16m%6c%6c%6c";
 
 struct files
 {

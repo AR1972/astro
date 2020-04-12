@@ -42,6 +42,7 @@
 :def 59 "Modules using memory below 1 MB:",CR,LF
 :def 60 "%1 is using the following memory:",CR,LF
 :def 61 "Free Conventional Memory:",CR,LF
+:def 62 "Free",0
 :def 63 "  Name           Total       =   Conventional   +   Upper Memory",CR,LF
 :def 64 "  --------  ----------------   ----------------   ----------------",CR,LF
 :def 65 "  Segment        Total",CR,LF
@@ -114,7 +115,7 @@
 :def 41 "LASTDRIVE=",0
 :def 42 "----------",0
 :def 43 " ",0
-:def 44 "     %1      %2     %3",CR,LF
+:def 44 "     %1     %2     %3",CR,LF
 :def 46 "%1 bytes available contiguous extended memory",CR,LF
 :def 47 "System Stacks",0
 :def 48 "-- Free --",0
@@ -127,7 +128,6 @@
 :def 55 "MS-DOS is resident in the high memory area.",CR,LF
 :def 58 "MS-DOS is resident in ROM using the high memory area.",CR,LF
 :def 62 "Free",0
-
 :def 400 "ADDDRV",0
 
 :end
