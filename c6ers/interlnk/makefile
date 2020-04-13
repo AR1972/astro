@@ -264,6 +264,7 @@ intersvr.exe:   bell.obj                \
 clean:
     del *.obj
     del *.exe
+    del *.ex_
     del *.map
     cd driver
     nmake clean
