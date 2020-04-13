@@ -1,4 +1,4 @@
-0001
+0008
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -788,7 +788,7 @@ MEM      00008733 0113
 	"                   This option must be followed by the name of a module,",CR,LF
 	"                   optionally separated from /M by a colon.",CR,LF
 0306 U 0000  "  /PAGE or /P      Pauses after each screenful of information.",CR,LF
-MSBIO    00009f03 0023
+MSBIO    00009f0f 0023
 0003 U 0000 13,10,"Unrecognized command in CONFIG.SYS"
 0004 U 0000 13,10,"$"
 0005 U 0000 13,10,"Sector size too large in file $"
@@ -813,7 +813,7 @@ MSBIO    00009f03 0023
 0023 U 0000 "Fatal Error:Cannot allocate Memory for DOS", 13, 10, "$"
 0024 U 0000 "WARNING! Logical drives past Z: exist and will be ignored",13,10,"$"
 0025 U 0000 "This version of DOS will boot only on IBM machines",13,10,0
-MSDOS    0000a453 0007
+MSDOS    0000a45f 0007
 0001 U 0001 13,10,"Divide overflow",13,10
 0002 U 0002 "y"
 0003 U 0002 "n"
@@ -822,18 +822,18 @@ MSDOS    0000a453 0007
 0006 U 0000 "N"
 0007 U 0000 "You must have the file WINA20.386 in the root of your boot drive",13,10
 	"to run Windows in Enhanced Mode",13,10
-NLSFUNC  0000a58c 0003
+NLSFUNC  0000a598 0003
 0300 U 0000 "Loads country-specific information.",CR,LF,CR,LF
 0301 U 0000 "NLSFUNC [[drive:][path]filename]",CR,LF,CR,LF
 0302 U 0000 "  [drive:][path]filename   Specifies the file containing country-specific",CR,LF
 	"                           information.",CR,LF
-SHARE    0000a6b0 0005
+SHARE    0000a6bc 0005
 0003 U 0000 "SHARE cannot be installed under DOSSHELL.",CR,LF
 0300 U 0000 "Installs file-sharing and locking capabilities on your hard disk.",CR,LF,CR,LF
 0301 U 0000 "SHARE [/F:space] [/L:locks]",CR,LF,CR,LF
 0302 U 0000 "  /F:space   Allocates file space (in bytes) for file-sharing information.",CR,LF
 0303 U 0000 "  /L:locks   Sets the number of files that can be locked at one time.",CR,LF
-SUBST    0000a856 0010
+SUBST    0000a862 0010
 0002 U 0000 "Incorrect number of parameters",CR,LF
 0005 U 0000 "Drive already SUBSTed",CR,LF
 0300 U 0000 "Associates a path with a drive letter.",CR,LF,CR,LF
@@ -844,7 +844,7 @@ SUBST    0000a856 0010
 0305 U 0000 "                 a virtual drive.",CR,LF
 0306 U 0000 "  /D             Deletes a substituted (virtual) drive.",CR,LF,CR,LF
 0307 U 0000 "Type SUBST with no parameters to display a list of current virtual drives.",CR,LF
-ATTRIB   0000ab1c 0027
+ATTRIB   0000ab28 0027
 0004 U 0000 "Invalid number of parameters",CR,LF
 0005 U 0000 "Invalid path or file not found",CR,LF
 0006 U 0000 "Syntax error",CR,LF
@@ -872,7 +872,7 @@ ATTRIB   0000ab1c 0027
 0306 U 0000 "  S   System file attribute.",CR,LF
 0307 U 0000 "  H   Hidden file attribute.",CR,LF
 0308 U 0000 "  /S  Processes files in all directories in the specified path.",CR,LF
-ASSIGN   0000b0a1 0007
+ASSIGN   0000b0ad 0007
 0002 U 0000 "Original %1: set to %2:",CR,LF
 0300 U 0000 "Redirects requests for disk operations on one drive to a different drive.",CR,LF,CR,LF
 0301 U 0000 "ASSIGN [x[:]=y[:][...]]",CR,LF,"ASSIGN /STATUS",CR,LF,CR,LF
@@ -880,7 +880,7 @@ ASSIGN   0000b0a1 0007
 0303 U 0000 "  y        Specifies the drive that x: will be assigned to.",CR,LF
 0304 U 0000 "  /STATUS  Displays current drive assignments.",CR,LF,CR,LF
 0305 U 0000 "Type ASSIGN without parameters to reset all drive letters to original",CR,LF,"assignments.",CR,LF
-CHKDSK   0000b2e8 0076
+CHKDSK   0000b2f4 0076
 0003 U 0000 "Convert lost chains to files (Y/N)?"
 0004 U 0000 "Unrecoverable error in directory"
 0005 U 0000 "Convert directory to file (Y/N)?"
@@ -957,7 +957,7 @@ CHKDSK   0000b2e8 0076
 0304 U 0000 "  /F              Fixes errors on the disk.",CR,LF
 0305 U 0000 "  /V              Displays the full path and name of every file on the disk.",CR,LF,CR,LF
 0306 U 0000 "Type CHKDSK without parameters to check the current disk.",CR,LF
-XCOPY    0000c1fb 0032
+XCOPY    0000c207 0032
 0004 U 0000 "Does %1 specify a file name",CR,LF
 	"or directory name on the target",CR,LF
 	"(F = file, D = directory)?"
@@ -992,24 +992,24 @@ XCOPY    0000c1fb 0032
 0311 U 0000 "  /E           Copies any subdirectories, even if empty.",CR,LF
 0312 U 0000 "  /V           Verifies each new file.",CR,LF
 0313 U 0000 "  /W           Prompts you to press a key before copying.",CR,LF
-SYS      0000c990 0016
+SYS      0000c99c 0016
 0007 U 0000 "No room for system on destination disk",CR,LF
-0008 U 0001 "Incompatible system size",CR,LF
+0008 U 0001 "Invalid path or System files not found",CR,LF
 0010 U 0000 "No system on default drive",CR,LF
-0011 U 0000 "Can not specify default drive",CR,LF
+0011 U 0000 "Cannot specify default drive",CR,LF
 0012 U 0000 "Write failure, diskette unusable",CR,LF 
 0014 U 0000 "Insert system disk in drive %1",CR,LF 
 0016 U 0000 "Not able to SYS to %1 file system",CR,LF
-0018 U 0000 "Source path and target drive cannot be the same"
-0020 U 0000 "Error reading system files from source",CR,LF
-0021 U 0000 "SYS can not operate on target drive",CR,LF
+0019 U 0000 "Source path and target drive cannot be the same",CR,LF
+0020 U 0000 "Cannot read system files from source",CR,LF
+0021 U 0000 "SYS cannot operate on target drive",CR,LF
 0025 U 0000 CR,LF,"Could not copy COMMAND.COM onto target disk",CR,LF
 0026 U 0000 "Insufficient memory",CR,LF
-0300 U 0000 "Copies MS-DOS system files and command interperter to a disk you specify.",CR,LF,CR,LF
+0300 U 0000 "Copies MS-DOS system files and command interpreter to a disk you specify.",CR,LF,CR,LF
 0301 U 0000 "SYS [drive1:][path] drive2:",CR,LF,CR,LF
 0302 U 0000 "  [drive1:][path] Specifies the location of the system files.",CR,LF
-0303 U 0000 "  drive2:         Specifies the drive the files are to be coppied to.",CR,LF
-MORE     0000cd86 0007
+0303 U 0000 "  drive2:         Specifies the drive the files are to be copied to.",CR,LF
+MORE     0000cda1 0007
 0002 U 0000 "-- More --"
 0003 U 0000 "Too many arguments in command line"
 0300 U 0000 "Displays output one screen at a time.",CR,LF,CR,LF
@@ -1017,7 +1017,7 @@ MORE     0000cd86 0007
 0302 U 0000 "command-name | MORE",CR,LF,CR,LF
 0303 U 0000 "  [drive:][path]filename  Specifies a file to display one screen at a time.",CR,LF
 0304 U 0000 "  command-name            Specifies a command whose output will be displayed.",CR,LF
-MODE     0000cf51 0079
+MODE     0000cf6c 0079
 0003 U 0000 CR,LF,"Must specify COM1, COM2, COM3 or COM4",CR,LF
 0004 U 0000 CR,LF,"Resident portion of MODE loaded",CR,LF
 0005 U 0000 CR,LF,"Illegal device name",CR,LF
@@ -1098,7 +1098,7 @@ MODE     0000cf51 0079
 0309 U 0000 "Display mode:      MODE [display-adapter][,n]",CR,LF
 	"                   MODE CON[:] [COLS=c] [LINES=n]",CR,LF
 0310 U 0000 "Typematic rate:    MODE CON[:] [RATE=r DELAY=d]",CR,LF
-DISKCOPY 0000dec2 0026
+DISKCOPY 0000dedd 0026
 0002 U 0000 CR,LF
 0004 U 0000 "Do not specify filename(s)",CR,LF
 	"Command Format: DISKCOPY [drive1: [drive2:]] [/1] [/V]",CR,LF
@@ -1134,7 +1134,7 @@ DISKCOPY 0000dec2 0026
 0303 U 0000 "  /V   Verifies that the information is copied correctly.",CR,LF,CR,LF
 0304 U 0000 "The two floppy disks must be the same type.",CR,LF,"You may specify the same drive for drive1 and drive2.",CR,LF
 0032 U 0000 CR,LF,"DISKCOPY cannot copy memory card (CMCDD) devices.",CR,LF
-TREE     0000e6ba 0008
+TREE     0000e6d5 0008
 0002 U 0000 "Directory PATH listing for Volume %1",CR,LF
 0003 U 0000 "Directory PATH listing",CR,LF
 0004 U 0000 "No sub-directories exist",CR,LF,LF
@@ -1143,7 +1143,7 @@ TREE     0000e6ba 0008
 0301 U 0000 "TREE [drive:][path] [/F] [/A]",CR,LF,CR,LF
 0302 U 0000 "  /F   Displays the names of the files in each directory.",CR,LF
 0303 U 0000 "  /A   Uses ASCII instead of extended characters.",CR,LF
-DISKCOMP 0000e8a8 0020
+DISKCOMP 0000e8c3 0020
 0004 U 0000 "Do not specify filename(s)",CR,LF
 	"Command format: DISKCOMP [drive1: [drive2:]] [/1] [/8]",LF,CR
 0005 U 0000 CR,LF,"Invalid drive specification",CR,LF
@@ -1172,7 +1172,7 @@ DISKCOMP 0000e8a8 0020
 0301 U 0000 "DISKCOMP [drive1: [drive2:]] [/1] [/8]",CR,LF,CR,LF
 0302 U 0000 "  /1   Compares the first side of the disks.",CR,LF
 0303 U 0000 "  /8   Compares only the first eight sectors of each track.",CR,LF
-GRAPHICS 0000ee68 0020
+GRAPHICS 0000ee83 0020
 0300 U 0000 "Loads a program that can print graphics.",CR,LF,CR,LF
 0301 U 0000 "GRAPHICS [type] [[drive:][path]filename] [/R] [/B] [/LCD]",CR,LF
 	"  [/PRINTBOX:STD | /PRINTBOX:LCD]",CR,LF,CR,LF
@@ -1196,7 +1196,7 @@ GRAPHICS 0000ee68 0020
 0016 U 0000 "Printer type not in GRAPHICS profile",CR,LF
 0017 U 0000 "/B invalid with a black and white printer",CR,LF
 0018 U 0000 "Unable to reload with profile supplied",CR,LF
-JOIN     0000f452 0009
+JOIN     0000f46d 0009
 0002 U 0001 "Directory not empty",CR,LF
 0300 U 0000 "Joins a disk drive to a directory on another drive.",CR,LF,CR,LF
 0301 U 0000 "JOIN [drive1: [drive2:]path]",CR,LF
@@ -1208,7 +1208,7 @@ JOIN     0000f452 0009
 	"                 must be empty and cannot be the root directory.",CR,LF
 0306 U 0000 "  /D             Cancels any previous JOIN commands for the specified drive.",CR,LF,CR,LF
 0307 U 0000 "Type JOIN without parameters to list currently joined drives.",CR,LF
-RESTORE  0000f785 0035
+RESTORE  0000f7a0 0035
 0002 U 0000 CR,LF,"Source and target drives are the same",CR,LF
 0003 U 0000 CR,LF,"Invalid number of parameters",CR,LF
 0006 U 0000 CR,LF,"Invalid drive specification",CR,LF
@@ -1251,17 +1251,17 @@ RESTORE  0000f785 0035
 0312 U 0000 "  /M       Restores only files changed since the last backup.",CR,LF
 0313 U 0000 "  /N       Restores only files that no longer exist on the destination disk.",CR,LF
 0314 U 0000 "  /D       Displays files on the backup disk that match specifications.",CR,LF
-DRIVER   0001022a 0002
+DRIVER   00010245 0002
 0002 U 0000 "No drive specified",CR,LF
 0003 U 0000 "Loaded External Disk Driver for Drive %1",CR,LF
-DISPLAY  000102a8 0003
+DISPLAY  000102c3 0003
 0002 U 0000 "%1 code page driver cannot be initialized",CR,LF,BELL
 0008 U 0000 "Too many code pages specified",CR,LF,BELL
 0012 U 0000 "Invalid syntax on DISPLAY.SYS code page driver",CR,LF,BELL
-PRINTER  00010385 0002
+PRINTER  000103a0 0002
 0002 U 0000 "%1 code page driver cannot be initialized",CR,LF,BELL
 0012 U 0000 "Invalid syntax on PRINTER.SYS code page driver",CR,LF,BELL
-RECOVER  0001042a 0017
+RECOVER  00010445 0017
 0002 U 0000 CR,LF,"File not found",CR,LF
 0003 U 0000 CR,LF,"Cannot RECOVER an ASSIGNed or SUBSTed drive",CR,LF
 0004 U 0000 CR,LF,"Invalid drive or file name",CR,LF
@@ -1279,7 +1279,7 @@ RECOVER  0001042a 0017
 0303 U 0000 "Consult your DOS documentation before using the RECOVER command.",CR,LF
 0400 U 0000 "All files in directory will be reconstructed", CR, LF, "Are  you sure (Y/N)? "
 0401 U 0000 "The entire drive will be reconstructed", CR, LF, "Are  you sure (Y/N)? "
-EXE2BIN  0001086d 0012
+EXE2BIN  00010888 0012
 0002 U 0000 "Insufficient memory",CR,LF
 0003 U 0000 "Cannot find messages",CR,LF
 0004 U 0000 "Access denied",CR,LF
@@ -1292,18 +1292,18 @@ EXE2BIN  0001086d 0012
 0301 U 0000 "EXE2BIN [drive1:][path1]input-file [[drive2:][path2]output-file]",CR,LF,CR,LF"
 0302 U 0000 "  input-file   Specifies the .EXE file to be converted.",CR,LF
 0303 U 0000 "  output-file  Specifies the binary file to be created.",CR,LF
-NLSFUNC  00010b20 0003
+NLSFUNC  00010b3b 0003
 0300 U 0000 "Loads country-specific information.",CR,LF,CR,LF
 0301 U 0000 "NLSFUNC [[drive:][path]filename]",CR,LF,CR,LF
 0302 U 0000 "  [drive:][path]filename   Specifies the file containing country-specific",CR,LF
 	"                           information.",CR,LF
-SHARE    00010c44 0005
+SHARE    00010c5f 0005
 0300 U 0000 "Installs file-sharing and locking capabilities on your hard disk.",CR,LF,CR,LF
 0301 U 0000 "SHARE [/F:space] [/L:locks]",CR,LF,CR,LF
 0302 U 0000 "  /F:space   Allocates file space (in bytes) for file-sharing information.",CR,LF
 0303 U 0000 "  /L:locks   Sets the number of files that can be locked at one time.",CR,LF
 0003 U 0000 "SHARE cannot be installed under DOSSHELL."
-REPLACE  00010de4 0019
+REPLACE  00010dff 0019
 0003 U 0000 CR,LF,"No files replaced",CR,LF
 0004 U 0000 CR,LF,"No files added",CR,LF
 0013 U 0000 CR,LF,"Replacing %1",CR,LF
@@ -1331,7 +1331,7 @@ REPLACE  00010de4 0019
 0308 U 0000 "  /W                       Waits for you to insert a disk before beginning.",CR,LF
 0309 U 0000 "  /U                       Replaces (updates) only files that are older than",CR,LF
 	"                           source files. Cannot use with the /A switch.",CR,LF
-PRINT    000114f3 0034
+PRINT    0001150e 0034
 0002 U 0000 CR,LF
 0006 U 0000 " error reading file",CR,LF,"$"
 0007 U 0000 "File not found",CR,LF,"$"
@@ -1372,7 +1372,7 @@ PRINT    000114f3 0034
 0311 U 0000 "  /P          Adds the preceding filename and subsequent filenames to the print",CR,LF
 	"              queue.",CR,LF,CR,LF
 0312 U 0000 "Type PRINT without parameters to display the contents of the print queue.",CR,LF
-FORMAT   00011e25 0084
+FORMAT   00011e40 0084
 0002 U 0000 CR,"%1 percent of disk formatted                                        ",CR
 0004 U 0003 CR,"Format complete                                                     ",CR,LF
 0007 U 0000 "Insert new diskette for drive %1:",CR,LF
@@ -1470,7 +1470,7 @@ FORMAT   00011e25 0084
 0314 U 0000 "  /1          Formats a single side of a floppy disk.",CR,LF
 0315 U 0000 "  /4          Formats a 5.25-inch 360K floppy disk in a high-density drive.",CR,LF
 0316 U 0000 "  /8          Formats eight sectors per track.",CR,LF
-FIND     00013462 0012
+FIND     0001347d 0012
 0004 U 0000 "FIND: "
 0300 U 0000 "Searches for a text string in a file or files.",CR,LF,CR,LF
 0301 U 0000 'FIND [/V] [/C] [/N] [/I] "string" [[drive:][path]filename[ ...]]',CR,LF,CR,LF
@@ -1483,7 +1483,7 @@ FIND     00013462 0012
 0308 U 0000 "            Specifies a file or files to search.",CR,LF,CR,LF
 0309 U 0000 "If a pathname is not specified, FIND searches the text typed at the prompt",CR,LF
 0310 U 0000 "or piped from another command.",CR,LF
-EDLIN    000137ea 0035
+EDLIN    00013805 0035
 0006 U 0000 "*"
 0007 U 0000 "Invalid drive or file name",CR,LF
 0008 U 0000 "File name must be specified",CR,LF
@@ -1528,7 +1528,7 @@ EDLIN    000137ea 0035
 	"Search                      [startline][,endline][?]Stext",CR,LF
 0307 U 0000 "Transfer                    [toline]T[drive:][path]filename",CR,LF
 	"Write                       [#lines]W",CR,LF
-SORT     00014031 0009
+SORT     0001404c 0009
 0005 U 0000 "SORT: "
 0300 U 0000 "Sorts input and writes results to the screen, a file, or another device.",CR,LF,CR,LF
 0301 U 0000 "SORT [/R] [/+n] < [drive1:][path1]filename1 [> [drive2:][path2]filename2]",CR,LF
@@ -1538,7 +1538,7 @@ SORT     00014031 0009
 0305 U 0000 "  [drive1:][path1]filename1  Specifies a file to be sorted.",CR,LF
 0306 U 0000 "  [drive2:][path2]filename2  Specifies a file where the sorted input is to be ",CR,LF,"                             stored.",CR,LF
 0307 U 0000 "  command                    Specifies a command whose output is to be sorted.",CR,LF
-FASTOPEN 000143dc 0019
+FASTOPEN 000143f7 0019
 0004 U 0000 CR,LF,"FASTOPEN installed",CR,LF
 0005 U 0000 CR,LF,"FASTOPEN already installed",CR,LF
 0007 U 0000 CR,LF,"Too many drive entries",CR,LF
@@ -1559,7 +1559,7 @@ FASTOPEN 000143dc 0019
 0304 U 0000 "  n       Specifies the maximum number of file locations Fastopen retains",CR,LF
 	"          in its filename cache.",CR,LF
 0305 U 0000 "  /X      Creates the filename cache in expanded memory.",CR,LF
-FDISK    000148f7 0125
+FDISK    00014912 0125
 0004 U 0000 "Cannot FDISK with network loaded",CR,LF
 0005 U 0000 "No fixed disks present",CR,LF
 0006 U 0000 "Error reading fixed disk",CR,LF
@@ -1685,7 +1685,7 @@ FDISK    000148f7 0125
 1114 U 0001 "Invalid partition table",0
 1115 U 0001 "Error loading operating system",0
 1116 U 0001 "Missing operating system",0
-DOSKEY   00016598 0010
+DOSKEY   000165b3 0010
 0001 U 0000 07,"An incompatible DOSKey is already installed.$"
 0002 U 0000 07,"Cannot change BUFSIZE.$"
 0003 U 0000 "DOSKey installed.$"
@@ -1713,7 +1713,7 @@ DOSKEY   00016598 0010
 0008 U 0000 13,10,"$"
 0020 U 0000 13,10,"-- More --",0
 0021 U 0000 "Line number: ",0
-GRAFTABL 00016c9b 0009
+GRAFTABL 00016cb6 0009
 0002 U 0000 "Active Code Page: %1",CR,LF
 0003 U 0000 "Previous Code Page: %1",CR,LF
 0004 U 0000 "None",NULL
