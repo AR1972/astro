@@ -12,6 +12,7 @@
 #define BACKSPACE 0x66
 #define PERCENT 0x06
 // partition types
+#define PRIMARY 0
 #define DOS12 0x01
 #define DOS16 0x04
 #define DOSNEW 0x06
@@ -51,7 +52,7 @@
 #define GRAY_ON_BLACK 0x07
 #define WHITE_ON_BLUE 0x07
 
-#define PRIMARY 1
+#define PRIMARY 0
 #define MAX_PART_SIZE 32
 #define NOT_FOUND 0
 #define ACTIVE 0x80
