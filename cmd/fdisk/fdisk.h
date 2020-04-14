@@ -11,14 +11,14 @@
 #define LF  '\x0a'
 #define BACKSPACE 0x66
 #define PERCENT 0x06
+
 // partition types
-#define PRIMARY 0
-#define DOS12 0x01
-#define DOS16 0x04
-#define DOSNEW 0x06
-#define EXTENDED 0x05
-#define BAD_BLOCK 0xFF
-#define NOFORMAT 0x00 // ?
+#define PRIMARY 0       //*
+#define DOS12 0x01      //*
+#define DOS16 0x04      //*
+#define DOSNEW 0x06     //*
+#define EXTENDED 0x05   //*
+#define BAD_BLOCK 0xFF  //*
 #define XENIX1 0x02
 #define XENIX2 0x03
 #define PCIX 0x75
@@ -28,29 +28,31 @@
 
 #define FAT12 "FAT12   "
 #define FAT16 "FAT16   "
-#define NOVOLUME "UNKNOWN " // ?
+#define NOVOLUME "        " // ?
+#define NOFORMAT "UNKNOWN "
 
-#define FAT16_SIZE 65,536 // FAT16 for sector sizes larger than 65536 ??
+#define FAT16_SIZE 32680 //*
 #define BYTES_PER_SECTOR 512
 
 #define SEA 0x43 // "C"
-#define INSTALLATION_CHECK 0xB800
-#define NETWORK 0x2F
-#define SERVER_CHECK 0x40
-#define NETWORK_IOCTL 0x4409
-#define ERR_LEVEL_0 0 // ?
-#define ERR_LEVEL_1 1 // ?
-#define ERR_LEVEL_2 2 //?
+#define INSTALLATION_CHECK 0xB800 //*
+#define NETWORK 0x2F              //*
+#define SERVER_CHECK 0x40         //*
+#define NETWORK_IOCTL 0x4409      //*
+#define ERR_LEVEL_0 0             //?
+#define ERR_LEVEL_1 1             //?
+#define ERR_LEVEL_2 2             //?
+
 #define c(x)  (char)x
 #define uc(x) (unsigned char)x
 #define u(x)  (unsigned)x
 #define f(x)  (XFLOAT)x
 #define ul(x) (unsigned long)x
 
-#define HIWHITE_ON_BLACK 0xF
-#define HIWHITE_ON_BLUE 0xF
-#define GRAY_ON_BLACK 0x07
-#define WHITE_ON_BLUE 0x07
+#define HIWHITE_ON_BLACK 0xF      //*
+#define HIWHITE_ON_BLUE 0xF       //*
+#define GRAY_ON_BLACK 0x07        //*
+#define WHITE_ON_BLUE 0x07        //*
 
 #define MAX_PART_SIZE 32
 #define NOT_FOUND 0
