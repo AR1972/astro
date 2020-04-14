@@ -355,7 +355,7 @@ END
 
 
 
-XFLOAT get_large_num_input(input_default,max_num,max_percent,input_message,prompt_location,error_message)
+unsigned get_large_num_input(input_default,max_num,max_percent,input_message,prompt_location,error_message)
 
 unsigned input_default;                                              /* AC000 */
 unsigned    max_num;

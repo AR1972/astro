@@ -2,13 +2,13 @@
 #define MAX_HDISK 8
 #define BEGIN {
 #define END }
-#define NUL	 (char) '\0'
+#define NUL  (char) '\0'
 #define ESC 0x1B
 #define ESC_FLAG 0x1B
-#define FALSE	 (char)(1==0)
-#define TRUE	 !(FALSE)
-#define CR	 '\x0d'
-#define LF	 '\x0a'
+#define FALSE    (char)(1==0)
+#define TRUE    !(FALSE)
+#define CR  '\x0d'
+#define LF  '\x0a'
 #define BACKSPACE 0x66
 #define PERCENT 0x06
 // partition types
@@ -34,17 +34,17 @@
 #define BYTES_PER_SECTOR 512
 
 #define SEA 0x43 // "C"
-#define INSTALLATION_CHECK 0xB800 // ?
-#define NETWORK 0x2F // ?
-#define SERVER_CHECK 0x40 // ?
-#define NETWORK_IOCTL 0 // ?
+#define INSTALLATION_CHECK 0xB800
+#define NETWORK 0x2F
+#define SERVER_CHECK 0x40
+#define NETWORK_IOCTL 0x4409
 #define ERR_LEVEL_0 0 // ?
 #define ERR_LEVEL_1 1 // ?
 #define ERR_LEVEL_2 2 //?
-#define c(x) (char)x
+#define c(x)  (char)x
 #define uc(x) (unsigned char)x
-#define u(x) (unsigned)x
-#define f(x) (float)x
+#define u(x)  (unsigned)x
+#define f(x)  (XFLOAT)x
 #define ul(x) (unsigned long)x
 
 #define HIWHITE_ON_BLACK 0xF
@@ -95,57 +95,57 @@
 
 #define DELETED 1
 
-typedef unsigned XFLOAT;
+typedef unsigned long XFLOAT;
 typedef unsigned char FLAG;
 
 struct entry
 {
     unsigned char    boot_ind;
-	unsigned char    start_head;
-	unsigned char    start_sector;
-	unsigned         start_cyl;
-	unsigned char    sys_id;
-	unsigned char    end_head;
-	unsigned char    end_sector;
-	unsigned         end_cyl;
-	unsigned long    rel_sec;
-	unsigned long    num_sec;
-	float            mbytes_used;
-	unsigned         percent_used;
-	unsigned char    changed;
-	char             drive_letter;
-	char             system[8];
-	char             vol_label[8];
+    unsigned char    start_head;
+    unsigned char    start_sector;
+    unsigned         start_cyl;
+    unsigned char    sys_id;
+    unsigned char    end_head;
+    unsigned char    end_sector;
+    unsigned         end_cyl;
+    unsigned long    rel_sec;
+    unsigned long    num_sec;
+    XFLOAT           mbytes_used;
+    unsigned         percent_used;
+    unsigned char    changed;
+    char             drive_letter;
+    char             system[8];
+    char             vol_label[8];
 };
 
 struct freespace
 {
-	unsigned    space;
+    unsigned    space;
     unsigned    start;
     unsigned    end;
-    float       mbytes_unused;
+    XFLOAT      mbytes_unused;
     unsigned    percent_unused; 
 };
 
 struct sublistx {
-	 unsigned char size;	       /* sublist size			       */
-	 unsigned char reserved;       /* reserved for future growth	       */
-	 unsigned far *value;	       /* pointer to replaceable parm	       */
-	 unsigned char id;	       /* type of replaceable parm	       */
-	 unsigned char flags;	       /* how parm is to be displayed	       */
-	 unsigned char max_width;      /* max width of replaceable field       */
-	 unsigned char min_width;      /* min width of replaceable field       */
-	 unsigned char pad_char;       /* pad character for replaceable field  */
-	};
+     unsigned char size;           /* sublist size                         */
+     unsigned char reserved;       /* reserved for future growth           */
+     unsigned far *value;          /* pointer to replaceable parm          */
+     unsigned char id;             /* type of replaceable parm             */
+     unsigned char flags;          /* how parm is to be displayed          */
+     unsigned char max_width;      /* max width of replaceable field       */
+     unsigned char min_width;      /* min width of replaceable field       */
+     unsigned char pad_char;       /* pad character for replaceable field  */
+    };
 
 struct dx_buffer_ioctl
 {
-	char file_system[8];
+    char file_system[8];
 };
 
 struct diskaccess
 {
-	unsigned char dac_access_flag;
+    unsigned char dac_access_flag;
 };
 
 
