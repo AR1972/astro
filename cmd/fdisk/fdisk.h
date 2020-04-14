@@ -34,9 +34,9 @@
 #define BYTES_PER_SECTOR 512
 
 #define SEA 0x43 // "C"
-#define INSTALLATION_CHECK 0 // ?
-#define NETWORK 0 // ?
-#define SERVER_CHECK 0 // ?
+#define INSTALLATION_CHECK 0xB800 // ?
+#define NETWORK 0x2F // ?
+#define SERVER_CHECK 0x40 // ?
 #define NETWORK_IOCTL 0 // ?
 #define ERR_LEVEL_0 0 // ?
 #define ERR_LEVEL_1 1 // ?
@@ -52,7 +52,6 @@
 #define GRAY_ON_BLACK 0x07
 #define WHITE_ON_BLUE 0x07
 
-#define PRIMARY 0
 #define MAX_PART_SIZE 32
 #define NOT_FOUND 0
 #define ACTIVE 0x80
