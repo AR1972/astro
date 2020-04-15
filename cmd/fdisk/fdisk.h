@@ -1,24 +1,24 @@
 //fdisk.h 
-#define MAX_HDISK 8 //*
-#define BEGIN { //*
-#define END } //*
+#define MAX_HDISK 8               //*
+#define BEGIN {                   //*
+#define END }                     //*
 #define NUL  (char) '\0'
-#define ESC 0x1B  //*
-#define ESC_FLAG 0xFFFE //*
+#define ESC 0x1B                  //*
+#define ESC_FLAG 0xFFFE           //*
 #define FALSE    (char)(1==0)
 #define TRUE    !(FALSE)
 #define CR  '\x0d'
 #define LF  '\x0a'
-#define BACKSPACE 0x8 //*
-#define PERCENT '%' //*
+#define BACKSPACE 0x8             //*
+#define PERCENT '%'               //*
 
 // partition types
-#define PRIMARY 0       //*
-#define DOS12 0x01      //*
-#define DOS16 0x04      //*
-#define DOSNEW 0x06     //*
-#define EXTENDED 0x05   //*
-#define BAD_BLOCK 0xFF  //*
+#define PRIMARY 0                 //*
+#define DOS12 0x01                //*
+#define DOS16 0x04                //*
+#define DOSNEW 0x06               //*
+#define EXTENDED 0x05             //*
+#define BAD_BLOCK 0xFF            //*
 #define XENIX1 0x02
 #define XENIX2 0x03
 #define PCIX 0x75
@@ -28,8 +28,8 @@
 
 #define FAT12 "FAT12   "
 #define FAT16 "FAT16   "
-#define NOVOLUME "        " // ?
-#define NOFORMAT "UNKNOWN "
+#define NOVOLUME "        "       //?
+#define NOFORMAT "UNKNOWN "       //?
 
 #define FAT16_SIZE 32680 //*
 #define BYTES_PER_SECTOR 512
@@ -55,7 +55,7 @@
 #define WHITE_ON_BLUE 0x07        //*
 
 #define MAX_PART_SIZE 32
-#define NOT_FOUND 0xFF //*
+#define NOT_FOUND 0xFF            //*
 #define ACTIVE 0x80
 #define INVALID 0x00
 #define CURRENT_VIDEO_STATE 1
