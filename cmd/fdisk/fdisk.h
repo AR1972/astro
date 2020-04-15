@@ -1,16 +1,16 @@
 //fdisk.h 
-#define MAX_HDISK 8
-#define BEGIN {
-#define END }
+#define MAX_HDISK 8 //*
+#define BEGIN { //*
+#define END } //*
 #define NUL  (char) '\0'
-#define ESC 0x1B
-#define ESC_FLAG 0x1B
+#define ESC 0x1B  //*
+#define ESC_FLAG 0xFFFE //*
 #define FALSE    (char)(1==0)
 #define TRUE    !(FALSE)
 #define CR  '\x0d'
 #define LF  '\x0a'
-#define BACKSPACE 0x66
-#define PERCENT 0x06
+#define BACKSPACE 0x8 //*
+#define PERCENT '%' //*
 
 // partition types
 #define PRIMARY 0       //*
@@ -55,7 +55,7 @@
 #define WHITE_ON_BLUE 0x07        //*
 
 #define MAX_PART_SIZE 32
-#define NOT_FOUND 0
+#define NOT_FOUND 0xFF //*
 #define ACTIVE 0x80
 #define INVALID 0x00
 #define CURRENT_VIDEO_STATE 1
