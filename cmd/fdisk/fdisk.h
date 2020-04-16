@@ -19,19 +19,19 @@
 #define DOSNEW 0x06               //*
 #define EXTENDED 0x05             //*
 #define BAD_BLOCK 0xFF            //*
-#define XENIX1 0x02
-#define XENIX2 0x03
-#define PCIX 0x75
-#define HPFS 0x07
-#define NOVELL 0x51
-#define CPM 0x52
+#define XENIX1 0x02               //*
+#define XENIX2 0x03               //*
+#define PCIX 0xDB                 //*
+#define HPFS 0x07                 //*
+#define NOVELL 0x64               //*
+#define CPM 0x75                  //*
 
 #define FAT12 "FAT12   "
 #define FAT16 "FAT16   "
 #define NOVOLUME "        "       //?
 #define NOFORMAT "UNKNOWN "       //?
 
-#define FAT16_SIZE 32680 //*
+#define FAT16_SIZE 32680          //*
 #define BYTES_PER_SECTOR 512
 
 #define SEA 0x43 // "C"
@@ -58,16 +58,16 @@
 #define NOT_FOUND 0xFF            //*
 #define ACTIVE 0x80
 #define INVALID 0x00
-#define CURRENT_VIDEO_STATE 1
-#define VIDEO 1
-#define Color80_25 1
-#define MONO80_25 1
-#define MONO80_25A 1
-#define BW80_25 1
-#define SET_MODE 1
-#define SET_ACTIVE_DISPLAY_PAGE 0
-#define SET_PAGE 0
-#define CURRENT_VIDEO_ATTRIBUTE 1
+#define CURRENT_VIDEO_STATE 0xF   //*
+#define VIDEO 0x10                //*
+#define Color80_25 0x3            //*
+#define MONO80_25 0x7             //*
+#define MONO80_25A 0xF            //*
+#define BW80_25 0x2               //*
+#define SET_MODE 0x0                //*
+#define SET_ACTIVE_DISPLAY_PAGE 0x5 //*
+#define SET_PAGE 0x5                //*
+#define CURRENT_VIDEO_ATTRIBUTE 0x8 //*
 
 #define WRITE_DISK 1
 #define SYSTEM_FILE_SECTORS 1
@@ -83,7 +83,7 @@
 #define DOS_MAX 8
 #define ONE_MEG 1024
 #define CAPCHAR 1
-#define INT21 24
+#define INT21 0x21
 #define CAP_YN 1
 #define NO_GOOD 0
 #define GENERIC_IOCTL 10
