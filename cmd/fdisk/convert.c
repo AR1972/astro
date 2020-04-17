@@ -146,16 +146,16 @@ XFLOAT	   numsecs_to_mbytes(numsecs)
 unsigned	long numsecs;
 {
 
-unsigned long	 bytes_in_one_sector;
+unsigned long    bytes_in_one_sector;
 /*C34 unsigned long    number_of_bytes; */
-unsigned         sectors_in_one_meg;                                    /*C34*/
-unsigned	 mbytes_out;
+unsigned    sectors_in_one_meg;                                    /*C34*/
+unsigned    mbytes_out;
 
      bytes_in_one_sector = BYTES_PER_SECTOR;
 /*C34 number_of_bytes = (numsecs * ul(bytes_in_one_sector));        */
 /*C34 mbytes_out =  f((number_of_bytes + ul(ONE_MEG/2)) / ONE_MEG); */
-     sectors_in_one_meg = u(ONE_MEG / bytes_in_one_sector);             /*C34*/
-     mbytes_out = f((numsecs + ul(sectors_in_one_meg/2)) / sectors_in_one_meg); /*C34*/
+     sectors_in_one_meg = ONE_MEG / bytes_in_one_sector;             /*C34*/
+     mbytes_out = (numsecs + sectors_in_one_meg/2) / sectors_in_one_meg; /*C34*/
      return(mbytes_out);
 }
 
