@@ -1,8 +1,8 @@
-;/*
-; *                      Microsoft Confidential
-; *                      Copyright (C) Microsoft Corporation 1983 - 1991
-; *                      All Rights Reserved.
-; */
+/*
+ *                      Microsoft Confidential
+ *                      Copyright (C) Microsoft Corporation 1983 - 1991
+ *                      All Rights Reserved.
+ */
 
 #include "dos.h"                                                        /* AN000 */
 #include "msgret.h"                                                     /* AN000 */
@@ -52,7 +52,7 @@ char message_flag;                                                      /* AN000
 END                                                                     /* AN000 */
 
 /*  */
-/*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
+/*****************************************************************************/
 /*                                                                           */
 /*    Subroutine Name: display_msg                                           */
 /*                                                                           */
@@ -80,9 +80,9 @@ END                                                                     /* AN000
 /*    External References:                                                   */
 /*              Sysdispmsg (module _msgret.sal)                              */
 /*                                                                           */
-/*컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴컴�*/
+/*****************************************************************************/
 
-void display_msg(msgnum,msghan,msgparms,msgsub,msginput,msgclass) /*;AN000 AC014;                           */
+void display_msg(msgnum,msghan,msgparms,msgsub,msginput,msgclass) /*;AN000 AC014;*/
 int   msgnum;                           /*;AN000; message number              */
 int   msghan;                           /*;AN000; output device               */
 int   msgparms;                         /*;AN000; number of substitution parms*/
