@@ -1,7 +1,5 @@
 
 pushall MACRO
-        push    bp
-        mov bp, sp
         push    bx
         push    cx
         push    dx
@@ -23,8 +21,6 @@ popall MACRO
         pop dx
         pop cx
         pop bx
-        mov sp, bp
-        pop bp
 ENDM
 
 ; entering a bios interupt call
