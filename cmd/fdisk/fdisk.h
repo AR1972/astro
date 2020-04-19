@@ -26,10 +26,9 @@
 #define NOVELL                    0x64           //*
 #define CPM                       0x75           //*
 
-#define FAT12                     "FAT12   "
-#define FAT16                     "FAT16   "
-#define NOVOLUME                  "        "     //?
-#define NOFORMAT                  "UNKNOWN "     //?
+#define FAT12                     "FAT12   \0"   //*
+#define FAT16                     "FAT16   "     //*
+#define NOFORMAT                  "UNKNOWN "     //*
 
 #define FAT16_SIZE                32680          //*
 #define BYTES_PER_SECTOR          512            //*
@@ -89,15 +88,16 @@
 #define GENERIC_IOCTL             0x440D         //*
 #define ZERO                      0x00           //*
 #define GET_MEDIA_ID              0x866          //*
-#define FILE_NAME                 "FILE_NAME"    //?
+#define FILE_NAME               ":\\????????.???\0" //?
 #define FIND_FIRST_MATCH          0x4E           //*
-#define VOL_LABEL                 "        "     //?
 #define PERIOD                    '.'            //*
 #define SPECIAL_FUNCTION          0x867          //*
 #define DELETED                   0xFE           //*
 
 typedef unsigned short XFLOAT;
 typedef unsigned char FLAG;
+char NOVOLUME[13];
+char VOL_LABEL[13];
 
 struct entry
 {
