@@ -96,7 +96,7 @@
 #define SPECIAL_FUNCTION          0x867          //*
 #define DELETED                   0xFE           //*
 
-typedef unsigned long XFLOAT;
+typedef unsigned short XFLOAT;
 typedef unsigned char FLAG;
 
 struct entry
@@ -121,11 +121,12 @@ struct entry
 
 struct freespace
 {
-    unsigned    space;
-    unsigned    start;
-    unsigned    end;
-    XFLOAT      mbytes_unused;
-    unsigned    percent_unused; 
+    unsigned long   space;
+    unsigned long   start;
+    unsigned long   end;
+    char            pad[6];
+    XFLOAT          mbytes_unused;
+    unsigned        percent_unused; 
 };
 
 struct sublistx {
