@@ -1,4 +1,4 @@
-0008
+0010
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -1559,7 +1559,7 @@ FASTOPEN 000143f7 0019
 0304 U 0000 "  n       Specifies the maximum number of file locations Fastopen retains",CR,LF
 	"          in its filename cache.",CR,LF
 0305 U 0000 "  /X      Creates the filename cache in expanded memory.",CR,LF
-FDISK    00014912 0125
+FDISK    00014912 0140
 0004 U 0000 "Cannot FDISK with network loaded",CR,LF
 0005 U 0000 "No fixed disks present",CR,LF
 0006 U 0000 "Error reading fixed disk",CR,LF
@@ -1685,7 +1685,22 @@ FDISK    00014912 0125
 1114 U 0001 "Invalid partition table",0
 1115 U 0001 "Error loading operating system",0
 1116 U 0001 "Missing operating system",0
-DOSKEY   000165b3 0010
+1117 U 0000 "1117"
+1118 U 0000 "1118"
+1119 U 0000 "1119"
+1120 U 0000 "1120"
+1121 U 0000 "1121"
+1122 U 0000 "1122"
+1123 U 0000 "1123"
+1124 U 0000 "1124"
+1125 U 0000 "1125"
+1126 U 0000 "1126"
+1127 U 0000 "1127"
+1128 U 0000 "1128"
+1129 U 0000 "1129"
+1130 U 0000 "1130"
+1131 U 0000 "1131"
+DOSKEY   000166df 0010
 0001 U 0000 07,"An incompatible DOSKey is already installed.$"
 0002 U 0000 07,"Cannot change BUFSIZE.$"
 0003 U 0000 "DOSKey installed.$"
@@ -1713,7 +1728,7 @@ DOSKEY   000165b3 0010
 0008 U 0000 13,10,"$"
 0020 U 0000 13,10,"-- More --",0
 0021 U 0000 "Line number: ",0
-GRAFTABL 00016cb6 0009
+GRAFTABL 00016de2 0009
 0002 U 0000 "Active Code Page: %1",CR,LF
 0003 U 0000 "Previous Code Page: %1",CR,LF
 0004 U 0000 "None",NULL
