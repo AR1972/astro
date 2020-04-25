@@ -4,7 +4,9 @@ BAD_VERSION             db 13,10,"DOS version must be 2.0 or higher.",13,10,'$'
 NETWORK_INSTALLED       db 13,10,"The MIRROR command cannot operate on a network drive.",13,10,'$'
 MSG                     db 13,10,"The MIRROR process was successful.",13,10,'$'
 FAIL_MSG                db 13,10,"The MIRROR process was unsuccessful.",13,10,'$'
-DRIVE_MSG               db 13,10,"Drive x ",'$'
+DRIVE_MSG               db 13,10,"Drive "
+DRV_NAME_LEN            equ ($ - DRIVE_MSG)
+                        db "x ",'$'
 READ_ERROR_MSG          db "could not be processed.",13,10,'$'
 PROCESSING_MSG          db "being processed.",13,10,'$'
 DRIVE_SPEC_ERROR        db "Error reading system areas.",13,10,'$'
@@ -28,4 +30,4 @@ CANT_REUSE_ERROR_MSG    db "error. There already is a MIRROR control"
                         db 13,10,"will continue.",13,10,'$'
 FOUND_ONE_LIKE_US_MSG   db "error. Data was found in a file that "
                         db 13,10,"appears to be a MIRROR control file. Cannot continue.",13,10,'$'
-DRV_NAME_LEN            equ 9
+
