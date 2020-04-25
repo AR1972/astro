@@ -1,4 +1,4 @@
-0025
+0036
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -1373,86 +1373,89 @@ PRINT    0001150e 0034
 	"              queue.",CR,LF,CR,LF
 0312 U 0000 "Type PRINT without parameters to display the contents of the print queue.",CR,LF
 FORMAT   00011e40 0084
-0002 U 0000 CR,"%1 percent of disk formatted                                        ",CR
-0004 U 0003 CR,"Format complete                                                     ",CR,LF
+0002 U 0000 CR,"%1 percent completed.                                               ",CR
+0004 U 0003 CR,"Format complete.                                                    ",CR,LF
 0007 U 0000 "Insert new diskette for drive %1:",CR,LF
-0009 U 0000 "Re-insert diskette for drive %1:",CR,LF
+0009 U 0000 "Reinsert diskette for drive %1:",CR,LF
 0011 U 0000 CR,"Format not supported on drive %1:", CR,LF
-0012 U 0000 CR,"Invalid device parameters from device driver",CR,LF
-0013 U 0000 CR,"Error in IOCTL call         ",CR,LF
-0014 U 0000 CR,"Not a block device          ",CR,LF
-0015 U 0000 CR,"Error writing FAT           ",CR,LF
-0016 U 0000 CR,"Error writing directory",CR,LF
+0012 U 0000 CR,"Invalid device parameters from device driver.",CR,LF
+0013 U 0000 CR,"Error in IOCTL call.         ",CR,LF
+0014 U 0000 CR,"Not a block device.          ",CR,LF
+0015 U 0000 CR,"Error writing FAT.           ",CR,LF
+0016 U 0000 CR,"Error writing directory.",CR,LF
 0017 U 0000 CR,"Cannot format an ASSIGNed or SUBSTed drive. ",CR,LF
-0018 U 0000 CR,"Cannot find System Files",CR,LF
-0019 U 0000 CR,"Cannot FORMAT a network drive",CR,LF
-0021 U 0000 CR,"Parameters not supported",CR,LF
-0022 U 0003 CR,"Format terminated                                                   ",CR,LF
-0023 U 0000 CR,"Disk unsuitable for system disk",CR,LF
-0024 U 0000 CR,"Invalid media or Track 0 bad - disk unusable",CR,LF
-0025 U 0000 CR,"Unable to write BOOT                        ",CR,LF
-0026 U 0000 CR,"Error reading directory",CR,LF
+0018 U 0000 CR,"Cannot find System Files.",CR,LF
+0019 U 0000 CR,"Cannot format a network drive.",CR,LF
+0021 U 0000 CR,"Parameters not supported.",CR,LF
+0022 U 0003 CR,"Format terminated.                                                  ",CR,LF
+0023 U 0000 CR,"Disk unsuitable for system disk.",CR,LF
+0024 U 0000 CR,"Invalid media or Track 0 bad - disk unusable.",CR,LF
+0025 U 0000 CR,"Unable to write BOOT.                        ",CR,LF
+0026 U 0000 CR,"Error reading directory.",CR,LF
 0028 U 0000 CR,"and press ENTER when ready..."
-0029 U 0000 CR,"Invalid Volume ID                           ",CR,LF
+0029 U 0000 CR,"Invalid Volume ID.                           ",CR,LF
 0031 U 0000 CR,"Enter current volume label for drive %1: "
-0032 U 0000 CR,"Parameters not compatible",CR,LF,"with fixed disk",CR,LF
-0035 U 0000 CR,"Error reading partition table",CR,LF
-0037 U 0000 CR,"Format broken",CR,LF
-0038 U 0000 CR,"Format not available on drive %1",CR,LF
-0039 U 0000 CR,"Non-System disk or disk error",CR,LF
-0040 U 0000 CR,"Bad Partition Table        ",CR,LF
-0041 U 0000 CR,"Parameters not supported by drive",CR,LF
+0032 U 0000 CR,"Parameters not compatible",CR,LF,"with fixed disk.",CR,LF
+0035 U 0000 CR,"Error reading partition table.",CR,LF
+0037 U 0000 CR,"Format broken.",CR,LF
+0038 U 0000 CR,"Format not available on drive %1:",CR,LF
+0039 U 0000 CR,"Non-System disk or disk error.",CR,LF
+0040 U 0000 CR,"Bad Partition Table.        ",CR,LF
+0041 U 0000 CR,"Parameters not supported by drive.",CR,LF
 0042 U 0000 CR,LF
 0043 U 0000 CR,LF,LF
 0044 U 0000 CR,"Insert DOS disk in drive %1:",CR,LF
-0045 U 0000 CR,LF,"WARNING, ALL DATA ON NON-REMOVABLE DISK",CR,LF
+0045 U 0000 CR,LF,"WARNING: ALL DATA ON NON-REMOVABLE DISK",CR,LF
 	"DRIVE %1: WILL BE LOST!",CR,LF
 	"Proceed with Format (Y/N)?"
 0046 U 0000 CR,"Format another (Y/N)?"
-0047 U 0000 CR,"Error reading partition table",CR,LF
-0048 U 0000 CR,"Error writing partition table",CR,LF
-0049 U 0000 CR,"Parameters not compatible", CR,LF
-0050 U 0000 "%1 allocation units available on disk",CR,LF
-0051 U 0000 "%1 bytes in each allocation unit",CR,LF
-0052 U 0000 CR, "Error writing partition table",CR,LF
-0053 U 0000 CR,"Same parameter entered twice",CR,LF
-0054 U 0000 CR,"Must enter both /T and /N parameters",CR,LF
-0055 U 0000 CR,"Attempting to recover allocation unit %1                          ",CR
-0056 U 0000 CR,"There is not enough room to create a restore file",CR,LF
-	"You will not be able to use the unformat utility",CR,LF
+0047 U 0000 CR,"Error reading partition table.",CR,LF
+0048 U 0000 CR,"Error writing partition table.",CR,LF
+0049 U 0000 CR,"Parameters not compatible.", CR,LF
+0050 U 0000 "%1 allocation units available on disk.",CR,LF
+0051 U 0000 "%1 bytes in each allocation unit.",CR,LF
+0052 U 0000 CR, "Error writing partition table.",CR,LF
+0053 U 0000 CR,"Same parameter entered twice.",CR,LF
+0054 U 0000 CR,"Must enter both /T and /N parameters.",CR,LF
+0055 U 0000 CR,"Trying to recover allocation unit %1.                         ",CR
+0056 U 0000 CR,"There is not enough room to create a restore file.",CR,LF
+	"You will not be able to use the UNFORMAT command.",CR,LF
 	"Proceed with Format (Y/N)?"
-0057 U 0000 CR,"There is not enough disk space for system files ",CR,LF
-0058 U 0000 CR,"Disk was formatted under a different version of DOS",CR,LF
-	"This disk cannot be unformatted",CR,LF
+0057 U 0000 CR,"There is not enough disk space for system files. ",CR,LF
+0058 U 0000 CR,"Disk was formatted under a different version of DOS.",CR,LF
+	"This disk cannot be unformatted.",CR,LF
 	"Proceed with Format (Y/N)?"
-0059 U 0000 CR,"There was an error creating the format recovery file",CR,LF
-	"This disk cannot be unformatted",CR,LF
+0059 U 0000 CR,"There was an error creating the format recovery file.",CR,LF
+	"This disk cannot be unformatted.",CR,LF
 	"Proceed with Format (Y/N)?"
-0060 U 0000 CR,"Volume label is not supported with /8 parameter",CR,LF
-0070 U 0000 CR,"Insufficient memory to load system files",CR,LF
-0071 U 0000 CR,"Insufficient memory",CR,LF
+0060 U 0000 CR,"Volume label is not supported with /8 parameter.",CR,LF
+0070 U 0000 CR,"Insufficient memory to load system files.",CR,LF
+0071 U 0000 CR,"Insufficient memory.",CR,LF
 0075 U 0000 CR,"QuickFormat another (Y/N)?"
-0076 U 0000 CR,"Existing format differs from that specified",CR,LF
-	"This disk cannot be unformatted",CR,LF
+0076 U 0000 CR,"Existing format differs from that specified.",CR,LF
+	"This disk cannot be unformatted.",CR,LF
 	"Proceed with Format (Y/N)?"
-0077 U 0000 CR,"Invalid existing format",CR,LF
-	"This disk cannot be QuickFormatted",CR,LF
+0077 U 0000 CR,"Invalid existing format.",CR,LF
+	"This disk cannot be QuickFormatted.",CR,LF
 	"Proceed with Unconditional Format (Y/N)?"
 0078 U 0000 CR,"Formatting %1K",CR,LF
 0079 U 0000 CR,"Formatting %1M",CR,LF
 0080 U 0000 CR,"Formatting %1.%2M",CR,LF
-0081 U 0000 CR,"WARNING: This disk cannot be unformatted if system files are transferred",CR,LF
+0081 U 0000 CR,"WARNING: This disk cannot be unformatted if system files are transferred.",CR,LF
 	"Proceed with system transfer anyway (Y/N)?"
 0082 U 0000 CR,"Verifying %1K",CR,LF
 0083 U 0000 CR,"Verifying %1M",CR,LF
 0084 U 0000 CR,"Verifying %1.%2M",CR,LF
-0085 U 0000 CR,"Saving UNFORMAT information",CR,LF
-0086 U 0000 CR,"Checking existing disk format",CR,LF
+0085 U 0000 CR,"Saving UNFORMAT information.",CR,LF
+0086 U 0000 CR,"Checking existing disk format.",CR,LF
 0087 U 0000 CR,"QuickFormatting %1K",CR,LF
 0088 U 0000 CR,"QuickFormatting %1M",CR,LF
 0089 U 0000 CR,"QuickFormatting %1.%2M",CR,LF
-0090 U 0000 'You must use "DBLSPACE/FORMAT %1:" to format that drive',CR,LF,0
-0091 U 0000 CR,"WARNING:  Disk %1: is a host drive, format (Y/N)?"
+0090 U 0000 'You must use "DBLSPACE /FORMAT %1:" to format that drive',CR,LF,0
+0091 U 0000 CR,LF,"WARNING: Drive %1 contains one or more DoubleSpace",CR,LF
+	"compressed drives. Formatting this drive will destroy those",CR,LF
+	"compressed drives and all the files they contain.",CR,LF
+	"Proceed with Format anyway (Y/N)?"
 0300 U 0000 "Formats a disk for use with MS-DOS.",CR,LF,CR,LF
 0301 U 0000 "FORMAT drive: [/V[:label]] [/Q] [/U] [/F:size] [/B | /S]",CR,LF
 0302 U 0000 "FORMAT drive: [/V[:label]] [/Q] [/U] [/T:tracks /N:sectors] [/B | /S]",CR,LF
@@ -1470,7 +1473,7 @@ FORMAT   00011e40 0084
 0314 U 0000 "  /1          Formats a single side of a floppy disk.",CR,LF
 0315 U 0000 "  /4          Formats a 5.25-inch 360K floppy disk in a high-density drive.",CR,LF
 0316 U 0000 "  /8          Formats eight sectors per track.",CR,LF
-FIND     0001347d 0012
+FIND     00013558 0012
 0004 U 0000 "FIND: "
 0300 U 0000 "Searches for a text string in a file or files.",CR,LF,CR,LF
 0301 U 0000 'FIND [/V] [/C] [/N] [/I] "string" [[drive:][path]filename[ ...]]',CR,LF,CR,LF
@@ -1483,7 +1486,7 @@ FIND     0001347d 0012
 0308 U 0000 "            Specifies a file or files to search.",CR,LF,CR,LF
 0309 U 0000 "If a pathname is not specified, FIND searches the text typed at the prompt",CR,LF
 0310 U 0000 "or piped from another command.",CR,LF
-EDLIN    00013805 0035
+EDLIN    000138e0 0035
 0006 U 0000 "*"
 0007 U 0000 "Invalid drive or file name",CR,LF
 0008 U 0000 "File name must be specified",CR,LF
@@ -1528,7 +1531,7 @@ EDLIN    00013805 0035
 	"Search                      [startline][,endline][?]Stext",CR,LF
 0307 U 0000 "Transfer                    [toline]T[drive:][path]filename",CR,LF
 	"Write                       [#lines]W",CR,LF
-SORT     0001404c 0009
+SORT     00014127 0009
 0005 U 0000 "SORT: "
 0300 U 0000 "Sorts input and writes results to the screen, a file, or another device.",CR,LF,CR,LF
 0301 U 0000 "SORT [/R] [/+n] < [drive1:][path1]filename1 [> [drive2:][path2]filename2]",CR,LF
@@ -1538,7 +1541,7 @@ SORT     0001404c 0009
 0305 U 0000 "  [drive1:][path1]filename1  Specifies a file to be sorted.",CR,LF
 0306 U 0000 "  [drive2:][path2]filename2  Specifies a file where the sorted input is to be ",CR,LF,"                             stored.",CR,LF
 0307 U 0000 "  command                    Specifies a command whose output is to be sorted.",CR,LF
-FASTOPEN 000143f7 0019
+FASTOPEN 000144d2 0019
 0004 U 0000 CR,LF,"FASTOPEN installed",CR,LF
 0005 U 0000 CR,LF,"FASTOPEN already installed",CR,LF
 0007 U 0000 CR,LF,"Too many drive entries",CR,LF
@@ -1559,7 +1562,7 @@ FASTOPEN 000143f7 0019
 0304 U 0000 "  n       Specifies the maximum number of file locations Fastopen retains",CR,LF
 	"          in its filename cache.",CR,LF
 0305 U 0000 "  /X      Creates the filename cache in expanded memory.",CR,LF
-FDISK    00014912 0140
+FDISK    000149ed 0140
 0004 U 0000 "Cannot FDISK with network loaded",CR,LF
 0005 U 0000 "No fixed disks present",CR,LF
 0006 U 0000 "Error reading fixed disk",CR,LF
@@ -1700,7 +1703,7 @@ FDISK    00014912 0140
 1129 U 0000 "Non-DOS Partition deleted"
 1130 U 0000 "No Non-DOS Partition to delete."
 1131 U 0000 "Partition selected is not a Non-DOS Partition"
-DOSKEY   00016a4c 0010
+DOSKEY   00016b27 0010
 0001 U 0000 07,"An incompatible DOSKey is already installed.$"
 0002 U 0000 07,"Cannot change BUFSIZE.$"
 0003 U 0000 "DOSKey installed.$"
@@ -1728,7 +1731,7 @@ DOSKEY   00016a4c 0010
 0008 U 0000 13,10,"$"
 0020 U 0000 13,10,"-- More --",0
 0021 U 0000 "Line number: ",0
-GRAFTABL 0001714f 0009
+GRAFTABL 0001722a 0009
 0002 U 0000 "Active Code Page: %1",CR,LF
 0003 U 0000 "Previous Code Page: %1",CR,LF
 0004 U 0000 "None",NULL
