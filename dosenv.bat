@@ -23,7 +23,7 @@ set oakpath=%oakdrive%\astro
 set oakroot=%oakdrive%\astro
 
 
-set PATH=%oakpath%\c6ers\tools6\BIN;%PATH%
+set PATH=%oakpath%\c6ers\tools6\BIN;%oakpath%\tools\BIN;%PATH%
 
 rem  If you have a RAM drive, it will probably speed up your system to
 rem  point these variables to a temporary directory there.
