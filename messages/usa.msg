@@ -1690,8 +1690,8 @@ FDISK    000149ed 0140
 1116 U 0001 "Missing operating system",0
 1117 U 0000 "                     Change Current Fixed Disk Drive"
 1118 U 0000 "  Disk   Drv   Mbytes   Free   Usage"
-1120 U 0000 "Enter Fixed Disk Drive Number (1-<I>).......................<H>[<SI>]"
 1119 U 0000 "(1 MByte = 1048576 bytes)"
+1120 U 0000 "Enter Fixed Disk Drive Number (1-<I>).......................<H>[<SI>]"
 1121 U 0000 "* Remote * "
 1122 U 0000 "                         Fixed Disk Drive Status"
 1123 U 0000 "What primary partition do you want to delete..? <H>[<S> ]<R>"

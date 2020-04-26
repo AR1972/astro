@@ -1,5 +1,5 @@
-COPYRIGHT_3             db 13,10,"Copyright (C) 1987-1990  Central Point Software, Inc. ",13,10,10,'$'
-INFO                    db 13,10,"Creates an image of the system area.",13,10,'$'
+COPYRIGHT_1             db 13,10,"Copyright (C) 1987-1990  Central Point Software, Inc. ",13,10,10,'$'
+COPYRIGHT_3             db 13,10,"Creates an image of the system area.",13,10,'$'
 BAD_VERSION             db 13,10,"DOS version must be 2.0 or higher.",13,10,'$'
 NETWORK_INSTALLED       db 13,10,"The MIRROR command cannot operate on a network drive.",13,10,'$'
 MSG                     db 13,10,"The MIRROR process was successful.",13,10,'$'
