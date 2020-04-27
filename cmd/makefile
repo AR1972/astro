@@ -21,7 +21,6 @@ all:
         $(MAKE) /a BASE=
         $(MAKE) /a
     cd ..\comp
-#needs strings
         $(MAKE)
     cd ..\cps
         $(MAKE)

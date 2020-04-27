@@ -42,7 +42,7 @@ typedef  int   Index;
 #define  GET_APPEND_STATUS  0xb706
 #define  SET_APPEND_STATUS  0xb707
 
-#define  EOFCHAR	    0x1a
+#define  EOFCHAR            0x1a
 #define  BACKSPACE          '\b'
 #define  RETURNCHAR         '\r'
 #define  NEWLINE            '\n'
@@ -65,7 +65,7 @@ char *buf1,  *buf2,                    /* buffers to read the 2 files into */
      lfmt_str[] = "%s%lX\n%s%?\n%s%!\n";    /* a copy */
 unsigned int bufsiz; 
 unsigned int append_stat;              /* current status of append */
-char getsbuf[128];		       /* buffer for all gets's in comp */
+char getsbuf[128];             /* buffer for all gets's in comp */
 unsigned char input_redir;             /* TRUE if input redirected */
 
 char crlfstr[] = "\r\n$";

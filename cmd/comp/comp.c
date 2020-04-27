@@ -50,7 +50,7 @@
 /* asks the user for options.  PPargs also checks the given switches one  */
 /* one as it encounters them. If no switches are given and when the user  */
 /* didn't give both file names, then ppargs also request for options and  */
-/* processes them. Upon returning it remains only to expand any      	  */
+/* processes them. Upon returning it remains only to expand any           */
 /* wildcards in the two filespecs.  Wildcards do not play an equivalent   */
 /* role in both filespecs.  A wildcard in the spec for file1 has the      */
 /* standard use of a wildcard, i.e. "find all files matching this         */
@@ -67,7 +67,7 @@
 int main(int argc, char *argv[])
 {
   char *locargv[MAX_PARAMS];      /* another (local) argument vector */
-  char answer[2];	          /* answer to "Compare more files (Y/N) ? */
+  char answer[2];             /* answer to "Compare more files (Y/N) ? */
   int ret;                        /* return value */
   Index i;                        /* loop counter */
   union REGS reg;                 /* structure for doing int21's */
@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
   reg.h.ah = VERSION_NUM;
   reg.h.al = 0x0;
   intdos(&reg, &reg);
-  if ( (reg.h.al < MAJ_VER_NUM) || 
+  if ( (reg.h.al < MAJ_VER_NUM) ||
        ((reg.h.al == MAJ_VER_NUM) && (reg.h.ah < MIN_VER_NUM)) )
   {
     Beep();
@@ -202,15 +202,15 @@ int CheckOptionsHelp(int c, char *v[])
 /* Function:  Compare the two files.                                 */
 /*********************************************************************/
 
-unsigned comp(Pathname file1, Pathname file2)  
+unsigned comp(Pathname file1, Pathname file2)
 {
   unsigned char *ptr1, *ptr2;        /* ptrs to move along the buffers */
   int  handle1, handle2;             /* handles for the two files */
   unsigned mismatch = 0;             /* count of the number of mismatches */
   unsigned char_cnt,                 /* # of buffer chars compared so far */
-	   cr_count1 = 1,            /* # of Carr. Ret. seen in first file */
+       cr_count1 = 1,            /* # of Carr. Ret. seen in first file */
            cr_count2 = 1,            /* # of Carr. Ret. seen in second file */
-	   read1, read2;             /* # of chars read into buf1, buf2 */
+       read1, read2;             /* # of chars read into buf1, buf2 */
   unsigned long total_cnt = 0;       /* # of file chars compared so far */
 
 
@@ -258,13 +258,13 @@ unsigned comp(Pathname file1, Pathname file2)
     /*
      *  Run through the buffers and compare bytes.
      *
-     *  If the user either asked to have the line count (rather than byte    
-     *  offset) of the mismatches reported, or wanted only the first n lines 
-     *  to be compared, we need to count Carriage Returns, which is how we   
-     *  determine the line number.  Note that this is not an extremely       
-     *  accurate method, i.e. the two files may differ at a character which  
-     *  happens to be a CR, but for the purposes of this program, counting   
-     *  Carriage Returns in the first file is a sufficient means of getting  
+     *  If the user either asked to have the line count (rather than byte
+     *  offset) of the mismatches reported, or wanted only the first n lines
+     *  to be compared, we need to count Carriage Returns, which is how we
+     *  determine the line number.  Note that this is not an extremely
+     *  accurate method, i.e. the two files may differ at a character which
+     *  happens to be a CR, but for the purposes of this program, counting
+     *  Carriage Returns in the first file is a sufficient means of getting
      *  the line count.
      */
     if (count_lines || limit)
@@ -274,49 +274,49 @@ unsigned comp(Pathname file1, Pathname file2)
       {
 
 #ifdef DBCS
-	if (IsDBCSLeadByte(*ptr1) &&
+    if (IsDBCSLeadByte(*ptr1) &&
             (char_cnt < read1) && (char_cnt < read2))      /* M011 */
         {
-	  if (ptr1[0] != ptr2[0] || ptr1[1] != ptr2[1])
-	  {
+      if (ptr1[0] != ptr2[0] || ptr1[1] != ptr2[1])
+      {
             if (asci)
             {
-	      printf("%s%u\n%s%c%c\n%s%c%c\n", msg_tbl[COMP2_ERR], cr_count1,
+          printf("%s%u\n%s%c%c\n%s%c%c\n", msg_tbl[COMP2_ERR], cr_count1,
                       msg_tbl[FILE1], ptr1[0], ptr1[1], msg_tbl[FILE2],
                       ptr2[0], ptr2[1]);
             }
-	    else
+        else
             {
-	      printf("%s%u\n%s%X%X\n%s%X%X\n", msg_tbl[COMP2_ERR], cr_count1,
+          printf("%s%u\n%s%X%X\n%s%X%X\n", msg_tbl[COMP2_ERR], cr_count1,
                       msg_tbl[FILE1], ptr1[0], ptr1[1], msg_tbl[FILE2],
                       ptr2[0], ptr2[1]);
             }
-	    mismatch++;
-	  }
+        mismatch++;
+      }
           char_cnt++;
           ptr1++;
           ptr2++;
-	}
+    }
         else
         {
 #endif
 
-	  if (*ptr1 != *ptr2)
+      if (*ptr1 != *ptr2)
           {
             if ( (!no_case) || ((abs(*ptr1 - *ptr2)) != CASE_DIFFERENCE) )
             {
               printf(fmt, msg_tbl[COMP2_ERR], cr_count1, msg_tbl[FILE1],
-                     *ptr1, msg_tbl[FILE2], *ptr2); 
+                     *ptr1, msg_tbl[FILE2], *ptr2);
               mismatch++;
             }
-	  }
+      }
 
 #ifdef DBCS
         }
 #endif
 
         /* Count carriage returns */                       /* M011 Start */
-        if (*ptr1 == NEWLINE)                         
+        if (*ptr1 == NEWLINE)
         {
           cr_count1++;
           if (limit && (cr_count1 > limit))
@@ -351,7 +351,7 @@ unsigned comp(Pathname file1, Pathname file2)
         }                                                  /* M011 End */
 
         ptr1++;
-        ptr2++;                                            
+        ptr2++;
       }
     }
 
@@ -367,18 +367,18 @@ unsigned comp(Pathname file1, Pathname file2)
       {
 #ifdef DBCS
         if (IsDBCSLeadByte(*ptr1) && char_cnt+1 < read1)
-	{
-	  if (ptr1[0] != ptr2[0] || ptr1[1] != ptr2[1])
-	  {
-	    if (asci)
+    {
+      if (ptr1[0] != ptr2[0] || ptr1[1] != ptr2[1])
+      {
+        if (asci)
             {
-	      printf("%s%lX\n%s%c%c\n%s%c%c\n", msg_tbl[COMP_ERR],
+          printf("%s%lX\n%s%c%c\n%s%c%c\n", msg_tbl[COMP_ERR],
                       total_cnt + char_cnt, msg_tbl[FILE1], ptr1[0], ptr1[1],
                       msg_tbl[FILE2], ptr2[0], ptr2[1]);
             }
             else
             {
-	      printf("%s%lX\n%s%X%X\n%s%X%X\n", msg_tbl[COMP_ERR],
+          printf("%s%lX\n%s%X%X\n%s%X%X\n", msg_tbl[COMP_ERR],
                       total_cnt + char_cnt, msg_tbl[FILE1], ptr1[0], ptr1[1],
                       msg_tbl[FILE2], ptr2[0], ptr2[1]);
             }
@@ -387,19 +387,19 @@ unsigned comp(Pathname file1, Pathname file2)
           char_cnt++;
           ptr1++;
           ptr2++;
-	}
+    }
         else
         {
 #endif
-	  if (*ptr1 != *ptr2)
+      if (*ptr1 != *ptr2)
           {
-	    if ( (!no_case) || ((abs(*ptr1 - *ptr2)) != CASE_DIFFERENCE) )
+        if ( (!no_case) || ((abs(*ptr1 - *ptr2)) != CASE_DIFFERENCE) )
             {
-	      printf(lfmt, msg_tbl[COMP_ERR], total_cnt + char_cnt,  
-	             msg_tbl[FILE1], *ptr1, msg_tbl[FILE2], *ptr2);
-	      mismatch++;
-	    }
-	  }
+          printf(lfmt, msg_tbl[COMP_ERR], total_cnt + char_cnt,
+                 msg_tbl[FILE1], *ptr1, msg_tbl[FILE2], *ptr2);
+          mismatch++;
+        }
+      }
 #ifdef DBCS
         }
 #endif
@@ -431,7 +431,7 @@ gtho:                                /* get out */
   }
   else                               /* M005 */
     printf("\r\n");                  /* print final carriage return */
-} 
+}
 
 
 /*********************************************************************/
@@ -464,7 +464,7 @@ unsigned open_file(Pathname fname, int *handleptr)
     int86(APPEND_INT,&reg, &reg);
   }
 
-  retcode = _dos_open(fname, O_RDONLY, handleptr); 
+  retcode = _dos_open(fname, O_RDONLY, handleptr);
 
   /* restore the original append status */
   if (append_stat & 0xFF)
@@ -477,8 +477,8 @@ unsigned open_file(Pathname fname, int *handleptr)
   if (retcode)
   {
     Beep();
-    printf("%s%s\n", msg_tbl[CANT_OPEN_FILE], fname);          
-    return (CANT_OPEN_FILE);                 
+    printf("%s%s\n", msg_tbl[CANT_OPEN_FILE], fname);
+    return (CANT_OPEN_FILE);
   }
   else
     return (SUCCESS);
@@ -521,8 +521,8 @@ int getmem(char **p1, char **p2)
     if (bufsize)
       bufsize -= 10000;
   }
-  *p2 = *p1 + (bufsize / 2);      
-  return (bufsize / 2);            
+  *p2 = *p1 + (bufsize / 2);
+  return (bufsize / 2);
 }
 
 
@@ -560,56 +560,56 @@ void getoneopt(char *av)
     {
       case DECIMAL_SWITCH :
           decimal = TRUE;
-	  if (asci)                    /* reset asci if set previously */
+      if (asci)                    /* reset asci if set previously */
             asci = FALSE;
-	  strcpy(lfmt, lfmt_str);
-	  strcpy(fmt, fmt_str);
-	  setfmt(lfmt, 'd');
-	  setfmt(fmt, 'd');
-	  break;
+      strcpy(lfmt, lfmt_str);
+      strcpy(fmt, fmt_str);
+      setfmt(lfmt, 'd');
+      setfmt(fmt, 'd');
+      break;
       case ASCII_SWITCH :
           asci = TRUE;
-	  if (decimal)                 /* reset decimal if set previously */
+      if (decimal)                 /* reset decimal if set previously */
             decimal = FALSE;
-	  strcpy(lfmt, lfmt_str);
-	  strcpy(fmt, fmt_str);
-	  setfmt(lfmt, 'c');
-	  setfmt(fmt, 'c');
-	  break;
+      strcpy(lfmt, lfmt_str);
+      strcpy(fmt, fmt_str);
+      setfmt(lfmt, 'c');
+      setfmt(fmt, 'c');
+      break;
       case LIMIT_SWITCH :
           if ( *(curopt+2) != '=')
           {
             Beep();
-	    printf("%s\n", msg_tbl[NEED_DELIM_CHAR]);
-	    break;                     /* ignore limit_switch */
-	  }
-	  temptr = curopt + 3;
-	  while ((curchr = *temptr) != '\0')
+        printf("%s\n", msg_tbl[NEED_DELIM_CHAR]);
+        break;                     /* ignore limit_switch */
+      }
+      temptr = curopt + 3;
+      while ((curchr = *temptr) != '\0')
           {
-	    if (!( (curchr >= '0') && (curchr <= '9') ))
+        if (!( (curchr >= '0') && (curchr <= '9') ))
             {
-	      if ((curchr == SWITCH_CHAR_1) || (curchr == SWITCH_CHAR_2))
-	      	break;
+          if ((curchr == SWITCH_CHAR_1) || (curchr == SWITCH_CHAR_2))
+            break;
               Beep();
-	      printf("%s\n%s\n", msg_tbl[BAD_NUMERIC_ARG], av);
-	      exit(BAD_NUMERIC_ARG);
-	    }
-	    limit = (10 * limit) + (*temptr - '0');
-	    temptr++;
-	  }
-	  curopt = temptr - 2;         /* to make up for the +2 later */
-	  break;
+          printf("%s\n%s\n", msg_tbl[BAD_NUMERIC_ARG], av);
+          exit(BAD_NUMERIC_ARG);
+        }
+        limit = (10 * limit) + (*temptr - '0');
+        temptr++;
+      }
+      curopt = temptr - 2;         /* to make up for the +2 later */
+      break;
       case NO_CASE_SWITCH :
           no_case = TRUE;
-	  break;
+      break;
       case LINE_CT_SWITCH :
           count_lines = TRUE;
-	  break;
+      break;
       default:
           Beep();
-	  printf("%s %s\n",msg_tbl[INV_SWITCH],curopt);
-	  exit(SYNT_ERR);
-	  break;
+      printf("%s %s\n",msg_tbl[INV_SWITCH],curopt);
+      exit(SYNT_ERR);
+      break;
     }
     curopt += 2;                       /* skip switch char and option char */
     if ((*curopt == SWITCH_CHAR_1) || (*curopt == SWITCH_CHAR_2))
@@ -620,7 +620,7 @@ void getoneopt(char *av)
 }
 
 
-/*********************************************************************/ 
+/*********************************************************************/
 /* Routine:   ppargs                                                 */
 /*                                                                   */
 /* Function:  Pre-process command line : make sure the two filespecs */
@@ -645,7 +645,7 @@ unsigned ppargs(char *argv[], int *argc, char *locargv[])
   /* Initialize variables */
   nooffiles = noofopts = 0;
   limit = 0;                                     /* M010 */
-  
+
   /* Set local argument vector to point at the command line args given */
   for (i = 1; i < *argc; i++)
   {
@@ -708,11 +708,11 @@ unsigned ppargs(char *argv[], int *argc, char *locargv[])
 #else
         if (lastchr != '\\')
 #endif
-        { 
+        {
           locargv[i] = extend_length(locargv[i]);
-	  strcat(locargv[i],"\\*.*");
-	}
-	else
+      strcat(locargv[i],"\\*.*");
+    }
+    else
         {
           locargv[i] = extend_length(locargv[i]);
           strcat(locargv[i],"*.*");
@@ -734,7 +734,7 @@ unsigned ppargs(char *argv[], int *argc, char *locargv[])
     do
     {
       i++;
-      locargv[i] = (char *)malloc(OPT_SIZE); 
+      locargv[i] = (char *)malloc(OPT_SIZE);
       if (locargv[i] == NULL)
       {
         Beep();
@@ -744,11 +744,11 @@ unsigned ppargs(char *argv[], int *argc, char *locargv[])
       fprintf(stderr, "%s", msg_tbl[OPTION_REQUEST]);
       compgets(locargv[i],OPT_SIZE+1);
       if (*locargv[i] != '\0')
-      { 
+      {
         noofopts++;
         getoneopt(locargv[i]);          /* process this option */
       }
-      if (noofopts >= MAX_OPTIONS) 
+      if (noofopts >= MAX_OPTIONS)
         break;
     } while (*locargv[i] != '\0');
   }
@@ -771,7 +771,7 @@ unsigned ppargs(char *argv[], int *argc, char *locargv[])
 /*********************************************************************/
 
 int dronly(char *s)
-{ 
+{
   return ( (*(s + 1) == ':') && (*(s + 2) == '\0') );
 }
 
@@ -834,7 +834,7 @@ Boolean has_extension(char *s)
     p1--;
   }
   p2 = strrchr(s, '\\');
-  if (!p2) 
+  if (!p2)
     p2 = strrchr(s,'/');
   if ((*p1 == '.') && !(p2 && (p2 > p1)))
     return (TRUE);
@@ -842,8 +842,8 @@ Boolean has_extension(char *s)
     return (FALSE);
 }
 
-	
-/*********************************************************************/ 
+
+/*********************************************************************/
 /* Routine:   compgets                                               */
 /*                                                                   */
 /* Function:  Simulate a fgets() to take care of buffer overflow.    */
@@ -883,7 +883,7 @@ void compgets(char *buff, int length)
 }
 
 
-/*********************************************************************/ 
+/*********************************************************************/
 /* Routine:   GetInput                                               */
 /*                                                                   */
 /* Function:  Gets the input from stdin and outputs it to stderr.    */
@@ -914,7 +914,7 @@ void GetInput(int *length)
    */
   if ((input_redir) && (c == NEWLINE))
     c = ReadStdin();
-  
+
   while (TRUE)
   {
     /* don't allow user to type more than needed */
@@ -958,7 +958,7 @@ void GetInput(int *length)
       printf("\n%s\n", msg_tbl[UNEXP_EOF]);
       exit(UNEXP_EOF);
     }                                       /* M009 - End */
-    else if (NumRead < (*length - 1)) 
+    else if (NumRead < (*length - 1))
     {
       /* write the character to stderr */
       WriteStderr(c);
@@ -979,7 +979,7 @@ void GetInput(int *length)
 }
 
 
-/*********************************************************************/ 
+/*********************************************************************/
 /* Routine:   ReadStdin                                              */
 /*                                                                   */
 /* Function:  Read a character from stdin without echoing the        */
@@ -991,14 +991,14 @@ void GetInput(int *length)
 char ReadStdin()
 {
   union REGS reg;                      /* structure for doing int21's */
-    
+
   reg.h.ah = 0x08;                     /* read character without echo */
   intdos(&reg, &reg);
   return (reg.h.al);                   /* return the character */
 }
 
 
-/*********************************************************************/ 
+/*********************************************************************/
 /* Routine:   WriteStderr                                            */
 /*                                                                   */
 /* Function:  Writes a character to stderr.                          */
@@ -1007,7 +1007,7 @@ char ReadStdin()
 void WriteStderr(char ch)
 {
   union REGS reg;                      /* structure for doing int21's */
-    
+
   reg.h.ah = 0x40;                     /* write to a device */
   reg.x.bx = 0x2;                      /* stderr */
   reg.x.cx = 0x1;                      /* write 1 byte */
@@ -1016,7 +1016,7 @@ void WriteStderr(char ch)
 }
 
 
-/*********************************************************************/ 
+/*********************************************************************/
 /* Routine:   ParseFileNames                                         */
 /*                                                                   */
 /* Function:  Parses the two given filenames and then compares the   */
@@ -1089,7 +1089,7 @@ void ParseFileNames(char *file1, char *file2)
       }
       else
         comp(final1, final2);          /* compare the two files */
-      
+
       strcpy(final2, inter2);          /* recopy original with wildcards */
     }                                            /* M008 */
     else
@@ -1101,7 +1101,7 @@ void ParseFileNames(char *file1, char *file2)
 }
 
 
-/*********************************************************************/ 
+/*********************************************************************/
 /* Routine:   FindFileName                                           */
 /*                                                                   */
 /* Function:  Returns the pointer to the start of the filename in    */
@@ -1113,7 +1113,7 @@ char *FindFileName(char *pathname)
   int len1;
   char *ptr;
 
-  
+
   len1 = strlen(pathname);
   ptr = pathname + len1 - 1;           /* position ptr at end of string */
 
@@ -1129,7 +1129,7 @@ char *FindFileName(char *pathname)
 }
 
 
-/*********************************************************************/ 
+/*********************************************************************/
 /* Routine:   HasWildcard                                            */
 /*                                                                   */
 /* Function:  Returns TRUE if string has a wildcard character.       */
@@ -1144,7 +1144,7 @@ Boolean HasWildcard(char *file)
 }
 
 
-/*********************************************************************/ 
+/*********************************************************************/
 /* Routine:   CheckWildcard                                          */
 /*                                                                   */
 /* Function:  If a "*" is found by itself in the filename, then it   */
@@ -1155,7 +1155,7 @@ Boolean HasWildcard(char *file)
 void CheckWildcard(char *path, char *file)
 {
   char *ptr;                  /* ptr to wildcard in filename */
-  
+
   if ( (!strchr(file, '.')) && (ptr = strchr(file, '*')) )
   {
     if (strlen(path) <= (MAXFLNM - 3))
@@ -1169,7 +1169,7 @@ void CheckWildcard(char *path, char *file)
 }
 
 
-/*********************************************************************/ 
+/*********************************************************************/
 /* Routine:   ExpandFile2                                            */
 /*                                                                   */
 /* Function:  Expands the wildcards found in File2 to match File1.   */
@@ -1258,7 +1258,7 @@ int ExpandFile2(char *File1, char *File2)
 }
 
 
-/*********************************************************************/ 
+/*********************************************************************/
 /* Routine:   ExitComp                                               */
 /*                                                                   */
 /* Function:  Frees the allocated buffer whenever exit is used.      */
@@ -1274,7 +1274,7 @@ void ExitComp()
 
 #ifdef DBCS
 
-/*********************************************************************/ 
+/*********************************************************************/
 /* Routine:   IsDBCSLeadByte                                         */
 /*                                                                   */
 /* Function:  Test if the character is DBCS lead byte.               */
@@ -1309,7 +1309,7 @@ int IsDBCSLeadByte(unsigned char c)
 }
 
 
-/*********************************************************************/ 
+/*********************************************************************/
 /* Routine:   CheckDBCSTailByte                                      */
 /*                                                                   */
 /* Function:  Check if the character point is at tail byte.          */
