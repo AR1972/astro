@@ -48,3 +48,10 @@ KEYBOARD.exs: KDFDV.OBJ kdfrh2.obj kdflh2.obj \
               LINK @keyboard.lnk
 
 $(dest):      Keyboard.exs
+
+clean:
+   del *.obj
+   del *.map
+   del *.sys
+   del *.exs
+

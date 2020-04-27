@@ -118,6 +118,10 @@ int9.obj: int9.c  gideidef.h vars.h int9.h drv.h access.mak
 init.obj: init.c gideidef.h vars.h gide.h init.h access.mak
    cl $(cflags) $*.c
 
-
+clean:
+   del *.obj
+   del *.com
+   del *.map
+   del *.ovl
 
 
