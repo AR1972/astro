@@ -8,7 +8,7 @@
 #define LINE_CT_SWITCH   'L'
 #define SWITCH_CHAR_1    '/'
 #define SWITCH_CHAR_2    '-'
-#define PPARG_MSG_OFF      8
+#define PPARG_MSG_OFF      9
 #define USER_HELP_LINES   11
 #define FAILURE            1
 //messages
@@ -21,7 +21,7 @@
 #define COMP_ERR           6
 #define COMP2_ERR          7
 #define FILE1              8
-#define FILE2             11
+#define FILE2              9
 #define OPTION_REQUEST    12
 #define COMPARING         13
 #define AND               14
@@ -49,9 +49,9 @@ char *msg_tbl[] = {
 "Compare error at OFFSET ",
 "Compare error at LINE ",
 "file1 = ",
+"file2 = ",
 "Name of first file to compare: ",
 "Name of second file to compare: ",
-"file2 = ",
 "Option : ",
 "Comparing ",
 " and ",
