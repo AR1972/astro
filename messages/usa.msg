@@ -1,4 +1,4 @@
-0042
+0044
 COMMON   00000006 0038
 0001 U 0000 "Incorrect DOS version",CR,LF
 0002 U 0000 "%1 already installed",CR,LF
@@ -1376,8 +1376,8 @@ PRINT    00011653 0034
 	"              queue.",CR,LF,CR,LF
 0312 U 0000 "Type PRINT without parameters to display the contents of the print queue.",CR,LF
 FORMAT   00011f85 0084
-0002 U 0000 CR,"%1 percent completed.                                               ",CR
-0004 U 0003 CR,"Format complete.                                                    ",CR,LF
+0002 U 0000 CR,"%1 percent completed.                  ",CR
+0004 U 0003 CR,"Format complete.                        ",CR,LF
 0007 U 0000 "Insert new diskette for drive %1:",CR,LF
 0009 U 0000 "Reinsert diskette for drive %1:",CR,LF
 0011 U 0000 CR,"Format not supported on drive %1:", CR,LF
@@ -1476,7 +1476,7 @@ FORMAT   00011f85 0084
 0314 U 0000 "  /1          Formats a single side of a floppy disk.",CR,LF
 0315 U 0000 "  /4          Formats a 5.25-inch 360K floppy disk in a high-density drive.",CR,LF
 0316 U 0000 "  /8          Formats eight sectors per track.",CR,LF
-FIND     0001369d 0012
+FIND     00013664 0012
 0004 U 0000 "FIND: "
 0300 U 0000 "Searches for a text string in a file or files.",CR,LF,CR,LF
 0301 U 0000 'FIND [/V] [/C] [/N] [/I] "string" [[drive:][path]filename[ ...]]',CR,LF,CR,LF
@@ -1489,7 +1489,7 @@ FIND     0001369d 0012
 0308 U 0000 "            Specifies a file or files to search.",CR,LF,CR,LF
 0309 U 0000 "If a pathname is not specified, FIND searches the text typed at the prompt",CR,LF
 0310 U 0000 "or piped from another command.",CR,LF
-EDLIN    00013a25 0035
+EDLIN    000139ec 0035
 0006 U 0000 "*"
 0007 U 0000 "Invalid drive or file name",CR,LF
 0008 U 0000 "File name must be specified",CR,LF
@@ -1534,7 +1534,7 @@ EDLIN    00013a25 0035
 	"Search                      [startline][,endline][?]Stext",CR,LF
 0307 U 0000 "Transfer                    [toline]T[drive:][path]filename",CR,LF
 	"Write                       [#lines]W",CR,LF
-SORT     0001426c 0009
+SORT     00014233 0009
 0005 U 0000 "SORT: "
 0300 U 0000 "Sorts input and writes results to the screen, a file, or another device.",CR,LF,CR,LF
 0301 U 0000 "SORT [/R] [/+n] < [drive1:][path1]filename1 [> [drive2:][path2]filename2]",CR,LF
@@ -1544,7 +1544,7 @@ SORT     0001426c 0009
 0305 U 0000 "  [drive1:][path1]filename1  Specifies a file to be sorted.",CR,LF
 0306 U 0000 "  [drive2:][path2]filename2  Specifies a file where the sorted input is to be ",CR,LF,"                             stored.",CR,LF
 0307 U 0000 "  command                    Specifies a command whose output is to be sorted.",CR,LF
-FASTOPEN 00014617 0019
+FASTOPEN 000145de 0019
 0004 U 0000 CR,LF,"FASTOPEN installed",CR,LF
 0005 U 0000 CR,LF,"FASTOPEN already installed",CR,LF
 0007 U 0000 CR,LF,"Too many drive entries",CR,LF
@@ -1565,7 +1565,7 @@ FASTOPEN 00014617 0019
 0304 U 0000 "  n       Specifies the maximum number of file locations Fastopen retains",CR,LF
 	"          in its filename cache.",CR,LF
 0305 U 0000 "  /X      Creates the filename cache in expanded memory.",CR,LF
-FDISK    00014b32 0140
+FDISK    00014af9 0140
 0004 U 0000 "Cannot FDISK with network loaded",CR,LF
 0005 U 0000 "No fixed disks present",CR,LF
 0006 U 0000 "Error reading fixed disk",CR,LF
@@ -1706,7 +1706,7 @@ FDISK    00014b32 0140
 1129 U 0000 "Non-DOS Partition deleted"
 1130 U 0000 "No Non-DOS Partition to delete."
 1131 U 0000 "Partition selected is not a Non-DOS Partition"
-DOSKEY   00016c6c 0010
+DOSKEY   00016c33 0010
 0001 U 0000 07,"An incompatible DOSKey is already installed.$"
 0002 U 0000 07,"Cannot change BUFSIZE.$"
 0003 U 0000 "DOSKey installed.$"
@@ -1734,7 +1734,7 @@ DOSKEY   00016c6c 0010
 0008 U 0000 13,10,"$"
 0020 U 0000 13,10,"-- More --",0
 0021 U 0000 "Line number: ",0
-GRAFTABL 0001736f 0009
+GRAFTABL 00017336 0009
 0002 U 0000 "Active Code Page: %1",CR,LF
 0003 U 0000 "Previous Code Page: %1",CR,LF
 0004 U 0000 "None",NULL
