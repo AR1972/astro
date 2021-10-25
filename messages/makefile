@@ -14,5 +14,5 @@ $(COUNTRY).idx: $(COUNTRY).msg
                 buildidx $(COUNTRY).msg
 
 clean:
-
+	-del USA.IDX
 
