@@ -51,7 +51,7 @@ set SAVEP=%PATH%
 ::	cd %ROOT%
 ::
 echo ********************** building msdos60 base ***************************
-SET PATH=%ROOT%\c6ers\tools6\BIN;%PATH%
+SET PATH=%ROOT%\c6ers\tools6\BIN;%ROOT%\tools\bin;%PATH%
 SET INIT=%ROOT%\c6ers\tools6\bin
 SET INCLUDE=%ROOT%\c6ers\tools6\include;%ROOT%\c6ers\toolsvr\lib
 SET LIB=%ROOT%\c6ers\tools6\lib;%ROOT%\c6ers\toolsvr\lib
