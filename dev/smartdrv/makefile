@@ -26,8 +26,8 @@ LIBS =
 
 OBJS1 = dev.obj $(NAME).obj dirtywrt.obj xms.obj cacheman.obj queueman.obj
 OBJS2 = int2f.obj hooks.obj queueini.obj reboot.obj popup.obj beep.obj rtext.obj rdata.obj
-OBJS3 = tdata.obj bambinit.obj umbload.obj get_dpb.obj indosbox.obj xmsini.obj stacker.obj
-OBJS4 = cacheini.obj int2fini.obj hooksini.obj cmdline.obj text.obj dec_out.obj drvtype.obj logphys.obj devini.obj pdetect.obj
+OBJS3 = tdata.obj bambinit.obj umbload.obj get_dpb.obj indosbox.obj xmsini.obj
+OBJS4 = cacheini.obj int2fini.obj hooksini.obj cmdline.obj text.obj dec_out.obj drvtype.obj logphys.obj devini.obj pdetect.obj stacker.obj
 OBJS5 = doubleb\safedsk.obj doubleb\resbuf.obj doubleb\transbuf.obj doubleb\dtext.obj doubleb\badpart.obj
 
 bins  = ..\..\binaries
